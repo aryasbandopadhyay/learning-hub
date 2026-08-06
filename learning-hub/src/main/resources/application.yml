@@ -155,6 +155,18 @@ hub:
       paths:
         - spring-theory
 
+    - id: learning-hub-docs
+      label: Learning Hub Docs
+      description: "How this app was built: architecture, the content engine, the judge, auth & progress, the UI, Azure deployment, and testing/CI."
+      paths:
+        - docs-learning-hub
+
+    - id: coding-orchestrator
+      label: Coding Orchestrator
+      description: "The LangGraph4j master-worker coding orchestrator: end-to-end flow plus an AI-concepts library (agentic AI, LLMs, training, quantization, RAG, LangGraph, MCP, tools/skills, agent architectures, evaluation)."
+      paths:
+        - coding-orchestrator/docs
+
     # ----------------------------------------------------------------------------------------
     # EXAMPLE — how you'd add another subject later. Uncomment, create the folder, and restart.
     # No code changes needed; a new tab shows up automatically.

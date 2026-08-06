@@ -60,6 +60,10 @@ COPY rate-limiter/        /app/rate-limiter/
 COPY job-scheduler/       /app/job-scheduler/
 COPY find-command/        /app/find-command/
 
+# ----- Docs sections (Learning Hub docs + Coding Orchestrator docs) -----
+COPY docs-learning-hub/     /app/docs-learning-hub/
+COPY coding-orchestrator/docs/ /app/coding-orchestrator/docs/
+
 # ----- The judge engine + generated manifests (live under learning-hub/judge) -----
 COPY learning-hub/judge/  /app/learning-hub/judge/
 
