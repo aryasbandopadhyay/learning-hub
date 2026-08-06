@@ -1,0 +1,82 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maximumWhiteTiles",
+  "params": [
+    "tiles",
+    "carpetLen"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            12,
+            18
+          ],
+          [
+            20,
+            25
+          ],
+          [
+            30,
+            32
+          ]
+        ],
+        10
+      ],
+      "expected": 9
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "tiles",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "carpetLen",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/intervals-merge/17-maximum-white-tiles-covered-by-a-carpet",
+  "title": "Maximum White Tiles Covered by a Carpet",
+  "difficulty": "Medium",
+  "topic": "faang/intervals-merge",
+  "solutions": {
+    "naive": "class Solution:\n    def maximumWhiteTiles(self, tiles: list[list[int]], carpetLen: int) -> int:\n        best = 0\n        for start, _ in tiles:\n            end = start + carpetLen - 1\n            covered = 0\n            for a, b in tiles:\n                overlap = min(b, end) - max(a, start) + 1\n                if overlap > 0:\n                    covered += overlap\n            best = max(best, covered)\n        return best",
+    "better": "class Solution:\n    def maximumWhiteTiles(self, tiles: list[list[int]], carpetLen: int) -> int:\n        from bisect import bisect_right\n        tiles = sorted(tiles)\n        starts = [a for a, _ in tiles]\n        prefix = [0]\n        for a, b in tiles:\n            prefix.append(prefix[-1] + b - a + 1)\n\n        best = 0\n        for i, (start, _) in enumerate(tiles):\n            carpet_end = start + carpetLen - 1\n            j = bisect_right(starts, carpet_end) - 1\n            covered = prefix[max(j, i) + 1] - prefix[i]\n            if j + 1 < len(tiles) and tiles[j + 1][0] <= carpet_end:\n                covered += carpet_end - tiles[j + 1][0] + 1\n            if j >= i and tiles[j][1] > carpet_end:\n                covered -= tiles[j][1] - carpet_end\n            best = max(best, covered)\n        return best",
+    "optimal": "class Solution:\n    def maximumWhiteTiles(self, tiles: list[list[int]], carpetLen: int) -> int:\n        tiles = sorted(tiles)\n        best = 0\n        full = 0\n        right = 0\n        for left in range(len(tiles)):\n            carpet_end = tiles[left][0] + carpetLen - 1\n            while right < len(tiles) and tiles[right][1] <= carpet_end:\n                full += tiles[right][1] - tiles[right][0] + 1\n                right += 1\n            partial = 0\n            if right < len(tiles) and tiles[right][0] <= carpet_end:\n                partial = carpet_end - tiles[right][0] + 1\n            best = max(best, full + partial)\n            if right == left:\n                right += 1\n            else:\n                full -= tiles[left][1] - tiles[left][0] + 1\n        return best"
+  },
+  "starterCode": "class Solution:\n    def maximumWhiteTiles(self, tiles, carpetLen):\n        # TODO: write your solution here\n        pass\n"
+}

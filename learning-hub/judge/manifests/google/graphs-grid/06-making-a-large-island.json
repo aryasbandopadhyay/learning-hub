@@ -1,0 +1,61 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "largestIsland",
+  "params": [
+    "grid"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "grid",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/graphs-grid/06-making-a-large-island",
+  "title": "Making a Large Island",
+  "difficulty": "Hard",
+  "topic": "google/graphs-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def largestIsland(self, grid: list[list[int]]) -> int:\n        n=len(grid)\n        def area(g,r,c,seen):\n            stack=[(r,c)]; seen.add((r,c)); total=0\n            while stack:\n                r,c=stack.pop(); total+=1\n                for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                    nr,nc=r+dr,c+dc\n                    if 0<=nr<n and 0<=nc<n and g[nr][nc] and (nr,nc) not in seen:\n                        seen.add((nr,nc)); stack.append((nr,nc))\n            return total\n        zeros=[(r,c) for r in range(n) for c in range(n) if grid[r][c]==0]\n        if not zeros: return n*n\n        best=1\n        for zr,zc in zeros:\n            g=[row[:] for row in grid]; g[zr][zc]=1; seen=set()\n            for r in range(n):\n                for c in range(n):\n                    if g[r][c] and (r,c) not in seen: best=max(best,area(g,r,c,seen))\n        return best",
+    "better": "class Solution:\n    def largestIsland(self, grid: list[list[int]]) -> int:\n        n=len(grid); g=[row[:] for row in grid]; sizes={0:0}; label=2\n        def paint(r,c,label):\n            g[r][c]=label; stack=[(r,c)]; total=0\n            while stack:\n                r,c=stack.pop(); total+=1\n                for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                    nr,nc=r+dr,c+dc\n                    if 0<=nr<n and 0<=nc<n and g[nr][nc]==1: g[nr][nc]=label; stack.append((nr,nc))\n            return total\n        for r in range(n):\n            for c in range(n):\n                if g[r][c]==1: sizes[label]=paint(r,c,label); label+=1\n        best=max(sizes.values())\n        for r in range(n):\n            for c in range(n):\n                if g[r][c]==0:\n                    ids={g[nr][nc] for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)) for nr,nc in [(r+dr,c+dc)] if 0<=nr<n and 0<=nc<n}\n                    best=max(best,1+sum(sizes[i] for i in ids))\n        return best",
+    "optimal": "class Solution:\n    def largestIsland(self, grid: list[list[int]]) -> int:\n        n=len(grid); parent=list(range(n*n)); size=[1]*(n*n)\n        def find(x):\n            while parent[x]!=x: parent[x]=parent[parent[x]]; x=parent[x]\n            return x\n        def union(a,b):\n            ra,rb=find(a),find(b)\n            if ra==rb: return\n            if size[ra]<size[rb]: ra,rb=rb,ra\n            parent[rb]=ra; size[ra]+=size[rb]\n        for r in range(n):\n            for c in range(n):\n                if grid[r][c]:\n                    if r and grid[r-1][c]: union(r*n+c,(r-1)*n+c)\n                    if c and grid[r][c-1]: union(r*n+c,r*n+c-1)\n        best=0; has_zero=False\n        for r in range(n):\n            for c in range(n):\n                if grid[r][c]: best=max(best,size[find(r*n+c)])\n                else:\n                    has_zero=True; roots=set()\n                    for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                        nr,nc=r+dr,c+dc\n                        if 0<=nr<n and 0<=nc<n and grid[nr][nc]: roots.add(find(nr*n+nc))\n                    best=max(best,1+sum(size[x] for x in roots))\n        return n*n if not has_zero else best"
+  },
+  "starterCode": "class Solution:\n    def largestIsland(self, grid):\n        # TODO: write your solution here\n        pass\n"
+}

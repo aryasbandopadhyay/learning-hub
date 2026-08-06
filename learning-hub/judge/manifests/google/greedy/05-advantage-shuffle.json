@@ -1,0 +1,385 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "advantageCount",
+  "params": [
+    "nums1",
+    "nums2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          12,
+          24,
+          8,
+          32
+        ],
+        [
+          13,
+          25,
+          32,
+          11
+        ]
+      ],
+      "expected": [
+        24,
+        32,
+        8,
+        12
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          2254,
+          2717
+        ],
+        [
+          13,
+          25,
+          32,
+          11
+        ]
+      ],
+      "expected": [
+        2476,
+        2552,
+        2717,
+        2254
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          1102,
+          5121,
+          -4135,
+          8576,
+          1102
+        ],
+        [
+          13,
+          25,
+          32,
+          11
+        ]
+      ],
+      "expected": [
+        1102,
+        5121,
+        8576,
+        1102
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          -9751,
+          3933,
+          -3324,
+          1879,
+          7508,
+          -7352,
+          5141,
+          6995,
+          -3510,
+          9841,
+          5161,
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240
+        ],
+        [
+          13,
+          25,
+          32,
+          11
+        ]
+      ],
+      "expected": [
+        367,
+        803,
+        1715,
+        151
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -7628,
+          -7628,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          1057
+        ],
+        [
+          13,
+          25,
+          32,
+          11
+        ]
+      ],
+      "expected": [
+        1852,
+        6355,
+        6424,
+        1057
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          2646,
+          3568,
+          2156,
+          7510,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          2156,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289
+        ],
+        [
+          13,
+          25,
+          32,
+          11
+        ]
+      ],
+      "expected": [
+        204,
+        286,
+        2156,
+        179
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          -1605,
+          -7717,
+          6487,
+          -398,
+          505,
+          5633,
+          7473,
+          -5830,
+          -1585,
+          4120,
+          -469,
+          3413,
+          -4777,
+          -750,
+          2417,
+          9800,
+          4419,
+          -3628,
+          2446,
+          1037
+        ],
+        [
+          13,
+          25,
+          32,
+          11
+        ]
+      ],
+      "expected": [
+        1037,
+        2417,
+        2446,
+        505
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          -9859,
+          1642,
+          -321,
+          -3667,
+          -4376,
+          -1449,
+          3654,
+          -2423,
+          3377,
+          1322,
+          3103,
+          -9882,
+          -6320
+        ],
+        [
+          13,
+          25,
+          32,
+          11
+        ]
+      ],
+      "expected": [
+        1642,
+        3103,
+        3377,
+        1322
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          -9958,
+          7108,
+          175,
+          -4516,
+          6748
+        ],
+        [
+          13,
+          25,
+          32,
+          11
+        ]
+      ],
+      "expected": [
+        6748,
+        7108,
+        -9958,
+        175
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums1",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "nums2",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            13,
+            25,
+            32,
+            11
+          ]
+        }
+      ]
+    }
+  },
+  "id": "google/greedy/05-advantage-shuffle",
+  "title": "Advantage Shuffle",
+  "difficulty": "Medium",
+  "topic": "google/greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def advantageCount(self, nums1: list[int], nums2: list[int]) -> list[int]:\n        remaining = sorted(nums1)\n        ans = [0] * len(nums2)\n        for value, idx in sorted((v, i) for i, v in enumerate(nums2)):\n            pick = 0\n            while pick < len(remaining) and remaining[pick] <= value:\n                pick += 1\n            if pick == len(remaining):\n                pick = 0\n            ans[idx] = remaining.pop(pick)\n        return ans",
+    "better": "class Solution:\n    def advantageCount(self, nums1, nums2):\n        import bisect\n        remaining = sorted(nums1)\n        ans = [0] * len(nums2)\n        for value, idx in sorted((v, i) for i, v in enumerate(nums2)):\n            pick = bisect.bisect_right(remaining, value)\n            if pick == len(remaining):\n                pick = 0\n            ans[idx] = remaining.pop(pick)\n        return ans",
+    "optimal": "class Solution:\n    def advantageCount(self, nums1, nums2):\n        import bisect\n        values = sorted(set(nums1))\n        n = len(values)\n        bit = [0] * (n + 1)\n        def add(i, delta):\n            i += 1\n            while i <= n:\n                bit[i] += delta\n                i += i & -i\n        def prefix(i):\n            s = 0\n            while i > 0:\n                s += bit[i]\n                i -= i & -i\n            return s\n        def kth(k):\n            idx = 0\n            step = 1 << (n.bit_length() - 1)\n            while step:\n                nxt = idx + step\n                if nxt <= n and bit[nxt] < k:\n                    idx = nxt\n                    k -= bit[nxt]\n                step >>= 1\n            return idx\n        for x in nums1:\n            add(bisect.bisect_left(values, x), 1)\n        ans = [0] * len(nums2)\n        for value, idx in sorted((v, i) for i, v in enumerate(nums2)):\n            pos = bisect.bisect_right(values, value)\n            before = prefix(pos)\n            total = prefix(n)\n            pick = kth(before + 1) if before < total else kth(1)\n            ans[idx] = values[pick]\n            add(pick, -1)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def advantageCount(self, nums1, nums2):\n        # TODO: write your solution here\n        pass\n"
+}

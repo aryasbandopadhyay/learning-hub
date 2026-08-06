@@ -1,0 +1,272 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "reverseString",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "h",
+          "e",
+          "l",
+          "l",
+          "o"
+        ]
+      ],
+      "expected": [
+        "o",
+        "l",
+        "l",
+        "e",
+        "h"
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ]
+      ],
+      "expected": [
+        "baa",
+        "ebe",
+        "bbd",
+        "acb",
+        "bed",
+        "ade",
+        "bce",
+        "ead",
+        "dac",
+        "adc",
+        "cae",
+        "dbe",
+        "dbb",
+        "ebc",
+        "bde",
+        "aed",
+        "dee",
+        "bac",
+        "bbb",
+        "dbe"
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "bdd"
+        ]
+      ],
+      "expected": [
+        "bdd"
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "dab",
+          "cea"
+        ]
+      ],
+      "expected": [
+        "cea",
+        "dab"
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd"
+        ]
+      ],
+      "expected": [
+        "cdd",
+        "aba",
+        "dce",
+        "cdd",
+        "bdd",
+        "eac",
+        "eca",
+        "cba",
+        "bca",
+        "ecd",
+        "dbb",
+        "cbb",
+        "aab",
+        "eda",
+        "beb",
+        "cda",
+        "edb",
+        "bdc",
+        "dba",
+        "cbe"
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "cbc",
+          "acb",
+          "bdc",
+          "dad",
+          "dca"
+        ]
+      ],
+      "expected": [
+        "dca",
+        "dad",
+        "bdc",
+        "acb",
+        "cbc"
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb"
+        ]
+      ],
+      "expected": [
+        "ccb",
+        "bca",
+        "bdc",
+        "eed",
+        "bcd",
+        "cde",
+        "bcd",
+        "cde"
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "cdb",
+          "dcd",
+          "aae"
+        ]
+      ],
+      "expected": [
+        "aae",
+        "dcd",
+        "cdb"
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec"
+        ]
+      ],
+      "expected": [
+        "eec",
+        "dee",
+        "bcd",
+        "bed",
+        "aec"
+      ]
+    }
+  ],
+  "inPlaceArg": 0,
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "two-pointers/09-reverse-string",
+  "title": "Reverse String",
+  "difficulty": "Easy",
+  "topic": "two-pointers",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def reverseString(self, s: List[str]) -> None:\n        reversed_copy = s[::-1]\n        for i, ch in enumerate(reversed_copy):\n            s[i] = ch",
+    "better": "from typing import List\n\nclass Solution:\n    def reverseString(self, s: List[str]) -> None:\n        # list.reverse mutates the original list and returns None.\n        s.reverse()",
+    "optimal": "from typing import List\n\nclass Solution:\n    def reverseString(self, s: List[str]) -> None:\n        left, right = 0, len(s) - 1\n        while left < right:\n            s[left], s[right] = s[right], s[left]\n            left += 1\n            right -= 1"
+  },
+  "starterCode": "class Solution:\n    def reverseString(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

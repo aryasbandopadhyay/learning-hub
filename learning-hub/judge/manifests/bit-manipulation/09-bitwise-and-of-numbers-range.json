@@ -1,0 +1,31 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "rangeBitwiseAnd",
+  "params": [
+    "left",
+    "right"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        5,
+        7
+      ],
+      "expected": 4
+    }
+  ],
+  "id": "bit-manipulation/09-bitwise-and-of-numbers-range",
+  "title": "Bitwise AND of Numbers Range",
+  "difficulty": "Medium",
+  "topic": "bit-manipulation",
+  "solutions": {
+    "naive": "class Solution:\n    def rangeBitwiseAnd(self, left: int, right: int) -> int:\n        ans = left\n        for x in range(left + 1, right + 1):\n            ans &= x\n            if ans == 0:\n                break\n        return ans",
+    "better": "class Solution:\n    def rangeBitwiseAnd(self, left: int, right: int) -> int:\n        shifts = 0\n        while left < right:\n            left >>= 1\n            right >>= 1\n            shifts += 1\n        return left << shifts",
+    "optimal": "class Solution:\n    def rangeBitwiseAnd(self, left: int, right: int) -> int:\n        while right > left:\n            # Removes a low bit that cannot be part of the common prefix.\n            right &= right - 1\n        return right"
+  },
+  "starterCode": "class Solution:\n    def rangeBitwiseAnd(self, left, right):\n        # TODO: write your solution here\n        pass\n"
+}

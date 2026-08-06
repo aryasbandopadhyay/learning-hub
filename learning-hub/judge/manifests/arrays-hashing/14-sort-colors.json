@@ -1,0 +1,66 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "sortColors",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          0,
+          2,
+          1,
+          1,
+          0
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ]
+    }
+  ],
+  "inPlaceArg": 0,
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "arrays-hashing/14-sort-colors",
+  "title": "Sort Colors",
+  "difficulty": "Medium",
+  "topic": "arrays-hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def sortColors(self, nums: list[int]) -> None:\n        n = len(nums)\n        for _ in range(n):\n            for i in range(1, n):\n                if nums[i-1] > nums[i]:\n                    nums[i-1], nums[i] = nums[i], nums[i-1]",
+    "better": "class Solution:\n    def sortColors(self, nums: list[int]) -> None:\n        counts = [0, 0, 0]\n        for x in nums:\n            counts[x] += 1\n        i = 0\n        for color in range(3):\n            for _ in range(counts[color]):\n                nums[i] = color\n                i += 1",
+    "optimal": "class Solution:\n    def sortColors(self, nums: list[int]) -> None:\n        low = mid = 0\n        high = len(nums) - 1\n        while mid <= high:\n            if nums[mid] == 0:\n                nums[low], nums[mid] = nums[mid], nums[low]\n                low += 1; mid += 1\n            elif nums[mid] == 1:\n                mid += 1\n            else:\n                nums[mid], nums[high] = nums[high], nums[mid]\n                high -= 1"
+  },
+  "starterCode": "class Solution:\n    def sortColors(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

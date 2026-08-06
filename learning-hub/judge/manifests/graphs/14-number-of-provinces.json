@@ -1,0 +1,225 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findCircleNum",
+  "params": [
+    "isConnected"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -8769,
+            2222,
+            3060
+          ],
+          [
+            4548,
+            -2457,
+            204
+          ],
+          [
+            -2593,
+            179,
+            -6535
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -6237,
+            805,
+            6191
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            8665,
+            7465,
+            -978
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -538,
+            3092,
+            3733
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -155,
+            -7993,
+            -1658
+          ],
+          [
+            -3996,
+            8997,
+            4110
+          ],
+          [
+            -5123,
+            -9895,
+            -8834
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          [
+            8773,
+            -9990,
+            1067
+          ],
+          [
+            3092,
+            9029,
+            -7302
+          ],
+          [
+            -9655,
+            3831,
+            -7103
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -7259,
+            -9843,
+            -3607
+          ],
+          [
+            -7114,
+            -2081,
+            -212
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -1552,
+            174,
+            -4324
+          ],
+          [
+            8185,
+            -3776,
+            -7084
+          ],
+          [
+            -6345,
+            604,
+            -9177
+          ]
+        ]
+      ],
+      "expected": 1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "isConnected",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        }
+      ]
+    }
+  },
+  "id": "graphs/14-number-of-provinces",
+  "title": "Number of Provinces",
+  "difficulty": "Medium",
+  "topic": "graphs",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def findCircleNum(self, isConnected: List[List[int]]) -> int:\n        # DFS scans matrix rows for neighbors.\n        n = len(isConnected); seen = set()\n        def dfs(i):\n            seen.add(i)\n            for j in range(n):\n                if isConnected[i][j] and j not in seen:\n                    dfs(j)\n        ans = 0\n        for i in range(n):\n            if i not in seen:\n                ans += 1; dfs(i)\n        return ans",
+    "better": "from typing import List\n\nclass Solution:\n    def findCircleNum(self, isConnected: List[List[int]]) -> int:\n        # DFS scans matrix rows for neighbors.\n        n = len(isConnected); seen = set()\n        def dfs(i):\n            seen.add(i)\n            for j in range(n):\n                if isConnected[i][j] and j not in seen:\n                    dfs(j)\n        ans = 0\n        for i in range(n):\n            if i not in seen:\n                ans += 1; dfs(i)\n        return ans",
+    "optimal": "from typing import List\n\nclass Solution:\n    def findCircleNum(self, isConnected: List[List[int]]) -> int:\n        # DFS scans matrix rows for neighbors.\n        n = len(isConnected); seen = set()\n        def dfs(i):\n            seen.add(i)\n            for j in range(n):\n                if isConnected[i][j] and j not in seen:\n                    dfs(j)\n        ans = 0\n        for i in range(n):\n            if i not in seen:\n                ans += 1; dfs(i)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def findCircleNum(self, isConnected):\n        # TODO: write your solution here\n        pass\n"
+}

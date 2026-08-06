@@ -1,0 +1,28 @@
+# Build artifacts / caches (keep the cloud build context small and reproducible)
+**/target/
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/.pytest_cache/
+
+# VCS / IDE / OS cruft
+**/.git/
+**/.gitignore
+**/.idea/
+**/.vscode/
+**/.DS_Store
+**/Thumbs.db
+
+# Logs and scratch
+**/*.log
+learning-hub/judge/build_all.log
+
+# Node (if any tooling ever added it)
+**/node_modules/
+
+# Not part of the deployed app (orchestrator tooling / docs)
+coding-orchestrator/
+
+# The Dockerfile itself and this ignore file don't need to ship
+Dockerfile
+.dockerignore

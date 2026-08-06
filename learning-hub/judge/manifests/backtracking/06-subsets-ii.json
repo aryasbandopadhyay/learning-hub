@@ -1,0 +1,76 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "subsetsWithDup",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "sorted",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        [],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "backtracking/06-subsets-ii",
+  "title": "Subsets II",
+  "difficulty": "Medium",
+  "topic": "backtracking",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:\n        found = set()\n        path = []\n\n        def dfs(i: int) -> None:\n            if i == len(nums):\n                found.add(tuple(sorted(path)))\n                return\n            dfs(i + 1)\n            path.append(nums[i])\n            dfs(i + 1)\n            path.pop()\n\n        dfs(0)\n        return [list(s) for s in sorted(found)]",
+    "better": "from typing import List\n\nclass Solution:\n    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:\n        nums.sort()\n        result = []\n        path = []\n\n        def backtrack(start: int) -> None:\n            result.append(path.copy())\n            prev = None\n            for i in range(start, len(nums)):\n                if nums[i] == prev:\n                    continue\n                prev = nums[i]\n                path.append(nums[i])\n                backtrack(i + 1)\n                path.pop()\n\n        backtrack(0)\n        return result",
+    "optimal": "from collections import Counter\nfrom typing import List\n\nclass Solution:\n    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:\n        items = sorted(Counter(nums).items())\n        result = []\n        path = []\n\n        def backtrack(pos: int) -> None:\n            if pos == len(items):\n                result.append(path.copy())\n                return\n            value, count = items[pos]\n            backtrack(pos + 1)       # Choose zero copies.\n            for _ in range(count):\n                path.append(value)\n                backtrack(pos + 1)\n            for _ in range(count):\n                path.pop()\n\n        backtrack(0)\n        return result"
+  },
+  "starterCode": "class Solution:\n    def subsetsWithDup(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

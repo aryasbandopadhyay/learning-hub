@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isScramble",
+  "params": [
+    "s1",
+    "s2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "great",
+        "rgeat"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "d",
+        "rgeat"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "de",
+        "rgeat"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "dd",
+        "rgeat"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "aecbe",
+        "rgeat"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "eb",
+        "rgeat"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "a",
+        "rgeat"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "be",
+        "rgeat"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "bb",
+        "rgeat"
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s1",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "s2",
+          "type": "str",
+          "role": "const",
+          "value": "rgeat"
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-strings/09-scramble-string",
+  "title": "Scramble String",
+  "difficulty": "Hard",
+  "topic": "faang/dp-strings",
+  "solutions": {
+    "naive": "class Solution:\n    def isScramble(self, s1: str, s2: str) -> bool:\n        if s1 == s2:\n            return True\n        if sorted(s1) != sorted(s2):\n            return False\n        n = len(s1)\n        for cut in range(1, n):\n            if self.isScramble(s1[:cut], s2[:cut]) and self.isScramble(s1[cut:], s2[cut:]):\n                return True\n            if self.isScramble(s1[:cut], s2[n - cut:]) and self.isScramble(s1[cut:], s2[:n - cut]):\n                return True\n        return False",
+    "better": "class Solution:\n    def isScramble(self, s1, s2):\n        from functools import lru_cache\n        @lru_cache(None)\n        def dfs(a, b):\n            if a == b:\n                return True\n            if sorted(a) != sorted(b):\n                return False\n            n = len(a)\n            for cut in range(1, n):\n                if dfs(a[:cut], b[:cut]) and dfs(a[cut:], b[cut:]):\n                    return True\n                if dfs(a[:cut], b[n - cut:]) and dfs(a[cut:], b[:n - cut]):\n                    return True\n            return False\n        return dfs(s1, s2)",
+    "optimal": "class Solution:\n    def isScramble(self, s1, s2):\n        n = len(s1)\n        dp = [[[False] * n for _ in range(n)] for _ in range(n + 1)]\n        for i in range(n):\n            for j in range(n):\n                dp[1][i][j] = s1[i] == s2[j]\n        for length in range(2, n + 1):\n            for i in range(n - length + 1):\n                for j in range(n - length + 1):\n                    for cut in range(1, length):\n                        if (dp[cut][i][j] and dp[length - cut][i + cut][j + cut]) or (dp[cut][i][j + length - cut] and dp[length - cut][i + cut][j]):\n                            dp[length][i][j] = True\n                            break\n        return dp[n][0][0]"
+  },
+  "starterCode": "class Solution:\n    def isScramble(self, s1, s2):\n        # TODO: write your solution here\n        pass\n"
+}

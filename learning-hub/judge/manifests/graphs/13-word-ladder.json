@@ -1,0 +1,217 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "ladderLength",
+  "params": [
+    "beginWord",
+    "endWord",
+    "wordList"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "hit",
+        "cog",
+        [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "cog",
+        [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "cog",
+        [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "cog",
+        [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "cog",
+        [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "cog",
+        [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "cog",
+        [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "cog",
+        [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "cog",
+        [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "beginWord",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "endWord",
+          "type": "str",
+          "role": "const",
+          "value": "cog"
+        },
+        {
+          "name": "wordList",
+          "type": "list[str]",
+          "role": "const",
+          "value": [
+            "hot",
+            "dot",
+            "dog",
+            "lot",
+            "log",
+            "cog"
+          ]
+        }
+      ]
+    }
+  },
+  "id": "graphs/13-word-ladder",
+  "title": "Word Ladder",
+  "difficulty": "Hard",
+  "topic": "graphs",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:\n        # Bidirectional BFS expands the smaller frontier.\n        words = set(wordList)\n        if endWord not in words: return 0\n        front, back, dist = {beginWord}, {endWord}, 1\n        while front and back:\n            if len(front) > len(back): front, back = back, front\n            nxt = set()\n            for word in front:\n                for i in range(len(word)):\n                    for ch in \"abcdefghijklmnopqrstuvwxyz\":\n                        cand = word[:i] + ch + word[i+1:]\n                        if cand in back: return dist + 1\n                        if cand in words:\n                            words.remove(cand); nxt.add(cand)\n            front, dist = nxt, dist + 1\n        return 0",
+    "better": "from typing import List\n\nclass Solution:\n    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:\n        # Bidirectional BFS expands the smaller frontier.\n        words = set(wordList)\n        if endWord not in words: return 0\n        front, back, dist = {beginWord}, {endWord}, 1\n        while front and back:\n            if len(front) > len(back): front, back = back, front\n            nxt = set()\n            for word in front:\n                for i in range(len(word)):\n                    for ch in \"abcdefghijklmnopqrstuvwxyz\":\n                        cand = word[:i] + ch + word[i+1:]\n                        if cand in back: return dist + 1\n                        if cand in words:\n                            words.remove(cand); nxt.add(cand)\n            front, dist = nxt, dist + 1\n        return 0",
+    "optimal": "from typing import List\n\nclass Solution:\n    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:\n        # Bidirectional BFS expands the smaller frontier.\n        words = set(wordList)\n        if endWord not in words: return 0\n        front, back, dist = {beginWord}, {endWord}, 1\n        while front and back:\n            if len(front) > len(back): front, back = back, front\n            nxt = set()\n            for word in front:\n                for i in range(len(word)):\n                    for ch in \"abcdefghijklmnopqrstuvwxyz\":\n                        cand = word[:i] + ch + word[i+1:]\n                        if cand in back: return dist + 1\n                        if cand in words:\n                            words.remove(cand); nxt.add(cand)\n            front, dist = nxt, dist + 1\n        return 0"
+  },
+  "starterCode": "class Solution:\n    def ladderLength(self, beginWord, endWord, wordList):\n        # TODO: write your solution here\n        pass\n"
+}

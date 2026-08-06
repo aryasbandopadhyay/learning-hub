@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "multiply",
+  "params": [
+    "num1",
+    "num2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "123",
+        "456"
+      ],
+      "expected": "56088"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "456"
+      ],
+      "expected": "262590132933555033593280"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "456"
+      ],
+      "expected": "26246259437051472"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "456"
+      ],
+      "expected": "23712"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "456"
+      ],
+      "expected": "261288"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "456"
+      ],
+      "expected": "249229438349627273284032253239208705530761115874719360"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "456"
+      ],
+      "expected": "253475609482618370036832"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "456"
+      ],
+      "expected": "263424153329699348300376"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "456"
+      ],
+      "expected": "260832"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "num1",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "num2",
+          "type": "str",
+          "role": "const",
+          "value": "456"
+        }
+      ]
+    }
+  },
+  "id": "math-geometry/07-multiply-strings",
+  "title": "Multiply Strings",
+  "difficulty": "Medium",
+  "topic": "math-geometry",
+  "solutions": {
+    "naive": "class Solution:\n    def multiply(self, num1: str, num2: str) -> str:\n        def add(a: str, b: str) -> str:\n            i, j, carry, out = len(a) - 1, len(b) - 1, 0, []\n            while i >= 0 or j >= 0 or carry:\n                total = carry\n                if i >= 0:\n                    total += ord(a[i]) - ord('0')\n                    i -= 1\n                if j >= 0:\n                    total += ord(b[j]) - ord('0')\n                    j -= 1\n                out.append(str(total % 10))\n                carry = total // 10\n            return ''.join(reversed(out))\n\n        def dec(s: str) -> str:\n            digits = list(s)\n            i = len(digits) - 1\n            while digits[i] == '0':\n                digits[i] = '9'\n                i -= 1\n            digits[i] = str(ord(digits[i]) - ord('0') - 1)\n            return ''.join(digits).lstrip('0') or \"0\"\n\n        if num1 == \"0\" or num2 == \"0\":\n            return \"0\"\n        result = \"0\"\n        times = num2\n        while times != \"0\":\n            result = add(result, num1)\n            times = dec(times)\n        return result",
+    "better": "class Solution:\n    def multiply(self, num1: str, num2: str) -> str:\n        def add(a: str, b: str) -> str:\n            i, j, carry, out = len(a) - 1, len(b) - 1, 0, []\n            while i >= 0 or j >= 0 or carry:\n                total = carry\n                if i >= 0:\n                    total += ord(a[i]) - 48\n                    i -= 1\n                if j >= 0:\n                    total += ord(b[j]) - 48\n                    j -= 1\n                out.append(str(total % 10))\n                carry = total // 10\n            return ''.join(reversed(out))\n\n        if num1 == \"0\" or num2 == \"0\":\n            return \"0\"\n        result = \"0\"\n        zeros = 0\n        for ch in reversed(num2):\n            carry, part = 0, []\n            digit = ord(ch) - 48\n            for a in reversed(num1):\n                product = (ord(a) - 48) * digit + carry\n                part.append(str(product % 10))\n                carry = product // 10\n            if carry:\n                part.append(str(carry))\n            result = add(result, ''.join(reversed(part)) + \"0\" * zeros)\n            zeros += 1\n        return result",
+    "optimal": "class Solution:\n    def multiply(self, num1: str, num2: str) -> str:\n        if num1 == \"0\" or num2 == \"0\":\n            return \"0\"\n        m, n = len(num1), len(num2)\n        pos = [0] * (m + n)\n        for i in range(m - 1, -1, -1):\n            for j in range(n - 1, -1, -1):\n                product = (ord(num1[i]) - 48) * (ord(num2[j]) - 48)\n                p1, p2 = i + j, i + j + 1\n                total = product + pos[p2]\n                pos[p2] = total % 10\n                pos[p1] += total // 10\n        result = ''.join(map(str, pos)).lstrip('0')\n        return result or \"0\""
+  },
+  "starterCode": "class Solution:\n    def multiply(self, num1, num2):\n        # TODO: write your solution here\n        pass\n"
+}

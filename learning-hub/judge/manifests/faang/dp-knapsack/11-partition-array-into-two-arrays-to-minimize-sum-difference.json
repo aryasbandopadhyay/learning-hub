@@ -1,0 +1,56 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minimumDifference",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          9,
+          7,
+          3
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-knapsack/11-partition-array-into-two-arrays-to-minimize-sum-difference",
+  "title": "Partition Array Into Two Arrays to Minimize Sum Difference",
+  "difficulty": "Hard",
+  "topic": "faang/dp-knapsack",
+  "solutions": {
+    "naive": "class Solution:\n    def minimumDifference(self, nums: list[int]) -> int:\n        total = sum(nums)\n        need = len(nums) // 2\n        best = 10**18\n        def dfs(i: int, chosen: int, s: int) -> None:\n            nonlocal best\n            if chosen > need:\n                return\n            if i == len(nums):\n                if chosen == need:\n                    best = min(best, abs(total - 2 * s))\n                return\n            dfs(i + 1, chosen, s)\n            dfs(i + 1, chosen + 1, s + nums[i])\n        dfs(0, 0, 0)\n        return best",
+    "better": "class Solution:\n    def minimumDifference(self, nums: list[int]) -> int:\n        total = sum(nums)\n        need = len(nums) // 2\n        dp = [set() for _ in range(need + 1)]\n        dp[0].add(0)\n        for x in nums:\n            for c in range(need - 1, -1, -1):\n                for s in list(dp[c]):\n                    dp[c + 1].add(s + x)\n        return min(abs(total - 2 * s) for s in dp[need])",
+    "optimal": "class Solution:\n    def minimumDifference(self, nums: list[int]) -> int:\n        from bisect import bisect_left\n        m = len(nums) // 2\n        total = sum(nums)\n        def grouped(arr: list[int]) -> list[list[int]]:\n            groups = [[] for _ in range(len(arr) + 1)]\n            def dfs(i: int, cnt: int, s: int) -> None:\n                if i == len(arr):\n                    groups[cnt].append(s)\n                    return\n                dfs(i + 1, cnt, s)\n                dfs(i + 1, cnt + 1, s + arr[i])\n            dfs(0, 0, 0)\n            return groups\n        left = grouped(nums[:m])\n        right = grouped(nums[m:])\n        for g in right:\n            g.sort()\n        ans = 10**18\n        target = total / 2\n        for k in range(m + 1):\n            rg = right[m - k]\n            for s in left[k]:\n                i = bisect_left(rg, target - s)\n                for j in (i - 1, i):\n                    if 0 <= j < len(rg):\n                        chosen = s + rg[j]\n                        ans = min(ans, abs(total - 2 * chosen))\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def minimumDifference(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

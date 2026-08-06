@@ -1,0 +1,59 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "compareVersion",
+  "params": [
+    "version1",
+    "version2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "1.01",
+        "1.001"
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "version1",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "version2",
+          "type": "str",
+          "role": "const",
+          "value": "1.001"
+        }
+      ]
+    }
+  },
+  "id": "strings/18-compare-version-numbers",
+  "title": "Compare Version Numbers",
+  "difficulty": "Medium",
+  "topic": "strings",
+  "solutions": {
+    "naive": "class Solution:\n    def compareVersion(self, version1: str, version2: str) -> int:\n        parts1 = [int(part) for part in version1.split('.')]\n        parts2 = [int(part) for part in version2.split('.')]\n        length = max(len(parts1), len(parts2))\n        parts1 += [0] * (length - len(parts1))\n        parts2 += [0] * (length - len(parts2))\n        if parts1 > parts2:\n            return 1\n        if parts1 < parts2:\n            return -1\n        return 0",
+    "better": "from itertools import zip_longest\n\nclass Solution:\n    def compareVersion(self, version1: str, version2: str) -> int:\n        for a, b in zip_longest(version1.split('.'), version2.split('.'), fillvalue='0'):\n            x, y = int(a), int(b)\n            if x > y:\n                return 1\n            if x < y:\n                return -1\n        return 0",
+    "optimal": "class Solution:\n    def compareVersion(self, version1: str, version2: str) -> int:\n        i = j = 0\n        n, m = len(version1), len(version2)\n        while i < n or j < m:\n            x = 0\n            while i < n and version1[i] != '.':\n                x = x * 10 + ord(version1[i]) - ord('0')\n                i += 1\n            y = 0\n            while j < m and version2[j] != '.':\n                y = y * 10 + ord(version2[j]) - ord('0')\n                j += 1\n            if x > y:\n                return 1\n            if x < y:\n                return -1\n            i += 1  # Skip dot or harmlessly move past end.\n            j += 1\n        return 0"
+  },
+  "starterCode": "class Solution:\n    def compareVersion(self, version1, version2):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,34 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxCoins",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          1,
+          5,
+          8
+        ]
+      ],
+      "expected": 167
+    }
+  ],
+  "id": "dp-2d/12-burst-balloons",
+  "title": "Burst Balloons",
+  "difficulty": "Hard",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "from typing import List\n\nclass SolutionRecursive:\n    def maxCoins(self, nums: List[int]) -> int:\n        vals = [1] + nums + [1]\n\n        def dfs(l: int, r: int) -> int:\n            if l + 1 == r:\n                return 0\n            best = 0\n            for k in range(l + 1, r):\n                coins = vals[l] * vals[k] * vals[r]\n                best = max(best, dfs(l, k) + coins + dfs(k, r))\n            return best\n\n        return dfs(0, len(vals) - 1)",
+    "better": "from typing import List\n\nclass SolutionMemoized:\n    def maxCoins(self, nums: List[int]) -> int:\n        vals = [1] + nums + [1]\n        memo = {}\n\n        def dfs(l: int, r: int) -> int:\n            if l + 1 == r:\n                return 0\n            if (l, r) not in memo:\n                memo[(l, r)] = 0\n                for k in range(l + 1, r):\n                    coins = vals[l] * vals[k] * vals[r]\n                    memo[(l, r)] = max(memo[(l, r)], dfs(l, k) + coins + dfs(k, r))\n            return memo[(l, r)]\n\n        return dfs(0, len(vals) - 1)",
+    "optimal": "from typing import List\n\nclass Solution:\n    def maxCoins(self, nums: List[int]) -> int:\n        vals = [1] + nums + [1]\n        n = len(vals)\n        dp = [[0] * n for _ in range(n)]\n        for length in range(2, n):\n            for l in range(0, n - length):\n                r = l + length\n                for k in range(l + 1, r):\n                    coins = vals[l] * vals[k] * vals[r]\n                    dp[l][r] = max(dp[l][r], dp[l][k] + coins + dp[k][r])\n        return dp[0][n - 1]"
+  },
+  "starterCode": "class Solution:\n    def maxCoins(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

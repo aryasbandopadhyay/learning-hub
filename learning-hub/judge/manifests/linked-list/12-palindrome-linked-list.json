@@ -1,0 +1,38 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isPalindrome",
+  "params": [
+    "head"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          1
+        ]
+      ],
+      "expected": true
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist"
+  ],
+  "id": "linked-list/12-palindrome-linked-list",
+  "title": "Palindrome Linked List",
+  "difficulty": "Easy",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def isPalindrome(self, head):\n        values = []\n        while head:\n            values.append(head.val)\n            head = head.next\n        return values == values[::-1]",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def isPalindrome(self, head):\n        self.front = head\n\n        def check(node):\n            if not node:\n                return True\n            if not check(node.next):\n                return False\n            same = self.front.val == node.val\n            self.front = self.front.next\n            return same\n\n        return check(head)",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def isPalindrome(self, head):\n        slow = fast = head\n        while fast and fast.next:\n            slow = slow.next\n            fast = fast.next.next\n\n        prev = None\n        cur = slow\n        while cur:\n            nxt = cur.next\n            cur.next = prev\n            prev = cur\n            cur = nxt\n\n        left, right = head, prev\n        while right:\n            if left.val != right.val:\n                return False\n            left = left.next\n            right = right.next\n        return True"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def isPalindrome(self, head):\n        # TODO: write your solution here\n        pass\n"
+}

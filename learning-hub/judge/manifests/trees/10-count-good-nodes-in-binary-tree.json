@@ -1,0 +1,41 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "goodNodes",
+  "params": [
+    "root"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          1,
+          4,
+          3,
+          null,
+          1,
+          5
+        ]
+      ],
+      "expected": 4
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree"
+  ],
+  "id": "trees/10-count-good-nodes-in-binary-tree",
+  "title": "Count Good Nodes in Binary Tree",
+  "difficulty": "Medium",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def goodNodes(self, root):\n        ans = 0\n        def dfs(node, path):\n            nonlocal ans\n            if not node: return\n            new_path = path + [node.val]\n            if node.val >= max(new_path): ans += 1\n            dfs(node.left, new_path); dfs(node.right, new_path)\n        dfs(root, [])\n        return ans",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def goodNodes(self, root):\n        def dfs(node, best):\n            if not node: return 0\n            good = 1 if node.val >= best else 0\n            best = max(best, node.val)\n            return good + dfs(node.left, best) + dfs(node.right, best)\n        return dfs(root, float('-inf'))",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def goodNodes(self, root):\n        if not root: return 0\n        ans, stack = 0, [(root, float('-inf'))]\n        while stack:\n            node, best = stack.pop()\n            if node.val >= best: ans += 1\n            best = max(best, node.val)\n            if node.left: stack.append((node.left, best))\n            if node.right: stack.append((node.right, best))\n        return ans"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def goodNodes(self, root):\n        # TODO: write your solution here\n        pass\n"
+}

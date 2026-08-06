@@ -1,0 +1,58 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minInterval",
+  "params": [
+    "intervals",
+    "queries"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        [
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        3,
+        3,
+        1,
+        4
+      ]
+    }
+  ],
+  "id": "intervals/06-minimum-interval-to-include-each-query",
+  "title": "Minimum Interval to Include Each Query",
+  "difficulty": "Hard",
+  "topic": "intervals",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def minInterval(self, intervals: List[List[int]], queries: List[int]) -> List[int]:\n        answer = []\n        for q in queries:\n            best = float(\"inf\")\n            for left, right in intervals:\n                if left <= q <= right:\n                    best = min(best, right - left + 1)\n            answer.append(-1 if best == float(\"inf\") else best)\n        return answer",
+    "better": "from typing import List\nimport bisect\n\nclass Solution:\n    def minInterval(self, intervals: List[List[int]], queries: List[int]) -> List[int]:\n        intervals.sort(key=lambda x: x[0])\n        starts = [left for left, _ in intervals]\n        result = []\n\n        for q in queries:\n            limit = bisect.bisect_right(starts, q)\n            best = float(\"inf\")\n            for i in range(limit):\n                left, right = intervals[i]\n                if right >= q:\n                    best = min(best, right - left + 1)\n            result.append(-1 if best == float(\"inf\") else best)\n        return result",
+    "optimal": "from typing import List\nimport heapq\n\nclass Solution:\n    def minInterval(self, intervals: List[List[int]], queries: List[int]) -> List[int]:\n        intervals.sort(key=lambda x: x[0])\n        indexed_queries = sorted((q, i) for i, q in enumerate(queries))\n        answer = [-1] * len(queries)\n        heap = []  # (interval_size, right)\n        i = 0\n\n        for q, original_index in indexed_queries:\n            while i < len(intervals) and intervals[i][0] <= q:\n                left, right = intervals[i]\n                heapq.heappush(heap, (right - left + 1, right))\n                i += 1\n            while heap and heap[0][1] < q:\n                heapq.heappop(heap)\n            if heap:\n                answer[original_index] = heap[0][0]\n        return answer"
+  },
+  "starterCode": "class Solution:\n    def minInterval(self, intervals, queries):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,56 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "tallestBillboard",
+  "params": [
+    "rods"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          6
+        ]
+      ],
+      "expected": 6
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "rods",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-knapsack/04-tallest-billboard",
+  "title": "Tallest Billboard",
+  "difficulty": "Hard",
+  "topic": "faang/dp-knapsack",
+  "solutions": {
+    "naive": "class Solution:\n    def tallestBillboard(self, rods: list[int]) -> int:\n        best = 0\n        def dfs(i: int, left: int, right: int) -> None:\n            nonlocal best\n            if i == len(rods):\n                if left == right:\n                    best = max(best, left)\n                return\n            dfs(i + 1, left, right)\n            dfs(i + 1, left + rods[i], right)\n            dfs(i + 1, left, right + rods[i])\n        dfs(0, 0, 0)\n        return best",
+    "better": "class Solution:\n    def tallestBillboard(self, rods: list[int]) -> int:\n        from functools import lru_cache\n        @lru_cache(None)\n        def dp(i: int, diff: int) -> int:\n            if i == len(rods):\n                return 0 if diff == 0 else -10**9\n            x = rods[i]\n            skip = dp(i + 1, diff)\n            add_taller = dp(i + 1, diff + x)\n            add_shorter = min(diff, x) + dp(i + 1, abs(diff - x))\n            return max(skip, add_taller, add_shorter)\n        return dp(0, 0)",
+    "optimal": "class Solution:\n    def tallestBillboard(self, rods: list[int]) -> int:\n        dp = {0: 0}\n        for x in rods:\n            cur = dp.copy()\n            for diff, short in cur.items():\n                dp[diff + x] = max(dp.get(diff + x, 0), short)\n                nd = abs(diff - x)\n                ns = short + min(diff, x)\n                dp[nd] = max(dp.get(nd, 0), ns)\n        return dp.get(0, 0)"
+  },
+  "starterCode": "class Solution:\n    def tallestBillboard(self, rods):\n        # TODO: write your solution here\n        pass\n"
+}

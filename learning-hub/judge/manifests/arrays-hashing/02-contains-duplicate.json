@@ -1,0 +1,245 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "containsDuplicate",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          2254,
+          2717
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          1102,
+          5121,
+          -4135,
+          8576,
+          1102
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          -9751,
+          3933,
+          -3324,
+          1879,
+          7508,
+          -7352,
+          5141,
+          6995,
+          -3510,
+          9841,
+          5161,
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          1593,
+          5602,
+          -8171
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          9924,
+          9924,
+          -5925
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          -4179,
+          3430,
+          -5232
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -7628,
+          -7628,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          1057
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          2646,
+          3568,
+          2156,
+          7510,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          2156,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289
+        ]
+      ],
+      "expected": true
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "arrays-hashing/02-contains-duplicate",
+  "title": "Contains Duplicate",
+  "difficulty": "Easy",
+  "topic": "arrays-hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def containsDuplicate(self, nums: list[int]) -> bool:\n        for i in range(len(nums)):\n            for j in range(i + 1, len(nums)):\n                if nums[i] == nums[j]:\n                    return True\n        return False",
+    "better": "class Solution:\n    def containsDuplicate(self, nums: list[int]) -> bool:\n        arr = sorted(nums)\n        for i in range(1, len(arr)):\n            if arr[i] == arr[i - 1]:\n                return True\n        return False",
+    "optimal": "class Solution:\n    def containsDuplicate(self, nums: list[int]) -> bool:\n        seen = set()\n        for x in nums:\n            if x in seen:\n                return True\n            seen.add(x)\n        return False"
+  },
+  "starterCode": "class Solution:\n    def containsDuplicate(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

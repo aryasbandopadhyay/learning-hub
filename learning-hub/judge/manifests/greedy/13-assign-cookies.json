@@ -1,0 +1,290 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findContentChildren",
+  "params": [
+    "g",
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          2254,
+          2717
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          1102,
+          5121,
+          -4135,
+          8576,
+          1102
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          -9751,
+          3933,
+          -3324,
+          1879,
+          7508,
+          -7352,
+          5141,
+          6995,
+          -3510,
+          9841,
+          5161,
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          1593,
+          5602,
+          -8171
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          9924,
+          9924,
+          -5925
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          -4179,
+          3430,
+          -5232
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -7628,
+          -7628,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          1057
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          2646,
+          3568,
+          2156,
+          7510,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          2156,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "g",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "s",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  },
+  "id": "greedy/13-assign-cookies",
+  "title": "Assign Cookies",
+  "difficulty": "Easy",
+  "topic": "greedy",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def findContentChildren(self, g: List[int], s: List[int]) -> int:\n        used = [False] * len(s)\n\n        def dfs(child: int) -> int:\n            if child == len(g):\n                return 0\n            best = dfs(child + 1)\n            for cookie in range(len(s)):\n                if not used[cookie] and s[cookie] >= g[child]:\n                    used[cookie] = True\n                    best = max(best, 1 + dfs(child + 1))\n                    used[cookie] = False\n            return best\n\n        return dfs(0)",
+    "better": "from typing import List\n\nclass Solution:\n    def findContentChildren(self, g: List[int], s: List[int]) -> int:\n        g.sort()\n        s.sort()\n        used = [False] * len(s)\n        content = 0\n\n        for greed in g:\n            for i, size in enumerate(s):\n                if not used[i] and size >= greed:\n                    used[i] = True\n                    content += 1\n                    break\n        return content",
+    "optimal": "from typing import List\n\nclass Solution:\n    def findContentChildren(self, g: List[int], s: List[int]) -> int:\n        g.sort()\n        s.sort()\n        child = 0\n        cookie = 0\n\n        while child < len(g) and cookie < len(s):\n            if s[cookie] >= g[child]:\n                child += 1\n            cookie += 1\n        return child"
+  },
+  "starterCode": "class Solution:\n    def findContentChildren(self, g, s):\n        # TODO: write your solution here\n        pass\n"
+}

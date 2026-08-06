@@ -1,0 +1,171 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "expressiveWords",
+  "params": [
+    "s",
+    "words"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "heeellooo",
+        [
+          "hello",
+          "hi",
+          "helo"
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        [
+          "hello",
+          "hi",
+          "helo"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        [
+          "hello",
+          "hi",
+          "helo"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        [
+          "hello",
+          "hi",
+          "helo"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        [
+          "hello",
+          "hi",
+          "helo"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        [
+          "hello",
+          "hi",
+          "helo"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        [
+          "hello",
+          "hi",
+          "helo"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        [
+          "hello",
+          "hi",
+          "helo"
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        [
+          "hello",
+          "hi",
+          "helo"
+        ]
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "words",
+          "type": "list[str]",
+          "role": "const",
+          "value": [
+            "hello",
+            "hi",
+            "helo"
+          ]
+        }
+      ]
+    }
+  },
+  "id": "google/strings-parsing/07-expressive-words",
+  "title": "Expressive Words",
+  "difficulty": "Medium",
+  "topic": "google/strings-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def expressiveWords(self, s: str, words: list[str]) -> int:\n        def ok(w):\n            i=j=0\n            while i<len(s) and j<len(w):\n                if s[i]!=w[j]: return False\n                i0,j0=i,j\n                while i<len(s) and s[i]==s[i0]: i+=1\n                while j<len(w) and w[j]==w[j0]: j+=1\n                a,b=i-i0,j-j0\n                if a<b or (a!=b and a<3): return False\n            return i==len(s) and j==len(w)\n        return sum(ok(w) for w in words)",
+    "better": "class Solution:\n    def expressiveWords(self, s: str, words: list[str]) -> int:\n        def groups(x):\n            ans=[]; i=0\n            while i<len(x):\n                j=i\n                while j<len(x) and x[j]==x[i]: j+=1\n                ans.append((x[i],j-i)); i=j\n            return ans\n        target=groups(s); ans=0\n        for w in words:\n            g=groups(w)\n            if len(g)==len(target) and all(tc==wc and tn>=wn and (tn==wn or tn>=3) for (tc,tn),(wc,wn) in zip(target,g)): ans+=1\n        return ans",
+    "optimal": "class Solution:\n    def expressiveWords(self, s: str, words: list[str]) -> int:\n        runs=[]; i=0\n        while i<len(s):\n            j=i\n            while j<len(s) and s[j]==s[i]: j+=1\n            runs.append((s[i],j-i)); i=j\n        def ok(w):\n            idx=j=0\n            while j<len(w) and idx<len(runs):\n                c,need=runs[idx]\n                if w[j]!=c: return False\n                k=j\n                while k<len(w) and w[k]==c: k+=1\n                have=k-j\n                if need<have or (need!=have and need<3): return False\n                idx+=1; j=k\n            return idx==len(runs) and j==len(w)\n        return sum(ok(w) for w in words)"
+  },
+  "starterCode": "class Solution:\n    def expressiveWords(self, s, words):\n        # TODO: write your solution here\n        pass\n"
+}

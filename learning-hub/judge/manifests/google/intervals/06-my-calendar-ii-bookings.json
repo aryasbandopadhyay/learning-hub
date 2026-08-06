@@ -1,0 +1,84 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "calendarTwoBookings",
+  "params": [
+    "bookings"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            10,
+            20
+          ],
+          [
+            50,
+            60
+          ],
+          [
+            10,
+            40
+          ],
+          [
+            5,
+            15
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            25,
+            55
+          ]
+        ]
+      ],
+      "expected": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        true
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "bookings",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/intervals/06-my-calendar-ii-bookings",
+  "title": "My Calendar II Bookings",
+  "difficulty": "Medium",
+  "topic": "google/intervals",
+  "solutions": {
+    "naive": "class Solution:\n    def calendarTwoBookings(self, bookings: list[list[int]]) -> list[bool]:\n        accepted = []\n        result = []\n        for start, end in bookings:\n            events = []\n            for a, b in accepted:\n                events.append((a, 1))\n                events.append((b, -1))\n            events.append((start, 1))\n            events.append((end, -1))\n            events.sort(key=lambda x: (x[0], x[1]))\n            active = 0\n            ok = True\n            for _, delta in events:\n                active += delta\n                if active >= 3:\n                    ok = False\n                    break\n            result.append(ok)\n            if ok:\n                accepted.append([start, end])\n        return result",
+    "better": "class Solution:\n    def calendarTwoBookings(self, bookings: list[list[int]]) -> list[bool]:\n        accepted = []\n        overlaps = []\n        result = []\n        for start, end in bookings:\n            ok = True\n            for a, b in overlaps:\n                if start < b and a < end:\n                    ok = False\n                    break\n            result.append(ok)\n            if not ok:\n                continue\n            for a, b in accepted:\n                left = max(start, a)\n                right = min(end, b)\n                if left < right:\n                    overlaps.append([left, right])\n            accepted.append([start, end])\n        return result",
+    "optimal": "class Solution:\n    def calendarTwoBookings(self, bookings: list[list[int]]) -> list[bool]:\n        from collections import defaultdict\n        diff = defaultdict(int)\n        result = []\n        for start, end in bookings:\n            diff[start] += 1\n            diff[end] -= 1\n            active = 0\n            ok = True\n            for point in sorted(diff):\n                active += diff[point]\n                if active >= 3:\n                    ok = False\n                    break\n            if not ok:\n                diff[start] -= 1\n                diff[end] += 1\n                if diff[start] == 0:\n                    del diff[start]\n                if diff[end] == 0:\n                    del diff[end]\n            result.append(ok)\n        return result"
+  },
+  "starterCode": "class Solution:\n    def calendarTwoBookings(self, bookings):\n        # TODO: write your solution here\n        pass\n"
+}

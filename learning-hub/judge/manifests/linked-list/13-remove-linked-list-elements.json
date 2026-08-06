@@ -1,0 +1,50 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "removeElements",
+  "params": [
+    "head",
+    "val"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          6,
+          3,
+          4,
+          5,
+          6
+        ],
+        6
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist",
+    "plain"
+  ],
+  "id": "linked-list/13-remove-linked-list-elements",
+  "title": "Remove Linked List Elements",
+  "difficulty": "Easy",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def removeElements(self, head, val):\n        dummy = ListNode()\n        tail = dummy\n        cur = head\n        while cur:\n            if cur.val != val:\n                tail.next = ListNode(cur.val)\n                tail = tail.next\n            cur = cur.next\n        return dummy.next",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def removeElements(self, head, val):\n        while head and head.val == val:\n            head = head.next\n        cur = head\n        while cur and cur.next:\n            if cur.next.val == val:\n                cur.next = cur.next.next\n            else:\n                cur = cur.next\n        return head",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def removeElements(self, head, val):\n        dummy = ListNode(0, head)\n        cur = dummy\n        while cur.next:\n            if cur.next.val == val:\n                cur.next = cur.next.next\n            else:\n                cur = cur.next\n        return dummy.next"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def removeElements(self, head, val):\n        # TODO: write your solution here\n        pass\n"
+}

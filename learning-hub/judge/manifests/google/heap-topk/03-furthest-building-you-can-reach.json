@@ -1,0 +1,312 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "furthestBuilding",
+  "params": [
+    "heights",
+    "bricks",
+    "ladders"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          4,
+          2,
+          7,
+          6,
+          9,
+          14,
+          12
+        ],
+        5,
+        1
+      ],
+      "expected": 4
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          -1860,
+          2717
+        ],
+        3484,
+        2495
+      ],
+      "expected": 19
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          -7282,
+          7324,
+          -7123,
+          5369,
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          5369,
+          3933,
+          -3324,
+          1879
+        ],
+        8755,
+        1325
+      ],
+      "expected": 12
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240,
+          -5860,
+          1593,
+          5602,
+          -8171,
+          -5710,
+          9649,
+          -5071,
+          9924,
+          3379,
+          -5925,
+          -6839,
+          -6110,
+          -5293,
+          -302,
+          -4294,
+          -4179
+        ],
+        6716,
+        2385
+      ],
+      "expected": 49
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -3907,
+          1057,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          1057
+        ],
+        3545,
+        6177
+      ],
+      "expected": 12
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          3568,
+          2156,
+          4548,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          -6535,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289,
+          4356
+        ],
+        1313,
+        7174
+      ],
+      "expected": 19
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          505,
+          5633,
+          7473,
+          3413,
+          -1585,
+          4120,
+          -469,
+          3413
+        ],
+        2612,
+        4626
+      ],
+      "expected": 7
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          1037,
+          -3524,
+          1317,
+          -9859,
+          1642,
+          -321,
+          -3667,
+          -4376,
+          -1449,
+          3654,
+          -2423,
+          3377,
+          1322,
+          3103,
+          -9882,
+          -6320,
+          6438,
+          7424,
+          -3365,
+          -9958
+        ],
+        8555,
+        5088
+      ],
+      "expected": 19
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          6748,
+          4552,
+          -3273
+        ],
+        4324,
+        6830
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "heights",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "bricks",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "ladders",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/heap-topk/03-furthest-building-you-can-reach",
+  "title": "Furthest Building You Can Reach",
+  "difficulty": "Medium",
+  "topic": "google/heap-topk",
+  "solutions": {
+    "naive": "class Solution:\n    def furthestBuilding(self, heights: list[int], bricks: int, ladders: int) -> int:\n        from functools import lru_cache\n        n = len(heights)\n        @lru_cache(None)\n        def dfs(i, b, l):\n            if i == n - 1:\n                return i\n            climb = max(0, heights[i + 1] - heights[i])\n            if climb == 0:\n                return dfs(i + 1, b, l)\n            best = i\n            if b >= climb:\n                best = max(best, dfs(i + 1, b - climb, l))\n            if l > 0:\n                best = max(best, dfs(i + 1, b, l - 1))\n            return best\n        return dfs(0, bricks, ladders)",
+    "better": "class Solution:\n    def furthestBuilding(self, heights: list[int], bricks: int, ladders: int) -> int:\n        def can(reach):\n            climbs = []\n            for i in range(reach):\n                d = heights[i + 1] - heights[i]\n                if d > 0:\n                    climbs.append(d)\n            climbs.sort(reverse=True)\n            return sum(climbs[ladders:]) <= bricks\n        lo, hi = 0, len(heights) - 1\n        while lo < hi:\n            mid = (lo + hi + 1) // 2\n            if can(mid):\n                lo = mid\n            else:\n                hi = mid - 1\n        return lo",
+    "optimal": "class Solution:\n    def furthestBuilding(self, heights: list[int], bricks: int, ladders: int) -> int:\n        import heapq\n        ladder_climbs = []\n        for i in range(len(heights) - 1):\n            climb = heights[i + 1] - heights[i]\n            if climb <= 0:\n                continue\n            heapq.heappush(ladder_climbs, climb)\n            if len(ladder_climbs) > ladders:\n                bricks -= heapq.heappop(ladder_climbs)\n            if bricks < 0:\n                return i\n        return len(heights) - 1"
+  },
+  "starterCode": "class Solution:\n    def furthestBuilding(self, heights, bricks, ladders):\n        # TODO: write your solution here\n        pass\n"
+}

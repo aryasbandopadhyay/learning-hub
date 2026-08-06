@@ -1,0 +1,48 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "rotateRight",
+  "params": [
+    "head",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2
+      ],
+      "expected": [
+        4,
+        5,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist",
+    "plain"
+  ],
+  "id": "linked-list/16-rotate-list",
+  "title": "Rotate List",
+  "difficulty": "Medium",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def rotateRight(self, head, k):\n        values = []\n        cur = head\n        while cur:\n            values.append(cur.val)\n            cur = cur.next\n        if not values:\n            return None\n\n        k %= len(values)\n        values = values[-k:] + values[:-k] if k else values\n        dummy = ListNode()\n        tail = dummy\n        for value in values:\n            tail.next = ListNode(value)\n            tail = tail.next\n        return dummy.next",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def rotateRight(self, head, k):\n        if not head or not head.next:\n            return head\n        length = 0\n        cur = head\n        while cur:\n            length += 1\n            cur = cur.next\n        k %= length\n\n        for _ in range(k):\n            prev, tail = None, head\n            while tail.next:\n                prev, tail = tail, tail.next\n            prev.next = None\n            tail.next = head\n            head = tail\n        return head",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def rotateRight(self, head, k):\n        if not head or not head.next:\n            return head\n\n        length = 1\n        tail = head\n        while tail.next:\n            length += 1\n            tail = tail.next\n        k %= length\n        if k == 0:\n            return head\n\n        tail.next = head\n        steps_to_new_tail = length - k - 1\n        new_tail = head\n        for _ in range(steps_to_new_tail):\n            new_tail = new_tail.next\n        new_head = new_tail.next\n        new_tail.next = None\n        return new_head"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def rotateRight(self, head, k):\n        # TODO: write your solution here\n        pass\n"
+}

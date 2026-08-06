@@ -1,0 +1,166 @@
+server:
+  port: 8080
+
+# ============================================================================================
+# learning-hub configuration
+# ============================================================================================
+# The ENTIRE content model is driven from this file. Adding a brand-new subject area (e.g. DSA)
+# tomorrow requires NO Java changes and NO frontend changes — just:
+#   1. Put your material in a folder under the content root (e.g. ../dsa/...).
+#   2. Add a new block under `hub.categories` (see the commented DSA example at the bottom).
+#   3. Restart the app. A new tab appears automatically (the UI reads /api/categories).
+#
+# `root`  : the base directory that all category `paths` are resolved against.
+#           Leave BLANK to auto-use the PARENT of the app's working directory — i.e. when you
+#           run this app from `learning-hub/`, the root becomes the surrounding Projects folder,
+#           so the sibling folders (spring-crud-demo, parking-lot, system-design-hld, ...) are
+#           all visible. Set an absolute path here to override.
+#
+# Each category has:
+#   id          : URL-safe identifier (used in API paths).
+#   label       : shown on the tab.
+#   description : optional blurb shown above the file tree.
+#   paths       : list of paths RELATIVE TO `root` to expose. Each entry may be a single file
+#                 or a directory (directories are walked recursively). This is also the security
+#                 allow-list: the API will only ever read files inside these paths.
+# ============================================================================================
+hub:
+  root: ""   # blank => parent of the working directory (the Projects folder)
+
+  # ----------------------------------------------------------------------------------------
+  # Local DSA "online judge" — runs Python submissions against generated manifests.
+  # The engine is a standalone, dependency-free Python program (judge/runner.py); this app
+  # shells out to it. Paths are relative to the app's working directory (learning-hub/).
+  # ----------------------------------------------------------------------------------------
+  judge:
+    enabled: true
+    python-exe: python          # or an absolute path, e.g. C:\Python314\python.exe
+    judge-dir: judge            # folder that contains runner.py
+    manifests-dir: judge/manifests
+    timeout-seconds: 20
+
+  # ----------------------------------------------------------------------------------------
+  # Per-user problem-completion progress. Persisted in an Azure Storage Table so it syncs
+  # across devices (a few KB of data => pennies/month). The connection string is injected in
+  # the cloud via the HUB_PROGRESS_CONNECTION_STRING environment variable (relaxed binding of
+  # hub.progress.connection-string). Leave blank locally to use the in-memory fallback.
+  # ----------------------------------------------------------------------------------------
+  progress:
+    enabled: true
+    connection-string: ""       # set via env HUB_PROGRESS_CONNECTION_STRING
+    table-name: progress
+
+  # ----------------------------------------------------------------------------------------
+  # Simple allow-list auth. Admin logs in with email + password and manages the allow-list;
+  # other users log in with just an allow-listed email (no password). Credentials may be
+  # overridden by env (HUB_AUTH_ADMIN_EMAIL / HUB_AUTH_ADMIN_PASSWORD / HUB_AUTH_ENABLED).
+  # The allow-list lives in the same storage account as progress (users-table).
+  # ----------------------------------------------------------------------------------------
+  auth:
+    enabled: true
+    # Secrets — never hardcode. Both admin email and password come from env
+    # (HUB_AUTH_ADMIN_EMAIL / HUB_AUTH_ADMIN_PASSWORD; Azure Container App secrets in prod).
+    # When either is unset, admin login is disabled (allow-listed guests still work).
+    admin-email: ${HUB_AUTH_ADMIN_EMAIL:}
+    admin-password: ${HUB_AUTH_ADMIN_PASSWORD:}
+    users-table: users
+
+  categories:
+    - id: springboot
+      label: Spring Boot
+      description: "A heavily-commented CRUD app for learning annotations, IoC and DI."
+      paths:
+        - spring-crud-demo
+
+    - id: lld
+      label: LLD
+      description: "Low-Level Design machine-coding solutions (Java + Python), each with tests and a README."
+      paths:
+        - parking-lot
+        - amazon-locker
+        - bookmyshow
+        - movie-ticket-booking
+        - splitwise
+        - vending-machine
+        - elevator-system
+        - atm-machine
+        - car-rental
+        - hotel-management
+        - airline-reservation
+        - library-management
+        - chess
+        - snake-and-ladder
+        - tic-tac-toe
+        - logging-framework
+        - notification-service
+        - cache
+        - rate-limiter
+        - job-scheduler
+        - find-command
+
+    - id: hld
+      label: HLD
+      description: "High-Level (system design) write-ups: estimation, APIs, schema, architecture, trade-offs."
+      paths:
+        - system-design-hld
+
+    - id: dsa
+      label: DSA
+      description: "FAANG DSA question bank (Python). Each question: understanding + naive, better & optimal solutions with complexity."
+      paths:
+        - dsa/arrays-hashing
+        - dsa/two-pointers
+        - dsa/sliding-window
+        - dsa/stack
+        - dsa/binary-search
+        - dsa/linked-list
+        - dsa/trees
+        - dsa/tries
+        - dsa/heap-priority-queue
+        - dsa/backtracking
+        - dsa/graphs
+        - dsa/advanced-graphs
+        - dsa/dp-1d
+        - dsa/dp-2d
+        - dsa/greedy
+        - dsa/intervals
+        - dsa/math-geometry
+        - dsa/bit-manipulation
+        - dsa/strings
+        - dsa/matrix
+        - dsa/revision
+
+    - id: google
+      label: Most Asked Google
+      description: "Google-focused DSA set (Python), medium-to-hard, topic-wise. Each: understanding + naive/better/optimal. Judge-enabled where gradable; the rest are under revision/."
+      paths:
+        - dsa/google
+
+    - id: faang
+      label: Most Asked FAANG
+      description: "FAANG-focused DSA set (Python), medium-to-hard, topic-wise. Each: understanding + naive/better/optimal. Judge-enabled where gradable; the rest are under revision/."
+      paths:
+        - dsa/faang
+
+    - id: internals
+      label: Java/Python Internals
+      description: "Deep-dive interview notes: threads, locking, thread pools, async, collections, streams, GIL, memory model."
+      paths:
+        - internals/java
+        - internals/python
+
+    - id: spring-theory
+      label: Spring Boot Theory
+      description: "Spring Boot interview theory: IoC & DI, annotations, REST, status codes, MVC, data access, security."
+      paths:
+        - spring-theory
+
+    # ----------------------------------------------------------------------------------------
+    # EXAMPLE — how you'd add another subject later. Uncomment, create the folder, and restart.
+    # No code changes needed; a new tab shows up automatically.
+    # ----------------------------------------------------------------------------------------
+    # - id: os
+    #   label: Operating Systems
+    #   description: "OS concepts and notes."
+    #   paths:
+    #     - operating-systems

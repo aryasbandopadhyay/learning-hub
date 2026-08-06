@@ -1,0 +1,50 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "hasPathSum",
+  "params": [
+    "root",
+    "targetSum"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          5,
+          4,
+          8,
+          11,
+          null,
+          13,
+          4,
+          7,
+          2,
+          null,
+          null,
+          null,
+          1
+        ],
+        22
+      ],
+      "expected": true
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree",
+    "plain"
+  ],
+  "id": "trees/20-path-sum",
+  "title": "Path Sum",
+  "difficulty": "Easy",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def hasPathSum(self, root, targetSum):\n        sums=[]\n        def dfs(node,total):\n            if not node: return\n            total += node.val\n            if not node.left and not node.right: sums.append(total)\n            dfs(node.left,total); dfs(node.right,total)\n        dfs(root,0)\n        return targetSum in sums",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def hasPathSum(self, root, targetSum):\n        if not root: return False\n        if not root.left and not root.right: return targetSum == root.val\n        return self.hasPathSum(root.left, targetSum-root.val) or self.hasPathSum(root.right, targetSum-root.val)",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def hasPathSum(self, root, targetSum):\n        if not root: return False\n        stack=[(root, root.val)]\n        while stack:\n            node,total=stack.pop()\n            if not node.left and not node.right and total == targetSum: return True\n            if node.left: stack.append((node.left,total+node.left.val))\n            if node.right: stack.append((node.right,total+node.right.val))\n        return False"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def hasPathSum(self, root, targetSum):\n        # TODO: write your solution here\n        pass\n"
+}

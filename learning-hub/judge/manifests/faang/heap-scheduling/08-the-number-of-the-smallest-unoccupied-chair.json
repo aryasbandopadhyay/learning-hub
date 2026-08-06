@@ -1,0 +1,482 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "smallestChair",
+  "params": [
+    "times",
+    "targetFriend"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            6
+          ]
+        ],
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            2476,
+            -3444
+          ],
+          [
+            9642,
+            -4142
+          ],
+          [
+            -2455,
+            -1860
+          ],
+          [
+            -5634,
+            -7163
+          ],
+          [
+            -1771,
+            2552
+          ],
+          [
+            7393,
+            7649
+          ],
+          [
+            -7057,
+            6032
+          ],
+          [
+            -3464,
+            3816
+          ],
+          [
+            9280,
+            -2900
+          ],
+          [
+            2254,
+            2717
+          ],
+          [
+            -3034,
+            -5011
+          ],
+          [
+            5121,
+            -4135
+          ],
+          [
+            8576,
+            1102
+          ],
+          [
+            -7282,
+            7324
+          ],
+          [
+            -7123,
+            5369
+          ],
+          [
+            367,
+            3193
+          ],
+          [
+            -8603,
+            -1173
+          ],
+          [
+            8282,
+            -9751
+          ],
+          [
+            3933,
+            -3324
+          ],
+          [
+            1879,
+            7508
+          ]
+        ],
+        1325
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            9841,
+            5161
+          ],
+          [
+            -8319,
+            1715
+          ],
+          [
+            -5769,
+            -2928
+          ],
+          [
+            -4731,
+            4474
+          ],
+          [
+            9510,
+            -4180
+          ]
+        ],
+        8245
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -6403,
+            -9237
+          ]
+        ],
+        2805
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -7341,
+            3940
+          ],
+          [
+            -7182,
+            -5318
+          ],
+          [
+            151,
+            -9815
+          ],
+          [
+            2486,
+            803
+          ],
+          [
+            -5550,
+            7150
+          ],
+          [
+            3281,
+            -3421
+          ],
+          [
+            -8185,
+            -3072
+          ],
+          [
+            4515,
+            -1560
+          ],
+          [
+            7873,
+            3240
+          ],
+          [
+            -5860,
+            1593
+          ],
+          [
+            5602,
+            -8171
+          ],
+          [
+            -5710,
+            9649
+          ],
+          [
+            -5071,
+            9924
+          ],
+          [
+            3379,
+            -5925
+          ],
+          [
+            -6839,
+            -6110
+          ],
+          [
+            -5293,
+            -302
+          ],
+          [
+            -4294,
+            -4179
+          ],
+          [
+            3430,
+            -5232
+          ],
+          [
+            -3199,
+            8381
+          ],
+          [
+            456,
+            6355
+          ]
+        ],
+        3833
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          [
+            1852,
+            -3907
+          ],
+          [
+            -7628,
+            6424
+          ]
+        ],
+        4714
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          [
+            1057,
+            -2912
+          ]
+        ],
+        6177
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          [
+            2646,
+            3568
+          ],
+          [
+            2156,
+            7510
+          ],
+          [
+            -6964,
+            -4062
+          ],
+          [
+            -8769,
+            2222
+          ],
+          [
+            3060,
+            4548
+          ],
+          [
+            -2457,
+            204
+          ],
+          [
+            -2593,
+            179
+          ],
+          [
+            -6535,
+            286
+          ],
+          [
+            -2837,
+            -1818
+          ],
+          [
+            2568,
+            -289
+          ],
+          [
+            4356,
+            -7375
+          ],
+          [
+            4346,
+            3798
+          ],
+          [
+            -1605,
+            -7717
+          ],
+          [
+            6487,
+            -398
+          ],
+          [
+            505,
+            5633
+          ],
+          [
+            7473,
+            -5830
+          ],
+          [
+            -1585,
+            4120
+          ],
+          [
+            -469,
+            3413
+          ],
+          [
+            -4777,
+            -750
+          ],
+          [
+            2417,
+            9800
+          ]
+        ],
+        7210
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -3524,
+            1317
+          ],
+          [
+            -9859,
+            1642
+          ],
+          [
+            -321,
+            -3667
+          ],
+          [
+            -4376,
+            -1449
+          ],
+          [
+            3654,
+            -2423
+          ],
+          [
+            3377,
+            1322
+          ],
+          [
+            3103,
+            -9882
+          ],
+          [
+            -6320,
+            6438
+          ],
+          [
+            7424,
+            -3365
+          ],
+          [
+            -9958,
+            7108
+          ],
+          [
+            175,
+            -4516
+          ],
+          [
+            6748,
+            4552
+          ],
+          [
+            -3273,
+            -1353
+          ]
+        ],
+        6830
+      ],
+      "expected": -1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "times",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "targetFriend",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/heap-scheduling/08-the-number-of-the-smallest-unoccupied-chair",
+  "title": "The Number of the Smallest Unoccupied Chair",
+  "difficulty": "Medium",
+  "topic": "faang/heap-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def smallestChair(self, times: list[list[int]], targetFriend: int) -> int:\n        arrivals = sorted((a, b, i) for i, (a, b) in enumerate(times))\n        occupied = {}\n        for arrive, leave, friend in arrivals:\n            for chair, end in list(occupied.items()):\n                if end <= arrive:\n                    del occupied[chair]\n            chair = 0\n            while chair in occupied:\n                chair += 1\n            if friend == targetFriend:\n                return chair\n            occupied[chair] = leave\n        return -1",
+    "better": "class Solution:\n    def smallestChair(self, times: list[list[int]], targetFriend: int) -> int:\n        import heapq\n        import bisect\n        arrivals = sorted((a, b, i) for i, (a, b) in enumerate(times))\n        leaving = []\n        free = []\n        next_chair = 0\n        for arrive, leave, friend in arrivals:\n            while leaving and leaving[0][0] <= arrive:\n                _, chair = heapq.heappop(leaving)\n                bisect.insort(free, chair)\n            if free:\n                chair = free.pop(0)\n            else:\n                chair = next_chair\n                next_chair += 1\n            if friend == targetFriend:\n                return chair\n            heapq.heappush(leaving, (leave, chair))\n        return -1",
+    "optimal": "class Solution:\n    def smallestChair(self, times: list[list[int]], targetFriend: int) -> int:\n        import heapq\n        arrivals = sorted((a, b, i) for i, (a, b) in enumerate(times))\n        free = []\n        leaving = []\n        next_chair = 0\n        for arrive, leave, friend in arrivals:\n            while leaving and leaving[0][0] <= arrive:\n                _, chair = heapq.heappop(leaving)\n                heapq.heappush(free, chair)\n            if free:\n                chair = heapq.heappop(free)\n            else:\n                chair = next_chair\n                next_chair += 1\n            if friend == targetFriend:\n                return chair\n            heapq.heappush(leaving, (leave, chair))\n        return -1"
+  },
+  "starterCode": "class Solution:\n    def smallestChair(self, times, targetFriend):\n        # TODO: write your solution here\n        pass\n"
+}

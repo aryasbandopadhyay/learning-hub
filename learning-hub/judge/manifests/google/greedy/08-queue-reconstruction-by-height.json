@@ -1,0 +1,102 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "reconstructQueue",
+  "params": [
+    "people"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            7,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            7,
+            1
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            6,
+            1
+          ],
+          [
+            5,
+            2
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          5,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          7,
+          1
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "people",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/greedy/08-queue-reconstruction-by-height",
+  "title": "Queue Reconstruction by Height",
+  "difficulty": "Medium",
+  "topic": "google/greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def reconstructQueue(self, people: list[list[int]]) -> list[list[int]]:\n        order = sorted(people, key=lambda p: (-p[0], p[1]))\n        queue = []\n        for person in order:\n            queue = queue[:person[1]] + [person[:]] + queue[person[1]:]\n        return queue",
+    "better": "class Solution:\n    def reconstructQueue(self, people):\n        queue = []\n        for person in sorted(people, key=lambda p: (-p[0], p[1])):\n            queue.insert(person[1], person[:])\n        return queue",
+    "optimal": "class Solution:\n    def reconstructQueue(self, people):\n        n = len(people)\n        bit = [0] * (n + 1)\n        def add(i, delta):\n            i += 1\n            while i <= n:\n                bit[i] += delta\n                i += i & -i\n        def kth(k):\n            idx = 0\n            bitmask = 1 << (n.bit_length() - 1)\n            while bitmask:\n                nxt = idx + bitmask\n                if nxt <= n and bit[nxt] < k:\n                    idx = nxt\n                    k -= bit[nxt]\n                bitmask >>= 1\n            return idx\n        for i in range(n):\n            add(i, 1)\n        ans = [None] * n\n        for h, k in sorted(people, key=lambda p: (p[0], -p[1])):\n            pos = kth(k + 1)\n            ans[pos] = [h, k]\n            add(pos, -1)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def reconstructQueue(self, people):\n        # TODO: write your solution here\n        pass\n"
+}

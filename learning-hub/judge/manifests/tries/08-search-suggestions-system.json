@@ -1,0 +1,367 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "suggestedProducts",
+  "params": [
+    "products",
+    "searchWord"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "mobile",
+          "mouse",
+          "moneypot",
+          "monitor",
+          "mousepad"
+        ],
+        "mouse"
+      ],
+      "expected": [
+        [
+          "mobile",
+          "moneypot",
+          "monitor"
+        ],
+        [
+          "mobile",
+          "moneypot",
+          "monitor"
+        ],
+        [
+          "mouse",
+          "mousepad"
+        ],
+        [
+          "mouse",
+          "mousepad"
+        ],
+        [
+          "mouse",
+          "mousepad"
+        ]
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ],
+        "mouse"
+      ],
+      "expected": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "dad",
+          "abc",
+          "ead",
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd",
+          "bcb",
+          "cac",
+          "bbd",
+          "cda",
+          "ddc",
+          "aec",
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb",
+          "bcd",
+          "bdc",
+          "daa",
+          "eeb",
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec",
+          "baa",
+          "cae",
+          "aad",
+          "cce"
+        ],
+        "mouse"
+      ],
+      "expected": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "bad",
+          "dbc",
+          "dcb",
+          "bdd",
+          "deb",
+          "ccb",
+          "cde",
+          "dbd"
+        ],
+        "mouse"
+      ],
+      "expected": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "bae",
+          "bde",
+          "aac",
+          "dac",
+          "aee",
+          "cae",
+          "cdc",
+          "bbe",
+          "ada",
+          "ace",
+          "bec",
+          "bda",
+          "dbb",
+          "adb",
+          "ccc",
+          "aeb",
+          "ebc",
+          "eaa",
+          "bbb",
+          "eaa",
+          "edb",
+          "cbe",
+          "eeb",
+          "cac",
+          "dbc",
+          "bab",
+          "dea",
+          "bda",
+          "bed",
+          "eab",
+          "bdc",
+          "cce",
+          "aed",
+          "acb",
+          "bac",
+          "ecc",
+          "add",
+          "aac",
+          "bec",
+          "cca",
+          "dce",
+          "beb",
+          "acd",
+          "deb",
+          "bed",
+          "abb",
+          "cbe",
+          "ada",
+          "eab",
+          "bbc"
+        ],
+        "mouse"
+      ],
+      "expected": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "bed",
+          "baa",
+          "edd",
+          "abe",
+          "bcd",
+          "bde",
+          "ace",
+          "bbe"
+        ],
+        "mouse"
+      ],
+      "expected": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "deb",
+          "bbd"
+        ],
+        "mouse"
+      ],
+      "expected": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "bcb",
+          "eee",
+          "abb",
+          "ebd",
+          "dee"
+        ],
+        "mouse"
+      ],
+      "expected": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "cec",
+          "dba",
+          "aad",
+          "acb",
+          "acb",
+          "cca",
+          "eec",
+          "bca"
+        ],
+        "mouse"
+      ],
+      "expected": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "products",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "searchWord",
+          "type": "str",
+          "role": "const",
+          "value": "mouse"
+        }
+      ]
+    }
+  },
+  "id": "tries/08-search-suggestions-system",
+  "title": "Search Suggestions System",
+  "difficulty": "Medium",
+  "topic": "tries",
+  "solutions": {
+    "naive": "from typing import List\n\n\nclass Solution:\n    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:\n        products.sort()\n        ans = []\n        prefix = \"\"\n        for ch in searchWord:\n            prefix += ch\n            suggestions = []\n            for product in products:\n                if product.startswith(prefix):\n                    suggestions.append(product)\n                    if len(suggestions) == 3:\n                        break\n            ans.append(suggestions)\n        return ans",
+    "better": "from bisect import bisect_left\nfrom typing import List\n\n\nclass Solution:\n    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:\n        products.sort()\n        ans = []\n        prefix = \"\"\n        start = 0\n        for ch in searchWord:\n            prefix += ch\n            start = bisect_left(products, prefix, start)\n            suggestions = []\n            # Only the first three candidates after lower_bound can matter.\n            for i in range(start, min(start + 3, len(products))):\n                if products[i].startswith(prefix):\n                    suggestions.append(products[i])\n            ans.append(suggestions)\n        return ans",
+    "optimal": "from typing import List\n\n\nclass TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.suggestions = []\n\n\nclass Solution:\n    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:\n        root = TrieNode()\n        for product in sorted(products):\n            node = root\n            for ch in product:\n                if ch not in node.children:\n                    node.children[ch] = TrieNode()\n                node = node.children[ch]\n                if len(node.suggestions) < 3:\n                    node.suggestions.append(product)\n\n        ans = []\n        node = root\n        for ch in searchWord:\n            if node is not None and ch in node.children:\n                node = node.children[ch]\n                ans.append(list(node.suggestions))\n            else:\n                node = None\n                ans.append([])\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def suggestedProducts(self, products, searchWord):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "myAtoi",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "   -42"
+      ],
+      "expected": -42
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "strings/05-string-to-integer-atoi",
+  "title": "String to Integer (atoi)",
+  "difficulty": "Medium",
+  "topic": "strings",
+  "solutions": {
+    "naive": "class Solution:\n    def myAtoi(self, s: str) -> int:\n        INT_MIN, INT_MAX = -2**31, 2**31 - 1\n        s = s.lstrip()\n        if not s:\n            return 0\n        sign = 1\n        i = 0\n        if s[0] in '+-':\n            sign = -1 if s[0] == '-' else 1\n            i = 1\n        digits = []\n        while i < len(s) and s[i].isdigit():\n            digits.append(s[i])\n            i += 1\n        if not digits:\n            return 0\n        value = sign * int(''.join(digits))\n        return max(INT_MIN, min(INT_MAX, value))",
+    "better": "class Solution:\n    def myAtoi(self, s: str) -> int:\n        INT_MIN, INT_MAX = -2**31, 2**31 - 1\n        i, n = 0, len(s)\n        while i < n and s[i] == ' ':\n            i += 1\n        sign = 1\n        if i < n and s[i] in '+-':\n            sign = -1 if s[i] == '-' else 1\n            i += 1\n        value = 0\n        while i < n and s[i].isdigit():\n            value = value * 10 + (ord(s[i]) - ord('0'))\n            i += 1\n        value *= sign\n        return max(INT_MIN, min(INT_MAX, value))",
+    "optimal": "class Solution:\n    def myAtoi(self, s: str) -> int:\n        INT_MIN, INT_MAX = -2**31, 2**31 - 1\n        i, n = 0, len(s)\n        while i < n and s[i] == ' ':\n            i += 1\n        sign = 1\n        if i < n and s[i] in '+-':\n            sign = -1 if s[i] == '-' else 1\n            i += 1\n        value = 0\n        limit = INT_MAX if sign == 1 else -INT_MIN\n        while i < n and s[i].isdigit():\n            digit = ord(s[i]) - ord('0')\n            if value > (limit - digit) // 10:\n                return INT_MAX if sign == 1 else INT_MIN\n            value = value * 10 + digit\n            i += 1\n        return sign * value"
+  },
+  "starterCode": "class Solution:\n    def myAtoi(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

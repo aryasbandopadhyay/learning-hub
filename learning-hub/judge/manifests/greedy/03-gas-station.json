@@ -1,0 +1,77 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "canCompleteCircuit",
+  "params": [
+    "gas",
+    "cost"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "gas",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "cost",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            3,
+            4,
+            5,
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  },
+  "id": "greedy/03-gas-station",
+  "title": "Gas Station",
+  "difficulty": "Medium",
+  "topic": "greedy",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:\n        n = len(gas)\n        for start in range(n):\n            tank = 0\n            possible = True\n            for step in range(n):\n                i = (start + step) % n\n                tank += gas[i] - cost[i]\n                if tank < 0:\n                    possible = False\n                    break\n            if possible:\n                return start\n        return -1",
+    "better": "from typing import List\n\nclass Solution:\n    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:\n        if sum(gas) < sum(cost):\n            return -1\n        n = len(gas)\n        for start in range(n):\n            tank = 0\n            for step in range(n):\n                i = (start + step) % n\n                tank += gas[i] - cost[i]\n                if tank < 0:\n                    break\n            else:\n                return start\n        return -1",
+    "optimal": "from typing import List\n\nclass Solution:\n    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:\n        total = 0\n        tank = 0\n        start = 0\n\n        for i, (g, c) in enumerate(zip(gas, cost)):\n            gain = g - c\n            total += gain\n            tank += gain\n            if tank < 0:\n                start = i + 1\n                tank = 0\n\n        return start if total >= 0 else -1"
+  },
+  "starterCode": "class Solution:\n    def canCompleteCircuit(self, gas, cost):\n        # TODO: write your solution here\n        pass\n"
+}

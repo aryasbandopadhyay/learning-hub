@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "mergeTriplets",
+  "params": [
+    "triplets",
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            2,
+            5,
+            3
+          ],
+          [
+            1,
+            8,
+            4
+          ],
+          [
+            1,
+            7,
+            5
+          ]
+        ],
+        [
+          2,
+          7,
+          5
+        ]
+      ],
+      "expected": true
+    }
+  ],
+  "id": "greedy/05-merge-triplets-to-form-target-triplet",
+  "title": "Merge Triplets to Form Target Triplet",
+  "difficulty": "Medium",
+  "topic": "greedy",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def mergeTriplets(self, triplets: List[List[int]], target: List[int]) -> bool:\n        n = len(triplets)\n        for mask in range(1 << n):\n            merged = [0, 0, 0]\n            for i in range(n):\n                if mask & (1 << i):\n                    for j in range(3):\n                        merged[j] = max(merged[j], triplets[i][j])\n            if merged == target:\n                return True\n        return False",
+    "better": "from typing import List\n\nclass Solution:\n    def mergeTriplets(self, triplets: List[List[int]], target: List[int]) -> bool:\n        merged = [0, 0, 0]\n        for triplet in triplets:\n            if all(triplet[i] <= target[i] for i in range(3)):\n                for i in range(3):\n                    merged[i] = max(merged[i], triplet[i])\n        return merged == target",
+    "optimal": "from typing import List\n\nclass Solution:\n    def mergeTriplets(self, triplets: List[List[int]], target: List[int]) -> bool:\n        matched = [False, False, False]\n\n        for triplet in triplets:\n            if any(triplet[i] > target[i] for i in range(3)):\n                continue\n            for i in range(3):\n                if triplet[i] == target[i]:\n                    matched[i] = True\n            if all(matched):\n                return True\n        return False"
+  },
+  "starterCode": "class Solution:\n    def mergeTriplets(self, triplets, target):\n        # TODO: write your solution here\n        pass\n"
+}

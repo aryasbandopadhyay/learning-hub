@@ -1,0 +1,273 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "leastInterval",
+  "params": [
+    "tasks",
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B"
+        ],
+        2
+      ],
+      "expected": 8
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ],
+        382
+      ],
+      "expected": 384
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "ada",
+          "bce",
+          "adc",
+          "bed",
+          "bab",
+          "dce",
+          "dbc",
+          "dab",
+          "ebe",
+          "daa",
+          "abc",
+          "bbd",
+          "bbe",
+          "cdb",
+          "cac",
+          "bae",
+          "cae",
+          "acb",
+          "ddc",
+          "ddd"
+        ],
+        6079
+      ],
+      "expected": 20
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "acd",
+          "dbc",
+          "bca"
+        ],
+        5144
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "dcd",
+          "add",
+          "cae",
+          "ccd",
+          "ebc"
+        ],
+        7061
+      ],
+      "expected": 5
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "ebc",
+          "dee",
+          "dbd",
+          "cbc",
+          "acc",
+          "bbc",
+          "dbd",
+          "cda",
+          "aee",
+          "bae",
+          "cbe",
+          "dbc",
+          "dde",
+          "eee",
+          "cba",
+          "aca",
+          "eaa",
+          "dcc",
+          "eee",
+          "cba"
+        ],
+        6467
+      ],
+      "expected": 6471
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "cdc",
+          "bbd",
+          "dde"
+        ],
+        2931
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "cde",
+          "dbd",
+          "edb",
+          "aeb",
+          "dea"
+        ],
+        1882
+      ],
+      "expected": 5
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "aca",
+          "eec",
+          "aec",
+          "dcb",
+          "bea",
+          "daa",
+          "ceb",
+          "ecb",
+          "dad",
+          "bba",
+          "dbc",
+          "cca",
+          "ebe",
+          "bce",
+          "aab",
+          "bbe",
+          "aae",
+          "dbc",
+          "bee",
+          "ebc",
+          "acd",
+          "bcb",
+          "abd",
+          "eab",
+          "dab",
+          "ede",
+          "abb",
+          "dcc",
+          "cea",
+          "eda",
+          "cbb",
+          "ace",
+          "cca",
+          "dda",
+          "acb",
+          "ecc",
+          "cad",
+          "ceb",
+          "eba",
+          "cdd",
+          "ebb",
+          "eda",
+          "bbc",
+          "bea",
+          "dae",
+          "abb",
+          "bca",
+          "cbe",
+          "dba",
+          "aed"
+        ],
+        7312
+      ],
+      "expected": 7319
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "tasks",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "greedy/10-task-scheduler",
+  "title": "Task Scheduler",
+  "difficulty": "Medium",
+  "topic": "greedy",
+  "solutions": {
+    "naive": "from collections import Counter\nfrom typing import List\n\nclass Solution:\n    def leastInterval(self, tasks: List[str], n: int) -> int:\n        remaining = Counter(tasks)\n        cooldown = {}\n        time = 0\n\n        while remaining:\n            available = [\n                task for task in remaining\n                if cooldown.get(task, -1) <= time\n            ]\n            if available:\n                task = max(available, key=lambda t: remaining[t])\n                remaining[task] -= 1\n                if remaining[task] == 0:\n                    del remaining[task]\n                cooldown[task] = time + n + 1\n            time += 1\n        return time",
+    "better": "from collections import Counter, deque\nfrom heapq import heappop, heappush\nfrom typing import List\n\nclass Solution:\n    def leastInterval(self, tasks: List[str], n: int) -> int:\n        heap = [-count for count in Counter(tasks).values()]\n        import heapq\n        heapq.heapify(heap)\n        wait = deque()\n        time = 0\n\n        while heap or wait:\n            time += 1\n            if heap:\n                count = heappop(heap) + 1\n                if count:\n                    wait.append((time + n, count))\n            if wait and wait[0][0] == time:\n                heappush(heap, wait.popleft()[1])\n        return time",
+    "optimal": "from collections import Counter\nfrom typing import List\n\nclass Solution:\n    def leastInterval(self, tasks: List[str], n: int) -> int:\n        counts = Counter(tasks).values()\n        max_freq = max(counts)\n        num_max = sum(1 for count in Counter(tasks).values() if count == max_freq)\n        frame = (max_freq - 1) * (n + 1) + num_max\n        return max(len(tasks), frame)"
+  },
+  "starterCode": "class Solution:\n    def leastInterval(self, tasks, n):\n        # TODO: write your solution here\n        pass\n"
+}

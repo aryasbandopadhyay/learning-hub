@@ -1,0 +1,74 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "mincostTickets",
+  "params": [
+    "days",
+    "costs"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          4,
+          6,
+          7,
+          8,
+          20
+        ],
+        [
+          2,
+          7,
+          15
+        ]
+      ],
+      "expected": 11
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "days",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "costs",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            2,
+            7,
+            15
+          ]
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-knapsack/07-minimum-cost-for-tickets",
+  "title": "Minimum Cost For Tickets",
+  "difficulty": "Medium",
+  "topic": "faang/dp-knapsack",
+  "solutions": {
+    "naive": "class Solution:\n    def mincostTickets(self, days: list[int], costs: list[int]) -> int:\n        durations = [1, 7, 30]\n        def dfs(i: int) -> int:\n            if i >= len(days):\n                return 0\n            best = 10**9\n            for dur, cost in zip(durations, costs):\n                j = i\n                while j < len(days) and days[j] < days[i] + dur:\n                    j += 1\n                best = min(best, cost + dfs(j))\n            return best\n        return dfs(0)",
+    "better": "class Solution:\n    def mincostTickets(self, days: list[int], costs: list[int]) -> int:\n        from functools import lru_cache\n        durations = [1, 7, 30]\n        @lru_cache(None)\n        def dp(i: int) -> int:\n            if i >= len(days):\n                return 0\n            ans = 10**9\n            for dur, cost in zip(durations, costs):\n                j = i\n                while j < len(days) and days[j] < days[i] + dur:\n                    j += 1\n                ans = min(ans, cost + dp(j))\n            return ans\n        return dp(0)",
+    "optimal": "class Solution:\n    def mincostTickets(self, days: list[int], costs: list[int]) -> int:\n        travel = set(days)\n        last = days[-1]\n        dp = [0] * (last + 1)\n        for day in range(1, last + 1):\n            if day not in travel:\n                dp[day] = dp[day - 1]\n            else:\n                dp[day] = min(\n                    dp[max(0, day - 1)] + costs[0],\n                    dp[max(0, day - 7)] + costs[1],\n                    dp[max(0, day - 30)] + costs[2],\n                )\n        return dp[last]"
+  },
+  "starterCode": "class Solution:\n    def mincostTickets(self, days, costs):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,67 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findKthLargest",
+  "params": [
+    "nums",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          2,
+          1,
+          5,
+          6,
+          4
+        ],
+        2
+      ],
+      "expected": 5
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "heap-priority-queue/01-kth-largest-element-in-an-array",
+  "title": "Kth Largest Element in an Array",
+  "difficulty": "Medium",
+  "topic": "heap-priority-queue",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def findKthLargest(self, nums: List[int], k: int) -> int:\n        # Full sorting is simple but costs O(n log n).\n        nums.sort(reverse=True)\n        return nums[k - 1]",
+    "better": "from typing import List\nimport heapq\n\nclass Solution:\n    def findKthLargest(self, nums: List[int], k: int) -> int:\n        heap = []\n        for num in nums:\n            heapq.heappush(heap, num)\n            # Remove smaller elements so only k largest remain.\n            if len(heap) > k:\n                heapq.heappop(heap)\n        return heap[0]",
+    "optimal": "from typing import List\nimport random\n\nclass Solution:\n    def findKthLargest(self, nums: List[int], k: int) -> int:\n        target = len(nums) - k\n        left, right = 0, len(nums) - 1\n\n        while left <= right:\n            pivot_index = random.randint(left, right)\n            pivot = nums[pivot_index]\n            nums[pivot_index], nums[right] = nums[right], nums[pivot_index]\n            store = left\n\n            # Move values smaller than pivot to the left.\n            for i in range(left, right):\n                if nums[i] < pivot:\n                    nums[store], nums[i] = nums[i], nums[store]\n                    store += 1\n\n            nums[store], nums[right] = nums[right], nums[store]\n\n            if store == target:\n                return nums[store]\n            if store < target:\n                left = store + 1\n            else:\n                right = store - 1\n\n        return -1"
+  },
+  "starterCode": "class Solution:\n    def findKthLargest(self, nums, k):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,366 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxAverageRatio",
+  "params": [
+    "classes",
+    "extraStudents"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        2
+      ],
+      "expected": 0.78333
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -6403,
+            -9237
+          ]
+        ],
+        2805
+      ],
+      "expected": 0.55939
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            1852,
+            -3907
+          ],
+          [
+            -7628,
+            6424
+          ]
+        ],
+        4714
+      ],
+      "expected": -0.36782
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -3438,
+            -9325
+          ],
+          [
+            -6555,
+            76
+          ],
+          [
+            -7524,
+            9022
+          ],
+          [
+            -8953,
+            -8090
+          ],
+          [
+            3656,
+            -179
+          ],
+          [
+            2098,
+            8259
+          ],
+          [
+            9267,
+            8838
+          ],
+          [
+            -328,
+            -3643
+          ]
+        ],
+        1641
+      ],
+      "expected": -2.65657
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -4562,
+            -5539
+          ],
+          [
+            9272,
+            -8444
+          ],
+          [
+            3017,
+            -8816
+          ],
+          [
+            -8436,
+            1219
+          ],
+          [
+            6755,
+            -2465
+          ],
+          [
+            8194,
+            -427
+          ],
+          [
+            -4806,
+            4387
+          ],
+          [
+            -8116,
+            3687
+          ]
+        ],
+        3762
+      ],
+      "expected": -3.32261
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          [
+            8317,
+            -4311
+          ],
+          [
+            1589,
+            7529
+          ],
+          [
+            -7331,
+            -6279
+          ],
+          [
+            -5882,
+            -5513
+          ],
+          [
+            -5079,
+            7869
+          ]
+        ],
+        1418
+      ],
+      "expected": 0.02441
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -4543,
+            1596
+          ],
+          [
+            -2413,
+            9931
+          ],
+          [
+            -4721,
+            1144
+          ],
+          [
+            -8270,
+            1219
+          ],
+          [
+            4291,
+            -3840
+          ],
+          [
+            75,
+            -4116
+          ],
+          [
+            -6359,
+            -5198
+          ],
+          [
+            6271,
+            7080
+          ],
+          [
+            -9590,
+            -2428
+          ],
+          [
+            2348,
+            -6823
+          ],
+          [
+            -2288,
+            8571
+          ],
+          [
+            4544,
+            9741
+          ],
+          [
+            -7373,
+            -4711
+          ],
+          [
+            -4546,
+            4546
+          ],
+          [
+            2226,
+            -1710
+          ],
+          [
+            269,
+            9310
+          ],
+          [
+            -8506,
+            9147
+          ],
+          [
+            2993,
+            -9333
+          ],
+          [
+            -149,
+            -4796
+          ],
+          [
+            -5651,
+            -9631
+          ]
+        ],
+        4680
+      ],
+      "expected": 0.07106
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -494,
+            -5950
+          ],
+          [
+            6136,
+            4008
+          ],
+          [
+            -7631,
+            -8680
+          ],
+          [
+            1591,
+            -4628
+          ],
+          [
+            9873,
+            398
+          ],
+          [
+            962,
+            713
+          ],
+          [
+            -8868,
+            2342
+          ],
+          [
+            -1131,
+            9997
+          ]
+        ],
+        3714
+      ],
+      "expected": 3.41761
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -538,
+            3092
+          ]
+        ],
+        6867
+      ],
+      "expected": 0.63551
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "classes",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "extraStudents",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/heap-scheduling/09-maximum-average-pass-ratio",
+  "title": "Maximum Average Pass Ratio",
+  "difficulty": "Medium",
+  "topic": "faang/heap-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def maxAverageRatio(self, classes: list[list[int]], extraStudents: int) -> float:\n        def gain(p, t):\n            return (p + 1) / (t + 1) - p / t\n        classes = [c[:] for c in classes]\n        for _ in range(extraStudents):\n            best = 0\n            for i, (p, t) in enumerate(classes):\n                if gain(p, t) > gain(classes[best][0], classes[best][1]):\n                    best = i\n            classes[best][0] += 1\n            classes[best][1] += 1\n        return round(sum(p / t for p, t in classes) / len(classes), 5)",
+    "better": "class Solution:\n    def maxAverageRatio(self, classes: list[list[int]], extraStudents: int) -> float:\n        import bisect\n        def gain(p, t):\n            return (p + 1) / (t + 1) - p / t\n        ordered = []\n        for idx, (p, t) in enumerate(classes):\n            bisect.insort(ordered, (gain(p, t), idx, p, t))\n        for _ in range(extraStudents):\n            _, idx, p, t = ordered.pop()\n            p += 1\n            t += 1\n            bisect.insort(ordered, (gain(p, t), idx, p, t))\n        return round(sum(p / t for _, _, p, t in ordered) / len(classes), 5)",
+    "optimal": "class Solution:\n    def maxAverageRatio(self, classes: list[list[int]], extraStudents: int) -> float:\n        import heapq\n        def gain(p, t):\n            return (p + 1) / (t + 1) - p / t\n        heap = [(-gain(p, t), p, t) for p, t in classes]\n        heapq.heapify(heap)\n        for _ in range(extraStudents):\n            _, p, t = heapq.heappop(heap)\n            p += 1\n            t += 1\n            heapq.heappush(heap, (-gain(p, t), p, t))\n        return round(sum(p / t for _, p, t in heap) / len(classes), 5)"
+  },
+  "starterCode": "class Solution:\n    def maxAverageRatio(self, classes, extraStudents):\n        # TODO: write your solution here\n        pass\n"
+}

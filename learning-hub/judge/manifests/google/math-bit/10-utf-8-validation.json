@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "validUtf8",
+  "params": [
+    "data"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          240,
+          162,
+          138,
+          147,
+          17
+        ]
+      ],
+      "expected": true
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "data",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/math-bit/10-utf-8-validation",
+  "title": "UTF-8 Validation",
+  "difficulty": "Medium",
+  "topic": "google/math-bit",
+  "solutions": {
+    "naive": "class Solution:\n    def validUtf8(self, data: list[int]) -> bool:\n        bits = [format(x, \"08b\") for x in data]\n        i = 0\n        while i < len(bits):\n            b = bits[i]\n            if b[0] == \"0\":\n                need = 0\n            elif b.startswith(\"110\"):\n                need = 1\n            elif b.startswith(\"1110\"):\n                need = 2\n            elif b.startswith(\"11110\"):\n                need = 3\n            else:\n                return False\n            if i + need >= len(bits):\n                return False\n            for j in range(i + 1, i + need + 1):\n                if not bits[j].startswith(\"10\"):\n                    return False\n            i += need + 1\n        return True",
+    "better": "class Solution:\n    def validUtf8(self, data: list[int]) -> bool:\n        i = 0\n        while i < len(data):\n            byte = data[i]\n            mask = 128\n            leading = 0\n            while byte & mask:\n                leading += 1\n                mask >>= 1\n            if leading == 0:\n                i += 1\n                continue\n            if leading == 1 or leading > 4 or i + leading > len(data):\n                return False\n            for j in range(i + 1, i + leading):\n                if (data[j] & 192) != 128:\n                    return False\n            i += leading\n        return True",
+    "optimal": "class Solution:\n    def validUtf8(self, data: list[int]) -> bool:\n        remaining = 0\n        for byte in data:\n            if remaining:\n                if (byte >> 6) != 0b10:\n                    return False\n                remaining -= 1\n            else:\n                if (byte >> 7) == 0:\n                    remaining = 0\n                elif (byte >> 5) == 0b110:\n                    remaining = 1\n                elif (byte >> 4) == 0b1110:\n                    remaining = 2\n                elif (byte >> 3) == 0b11110:\n                    remaining = 3\n                else:\n                    return False\n        return remaining == 0"
+  },
+  "starterCode": "class Solution:\n    def validUtf8(self, data):\n        # TODO: write your solution here\n        pass\n"
+}

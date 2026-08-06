@@ -1,0 +1,56 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findPeakElement",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "binary-search/13-find-peak-element",
+  "title": "Find Peak Element",
+  "difficulty": "Medium",
+  "topic": "binary-search",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def findPeakElement(self, nums: List[int]) -> int:\n        n = len(nums)\n        for i in range(n):\n            left = float(\"-inf\") if i == 0 else nums[i - 1]\n            right = float(\"-inf\") if i == n - 1 else nums[i + 1]\n            if nums[i] > left and nums[i] > right:\n                return i\n        return 0",
+    "better": "from typing import List\n\nclass Solution:\n    def findPeakElement(self, nums: List[int]) -> int:\n        for i in range(len(nums) - 1):\n            if nums[i] > nums[i + 1]:\n                return i\n        return len(nums) - 1",
+    "optimal": "from typing import List\n\nclass Solution:\n    def findPeakElement(self, nums: List[int]) -> int:\n        left, right = 0, len(nums) - 1\n        while left < right:\n            mid = (left + right) // 2\n            if nums[mid] < nums[mid + 1]:\n                left = mid + 1\n            else:\n                right = mid\n        return left"
+  },
+  "starterCode": "class Solution:\n    def findPeakElement(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

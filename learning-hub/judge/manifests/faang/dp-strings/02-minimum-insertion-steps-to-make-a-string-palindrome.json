@@ -1,0 +1,29 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minInsertions",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "mbadm"
+      ],
+      "expected": 2
+    }
+  ],
+  "id": "faang/dp-strings/02-minimum-insertion-steps-to-make-a-string-palindrome",
+  "title": "Minimum Insertion Steps to Make a String Palindrome",
+  "difficulty": "Hard",
+  "topic": "faang/dp-strings",
+  "solutions": {
+    "naive": "class Solution:\n    def minInsertions(self, s: str) -> int:\n        def dfs(l, r):\n            if l >= r:\n                return 0\n            if s[l] == s[r]:\n                return dfs(l + 1, r - 1)\n            return 1 + min(dfs(l + 1, r), dfs(l, r - 1))\n        return dfs(0, len(s) - 1)",
+    "better": "class Solution:\n    def minInsertions(self, s):\n        from functools import lru_cache\n        @lru_cache(None)\n        def dfs(l, r):\n            if l >= r:\n                return 0\n            if s[l] == s[r]:\n                return dfs(l + 1, r - 1)\n            return 1 + min(dfs(l + 1, r), dfs(l, r - 1))\n        return dfs(0, len(s) - 1)",
+    "optimal": "class Solution:\n    def minInsertions(self, s):\n        n = len(s)\n        dp = [1] * n\n        for l in range(n - 2, -1, -1):\n            prev = 0\n            for r in range(l + 1, n):\n                old = dp[r]\n                if s[l] == s[r]:\n                    dp[r] = prev + 2\n                else:\n                    dp[r] = max(dp[r], dp[r - 1])\n                prev = old\n        return n - dp[-1]"
+  },
+  "starterCode": "class Solution:\n    def minInsertions(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

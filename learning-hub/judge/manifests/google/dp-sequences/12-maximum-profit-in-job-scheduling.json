@@ -1,0 +1,92 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "jobScheduling",
+  "params": [
+    "startTime",
+    "endTime",
+    "profit"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          3
+        ],
+        [
+          3,
+          4,
+          5,
+          6
+        ],
+        [
+          50,
+          10,
+          40,
+          70
+        ]
+      ],
+      "expected": 120
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "startTime",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "endTime",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "name": "profit",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            50,
+            10,
+            40,
+            70
+          ]
+        }
+      ]
+    }
+  },
+  "id": "google/dp-sequences/12-maximum-profit-in-job-scheduling",
+  "title": "Maximum Profit in Job Scheduling",
+  "difficulty": "Hard",
+  "topic": "google/dp-sequences",
+  "solutions": {
+    "naive": "class Solution:\n    def jobScheduling(self, startTime: list[int], endTime: list[int], profit: list[int]) -> int:\n        jobs = sorted(zip(startTime, endTime, profit))\n        n = len(jobs)\n        def dfs(i: int) -> int:\n            if i == n:\n                return 0\n            j = i + 1\n            while j < n and jobs[j][0] < jobs[i][1]:\n                j += 1\n            return max(dfs(i + 1), jobs[i][2] + dfs(j))\n        return dfs(0)",
+    "better": "class Solution:\n    def jobScheduling(self, startTime: list[int], endTime: list[int], profit: list[int]) -> int:\n        from bisect import bisect_left\n        from functools import lru_cache\n        jobs = sorted(zip(startTime, endTime, profit))\n        starts = [s for s, _, _ in jobs]\n        n = len(jobs)\n        @lru_cache(None)\n        def dfs(i: int) -> int:\n            if i == n:\n                return 0\n            j = bisect_left(starts, jobs[i][1])\n            return max(dfs(i + 1), jobs[i][2] + dfs(j))\n        return dfs(0)",
+    "optimal": "class Solution:\n    def jobScheduling(self, startTime: list[int], endTime: list[int], profit: list[int]) -> int:\n        from bisect import bisect_left\n        jobs = sorted(zip(startTime, endTime, profit))\n        starts = [s for s, _, _ in jobs]\n        n = len(jobs)\n        dp = [0] * (n + 1)\n        for i in range(n - 1, -1, -1):\n            j = bisect_left(starts, jobs[i][1])\n            dp[i] = max(dp[i + 1], jobs[i][2] + dp[j])\n        return dp[0]"
+  },
+  "starterCode": "class Solution:\n    def jobScheduling(self, startTime, endTime, profit):\n        # TODO: write your solution here\n        pass\n"
+}

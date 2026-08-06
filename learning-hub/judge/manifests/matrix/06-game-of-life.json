@@ -1,0 +1,95 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "gameOfLife",
+  "params": [
+    "board"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ]
+    }
+  ],
+  "inPlaceArg": 0,
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "board",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        }
+      ]
+    }
+  },
+  "id": "matrix/06-game-of-life",
+  "title": "Game of Life",
+  "difficulty": "Medium",
+  "topic": "matrix",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def gameOfLife(self, board: List[List[int]]) -> None:\n        m, n = len(board), len(board[0])\n        old = [row[:] for row in board]\n\n        def live_neighbors(r: int, c: int) -> int:\n            total = 0\n            for dr in (-1, 0, 1):\n                for dc in (-1, 0, 1):\n                    if dr == 0 and dc == 0:\n                        continue\n                    nr, nc = r + dr, c + dc\n                    if 0 <= nr < m and 0 <= nc < n:\n                        total += old[nr][nc]\n            return total\n\n        for r in range(m):\n            for c in range(n):\n                live = live_neighbors(r, c)\n                board[r][c] = 1 if live == 3 or (old[r][c] == 1 and live == 2) else 0",
+    "better": "from typing import List\n\nclass Solution:\n    def gameOfLife(self, board: List[List[int]]) -> None:\n        m, n = len(board), len(board[0])\n        next_live = set()\n        for r in range(m):\n            for c in range(n):\n                live = 0\n                for dr in (-1, 0, 1):\n                    for dc in (-1, 0, 1):\n                        if dr == 0 and dc == 0:\n                            continue\n                        nr, nc = r + dr, c + dc\n                        if 0 <= nr < m and 0 <= nc < n:\n                            live += board[nr][nc]\n                if live == 3 or (board[r][c] == 1 and live == 2):\n                    next_live.add((r, c))\n\n        for r in range(m):\n            for c in range(n):\n                board[r][c] = 1 if (r, c) in next_live else 0",
+    "optimal": "from typing import List\n\nclass Solution:\n    def gameOfLife(self, board: List[List[int]]) -> None:\n        m, n = len(board), len(board[0])\n        for r in range(m):\n            for c in range(n):\n                live = 0\n                for dr in (-1, 0, 1):\n                    for dc in (-1, 0, 1):\n                        if dr == 0 and dc == 0:\n                            continue\n                        nr, nc = r + dr, c + dc\n                        if 0 <= nr < m and 0 <= nc < n and abs(board[nr][nc]) == 1:\n                            live += 1\n                if board[r][c] == 1 and (live < 2 or live > 3):\n                    board[r][c] = -1\n                elif board[r][c] == 0 and live == 3:\n                    board[r][c] = 2\n\n        for r in range(m):\n            for c in range(n):\n                board[r][c] = 1 if board[r][c] > 0 else 0"
+  },
+  "starterCode": "class Solution:\n    def gameOfLife(self, board):\n        # TODO: write your solution here\n        pass\n"
+}

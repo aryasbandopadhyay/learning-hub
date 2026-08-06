@@ -1,0 +1,61 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "letterCombinations",
+  "params": [
+    "digits"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "23"
+      ],
+      "expected": [
+        "ad",
+        "ae",
+        "af",
+        "bd",
+        "be",
+        "bf",
+        "cd",
+        "ce",
+        "cf"
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "digits",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "backtracking/09-letter-combinations-of-a-phone-number",
+  "title": "Letter Combinations of a Phone Number",
+  "difficulty": "Medium",
+  "topic": "backtracking",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def letterCombinations(self, digits: str) -> List[str]:\n        if not digits:\n            return []\n        phone = {\"2\": \"abc\", \"3\": \"def\", \"4\": \"ghi\", \"5\": \"jkl\",\n                 \"6\": \"mno\", \"7\": \"pqrs\", \"8\": \"tuv\", \"9\": \"wxyz\"}\n        result = [\"\"]\n        for digit in digits:\n            next_result = []\n            for prefix in result:\n                for ch in phone[digit]:\n                    next_result.append(prefix + ch)\n            result = next_result\n        return result",
+    "better": "from typing import List\n\nclass Solution:\n    def letterCombinations(self, digits: str) -> List[str]:\n        if not digits:\n            return []\n        phone = {\"2\": \"abc\", \"3\": \"def\", \"4\": \"ghi\", \"5\": \"jkl\",\n                 \"6\": \"mno\", \"7\": \"pqrs\", \"8\": \"tuv\", \"9\": \"wxyz\"}\n        result = []\n        path = []\n\n        def backtrack(i: int) -> None:\n            if i == len(digits):\n                result.append(\"\".join(path))\n                return\n            for ch in phone[digits[i]]:\n                path.append(ch)\n                backtrack(i + 1)\n                path.pop()\n\n        backtrack(0)\n        return result",
+    "optimal": "from typing import List\n\nclass Solution:\n    def letterCombinations(self, digits: str) -> List[str]:\n        if not digits:\n            return []\n        phone = {\"2\": \"abc\", \"3\": \"def\", \"4\": \"ghi\", \"5\": \"jkl\",\n                 \"6\": \"mno\", \"7\": \"pqrs\", \"8\": \"tuv\", \"9\": \"wxyz\"}\n        result = []\n        chars = [\"\"] * len(digits)\n\n        def dfs(i: int) -> None:\n            if i == len(digits):\n                result.append(\"\".join(chars))\n                return\n            for ch in phone[digits[i]]:\n                chars[i] = ch\n                dfs(i + 1)\n\n        dfs(0)\n        return result"
+  },
+  "starterCode": "class Solution:\n    def letterCombinations(self, digits):\n        # TODO: write your solution here\n        pass\n"
+}

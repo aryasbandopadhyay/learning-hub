@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minCut",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "aab"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": 10
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": 5
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": 28
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": 9
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": 10
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-strings/11-palindrome-partitioning-ii",
+  "title": "Palindrome Partitioning II",
+  "difficulty": "Hard",
+  "topic": "faang/dp-strings",
+  "solutions": {
+    "naive": "class Solution:\n    def minCut(self, s: str) -> int:\n        def is_pal(x):\n            return x == x[::-1]\n        def dfs(i):\n            if i == len(s):\n                return 0\n            best = len(s) - i\n            for j in range(i + 1, len(s) + 1):\n                if is_pal(s[i:j]):\n                    best = min(best, 1 + dfs(j))\n            return best\n        return dfs(0) - 1",
+    "better": "class Solution:\n    def minCut(self, s):\n        from functools import lru_cache\n        n = len(s)\n        pal = [[False] * n for _ in range(n)]\n        for length in range(1, n + 1):\n            for l in range(n - length + 1):\n                r = l + length - 1\n                pal[l][r] = s[l] == s[r] and (length <= 2 or pal[l + 1][r - 1])\n        @lru_cache(None)\n        def dfs(i):\n            if i == n:\n                return 0\n            return 1 + min(dfs(j + 1) for j in range(i, n) if pal[i][j])\n        return dfs(0) - 1",
+    "optimal": "class Solution:\n    def minCut(self, s):\n        n = len(s)\n        cuts = [i - 1 for i in range(n + 1)]\n        for c in range(n):\n            l = r = c\n            while l >= 0 and r < n and s[l] == s[r]:\n                cuts[r + 1] = min(cuts[r + 1], cuts[l] + 1)\n                l -= 1; r += 1\n            l, r = c, c + 1\n            while l >= 0 and r < n and s[l] == s[r]:\n                cuts[r + 1] = min(cuts[r + 1], cuts[l] + 1)\n                l -= 1; r += 1\n        return cuts[n]"
+  },
+  "starterCode": "class Solution:\n    def minCut(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

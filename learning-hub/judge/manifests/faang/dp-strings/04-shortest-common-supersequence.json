@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "shortestCommonSupersequence",
+  "params": [
+    "str1",
+    "str2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "abac",
+        "cab"
+      ],
+      "expected": "cabac"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "cab"
+      ],
+      "expected": "dbebbbbacdeeaedbdeeb"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "cab"
+      ],
+      "expected": "dbbdbecaeadcdb"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "cab"
+      ],
+      "expected": "dcab"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "cab"
+      ],
+      "expected": "decab"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "cab"
+      ],
+      "expected": "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "cab"
+      ],
+      "expected": "bbecdbcacbaecaeacbdd"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "cab"
+      ],
+      "expected": "ddceabacddbcbcacbbdc"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "cab"
+      ],
+      "expected": "ddcab"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "str1",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "str2",
+          "type": "str",
+          "role": "const",
+          "value": "cab"
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-strings/04-shortest-common-supersequence",
+  "title": "Shortest Common Supersequence",
+  "difficulty": "Hard",
+  "topic": "faang/dp-strings",
+  "solutions": {
+    "naive": "class Solution:\n    def shortestCommonSupersequence(self, str1: str, str2: str) -> str:\n        def choose(a, b):\n            return a if len(a) <= len(b) else b\n        def dfs(i, j):\n            if i == len(str1):\n                return str2[j:]\n            if j == len(str2):\n                return str1[i:]\n            if str1[i] == str2[j]:\n                return str1[i] + dfs(i + 1, j + 1)\n            return choose(str1[i] + dfs(i + 1, j), str2[j] + dfs(i, j + 1))\n        return dfs(0, 0)",
+    "better": "class Solution:\n    def shortestCommonSupersequence(self, str1, str2):\n        from functools import lru_cache\n        def choose(a, b):\n            return a if len(a) <= len(b) else b\n        @lru_cache(None)\n        def dfs(i, j):\n            if i == len(str1):\n                return str2[j:]\n            if j == len(str2):\n                return str1[i:]\n            if str1[i] == str2[j]:\n                return str1[i] + dfs(i + 1, j + 1)\n            return choose(str1[i] + dfs(i + 1, j), str2[j] + dfs(i, j + 1))\n        return dfs(0, 0)",
+    "optimal": "class Solution:\n    def shortestCommonSupersequence(self, str1, str2):\n        n, m = len(str1), len(str2)\n        dp = [[0] * (m + 1) for _ in range(n + 1)]\n        for i in range(n, -1, -1):\n            for j in range(m, -1, -1):\n                if i == n:\n                    dp[i][j] = m - j\n                elif j == m:\n                    dp[i][j] = n - i\n                elif str1[i] == str2[j]:\n                    dp[i][j] = 1 + dp[i + 1][j + 1]\n                else:\n                    dp[i][j] = 1 + min(dp[i + 1][j], dp[i][j + 1])\n        i = j = 0\n        out = []\n        while i < n and j < m:\n            if str1[i] == str2[j]:\n                out.append(str1[i]); i += 1; j += 1\n            elif dp[i + 1][j] <= dp[i][j + 1]:\n                out.append(str1[i]); i += 1\n            else:\n                out.append(str2[j]); j += 1\n        out.append(str1[i:]); out.append(str2[j:])\n        return \"\".join(out)"
+  },
+  "starterCode": "class Solution:\n    def shortestCommonSupersequence(self, str1, str2):\n        # TODO: write your solution here\n        pass\n"
+}

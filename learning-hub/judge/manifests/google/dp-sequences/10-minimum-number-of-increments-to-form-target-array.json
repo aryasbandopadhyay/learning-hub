@@ -1,0 +1,35 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minNumberOperations",
+  "params": [
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "id": "google/dp-sequences/10-minimum-number-of-increments-to-form-target-array",
+  "title": "Minimum Number of Increments to Form Target Array",
+  "difficulty": "Hard",
+  "topic": "google/dp-sequences",
+  "solutions": {
+    "naive": "class Solution:\n    def minNumberOperations(self, target: list[int]) -> int:\n        arr = target[:]\n        ans = 0\n        while any(x > 0 for x in arr):\n            i = 0\n            while i < len(arr):\n                if arr[i] == 0:\n                    i += 1\n                    continue\n                ans += 1\n                while i < len(arr) and arr[i] > 0:\n                    arr[i] -= 1\n                    i += 1\n        return ans",
+    "better": "class Solution:\n    def minNumberOperations(self, target: list[int]) -> int:\n        def solve(l: int, r: int, base: int) -> int:\n            if l > r:\n                return 0\n            m = min(target[l:r + 1])\n            cost = m - base\n            i = l\n            while i <= r:\n                if target[i] == m:\n                    i += 1\n                else:\n                    j = i\n                    while j <= r and target[j] > m:\n                        j += 1\n                    cost += solve(i, j - 1, m)\n                    i = j\n            return cost\n        return solve(0, len(target) - 1, 0)",
+    "optimal": "class Solution:\n    def minNumberOperations(self, target: list[int]) -> int:\n        ans = target[0]\n        for i in range(1, len(target)):\n            if target[i] > target[i - 1]:\n                ans += target[i] - target[i - 1]\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def minNumberOperations(self, target):\n        # TODO: write your solution here\n        pass\n"
+}

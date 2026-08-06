@@ -1,0 +1,56 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "removeInterval",
+  "params": [
+    "intervals",
+    "toBeRemoved"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            7
+          ]
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          6,
+          7
+        ]
+      ]
+    }
+  ],
+  "id": "google/intervals/09-remove-interval",
+  "title": "Remove Interval",
+  "difficulty": "Medium",
+  "topic": "google/intervals",
+  "solutions": {
+    "naive": "class Solution:\n    def removeInterval(self, intervals: list[list[int]], toBeRemoved: list[int]) -> list[list[int]]:\n        remove_start, remove_end = toBeRemoved\n        answer = []\n        for start, end in intervals:\n            if end <= remove_start or start >= remove_end:\n                answer.append([start, end])\n            elif start < remove_start and remove_end < end:\n                answer.append([start, remove_start])\n                answer.append([remove_end, end])\n            elif start < remove_start:\n                answer.append([start, remove_start])\n            elif remove_end < end:\n                answer.append([remove_end, end])\n        return answer",
+    "better": "class Solution:\n    def removeInterval(self, intervals: list[list[int]], toBeRemoved: list[int]) -> list[list[int]]:\n        remove_start, remove_end = toBeRemoved\n        answer = []\n        for start, end in intervals:\n            if end <= remove_start or remove_end <= start:\n                answer.append([start, end])\n            else:\n                if start < remove_start:\n                    answer.append([start, remove_start])\n                if remove_end < end:\n                    answer.append([remove_end, end])\n        return answer",
+    "optimal": "class Solution:\n    def removeInterval(self, intervals: list[list[int]], toBeRemoved: list[int]) -> list[list[int]]:\n        remove_start, remove_end = toBeRemoved\n        answer = []\n        i = 0\n        while i < len(intervals) and intervals[i][1] <= remove_start:\n            answer.append(intervals[i][:])\n            i += 1\n        while i < len(intervals) and intervals[i][0] < remove_end:\n            start, end = intervals[i]\n            if start < remove_start:\n                answer.append([start, remove_start])\n            if remove_end < end:\n                answer.append([remove_end, end])\n            i += 1\n        while i < len(intervals):\n            answer.append(intervals[i][:])\n            i += 1\n        return answer"
+  },
+  "starterCode": "class Solution:\n    def removeInterval(self, intervals, toBeRemoved):\n        # TODO: write your solution here\n        pass\n"
+}

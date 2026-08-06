@@ -1,0 +1,41 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxDepth",
+  "params": [
+    "root"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree"
+  ],
+  "id": "trees/02-maximum-depth-of-binary-tree",
+  "title": "Maximum Depth of Binary Tree",
+  "difficulty": "Easy",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def maxDepth(self, root):\n        depths = []\n        def dfs(node, d):\n            if not node:\n                return\n            if not node.left and not node.right:\n                depths.append(d)\n            dfs(node.left, d + 1)\n            dfs(node.right, d + 1)\n        dfs(root, 1)\n        return max(depths) if depths else 0",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def maxDepth(self, root):\n        if not root:\n            return 0\n        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def maxDepth(self, root):\n        if not root:\n            return 0\n        ans = 0\n        stack = [(root, 1)]\n        while stack:\n            node, depth = stack.pop()\n            ans = max(ans, depth)\n            if node.left: stack.append((node.left, depth + 1))\n            if node.right: stack.append((node.right, depth + 1))\n        return ans"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def maxDepth(self, root):\n        # TODO: write your solution here\n        pass\n"
+}

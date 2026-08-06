@@ -1,0 +1,67 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findMaxAverage",
+  "params": [
+    "nums",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          12,
+          -5,
+          -6,
+          50,
+          3
+        ],
+        4
+      ],
+      "expected": 12.75
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "sliding-window/12-maximum-average-subarray-i",
+  "title": "Maximum Average Subarray I",
+  "difficulty": "Easy",
+  "topic": "sliding-window",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def findMaxAverage(self, nums: List[int], k: int) -> float:\n        best = -float(\"inf\")\n        for left in range(len(nums) - k + 1):\n            best = max(best, sum(nums[left:left + k]))\n        return best / k",
+    "better": "from typing import List\n\nclass Solution:\n    def findMaxAverage(self, nums: List[int], k: int) -> float:\n        prefix = [0]\n        for num in nums:\n            prefix.append(prefix[-1] + num)\n        best = -float(\"inf\")\n        for right in range(k, len(nums) + 1):\n            best = max(best, prefix[right] - prefix[right - k])\n        return best / k",
+    "optimal": "from typing import List\n\nclass Solution:\n    def findMaxAverage(self, nums: List[int], k: int) -> float:\n        window = sum(nums[:k])\n        best = window\n        for right in range(k, len(nums)):\n            # Slide by adding the new value and removing the value k steps back.\n            window += nums[right] - nums[right - k]\n            best = max(best, window)\n        return best / k"
+  },
+  "starterCode": "class Solution:\n    def findMaxAverage(self, nums, k):\n        # TODO: write your solution here\n        pass\n"
+}

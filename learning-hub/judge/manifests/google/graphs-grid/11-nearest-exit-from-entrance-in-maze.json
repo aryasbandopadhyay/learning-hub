@@ -1,0 +1,519 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "nearestExit",
+  "params": [
+    "maze",
+    "entrance"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            "+",
+            "+",
+            ".",
+            "+"
+          ],
+          [
+            ".",
+            ".",
+            ".",
+            "+"
+          ],
+          [
+            "+",
+            "+",
+            "+",
+            "."
+          ]
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            2476,
+            -3444,
+            9642,
+            -4142
+          ],
+          [
+            -2455,
+            -1860,
+            -5634,
+            -7163
+          ],
+          [
+            -1771,
+            2552,
+            7393,
+            7649
+          ],
+          [
+            -7057,
+            6032,
+            -3464,
+            3816
+          ],
+          [
+            9280,
+            -2900,
+            2254,
+            2717
+          ],
+          [
+            -3034,
+            -5011,
+            5121,
+            -4135
+          ],
+          [
+            8576,
+            1102,
+            -7282,
+            7324
+          ],
+          [
+            -7123,
+            5369,
+            367,
+            3193
+          ],
+          [
+            -8603,
+            -1173,
+            8282,
+            -9751
+          ],
+          [
+            3933,
+            -3324,
+            1879,
+            7508
+          ],
+          [
+            -7352,
+            5141,
+            6995,
+            -3510
+          ],
+          [
+            9841,
+            5161,
+            -8319,
+            1715
+          ],
+          [
+            -5769,
+            -2928,
+            -4731,
+            4474
+          ],
+          [
+            9510,
+            -4180,
+            6488,
+            -4233
+          ],
+          [
+            -8786,
+            -6403,
+            -9237,
+            -4391
+          ],
+          [
+            5523,
+            3730,
+            -7341,
+            3940
+          ],
+          [
+            -7182,
+            -5318,
+            151,
+            -9815
+          ],
+          [
+            2486,
+            803,
+            -5550,
+            7150
+          ],
+          [
+            3281,
+            -3421,
+            -8185,
+            -3072
+          ],
+          [
+            4515,
+            -1560,
+            7873,
+            3240
+          ]
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            1593,
+            5602,
+            -8171,
+            -5710
+          ],
+          [
+            9649,
+            -5071,
+            9924,
+            3379
+          ],
+          [
+            -5925,
+            -6839,
+            -6110,
+            -5293
+          ]
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -3199,
+            8381,
+            456,
+            6355
+          ],
+          [
+            -2336,
+            -1560,
+            -6160,
+            1852
+          ],
+          [
+            -3907,
+            -7628,
+            6424,
+            -573
+          ]
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          [
+            2352,
+            3077,
+            1034,
+            3087
+          ],
+          [
+            2646,
+            3568,
+            2156,
+            7510
+          ],
+          [
+            -6964,
+            -4062,
+            -8769,
+            2222
+          ],
+          [
+            3060,
+            4548,
+            -2457,
+            204
+          ],
+          [
+            -2593,
+            179,
+            -6535,
+            286
+          ]
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          [
+            4356,
+            -7375,
+            4346,
+            3798
+          ],
+          [
+            -1605,
+            -7717,
+            6487,
+            -398
+          ],
+          [
+            505,
+            5633,
+            7473,
+            -5830
+          ],
+          [
+            -1585,
+            4120,
+            -469,
+            3413
+          ],
+          [
+            -4777,
+            -750,
+            2417,
+            9800
+          ],
+          [
+            4419,
+            -3628,
+            2446,
+            1037
+          ],
+          [
+            -3524,
+            1317,
+            -9859,
+            1642
+          ],
+          [
+            -321,
+            -3667,
+            -4376,
+            -1449
+          ]
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          [
+            3377,
+            1322,
+            3103,
+            -9882
+          ],
+          [
+            -6320,
+            6438,
+            7424,
+            -3365
+          ],
+          [
+            -9958,
+            7108,
+            175,
+            -4516
+          ],
+          [
+            6748,
+            4552,
+            -3273,
+            -1353
+          ],
+          [
+            3658,
+            5336,
+            8362,
+            7400
+          ]
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -3438,
+            -9325,
+            -6555,
+            76
+          ],
+          [
+            -7524,
+            9022,
+            -8953,
+            -8090
+          ],
+          [
+            3656,
+            -179,
+            2098,
+            8259
+          ],
+          [
+            9267,
+            8838,
+            -328,
+            -3643
+          ],
+          [
+            -6720,
+            2932,
+            3056,
+            -4356
+          ],
+          [
+            -1323,
+            5100,
+            782,
+            -5791
+          ],
+          [
+            -5719,
+            4632,
+            2747,
+            3702
+          ],
+          [
+            8411,
+            -4140,
+            1791,
+            -1803
+          ]
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          [
+            5701,
+            8769,
+            5609,
+            -4447
+          ],
+          [
+            -7551,
+            7421,
+            -2150,
+            5069
+          ],
+          [
+            7143,
+            -9495,
+            -6237,
+            805
+          ]
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": -1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "maze",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 4
+        },
+        {
+          "name": "entrance",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  },
+  "id": "google/graphs-grid/11-nearest-exit-from-entrance-in-maze",
+  "title": "Nearest Exit from Entrance in Maze",
+  "difficulty": "Medium",
+  "topic": "google/graphs-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def nearestExit(self, maze: list[list[str]], entrance: list[int]) -> int:\n        m,n=len(maze),len(maze[0]); sr,sc=entrance; best=[10**9]; seen=set()\n        def is_exit(r,c): return (r,c)!=(sr,sc) and (r in (0,m-1) or c in (0,n-1))\n        def dfs(r,c,d):\n            if d>=best[0]: return\n            if is_exit(r,c): best[0]=d; return\n            seen.add((r,c))\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<m and 0<=nc<n and maze[nr][nc]=='.' and (nr,nc) not in seen: dfs(nr,nc,d+1)\n            seen.remove((r,c))\n        dfs(sr,sc,0)\n        return -1 if best[0]==10**9 else best[0]",
+    "better": "class Solution:\n    def nearestExit(self, maze: list[list[str]], entrance: list[int]) -> int:\n        from collections import deque\n        m,n=len(maze),len(maze[0]); sr,sc=entrance; q=deque([(sr,sc,0)]); seen={(sr,sc)}\n        while q:\n            r,c,d=q.popleft()\n            if (r,c)!=(sr,sc) and (r in (0,m-1) or c in (0,n-1)): return d\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<m and 0<=nc<n and maze[nr][nc]=='.' and (nr,nc) not in seen: seen.add((nr,nc)); q.append((nr,nc,d+1))\n        return -1",
+    "optimal": "class Solution:\n    def nearestExit(self, maze: list[list[str]], entrance: list[int]) -> int:\n        from collections import deque\n        maze=[row[:] for row in maze]; m,n=len(maze),len(maze[0]); sr,sc=entrance; maze[sr][sc]='+'; q=deque([(sr,sc,0)])\n        while q:\n            r,c,d=q.popleft()\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<m and 0<=nc<n and maze[nr][nc]=='.':\n                    if nr in (0,m-1) or nc in (0,n-1): return d+1\n                    maze[nr][nc]='+'; q.append((nr,nc,d+1))\n        return -1"
+  },
+  "starterCode": "class Solution:\n    def nearestExit(self, maze, entrance):\n        # TODO: write your solution here\n        pass\n"
+}

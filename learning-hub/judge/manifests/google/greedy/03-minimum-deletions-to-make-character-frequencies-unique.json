@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minDeletions",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "aaabbbcc"
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": 5
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/greedy/03-minimum-deletions-to-make-character-frequencies-unique",
+  "title": "Minimum Deletions to Make Character Frequencies Unique",
+  "difficulty": "Medium",
+  "topic": "google/greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def minDeletions(self, s: str) -> int:\n        from collections import Counter\n        used = set()\n        deletions = 0\n        for f in sorted(Counter(s).values(), reverse=True):\n            while f > 0 and f in used:\n                f -= 1\n                deletions += 1\n            if f > 0:\n                used.add(f)\n        return deletions",
+    "better": "class Solution:\n    def minDeletions(self, s):\n        from collections import Counter\n        buckets = Counter(Counter(s).values())\n        deletions = 0\n        for f in range(max(buckets) if buckets else 0, 0, -1):\n            extra = buckets[f] - 1\n            if extra > 0:\n                deletions += extra\n                buckets[f - 1] += extra\n        return deletions",
+    "optimal": "class Solution:\n    def minDeletions(self, s):\n        from collections import Counter\n        used = set()\n        deletions = 0\n        for f in Counter(s).values():\n            while f > 0 and f in used:\n                f -= 1\n                deletions += 1\n            if f > 0:\n                used.add(f)\n        return deletions"
+  },
+  "starterCode": "class Solution:\n    def minDeletions(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

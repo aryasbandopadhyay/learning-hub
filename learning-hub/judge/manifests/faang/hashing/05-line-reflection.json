@@ -1,0 +1,469 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isReflected",
+  "params": [
+    "points"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            2476,
+            -3444
+          ],
+          [
+            9642,
+            -4142
+          ],
+          [
+            -2455,
+            -1860
+          ],
+          [
+            -5634,
+            -7163
+          ],
+          [
+            -1771,
+            2552
+          ],
+          [
+            7393,
+            7649
+          ],
+          [
+            -7057,
+            6032
+          ],
+          [
+            -3464,
+            3816
+          ],
+          [
+            9280,
+            -2900
+          ],
+          [
+            2254,
+            2717
+          ],
+          [
+            -3034,
+            -5011
+          ],
+          [
+            5121,
+            -4135
+          ],
+          [
+            8576,
+            1102
+          ],
+          [
+            -7282,
+            7324
+          ],
+          [
+            -7123,
+            5369
+          ],
+          [
+            367,
+            3193
+          ],
+          [
+            -8603,
+            -1173
+          ],
+          [
+            8282,
+            -9751
+          ],
+          [
+            3933,
+            -3324
+          ],
+          [
+            1879,
+            7508
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            9841,
+            5161
+          ],
+          [
+            -8319,
+            1715
+          ],
+          [
+            -5769,
+            -2928
+          ],
+          [
+            -4731,
+            4474
+          ],
+          [
+            9510,
+            -4180
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -8786,
+            -6403
+          ],
+          [
+            -9237,
+            -4391
+          ],
+          [
+            5523,
+            3730
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -7182,
+            -5318
+          ],
+          [
+            151,
+            -9815
+          ],
+          [
+            2486,
+            803
+          ],
+          [
+            -5550,
+            7150
+          ],
+          [
+            3281,
+            -3421
+          ],
+          [
+            -8185,
+            -3072
+          ],
+          [
+            4515,
+            -1560
+          ],
+          [
+            7873,
+            3240
+          ],
+          [
+            -5860,
+            1593
+          ],
+          [
+            5602,
+            -8171
+          ],
+          [
+            -5710,
+            9649
+          ],
+          [
+            -5071,
+            9924
+          ],
+          [
+            3379,
+            -5925
+          ],
+          [
+            -6839,
+            -6110
+          ],
+          [
+            -5293,
+            -302
+          ],
+          [
+            -4294,
+            -4179
+          ],
+          [
+            3430,
+            -5232
+          ],
+          [
+            -3199,
+            8381
+          ],
+          [
+            456,
+            6355
+          ],
+          [
+            -2336,
+            -1560
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -3907,
+            -7628
+          ],
+          [
+            6424,
+            -573
+          ],
+          [
+            -9635,
+            9191
+          ],
+          [
+            -8438,
+            1057
+          ],
+          [
+            -2912,
+            2352
+          ],
+          [
+            3077,
+            1034
+          ],
+          [
+            3087,
+            2646
+          ],
+          [
+            3568,
+            2156
+          ],
+          [
+            7510,
+            -6964
+          ],
+          [
+            -4062,
+            -8769
+          ],
+          [
+            2222,
+            3060
+          ],
+          [
+            4548,
+            -2457
+          ],
+          [
+            204,
+            -2593
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -6535,
+            286
+          ],
+          [
+            -2837,
+            -1818
+          ],
+          [
+            2568,
+            -289
+          ],
+          [
+            4356,
+            -7375
+          ],
+          [
+            4346,
+            3798
+          ],
+          [
+            -1605,
+            -7717
+          ],
+          [
+            6487,
+            -398
+          ],
+          [
+            505,
+            5633
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          [
+            4120,
+            -469
+          ],
+          [
+            3413,
+            -4777
+          ],
+          [
+            -750,
+            2417
+          ],
+          [
+            9800,
+            4419
+          ],
+          [
+            -3628,
+            2446
+          ],
+          [
+            1037,
+            -3524
+          ],
+          [
+            1317,
+            -9859
+          ],
+          [
+            1642,
+            -321
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -4376,
+            -1449
+          ],
+          [
+            3654,
+            -2423
+          ],
+          [
+            3377,
+            1322
+          ],
+          [
+            3103,
+            -9882
+          ],
+          [
+            -6320,
+            6438
+          ]
+        ]
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "points",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "faang/hashing/05-line-reflection",
+  "title": "Line Reflection",
+  "difficulty": "Medium",
+  "topic": "faang/hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def isReflected(self, points: list[list[int]]) -> bool:\n        unique = []\n        for p in points:\n            if p not in unique:\n                unique.append(p)\n        xs = [p[0] for p in unique]\n        candidates = set()\n        for a in xs:\n            for b in xs:\n                candidates.add(a + b)\n        for total in candidates:\n            ok = True\n            for x, y in unique:\n                if [total - x, y] not in unique:\n                    ok = False\n                    break\n            if ok:\n                return True\n        return False",
+    "better": "class Solution:\n    def isReflected(self, points):\n        unique = sorted({(x, y) for x, y in points}, key=lambda p: (p[1], p[0]))\n        total = min(x for x, y in unique) + max(x for x, y in unique)\n        rows = {}\n        for x, y in unique:\n            rows.setdefault(y, []).append(x)\n        for xs in rows.values():\n            i, j = 0, len(xs) - 1\n            while i <= j:\n                if xs[i] + xs[j] != total:\n                    return False\n                i += 1\n                j -= 1\n        return True",
+    "optimal": "class Solution:\n    def isReflected(self, points):\n        seen = {(x, y) for x, y in points}\n        min_x = min(x for x, y in seen)\n        max_x = max(x for x, y in seen)\n        total = min_x + max_x\n        for x, y in seen:\n            if (total - x, y) not in seen:\n                return False\n        return True"
+  },
+  "starterCode": "class Solution:\n    def isReflected(self, points):\n        # TODO: write your solution here\n        pass\n"
+}

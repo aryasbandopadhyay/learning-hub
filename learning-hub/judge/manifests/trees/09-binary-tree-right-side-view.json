@@ -1,0 +1,45 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "rightSideView",
+  "params": [
+    "root"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          null,
+          5,
+          null,
+          4
+        ]
+      ],
+      "expected": [
+        1,
+        3,
+        4
+      ]
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree"
+  ],
+  "id": "trees/09-binary-tree-right-side-view",
+  "title": "Binary Tree Right Side View",
+  "difficulty": "Medium",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def rightSideView(self, root):\n        from collections import deque\n        if not root: return []\n        levels, q = [], deque([root])\n        while q:\n            row = []\n            for _ in range(len(q)):\n                node = q.popleft(); row.append(node.val)\n                if node.left: q.append(node.left)\n                if node.right: q.append(node.right)\n            levels.append(row)\n        return [row[-1] for row in levels]",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def rightSideView(self, root):\n        ans = []\n        def dfs(node, depth):\n            if not node: return\n            if depth == len(ans): ans.append(node.val)\n            dfs(node.right, depth + 1); dfs(node.left, depth + 1)\n        dfs(root, 0)\n        return ans",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def rightSideView(self, root):\n        from collections import deque\n        if not root: return []\n        ans, q = [], deque([root])\n        while q:\n            size = len(q)\n            for i in range(size):\n                node = q.popleft()\n                if node.left: q.append(node.left)\n                if node.right: q.append(node.right)\n                if i == size - 1:\n                    ans.append(node.val)\n        return ans"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def rightSideView(self, root):\n        # TODO: write your solution here\n        pass\n"
+}

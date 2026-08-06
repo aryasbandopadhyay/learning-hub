@@ -1,0 +1,43 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maximumBags",
+  "params": [
+    "capacity",
+    "rocks",
+    "additionalRocks"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          4,
+          4
+        ],
+        2
+      ],
+      "expected": 3
+    }
+  ],
+  "id": "faang/greedy-scheduling/19-maximum-bags-with-full-capacity-of-rocks",
+  "title": "Maximum Bags With Full Capacity of Rocks",
+  "difficulty": "Medium",
+  "topic": "faang/greedy-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def maximumBags(self, capacity: list[int], rocks: list[int], additionalRocks: int) -> int:\n        gaps = [capacity[i] - rocks[i] for i in range(len(capacity))]\n        full = sum(1 for gap in gaps if gap == 0)\n        used = [gap == 0 for gap in gaps]\n        while True:\n            best = -1\n            for i, gap in enumerate(gaps):\n                if not used[i] and (best == -1 or gap < gaps[best]):\n                    best = i\n            if best == -1 or gaps[best] > additionalRocks:\n                return full\n            additionalRocks -= gaps[best]\n            used[best] = True\n            full += 1",
+    "better": "class Solution:\n    def maximumBags(self, capacity: list[int], rocks: list[int], additionalRocks: int) -> int:\n        import heapq\n\n        full = 0\n        heap = []\n        for cap, rock in zip(capacity, rocks):\n            gap = cap - rock\n            if gap == 0:\n                full += 1\n            else:\n                heapq.heappush(heap, gap)\n        while heap and heap[0] <= additionalRocks:\n            additionalRocks -= heapq.heappop(heap)\n            full += 1\n        return full",
+    "optimal": "class Solution:\n    def maximumBags(self, capacity: list[int], rocks: list[int], additionalRocks: int) -> int:\n        gaps = sorted(cap - rock for cap, rock in zip(capacity, rocks))\n        full = 0\n        for gap in gaps:\n            if gap <= additionalRocks:\n                additionalRocks -= gap\n                full += 1\n            else:\n                break\n        return full"
+  },
+  "starterCode": "class Solution:\n    def maximumBags(self, capacity, rocks, additionalRocks):\n        # TODO: write your solution here\n        pass\n"
+}

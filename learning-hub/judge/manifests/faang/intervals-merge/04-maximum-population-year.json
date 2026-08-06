@@ -1,0 +1,69 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maximumPopulation",
+  "params": [
+    "logs"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1993,
+            1999
+          ],
+          [
+            2000,
+            2010
+          ],
+          [
+            1975,
+            2005
+          ],
+          [
+            1990,
+            2001
+          ]
+        ]
+      ],
+      "expected": 1993
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "logs",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "faang/intervals-merge/04-maximum-population-year",
+  "title": "Maximum Population Year",
+  "difficulty": "Medium",
+  "topic": "faang/intervals-merge",
+  "solutions": {
+    "naive": "class Solution:\n    def maximumPopulation(self, logs: list[list[int]]) -> int:\n        best_year = 1900\n        best_pop = -1\n        for year in range(1900, 2101):\n            pop = 0\n            for birth, death in logs:\n                if birth <= year < death:\n                    pop += 1\n            if pop > best_pop:\n                best_pop = pop\n                best_year = year\n        return best_year",
+    "better": "class Solution:\n    def maximumPopulation(self, logs: list[list[int]]) -> int:\n        events = []\n        for birth, death in logs:\n            events.append((birth, 1))\n            events.append((death, -1))\n        events.sort()\n        pop = 0\n        best_pop = -1\n        best_year = 1900\n        i = 0\n        while i < len(events):\n            year = events[i][0]\n            while i < len(events) and events[i][0] == year:\n                pop += events[i][1]\n                i += 1\n            if pop > best_pop:\n                best_pop = pop\n                best_year = year\n        return best_year",
+    "optimal": "class Solution:\n    def maximumPopulation(self, logs: list[list[int]]) -> int:\n        base = 1900\n        diff = [0] * 202\n        for birth, death in logs:\n            diff[birth - base] += 1\n            diff[death - base] -= 1\n        pop = 0\n        best_pop = -1\n        best_year = base\n        for offset in range(201):\n            pop += diff[offset]\n            if pop > best_pop:\n                best_pop = pop\n                best_year = base + offset\n        return best_year"
+  },
+  "starterCode": "class Solution:\n    def maximumPopulation(self, logs):\n        # TODO: write your solution here\n        pass\n"
+}

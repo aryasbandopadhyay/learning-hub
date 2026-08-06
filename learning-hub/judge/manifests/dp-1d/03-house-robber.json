@@ -1,0 +1,34 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "rob",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": 4
+    }
+  ],
+  "id": "dp-1d/03-house-robber",
+  "title": "House Robber",
+  "difficulty": "Medium",
+  "topic": "dp-1d",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        def dfs(i: int) -> int:\n            if i >= len(nums):\n                return 0\n            return max(nums[i] + dfs(i + 2), dfs(i + 1))\n\n        return dfs(0)",
+    "better": "from typing import List\n\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        memo = {}\n\n        def dfs(i: int) -> int:\n            if i >= len(nums):\n                return 0\n            if i not in memo:\n                memo[i] = max(nums[i] + dfs(i + 2), dfs(i + 1))\n            return memo[i]\n\n        return dfs(0)",
+    "optimal": "from typing import List\n\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        rob_prev, skip_prev = 0, 0\n        for money in nums:\n            new_rob = skip_prev + money\n            new_skip = max(skip_prev, rob_prev)\n            rob_prev, skip_prev = new_rob, new_skip\n        return max(rob_prev, skip_prev)"
+  },
+  "starterCode": "class Solution:\n    def rob(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

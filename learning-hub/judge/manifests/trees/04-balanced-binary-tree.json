@@ -1,0 +1,41 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isBalanced",
+  "params": [
+    "root"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ]
+      ],
+      "expected": true
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree"
+  ],
+  "id": "trees/04-balanced-binary-tree",
+  "title": "Balanced Binary Tree",
+  "difficulty": "Easy",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isBalanced(self, root):\n        def height(node):\n            if not node: return 0\n            return 1 + max(height(node.left), height(node.right))\n        if not root: return True\n        return abs(height(root.left) - height(root.right)) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isBalanced(self, root):\n        def check(node):\n            if not node: return 0\n            left = check(node.left)\n            if left == -1: return -1\n            right = check(node.right)\n            if right == -1 or abs(left - right) > 1: return -1\n            return 1 + max(left, right)\n        return check(root) != -1",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isBalanced(self, root):\n        heights = {None: 0}\n        stack = [(root, False)]\n        while stack:\n            node, seen = stack.pop()\n            if not node: continue\n            if seen:\n                l, r = heights[node.left], heights[node.right]\n                if abs(l - r) > 1: return False\n                heights[node] = 1 + max(l, r)\n            else:\n                stack.append((node, True)); stack.append((node.right, False)); stack.append((node.left, False))\n        return True"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def isBalanced(self, root):\n        # TODO: write your solution here\n        pass\n"
+}

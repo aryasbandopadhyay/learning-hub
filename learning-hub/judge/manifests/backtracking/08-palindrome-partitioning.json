@@ -1,0 +1,39 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "partition",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "aab"
+      ],
+      "expected": [
+        [
+          "a",
+          "a",
+          "b"
+        ],
+        [
+          "aa",
+          "b"
+        ]
+      ]
+    }
+  ],
+  "id": "backtracking/08-palindrome-partitioning",
+  "title": "Palindrome Partitioning",
+  "difficulty": "Medium",
+  "topic": "backtracking",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def partition(self, s: str) -> List[List[str]]:\n        result = []\n        path = []\n\n        def dfs(start: int) -> None:\n            if start == len(s):\n                if all(part == part[::-1] for part in path):\n                    result.append(path.copy())\n                return\n            for end in range(start + 1, len(s) + 1):\n                path.append(s[start:end])\n                dfs(end)\n                path.pop()\n\n        dfs(0)\n        return result",
+    "better": "from typing import List\n\nclass Solution:\n    def partition(self, s: str) -> List[List[str]]:\n        result = []\n        path = []\n\n        def is_pal(left: int, right: int) -> bool:\n            while left < right:\n                if s[left] != s[right]:\n                    return False\n                left += 1\n                right -= 1\n            return True\n\n        def backtrack(start: int) -> None:\n            if start == len(s):\n                result.append(path.copy())\n                return\n            for end in range(start, len(s)):\n                if not is_pal(start, end):\n                    continue\n                path.append(s[start:end + 1])\n                backtrack(end + 1)\n                path.pop()\n\n        backtrack(0)\n        return result",
+    "optimal": "from typing import List\n\nclass Solution:\n    def partition(self, s: str) -> List[List[str]]:\n        n = len(s)\n        pal = [[False] * n for _ in range(n)]\n        for length in range(1, n + 1):\n            for i in range(n - length + 1):\n                j = i + length - 1\n                pal[i][j] = s[i] == s[j] and (length <= 2 or pal[i + 1][j - 1])\n\n        result = []\n        path = []\n\n        def backtrack(start: int) -> None:\n            if start == n:\n                result.append(path.copy())\n                return\n            for end in range(start, n):\n                if pal[start][end]:\n                    path.append(s[start:end + 1])\n                    backtrack(end + 1)\n                    path.pop()\n\n        backtrack(0)\n        return result"
+  },
+  "starterCode": "class Solution:\n    def partition(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

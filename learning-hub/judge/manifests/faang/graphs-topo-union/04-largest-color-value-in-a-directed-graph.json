@@ -1,0 +1,301 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "largestPathValue",
+  "params": [
+    "colors",
+    "edges"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "abaca",
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "aeccdebc",
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "debcdeed",
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "bcaccbbcdbdcd",
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "colors",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "edges",
+          "type": "list[list[int]]",
+          "role": "const",
+          "value": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              4
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "id": "faang/graphs-topo-union/04-largest-color-value-in-a-directed-graph",
+  "title": "Largest Color Value in a Directed Graph",
+  "difficulty": "Hard",
+  "topic": "faang/graphs-topo-union",
+  "solutions": {
+    "naive": "class Solution:\n    def largestPathValue(self, colors: str, edges: list[list[int]]) -> int:\n        n = len(colors)\n        g = [[] for _ in range(n)]\n        for a, b in edges:\n            g[a].append(b)\n        state = [0] * n\n        memo = [[0] * 26 for _ in range(n)]\n        def dfs(u):\n            if state[u] == 1:\n                return None\n            if state[u] == 2:\n                return memo[u]\n            state[u] = 1\n            best = [0] * 26\n            for v in g[u]:\n                got = dfs(v)\n                if got is None:\n                    return None\n                for c in range(26):\n                    best[c] = max(best[c], got[c])\n            best[ord(colors[u]) - 97] += 1\n            memo[u] = best; state[u] = 2\n            return best\n        ans = 0\n        for i in range(n):\n            got = dfs(i)\n            if got is None:\n                return -1\n            ans = max(ans, max(got))\n        return ans",
+    "better": "class Solution:\n    def largestPathValue(self, colors: str, edges: list[list[int]]) -> int:\n        from collections import deque\n        n = len(colors)\n        g = [[] for _ in range(n)]\n        indeg = [0] * n\n        for a, b in edges:\n            g[a].append(b); indeg[b] += 1\n        dp = [[0] * 26 for _ in range(n)]\n        q = deque([i for i in range(n) if indeg[i] == 0])\n        seen = ans = 0\n        while q:\n            u = q.popleft(); seen += 1\n            dp[u][ord(colors[u]) - 97] += 1\n            ans = max(ans, max(dp[u]))\n            for v in g[u]:\n                for c in range(26):\n                    dp[v][c] = max(dp[v][c], dp[u][c])\n                indeg[v] -= 1\n                if indeg[v] == 0:\n                    q.append(v)\n        return ans if seen == n else -1",
+    "optimal": "class Solution:\n    def largestPathValue(self, colors: str, edges: list[list[int]]) -> int:\n        import heapq\n        n = len(colors)\n        g = [[] for _ in range(n)]\n        indeg = [0] * n\n        for u, v in edges:\n            g[u].append(v); indeg[v] += 1\n        counts = [[0] * 26 for _ in range(n)]\n        heap = [i for i in range(n) if indeg[i] == 0]\n        heapq.heapify(heap)\n        seen = ans = 0\n        while heap:\n            u = heapq.heappop(heap); seen += 1\n            counts[u][ord(colors[u]) - 97] += 1\n            ans = max(ans, max(counts[u]))\n            for v in g[u]:\n                for c in range(26):\n                    counts[v][c] = max(counts[v][c], counts[u][c])\n                indeg[v] -= 1\n                if indeg[v] == 0:\n                    heapq.heappush(heap, v)\n        return ans if seen == n else -1"
+  },
+  "starterCode": "class Solution:\n    def largestPathValue(self, colors, edges):\n        # TODO: write your solution here\n        pass\n"
+}

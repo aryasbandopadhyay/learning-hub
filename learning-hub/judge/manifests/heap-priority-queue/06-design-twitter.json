@@ -1,0 +1,78 @@
+{
+  "shape": "design",
+  "className": "Twitter",
+  "entry": null,
+  "params": [],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "Twitter",
+        "postTweet",
+        "getNewsFeed",
+        "follow",
+        "postTweet",
+        "getNewsFeed",
+        "unfollow",
+        "getNewsFeed"
+      ],
+      "args": [
+        [],
+        [
+          1,
+          5
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        [
+          5
+        ],
+        null,
+        null,
+        [
+          6,
+          5
+        ],
+        null,
+        [
+          5
+        ]
+      ]
+    }
+  ],
+  "id": "heap-priority-queue/06-design-twitter",
+  "title": "Design Twitter",
+  "difficulty": "Medium",
+  "topic": "heap-priority-queue",
+  "solutions": {
+    "naive": "from collections import defaultdict\nfrom typing import List\n\nclass Twitter:\n    def __init__(self):\n        self.time = 0\n        self.tweets = []  # (time, userId, tweetId)\n        self.follows = defaultdict(set)\n\n    def postTweet(self, userId: int, tweetId: int) -> None:\n        self.time += 1\n        self.tweets.append((self.time, userId, tweetId))\n\n    def getNewsFeed(self, userId: int) -> List[int]:\n        visible = self.follows[userId] | {userId}\n        feed = []\n        for _, author, tweet_id in reversed(self.tweets):\n            if author in visible:\n                feed.append(tweet_id)\n                if len(feed) == 10:\n                    break\n        return feed\n\n    def follow(self, followerId: int, followeeId: int) -> None:\n        if followerId != followeeId:\n            self.follows[followerId].add(followeeId)\n\n    def unfollow(self, followerId: int, followeeId: int) -> None:\n        self.follows[followerId].discard(followeeId)",
+    "better": "from collections import defaultdict\nfrom typing import List\n\nclass Twitter:\n    def __init__(self):\n        self.time = 0\n        self.user_tweets = defaultdict(list)  # userId -> [(time, tweetId)]\n        self.follows = defaultdict(set)\n\n    def postTweet(self, userId: int, tweetId: int) -> None:\n        self.time += 1\n        self.user_tweets[userId].append((self.time, tweetId))\n\n    def getNewsFeed(self, userId: int) -> List[int]:\n        candidates = []\n        for user in self.follows[userId] | {userId}:\n            candidates.extend(self.user_tweets[user])\n        candidates.sort(reverse=True)\n        return [tweet_id for _, tweet_id in candidates[:10]]\n\n    def follow(self, followerId: int, followeeId: int) -> None:\n        if followerId != followeeId:\n            self.follows[followerId].add(followeeId)\n\n    def unfollow(self, followerId: int, followeeId: int) -> None:\n        self.follows[followerId].discard(followeeId)",
+    "optimal": "from collections import defaultdict\nfrom typing import List\nimport heapq\n\nclass Twitter:\n    def __init__(self):\n        self.time = 0\n        self.user_tweets = defaultdict(list)  # userId -> [(time, tweetId)]\n        self.follows = defaultdict(set)\n\n    def postTweet(self, userId: int, tweetId: int) -> None:\n        self.time += 1\n        self.user_tweets[userId].append((self.time, tweetId))\n\n    def getNewsFeed(self, userId: int) -> List[int]:\n        heap = []\n        for user in self.follows[userId] | {userId}:\n            tweets = self.user_tweets[user]\n            if tweets:\n                index = len(tweets) - 1\n                time, tweet_id = tweets[index]\n                # Negative time makes heapq behave like a max-heap.\n                heapq.heappush(heap, (-time, tweet_id, user, index - 1))\n\n        feed = []\n        while heap and len(feed) < 10:\n            neg_time, tweet_id, user, next_index = heapq.heappop(heap)\n            feed.append(tweet_id)\n            if next_index >= 0:\n                time, next_tweet = self.user_tweets[user][next_index]\n                heapq.heappush(heap, (-time, next_tweet, user, next_index - 1))\n        return feed\n\n    def follow(self, followerId: int, followeeId: int) -> None:\n        if followerId != followeeId:\n            self.follows[followerId].add(followeeId)\n\n    def unfollow(self, followerId: int, followeeId: int) -> None:\n        self.follows[followerId].discard(followeeId)"
+  },
+  "starterCode": "class Twitter:\n    def __init__(self):\n        # TODO: write your solution here\n        pass\n\n    def postTweet(self, userId, tweetId):\n        # TODO: write your solution here\n        pass\n\n    def getNewsFeed(self, userId):\n        # TODO: write your solution here\n        pass\n\n    def follow(self, followerId, followeeId):\n        # TODO: write your solution here\n        pass\n\n    def unfollow(self, followerId, followeeId):\n        # TODO: write your solution here\n        pass\n"
+}

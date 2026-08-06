@@ -1,0 +1,93 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maximumSwap",
+  "params": [
+    "num"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        2736
+      ],
+      "expected": 7236
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239
+      ],
+      "expected": 9236
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        3773
+      ],
+      "expected": 7733
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        4115
+      ],
+      "expected": 5114
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017
+      ],
+      "expected": 8710
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128
+      ],
+      "expected": 8126
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495
+      ],
+      "expected": 9425
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9289
+      ],
+      "expected": 9982
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685
+      ],
+      "expected": 8675
+    }
+  ],
+  "id": "google/greedy/11-maximum-swap",
+  "title": "Maximum Swap",
+  "difficulty": "Medium",
+  "topic": "google/greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def maximumSwap(self, num: int) -> int:\n        digits = list(str(num))\n        best = num\n        for i in range(len(digits)):\n            for j in range(i, len(digits)):\n                arr = digits[:]\n                arr[i], arr[j] = arr[j], arr[i]\n                best = max(best, int(''.join(arr)))\n        return best",
+    "better": "class Solution:\n    def maximumSwap(self, num):\n        digits = list(str(num))\n        n = len(digits)\n        best_idx = [0] * n\n        best_idx[-1] = n - 1\n        for i in range(n - 2, -1, -1):\n            if digits[i] > digits[best_idx[i + 1]]:\n                best_idx[i] = i\n            else:\n                best_idx[i] = best_idx[i + 1]\n        for i in range(n):\n            j = best_idx[i]\n            if digits[j] > digits[i]:\n                digits[i], digits[j] = digits[j], digits[i]\n                break\n        return int(''.join(digits))",
+    "optimal": "class Solution:\n    def maximumSwap(self, num):\n        digits = list(str(num))\n        last = {int(d): i for i, d in enumerate(digits)}\n        for i, ch in enumerate(digits):\n            cur = int(ch)\n            for d in range(9, cur, -1):\n                if last.get(d, -1) > i:\n                    j = last[d]\n                    digits[i], digits[j] = digits[j], digits[i]\n                    return int(''.join(digits))\n        return num"
+  },
+  "starterCode": "class Solution:\n    def maximumSwap(self, num):\n        # TODO: write your solution here\n        pass\n"
+}

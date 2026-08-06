@@ -1,0 +1,78 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "mostBooked",
+  "params": [
+    "n",
+    "meetings"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        2,
+        [
+          [
+            0,
+            10
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "meetings",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/heap-topk/12-meeting-rooms-iii",
+  "title": "Meeting Rooms III",
+  "difficulty": "Hard",
+  "topic": "google/heap-topk",
+  "solutions": {
+    "naive": "class Solution:\n    def mostBooked(self, n: int, meetings: list[list[int]]) -> int:\n        free_at = [0] * n\n        count = [0] * n\n        for start, end in sorted(meetings):\n            duration = end - start\n            chosen = -1\n            for room in range(n):\n                if free_at[room] <= start:\n                    chosen = room\n                    break\n            if chosen == -1:\n                chosen = min(range(n), key=lambda r: (free_at[r], r))\n                start = free_at[chosen]\n            free_at[chosen] = start + duration\n            count[chosen] += 1\n        return min(range(n), key=lambda r: (-count[r], r))",
+    "better": "class Solution:\n    def mostBooked(self, n: int, meetings: list[list[int]]) -> int:\n        import bisect\n        idle = list(range(n))\n        busy = []\n        count = [0] * n\n        for start, end in sorted(meetings):\n            duration = end - start\n            while busy and busy[0][0] <= start:\n                free_time, room = busy.pop(0)\n                bisect.insort(idle, room)\n            if idle:\n                room = idle.pop(0)\n                finish = end\n            else:\n                free_time, room = busy.pop(0)\n                finish = free_time + duration\n            count[room] += 1\n            bisect.insort(busy, (finish, room))\n        return min(range(n), key=lambda r: (-count[r], r))",
+    "optimal": "class Solution:\n    def mostBooked(self, n: int, meetings: list[list[int]]) -> int:\n        import heapq\n        idle = list(range(n))\n        heapq.heapify(idle)\n        busy = []\n        count = [0] * n\n        for start, end in sorted(meetings):\n            duration = end - start\n            while busy and busy[0][0] <= start:\n                _, room = heapq.heappop(busy)\n                heapq.heappush(idle, room)\n            if idle:\n                room = heapq.heappop(idle)\n                finish = end\n            else:\n                free_time, room = heapq.heappop(busy)\n                finish = free_time + duration\n            count[room] += 1\n            heapq.heappush(busy, (finish, room))\n        return min(range(n), key=lambda r: (-count[r], r))"
+  },
+  "starterCode": "class Solution:\n    def mostBooked(self, n, meetings):\n        # TODO: write your solution here\n        pass\n"
+}

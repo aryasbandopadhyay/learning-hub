@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "pushDominoes",
+  "params": [
+    "dominoes"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        ".L.R...LR..L.."
+      ],
+      "expected": "LL.RR.LLRRLL.."
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "dominoes",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/arrays-two-pointers/05-push-dominoes",
+  "title": "Push Dominoes",
+  "difficulty": "Medium",
+  "topic": "faang/arrays-two-pointers",
+  "solutions": {
+    "naive": "class Solution:\n    def pushDominoes(self, dominoes: str) -> str:\n        arr = list(dominoes)\n        changed = True\n        while changed:\n            changed = False\n            nxt = arr[:]\n            for i, ch in enumerate(arr):\n                if ch == '.':\n                    left = i > 0 and arr[i - 1] == 'R'\n                    right = i + 1 < len(arr) and arr[i + 1] == 'L'\n                    if left and not right:\n                        nxt[i] = 'R'; changed = True\n                    elif right and not left:\n                        nxt[i] = 'L'; changed = True\n            arr = nxt\n        return ''.join(arr)",
+    "better": "class Solution:\n    def pushDominoes(self, dominoes: str) -> str:\n        n = len(dominoes)\n        force = 0\n        forces = [0] * n\n        for i, ch in enumerate(dominoes):\n            force = n if ch == 'R' else 0 if ch == 'L' else max(force - 1, 0)\n            forces[i] += force\n        force = 0\n        for i in range(n - 1, -1, -1):\n            ch = dominoes[i]\n            force = n if ch == 'L' else 0 if ch == 'R' else max(force - 1, 0)\n            forces[i] -= force\n        return ''.join('R' if f > 0 else 'L' if f < 0 else '.' for f in forces)",
+    "optimal": "class Solution:\n    def pushDominoes(self, dominoes: str) -> str:\n        marks = [(-1, 'L')] + [(i, c) for i, c in enumerate(dominoes) if c != '.'] + [(len(dominoes), 'R')]\n        ans = list(dominoes)\n        for p in range(len(marks) - 1):\n            i, a = marks[p]\n            j, b = marks[p + 1]\n            if a == b:\n                for k in range(i + 1, j):\n                    ans[k] = a\n            elif a == 'R' and b == 'L':\n                l, r = i + 1, j - 1\n                while l < r:\n                    ans[l] = 'R'; ans[r] = 'L'; l += 1; r -= 1\n        return ''.join(ans)"
+  },
+  "starterCode": "class Solution:\n    def pushDominoes(self, dominoes):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,86 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "carFleet",
+  "params": [
+    "target",
+    "position",
+    "speed"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        12,
+        [
+          10,
+          8,
+          0,
+          5,
+          3
+        ],
+        [
+          2,
+          4,
+          1,
+          1,
+          3
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "target",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "position",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "speed",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            2,
+            4,
+            1,
+            1,
+            3
+          ]
+        }
+      ]
+    }
+  },
+  "id": "stack/06-car-fleet",
+  "title": "Car Fleet",
+  "difficulty": "Medium",
+  "topic": "stack",
+  "solutions": {
+    "naive": "class Solution:\n    def carFleet(self, target: int, position: list[int], speed: list[int]) -> int:\n        cars = sorted(zip(position, speed), reverse=True)\n        times = [(target - p) / s for p, s in cars]\n        fleets = []\n        for time in times:\n            fleets.append(time)\n            # If the new rear car catches the fleet ahead, merge it.\n            while len(fleets) >= 2 and fleets[-1] <= fleets[-2]:\n                fleets.pop()\n        return len(fleets)",
+    "better": "class Solution:\n    def carFleet(self, target: int, position: list[int], speed: list[int]) -> int:\n        stack = []\n        for p, s in sorted(zip(position, speed), reverse=True):\n            time = (target - p) / s\n            if not stack or time > stack[-1]:\n                # Slower than the fleet ahead, so it starts a new fleet.\n                stack.append(time)\n        return len(stack)",
+    "optimal": "class Solution:\n    def carFleet(self, target: int, position: list[int], speed: list[int]) -> int:\n        fleets = 0\n        slowest_time_ahead = 0.0\n        for p, s in sorted(zip(position, speed), reverse=True):\n            time = (target - p) / s\n            if time > slowest_time_ahead:\n                fleets += 1\n                slowest_time_ahead = time\n        return fleets"
+  },
+  "starterCode": "class Solution:\n    def carFleet(self, target, position, speed):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,39 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "diameterOfBinaryTree",
+  "params": [
+    "root"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree"
+  ],
+  "id": "trees/03-diameter-of-binary-tree",
+  "title": "Diameter of Binary Tree",
+  "difficulty": "Easy",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def diameterOfBinaryTree(self, root):\n        def height(node):\n            if not node: return 0\n            return 1 + max(height(node.left), height(node.right))\n        if not root:\n            return 0\n        here = height(root.left) + height(root.right)\n        return max(here, self.diameterOfBinaryTree(root.left), self.diameterOfBinaryTree(root.right))",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def diameterOfBinaryTree(self, root):\n        best = 0\n        def dfs(node):\n            nonlocal best\n            if not node: return 0\n            left, right = dfs(node.left), dfs(node.right)\n            best = max(best, left + right)\n            return 1 + max(left, right)\n        dfs(root)\n        return best",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def diameterOfBinaryTree(self, root):\n        if not root: return 0\n        height, best = {}, 0\n        stack = [(root, False)]\n        while stack:\n            node, seen = stack.pop()\n            if not node: continue\n            if seen:\n                l = height.get(node.left, 0); r = height.get(node.right, 0)\n                best = max(best, l + r)\n                height[node] = 1 + max(l, r)\n            else:\n                stack.append((node, True)); stack.append((node.right, False)); stack.append((node.left, False))\n        return best"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def diameterOfBinaryTree(self, root):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,65 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "numSubarrayProductLessThanK",
+  "params": [
+    "nums",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          10,
+          5,
+          2,
+          6
+        ],
+        100
+      ],
+      "expected": 8
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/arrays-prefix-sum/07-subarray-product-less-than-k",
+  "title": "Subarray Product Less Than K",
+  "difficulty": "Medium",
+  "topic": "google/arrays-prefix-sum",
+  "solutions": {
+    "naive": "class Solution:\n    def numSubarrayProductLessThanK(self, nums: list[int], k: int) -> int:\n        ans = 0\n        n = len(nums)\n        for i in range(n):\n            prod = 1\n            for j in range(i, n):\n                prod *= nums[j]\n                if prod < k:\n                    ans += 1\n        return ans",
+    "better": "class Solution:\n    def numSubarrayProductLessThanK(self, nums: list[int], k: int) -> int:\n        if k <= 1:\n            return 0\n        ans = 0\n        n = len(nums)\n        for i in range(n):\n            prod = 1\n            for j in range(i, n):\n                prod *= nums[j]\n                if prod >= k:\n                    break\n                ans += 1\n        return ans",
+    "optimal": "class Solution:\n    def numSubarrayProductLessThanK(self, nums: list[int], k: int) -> int:\n        if k <= 1:\n            return 0\n        prod = 1\n        left = 0\n        ans = 0\n        for right, x in enumerate(nums):\n            prod *= x\n            while prod >= k:\n                prod //= nums[left]\n                left += 1\n            ans += right - left + 1\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def numSubarrayProductLessThanK(self, nums, k):\n        # TODO: write your solution here\n        pass\n"
+}

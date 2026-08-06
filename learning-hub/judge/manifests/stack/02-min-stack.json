@@ -1,0 +1,59 @@
+{
+  "shape": "design",
+  "className": "MinStack",
+  "entry": null,
+  "params": [],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "MinStack",
+        "push",
+        "push",
+        "push",
+        "getMin",
+        "pop",
+        "top",
+        "getMin"
+      ],
+      "args": [
+        [],
+        [
+          -2
+        ],
+        [
+          0
+        ],
+        [
+          -3
+        ],
+        [],
+        [],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        -3,
+        null,
+        0,
+        -2
+      ]
+    }
+  ],
+  "id": "stack/02-min-stack",
+  "title": "Min Stack",
+  "difficulty": "Medium",
+  "topic": "stack",
+  "solutions": {
+    "naive": "class MinStack:\n    def __init__(self):\n        self.stack = []\n\n    def push(self, val: int) -> None:\n        self.stack.append(val)\n\n    def pop(self) -> None:\n        self.stack.pop()\n\n    def top(self) -> int:\n        return self.stack[-1]\n\n    def getMin(self) -> int:\n        # Brute force: compute the minimum only when asked.\n        return min(self.stack)",
+    "better": "class MinStack:\n    def __init__(self):\n        self.stack = []\n        self.mins = []\n\n    def push(self, val: int) -> None:\n        self.stack.append(val)\n        if not self.mins or val <= self.mins[-1]:\n            self.mins.append(val)\n\n    def pop(self) -> None:\n        val = self.stack.pop()\n        # Pop from mins only when the removed value was the active minimum.\n        if val == self.mins[-1]:\n            self.mins.pop()\n\n    def top(self) -> int:\n        return self.stack[-1]\n\n    def getMin(self) -> int:\n        return self.mins[-1]",
+    "optimal": "class MinStack:\n    def __init__(self):\n        self.stack = []\n\n    def push(self, val: int) -> None:\n        current_min = val if not self.stack else min(val, self.stack[-1][1])\n        # Pair the value with the minimum after this push.\n        self.stack.append((val, current_min))\n\n    def pop(self) -> None:\n        self.stack.pop()\n\n    def top(self) -> int:\n        return self.stack[-1][0]\n\n    def getMin(self) -> int:\n        return self.stack[-1][1]"
+  },
+  "starterCode": "class MinStack:\n    def __init__(self):\n        # TODO: write your solution here\n        pass\n\n    def push(self, val):\n        # TODO: write your solution here\n        pass\n\n    def pop(self):\n        # TODO: write your solution here\n        pass\n\n    def top(self):\n        # TODO: write your solution here\n        pass\n\n    def getMin(self):\n        # TODO: write your solution here\n        pass\n"
+}

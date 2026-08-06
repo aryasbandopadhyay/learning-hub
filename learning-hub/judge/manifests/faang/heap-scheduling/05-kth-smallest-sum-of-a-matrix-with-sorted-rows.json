@@ -1,0 +1,42 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "kthSmallest",
+  "params": [
+    "mat",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            3,
+            11
+          ],
+          [
+            2,
+            4,
+            6
+          ]
+        ],
+        5
+      ],
+      "expected": 7
+    }
+  ],
+  "id": "faang/heap-scheduling/05-kth-smallest-sum-of-a-matrix-with-sorted-rows",
+  "title": "Kth Smallest Sum of a Matrix With Sorted Rows",
+  "difficulty": "Hard",
+  "topic": "faang/heap-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def kthSmallest(self, mat: list[list[int]], k: int) -> int:\n        sums = [0]\n        for row in mat:\n            new_sums = []\n            for s in sums:\n                for x in row:\n                    new_sums.append(s + x)\n            sums = new_sums\n        sums.sort()\n        return sums[k - 1]",
+    "better": "class Solution:\n    def kthSmallest(self, mat: list[list[int]], k: int) -> int:\n        sums = [0]\n        for row in mat:\n            merged = []\n            for s in sums:\n                for x in row:\n                    merged.append(s + x)\n            merged.sort()\n            sums = merged[:k]\n        return sums[k - 1]",
+    "optimal": "class Solution:\n    def kthSmallest(self, mat: list[list[int]], k: int) -> int:\n        import heapq\n        m = len(mat)\n        start = tuple([0] * m)\n        start_sum = sum(row[0] for row in mat)\n        heap = [(start_sum, start)]\n        seen = {start}\n        ans = start_sum\n        for _ in range(k):\n            ans, state = heapq.heappop(heap)\n            for r in range(m):\n                c = state[r]\n                if c + 1 < len(mat[r]):\n                    nxt = list(state)\n                    nxt[r] += 1\n                    nxt = tuple(nxt)\n                    if nxt not in seen:\n                        seen.add(nxt)\n                        ns = ans - mat[r][c] + mat[r][c + 1]\n                        heapq.heappush(heap, (ns, nxt))\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def kthSmallest(self, mat, k):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,322 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "bestTeamScore",
+  "params": [
+    "scores",
+    "ages"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          3,
+          5,
+          10,
+          15
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 34
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          2254,
+          2717
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 12118
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          1102,
+          5121,
+          -4135,
+          8576,
+          1102
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 14799
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          -9751,
+          3933,
+          -3324,
+          1879,
+          7508,
+          -7352,
+          5141,
+          6995,
+          -3510,
+          9841,
+          5161,
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 11842
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          1593,
+          5602,
+          -8171
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 7195
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          9924,
+          9924,
+          -5925
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 19848
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          -4179,
+          3430,
+          -5232
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 3430
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -7628,
+          -7628,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          1057
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 6355
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          2646,
+          3568,
+          2156,
+          7510,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          2156,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 13724
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "scores",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "ages",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ]
+    }
+  },
+  "id": "google/dp-sequences/11-best-team-with-no-conflicts",
+  "title": "Best Team With No Conflicts",
+  "difficulty": "Medium",
+  "topic": "google/dp-sequences",
+  "solutions": {
+    "naive": "class Solution:\n    def bestTeamScore(self, scores: list[int], ages: list[int]) -> int:\n        players = sorted(zip(ages, scores))\n        n = len(players)\n        def dfs(i: int, last_score: int) -> int:\n            if i == n:\n                return 0\n            best = dfs(i + 1, last_score)\n            score = players[i][1]\n            if score >= last_score:\n                best = max(best, score + dfs(i + 1, score))\n            return best\n        return dfs(0, 0)",
+    "better": "class Solution:\n    def bestTeamScore(self, scores: list[int], ages: list[int]) -> int:\n        from functools import lru_cache\n        players = sorted(zip(ages, scores))\n        n = len(players)\n        @lru_cache(None)\n        def dfs(i: int, prev: int) -> int:\n            if i == n:\n                return 0\n            best = dfs(i + 1, prev)\n            if prev == -1 or players[i][1] >= players[prev][1]:\n                best = max(best, players[i][1] + dfs(i + 1, i))\n            return best\n        return dfs(0, -1)",
+    "optimal": "class Solution:\n    def bestTeamScore(self, scores: list[int], ages: list[int]) -> int:\n        players = sorted(zip(ages, scores))\n        n = len(players)\n        dp = [0] * n\n        ans = 0\n        for i, (_, score) in enumerate(players):\n            dp[i] = score\n            for j in range(i):\n                if players[j][1] <= score:\n                    dp[i] = max(dp[i], dp[j] + score)\n            ans = max(ans, dp[i])\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def bestTeamScore(self, scores, ages):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,35 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minimumTime",
+  "params": [
+    "time",
+    "totalTrips"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expected": 3
+    }
+  ],
+  "id": "google/binary-search-advanced/12-minimum-time-to-complete-trips",
+  "title": "Minimum Time to Complete Trips",
+  "difficulty": "Medium",
+  "topic": "google/binary-search-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def minimumTime(self, time: list[int], totalTrips: int) -> int:\n        t = 1\n        while True:\n            trips = 0\n            for bus in time:\n                trips += t // bus\n            if trips >= totalTrips:\n                return t\n            t += 1",
+    "better": "class Solution:\n    def minimumTime(self, time: list[int], totalTrips: int) -> int:\n        lo, hi = 1, min(time) * totalTrips\n        while lo < hi:\n            mid = (lo + hi) // 2\n            trips = sum(mid // bus for bus in time)\n            if trips >= totalTrips:\n                hi = mid\n            else:\n                lo = mid + 1\n        return lo",
+    "optimal": "class Solution:\n    def minimumTime(self, time: list[int], totalTrips: int) -> int:\n        lo, hi = 1, min(time) * totalTrips\n        while lo < hi:\n            mid = (lo + hi) // 2\n            trips = 0\n            for bus in time:\n                trips += mid // bus\n                if trips >= totalTrips:\n                    break\n            if trips >= totalTrips:\n                hi = mid\n            else:\n                lo = mid + 1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def minimumTime(self, time, totalTrips):\n        # TODO: write your solution here\n        pass\n"
+}

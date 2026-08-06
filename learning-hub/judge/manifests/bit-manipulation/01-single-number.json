@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "singleNumber",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          4,
+          1,
+          2,
+          1,
+          2
+        ]
+      ],
+      "expected": 4
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "bit-manipulation/01-single-number",
+  "title": "Single Number",
+  "difficulty": "Easy",
+  "topic": "bit-manipulation",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def singleNumber(self, nums: List[int]) -> int:\n        # Try each candidate and count by a full scan.\n        for x in nums:\n            count = 0\n            for y in nums:\n                if x == y:\n                    count += 1\n            if count == 1:\n                return x\n        return 0",
+    "better": "from typing import List\n\nclass Solution:\n    def singleNumber(self, nums: List[int]) -> int:\n        freq = {}\n        for x in nums:\n            freq[x] = freq.get(x, 0) + 1\n        for x, count in freq.items():\n            if count == 1:\n                return x\n        return 0",
+    "optimal": "from typing import List\n\nclass Solution:\n    def singleNumber(self, nums: List[int]) -> int:\n        ans = 0\n        for x in nums:\n            ans ^= x\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def singleNumber(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,504 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "threeSum",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          -1,
+          0,
+          1,
+          2,
+          -1,
+          -4
+        ]
+      ],
+      "expected": [
+        [
+          -1,
+          -1,
+          2
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          -9751,
+          3933,
+          -3324,
+          1879,
+          7508,
+          -7352,
+          5141,
+          6995,
+          -3510,
+          9841,
+          5161,
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240
+        ]
+      ],
+      "expected": [
+        [
+          -5318,
+          803,
+          4515
+        ]
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          -1605,
+          -7717,
+          6487,
+          -398,
+          505,
+          5633,
+          7473,
+          -5830,
+          -1585,
+          4120,
+          -469,
+          3413,
+          -4777,
+          -750,
+          2417,
+          9800,
+          4419,
+          -3628,
+          2446,
+          1037
+        ]
+      ],
+      "expected": [
+        [
+          -5830,
+          2417,
+          3413
+        ]
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          -3273,
+          -1353,
+          3658,
+          5336,
+          8362,
+          7400,
+          9855,
+          -580,
+          -3438,
+          -9325,
+          -6555,
+          76,
+          -7524,
+          9022,
+          -8953,
+          -8090,
+          3656,
+          -179,
+          2098,
+          8259,
+          9267,
+          8838,
+          -328,
+          -3643,
+          -6720,
+          2932,
+          3056,
+          -4356,
+          -1323,
+          5100,
+          782,
+          -5791,
+          -5719,
+          4632,
+          2747,
+          3702,
+          8411,
+          -4140,
+          1791,
+          -1803,
+          -3197,
+          -1036,
+          5176,
+          8765,
+          2538,
+          -3982,
+          5701,
+          8769,
+          5609,
+          -4447
+        ]
+      ],
+      "expected": [
+        [
+          -4140,
+          -1036,
+          5176
+        ]
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          -8816,
+          -8436,
+          1219,
+          6755,
+          -2465,
+          8194,
+          -427,
+          -4806,
+          4387,
+          -8116,
+          3687,
+          -2477,
+          -3824,
+          -6161,
+          5881,
+          -4370,
+          -1061,
+          -973,
+          1965,
+          -7686
+        ]
+      ],
+      "expected": [
+        [
+          -4370,
+          -3824,
+          8194
+        ]
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          -1734,
+          6387,
+          -1712,
+          -3959,
+          5055,
+          -720,
+          -5118,
+          -3764,
+          784,
+          6724,
+          -5782,
+          6465,
+          -2465,
+          1634,
+          9722,
+          6909,
+          -7688,
+          -2569,
+          8211,
+          1634,
+          -5263,
+          8773,
+          -9990,
+          1067,
+          3092,
+          9029,
+          -7302,
+          -9655,
+          3831,
+          -7103,
+          3951,
+          5004,
+          -6506,
+          -7259,
+          -9843,
+          -3607,
+          -7114,
+          -2081,
+          -212,
+          -3720,
+          -6248,
+          -5197,
+          -1552,
+          174,
+          -4324,
+          8185,
+          -3776,
+          -7084,
+          -6345,
+          604
+        ]
+      ],
+      "expected": [
+        [
+          -5197,
+          -1712,
+          6909
+        ]
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          970,
+          6512,
+          -8597,
+          4516,
+          -1805,
+          5712,
+          7768,
+          1450,
+          -2850,
+          1406,
+          -5717,
+          -8591,
+          652,
+          8130,
+          -2413,
+          -3162,
+          7141,
+          9820,
+          3915,
+          5604
+        ]
+      ],
+      "expected": [
+        [
+          -8591,
+          1450,
+          7141
+        ],
+        [
+          -5717,
+          -2413,
+          8130
+        ]
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          6273,
+          -9898,
+          -2902,
+          -8537,
+          9894,
+          -2786,
+          -4900,
+          4136,
+          -3956,
+          -5885,
+          7999,
+          4996,
+          -546,
+          9949,
+          -9318,
+          -8932,
+          -118,
+          -8148,
+          -8933,
+          -1836,
+          8663,
+          2892,
+          2170,
+          6327,
+          -5538,
+          -687,
+          8804,
+          1423,
+          -5097,
+          -8955,
+          802,
+          8875,
+          2219,
+          7572,
+          -3418,
+          3595,
+          -1352,
+          -4182,
+          6791,
+          -1675,
+          5683,
+          -7400,
+          2751,
+          3515,
+          -9898,
+          9857,
+          -61,
+          5709,
+          -9997,
+          8244
+        ]
+      ],
+      "expected": [
+        [
+          -5097,
+          -2902,
+          7999
+        ]
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          -903,
+          5772,
+          437,
+          -4189,
+          739,
+          8572,
+          -5378,
+          -8419,
+          6494,
+          3072,
+          8177,
+          9250,
+          -4976,
+          5305,
+          -3054,
+          6388,
+          -6143,
+          3001,
+          819,
+          3878,
+          7431,
+          362,
+          764,
+          -2938,
+          -7891,
+          -7068,
+          -2666,
+          -1895,
+          2670,
+          -4866,
+          -1990,
+          3355,
+          -2461,
+          1178,
+          -7355,
+          -3953,
+          -8050,
+          -8149,
+          -7177,
+          5424,
+          2443,
+          -2946,
+          -1421,
+          4342,
+          1116,
+          6569,
+          -9774,
+          -4021,
+          8224,
+          4046
+        ]
+      ],
+      "expected": [
+        [
+          -7355,
+          -1895,
+          9250
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "two-pointers/03-3sum",
+  "title": "3Sum",
+  "difficulty": "Medium",
+  "topic": "two-pointers",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def threeSum(self, nums: List[int]) -> List[List[int]]:\n        found = set()\n        n = len(nums)\n        for i in range(n):\n            for j in range(i + 1, n):\n                for k in range(j + 1, n):\n                    if nums[i] + nums[j] + nums[k] == 0:\n                        found.add(tuple(sorted((nums[i], nums[j], nums[k]))))\n        return [list(triplet) for triplet in sorted(found)]",
+    "better": "from typing import List\n\nclass Solution:\n    def threeSum(self, nums: List[int]) -> List[List[int]]:\n        nums.sort()\n        result = set()\n        n = len(nums)\n        for i in range(n - 2):\n            seen = set()\n            for j in range(i + 1, n):\n                need = -nums[i] - nums[j]\n                if need in seen:\n                    result.add((nums[i], need, nums[j]))\n                seen.add(nums[j])\n        return [list(triplet) for triplet in sorted(result)]",
+    "optimal": "from typing import List\n\nclass Solution:\n    def threeSum(self, nums: List[int]) -> List[List[int]]:\n        nums.sort()\n        result = []\n        n = len(nums)\n        for i in range(n - 2):\n            if i > 0 and nums[i] == nums[i - 1]:\n                continue\n            if nums[i] > 0:\n                break\n            left, right = i + 1, n - 1\n            while left < right:\n                total = nums[i] + nums[left] + nums[right]\n                if total == 0:\n                    result.append([nums[i], nums[left], nums[right]])\n                    left += 1\n                    right -= 1\n                    # Skip duplicate second and third values.\n                    while left < right and nums[left] == nums[left - 1]:\n                        left += 1\n                    while left < right and nums[right] == nums[right + 1]:\n                        right -= 1\n                elif total < 0:\n                    left += 1\n                else:\n                    right -= 1\n        return result"
+  },
+  "starterCode": "class Solution:\n    def threeSum(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

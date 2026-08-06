@@ -1,0 +1,90 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "diagonalSort",
+  "params": [
+    "mat"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            3,
+            3,
+            1,
+            1
+          ],
+          [
+            2,
+            2,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          3,
+          3
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "mat",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 4
+        }
+      ]
+    }
+  },
+  "id": "faang/matrix-simulation/06-sort-the-matrix-diagonally",
+  "title": "Sort the Matrix Diagonally",
+  "difficulty": "Medium",
+  "topic": "faang/matrix-simulation",
+  "solutions": {
+    "naive": "class Solution:\n    def diagonalSort(self, mat: list[list[int]]) -> list[list[int]]:\n        ans = [row[:] for row in mat]\n        m, n = len(ans), len(ans[0])\n        starts = [(r, 0) for r in range(m)] + [(0, c) for c in range(1, n)]\n        for sr, sc in starts:\n            vals = []\n            r, c = sr, sc\n            while r < m and c < n:\n                vals.append(ans[r][c]); r += 1; c += 1\n            for i in range(1, len(vals)):\n                x = vals[i]; j = i - 1\n                while j >= 0 and vals[j] > x:\n                    vals[j + 1] = vals[j]; j -= 1\n                vals[j + 1] = x\n            r, c, idx = sr, sc, 0\n            while r < m and c < n:\n                ans[r][c] = vals[idx]; idx += 1; r += 1; c += 1\n        return ans",
+    "better": "class Solution:\n    def diagonalSort(self, mat: list[list[int]]) -> list[list[int]]:\n        diagonals = {}\n        for r in range(len(mat)):\n            for c in range(len(mat[0])):\n                diagonals.setdefault(r - c, []).append(mat[r][c])\n        for vals in diagonals.values():\n            vals.sort(reverse=True)\n        ans = [row[:] for row in mat]\n        for r in range(len(mat)):\n            for c in range(len(mat[0])):\n                ans[r][c] = diagonals[r - c].pop()\n        return ans",
+    "optimal": "class Solution:\n    def diagonalSort(self, mat: list[list[int]]) -> list[list[int]]:\n        ans = [row[:] for row in mat]\n        m, n = len(ans), len(ans[0])\n        starts = [(r, 0) for r in range(m)] + [(0, c) for c in range(1, n)]\n        for sr, sc in starts:\n            count = [0] * 101\n            r, c = sr, sc\n            while r < m and c < n:\n                count[ans[r][c]] += 1; r += 1; c += 1\n            value = 1\n            r, c = sr, sc\n            while r < m and c < n:\n                while count[value] == 0:\n                    value += 1\n                ans[r][c] = value\n                count[value] -= 1\n                r += 1; c += 1\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def diagonalSort(self, mat):\n        # TODO: write your solution here\n        pass\n"
+}

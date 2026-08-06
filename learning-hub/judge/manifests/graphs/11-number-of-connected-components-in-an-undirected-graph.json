@@ -1,0 +1,246 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "countComponents",
+  "params": [
+    "n",
+    "edges"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        5,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        9921,
+        [
+          [
+            5161,
+            -8319
+          ],
+          [
+            1715,
+            -5769
+          ],
+          [
+            -2928,
+            -4731
+          ],
+          [
+            4474,
+            9510
+          ],
+          [
+            -4180,
+            6488
+          ]
+        ]
+      ],
+      "expected": 9916
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        5529,
+        [
+          [
+            -2912,
+            2352
+          ]
+        ]
+      ],
+      "expected": 5528
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        7941,
+        [
+          [
+            -4370,
+            -1061
+          ],
+          [
+            -973,
+            1965
+          ]
+        ]
+      ],
+      "expected": 7939
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        9159,
+        [
+          [
+            -4311,
+            1589
+          ],
+          [
+            7529,
+            -7331
+          ],
+          [
+            -6279,
+            -5882
+          ],
+          [
+            -5513,
+            -5079
+          ],
+          [
+            7869,
+            -7166
+          ]
+        ]
+      ],
+      "expected": 9154
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        4732,
+        [
+          [
+            3092,
+            3733
+          ]
+        ]
+      ],
+      "expected": 4731
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        9966,
+        [
+          [
+            -7434,
+            2438
+          ],
+          [
+            -9409,
+            1758
+          ],
+          [
+            419,
+            2296
+          ]
+        ]
+      ],
+      "expected": 9963
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9070,
+        [
+          [
+            777,
+            -6707
+          ],
+          [
+            7996,
+            -315
+          ],
+          [
+            -8922,
+            1244
+          ]
+        ]
+      ],
+      "expected": 9067
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7558,
+        [
+          [
+            -1338,
+            5606
+          ],
+          [
+            1549,
+            2017
+          ],
+          [
+            1362,
+            1064
+          ]
+        ]
+      ],
+      "expected": 7555
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "edges",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "graphs/11-number-of-connected-components-in-an-undirected-graph",
+  "title": "Number of Connected Components in an Undirected Graph",
+  "difficulty": "Medium",
+  "topic": "graphs",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def countComponents(self, n: int, edges: List[List[int]]) -> int:\n        # Union-find tracks how many sets remain.\n        parent, size, count = list(range(n)), [1]*n, n\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra != rb:\n                if size[ra] < size[rb]: ra, rb = rb, ra\n                parent[rb] = ra; size[ra] += size[rb]; count -= 1\n        return count",
+    "better": "from typing import List\n\nclass Solution:\n    def countComponents(self, n: int, edges: List[List[int]]) -> int:\n        # Union-find tracks how many sets remain.\n        parent, size, count = list(range(n)), [1]*n, n\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra != rb:\n                if size[ra] < size[rb]: ra, rb = rb, ra\n                parent[rb] = ra; size[ra] += size[rb]; count -= 1\n        return count",
+    "optimal": "from typing import List\n\nclass Solution:\n    def countComponents(self, n: int, edges: List[List[int]]) -> int:\n        # Union-find tracks how many sets remain.\n        parent, size, count = list(range(n)), [1]*n, n\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra != rb:\n                if size[ra] < size[rb]: ra, rb = rb, ra\n                parent[rb] = ra; size[ra] += size[rb]; count -= 1\n        return count"
+  },
+  "starterCode": "class Solution:\n    def countComponents(self, n, edges):\n        # TODO: write your solution here\n        pass\n"
+}

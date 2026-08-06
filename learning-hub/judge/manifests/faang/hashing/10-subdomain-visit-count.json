@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "subdomainVisits",
+  "params": [
+    "cpdomains"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "9001 discuss.leetcode.com"
+        ]
+      ],
+      "expected": [
+        "9001 com",
+        "9001 discuss.leetcode.com",
+        "9001 leetcode.com"
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "cpdomains",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/hashing/10-subdomain-visit-count",
+  "title": "Subdomain Visit Count",
+  "difficulty": "Medium",
+  "topic": "faang/hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def subdomainVisits(self, cpdomains: list[str]) -> list[str]:\n        expanded = []\n        for item in cpdomains:\n            count_text, domain = item.split()\n            count = int(count_text)\n            parts = domain.split('.')\n            for i in range(len(parts)):\n                expanded.append((count, '.'.join(parts[i:])))\n        domains = sorted({domain for count, domain in expanded})\n        ans = []\n        for domain in domains:\n            total = 0\n            for count, cur in expanded:\n                if cur == domain:\n                    total += count\n            ans.append(str(total) + \" \" + domain)\n        return ans",
+    "better": "class Solution:\n    def subdomainVisits(self, cpdomains):\n        pairs = []\n        for item in cpdomains:\n            count_text, domain = item.split()\n            count = int(count_text)\n            pairs.append((domain, count))\n            for i, ch in enumerate(domain):\n                if ch == '.':\n                    pairs.append((domain[i + 1:], count))\n        pairs.sort()\n        ans = []\n        i = 0\n        while i < len(pairs):\n            domain = pairs[i][0]\n            total = 0\n            while i < len(pairs) and pairs[i][0] == domain:\n                total += pairs[i][1]\n                i += 1\n            ans.append(str(total) + \" \" + domain)\n        return ans",
+    "optimal": "class Solution:\n    def subdomainVisits(self, cpdomains):\n        counts = {}\n        for item in cpdomains:\n            count_text, domain = item.split()\n            count = int(count_text)\n            counts[domain] = counts.get(domain, 0) + count\n            for i, ch in enumerate(domain):\n                if ch == '.':\n                    sub = domain[i + 1:]\n                    counts[sub] = counts.get(sub, 0) + count\n        return [str(counts[domain]) + \" \" + domain for domain in sorted(counts)]"
+  },
+  "starterCode": "class Solution:\n    def subdomainVisits(self, cpdomains):\n        # TODO: write your solution here\n        pass\n"
+}

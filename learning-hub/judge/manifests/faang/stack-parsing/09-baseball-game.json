@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "calPoints",
+  "params": [
+    "ops"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "5",
+          "2",
+          "C",
+          "D",
+          "+"
+        ]
+      ],
+      "expected": 30
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "ops",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/stack-parsing/09-baseball-game",
+  "title": "Baseball Game",
+  "difficulty": "Medium",
+  "topic": "faang/stack-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def calPoints(self, ops: list[str]) -> int:\n        scores = []\n        for op in ops:\n            if op == 'C':\n                scores = scores[:-1]\n            elif op == 'D':\n                scores.append(scores[-1] * 2)\n            elif op == '+':\n                scores.append(scores[-1] + scores[-2])\n            else:\n                scores.append(int(op))\n        total = 0\n        for x in scores:\n            total += x\n        return total",
+    "better": "class Solution:\n    def calPoints(self, ops: list[str]) -> int:\n        stack = []\n        for op in ops:\n            if op == 'C':\n                stack.pop()\n            elif op == 'D':\n                stack.append(2 * stack[-1])\n            elif op == '+':\n                stack.append(stack[-1] + stack[-2])\n            else:\n                stack.append(int(op))\n        return sum(stack)",
+    "optimal": "class Solution:\n    def calPoints(self, ops: list[str]) -> int:\n        stack = []\n        total = 0\n        for op in ops:\n            if op == 'C':\n                total -= stack.pop()\n            elif op == 'D':\n                val = 2 * stack[-1]\n                stack.append(val)\n                total += val\n            elif op == '+':\n                val = stack[-1] + stack[-2]\n                stack.append(val)\n                total += val\n            else:\n                val = int(op)\n                stack.append(val)\n                total += val\n        return total"
+  },
+  "starterCode": "class Solution:\n    def calPoints(self, ops):\n        # TODO: write your solution here\n        pass\n"
+}

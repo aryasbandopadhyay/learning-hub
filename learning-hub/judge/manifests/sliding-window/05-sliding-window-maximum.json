@@ -1,0 +1,76 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxSlidingWindow",
+  "params": [
+    "nums",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        3
+      ],
+      "expected": [
+        3,
+        3,
+        5,
+        5,
+        6,
+        7
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "sliding-window/05-sliding-window-maximum",
+  "title": "Sliding Window Maximum",
+  "difficulty": "Hard",
+  "topic": "sliding-window",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:\n        ans = []\n        for left in range(len(nums) - k + 1):\n            ans.append(max(nums[left:left + k]))\n        return ans",
+    "better": "from typing import List\nimport heapq\n\nclass Solution:\n    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:\n        heap = []\n        ans = []\n        for i, value in enumerate(nums):\n            heapq.heappush(heap, (-value, i))\n            # Remove heap top entries that are outside the current window.\n            while heap[0][1] <= i - k:\n                heapq.heappop(heap)\n            if i >= k - 1:\n                ans.append(-heap[0][0])\n        return ans",
+    "optimal": "from typing import List\nfrom collections import deque\n\nclass Solution:\n    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:\n        dq = deque()\n        ans = []\n        for i, value in enumerate(nums):\n            if dq and dq[0] <= i - k:\n                dq.popleft()\n            # Smaller values behind the new value can never be maximum again.\n            while dq and nums[dq[-1]] <= value:\n                dq.pop()\n            dq.append(i)\n            if i >= k - 1:\n                ans.append(nums[dq[0]])\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def maxSlidingWindow(self, nums, k):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minWindow",
+  "params": [
+    "s",
+    "t"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "ADOBECODEBANC",
+        "ABC"
+      ],
+      "expected": "BANC"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "ABC"
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "ABC"
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "ABC"
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "ABC"
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "ABC"
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "ABC"
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "ABC"
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "ABC"
+      ],
+      "expected": ""
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "t",
+          "type": "str",
+          "role": "const",
+          "value": "ABC"
+        }
+      ]
+    }
+  },
+  "id": "sliding-window/04-minimum-window-substring",
+  "title": "Minimum Window Substring",
+  "difficulty": "Hard",
+  "topic": "sliding-window",
+  "solutions": {
+    "naive": "from collections import Counter\n\nclass Solution:\n    def minWindow(self, s: str, t: str) -> str:\n        need = Counter(t)\n        best = \"\"\n        for left in range(len(s)):\n            have = Counter()\n            for right in range(left, len(s)):\n                have[s[right]] += 1\n                if all(have[ch] >= cnt for ch, cnt in need.items()):\n                    candidate = s[left:right + 1]\n                    if not best or len(candidate) < len(best):\n                        best = candidate\n                    break\n        return best",
+    "better": "from collections import Counter, defaultdict\n\nclass Solution:\n    def minWindow(self, s: str, t: str) -> str:\n        need = Counter(t)\n        have = defaultdict(int)\n        required = len(need)\n        formed = left = 0\n        best_len = float(\"inf\")\n        best_range = (0, 0)\n\n        for right, ch in enumerate(s):\n            have[ch] += 1\n            if ch in need and have[ch] == need[ch]:\n                formed += 1\n            while formed == required:\n                if right - left + 1 < best_len:\n                    best_len = right - left + 1\n                    best_range = (left, right + 1)\n                drop = s[left]\n                have[drop] -= 1\n                if drop in need and have[drop] < need[drop]:\n                    formed -= 1\n                left += 1\n        return \"\" if best_len == float(\"inf\") else s[best_range[0]:best_range[1]]",
+    "optimal": "from collections import Counter, defaultdict\n\nclass Solution:\n    def minWindow(self, s: str, t: str) -> str:\n        need = Counter(t)\n        filtered = [(i, ch) for i, ch in enumerate(s) if ch in need]\n        have = defaultdict(int)\n        required = len(need)\n        formed = left = 0\n        best_len = float(\"inf\")\n        best = (0, 0)\n\n        for right, (idx, ch) in enumerate(filtered):\n            have[ch] += 1\n            if have[ch] == need[ch]:\n                formed += 1\n            while formed == required:\n                start = filtered[left][0]\n                if idx - start + 1 < best_len:\n                    best_len = idx - start + 1\n                    best = (start, idx + 1)\n                drop = filtered[left][1]\n                have[drop] -= 1\n                if have[drop] < need[drop]:\n                    formed -= 1\n                left += 1\n        return \"\" if best_len == float(\"inf\") else s[best[0]:best[1]]"
+  },
+  "starterCode": "class Solution:\n    def minWindow(self, s, t):\n        # TODO: write your solution here\n        pass\n"
+}

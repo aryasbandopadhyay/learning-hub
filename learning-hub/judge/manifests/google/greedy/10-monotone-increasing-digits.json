@@ -1,0 +1,93 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "monotoneIncreasingDigits",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        332
+      ],
+      "expected": 299
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239
+      ],
+      "expected": 5999
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        3773
+      ],
+      "expected": 3699
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        4115
+      ],
+      "expected": 3999
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017
+      ],
+      "expected": 7999
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128
+      ],
+      "expected": 5999
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495
+      ],
+      "expected": 2489
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9289
+      ],
+      "expected": 8999
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685
+      ],
+      "expected": 6999
+    }
+  ],
+  "id": "google/greedy/10-monotone-increasing-digits",
+  "title": "Monotone Increasing Digits",
+  "difficulty": "Medium",
+  "topic": "google/greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def monotoneIncreasingDigits(self, n: int) -> int:\n        best = 0\n        def dfs(last, value):\n            nonlocal best\n            if value > n:\n                return\n            best = max(best, value)\n            for d in range(last, 10):\n                if value == 0 and d == 0:\n                    continue\n                dfs(d, value * 10 + d)\n        dfs(0, 0)\n        return best",
+    "better": "class Solution:\n    def monotoneIncreasingDigits(self, n):\n        digits = list(str(n))\n        i = 1\n        while i < len(digits) and digits[i - 1] <= digits[i]:\n            i += 1\n        if i == len(digits):\n            return n\n        while i > 0 and digits[i - 1] > digits[i]:\n            digits[i - 1] = str(int(digits[i - 1]) - 1)\n            i -= 1\n        for j in range(i + 1, len(digits)):\n            digits[j] = '9'\n        return int(''.join(digits))",
+    "optimal": "class Solution:\n    def monotoneIncreasingDigits(self, n):\n        digits = list(str(n))\n        marker = len(digits)\n        for i in range(len(digits) - 1, 0, -1):\n            if digits[i - 1] > digits[i]:\n                digits[i - 1] = str(int(digits[i - 1]) - 1)\n                marker = i\n        for i in range(marker, len(digits)):\n            digits[i] = '9'\n        return int(''.join(digits))"
+  },
+  "starterCode": "class Solution:\n    def monotoneIncreasingDigits(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

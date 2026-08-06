@@ -1,0 +1,63 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findDuplicates",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          4,
+          3,
+          2,
+          7,
+          8,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": [
+        2,
+        3
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "arrays-hashing/12-find-all-duplicates-in-an-array",
+  "title": "Find All Duplicates in an Array",
+  "difficulty": "Medium",
+  "topic": "arrays-hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def findDuplicates(self, nums: list[int]) -> list[int]:\n        ans = []\n        for x in range(1, len(nums) + 1):\n            if sum(1 for y in nums if y == x) == 2:\n                ans.append(x)\n        return ans",
+    "better": "class Solution:\n    def findDuplicates(self, nums: list[int]) -> list[int]:\n        seen, ans = set(), []\n        for x in nums:\n            if x in seen:\n                ans.append(x)\n            else:\n                seen.add(x)\n        return ans",
+    "optimal": "class Solution:\n    def findDuplicates(self, nums: list[int]) -> list[int]:\n        ans = []\n        for x in nums:\n            i = abs(x) - 1\n            if nums[i] < 0:\n                ans.append(abs(x))\n            else:\n                nums[i] = -nums[i]\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def findDuplicates(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

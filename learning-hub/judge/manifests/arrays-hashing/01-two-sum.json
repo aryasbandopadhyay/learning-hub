@@ -1,0 +1,68 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "twoSum",
+  "params": [
+    "nums",
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          7,
+          11,
+          15
+        ],
+        9
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "target",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "arrays-hashing/01-two-sum",
+  "title": "Two Sum",
+  "difficulty": "Easy",
+  "topic": "arrays-hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def twoSum(self, nums: list[int], target: int) -> list[int]:\n        for i in range(len(nums)):\n            for j in range(i + 1, len(nums)):\n                if nums[i] + nums[j] == target:\n                    return [i, j]\n        return []",
+    "better": "class Solution:\n    def twoSum(self, nums: list[int], target: int) -> list[int]:\n        pairs = sorted((x, i) for i, x in enumerate(nums))\n        l, r = 0, len(pairs) - 1\n        while l < r:\n            s = pairs[l][0] + pairs[r][0]\n            if s == target:\n                return [pairs[l][1], pairs[r][1]]\n            if s < target:\n                l += 1\n            else:\n                r -= 1\n        return []",
+    "optimal": "class Solution:\n    def twoSum(self, nums: list[int], target: int) -> list[int]:\n        seen = {}\n        for i, x in enumerate(nums):\n            need = target - x\n            if need in seen:\n                return [seen[need], i]\n            seen[x] = i\n        return []"
+  },
+  "starterCode": "class Solution:\n    def twoSum(self, nums, target):\n        # TODO: write your solution here\n        pass\n"
+}

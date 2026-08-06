@@ -1,0 +1,77 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "restoreMatrix",
+  "params": [
+    "rowSum",
+    "colSum"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          7
+        ]
+      ],
+      "expected": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          7
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "rowSum",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "colSum",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            4,
+            7
+          ]
+        }
+      ]
+    }
+  },
+  "id": "faang/matrix-simulation/11-restore-matrix-from-row-and-column-sums",
+  "title": "Restore Matrix From Row and Column Sums",
+  "difficulty": "Medium",
+  "topic": "faang/matrix-simulation",
+  "solutions": {
+    "naive": "class Solution:\n    def restoreMatrix(self, rowSum: list[int], colSum: list[int]) -> list[list[int]]:\n        rows = rowSum[:]\n        cols = colSum[:]\n        m, n = len(rows), len(cols)\n        ans = [[0] * n for _ in range(m)]\n        i = j = 0\n        while i < m and j < n:\n            if rows[i] == 0:\n                i += 1\n            elif cols[j] == 0:\n                j += 1\n            else:\n                ans[i][j] += 1\n                rows[i] -= 1\n                cols[j] -= 1\n        return ans",
+    "better": "class Solution:\n    def restoreMatrix(self, rowSum: list[int], colSum: list[int]) -> list[list[int]]:\n        rows = rowSum[:]\n        cols = colSum[:]\n        m, n = len(rows), len(cols)\n        ans = [[0] * n for _ in range(m)]\n        for i in range(m):\n            for j in range(n):\n                x = min(rows[i], cols[j])\n                ans[i][j] = x\n                rows[i] -= x\n                cols[j] -= x\n        return ans",
+    "optimal": "class Solution:\n    def restoreMatrix(self, rowSum: list[int], colSum: list[int]) -> list[list[int]]:\n        rows = rowSum[:]\n        cols = colSum[:]\n        m, n = len(rows), len(cols)\n        ans = [[0] * n for _ in range(m)]\n        i = j = 0\n        while i < m and j < n:\n            x = min(rows[i], cols[j])\n            ans[i][j] = x\n            rows[i] -= x\n            cols[j] -= x\n            if rows[i] == 0:\n                i += 1\n            if j < n and cols[j] == 0:\n                j += 1\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def restoreMatrix(self, rowSum, colSum):\n        # TODO: write your solution here\n        pass\n"
+}

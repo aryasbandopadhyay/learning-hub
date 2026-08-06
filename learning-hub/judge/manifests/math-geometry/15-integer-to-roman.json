@@ -1,0 +1,29 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "intToRoman",
+  "params": [
+    "num"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        1994
+      ],
+      "expected": "MCMXCIV"
+    }
+  ],
+  "id": "math-geometry/15-integer-to-roman",
+  "title": "Integer to Roman",
+  "difficulty": "Medium",
+  "topic": "math-geometry",
+  "solutions": {
+    "naive": "class Solution:\n    def intToRoman(self, num: int) -> str:\n        roman = \"M\" * (num // 1000)\n        num %= 1000\n        roman += \"D\" * (num // 500)\n        num %= 500\n        roman += \"C\" * (num // 100)\n        num %= 100\n        roman += \"L\" * (num // 50)\n        num %= 50\n        roman += \"X\" * (num // 10)\n        num %= 10\n        roman += \"V\" * (num // 5)\n        roman += \"I\" * (num % 5)\n        replacements = [('DCCCC', 'CM'), ('CCCC', 'CD'), ('LXXXX', 'XC'),\n                        ('XXXX', 'XL'), ('VIIII', 'IX'), ('IIII', 'IV')]\n        for old, new in replacements:\n            roman = roman.replace(old, new)\n        return roman",
+    "better": "class Solution:\n    def intToRoman(self, num: int) -> str:\n        thousands = [\"\", \"M\", \"MM\", \"MMM\"]\n        hundreds = [\"\", \"C\", \"CC\", \"CCC\", \"CD\", \"D\", \"DC\", \"DCC\", \"DCCC\", \"CM\"]\n        tens = [\"\", \"X\", \"XX\", \"XXX\", \"XL\", \"L\", \"LX\", \"LXX\", \"LXXX\", \"XC\"]\n        ones = [\"\", \"I\", \"II\", \"III\", \"IV\", \"V\", \"VI\", \"VII\", \"VIII\", \"IX\"]\n        return thousands[num // 1000] + hundreds[(num % 1000) // 100] + tens[(num % 100) // 10] + ones[num % 10]",
+    "optimal": "class Solution:\n    def intToRoman(self, num: int) -> str:\n        values = [\n            (1000, \"M\"), (900, \"CM\"), (500, \"D\"), (400, \"CD\"),\n            (100, \"C\"), (90, \"XC\"), (50, \"L\"), (40, \"XL\"),\n            (10, \"X\"), (9, \"IX\"), (5, \"V\"), (4, \"IV\"), (1, \"I\"),\n        ]\n        ans = []\n        for value, symbol in values:\n            count, num = divmod(num, value)\n            ans.append(symbol * count)\n        return ''.join(ans)"
+  },
+  "starterCode": "class Solution:\n    def intToRoman(self, num):\n        # TODO: write your solution here\n        pass\n"
+}

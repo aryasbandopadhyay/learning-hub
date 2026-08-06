@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "parseBoolExpr",
+  "params": [
+    "expression"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "|(&(t,f,t),!(t))"
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "expression",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/strings-parsing/04-parsing-boolean-expression",
+  "title": "Parsing Boolean Expression",
+  "difficulty": "Hard",
+  "topic": "google/strings-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def parseBoolExpr(self, expression: str) -> bool:\n        def parse(i):\n            if expression[i] in \"tf\": return expression[i] == \"t\", i + 1\n            op, i, vals = expression[i], i + 2, []\n            while expression[i] != \")\":\n                if expression[i] == \",\": i += 1\n                else:\n                    v, i = parse(i); vals.append(v)\n            return ((not vals[0]) if op == \"!\" else all(vals) if op == \"&\" else any(vals)), i + 1\n        return parse(0)[0]",
+    "better": "class Solution:\n    def parseBoolExpr(self, expression: str) -> bool:\n        st = []\n        for c in expression:\n            if c in \",(\": continue\n            if c != \")\": st.append(c); continue\n            vals = []\n            while st[-1] in \"tf\": vals.append(st.pop() == \"t\")\n            op = st.pop()\n            st.append(\"t\" if ((not vals[0]) if op == \"!\" else all(vals) if op == \"&\" else any(vals)) else \"f\")\n        return st[-1] == \"t\"",
+    "optimal": "class Solution:\n    def parseBoolExpr(self, expression: str) -> bool:\n        frames=[]; result=False\n        def feed(v):\n            nonlocal result\n            if not frames:\n                result=v\n            else:\n                frames[-1][1] = frames[-1][1] or v\n                frames[-1][2] = frames[-1][2] or (not v)\n        for c in expression:\n            if c in '!&|':\n                frames.append([c,False,False])\n            elif c=='t':\n                feed(True)\n            elif c=='f':\n                feed(False)\n            elif c==')':\n                op,has_t,has_f=frames.pop()\n                feed((not has_t) if op=='!' else (not has_f) if op=='&' else has_t)\n        return result"
+  },
+  "starterCode": "class Solution:\n    def parseBoolExpr(self, expression):\n        # TODO: write your solution here\n        pass\n"
+}

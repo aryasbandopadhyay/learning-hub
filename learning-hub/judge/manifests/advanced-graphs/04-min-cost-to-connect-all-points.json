@@ -1,0 +1,50 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minCostConnectPoints",
+  "params": [
+    "points"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            10
+          ],
+          [
+            5,
+            2
+          ],
+          [
+            7,
+            0
+          ]
+        ]
+      ],
+      "expected": 20
+    }
+  ],
+  "id": "advanced-graphs/04-min-cost-to-connect-all-points",
+  "title": "Min Cost to Connect All Points",
+  "difficulty": "Medium",
+  "topic": "advanced-graphs",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def minCostConnectPoints(self, points: List[List[int]]) -> int:\n        n = len(points)\n        edges = []\n        for i in range(n):\n            for j in range(i + 1, n):\n                cost = abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1])\n                edges.append((cost, i, j))\n\n        best = float(\"inf\")\n\n        def connected(parent: list[int], a: int, b: int) -> bool:\n            def find(x: int) -> int:\n                while parent[x] != x:\n                    x = parent[x]\n                return x\n            return find(a) == find(b)\n\n        def search(idx: int, chosen: int, total: int, parent: list[int]) -> None:\n            nonlocal best\n            if total >= best:\n                return\n            if chosen == n - 1:\n                best = total\n                return\n            if idx == len(edges):\n                return\n            cost, u, v = edges[idx]\n            if not connected(parent, u, v):\n                new_parent = parent[:]\n                ru = u\n                while new_parent[ru] != ru:\n                    ru = new_parent[ru]\n                rv = v\n                while new_parent[rv] != rv:\n                    rv = new_parent[rv]\n                new_parent[ru] = rv\n                search(idx + 1, chosen + 1, total + cost, new_parent)\n            search(idx + 1, chosen, total, parent)\n\n        search(0, 0, 0, list(range(n)))\n        return 0 if n <= 1 else best",
+    "better": "from typing import List\n\nclass Solution:\n    def minCostConnectPoints(self, points: List[List[int]]) -> int:\n        n = len(points)\n        parent = list(range(n))\n        rank = [0] * n\n\n        def find(x: int) -> int:\n            if parent[x] != x:\n                parent[x] = find(parent[x])\n            return parent[x]\n\n        def union(a: int, b: int) -> bool:\n            ra, rb = find(a), find(b)\n            if ra == rb:\n                return False\n            if rank[ra] < rank[rb]:\n                ra, rb = rb, ra\n            parent[rb] = ra\n            if rank[ra] == rank[rb]:\n                rank[ra] += 1\n            return True\n\n        edges = []\n        for i in range(n):\n            for j in range(i + 1, n):\n                cost = abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1])\n                edges.append((cost, i, j))\n        edges.sort()\n\n        total = used = 0\n        for cost, u, v in edges:\n            if union(u, v):\n                total += cost\n                used += 1\n                if used == n - 1:\n                    break\n        return total",
+    "optimal": "from typing import List\n\nclass Solution:\n    def minCostConnectPoints(self, points: List[List[int]]) -> int:\n        n = len(points)\n        in_mst = [False] * n\n        min_dist = [float(\"inf\")] * n\n        min_dist[0] = 0\n        total = 0\n\n        for _ in range(n):\n            u = -1\n            for i in range(n):\n                if not in_mst[i] and (u == -1 or min_dist[i] < min_dist[u]):\n                    u = i\n            in_mst[u] = True\n            total += min_dist[u]\n\n            for v in range(n):\n                if not in_mst[v]:\n                    dist = abs(points[u][0] - points[v][0]) + abs(points[u][1] - points[v][1])\n                    if dist < min_dist[v]:\n                        min_dist[v] = dist\n        return total"
+  },
+  "starterCode": "class Solution:\n    def minCostConnectPoints(self, points):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,310 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minDays",
+  "params": [
+    "bloomDay",
+    "m",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          10,
+          3,
+          10,
+          2
+        ],
+        3,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          -1860,
+          2717
+        ],
+        3484,
+        2495
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          -7282,
+          7324,
+          -7123,
+          5369,
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          5369,
+          3933,
+          -3324,
+          1879
+        ],
+        8755,
+        1325
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240,
+          -5860,
+          1593,
+          5602,
+          -8171,
+          -5710,
+          9649,
+          -5071,
+          9924,
+          3379,
+          -5925,
+          -6839,
+          -6110,
+          -5293,
+          -302,
+          -4294,
+          -4179
+        ],
+        6716,
+        2385
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -3907,
+          1057,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          1057
+        ],
+        3545,
+        6177
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          3568,
+          2156,
+          4548,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          -6535,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289,
+          4356
+        ],
+        1313,
+        7174
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          505,
+          5633,
+          7473,
+          3413,
+          -1585,
+          4120,
+          -469,
+          3413
+        ],
+        2612,
+        4626
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          1037,
+          -3524,
+          1317,
+          -9859,
+          1642,
+          -321,
+          -3667,
+          -4376,
+          -1449,
+          3654,
+          -2423,
+          3377,
+          1322,
+          3103,
+          -9882,
+          -6320,
+          6438,
+          7424,
+          -3365,
+          -9958
+        ],
+        8555,
+        5088
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          6748,
+          4552,
+          -3273
+        ],
+        4324,
+        6830
+      ],
+      "expected": -1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "bloomDay",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "m",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/binary-search-advanced/08-minimum-number-of-days-to-make-m-bouquets",
+  "title": "Minimum Number of Days to Make m Bouquets",
+  "difficulty": "Medium",
+  "topic": "google/binary-search-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def minDays(self, bloomDay: list[int], m: int, k: int) -> int:\n        if m * k > len(bloomDay):\n            return -1\n        for day in sorted(set(bloomDay)):\n            bouquets = 0\n            run = 0\n            for b in bloomDay:\n                if b <= day:\n                    run += 1\n                    if run == k:\n                        bouquets += 1\n                        run = 0\n                else:\n                    run = 0\n            if bouquets >= m:\n                return day\n        return -1",
+    "better": "class Solution:\n    def minDays(self, bloomDay: list[int], m: int, k: int) -> int:\n        if m * k > len(bloomDay):\n            return -1\n        lo, hi = min(bloomDay), max(bloomDay)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            bouquets = 0\n            run = 0\n            for b in bloomDay:\n                if b <= mid:\n                    run += 1\n                    if run == k:\n                        bouquets += 1\n                        run = 0\n                else:\n                    run = 0\n            if bouquets >= m:\n                hi = mid\n            else:\n                lo = mid + 1\n        return lo",
+    "optimal": "class Solution:\n    def minDays(self, bloomDay: list[int], m: int, k: int) -> int:\n        if m * k > len(bloomDay):\n            return -1\n        lo, hi = min(bloomDay), max(bloomDay)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            bouquets = 0\n            run = 0\n            for b in bloomDay:\n                if b <= mid:\n                    run += 1\n                    if run == k:\n                        bouquets += 1\n                        if bouquets == m:\n                            break\n                        run = 0\n                else:\n                    run = 0\n            if bouquets >= m:\n                hi = mid\n            else:\n                lo = mid + 1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def minDays(self, bloomDay, m, k):\n        # TODO: write your solution here\n        pass\n"
+}

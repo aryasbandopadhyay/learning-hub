@@ -1,0 +1,55 @@
+{
+  "shape": "design",
+  "className": "RandomizedSet",
+  "entry": null,
+  "params": [],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "RandomizedSet",
+        "insert",
+        "remove",
+        "insert",
+        "getRandom",
+        "remove",
+        "insert",
+        "getRandom"
+      ],
+      "args": [
+        [],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          2
+        ],
+        [],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        []
+      ],
+      "expected": null
+    }
+  ],
+  "validatorCode": "def validate(args, output):\n    # Re-simulate a reference RandomizedSet; insert/remove must match and\n    # getRandom must return a value currently in the set.\n    ops = [\"RandomizedSet\",\"insert\",\"remove\",\"insert\",\"getRandom\",\n           \"remove\",\"insert\",\"getRandom\"]\n    call = [[],[1],[2],[2],[],[1],[2],[]]\n    s = set()\n    for i,(op,a) in enumerate(zip(ops,call)):\n        o = output[i]\n        if op == 'RandomizedSet':\n            if o is not None: return False\n        elif op == 'insert':\n            exp = a[0] not in s; s.add(a[0])\n            if o != exp: return False\n        elif op == 'remove':\n            exp = a[0] in s; s.discard(a[0])\n            if o != exp: return False\n        elif op == 'getRandom':\n            if o not in s: return False\n    return True\n",
+  "id": "arrays-hashing/13-insert-delete-getrandom-o1",
+  "title": "Insert Delete GetRandom O(1)",
+  "difficulty": "Medium",
+  "topic": "arrays-hashing",
+  "solutions": {
+    "naive": "import random\n\nclass RandomizedSet:\n    def __init__(self):\n        self.values = []\n\n    def insert(self, val: int) -> bool:\n        if val in self.values:\n            return False\n        self.values.append(val)\n        return True\n\n    def remove(self, val: int) -> bool:\n        if val not in self.values:\n            return False\n        self.values.remove(val)\n        return True\n\n    def getRandom(self) -> int:\n        return random.choice(self.values)",
+    "better": "import random\n\nclass RandomizedSet:\n    def __init__(self):\n        self.values = set()\n\n    def insert(self, val: int) -> bool:\n        if val in self.values:\n            return False\n        self.values.add(val)\n        return True\n\n    def remove(self, val: int) -> bool:\n        if val not in self.values:\n            return False\n        self.values.remove(val)\n        return True\n\n    def getRandom(self) -> int:\n        return random.choice(tuple(self.values))",
+    "optimal": "import random\n\nclass RandomizedSet:\n    def __init__(self):\n        self.values = []\n        self.index = {}\n\n    def insert(self, val: int) -> bool:\n        if val in self.index:\n            return False\n        self.index[val] = len(self.values)\n        self.values.append(val)\n        return True\n\n    def remove(self, val: int) -> bool:\n        if val not in self.index:\n            return False\n        i = self.index[val]\n        last = self.values[-1]\n        self.values[i] = last\n        self.index[last] = i\n        self.values.pop()\n        del self.index[val]\n        return True\n\n    def getRandom(self) -> int:\n        return random.choice(self.values)"
+  },
+  "starterCode": "class RandomizedSet:\n    def __init__(self):\n        # TODO: write your solution here\n        pass\n\n    def insert(self, val):\n        # TODO: write your solution here\n        pass\n\n    def remove(self, val):\n        # TODO: write your solution here\n        pass\n\n    def getRandom(self):\n        # TODO: write your solution here\n        pass\n"
+}

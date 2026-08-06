@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "numDecodings",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "226"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "a"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "c"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "b"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "b"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "a"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "b"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "b"
+      ],
+      "expected": 1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "dp-1d/07-decode-ways",
+  "title": "Decode Ways",
+  "difficulty": "Medium",
+  "topic": "dp-1d",
+  "solutions": {
+    "naive": "class Solution:\n    def numDecodings(self, s: str) -> int:\n        def dfs(i: int) -> int:\n            if i == len(s):\n                return 1\n            if s[i] == \"0\":\n                return 0\n            total = dfs(i + 1)\n            if i + 1 < len(s) and 10 <= int(s[i:i + 2]) <= 26:\n                total += dfs(i + 2)\n            return total\n\n        return dfs(0)",
+    "better": "class Solution:\n    def numDecodings(self, s: str) -> int:\n        memo = {}\n\n        def dfs(i: int) -> int:\n            if i == len(s):\n                return 1\n            if s[i] == \"0\":\n                return 0\n            if i not in memo:\n                memo[i] = dfs(i + 1)\n                if i + 1 < len(s) and 10 <= int(s[i:i + 2]) <= 26:\n                    memo[i] += dfs(i + 2)\n            return memo[i]\n\n        return dfs(0)",
+    "optimal": "class Solution:\n    def numDecodings(self, s: str) -> int:\n        next1, next2 = 1, 0  # dp[i+1], dp[i+2]\n        for i in range(len(s) - 1, -1, -1):\n            current = 0\n            if s[i] != \"0\":\n                current = next1\n                if i + 1 < len(s) and 10 <= int(s[i:i + 2]) <= 26:\n                    current += next2\n            next1, next2 = current, next1\n        return next1"
+  },
+  "starterCode": "class Solution:\n    def numDecodings(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

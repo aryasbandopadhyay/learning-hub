@@ -1,0 +1,294 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "fullJustify",
+  "params": [
+    "words",
+    "maxWidth"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "This",
+          "is",
+          "an",
+          "example",
+          "of",
+          "text",
+          "justification."
+        ],
+        16
+      ],
+      "expected": [
+        "This    is    an",
+        "example  of text",
+        "justification.  "
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ],
+        382
+      ],
+      "expected": [
+        "dbe bbb bac dee aed bde ebc dbb dbe cae adc dac ead bce ade bed acb bbd ebe baa                                                                                                                                                                                                                                                                                                               "
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "ada",
+          "bce",
+          "adc",
+          "bed",
+          "bab",
+          "dce",
+          "dbc",
+          "dab",
+          "ebe",
+          "daa",
+          "abc",
+          "bbd",
+          "bbe",
+          "cdb",
+          "cac",
+          "bae",
+          "cae",
+          "acb",
+          "ddc",
+          "ddd"
+        ],
+        6079
+      ],
+      "expected": [
+        "ada bce adc bed bab dce dbc dab ebe daa abc bbd bbe cdb cac bae cae acb ddc ddd                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "acd",
+          "dbc",
+          "bca"
+        ],
+        5144
+      ],
+      "expected": [
+        "acd dbc bca                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "dcd",
+          "add",
+          "cae",
+          "ccd",
+          "ebc"
+        ],
+        7061
+      ],
+      "expected": [
+        "dcd add cae ccd ebc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  "
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "ebc",
+          "dee",
+          "dbd",
+          "cbc",
+          "acc",
+          "bbc",
+          "dbd",
+          "cda",
+          "aee",
+          "bae",
+          "cbe",
+          "dbc",
+          "dde",
+          "eee",
+          "cba",
+          "aca",
+          "eaa",
+          "dcc",
+          "eee",
+          "cba"
+        ],
+        6467
+      ],
+      "expected": [
+        "ebc dee dbd cbc acc bbc dbd cda aee bae cbe dbc dde eee cba aca eaa dcc eee cba                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "cdc",
+          "bbd",
+          "dde"
+        ],
+        2931
+      ],
+      "expected": [
+        "cdc bbd dde                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "cde",
+          "dbd",
+          "edb",
+          "aeb",
+          "dea"
+        ],
+        1882
+      ],
+      "expected": [
+        "cde dbd edb aeb dea                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       "
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "aca",
+          "eec",
+          "aec",
+          "dcb",
+          "bea",
+          "daa",
+          "ceb",
+          "ecb",
+          "dad",
+          "bba",
+          "dbc",
+          "cca",
+          "ebe",
+          "bce",
+          "aab",
+          "bbe",
+          "aae",
+          "dbc",
+          "bee",
+          "ebc",
+          "acd",
+          "bcb",
+          "abd",
+          "eab",
+          "dab",
+          "ede",
+          "abb",
+          "dcc",
+          "cea",
+          "eda",
+          "cbb",
+          "ace",
+          "cca",
+          "dda",
+          "acb",
+          "ecc",
+          "cad",
+          "ceb",
+          "eba",
+          "cdd",
+          "ebb",
+          "eda",
+          "bbc",
+          "bea",
+          "dae",
+          "abb",
+          "bca",
+          "cbe",
+          "dba",
+          "aed"
+        ],
+        7312
+      ],
+      "expected": [
+        "aca eec aec dcb bea daa ceb ecb dad bba dbc cca ebe bce aab bbe aae dbc bee ebc acd bcb abd eab dab ede abb dcc cea eda cbb ace cca dda acb ecc cad ceb eba cdd ebb eda bbc bea dae abb bca cbe dba aed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         "
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "words",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "maxWidth",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "strings/19-text-justification",
+  "title": "Text Justification",
+  "difficulty": "Hard",
+  "topic": "strings",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:\n        result = []\n        i = 0\n        while i < len(words):\n            line_words = []\n            length = 0\n            while i < len(words) and length + len(words[i]) + len(line_words) <= maxWidth:\n                line_words.append(words[i])\n                length += len(words[i])\n                i += 1\n            spaces = maxWidth - length\n            if i == len(words) or len(line_words) == 1:\n                line = ' '.join(line_words)\n                result.append(line + ' ' * (maxWidth - len(line)))\n            else:\n                gaps = [''] * (len(line_words) - 1)\n                gap = 0\n                while spaces:\n                    gaps[gap] += ' '\n                    spaces -= 1\n                    gap = (gap + 1) % len(gaps)\n                line = ''.join(word + (gaps[j] if j < len(gaps) else '') for j, word in enumerate(line_words))\n                result.append(line)\n        return result",
+    "better": "from typing import List\n\nclass Solution:\n    def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:\n        result = []\n        i = 0\n        while i < len(words):\n            j = i\n            letters = 0\n            while j < len(words) and letters + len(words[j]) + (j - i) <= maxWidth:\n                letters += len(words[j])\n                j += 1\n            line_words = words[i:j]\n            gaps = len(line_words) - 1\n            if j == len(words) or gaps == 0:\n                line = ' '.join(line_words)\n                result.append(line + ' ' * (maxWidth - len(line)))\n            else:\n                total_spaces = maxWidth - letters\n                base, extra = divmod(total_spaces, gaps)\n                pieces = []\n                for k, word in enumerate(line_words[:-1]):\n                    pieces.append(word)\n                    pieces.append(' ' * (base + (1 if k < extra else 0)))\n                pieces.append(line_words[-1])\n                result.append(''.join(pieces))\n            i = j\n        return result",
+    "optimal": "from typing import List\n\nclass Solution:\n    def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:\n        def format_line(line_words: List[str], letters: int, is_last: bool) -> str:\n            if is_last or len(line_words) == 1:\n                line = ' '.join(line_words)\n                return line + ' ' * (maxWidth - len(line))\n            gaps = len(line_words) - 1\n            base, extra = divmod(maxWidth - letters, gaps)\n            parts = []\n            for idx, word in enumerate(line_words[:-1]):\n                parts.append(word)\n                parts.append(' ' * (base + (idx < extra)))\n            parts.append(line_words[-1])\n            return ''.join(parts)\n\n        result = []\n        i = 0\n        while i < len(words):\n            j = i\n            letters = 0\n            while j < len(words) and letters + len(words[j]) + (j - i) <= maxWidth:\n                letters += len(words[j])\n                j += 1\n            result.append(format_line(words[i:j], letters, j == len(words)))\n            i = j\n        return result"
+  },
+  "starterCode": "class Solution:\n    def fullJustify(self, words, maxWidth):\n        # TODO: write your solution here\n        pass\n"
+}

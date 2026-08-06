@@ -1,0 +1,68 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findRedundantConnection",
+  "params": [
+    "edges"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      ],
+      "expected": [
+        2,
+        3
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "edges",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "graphs/12-redundant-connection",
+  "title": "Redundant Connection",
+  "difficulty": "Medium",
+  "topic": "graphs",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:\n        # Union-find returns the edge that would form a cycle.\n        parent = list(range(len(edges) + 1))\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra == rb: return [a, b]\n            parent[ra] = rb\n        return []",
+    "better": "from typing import List\n\nclass Solution:\n    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:\n        # Union-find returns the edge that would form a cycle.\n        parent = list(range(len(edges) + 1))\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra == rb: return [a, b]\n            parent[ra] = rb\n        return []",
+    "optimal": "from typing import List\n\nclass Solution:\n    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:\n        # Union-find returns the edge that would form a cycle.\n        parent = list(range(len(edges) + 1))\n        def find(x):\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        for a, b in edges:\n            ra, rb = find(a), find(b)\n            if ra == rb: return [a, b]\n            parent[ra] = rb\n        return []"
+  },
+  "starterCode": "class Solution:\n    def findRedundantConnection(self, edges):\n        # TODO: write your solution here\n        pass\n"
+}

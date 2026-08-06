@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "longestCommonSubsequence",
+  "params": [
+    "text1",
+    "text2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "abcde",
+        "ace"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "ace"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "ace"
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "ace"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "ace"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "ace"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "ace"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "ace"
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "ace"
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "text1",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "text2",
+          "type": "str",
+          "role": "const",
+          "value": "ace"
+        }
+      ]
+    }
+  },
+  "id": "dp-2d/04-longest-common-subsequence",
+  "title": "Longest Common Subsequence",
+  "difficulty": "Medium",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "class SolutionRecursive:\n    def longestCommonSubsequence(self, text1: str, text2: str) -> int:\n        def dfs(i: int, j: int) -> int:\n            if i == len(text1) or j == len(text2):\n                return 0\n            if text1[i] == text2[j]:\n                return 1 + dfs(i + 1, j + 1)\n            return max(dfs(i + 1, j), dfs(i, j + 1))\n\n        return dfs(0, 0)",
+    "better": "class SolutionMemoized:\n    def longestCommonSubsequence(self, text1: str, text2: str) -> int:\n        memo = {}\n\n        def dfs(i: int, j: int) -> int:\n            if i == len(text1) or j == len(text2):\n                return 0\n            if (i, j) not in memo:\n                if text1[i] == text2[j]:\n                    memo[(i, j)] = 1 + dfs(i + 1, j + 1)\n                else:\n                    memo[(i, j)] = max(dfs(i + 1, j), dfs(i, j + 1))\n            return memo[(i, j)]\n\n        return dfs(0, 0)",
+    "optimal": "class Solution:\n    def longestCommonSubsequence(self, text1: str, text2: str) -> int:\n        m, n = len(text1), len(text2)\n        dp = [0] * (n + 1)\n        for i in range(m - 1, -1, -1):\n            next_diag = 0\n            for j in range(n - 1, -1, -1):\n                old = dp[j]\n                if text1[i] == text2[j]:\n                    dp[j] = 1 + next_diag\n                else:\n                    dp[j] = max(dp[j], dp[j + 1])\n                next_diag = old\n        return dp[0]"
+  },
+  "starterCode": "class Solution:\n    def longestCommonSubsequence(self, text1, text2):\n        # TODO: write your solution here\n        pass\n"
+}

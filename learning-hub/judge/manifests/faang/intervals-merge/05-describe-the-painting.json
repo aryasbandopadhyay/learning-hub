@@ -1,0 +1,79 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "splitPainting",
+  "params": [
+    "segments"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            4,
+            5
+          ],
+          [
+            4,
+            7,
+            7
+          ],
+          [
+            1,
+            7,
+            9
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          4,
+          14
+        ],
+        [
+          4,
+          7,
+          16
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "segments",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        }
+      ]
+    }
+  },
+  "id": "faang/intervals-merge/05-describe-the-painting",
+  "title": "Describe the Painting",
+  "difficulty": "Medium",
+  "topic": "faang/intervals-merge",
+  "solutions": {
+    "naive": "class Solution:\n    def splitPainting(self, segments: list[list[int]]) -> list[list[int]]:\n        points = sorted(set([x for s, e, c in segments for x in (s, e)]))\n        ans = []\n        for i in range(len(points) - 1):\n            a, b = points[i], points[i + 1]\n            total = 0\n            for s, e, c in segments:\n                if s <= a and b <= e:\n                    total += c\n            if total:\n                if ans and ans[-1][1] == a and ans[-1][2] == total:\n                    ans[-1][1] = b\n                else:\n                    ans.append([a, b, total])\n        return ans",
+    "better": "class Solution:\n    def splitPainting(self, segments: list[list[int]]) -> list[list[int]]:\n        delta = {}\n        for s, e, c in segments:\n            delta[s] = delta.get(s, 0) + c\n            delta[e] = delta.get(e, 0) - c\n        keys = sorted(delta)\n        ans = []\n        cur = 0\n        for i, x in enumerate(keys[:-1]):\n            cur += delta[x]\n            y = keys[i + 1]\n            if cur:\n                if ans and ans[-1][1] == x and ans[-1][2] == cur:\n                    ans[-1][1] = y\n                else:\n                    ans.append([x, y, cur])\n        return ans",
+    "optimal": "class Solution:\n    def splitPainting(self, segments: list[list[int]]) -> list[list[int]]:\n        if not segments:\n            return []\n        max_x = max(e for _, e, _ in segments)\n        diff = [0] * (max_x + 1)\n        touched = [False] * (max_x + 1)\n        for s, e, c in segments:\n            diff[s] += c\n            diff[e] -= c\n            touched[s] = True\n            touched[e] = True\n        ans = []\n        cur = 0\n        last = None\n        for x in range(max_x + 1):\n            if touched[x]:\n                if last is not None and last < x and cur:\n                    if ans and ans[-1][1] == last and ans[-1][2] == cur:\n                        ans[-1][1] = x\n                    else:\n                        ans.append([last, x, cur])\n                cur += diff[x]\n                last = x\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def splitPainting(self, segments):\n        # TODO: write your solution here\n        pass\n"
+}

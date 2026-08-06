@@ -1,0 +1,63 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "canVisitAllRooms",
+  "params": [
+    "rooms"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          []
+        ]
+      ],
+      "expected": true
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "rooms",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 1
+        }
+      ]
+    }
+  },
+  "id": "graphs/19-keys-and-rooms",
+  "title": "Keys and Rooms",
+  "difficulty": "Medium",
+  "topic": "graphs",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        # DFS follows keys as directed edges.\n        seen, stack = {0}, [0]\n        while stack:\n            room = stack.pop()\n            for key in rooms[room]:\n                if key not in seen:\n                    seen.add(key); stack.append(key)\n        return len(seen) == len(rooms)",
+    "better": "from typing import List\n\nclass Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        # DFS follows keys as directed edges.\n        seen, stack = {0}, [0]\n        while stack:\n            room = stack.pop()\n            for key in rooms[room]:\n                if key not in seen:\n                    seen.add(key); stack.append(key)\n        return len(seen) == len(rooms)",
+    "optimal": "from typing import List\n\nclass Solution:\n    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:\n        # DFS follows keys as directed edges.\n        seen, stack = {0}, [0]\n        while stack:\n            room = stack.pop()\n            for key in rooms[room]:\n                if key not in seen:\n                    seen.add(key); stack.append(key)\n        return len(seen) == len(rooms)"
+  },
+  "starterCode": "class Solution:\n    def canVisitAllRooms(self, rooms):\n        # TODO: write your solution here\n        pass\n"
+}

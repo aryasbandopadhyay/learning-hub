@@ -1,0 +1,45 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "oddEvenList",
+  "params": [
+    "head"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        1,
+        3,
+        5,
+        2,
+        4
+      ]
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist"
+  ],
+  "id": "linked-list/14-odd-even-linked-list",
+  "title": "Odd Even Linked List",
+  "difficulty": "Medium",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def oddEvenList(self, head):\n        nodes = []\n        cur = head\n        while cur:\n            nodes.append(cur)\n            cur = cur.next\n        ordered = nodes[0::2] + nodes[1::2]\n        dummy = ListNode()\n        tail = dummy\n        for node in ordered:\n            tail.next = node\n            tail = tail.next\n        tail.next = None\n        return dummy.next",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def oddEvenList(self, head):\n        odd_dummy = ListNode()\n        even_dummy = ListNode()\n        odd_tail, even_tail = odd_dummy, even_dummy\n        index = 1\n        while head:\n            if index % 2:\n                odd_tail.next = ListNode(head.val)\n                odd_tail = odd_tail.next\n            else:\n                even_tail.next = ListNode(head.val)\n                even_tail = even_tail.next\n            head = head.next\n            index += 1\n        odd_tail.next = even_dummy.next\n        return odd_dummy.next",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def oddEvenList(self, head):\n        if not head:\n            return None\n        odd = head\n        even = head.next\n        even_head = even\n        while even and even.next:\n            odd.next = even.next\n            odd = odd.next\n            even.next = odd.next\n            even = even.next\n        odd.next = even_head\n        return head"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def oddEvenList(self, head):\n        # TODO: write your solution here\n        pass\n"
+}

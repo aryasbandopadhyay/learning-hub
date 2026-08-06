@@ -1,0 +1,315 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "checkSubarraySum",
+  "params": [
+    "nums",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          23,
+          2,
+          4,
+          6,
+          7
+        ],
+        6
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          -1860,
+          2717
+        ],
+        3484
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          -7282,
+          7324,
+          -7123,
+          8282,
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          -9751,
+          3933,
+          -3324,
+          1879
+        ],
+        8755
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240,
+          -5860,
+          -4391,
+          5602,
+          -8171,
+          -5710,
+          9649,
+          -5071,
+          9924,
+          3379,
+          -5925,
+          -6839,
+          -6110,
+          -5293,
+          -302,
+          -4294,
+          -4179
+        ],
+        6716
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -3907,
+          -7628,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          -3907
+        ],
+        3545
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          2646,
+          3568,
+          2156,
+          7510,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          -6535,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289
+        ],
+        7179
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          4346,
+          3798
+        ],
+        4198
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          7473,
+          -5830,
+          -1585,
+          4120,
+          -469,
+          3413,
+          -4777,
+          -750,
+          2417,
+          9800,
+          4419,
+          -3628,
+          2446,
+          1037,
+          -3524,
+          1317,
+          -9859,
+          1642,
+          -321,
+          -3667,
+          -4376,
+          -1449,
+          3654,
+          -2423,
+          3377,
+          1322,
+          3103,
+          -9882,
+          -6320,
+          6438,
+          7424,
+          -3365,
+          -9958,
+          7108,
+          175,
+          -4516,
+          6748,
+          4552,
+          -3273,
+          -1353,
+          3658,
+          5336,
+          8362,
+          7400,
+          9855,
+          -580,
+          -3438,
+          -9325,
+          -6555,
+          76
+        ],
+        1239
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          3656
+        ],
+        4911
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/arrays-prefix-sum/01-continuous-subarray-sum",
+  "title": "Continuous Subarray Sum",
+  "difficulty": "Medium",
+  "topic": "google/arrays-prefix-sum",
+  "solutions": {
+    "naive": "class Solution:\n    def checkSubarraySum(self, nums: list[int], k: int) -> bool:\n        n = len(nums)\n        for i in range(n):\n            total = 0\n            for j in range(i, n):\n                total += nums[j]\n                if j - i + 1 >= 2 and total % k == 0:\n                    return True\n        return False",
+    "better": "class Solution:\n    def checkSubarraySum(self, nums: list[int], k: int) -> bool:\n        prefix = [0]\n        for x in nums:\n            prefix.append(prefix[-1] + x)\n        n = len(nums)\n        for i in range(n - 1):\n            for j in range(i + 2, n + 1):\n                if (prefix[j] - prefix[i]) % k == 0:\n                    return True\n        return False",
+    "optimal": "class Solution:\n    def checkSubarraySum(self, nums: list[int], k: int) -> bool:\n        first = {0: -1}\n        total = 0\n        for i, x in enumerate(nums):\n            total = (total + x) % k\n            if total in first:\n                if i - first[total] >= 2:\n                    return True\n            else:\n                first[total] = i\n        return False"
+  },
+  "starterCode": "class Solution:\n    def checkSubarraySum(self, nums, k):\n        # TODO: write your solution here\n        pass\n"
+}

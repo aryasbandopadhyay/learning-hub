@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "nearestPalindromic",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "123"
+      ],
+      "expected": "121"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/strings-advanced/13-nearest-palindromic-number",
+  "title": "Nearest Palindromic Number",
+  "difficulty": "Hard",
+  "topic": "faang/strings-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def nearestPalindromic(self, n: str) -> str:\n        value = int(n)\n        if value <= 100000:\n            delta = 1\n            while True:\n                low, high = value - delta, value + delta\n                if low >= 0 and str(low) == str(low)[::-1]:\n                    return str(low)\n                if str(high) == str(high)[::-1]:\n                    return str(high)\n                delta += 1\n        length = len(n)\n        prefix = int(n[:(length + 1) // 2])\n        candidates = {10 ** (length - 1) - 1, 10 ** length + 1}\n        for p in (prefix - 1, prefix, prefix + 1):\n            left = str(p)\n            candidates.add(int(left + (left[-2::-1] if length % 2 else left[::-1])))\n        candidates.discard(value)\n        return str(min(candidates, key=lambda x: (abs(x - value), x)))",
+    "better": "class Solution:\n    def nearestPalindromic(self, n):\n        value = int(n)\n        length = len(n)\n        half = (length + 1) // 2\n        prefix = int(n[:half])\n        candidates = [10 ** (length - 1) - 1, 10 ** length + 1]\n        for p in [prefix - 1, prefix, prefix + 1]:\n            left = str(p)\n            pal = left + (left[::-1] if length % 2 == 0 else left[-2::-1])\n            candidates.append(int(pal))\n        answer = None\n        for candidate in candidates:\n            if candidate == value:\n                continue\n            if answer is None or (abs(candidate - value), candidate) < (abs(answer - value), answer):\n                answer = candidate\n        return str(answer)",
+    "optimal": "class Solution:\n    def nearestPalindromic(self, n):\n        num = int(n)\n        length = len(n)\n        prefix = int(n[:(length + 1) // 2])\n        candidates = {10 ** (length - 1) - 1, 10 ** length + 1}\n        for p in range(prefix - 1, prefix + 2):\n            left = str(p)\n            mirrored = left + (left[-2::-1] if length % 2 else left[::-1])\n            candidates.add(int(mirrored))\n        candidates.discard(num)\n        return str(min(candidates, key=lambda x: (abs(x - num), x)))"
+  },
+  "starterCode": "class Solution:\n    def nearestPalindromic(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

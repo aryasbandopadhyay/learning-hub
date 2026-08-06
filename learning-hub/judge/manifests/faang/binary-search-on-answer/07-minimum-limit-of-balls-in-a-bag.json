@@ -1,0 +1,62 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minimumSize",
+  "params": [
+    "nums",
+    "maxOperations"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          9
+        ],
+        2
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "maxOperations",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/binary-search-on-answer/07-minimum-limit-of-balls-in-a-bag",
+  "title": "Minimum Limit of Balls in a Bag",
+  "difficulty": "Medium",
+  "topic": "faang/binary-search-on-answer",
+  "solutions": {
+    "naive": "class Solution:\n    def minimumSize(self, nums, maxOperations):\n        def ops(p):\n            total = 0\n            for x in nums:\n                total += (x - 1) // p\n            return total\n        for p in range(1,max(nums)+1):\n            if ops(p) <= maxOperations: return p\n        return max(nums)",
+    "better": "class Solution:\n    def minimumSize(self, nums, maxOperations):\n        def ops(p):\n            total = 0\n            for x in nums:\n                total += (x - 1) // p\n            return total\n        lo,hi,ans=1,max(nums),max(nums)\n        while lo<=hi:\n            mid=(lo+hi)//2\n            if ops(mid)<=maxOperations: ans=mid; hi=mid-1\n            else: lo=mid+1\n        return ans",
+    "optimal": "class Solution:\n    def minimumSize(self, nums, maxOperations):\n        bags=len(nums)+maxOperations\n        lo=max(1,(sum(nums)+bags-1)//bags); hi=max(nums)\n        def can(p):\n            used=0\n            for x in nums:\n                used += (x - 1) // p\n                if used > maxOperations: return False\n            return True\n        while lo < hi:\n            mid=(lo+hi)//2\n            if can(mid): hi=mid\n            else: lo=mid+1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def minimumSize(self, nums, maxOperations):\n        # TODO: write your solution here\n        pass\n"
+}

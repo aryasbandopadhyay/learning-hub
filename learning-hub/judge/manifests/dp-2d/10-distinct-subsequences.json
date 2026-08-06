@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "numDistinct",
+  "params": [
+    "s",
+    "t"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "rabbbit",
+        "rabbit"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "rabbit"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "rabbit"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "rabbit"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "rabbit"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "rabbit"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "rabbit"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "rabbit"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "rabbit"
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "t",
+          "type": "str",
+          "role": "const",
+          "value": "rabbit"
+        }
+      ]
+    }
+  },
+  "id": "dp-2d/10-distinct-subsequences",
+  "title": "Distinct Subsequences",
+  "difficulty": "Hard",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "class SolutionRecursive:\n    def numDistinct(self, s: str, t: str) -> int:\n        def dfs(i: int, j: int) -> int:\n            if j == len(t):\n                return 1\n            if i == len(s):\n                return 0\n            ways = dfs(i + 1, j)\n            if s[i] == t[j]:\n                ways += dfs(i + 1, j + 1)\n            return ways\n\n        return dfs(0, 0)",
+    "better": "class SolutionMemoized:\n    def numDistinct(self, s: str, t: str) -> int:\n        memo = {}\n\n        def dfs(i: int, j: int) -> int:\n            if j == len(t):\n                return 1\n            if i == len(s):\n                return 0\n            if (i, j) not in memo:\n                memo[(i, j)] = dfs(i + 1, j)\n                if s[i] == t[j]:\n                    memo[(i, j)] += dfs(i + 1, j + 1)\n            return memo[(i, j)]\n\n        return dfs(0, 0)",
+    "optimal": "class Solution:\n    def numDistinct(self, s: str, t: str) -> int:\n        n = len(t)\n        dp = [0] * (n + 1)\n        dp[n] = 1\n        for i in range(len(s) - 1, -1, -1):\n            # Move left-to-right over suffix index using a saved diagonal.\n            prev_diag = 1\n            for j in range(n - 1, -1, -1):\n                old = dp[j]\n                if s[i] == t[j]:\n                    dp[j] += prev_diag\n                prev_diag = old\n        return dp[0]"
+  },
+  "starterCode": "class Solution:\n    def numDistinct(self, s, t):\n        # TODO: write your solution here\n        pass\n"
+}

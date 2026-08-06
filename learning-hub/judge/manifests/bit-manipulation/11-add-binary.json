@@ -1,0 +1,59 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "addBinary",
+  "params": [
+    "a",
+    "b"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "1010",
+        "1011"
+      ],
+      "expected": "10101"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "a",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "b",
+          "type": "str",
+          "role": "const",
+          "value": "1011"
+        }
+      ]
+    }
+  },
+  "id": "bit-manipulation/11-add-binary",
+  "title": "Add Binary",
+  "difficulty": "Easy",
+  "topic": "bit-manipulation",
+  "solutions": {
+    "naive": "class Solution:\n    def addBinary(self, a: str, b: str) -> str:\n        # Simple, but relies on Python big integers.\n        return bin(int(a, 2) + int(b, 2))[2:]",
+    "better": "class Solution:\n    def addBinary(self, a: str, b: str) -> str:\n        i = len(a) - 1\n        j = len(b) - 1\n        carry = 0\n        out = []\n        while i >= 0 or j >= 0 or carry:\n            total = carry\n            if i >= 0:\n                total += ord(a[i]) - ord(\"0\")\n                i -= 1\n            if j >= 0:\n                total += ord(b[j]) - ord(\"0\")\n                j -= 1\n            out.append(str(total & 1))\n            carry = total >> 1\n        return \"\".join(reversed(out))",
+    "optimal": "class Solution:\n    def addBinary(self, a: str, b: str) -> str:\n        i = len(a) - 1\n        j = len(b) - 1\n        carry = 0\n        out = []\n        while i >= 0 or j >= 0 or carry:\n            abit = ord(a[i]) - ord(\"0\") if i >= 0 else 0\n            bbit = ord(b[j]) - ord(\"0\") if j >= 0 else 0\n            out.append(str(abit ^ bbit ^ carry))\n            carry = (abit & bbit) | (carry & (abit ^ bbit))\n            i -= 1\n            j -= 1\n        return \"\".join(reversed(out))"
+  },
+  "starterCode": "class Solution:\n    def addBinary(self, a, b):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "backspaceCompare",
+  "params": [
+    "s",
+    "t"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "ab#c",
+        "ad#c"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "ad#c"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "ad#c"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "ad#c"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "ad#c"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "ad#c"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "ad#c"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "ad#c"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "ad#c"
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "t",
+          "type": "str",
+          "role": "const",
+          "value": "ad#c"
+        }
+      ]
+    }
+  },
+  "id": "two-pointers/11-backspace-string-compare",
+  "title": "Backspace String Compare",
+  "difficulty": "Easy",
+  "topic": "two-pointers",
+  "solutions": {
+    "naive": "class Solution:\n    def backspaceCompare(self, s: str, t: str) -> bool:\n        def reduce_text(text: str) -> str:\n            chars = list(text)\n            changed = True\n            while changed:\n                changed = False\n                for i, ch in enumerate(chars):\n                    if ch == \"#\":\n                        start = i - 1 if i > 0 else i\n                        del chars[start:i + 1]\n                        changed = True\n                        break\n            return \"\".join(chars)\n\n        return reduce_text(s) == reduce_text(t)",
+    "better": "class Solution:\n    def backspaceCompare(self, s: str, t: str) -> bool:\n        def build(text: str) -> str:\n            stack = []\n            for ch in text:\n                if ch == \"#\":\n                    if stack:\n                        stack.pop()\n                else:\n                    stack.append(ch)\n            return \"\".join(stack)\n\n        return build(s) == build(t)",
+    "optimal": "class Solution:\n    def backspaceCompare(self, s: str, t: str) -> bool:\n        def next_valid(text: str, i: int) -> int:\n            skip = 0\n            while i >= 0:\n                if text[i] == \"#\":\n                    skip += 1\n                    i -= 1\n                elif skip:\n                    skip -= 1\n                    i -= 1\n                else:\n                    break\n            return i\n\n        i, j = len(s) - 1, len(t) - 1\n        while i >= 0 or j >= 0:\n            i = next_valid(s, i)\n            j = next_valid(t, j)\n            if i < 0 or j < 0:\n                return i == j\n            if s[i] != t[j]:\n                return False\n            i -= 1\n            j -= 1\n        return True"
+  },
+  "starterCode": "class Solution:\n    def backspaceCompare(self, s, t):\n        # TODO: write your solution here\n        pass\n"
+}

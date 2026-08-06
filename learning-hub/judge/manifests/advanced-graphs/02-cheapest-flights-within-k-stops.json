@@ -1,0 +1,114 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findCheapestPrice",
+  "params": [
+    "n",
+    "flights",
+    "src",
+    "dst",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        4,
+        [
+          [
+            0,
+            1,
+            100
+          ],
+          [
+            1,
+            2,
+            100
+          ],
+          [
+            2,
+            0,
+            100
+          ],
+          [
+            1,
+            3,
+            600
+          ],
+          [
+            2,
+            3,
+            200
+          ]
+        ],
+        0,
+        3,
+        1
+      ],
+      "expected": 700
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "flights",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        },
+        {
+          "name": "src",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "dst",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "advanced-graphs/02-cheapest-flights-within-k-stops",
+  "title": "Cheapest Flights Within K Stops",
+  "difficulty": "Medium",
+  "topic": "advanced-graphs",
+  "solutions": {
+    "naive": "from collections import defaultdict\nfrom typing import List\n\nclass Solution:\n    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:\n        graph = defaultdict(list)\n        for u, v, price in flights:\n            graph[u].append((v, price))\n\n        best = float(\"inf\")\n\n        def dfs(city: int, edges_left: int, cost: int, seen: set[int]) -> None:\n            nonlocal best\n            if cost >= best:\n                return\n            if city == dst:\n                best = cost\n                return\n            if edges_left == 0:\n                return\n            for nxt, price in graph[city]:\n                if nxt not in seen:\n                    seen.add(nxt)\n                    dfs(nxt, edges_left - 1, cost + price, seen)\n                    seen.remove(nxt)\n\n        dfs(src, k + 1, 0, {src})\n        return -1 if best == float(\"inf\") else best",
+    "better": "from typing import List\n\nclass Solution:\n    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:\n        dist = [float(\"inf\")] * n\n        dist[src] = 0\n\n        for _ in range(k + 1):\n            nxt_dist = dist[:]  # prevents using more than one new edge this round\n            for u, v, price in flights:\n                if dist[u] + price < nxt_dist[v]:\n                    nxt_dist[v] = dist[u] + price\n            dist = nxt_dist\n\n        return -1 if dist[dst] == float(\"inf\") else dist[dst]",
+    "optimal": "import heapq\nfrom collections import defaultdict\nfrom typing import List\n\nclass Solution:\n    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:\n        graph = defaultdict(list)\n        for u, v, price in flights:\n            graph[u].append((v, price))\n\n        max_edges = k + 1\n        best = [[float(\"inf\")] * (max_edges + 1) for _ in range(n)]\n        best[src][0] = 0\n        heap = [(0, src, 0)]\n\n        while heap:\n            cost, city, used = heapq.heappop(heap)\n            if city == dst:\n                return cost\n            if used == max_edges or cost != best[city][used]:\n                continue\n            for nxt, price in graph[city]:\n                new_cost = cost + price\n                if new_cost < best[nxt][used + 1]:\n                    best[nxt][used + 1] = new_cost\n                    heapq.heappush(heap, (new_cost, nxt, used + 1))\n\n        return -1"
+  },
+  "starterCode": "class Solution:\n    def findCheapestPrice(self, n, flights, src, dst, k):\n        # TODO: write your solution here\n        pass\n"
+}

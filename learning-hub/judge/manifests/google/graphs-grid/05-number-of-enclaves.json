@@ -1,0 +1,521 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "numEnclaves",
+  "params": [
+    "grid"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            2476,
+            -3444,
+            9642,
+            -4142
+          ],
+          [
+            -2455,
+            -1860,
+            -5634,
+            -7163
+          ],
+          [
+            -1771,
+            2552,
+            7393,
+            7649
+          ],
+          [
+            -7057,
+            6032,
+            -3464,
+            3816
+          ],
+          [
+            9280,
+            -2900,
+            2254,
+            2717
+          ],
+          [
+            -3034,
+            -5011,
+            5121,
+            -4135
+          ],
+          [
+            8576,
+            1102,
+            -7282,
+            7324
+          ],
+          [
+            -7123,
+            5369,
+            367,
+            3193
+          ],
+          [
+            -8603,
+            -1173,
+            8282,
+            -9751
+          ],
+          [
+            3933,
+            -3324,
+            1879,
+            7508
+          ],
+          [
+            -7352,
+            5141,
+            6995,
+            -3510
+          ],
+          [
+            9841,
+            5161,
+            -8319,
+            1715
+          ],
+          [
+            -5769,
+            -2928,
+            -4731,
+            4474
+          ],
+          [
+            9510,
+            -4180,
+            6488,
+            -4233
+          ],
+          [
+            -8786,
+            -6403,
+            -9237,
+            -4391
+          ],
+          [
+            5523,
+            3730,
+            -7341,
+            3940
+          ],
+          [
+            -7182,
+            -5318,
+            151,
+            -9815
+          ],
+          [
+            2486,
+            803,
+            -5550,
+            7150
+          ],
+          [
+            3281,
+            -3421,
+            -8185,
+            -3072
+          ],
+          [
+            4515,
+            -1560,
+            7873,
+            3240
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            1593,
+            5602,
+            -8171,
+            -5710
+          ],
+          [
+            9649,
+            -5071,
+            9924,
+            3379
+          ],
+          [
+            -5925,
+            -6839,
+            -6110,
+            -5293
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            3430,
+            -5232,
+            -3199,
+            8381
+          ],
+          [
+            456,
+            6355,
+            -2336,
+            -1560
+          ],
+          [
+            -6160,
+            1852,
+            -3907,
+            -7628
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          [
+            9191,
+            -8438,
+            1057,
+            -2912
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          [
+            3087,
+            2646,
+            3568,
+            2156
+          ],
+          [
+            7510,
+            -6964,
+            -4062,
+            -8769
+          ],
+          [
+            2222,
+            3060,
+            4548,
+            -2457
+          ],
+          [
+            204,
+            -2593,
+            179,
+            -6535
+          ],
+          [
+            286,
+            -2837,
+            -1818,
+            2568
+          ],
+          [
+            -289,
+            4356,
+            -7375,
+            4346
+          ],
+          [
+            3798,
+            -1605,
+            -7717,
+            6487
+          ],
+          [
+            -398,
+            505,
+            5633,
+            7473
+          ],
+          [
+            -5830,
+            -1585,
+            4120,
+            -469
+          ],
+          [
+            3413,
+            -4777,
+            -750,
+            2417
+          ],
+          [
+            9800,
+            4419,
+            -3628,
+            2446
+          ],
+          [
+            1037,
+            -3524,
+            1317,
+            -9859
+          ],
+          [
+            1642,
+            -321,
+            -3667,
+            -4376
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          [
+            3654,
+            -2423,
+            3377,
+            1322
+          ],
+          [
+            3103,
+            -9882,
+            -6320,
+            6438
+          ],
+          [
+            7424,
+            -3365,
+            -9958,
+            7108
+          ],
+          [
+            175,
+            -4516,
+            6748,
+            4552
+          ],
+          [
+            -3273,
+            -1353,
+            3658,
+            5336
+          ],
+          [
+            8362,
+            7400,
+            9855,
+            -580
+          ],
+          [
+            -3438,
+            -9325,
+            -6555,
+            76
+          ],
+          [
+            -7524,
+            9022,
+            -8953,
+            -8090
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          [
+            8259,
+            9267,
+            8838,
+            -328
+          ],
+          [
+            -3643,
+            -6720,
+            2932,
+            3056
+          ],
+          [
+            -4356,
+            -1323,
+            5100,
+            782
+          ],
+          [
+            -5791,
+            -5719,
+            4632,
+            2747
+          ],
+          [
+            3702,
+            8411,
+            -4140,
+            1791
+          ],
+          [
+            -1803,
+            -3197,
+            -1036,
+            5176
+          ],
+          [
+            8765,
+            2538,
+            -3982,
+            5701
+          ],
+          [
+            8769,
+            5609,
+            -4447,
+            -7551
+          ],
+          [
+            7421,
+            -2150,
+            5069,
+            7143
+          ],
+          [
+            -9495,
+            -6237,
+            805,
+            6191
+          ],
+          [
+            -7636,
+            1001,
+            -9871,
+            8665
+          ],
+          [
+            7465,
+            -978,
+            -9607,
+            9101
+          ],
+          [
+            455,
+            3563,
+            -1430,
+            -4562
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          [
+            3017,
+            -8816,
+            -8436,
+            1219
+          ]
+        ]
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "grid",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 4
+        }
+      ]
+    }
+  },
+  "id": "google/graphs-grid/05-number-of-enclaves",
+  "title": "Number of Enclaves",
+  "difficulty": "Medium",
+  "topic": "google/graphs-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def numEnclaves(self, grid: list[list[int]]) -> int:\n        m,n=len(grid),len(grid[0]); seen=[[False]*n for _ in range(m)]\n        def dfs(r,c,cells):\n            seen[r][c]=True; cells.append((r,c)); touch=r in (0,m-1) or c in (0,n-1)\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<m and 0<=nc<n and grid[nr][nc] and not seen[nr][nc]: touch=dfs(nr,nc,cells) or touch\n            return touch\n        ans=0\n        for r in range(m):\n            for c in range(n):\n                if grid[r][c] and not seen[r][c]:\n                    cells=[]\n                    if not dfs(r,c,cells): ans+=len(cells)\n        return ans",
+    "better": "class Solution:\n    def numEnclaves(self, grid: list[list[int]]) -> int:\n        from collections import deque\n        g=[row[:] for row in grid]; m,n=len(g),len(g[0]); q=deque()\n        for r in range(m):\n            for c in (0,n-1):\n                if g[r][c]: g[r][c]=0; q.append((r,c))\n        for c in range(n):\n            for r in (0,m-1):\n                if g[r][c]: g[r][c]=0; q.append((r,c))\n        while q:\n            r,c=q.popleft()\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<m and 0<=nc<n and g[nr][nc]: g[nr][nc]=0; q.append((nr,nc))\n        return sum(map(sum,g))",
+    "optimal": "class Solution:\n    def numEnclaves(self, grid: list[list[int]]) -> int:\n        m,n=len(grid),len(grid[0]); ocean=m*n; parent=list(range(ocean+1)); size=[1]*(ocean+1)\n        def find(x):\n            while parent[x]!=x: parent[x]=parent[parent[x]]; x=parent[x]\n            return x\n        def union(a,b):\n            ra,rb=find(a),find(b)\n            if ra==rb: return\n            if size[ra]<size[rb]: ra,rb=rb,ra\n            parent[rb]=ra; size[ra]+=size[rb]\n        for r in range(m):\n            for c in range(n):\n                if grid[r][c]:\n                    i=r*n+c\n                    if r in (0,m-1) or c in (0,n-1): union(i,ocean)\n                    if r and grid[r-1][c]: union(i,(r-1)*n+c)\n                    if c and grid[r][c-1]: union(i,r*n+c-1)\n        root=find(ocean)\n        return sum(1 for r in range(m) for c in range(n) if grid[r][c] and find(r*n+c)!=root)"
+  },
+  "starterCode": "class Solution:\n    def numEnclaves(self, grid):\n        # TODO: write your solution here\n        pass\n"
+}

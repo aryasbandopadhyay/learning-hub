@@ -1,0 +1,55 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "missingNumber",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          0,
+          1
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "bit-manipulation/05-missing-number",
+  "title": "Missing Number",
+  "difficulty": "Easy",
+  "topic": "bit-manipulation",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def missingNumber(self, nums: List[int]) -> int:\n        n = len(nums)\n        for target in range(n + 1):\n            found = False\n            for x in nums:\n                if x == target:\n                    found = True\n                    break\n            if not found:\n                return target\n        return -1",
+    "better": "from typing import List\n\nclass Solution:\n    def missingNumber(self, nums: List[int]) -> int:\n        n = len(nums)\n        expected = n * (n + 1) // 2\n        actual = sum(nums)\n        return expected - actual",
+    "optimal": "from typing import List\n\nclass Solution:\n    def missingNumber(self, nums: List[int]) -> int:\n        missing = len(nums)\n        for i, x in enumerate(nums):\n            # Index i represents an expected value; x is an actual value.\n            missing ^= i ^ x\n        return missing"
+  },
+  "starterCode": "class Solution:\n    def missingNumber(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

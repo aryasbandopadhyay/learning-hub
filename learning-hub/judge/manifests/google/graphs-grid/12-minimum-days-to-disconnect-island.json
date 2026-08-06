@@ -1,0 +1,461 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minDays",
+  "params": [
+    "grid"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            2476,
+            -3444
+          ],
+          [
+            9642,
+            -4142
+          ],
+          [
+            -2455,
+            -1860
+          ],
+          [
+            -5634,
+            -7163
+          ],
+          [
+            -1771,
+            2552
+          ],
+          [
+            7393,
+            7649
+          ],
+          [
+            -7057,
+            6032
+          ],
+          [
+            -3464,
+            3816
+          ],
+          [
+            9280,
+            -2900
+          ],
+          [
+            2254,
+            2717
+          ],
+          [
+            -3034,
+            -5011
+          ],
+          [
+            5121,
+            -4135
+          ],
+          [
+            8576,
+            1102
+          ],
+          [
+            -7282,
+            7324
+          ],
+          [
+            -7123,
+            5369
+          ],
+          [
+            367,
+            3193
+          ],
+          [
+            -8603,
+            -1173
+          ],
+          [
+            8282,
+            -9751
+          ],
+          [
+            3933,
+            -3324
+          ],
+          [
+            1879,
+            7508
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            9841,
+            5161
+          ],
+          [
+            -8319,
+            1715
+          ],
+          [
+            -5769,
+            -2928
+          ],
+          [
+            -4731,
+            4474
+          ],
+          [
+            9510,
+            -4180
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -8786,
+            -6403
+          ],
+          [
+            -9237,
+            -4391
+          ],
+          [
+            5523,
+            3730
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -7182,
+            -5318
+          ],
+          [
+            151,
+            -9815
+          ],
+          [
+            2486,
+            803
+          ],
+          [
+            -5550,
+            7150
+          ],
+          [
+            3281,
+            -3421
+          ],
+          [
+            -8185,
+            -3072
+          ],
+          [
+            4515,
+            -1560
+          ],
+          [
+            7873,
+            3240
+          ],
+          [
+            -5860,
+            1593
+          ],
+          [
+            5602,
+            -8171
+          ],
+          [
+            -5710,
+            9649
+          ],
+          [
+            -5071,
+            9924
+          ],
+          [
+            3379,
+            -5925
+          ],
+          [
+            -6839,
+            -6110
+          ],
+          [
+            -5293,
+            -302
+          ],
+          [
+            -4294,
+            -4179
+          ],
+          [
+            3430,
+            -5232
+          ],
+          [
+            -3199,
+            8381
+          ],
+          [
+            456,
+            6355
+          ],
+          [
+            -2336,
+            -1560
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -3907,
+            -7628
+          ],
+          [
+            6424,
+            -573
+          ],
+          [
+            -9635,
+            9191
+          ],
+          [
+            -8438,
+            1057
+          ],
+          [
+            -2912,
+            2352
+          ],
+          [
+            3077,
+            1034
+          ],
+          [
+            3087,
+            2646
+          ],
+          [
+            3568,
+            2156
+          ],
+          [
+            7510,
+            -6964
+          ],
+          [
+            -4062,
+            -8769
+          ],
+          [
+            2222,
+            3060
+          ],
+          [
+            4548,
+            -2457
+          ],
+          [
+            204,
+            -2593
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -6535,
+            286
+          ],
+          [
+            -2837,
+            -1818
+          ],
+          [
+            2568,
+            -289
+          ],
+          [
+            4356,
+            -7375
+          ],
+          [
+            4346,
+            3798
+          ],
+          [
+            -1605,
+            -7717
+          ],
+          [
+            6487,
+            -398
+          ],
+          [
+            505,
+            5633
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          [
+            4120,
+            -469
+          ],
+          [
+            3413,
+            -4777
+          ],
+          [
+            -750,
+            2417
+          ],
+          [
+            9800,
+            4419
+          ],
+          [
+            -3628,
+            2446
+          ],
+          [
+            1037,
+            -3524
+          ],
+          [
+            1317,
+            -9859
+          ],
+          [
+            1642,
+            -321
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -4376,
+            -1449
+          ],
+          [
+            3654,
+            -2423
+          ],
+          [
+            3377,
+            1322
+          ],
+          [
+            3103,
+            -9882
+          ],
+          [
+            -6320,
+            6438
+          ]
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "grid",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/graphs-grid/12-minimum-days-to-disconnect-island",
+  "title": "Minimum Days to Disconnect Island",
+  "difficulty": "Hard",
+  "topic": "google/graphs-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def minDays(self, grid: list[list[int]]) -> int:\n        m,n=len(grid),len(grid[0])\n        def count(g):\n            seen=set(); comps=0\n            for r in range(m):\n                for c in range(n):\n                    if g[r][c] and (r,c) not in seen:\n                        comps+=1; stack=[(r,c)]; seen.add((r,c))\n                        while stack:\n                            x,y=stack.pop()\n                            for dx,dy in ((1,0),(-1,0),(0,1),(0,-1)):\n                                nx,ny=x+dx,y+dy\n                                if 0<=nx<m and 0<=ny<n and g[nx][ny] and (nx,ny) not in seen:\n                                    seen.add((nx,ny)); stack.append((nx,ny))\n            return comps\n        if count(grid)!=1: return 0\n        for r in range(m):\n            for c in range(n):\n                if grid[r][c]:\n                    grid[r][c]=0\n                    if count(grid)!=1: grid[r][c]=1; return 1\n                    grid[r][c]=1\n        return 2",
+    "better": "class Solution:\n    def minDays(self, grid: list[list[int]]) -> int:\n        m,n=len(grid),len(grid[0]); land=[(r,c) for r in range(m) for c in range(n) if grid[r][c]]\n        if len(land)<=1: return len(land)\n        disc=[[-1]*n for _ in range(m)]; low=[[0]*n for _ in range(m)]; t=[0]; seen=[0]; art=[False]\n        def dfs(r,c,pr,pc):\n            disc[r][c]=low[r][c]=t[0]; t[0]+=1; seen[0]+=1; child=0\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if not (0<=nr<m and 0<=nc<n) or grid[nr][nc]==0 or (nr,nc)==(pr,pc): continue\n                if disc[nr][nc]<0:\n                    child+=1; dfs(nr,nc,r,c); low[r][c]=min(low[r][c],low[nr][nc])\n                    if (pr!=-1 and low[nr][nc]>=disc[r][c]) or (pr==-1 and child>1): art[0]=True\n                else: low[r][c]=min(low[r][c],disc[nr][nc])\n        dfs(land[0][0],land[0][1],-1,-1)\n        if seen[0]!=len(land): return 0\n        return 1 if art[0] else 2",
+    "optimal": "class Solution:\n    def minDays(self, grid: list[list[int]]) -> int:\n        m,n=len(grid),len(grid[0]); ids={};\n        for r in range(m):\n            for c in range(n):\n                if grid[r][c]: ids[(r,c)]=len(ids)\n        total=len(ids)\n        if total==0: return 0\n        def comps():\n            seen=set(); ans=0\n            for cell in ids:\n                if cell not in seen:\n                    ans+=1; stack=[cell]; seen.add(cell)\n                    while stack:\n                        r,c=stack.pop()\n                        for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                            nb=(r+dr,c+dc)\n                            if nb in ids and nb not in seen: seen.add(nb); stack.append(nb)\n            return ans\n        if comps()!=1: return 0\n        if total<=2: return 1\n        disc=[-1]*total; low=[0]*total; tick=[0]; art=[False]\n        def neigh(cell):\n            r,c=cell\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nb=(r+dr,c+dc)\n                if nb in ids: yield nb\n        def dfs(cell,parent):\n            u=ids[cell]; disc[u]=low[u]=tick[0]; tick[0]+=1; child=0\n            for nb in neigh(cell):\n                v=ids[nb]\n                if v==parent: continue\n                if disc[v]<0:\n                    child+=1; dfs(nb,u); low[u]=min(low[u],low[v])\n                    if (parent!=-1 and low[v]>=disc[u]) or (parent==-1 and child>1): art[0]=True\n                else: low[u]=min(low[u],disc[v])\n        dfs(next(iter(ids)),-1)\n        return 1 if art[0] else 2"
+  },
+  "starterCode": "class Solution:\n    def minDays(self, grid):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,477 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "removeStones",
+  "params": [
+    "stones"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            2476,
+            -3444
+          ],
+          [
+            9642,
+            -4142
+          ],
+          [
+            -2455,
+            -1860
+          ],
+          [
+            -5634,
+            -7163
+          ],
+          [
+            -1771,
+            2552
+          ],
+          [
+            7393,
+            7649
+          ],
+          [
+            -7057,
+            6032
+          ],
+          [
+            -3464,
+            3816
+          ],
+          [
+            9280,
+            -2900
+          ],
+          [
+            2254,
+            2717
+          ],
+          [
+            -3034,
+            -5011
+          ],
+          [
+            5121,
+            -4135
+          ],
+          [
+            8576,
+            1102
+          ],
+          [
+            -7282,
+            7324
+          ],
+          [
+            -7123,
+            5369
+          ],
+          [
+            367,
+            3193
+          ],
+          [
+            -8603,
+            -1173
+          ],
+          [
+            8282,
+            -9751
+          ],
+          [
+            3933,
+            -3324
+          ],
+          [
+            1879,
+            7508
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            9841,
+            5161
+          ],
+          [
+            -8319,
+            1715
+          ],
+          [
+            -5769,
+            -2928
+          ],
+          [
+            -4731,
+            4474
+          ],
+          [
+            9510,
+            -4180
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -8786,
+            -6403
+          ],
+          [
+            -9237,
+            -4391
+          ],
+          [
+            5523,
+            3730
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -7182,
+            -5318
+          ],
+          [
+            151,
+            -9815
+          ],
+          [
+            2486,
+            803
+          ],
+          [
+            -5550,
+            7150
+          ],
+          [
+            3281,
+            -3421
+          ],
+          [
+            -8185,
+            -3072
+          ],
+          [
+            4515,
+            -1560
+          ],
+          [
+            7873,
+            3240
+          ],
+          [
+            -5860,
+            1593
+          ],
+          [
+            5602,
+            -8171
+          ],
+          [
+            -5710,
+            9649
+          ],
+          [
+            -5071,
+            9924
+          ],
+          [
+            3379,
+            -5925
+          ],
+          [
+            -6839,
+            -6110
+          ],
+          [
+            -5293,
+            -302
+          ],
+          [
+            -4294,
+            -4179
+          ],
+          [
+            3430,
+            -5232
+          ],
+          [
+            -3199,
+            8381
+          ],
+          [
+            456,
+            6355
+          ],
+          [
+            -2336,
+            -1560
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -3907,
+            -7628
+          ],
+          [
+            6424,
+            -573
+          ],
+          [
+            -9635,
+            9191
+          ],
+          [
+            -8438,
+            1057
+          ],
+          [
+            -2912,
+            2352
+          ],
+          [
+            3077,
+            1034
+          ],
+          [
+            3087,
+            2646
+          ],
+          [
+            3568,
+            2156
+          ],
+          [
+            7510,
+            -6964
+          ],
+          [
+            -4062,
+            -8769
+          ],
+          [
+            2222,
+            3060
+          ],
+          [
+            4548,
+            -2457
+          ],
+          [
+            204,
+            -2593
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -6535,
+            286
+          ],
+          [
+            -2837,
+            -1818
+          ],
+          [
+            2568,
+            -289
+          ],
+          [
+            4356,
+            -7375
+          ],
+          [
+            4346,
+            3798
+          ],
+          [
+            -1605,
+            -7717
+          ],
+          [
+            6487,
+            -398
+          ],
+          [
+            505,
+            5633
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          [
+            4120,
+            -469
+          ],
+          [
+            3413,
+            -4777
+          ],
+          [
+            -750,
+            2417
+          ],
+          [
+            9800,
+            4419
+          ],
+          [
+            -3628,
+            2446
+          ],
+          [
+            1037,
+            -3524
+          ],
+          [
+            1317,
+            -9859
+          ],
+          [
+            1642,
+            -321
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -4376,
+            -1449
+          ],
+          [
+            3654,
+            -2423
+          ],
+          [
+            3377,
+            1322
+          ],
+          [
+            3103,
+            -9882
+          ],
+          [
+            -6320,
+            6438
+          ]
+        ]
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "stones",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "faang/graphs-topo-union/09-most-stones-removed-with-same-row-or-column",
+  "title": "Most Stones Removed with Same Row or Column",
+  "difficulty": "Medium",
+  "topic": "faang/graphs-topo-union",
+  "solutions": {
+    "naive": "class Solution:\n    def removeStones(self, stones: list[list[int]]) -> int:\n        n = len(stones)\n        adj = [[] for _ in range(n)]\n        for i in range(n):\n            for j in range(i + 1, n):\n                if stones[i][0] == stones[j][0] or stones[i][1] == stones[j][1]:\n                    adj[i].append(j); adj[j].append(i)\n        seen = [False] * n; comps = 0\n        for i in range(n):\n            if not seen[i]:\n                comps += 1; seen[i] = True; stack = [i]\n                while stack:\n                    u = stack.pop()\n                    for v in adj[u]:\n                        if not seen[v]:\n                            seen[v] = True; stack.append(v)\n        return n - comps",
+    "better": "class Solution:\n    def removeStones(self, stones: list[list[int]]) -> int:\n        from collections import defaultdict\n        rows = defaultdict(list); cols = defaultdict(list)\n        for i, (r, c) in enumerate(stones):\n            rows[r].append(i); cols[c].append(i)\n        seen = [False] * len(stones); comps = 0\n        for i in range(len(stones)):\n            if seen[i]:\n                continue\n            comps += 1; seen[i] = True; stack = [i]\n            while stack:\n                u = stack.pop(); r, c = stones[u]\n                for v in rows[r] + cols[c]:\n                    if not seen[v]:\n                        seen[v] = True; stack.append(v)\n        return len(stones) - comps",
+    "optimal": "class Solution:\n    def removeStones(self, stones: list[list[int]]) -> int:\n        parent = {}\n        def find(x):\n            if x not in parent:\n                parent[x] = x\n            while parent[x] != x:\n                parent[x] = parent[parent[x]]; x = parent[x]\n            return x\n        def union(a, b):\n            ra, rb = find(a), find(b)\n            if ra != rb:\n                parent[rb] = ra\n        for r, c in stones:\n            union(('r', r), ('c', c))\n        roots = {find(('r', r)) for r, c in stones}\n        return len(stones) - len(roots)"
+  },
+  "starterCode": "class Solution:\n    def removeStones(self, stones):\n        # TODO: write your solution here\n        pass\n"
+}

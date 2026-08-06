@@ -1,0 +1,66 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "orderOfLargestPlusSign",
+  "params": [
+    "n",
+    "mines"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        5,
+        [
+          [
+            4,
+            2
+          ]
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "mines",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/dp-grid/12-largest-plus-sign",
+  "title": "Largest Plus Sign",
+  "difficulty": "Medium",
+  "topic": "google/dp-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def orderOfLargestPlusSign(self, n: int, mines: list[list[int]]) -> int:\n        banned = {tuple(x) for x in mines}\n        left = [[0] * n for _ in range(n)]\n        right = [[0] * n for _ in range(n)]\n        up = [[0] * n for _ in range(n)]\n        down = [[0] * n for _ in range(n)]\n        for r in range(n):\n            for c in range(n):\n                if (r, c) not in banned:\n                    left[r][c] = (left[r][c - 1] if c else 0) + 1\n                    up[r][c] = (up[r - 1][c] if r else 0) + 1\n        for r in range(n - 1, -1, -1):\n            for c in range(n - 1, -1, -1):\n                if (r, c) not in banned:\n                    right[r][c] = (right[r][c + 1] if c + 1 < n else 0) + 1\n                    down[r][c] = (down[r + 1][c] if r + 1 < n else 0) + 1\n        return max(min(left[r][c], right[r][c], up[r][c], down[r][c]) for r in range(n) for c in range(n))",
+    "better": "class Solution:\n    def orderOfLargestPlusSign(self, n: int, mines: list[list[int]]) -> int:\n        banned = {tuple(x) for x in mines}\n        dp = [[n] * n for _ in range(n)]\n        for r in range(n):\n            cnt = 0\n            for c in range(n):\n                cnt = 0 if (r, c) in banned else cnt + 1\n                dp[r][c] = min(dp[r][c], cnt)\n            cnt = 0\n            for c in range(n - 1, -1, -1):\n                cnt = 0 if (r, c) in banned else cnt + 1\n                dp[r][c] = min(dp[r][c], cnt)\n        for c in range(n):\n            cnt = 0\n            for r in range(n):\n                cnt = 0 if (r, c) in banned else cnt + 1\n                dp[r][c] = min(dp[r][c], cnt)\n            cnt = 0\n            for r in range(n - 1, -1, -1):\n                cnt = 0 if (r, c) in banned else cnt + 1\n                dp[r][c] = min(dp[r][c], cnt)\n        return max(max(row) for row in dp)",
+    "optimal": "class Solution:\n    def orderOfLargestPlusSign(self, n: int, mines: list[list[int]]) -> int:\n        banned = {tuple(x) for x in mines}\n        dp = [[n] * n for _ in range(n)]\n        for i in range(n):\n            left = right = up = down = 0\n            for j in range(n):\n                left = 0 if (i, j) in banned else left + 1\n                dp[i][j] = min(dp[i][j], left)\n                right = 0 if (i, n - 1 - j) in banned else right + 1\n                dp[i][n - 1 - j] = min(dp[i][n - 1 - j], right)\n                up = 0 if (j, i) in banned else up + 1\n                dp[j][i] = min(dp[j][i], up)\n                down = 0 if (n - 1 - j, i) in banned else down + 1\n                dp[n - 1 - j][i] = min(dp[n - 1 - j][i], down)\n        return max(max(row) for row in dp)"
+  },
+  "starterCode": "class Solution:\n    def orderOfLargestPlusSign(self, n, mines):\n        # TODO: write your solution here\n        pass\n"
+}

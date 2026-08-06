@@ -1,0 +1,68 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "exclusiveTime",
+  "params": [
+    "n",
+    "logs"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        2,
+        [
+          "0:start:0",
+          "1:start:2",
+          "1:end:5",
+          "0:end:6"
+        ]
+      ],
+      "expected": [
+        3,
+        4
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "logs",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/stack-parsing/05-exclusive-time-of-functions",
+  "title": "Exclusive Time of Functions",
+  "difficulty": "Medium",
+  "topic": "faang/stack-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def exclusiveTime(self, n: int, logs: list[str]) -> list[int]:\n        ans = [0] * n\n        stack = []\n        prev = None\n        for log in logs:\n            fid_s, typ, t_s = log.split(':')\n            fid, t = int(fid_s), int(t_s)\n            if prev is not None and stack:\n                end = t + 1 if typ == 'end' else t\n                for _ in range(prev, end):\n                    ans[stack[-1]] += 1\n            if typ == 'start':\n                stack.append(fid)\n                prev = t\n            else:\n                stack.pop()\n                prev = t + 1\n        return ans",
+    "better": "class Solution:\n    def exclusiveTime(self, n: int, logs: list[str]) -> list[int]:\n        ans = [0] * n\n        stack = []\n        prev = 0\n        for log in logs:\n            fid_s, typ, t_s = log.split(':')\n            fid, t = int(fid_s), int(t_s)\n            if typ == 'start':\n                if stack:\n                    ans[stack[-1]] += t - prev\n                stack.append(fid)\n                prev = t\n            else:\n                ans[stack.pop()] += t - prev + 1\n                prev = t + 1\n        return ans",
+    "optimal": "class Solution:\n    def exclusiveTime(self, n: int, logs: list[str]) -> list[int]:\n        ans = [0] * n\n        stack = []\n        prev = 0\n        for log in logs:\n            a = log.find(':')\n            b = log.find(':', a + 1)\n            fid = int(log[:a])\n            typ = log[a + 1:b]\n            t = int(log[b + 1:])\n            if typ == 'start':\n                if stack:\n                    ans[stack[-1]] += t - prev\n                stack.append(fid)\n                prev = t\n            else:\n                ans[stack.pop()] += t - prev + 1\n                prev = t + 1\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def exclusiveTime(self, n, logs):\n        # TODO: write your solution here\n        pass\n"
+}

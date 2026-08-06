@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "romanToInt",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "MCMXCIV"
+      ],
+      "expected": 1994
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "math-geometry/14-roman-to-integer",
+  "title": "Roman to Integer",
+  "difficulty": "Easy",
+  "topic": "math-geometry",
+  "solutions": {
+    "naive": "class Solution:\n    def romanToInt(self, s: str) -> int:\n        values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000,\n                  'A': 4, 'B': 9, 'E': 40, 'F': 90, 'G': 400, 'H': 900}\n        s = s.replace('IV', 'A').replace('IX', 'B').replace('XL', 'E')\n        s = s.replace('XC', 'F').replace('CD', 'G').replace('CM', 'H')\n        return sum(values[ch] for ch in s)",
+    "better": "class Solution:\n    def romanToInt(self, s: str) -> int:\n        values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n        total = 0\n        for i, ch in enumerate(s):\n            current = values[ch]\n            if i + 1 < len(s) and current < values[s[i + 1]]:\n                total -= current\n            else:\n                total += current\n        return total",
+    "optimal": "class Solution:\n    def romanToInt(self, s: str) -> int:\n        values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n        total = 0\n        max_seen = 0\n        for ch in reversed(s):\n            value = values[ch]\n            if value < max_seen:\n                total -= value\n            else:\n                total += value\n                max_seen = value\n        return total"
+  },
+  "starterCode": "class Solution:\n    def romanToInt(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,87 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "combinationSum2",
+  "params": [
+    "candidates",
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          10,
+          1,
+          2,
+          7,
+          6,
+          1,
+          5
+        ],
+        8
+      ],
+      "expected": [
+        [
+          1,
+          1,
+          6
+        ],
+        [
+          1,
+          2,
+          5
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "candidates",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "target",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "backtracking/03-combination-sum-ii",
+  "title": "Combination Sum II",
+  "difficulty": "Medium",
+  "topic": "backtracking",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:\n        found = set()\n        path = []\n\n        def dfs(i: int, total: int) -> None:\n            if i == len(candidates):\n                if total == target:\n                    found.add(tuple(sorted(path)))\n                return\n            dfs(i + 1, total)\n            path.append(candidates[i])\n            dfs(i + 1, total + candidates[i])\n            path.pop()\n\n        dfs(0, 0)\n        return [list(combo) for combo in sorted(found)]",
+    "better": "from typing import List\n\nclass Solution:\n    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:\n        candidates.sort()\n        result = []\n        path = []\n\n        def dfs(start: int, remaining: int) -> None:\n            if remaining == 0:\n                result.append(path.copy())\n                return\n            if remaining < 0:\n                return\n            prev = None\n            for i in range(start, len(candidates)):\n                if candidates[i] == prev:\n                    continue\n                prev = candidates[i]\n                path.append(candidates[i])\n                dfs(i + 1, remaining - candidates[i])\n                path.pop()\n\n        dfs(0, target)\n        return result",
+    "optimal": "from typing import List\n\nclass Solution:\n    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:\n        candidates.sort()\n        result = []\n        path = []\n\n        def backtrack(start: int, remaining: int) -> None:\n            if remaining == 0:\n                result.append(path.copy())\n                return\n            for i in range(start, len(candidates)):\n                if i > start and candidates[i] == candidates[i - 1]:\n                    continue\n                value = candidates[i]\n                if value > remaining:\n                    break\n                path.append(value)\n                backtrack(i + 1, remaining - value)\n                path.pop()\n\n        backtrack(0, target)\n        return result"
+  },
+  "starterCode": "class Solution:\n    def combinationSum2(self, candidates, target):\n        # TODO: write your solution here\n        pass\n"
+}

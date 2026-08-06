@@ -1,0 +1,77 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "eventualSafeNodes",
+  "params": [
+    "graph"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5
+          ],
+          [
+            0
+          ],
+          [
+            5
+          ],
+          [],
+          []
+        ]
+      ],
+      "expected": [
+        2,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "graph",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "faang/graphs-topo-union/02-find-eventual-safe-states",
+  "title": "Find Eventual Safe States",
+  "difficulty": "Medium",
+  "topic": "faang/graphs-topo-union",
+  "solutions": {
+    "naive": "class Solution:\n    def eventualSafeNodes(self, graph: list[list[int]]) -> list[int]:\n        n = len(graph)\n        def ok(s):\n            path = set()\n            def dfs(u):\n                if u in path:\n                    return False\n                path.add(u)\n                for v in graph[u]:\n                    if not dfs(v):\n                        path.remove(u)\n                        return False\n                path.remove(u)\n                return True\n            return dfs(s)\n        return [i for i in range(n) if ok(i)]",
+    "better": "class Solution:\n    def eventualSafeNodes(self, graph: list[list[int]]) -> list[int]:\n        n = len(graph)\n        state = [0] * n\n        def dfs(u):\n            if state[u]:\n                return state[u] == 2\n            state[u] = 1\n            for v in graph[u]:\n                if state[v] == 1 or not dfs(v):\n                    state[u] = 3\n                    return False\n            state[u] = 2\n            return True\n        return [i for i in range(n) if dfs(i)]",
+    "optimal": "class Solution:\n    def eventualSafeNodes(self, graph: list[list[int]]) -> list[int]:\n        from collections import deque\n        n = len(graph)\n        rev = [[] for _ in range(n)]\n        out = [0] * n\n        for u, nbrs in enumerate(graph):\n            out[u] = len(nbrs)\n            for v in nbrs:\n                rev[v].append(u)\n        q = deque([i for i in range(n) if out[i] == 0])\n        safe = [False] * n\n        while q:\n            u = q.popleft(); safe[u] = True\n            for p in rev[u]:\n                out[p] -= 1\n                if out[p] == 0:\n                    q.append(p)\n        return [i for i in range(n) if safe[i]]"
+  },
+  "starterCode": "class Solution:\n    def eventualSafeNodes(self, graph):\n        # TODO: write your solution here\n        pass\n"
+}

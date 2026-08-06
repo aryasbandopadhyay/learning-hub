@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "countOfAtoms",
+  "params": [
+    "formula"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "K4(ON(SO3)2)2"
+      ],
+      "expected": "K4N2O14S4"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "formula",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/strings-parsing/03-number-of-atoms",
+  "title": "Number of Atoms",
+  "difficulty": "Hard",
+  "topic": "google/strings-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def countOfAtoms(self, formula: str) -> str:\n        from collections import Counter\n        n = len(formula)\n        def num(i):\n            v = 0\n            while i < n and formula[i].isdigit(): v = v * 10 + int(formula[i]); i += 1\n            return (v or 1), i\n        def parse(i):\n            c = Counter()\n            while i < n and formula[i] != \")\":\n                if formula[i] == \"(\":\n                    inner, i = parse(i + 1); m, i = num(i + 1)\n                    for a, x in inner.items(): c[a] += x * m\n                else:\n                    j = i + 1\n                    while j < n and formula[j].islower(): j += 1\n                    atom = formula[i:j]; m, i = num(j); c[atom] += m\n            return c, i\n        c, _ = parse(0)\n        return \"\".join(a + (str(c[a]) if c[a] > 1 else \"\") for a in sorted(c))",
+    "better": "class Solution:\n    def countOfAtoms(self, formula: str) -> str:\n        from collections import Counter\n        st, i, n = [Counter()], 0, len(formula)\n        while i < n:\n            if formula[i] == \"(\": st.append(Counter()); i += 1\n            elif formula[i] == \")\":\n                i += 1; m = 0\n                while i < n and formula[i].isdigit(): m = m * 10 + int(formula[i]); i += 1\n                top = st.pop()\n                for a, x in top.items(): st[-1][a] += x * (m or 1)\n            else:\n                j = i + 1\n                while j < n and formula[j].islower(): j += 1\n                a, i = formula[i:j], j; m = 0\n                while i < n and formula[i].isdigit(): m = m * 10 + int(formula[i]); i += 1\n                st[-1][a] += m or 1\n        c = st[-1]\n        return \"\".join(a + (str(c[a]) if c[a] > 1 else \"\") for a in sorted(c))",
+    "optimal": "class Solution:\n    def countOfAtoms(self, formula: str) -> str:\n        from collections import Counter\n        c, mult, pending, i = Counter(), [1], 1, len(formula) - 1\n        while i >= 0:\n            if formula[i].isdigit():\n                place = 1; pending = 0\n                while i >= 0 and formula[i].isdigit(): pending = int(formula[i]) * place + pending; place *= 10; i -= 1\n            elif formula[i] == \")\": mult.append(mult[-1] * pending); pending = 1; i -= 1\n            elif formula[i] == \"(\": mult.pop(); pending = 1; i -= 1\n            else:\n                end = i + 1\n                while i >= 0 and formula[i].islower(): i -= 1\n                c[formula[i:end]] += pending * mult[-1]; pending = 1; i -= 1\n        return \"\".join(a + (str(c[a]) if c[a] > 1 else \"\") for a in sorted(c))"
+  },
+  "starterCode": "class Solution:\n    def countOfAtoms(self, formula):\n        # TODO: write your solution here\n        pass\n"
+}

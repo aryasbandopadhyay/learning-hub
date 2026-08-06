@@ -1,0 +1,64 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxRunTime",
+  "params": [
+    "n",
+    "batteries"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        2,
+        [
+          3,
+          3,
+          3
+        ]
+      ],
+      "expected": 4
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "batteries",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/binary-search-advanced/13-maximum-running-time-of-n-computers",
+  "title": "Maximum Running Time of N Computers",
+  "difficulty": "Hard",
+  "topic": "google/binary-search-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def maxRunTime(self, n: int, batteries: list[int]) -> int:\n        limit = sum(batteries) // n\n        ans = 0\n        for t in range(limit + 1):\n            if sum(min(b, t) for b in batteries) >= n * t:\n                ans = t\n            else:\n                break\n        return ans",
+    "better": "class Solution:\n    def maxRunTime(self, n: int, batteries: list[int]) -> int:\n        lo, hi = 0, sum(batteries) // n\n        while lo <= hi:\n            mid = (lo + hi) // 2\n            if sum(min(b, mid) for b in batteries) >= n * mid:\n                lo = mid + 1\n            else:\n                hi = mid - 1\n        return hi",
+    "optimal": "class Solution:\n    def maxRunTime(self, n: int, batteries: list[int]) -> int:\n        batteries.sort()\n        total = sum(batteries)\n        while batteries and batteries[-1] > total // n:\n            total -= batteries.pop()\n            n -= 1\n        return total // n"
+  },
+  "starterCode": "class Solution:\n    def maxRunTime(self, n, batteries):\n        # TODO: write your solution here\n        pass\n"
+}

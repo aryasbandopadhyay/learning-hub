@@ -1,0 +1,83 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "threeSumMulti",
+  "params": [
+    "arr",
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          2,
+          3,
+          3,
+          4,
+          4,
+          5,
+          5
+        ],
+        8
+      ],
+      "expected": 20
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          53,
+          53
+        ],
+        3984
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "arr",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "target",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/arrays-two-pointers/03-three-sum-with-multiplicity",
+  "title": "3Sum With Multiplicity",
+  "difficulty": "Medium",
+  "topic": "faang/arrays-two-pointers",
+  "solutions": {
+    "naive": "class Solution:\n    def threeSumMulti(self, arr: list[int], target: int) -> int:\n        mod = 1000000007\n        freq = [0] * 101\n        for x in arr:\n            freq[x] += 1\n        ans = 0\n        for a in range(101):\n            for b in range(a, 101):\n                c = target - a - b\n                if c < b or c > 100:\n                    continue\n                if a == b == c:\n                    ans += freq[a] * (freq[a] - 1) * (freq[a] - 2) // 6\n                elif a == b:\n                    ans += freq[a] * (freq[a] - 1) // 2 * freq[c]\n                elif b == c:\n                    ans += freq[a] * freq[b] * (freq[b] - 1) // 2\n                else:\n                    ans += freq[a] * freq[b] * freq[c]\n        return ans % mod",
+    "better": "class Solution:\n    def threeSumMulti(self, arr: list[int], target: int) -> int:\n        mod = 1000000007\n        arr = sorted(arr)\n        ans = 0\n        for i in range(len(arr) - 2):\n            left, right = i + 1, len(arr) - 1\n            while left < right:\n                s = arr[i] + arr[left] + arr[right]\n                if s < target:\n                    left += 1\n                elif s > target:\n                    right -= 1\n                elif arr[left] != arr[right]:\n                    lv, rv, lc, rc = arr[left], arr[right], 0, 0\n                    while left < right and arr[left] == lv:\n                        lc += 1; left += 1\n                    while right >= left and arr[right] == rv:\n                        rc += 1; right -= 1\n                    ans += lc * rc\n                else:\n                    m = right - left + 1\n                    ans += m * (m - 1) // 2\n                    break\n        return ans % mod",
+    "optimal": "class Solution:\n    def threeSumMulti(self, arr: list[int], target: int) -> int:\n        mod = 1000000007\n        right = [0] * 101\n        for x in arr:\n            right[x] += 1\n        left = [0] * 101\n        ans = 0\n        for b in arr:\n            right[b] -= 1\n            for a in range(101):\n                c = target - a - b\n                if 0 <= c <= 100:\n                    ans += left[a] * right[c]\n            left[b] += 1\n        return ans % mod"
+  },
+  "starterCode": "class Solution:\n    def threeSumMulti(self, arr, target):\n        # TODO: write your solution here\n        pass\n"
+}

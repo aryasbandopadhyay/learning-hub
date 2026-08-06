@@ -1,0 +1,33 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "partitionLabels",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "ababcbacadefegdehijhklij"
+      ],
+      "expected": [
+        9,
+        7,
+        8
+      ]
+    }
+  ],
+  "id": "greedy/06-partition-labels",
+  "title": "Partition Labels",
+  "difficulty": "Medium",
+  "topic": "greedy",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def partitionLabels(self, s: str) -> List[int]:\n        n = len(s)\n\n        def valid(parts: List[str]) -> bool:\n            owner = {}\n            for idx, part in enumerate(parts):\n                for ch in part:\n                    if ch in owner and owner[ch] != idx:\n                        return False\n                    owner[ch] = idx\n            return True\n\n        best: List[int] = []\n\n        def dfs(start: int, parts: List[str]) -> None:\n            nonlocal best\n            if start == n:\n                if valid(parts) and len(parts) > len(best):\n                    best = [len(part) for part in parts]\n                return\n            for end in range(start + 1, n + 1):\n                dfs(end, parts + [s[start:end]])\n\n        dfs(0, [])\n        return best",
+    "better": "from typing import List\n\nclass Solution:\n    def partitionLabels(self, s: str) -> List[int]:\n        last = {ch: i for i, ch in enumerate(s)}\n        ans = []\n        start = 0\n\n        while start < len(s):\n            end = last[s[start]]\n            i = start\n            while i <= end:\n                end = max(end, last[s[i]])\n                i += 1\n            ans.append(end - start + 1)\n            start = end + 1\n        return ans",
+    "optimal": "from typing import List\n\nclass Solution:\n    def partitionLabels(self, s: str) -> List[int]:\n        last = {ch: i for i, ch in enumerate(s)}\n        result = []\n        start = 0\n        end = 0\n\n        for i, ch in enumerate(s):\n            end = max(end, last[ch])\n            if i == end:\n                result.append(end - start + 1)\n                start = i + 1\n        return result"
+  },
+  "starterCode": "class Solution:\n    def partitionLabels(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,69 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "twoCitySchedCost",
+  "params": [
+    "costs"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            10,
+            20
+          ],
+          [
+            30,
+            200
+          ],
+          [
+            400,
+            50
+          ],
+          [
+            30,
+            20
+          ]
+        ]
+      ],
+      "expected": 110
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "costs",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/greedy/02-two-city-scheduling",
+  "title": "Two City Scheduling",
+  "difficulty": "Medium",
+  "topic": "google/greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def twoCitySchedCost(self, costs: list[list[int]]) -> int:\n        from itertools import combinations\n        m, n = len(costs), len(costs) // 2\n        best = 10 ** 18\n        for a_group in combinations(range(m), n):\n            chosen = set(a_group)\n            total = sum(costs[i][0] if i in chosen else costs[i][1] for i in range(m))\n            best = min(best, total)\n        return best",
+    "better": "class Solution:\n    def twoCitySchedCost(self, costs):\n        n = len(costs) // 2\n        INF = 10 ** 18\n        dp = [[INF] * (n + 1) for _ in range(n + 1)]\n        dp[0][0] = 0\n        for a_cost, b_cost in costs:\n            ndp = [[INF] * (n + 1) for _ in range(n + 1)]\n            for a in range(n + 1):\n                for b in range(n + 1):\n                    if dp[a][b] == INF:\n                        continue\n                    if a < n:\n                        ndp[a + 1][b] = min(ndp[a + 1][b], dp[a][b] + a_cost)\n                    if b < n:\n                        ndp[a][b + 1] = min(ndp[a][b + 1], dp[a][b] + b_cost)\n            dp = ndp\n        return dp[n][n]",
+    "optimal": "class Solution:\n    def twoCitySchedCost(self, costs):\n        costs = sorted(costs, key=lambda c: c[0] - c[1])\n        n = len(costs) // 2\n        return sum(c[0] for c in costs[:n]) + sum(c[1] for c in costs[n:])"
+  },
+  "starterCode": "class Solution:\n    def twoCitySchedCost(self, costs):\n        # TODO: write your solution here\n        pass\n"
+}

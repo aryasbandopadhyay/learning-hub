@@ -1,0 +1,80 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minDominoRotations",
+  "params": [
+    "tops",
+    "bottoms"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          1,
+          2,
+          4,
+          2,
+          2
+        ],
+        [
+          5,
+          2,
+          6,
+          2,
+          3,
+          2
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "tops",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "bottoms",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            5,
+            2,
+            6,
+            2,
+            3,
+            2
+          ]
+        }
+      ]
+    }
+  },
+  "id": "google/greedy/09-minimum-domino-rotations-for-equal-row",
+  "title": "Minimum Domino Rotations For Equal Row",
+  "difficulty": "Medium",
+  "topic": "google/greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def minDominoRotations(self, tops: list[int], bottoms: list[int]) -> int:\n        best = 10 ** 9\n        for target in range(1, 7):\n            top_moves = bottom_moves = 0\n            ok = True\n            for a, b in zip(tops, bottoms):\n                if a != target and b != target:\n                    ok = False\n                    break\n                if a != target:\n                    top_moves += 1\n                if b != target:\n                    bottom_moves += 1\n            if ok:\n                best = min(best, top_moves, bottom_moves)\n        return -1 if best == 10 ** 9 else best",
+    "better": "class Solution:\n    def minDominoRotations(self, tops, bottoms):\n        n = len(tops)\n        top_count = [0] * 7\n        bottom_count = [0] * 7\n        same = [0] * 7\n        for a, b in zip(tops, bottoms):\n            top_count[a] += 1\n            bottom_count[b] += 1\n            if a == b:\n                same[a] += 1\n        best = 10 ** 9\n        for v in range(1, 7):\n            if top_count[v] + bottom_count[v] - same[v] == n:\n                best = min(best, n - top_count[v], n - bottom_count[v])\n        return -1 if best == 10 ** 9 else best",
+    "optimal": "class Solution:\n    def minDominoRotations(self, tops, bottoms):\n        def check(target):\n            top_moves = bottom_moves = 0\n            for a, b in zip(tops, bottoms):\n                if a != target and b != target:\n                    return 10 ** 9\n                if a != target:\n                    top_moves += 1\n                if b != target:\n                    bottom_moves += 1\n            return min(top_moves, bottom_moves)\n        ans = min(check(tops[0]), check(bottoms[0]))\n        return -1 if ans == 10 ** 9 else ans"
+  },
+  "starterCode": "class Solution:\n    def minDominoRotations(self, tops, bottoms):\n        # TODO: write your solution here\n        pass\n"
+}

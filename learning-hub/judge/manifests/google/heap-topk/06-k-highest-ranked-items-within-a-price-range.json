@@ -1,0 +1,73 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "highestRankedKItems",
+  "params": [
+    "grid",
+    "pricing",
+    "start",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            2,
+            0,
+            1
+          ],
+          [
+            1,
+            3,
+            0,
+            1
+          ],
+          [
+            0,
+            2,
+            5,
+            1
+          ]
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          0,
+          0
+        ],
+        3
+      ],
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    }
+  ],
+  "id": "google/heap-topk/06-k-highest-ranked-items-within-a-price-range",
+  "title": "K Highest Ranked Items Within a Price Range",
+  "difficulty": "Medium",
+  "topic": "google/heap-topk",
+  "solutions": {
+    "naive": "class Solution:\n    def highestRankedKItems(self, grid: list[list[int]], pricing: list[int], start: list[int], k: int) -> list[list[int]]:\n        from collections import deque\n        m, n = len(grid), len(grid[0])\n        dist = [[-1] * n for _ in range(m)]\n        q = deque([(start[0], start[1])])\n        dist[start[0]][start[1]] = 0\n        while q:\n            r, c = q.popleft()\n            for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr, nc = r + dr, c + dc\n                if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] != 0 and dist[nr][nc] == -1:\n                    dist[nr][nc] = dist[r][c] + 1\n                    q.append((nr, nc))\n        items = []\n        low, high = pricing\n        for r in range(m):\n            for c in range(n):\n                if dist[r][c] != -1 and low <= grid[r][c] <= high:\n                    items.append((dist[r][c], grid[r][c], r, c))\n        items.sort()\n        return [[r, c] for _, _, r, c in items[:k]]",
+    "better": "class Solution:\n    def highestRankedKItems(self, grid: list[list[int]], pricing: list[int], start: list[int], k: int) -> list[list[int]]:\n        from collections import deque\n        m, n = len(grid), len(grid[0])\n        low, high = pricing\n        seen = [[False] * n for _ in range(m)]\n        q = deque([(start[0], start[1])])\n        seen[start[0]][start[1]] = True\n        ans = []\n        while q and len(ans) < k:\n            level_items = []\n            for _ in range(len(q)):\n                r, c = q.popleft()\n                if low <= grid[r][c] <= high:\n                    level_items.append((grid[r][c], r, c))\n                for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                    nr, nc = r + dr, c + dc\n                    if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] != 0 and not seen[nr][nc]:\n                        seen[nr][nc] = True\n                        q.append((nr, nc))\n            level_items.sort()\n            for _, r, c in level_items:\n                if len(ans) < k:\n                    ans.append([r, c])\n        return ans",
+    "optimal": "class Solution:\n    def highestRankedKItems(self, grid: list[list[int]], pricing: list[int], start: list[int], k: int) -> list[list[int]]:\n        import heapq\n        m, n = len(grid), len(grid[0])\n        low, high = pricing\n        heap = [(0, grid[start[0]][start[1]], start[0], start[1])]\n        seen = {(start[0], start[1])}\n        ans = []\n        while heap and len(ans) < k:\n            d, price, r, c = heapq.heappop(heap)\n            if low <= price <= high:\n                ans.append([r, c])\n            for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr, nc = r + dr, c + dc\n                if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] != 0 and (nr, nc) not in seen:\n                    seen.add((nr, nc))\n                    heapq.heappush(heap, (d + 1, grid[nr][nc], nr, nc))\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def highestRankedKItems(self, grid, pricing, start, k):\n        # TODO: write your solution here\n        pass\n"
+}

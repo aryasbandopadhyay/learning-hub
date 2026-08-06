@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "removeStars",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "leet**cod*e"
+      ],
+      "expected": "lecoe"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "dbebbbbacdeeaedbdeeb"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "dbbdbecaeadcd"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "bbecdbcacbaecaeacbdd"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "ddceabacddbcbcacbbdc"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": "dd"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/stack-parsing/15-removing-stars-from-a-string",
+  "title": "Removing Stars From a String",
+  "difficulty": "Medium",
+  "topic": "faang/stack-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def removeStars(self, s: str) -> str:\n        chars = list(s)\n        for i, ch in enumerate(chars):\n            if ch == '*':\n                j = i - 1\n                while j >= 0 and chars[j] == '':\n                    j -= 1\n                chars[j] = ''\n                chars[i] = ''\n        return \"\".join(chars)",
+    "better": "class Solution:\n    def removeStars(self, s: str) -> str:\n        stack = []\n        for ch in s:\n            if ch == '*':\n                stack.pop()\n            else:\n                stack.append(ch)\n        return \"\".join(stack)",
+    "optimal": "class Solution:\n    def removeStars(self, s: str) -> str:\n        skip = 0\n        kept = []\n        for ch in reversed(s):\n            if ch == '*':\n                skip += 1\n            elif skip:\n                skip -= 1\n            else:\n                kept.append(ch)\n        return \"\".join(reversed(kept))"
+  },
+  "starterCode": "class Solution:\n    def removeStars(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

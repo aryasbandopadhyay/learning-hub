@@ -1,0 +1,65 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minMeetingRooms",
+  "params": [
+    "intervals"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            30
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            15,
+            20
+          ]
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "intervals",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "intervals/05-meeting-rooms-ii",
+  "title": "Meeting Rooms II",
+  "difficulty": "Medium",
+  "topic": "intervals",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def minMeetingRooms(self, intervals: List[List[int]]) -> int:\n        best = 0\n        for start, _ in intervals:\n            active = 0\n            for s, e in intervals:\n                if s <= start < e:\n                    active += 1\n            best = max(best, active)\n        return best",
+    "better": "from typing import List\n\nclass Solution:\n    def minMeetingRooms(self, intervals: List[List[int]]) -> int:\n        starts = sorted(s for s, _ in intervals)\n        ends = sorted(e for _, e in intervals)\n        rooms = end_ptr = 0\n\n        for start in starts:\n            if start >= ends[end_ptr]:\n                end_ptr += 1\n            else:\n                rooms += 1\n        return rooms",
+    "optimal": "from typing import List\nimport heapq\n\nclass Solution:\n    def minMeetingRooms(self, intervals: List[List[int]]) -> int:\n        intervals.sort(key=lambda x: x[0])\n        heap = []\n\n        for start, end in intervals:\n            if heap and heap[0] <= start:\n                heapq.heappop(heap)\n            heapq.heappush(heap, end)\n        return len(heap)"
+  },
+  "starterCode": "class Solution:\n    def minMeetingRooms(self, intervals):\n        # TODO: write your solution here\n        pass\n"
+}

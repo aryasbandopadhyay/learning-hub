@@ -1,0 +1,47 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "removeNthFromEnd",
+  "params": [
+    "head",
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        5
+      ]
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist",
+    "plain"
+  ],
+  "id": "linked-list/05-remove-nth-node-from-end-of-list",
+  "title": "Remove Nth Node From End of List",
+  "difficulty": "Medium",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def removeNthFromEnd(self, head, n):\n        values = []\n        cur = head\n        while cur:\n            values.append(cur.val)\n            cur = cur.next\n\n        remove_index = len(values) - n\n        dummy = ListNode()\n        tail = dummy\n        for i, value in enumerate(values):\n            if i != remove_index:\n                tail.next = ListNode(value)\n                tail = tail.next\n        return dummy.next",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def removeNthFromEnd(self, head, n):\n        length = 0\n        cur = head\n        while cur:\n            length += 1\n            cur = cur.next\n\n        dummy = ListNode(0, head)\n        prev = dummy\n        for _ in range(length - n):\n            prev = prev.next\n        prev.next = prev.next.next\n        return dummy.next",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def removeNthFromEnd(self, head, n):\n        dummy = ListNode(0, head)\n        fast = slow = dummy\n        for _ in range(n):\n            fast = fast.next\n\n        while fast.next:\n            fast = fast.next\n            slow = slow.next\n\n        slow.next = slow.next.next\n        return dummy.next"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def removeNthFromEnd(self, head, n):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minDistance",
+  "params": [
+    "word1",
+    "word2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "horse",
+        "ros"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "ros"
+      ],
+      "expected": 20
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "ros"
+      ],
+      "expected": 13
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "ros"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "ros"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "ros"
+      ],
+      "expected": 50
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "ros"
+      ],
+      "expected": 20
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "ros"
+      ],
+      "expected": 20
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "ros"
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "word1",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "word2",
+          "type": "str",
+          "role": "const",
+          "value": "ros"
+        }
+      ]
+    }
+  },
+  "id": "dp-2d/11-edit-distance",
+  "title": "Edit Distance",
+  "difficulty": "Medium",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "class SolutionRecursive:\n    def minDistance(self, word1: str, word2: str) -> int:\n        def dfs(i: int, j: int) -> int:\n            if i == len(word1):\n                return len(word2) - j\n            if j == len(word2):\n                return len(word1) - i\n            if word1[i] == word2[j]:\n                return dfs(i + 1, j + 1)\n            insert = dfs(i, j + 1)\n            delete = dfs(i + 1, j)\n            replace = dfs(i + 1, j + 1)\n            return 1 + min(insert, delete, replace)\n\n        return dfs(0, 0)",
+    "better": "class SolutionMemoized:\n    def minDistance(self, word1: str, word2: str) -> int:\n        memo = {}\n\n        def dfs(i: int, j: int) -> int:\n            if i == len(word1):\n                return len(word2) - j\n            if j == len(word2):\n                return len(word1) - i\n            if (i, j) not in memo:\n                if word1[i] == word2[j]:\n                    memo[(i, j)] = dfs(i + 1, j + 1)\n                else:\n                    memo[(i, j)] = 1 + min(dfs(i, j + 1), dfs(i + 1, j), dfs(i + 1, j + 1))\n            return memo[(i, j)]\n\n        return dfs(0, 0)",
+    "optimal": "class Solution:\n    def minDistance(self, word1: str, word2: str) -> int:\n        n = len(word2)\n        dp = [n - j for j in range(n + 1)]\n        for i in range(len(word1) - 1, -1, -1):\n            next_diag = dp[n]\n            dp[n] = len(word1) - i\n            for j in range(n - 1, -1, -1):\n                old = dp[j]\n                if word1[i] == word2[j]:\n                    dp[j] = next_diag\n                else:\n                    dp[j] = 1 + min(dp[j], dp[j + 1], next_diag)\n                next_diag = old\n        return dp[0]"
+  },
+  "starterCode": "class Solution:\n    def minDistance(self, word1, word2):\n        # TODO: write your solution here\n        pass\n"
+}

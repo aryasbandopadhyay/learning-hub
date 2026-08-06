@@ -1,0 +1,60 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxConsecutiveAnswers",
+  "params": [
+    "answerKey",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "TTFF",
+        2
+      ],
+      "expected": 4
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "answerKey",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/sliding-window/05-maximize-the-confusion-of-an-exam",
+  "title": "Maximize the Confusion of an Exam",
+  "difficulty": "Medium",
+  "topic": "google/sliding-window",
+  "solutions": {
+    "naive": "class Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        n = len(answerKey)\n        ans = 0\n        for i in range(n):\n            for j in range(i, n):\n                t = 0\n                f = 0\n                for p in range(i, j + 1):\n                    if answerKey[p] == 'T':\n                        t += 1\n                    else:\n                        f += 1\n                if min(t, f) <= k:\n                    ans = max(ans, j - i + 1)\n        return ans",
+    "better": "class Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        def longest(target: str) -> int:\n            left = 0\n            flips = 0\n            best = 0\n            for right, ch in enumerate(answerKey):\n                if ch != target:\n                    flips += 1\n                while flips > k:\n                    if answerKey[left] != target:\n                        flips -= 1\n                    left += 1\n                best = max(best, right - left + 1)\n            return best\n        return max(longest('T'), longest('F'))",
+    "optimal": "class Solution:\n    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:\n        count = {'T': 0, 'F': 0}\n        left = 0\n        best_count = 0\n        ans = 0\n        for right, ch in enumerate(answerKey):\n            count[ch] += 1\n            best_count = max(best_count, count[ch])\n            while right - left + 1 - best_count > k:\n                count[answerKey[left]] -= 1\n                left += 1\n            ans = max(ans, right - left + 1)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def maxConsecutiveAnswers(self, answerKey, k):\n        # TODO: write your solution here\n        pass\n"
+}

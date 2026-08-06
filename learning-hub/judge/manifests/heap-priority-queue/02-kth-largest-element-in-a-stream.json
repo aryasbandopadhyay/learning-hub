@@ -1,0 +1,65 @@
+{
+  "shape": "design",
+  "className": "KthLargest",
+  "entry": null,
+  "params": [],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "KthLargest",
+        "add",
+        "add",
+        "add",
+        "add",
+        "add"
+      ],
+      "args": [
+        [
+          3,
+          [
+            4,
+            5,
+            8,
+            2
+          ]
+        ],
+        [
+          3
+        ],
+        [
+          5
+        ],
+        [
+          10
+        ],
+        [
+          9
+        ],
+        [
+          4
+        ]
+      ],
+      "expected": [
+        null,
+        4,
+        5,
+        5,
+        8,
+        8
+      ]
+    }
+  ],
+  "id": "heap-priority-queue/02-kth-largest-element-in-a-stream",
+  "title": "Kth Largest Element in a Stream",
+  "difficulty": "Easy",
+  "topic": "heap-priority-queue",
+  "solutions": {
+    "naive": "from typing import List\n\nclass KthLargest:\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.nums = nums[:]\n\n    def add(self, val: int) -> int:\n        self.nums.append(val)\n        # Re-sort every time; straightforward but expensive.\n        ordered = sorted(self.nums, reverse=True)\n        return ordered[self.k - 1]",
+    "better": "from typing import List\nimport bisect\n\nclass KthLargest:\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.nums = sorted(nums)\n\n    def add(self, val: int) -> int:\n        # Insertion search is logarithmic, shifting is linear.\n        bisect.insort(self.nums, val)\n        return self.nums[len(self.nums) - self.k]",
+    "optimal": "from typing import List\nimport heapq\n\nclass KthLargest:\n    def __init__(self, k: int, nums: List[int]):\n        self.k = k\n        self.heap = nums[:]\n        heapq.heapify(self.heap)\n        # Trim everything below the kth largest.\n        while len(self.heap) > k:\n            heapq.heappop(self.heap)\n\n    def add(self, val: int) -> int:\n        heapq.heappush(self.heap, val)\n        if len(self.heap) > self.k:\n            heapq.heappop(self.heap)\n        return self.heap[0]"
+  },
+  "starterCode": "class KthLargest:\n    def __init__(self, k, nums):\n        # TODO: write your solution here\n        pass\n\n    def add(self, val):\n        # TODO: write your solution here\n        pass\n"
+}

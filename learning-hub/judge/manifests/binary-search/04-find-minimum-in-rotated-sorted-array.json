@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findMin",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ]
+      ],
+      "expected": 1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "binary-search/04-find-minimum-in-rotated-sorted-array",
+  "title": "Find Minimum in Rotated Sorted Array",
+  "difficulty": "Medium",
+  "topic": "binary-search",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def findMin(self, nums: List[int]) -> int:\n        best = nums[0]\n        for value in nums:\n            best = min(best, value)\n        return best",
+    "better": "from typing import List\n\nclass Solution:\n    def findMin(self, nums: List[int]) -> int:\n        for i in range(1, len(nums)):\n            if nums[i] < nums[i - 1]:\n                return nums[i]\n        return nums[0]",
+    "optimal": "from typing import List\n\nclass Solution:\n    def findMin(self, nums: List[int]) -> int:\n        left, right = 0, len(nums) - 1\n        while left < right:\n            mid = (left + right) // 2\n            if nums[mid] > nums[right]:\n                left = mid + 1\n            else:\n                right = mid\n        return nums[left]"
+  },
+  "starterCode": "class Solution:\n    def findMin(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

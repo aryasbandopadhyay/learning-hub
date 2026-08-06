@@ -1,0 +1,61 @@
+{
+  "shape": "design",
+  "className": "DetectSquares",
+  "entry": null,
+  "params": [],
+  "compareMode": "set",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "DetectSquares",
+        "add",
+        "add",
+        "add",
+        "count"
+      ],
+      "args": [
+        [],
+        [
+          [
+            3,
+            10
+          ]
+        ],
+        [
+          [
+            11,
+            2
+          ]
+        ],
+        [
+          [
+            3,
+            2
+          ]
+        ],
+        [
+          [
+            11,
+            10
+          ]
+        ]
+      ],
+      "expected": [
+        null,
+        1
+      ]
+    }
+  ],
+  "id": "math-geometry/08-detect-squares",
+  "title": "Detect Squares",
+  "difficulty": "Medium",
+  "topic": "math-geometry",
+  "solutions": {
+    "naive": "from typing import List\n\nclass DetectSquares:\n    def __init__(self):\n        self.points = []\n\n    def add(self, point: List[int]) -> None:\n        self.points.append(tuple(point))\n\n    def count(self, point: List[int]) -> int:\n        qx, qy = point\n        ans = 0\n        pts = self.points\n        for dx, dy in pts:\n            if abs(dx - qx) != abs(dy - qy) or dx == qx:\n                continue\n            corner1 = corner2 = 0\n            for px, py in pts:\n                if (px, py) == (qx, dy):\n                    corner1 += 1\n                if (px, py) == (dx, qy):\n                    corner2 += 1\n            # Each diagonal occurrence pairs with every duplicate corner choice.\n            ans += corner1 * corner2\n        return ans",
+    "better": "from collections import Counter\nfrom typing import List, Tuple\n\nclass DetectSquares:\n    def __init__(self):\n        self.freq = Counter()\n\n    def add(self, point: List[int]) -> None:\n        self.freq[tuple(point)] += 1\n\n    def count(self, point: List[int]) -> int:\n        x, y = point\n        ans = 0\n        for (dx, dy), diagonal_count in self.freq.items():\n            if abs(dx - x) == abs(dy - y) and dx != x:\n                ans += diagonal_count * self.freq[(x, dy)] * self.freq[(dx, y)]\n        return ans",
+    "optimal": "from collections import Counter, defaultdict\nfrom typing import List\n\nclass DetectSquares:\n    def __init__(self):\n        self.points = Counter()\n        self.by_x = defaultdict(Counter)\n\n    def add(self, point: List[int]) -> None:\n        x, y = point\n        self.points[(x, y)] += 1\n        self.by_x[x][y] += 1\n\n    def count(self, point: List[int]) -> int:\n        x, y = point\n        ans = 0\n        for other_y, vertical_count in self.by_x[x].items():\n            side = other_y - y\n            if side == 0:\n                continue\n            # Try squares extending left and right by the side length.\n            for nx in (x + side, x - side):\n                ans += vertical_count * self.points[(nx, y)] * self.points[(nx, other_y)]\n        return ans"
+  },
+  "starterCode": "class DetectSquares:\n    def __init__(self):\n        # TODO: write your solution here\n        pass\n\n    def add(self, point):\n        # TODO: write your solution here\n        pass\n\n    def count(self, point):\n        # TODO: write your solution here\n        pass\n"
+}

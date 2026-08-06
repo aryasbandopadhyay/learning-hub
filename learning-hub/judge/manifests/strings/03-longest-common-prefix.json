@@ -1,0 +1,278 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "longestCommonPrefix",
+  "params": [
+    "strs"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "flower",
+          "flow",
+          "flight"
+        ]
+      ],
+      "expected": "fl"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "dad",
+          "abc",
+          "ead",
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd",
+          "bcb",
+          "cac",
+          "bbd",
+          "cda",
+          "ddc",
+          "aec",
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb",
+          "bcd",
+          "bdc",
+          "daa",
+          "eeb",
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec",
+          "baa",
+          "cae",
+          "aad",
+          "cce"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "bad",
+          "dbc",
+          "dcb",
+          "bdd",
+          "deb",
+          "ccb",
+          "cde",
+          "dbd"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "bae",
+          "bde",
+          "aac",
+          "dac",
+          "aee",
+          "cae",
+          "cdc",
+          "bbe",
+          "ada",
+          "ace",
+          "bec",
+          "bda",
+          "dbb",
+          "adb",
+          "ccc",
+          "aeb",
+          "ebc",
+          "eaa",
+          "bbb",
+          "eaa",
+          "edb",
+          "cbe",
+          "eeb",
+          "cac",
+          "dbc",
+          "bab",
+          "dea",
+          "bda",
+          "bed",
+          "eab",
+          "bdc",
+          "cce",
+          "aed",
+          "acb",
+          "bac",
+          "ecc",
+          "add",
+          "aac",
+          "bec",
+          "cca",
+          "dce",
+          "beb",
+          "acd",
+          "deb",
+          "bed",
+          "abb",
+          "cbe",
+          "ada",
+          "eab",
+          "bbc"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "bed",
+          "baa",
+          "edd",
+          "abe",
+          "bcd",
+          "bde",
+          "ace",
+          "bbe"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "deb",
+          "bbd"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "bcb",
+          "eee",
+          "abb",
+          "ebd",
+          "dee"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "cec",
+          "dba",
+          "aad",
+          "acb",
+          "acb",
+          "cca",
+          "eec",
+          "bca"
+        ]
+      ],
+      "expected": ""
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "strs",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "strings/03-longest-common-prefix",
+  "title": "Longest Common Prefix",
+  "difficulty": "Easy",
+  "topic": "strings",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def longestCommonPrefix(self, strs: List[str]) -> str:\n        first = strs[0]\n        for length in range(len(first), -1, -1):\n            prefix = first[:length]\n            if all(word.startswith(prefix) for word in strs):\n                return prefix\n        return \"\"",
+    "better": "from typing import List\n\nclass Solution:\n    def longestCommonPrefix(self, strs: List[str]) -> str:\n        prefix = strs[0]\n        for word in strs[1:]:\n            while not word.startswith(prefix):\n                prefix = prefix[:-1]\n                if not prefix:\n                    return \"\"\n        return prefix",
+    "optimal": "from typing import List\n\nclass Solution:\n    def longestCommonPrefix(self, strs: List[str]) -> str:\n        for i, ch in enumerate(strs[0]):\n            for word in strs[1:]:\n                if i == len(word) or word[i] != ch:\n                    return strs[0][:i]\n        return strs[0]"
+  },
+  "starterCode": "class Solution:\n    def longestCommonPrefix(self, strs):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,74 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maximumUnits",
+  "params": [
+    "boxTypes",
+    "truckSize"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        4
+      ],
+      "expected": 8
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "boxTypes",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "truckSize",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/greedy-scheduling/16-maximum-units-on-a-truck",
+  "title": "Maximum Units on a Truck",
+  "difficulty": "Easy",
+  "topic": "faang/greedy-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def maximumUnits(self, boxTypes: list[list[int]], truckSize: int) -> int:\n        boxes = []\n        for count, units in boxTypes:\n            boxes.extend([units] * count)\n        boxes.sort(reverse=True)\n        return sum(boxes[:truckSize])",
+    "better": "class Solution:\n    def maximumUnits(self, boxTypes: list[list[int]], truckSize: int) -> int:\n        total = 0\n        for count, units in sorted(boxTypes, key=lambda item: item[1], reverse=True):\n            take = min(count, truckSize)\n            total += take * units\n            truckSize -= take\n            if truckSize == 0:\n                break\n        return total",
+    "optimal": "class Solution:\n    def maximumUnits(self, boxTypes: list[list[int]], truckSize: int) -> int:\n        max_units = 0\n        for count, units in boxTypes:\n            max_units = max(max_units, units)\n        buckets = [0] * (max_units + 1)\n        for count, units in boxTypes:\n            buckets[units] += count\n        total = 0\n        for units in range(max_units, 0, -1):\n            if buckets[units] == 0:\n                continue\n            take = min(buckets[units], truckSize)\n            total += take * units\n            truckSize -= take\n            if truckSize == 0:\n                break\n        return total"
+  },
+  "starterCode": "class Solution:\n    def maximumUnits(self, boxTypes, truckSize):\n        # TODO: write your solution here\n        pass\n"
+}

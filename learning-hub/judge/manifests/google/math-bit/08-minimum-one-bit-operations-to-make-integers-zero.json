@@ -1,0 +1,93 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minimumOneBitOperations",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        9
+      ],
+      "expected": 14
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239
+      ],
+      "expected": 4202
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        3773
+      ],
+      "expected": 2857
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        4115
+      ],
+      "expected": 8162
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017
+      ],
+      "expected": 5534
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128
+      ],
+      "expected": 6816
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495
+      ],
+      "expected": 3797
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9289
+      ],
+      "expected": 14449
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685
+      ],
+      "expected": 5126
+    }
+  ],
+  "id": "google/math-bit/08-minimum-one-bit-operations-to-make-integers-zero",
+  "title": "Minimum One Bit Operations to Make Integers Zero",
+  "difficulty": "Hard",
+  "topic": "google/math-bit",
+  "solutions": {
+    "naive": "class Solution:\n    def minimumOneBitOperations(self, n: int) -> int:\n        ans = 0\n        parity = 0\n        for bit in range(n.bit_length() - 1, -1, -1):\n            parity ^= (n >> bit) & 1\n            ans = (ans << 1) | parity\n        return ans",
+    "better": "class Solution:\n    def minimumOneBitOperations(self, n: int) -> int:\n        if n == 0:\n            return 0\n        k = n.bit_length() - 1\n        return ((1 << (k + 1)) - 1) - self.minimumOneBitOperations(n ^ (1 << k))",
+    "optimal": "class Solution:\n    def minimumOneBitOperations(self, n: int) -> int:\n        ans = 0\n        while n:\n            ans ^= n\n            n >>= 1\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def minimumOneBitOperations(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

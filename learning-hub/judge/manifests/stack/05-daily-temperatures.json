@@ -1,0 +1,69 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "dailyTemperatures",
+  "params": [
+    "temperatures"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        4,
+        2,
+        1,
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "temperatures",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "stack/05-daily-temperatures",
+  "title": "Daily Temperatures",
+  "difficulty": "Medium",
+  "topic": "stack",
+  "solutions": {
+    "naive": "class Solution:\n    def dailyTemperatures(self, temperatures: list[int]) -> list[int]:\n        n = len(temperatures)\n        ans = [0] * n\n        for i in range(n):\n            for j in range(i + 1, n):\n                if temperatures[j] > temperatures[i]:\n                    ans[i] = j - i\n                    break\n        return ans",
+    "better": "class Solution:\n    def dailyTemperatures(self, temperatures: list[int]) -> list[int]:\n        n = len(temperatures)\n        next_pos = [10**9] * 101\n        ans = [0] * n\n        for i in range(n - 1, -1, -1):\n            warmer = min(next_pos[t] for t in range(temperatures[i] + 1, 101))\n            if warmer < 10**9:\n                ans[i] = warmer - i\n            # Record the closest occurrence of this exact temperature.\n            next_pos[temperatures[i]] = i\n        return ans",
+    "optimal": "class Solution:\n    def dailyTemperatures(self, temperatures: list[int]) -> list[int]:\n        ans = [0] * len(temperatures)\n        stack = []\n        for i, temp in enumerate(temperatures):\n            # Current day answers all previous colder days.\n            while stack and temp > temperatures[stack[-1]]:\n                j = stack.pop()\n                ans[j] = i - j\n            stack.append(i)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def dailyTemperatures(self, temperatures):\n        # TODO: write your solution here\n        pass\n"
+}

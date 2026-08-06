@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "removeDuplicateLetters",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "cbacdcbc"
+      ],
+      "expected": "acdb"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "acbde"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "baecd"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "abcde"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "abced"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "ceabd"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": "d"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/strings-advanced/09-remove-duplicate-letters",
+  "title": "Remove Duplicate Letters",
+  "difficulty": "Medium",
+  "topic": "faang/strings-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def removeDuplicateLetters(self, s: str) -> str:\n        def solve(t):\n            if not t:\n                return \"\"\n            need = set(t)\n            for ch in sorted(need):\n                pos = t.index(ch)\n                if set(t[pos:]) == need:\n                    return ch + solve(t[pos + 1:].replace(ch, \"\"))\n            return \"\"\n        return solve(s)",
+    "better": "class Solution:\n    def removeDuplicateLetters(self, s):\n        from collections import Counter\n        remaining = Counter(s)\n        stack = []\n        used = set()\n        for ch in s:\n            remaining[ch] -= 1\n            if ch in used:\n                continue\n            while stack and ch < stack[-1] and remaining[stack[-1]] > 0:\n                used.remove(stack.pop())\n            stack.append(ch)\n            used.add(ch)\n        return ''.join(stack)",
+    "optimal": "class Solution:\n    def removeDuplicateLetters(self, s):\n        last = {ch: i for i, ch in enumerate(s)}\n        stack = []\n        used = set()\n        for i, ch in enumerate(s):\n            if ch in used:\n                continue\n            while stack and ch < stack[-1] and last[stack[-1]] > i:\n                used.remove(stack.pop())\n            stack.append(ch)\n            used.add(ch)\n        return ''.join(stack)"
+  },
+  "starterCode": "class Solution:\n    def removeDuplicateLetters(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,93 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "hammingWeight",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        11
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239
+      ],
+      "expected": 8
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        3773
+      ],
+      "expected": 9
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        4115
+      ],
+      "expected": 4
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017
+      ],
+      "expected": 8
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128
+      ],
+      "expected": 8
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495
+      ],
+      "expected": 9
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9289
+      ],
+      "expected": 5
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685
+      ],
+      "expected": 6
+    }
+  ],
+  "id": "bit-manipulation/02-number-of-1-bits",
+  "title": "Number of 1 Bits",
+  "difficulty": "Easy",
+  "topic": "bit-manipulation",
+  "solutions": {
+    "naive": "class Solution:\n    def hammingWeight(self, n: int) -> int:\n        # Mask keeps the representation within unsigned 32-bit behavior.\n        bits = bin(n & 0xFFFFFFFF)\n        count = 0\n        for ch in bits:\n            if ch == \"1\":\n                count += 1\n        return count",
+    "better": "class Solution:\n    def hammingWeight(self, n: int) -> int:\n        n &= 0xFFFFFFFF\n        count = 0\n        for i in range(32):\n            if n & (1 << i):\n                count += 1\n        return count",
+    "optimal": "class Solution:\n    def hammingWeight(self, n: int) -> int:\n        n &= 0xFFFFFFFF\n        count = 0\n        while n:\n            # Clears the rightmost 1 bit.\n            n &= n - 1\n            count += 1\n        return count"
+  },
+  "starterCode": "class Solution:\n    def hammingWeight(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,66 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "splitArray",
+  "params": [
+    "nums",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          7,
+          2,
+          5,
+          10,
+          8
+        ],
+        2
+      ],
+      "expected": 18
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/binary-search-on-answer/15-split-array-largest-sum",
+  "title": "Split Array Largest Sum",
+  "difficulty": "Hard",
+  "topic": "faang/binary-search-on-answer",
+  "solutions": {
+    "naive": "class Solution:\n    def splitArray(self, nums, k):\n        def can_split(limit):\n            pieces = 1\n            total = 0\n            for x in nums:\n                if total + x > limit:\n                    pieces += 1\n                    total = 0\n                total += x\n            return pieces <= k\n\n        for limit in range(max(nums), sum(nums) + 1):\n            if can_split(limit):\n                return limit\n        return sum(nums)",
+    "better": "class Solution:\n    def splitArray(self, nums, k):\n        n = len(nums)\n        if k >= n:\n            return max(nums)\n        prefix = [0]\n        for x in nums:\n            prefix.append(prefix[-1] + x)\n        prev = [0] + [prefix[i] for i in range(1, n + 1)]\n        for parts in range(2, k + 1):\n            curr = [0] * (n + 1)\n            for i in range(1, n + 1):\n                best = prefix[i]\n                for cut in range(parts - 1, i):\n                    best = min(best, max(prev[cut], prefix[i] - prefix[cut]))\n                curr[i] = best\n            prev = curr\n        return prev[n]",
+    "optimal": "class Solution:\n    def splitArray(self, nums, k):\n        def pieces_allowed(limit):\n            pieces = 1\n            total = 0\n            for x in nums:\n                if total + x > limit:\n                    pieces += 1\n                    total = 0\n                total += x\n            return pieces\n\n        lo, hi = max(nums), sum(nums)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            if pieces_allowed(mid) <= k:\n                hi = mid\n            else:\n                lo = mid + 1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def splitArray(self, nums, k):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,74 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findRestaurant",
+  "params": [
+    "list1",
+    "list2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "Shogun",
+          "Tapioca Express",
+          "Burger King",
+          "KFC"
+        ],
+        [
+          "KFC",
+          "Shogun",
+          "Burger King"
+        ]
+      ],
+      "expected": [
+        "Shogun"
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "list1",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "list2",
+          "type": "list[str]",
+          "role": "const",
+          "value": [
+            "KFC",
+            "Shogun",
+            "Burger King"
+          ]
+        }
+      ]
+    }
+  },
+  "id": "faang/hashing/07-minimum-index-sum-of-two-lists",
+  "title": "Minimum Index Sum of Two Lists",
+  "difficulty": "Medium",
+  "topic": "faang/hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def findRestaurant(self, list1: list[str], list2: list[str]) -> list[str]:\n        best = 10**18\n        ans = []\n        for i in range(len(list1)):\n            for j in range(len(list2)):\n                if list1[i] == list2[j]:\n                    s = i + j\n                    if s < best:\n                        best = s\n                        ans = [list1[i]]\n                    elif s == best:\n                        ans.append(list1[i])\n        return sorted(ans)",
+    "better": "class Solution:\n    def findRestaurant(self, list1, list2):\n        a = sorted((name, i) for i, name in enumerate(list1))\n        b = sorted((name, i) for i, name in enumerate(list2))\n        i = j = 0\n        best = 10**18\n        ans = []\n        while i < len(a) and j < len(b):\n            if a[i][0] == b[j][0]:\n                s = a[i][1] + b[j][1]\n                if s < best:\n                    best = s\n                    ans = [a[i][0]]\n                elif s == best:\n                    ans.append(a[i][0])\n                i += 1\n                j += 1\n            elif a[i][0] < b[j][0]:\n                i += 1\n            else:\n                j += 1\n        return sorted(ans)",
+    "optimal": "class Solution:\n    def findRestaurant(self, list1, list2):\n        pos = {name: i for i, name in enumerate(list1)}\n        best = 10**18\n        ans = []\n        for j, name in enumerate(list2):\n            if name in pos:\n                s = pos[name] + j\n                if s < best:\n                    best = s\n                    ans = [name]\n                elif s == best:\n                    ans.append(name)\n        return sorted(ans)"
+  },
+  "starterCode": "class Solution:\n    def findRestaurant(self, list1, list2):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,29 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "strangePrinter",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "aba"
+      ],
+      "expected": 2
+    }
+  ],
+  "id": "faang/dp-strings/12-strange-printer",
+  "title": "Strange Printer",
+  "difficulty": "Hard",
+  "topic": "faang/dp-strings",
+  "solutions": {
+    "naive": "class Solution:\n    def strangePrinter(self, s: str) -> int:\n        def dfs(l, r):\n            if l > r:\n                return 0\n            ans = dfs(l, r - 1) + 1\n            for mid in range(l, r):\n                if s[mid] == s[r]:\n                    ans = min(ans, dfs(l, mid) + dfs(mid + 1, r - 1))\n            return ans\n        return dfs(0, len(s) - 1)",
+    "better": "class Solution:\n    def strangePrinter(self, s):\n        from functools import lru_cache\n        @lru_cache(None)\n        def dfs(l, r):\n            if l > r:\n                return 0\n            ans = dfs(l, r - 1) + 1\n            for mid in range(l, r):\n                if s[mid] == s[r]:\n                    ans = min(ans, dfs(l, mid) + dfs(mid + 1, r - 1))\n            return ans\n        return dfs(0, len(s) - 1)",
+    "optimal": "class Solution:\n    def strangePrinter(self, s):\n        comp = []\n        for ch in s:\n            if not comp or comp[-1] != ch:\n                comp.append(ch)\n        s = \"\".join(comp)\n        n = len(s)\n        dp = [[0] * n for _ in range(n)]\n        for i in range(n):\n            dp[i][i] = 1\n        for length in range(2, n + 1):\n            for l in range(n - length + 1):\n                r = l + length - 1\n                dp[l][r] = dp[l][r - 1] + 1\n                for mid in range(l, r):\n                    if s[mid] == s[r]:\n                        inside = dp[mid + 1][r - 1] if mid + 1 <= r - 1 else 0\n                        dp[l][r] = min(dp[l][r], dp[l][mid] + inside)\n        return dp[0][n - 1]"
+  },
+  "starterCode": "class Solution:\n    def strangePrinter(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

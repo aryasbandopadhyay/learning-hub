@@ -1,0 +1,44 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isSameTree",
+  "params": [
+    "p",
+    "q"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": true
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree",
+    "tree"
+  ],
+  "id": "trees/05-same-tree",
+  "title": "Same Tree",
+  "difficulty": "Easy",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isSameTree(self, p, q):\n        def ser(node):\n            if not node: return ['#']\n            return [str(node.val)] + ser(node.left) + ser(node.right)\n        return ser(p) == ser(q)",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isSameTree(self, p, q):\n        if not p or not q:\n            return p is q\n        return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isSameTree(self, p, q):\n        stack = [(p, q)]\n        while stack:\n            a, b = stack.pop()\n            if not a or not b:\n                if a is not b: return False\n                continue\n            if a.val != b.val: return False\n            stack.append((a.left, b.left)); stack.append((a.right, b.right))\n        return True"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def isSameTree(self, p, q):\n        # TODO: write your solution here\n        pass\n"
+}

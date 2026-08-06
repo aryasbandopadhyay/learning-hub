@@ -1,0 +1,136 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "partitionLabels",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "ababcbacadefegdehijhklij"
+      ],
+      "expected": [
+        9,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": [
+        20
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": [
+        13
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": [
+        50
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": [
+        20
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": [
+        20
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": [
+        2
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "two-pointers/13-partition-labels",
+  "title": "Partition Labels",
+  "difficulty": "Medium",
+  "topic": "two-pointers",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def partitionLabels(self, s: str) -> List[int]:\n        result = []\n        start = 0\n        while start < len(s):\n            end = start\n            changed = True\n            while changed:\n                changed = False\n                for i in range(start, end + 1):\n                    last = s.rfind(s[i])\n                    if last > end:\n                        end = last\n                        changed = True\n            result.append(end - start + 1)\n            start = end + 1\n        return result",
+    "better": "from typing import List\n\nclass Solution:\n    def partitionLabels(self, s: str) -> List[int]:\n        last = {ch: i for i, ch in enumerate(s)}\n        result = []\n        start = 0\n        while start < len(s):\n            end = last[s[start]]\n            i = start\n            while i <= end:\n                end = max(end, last[s[i]])\n                i += 1\n            result.append(end - start + 1)\n            start = end + 1\n        return result",
+    "optimal": "from typing import List\n\nclass Solution:\n    def partitionLabels(self, s: str) -> List[int]:\n        last = {ch: i for i, ch in enumerate(s)}\n        result = []\n        start = end = 0\n        for i, ch in enumerate(s):\n            end = max(end, last[ch])\n            if i == end:\n                result.append(end - start + 1)\n                start = i + 1\n        return result"
+  },
+  "starterCode": "class Solution:\n    def partitionLabels(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,108 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxProbability",
+  "params": [
+    "n",
+    "edges",
+    "succProb",
+    "start_node",
+    "end_node"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          0.5,
+          0.5,
+          0.2
+        ],
+        0,
+        2
+      ],
+      "expected": 0.25
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "edges",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "succProb",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            0.5,
+            0.5,
+            0.2
+          ]
+        },
+        {
+          "name": "start_node",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "end_node",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "advanced-graphs/07-path-with-maximum-probability",
+  "title": "Path with Maximum Probability",
+  "difficulty": "Medium",
+  "topic": "advanced-graphs",
+  "solutions": {
+    "naive": "from collections import defaultdict\nfrom typing import List\n\nclass Solution:\n    def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start_node: int, end_node: int) -> float:\n        graph = defaultdict(list)\n        for (u, v), p in zip(edges, succProb):\n            graph[u].append((v, p))\n            graph[v].append((u, p))\n\n        best = 0.0\n\n        def dfs(node: int, prob: float, seen: set[int]) -> None:\n            nonlocal best\n            if prob <= best:\n                return\n            if node == end_node:\n                best = prob\n                return\n            for nxt, p in graph[node]:\n                if nxt not in seen:\n                    seen.add(nxt)\n                    dfs(nxt, prob * p, seen)\n                    seen.remove(nxt)\n\n        dfs(start_node, 1.0, {start_node})\n        return best",
+    "better": "from typing import List\n\nclass Solution:\n    def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start_node: int, end_node: int) -> float:\n        prob = [0.0] * n\n        prob[start_node] = 1.0\n\n        for _ in range(n - 1):\n            changed = False\n            for (u, v), p in zip(edges, succProb):\n                if prob[u] * p > prob[v]:\n                    prob[v] = prob[u] * p\n                    changed = True\n                if prob[v] * p > prob[u]:\n                    prob[u] = prob[v] * p\n                    changed = True\n            if not changed:\n                break\n        return prob[end_node]",
+    "optimal": "import heapq\nfrom collections import defaultdict\nfrom typing import List\n\nclass Solution:\n    def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start_node: int, end_node: int) -> float:\n        graph = defaultdict(list)\n        for (u, v), p in zip(edges, succProb):\n            graph[u].append((v, p))\n            graph[v].append((u, p))\n\n        best = [0.0] * n\n        best[start_node] = 1.0\n        heap = [(-1.0, start_node)]\n\n        while heap:\n            neg_prob, node = heapq.heappop(heap)\n            cur = -neg_prob\n            if node == end_node:\n                return cur\n            if cur < best[node]:\n                continue\n            for nxt, p in graph[node]:\n                new_prob = cur * p\n                if new_prob > best[nxt]:\n                    best[nxt] = new_prob\n                    heapq.heappush(heap, (-new_prob, nxt))\n        return 0.0"
+  },
+  "starterCode": "class Solution:\n    def maxProbability(self, n, edges, succProb, start_node, end_node):\n        # TODO: write your solution here\n        pass\n"
+}

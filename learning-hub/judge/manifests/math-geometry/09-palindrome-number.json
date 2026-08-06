@@ -1,0 +1,93 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isPalindrome",
+  "params": [
+    "x"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        121
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        3773
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        4115
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9289
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685
+      ],
+      "expected": false
+    }
+  ],
+  "id": "math-geometry/09-palindrome-number",
+  "title": "Palindrome Number",
+  "difficulty": "Easy",
+  "topic": "math-geometry",
+  "solutions": {
+    "naive": "class Solution:\n    def isPalindrome(self, x: int) -> bool:\n        s = str(x)\n        return s == s[::-1]",
+    "better": "class Solution:\n    def isPalindrome(self, x: int) -> bool:\n        if x < 0:\n            return False\n        original, rev = x, 0\n        while x:\n            rev = rev * 10 + x % 10\n            x //= 10\n        return rev == original",
+    "optimal": "class Solution:\n    def isPalindrome(self, x: int) -> bool:\n        if x < 0 or (x % 10 == 0 and x != 0):\n            return False\n        rev_half = 0\n        while x > rev_half:\n            rev_half = rev_half * 10 + x % 10\n            x //= 10\n        # For odd digit counts, drop the middle digit from rev_half.\n        return x == rev_half or x == rev_half // 10"
+  },
+  "starterCode": "class Solution:\n    def isPalindrome(self, x):\n        # TODO: write your solution here\n        pass\n"
+}

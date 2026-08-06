@@ -1,0 +1,78 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findMaxValueOfEquation",
+  "params": [
+    "points",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            6,
+            -10
+          ]
+        ],
+        1
+      ],
+      "expected": 4
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "points",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/sliding-window/12-max-value-of-equation",
+  "title": "Max Value of Equation",
+  "difficulty": "Hard",
+  "topic": "google/sliding-window",
+  "solutions": {
+    "naive": "class Solution:\n    def findMaxValueOfEquation(self, points: list[list[int]], k: int) -> int:\n        best = -10**30\n        n = len(points)\n        for i in range(n):\n            for j in range(i + 1, n):\n                if points[j][0] - points[i][0] <= k:\n                    val = points[i][1] + points[j][1] + points[j][0] - points[i][0]\n                    best = max(best, val)\n        return best",
+    "better": "class Solution:\n    def findMaxValueOfEquation(self, points: list[list[int]], k: int) -> int:\n        from heapq import heappush, heappop\n        heap = []\n        best = -10**30\n        for x, y in points:\n            while heap and x - heap[0][1] > k:\n                heappop(heap)\n            if heap:\n                best = max(best, x + y - heap[0][0])\n            heappush(heap, (x - y, x))\n        return best",
+    "optimal": "class Solution:\n    def findMaxValueOfEquation(self, points: list[list[int]], k: int) -> int:\n        q = []\n        head = 0\n        best = -10**30\n        for x, y in points:\n            while head < len(q) and x - q[head][1] > k:\n                head += 1\n            if head < len(q):\n                best = max(best, x + y + q[head][0])\n            cur = y - x\n            while head < len(q) and q[-1][0] <= cur:\n                q.pop()\n            q.append((cur, x))\n        return best"
+  },
+  "starterCode": "class Solution:\n    def findMaxValueOfEquation(self, points, k):\n        # TODO: write your solution here\n        pass\n"
+}

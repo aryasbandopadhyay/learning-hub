@@ -1,0 +1,91 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findTheCity",
+  "params": [
+    "n",
+    "edges",
+    "distanceThreshold"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        4,
+        [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            1,
+            3,
+            4
+          ],
+          [
+            2,
+            3,
+            1
+          ]
+        ],
+        4
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "edges",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        },
+        {
+          "name": "distanceThreshold",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "advanced-graphs/08-find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance",
+  "title": "Find the City With the Smallest Number of Neighbors at a Threshold Distance",
+  "difficulty": "Medium",
+  "topic": "advanced-graphs",
+  "solutions": {
+    "naive": "from collections import defaultdict\nfrom typing import List\n\nclass Solution:\n    def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:\n        graph = defaultdict(list)\n        for u, v, w in edges:\n            graph[u].append((v, w))\n            graph[v].append((u, w))\n\n        def count_from(start: int) -> int:\n            reached = set()\n\n            def dfs(node: int, dist: int, seen: set[int]) -> None:\n                for nxt, weight in graph[node]:\n                    new_dist = dist + weight\n                    if nxt not in seen and new_dist <= distanceThreshold:\n                        reached.add(nxt)\n                        seen.add(nxt)\n                        dfs(nxt, new_dist, seen)\n                        seen.remove(nxt)\n\n            dfs(start, 0, {start})\n            return len(reached)\n\n        best_city, best_count = -1, float(\"inf\")\n        for city in range(n):\n            cnt = count_from(city)\n            if cnt <= best_count:\n                best_city, best_count = city, cnt\n        return best_city",
+    "better": "import heapq\nfrom collections import defaultdict\nfrom typing import List\n\nclass Solution:\n    def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:\n        graph = defaultdict(list)\n        for u, v, w in edges:\n            graph[u].append((v, w))\n            graph[v].append((u, w))\n\n        def dijkstra(start: int) -> int:\n            dist = [float(\"inf\")] * n\n            dist[start] = 0\n            heap = [(0, start)]\n            while heap:\n                cost, node = heapq.heappop(heap)\n                if cost != dist[node]:\n                    continue\n                for nxt, weight in graph[node]:\n                    new_cost = cost + weight\n                    if new_cost < dist[nxt]:\n                        dist[nxt] = new_cost\n                        heapq.heappush(heap, (new_cost, nxt))\n            return sum(0 < d <= distanceThreshold for d in dist)\n\n        answer, best_count = -1, float(\"inf\")\n        for city in range(n):\n            cnt = dijkstra(city)\n            if cnt <= best_count:\n                answer, best_count = city, cnt\n        return answer",
+    "optimal": "from typing import List\n\nclass Solution:\n    def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:\n        dist = [[float(\"inf\")] * n for _ in range(n)]\n        for i in range(n):\n            dist[i][i] = 0\n        for u, v, w in edges:\n            dist[u][v] = min(dist[u][v], w)\n            dist[v][u] = min(dist[v][u], w)\n\n        for mid in range(n):\n            for src in range(n):\n                for dst in range(n):\n                    if dist[src][mid] + dist[mid][dst] < dist[src][dst]:\n                        dist[src][dst] = dist[src][mid] + dist[mid][dst]\n\n        answer, best_count = -1, float(\"inf\")\n        for city in range(n):\n            cnt = sum(0 < dist[city][other] <= distanceThreshold for other in range(n))\n            if cnt <= best_count:\n                answer, best_count = city, cnt\n        return answer"
+  },
+  "starterCode": "class Solution:\n    def findTheCity(self, n, edges, distanceThreshold):\n        # TODO: write your solution here\n        pass\n"
+}

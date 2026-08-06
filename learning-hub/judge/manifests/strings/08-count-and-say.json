@@ -1,0 +1,29 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "countAndSay",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        4
+      ],
+      "expected": "1211"
+    }
+  ],
+  "id": "strings/08-count-and-say",
+  "title": "Count and Say",
+  "difficulty": "Medium",
+  "topic": "strings",
+  "solutions": {
+    "naive": "class Solution:\n    def countAndSay(self, n: int) -> str:\n        term = \"1\"\n        for _ in range(n - 1):\n            next_term = \"\"\n            while term:\n                digit = term[0]\n                count = 0\n                while count < len(term) and term[count] == digit:\n                    count += 1\n                next_term += str(count) + digit\n                term = term[count:]  # Slicing repeatedly copies data.\n            term = next_term\n        return term",
+    "better": "class Solution:\n    def countAndSay(self, n: int) -> str:\n        term = \"1\"\n        for _ in range(n - 1):\n            pieces = []\n            i = 0\n            while i < len(term):\n                j = i\n                while j < len(term) and term[j] == term[i]:\n                    j += 1\n                pieces.append(str(j - i))\n                pieces.append(term[i])\n                i = j\n            term = ''.join(pieces)\n        return term",
+    "optimal": "class Solution:\n    def countAndSay(self, n: int) -> str:\n        term = \"1\"\n        for _ in range(n - 1):\n            pieces = []\n            count = 0\n            prev = term[0]\n            for ch in term + \"#\":  # Sentinel differs from every digit.\n                if ch == prev:\n                    count += 1\n                else:\n                    pieces.append(str(count))\n                    pieces.append(prev)\n                    prev = ch\n                    count = 1\n            term = ''.join(pieces)\n        return term"
+  },
+  "starterCode": "class Solution:\n    def countAndSay(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,111 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "floodFill",
+  "params": [
+    "image",
+    "sr",
+    "sc",
+    "color"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ]
+        ],
+        1,
+        1,
+        2
+      ],
+      "expected": [
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "image",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        },
+        {
+          "name": "sr",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "sc",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "color",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "graphs/15-flood-fill",
+  "title": "Flood Fill",
+  "difficulty": "Easy",
+  "topic": "graphs",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:\n        # In-place DFS with same-color guard.\n        old = image[sr][sc]\n        if old == color: return image\n        m, n = len(image), len(image[0])\n        def dfs(r, c):\n            if r < 0 or c < 0 or r == m or c == n or image[r][c] != old:\n                return\n            image[r][c] = color\n            dfs(r+1,c); dfs(r-1,c); dfs(r,c+1); dfs(r,c-1)\n        dfs(sr, sc)\n        return image",
+    "better": "from typing import List\n\nclass Solution:\n    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:\n        # In-place DFS with same-color guard.\n        old = image[sr][sc]\n        if old == color: return image\n        m, n = len(image), len(image[0])\n        def dfs(r, c):\n            if r < 0 or c < 0 or r == m or c == n or image[r][c] != old:\n                return\n            image[r][c] = color\n            dfs(r+1,c); dfs(r-1,c); dfs(r,c+1); dfs(r,c-1)\n        dfs(sr, sc)\n        return image",
+    "optimal": "from typing import List\n\nclass Solution:\n    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:\n        # In-place DFS with same-color guard.\n        old = image[sr][sc]\n        if old == color: return image\n        m, n = len(image), len(image[0])\n        def dfs(r, c):\n            if r < 0 or c < 0 or r == m or c == n or image[r][c] != old:\n                return\n            image[r][c] = color\n            dfs(r+1,c); dfs(r-1,c); dfs(r,c+1); dfs(r,c-1)\n        dfs(sr, sc)\n        return image"
+  },
+  "starterCode": "class Solution:\n    def floodFill(self, image, sr, sc, color):\n        # TODO: write your solution here\n        pass\n"
+}

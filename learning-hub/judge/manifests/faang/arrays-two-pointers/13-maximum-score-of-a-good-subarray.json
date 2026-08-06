@@ -1,0 +1,67 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maximumScore",
+  "params": [
+    "nums",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          4,
+          3,
+          7,
+          4,
+          5
+        ],
+        3
+      ],
+      "expected": 15
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/arrays-two-pointers/13-maximum-score-of-a-good-subarray",
+  "title": "Maximum Score of a Good Subarray",
+  "difficulty": "Hard",
+  "topic": "faang/arrays-two-pointers",
+  "solutions": {
+    "naive": "class Solution:\n    def maximumScore(self, nums: list[int], k: int) -> int:\n        best=0\n        for l in range(k+1):\n            for r in range(k,len(nums)):\n                mn=nums[l]\n                for i in range(l,r+1): mn=min(mn,nums[i])\n                best=max(best,mn*(r-l+1))\n        return best",
+    "better": "class Solution:\n    def maximumScore(self, nums: list[int], k: int) -> int:\n        n=len(nums); left=[-1]*n; st=[]\n        for i,x in enumerate(nums):\n            while st and nums[st[-1]] >= x: st.pop()\n            left[i]=st[-1] if st else -1; st.append(i)\n        right=[n]*n; st=[]\n        for i in range(n-1,-1,-1):\n            while st and nums[st[-1]] >= nums[i]: st.pop()\n            right[i]=st[-1] if st else n; st.append(i)\n        best=0\n        for i,x in enumerate(nums):\n            if left[i] < k < right[i]: best=max(best,x*(right[i]-left[i]-1))\n        return best",
+    "optimal": "class Solution:\n    def maximumScore(self, nums: list[int], k: int) -> int:\n        n=len(nums); l=r=k; mn=nums[k]; best=mn\n        while l > 0 or r < n-1:\n            if l == 0: r += 1\n            elif r == n-1: l -= 1\n            elif nums[l-1] < nums[r+1]: r += 1\n            else: l -= 1\n            mn=min(mn,nums[l],nums[r])\n            best=max(best,mn*(r-l+1))\n        return best"
+  },
+  "starterCode": "class Solution:\n    def maximumScore(self, nums, k):\n        # TODO: write your solution here\n        pass\n"
+}

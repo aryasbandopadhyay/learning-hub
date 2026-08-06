@@ -1,0 +1,245 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "sumSubarrayMins",
+  "params": [
+    "arr"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          1,
+          2,
+          4
+        ]
+      ],
+      "expected": 17
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          2254,
+          2717
+        ]
+      ],
+      "expected": 998860713
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          1102,
+          5121,
+          -4135,
+          8576,
+          1102
+        ]
+      ],
+      "expected": 999980897
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          -9751,
+          3933,
+          -3324,
+          1879,
+          7508,
+          -7352,
+          5141,
+          6995,
+          -3510,
+          9841,
+          5161,
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240
+        ]
+      ],
+      "expected": 989012706
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          1593,
+          5602,
+          -8171
+        ]
+      ],
+      "expected": 999984282
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          9924,
+          9924,
+          -5925
+        ]
+      ],
+      "expected": 11997
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          -4179,
+          3430,
+          -5232
+        ]
+      ],
+      "expected": 999979383
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -7628,
+          -7628,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          1057
+        ]
+      ],
+      "expected": 999338448
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          2646,
+          3568,
+          2156,
+          7510,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          2156,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289
+        ]
+      ],
+      "expected": 998918220
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "arr",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/arrays-prefix-sum/11-sum-of-subarray-minimums",
+  "title": "Sum of Subarray Minimums",
+  "difficulty": "Medium",
+  "topic": "google/arrays-prefix-sum",
+  "solutions": {
+    "naive": "class Solution:\n    def sumSubarrayMins(self, arr: list[int]) -> int:\n        mod = 10 ** 9 + 7\n        ans = 0\n        n = len(arr)\n        for i in range(n):\n            mn = arr[i]\n            for j in range(i, n):\n                mn = min(mn, arr[j])\n                ans = (ans + mn) % mod\n        return ans",
+    "better": "class Solution:\n    def sumSubarrayMins(self, arr: list[int]) -> int:\n        mod = 10 ** 9 + 7\n        n = len(arr)\n        ans = 0\n        for i in range(n):\n            left = i\n            while left - 1 >= 0 and arr[left - 1] > arr[i]:\n                left -= 1\n            right = i\n            while right + 1 < n and arr[right + 1] >= arr[i]:\n                right += 1\n            ans = (ans + arr[i] * (i - left + 1) * (right - i + 1)) % mod\n        return ans",
+    "optimal": "class Solution:\n    def sumSubarrayMins(self, arr: list[int]) -> int:\n        mod = 10 ** 9 + 7\n        n = len(arr)\n        prev = [-1] * n\n        stack = []\n        for i, x in enumerate(arr):\n            while stack and arr[stack[-1]] > x:\n                stack.pop()\n            prev[i] = stack[-1] if stack else -1\n            stack.append(i)\n        nxt = [n] * n\n        stack = []\n        for i in range(n - 1, -1, -1):\n            while stack and arr[stack[-1]] >= arr[i]:\n                stack.pop()\n            nxt[i] = stack[-1] if stack else n\n            stack.append(i)\n        ans = 0\n        for i, x in enumerate(arr):\n            ans = (ans + x * (i - prev[i]) * (nxt[i] - i)) % mod\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def sumSubarrayMins(self, arr):\n        # TODO: write your solution here\n        pass\n"
+}

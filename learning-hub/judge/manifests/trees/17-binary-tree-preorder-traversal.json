@@ -1,0 +1,42 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "preorderTraversal",
+  "params": [
+    "root"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          null,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree"
+  ],
+  "id": "trees/17-binary-tree-preorder-traversal",
+  "title": "Binary Tree Preorder Traversal",
+  "difficulty": "Easy",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def preorderTraversal(self, root):\n        ans=[]\n        def dfs(node):\n            if not node: return\n            ans.append(node.val); dfs(node.left); dfs(node.right)\n        dfs(root)\n        return ans",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def preorderTraversal(self, root):\n        if not root: return []\n        ans=[]; stack=[root]\n        while stack:\n            node=stack.pop(); ans.append(node.val)\n            if node.right: stack.append(node.right)\n            if node.left: stack.append(node.left)\n        return ans",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def preorderTraversal(self, root):\n        ans=[]; cur=root\n        while cur:\n            if not cur.left:\n                ans.append(cur.val); cur=cur.right\n            else:\n                pred=cur.left\n                while pred.right and pred.right is not cur: pred=pred.right\n                if not pred.right:\n                    ans.append(cur.val); pred.right=cur; cur=cur.left\n                else:\n                    pred.right=None; cur=cur.right\n        return ans"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def preorderTraversal(self, root):\n        # TODO: write your solution here\n        pass\n"
+}

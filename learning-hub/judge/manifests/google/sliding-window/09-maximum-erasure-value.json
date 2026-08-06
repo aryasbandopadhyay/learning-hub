@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maximumUniqueSubarray",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          4,
+          2,
+          4,
+          5,
+          6
+        ]
+      ],
+      "expected": 17
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/sliding-window/09-maximum-erasure-value",
+  "title": "Maximum Erasure Value",
+  "difficulty": "Medium",
+  "topic": "google/sliding-window",
+  "solutions": {
+    "naive": "class Solution:\n    def maximumUniqueSubarray(self, nums: list[int]) -> int:\n        n = len(nums)\n        ans = 0\n        for i in range(n):\n            for j in range(i, n):\n                seen = set()\n                total = 0\n                ok = True\n                for p in range(i, j + 1):\n                    if nums[p] in seen:\n                        ok = False\n                    seen.add(nums[p])\n                    total += nums[p]\n                if ok:\n                    ans = max(ans, total)\n        return ans",
+    "better": "class Solution:\n    def maximumUniqueSubarray(self, nums: list[int]) -> int:\n        n = len(nums)\n        ans = 0\n        for i in range(n):\n            seen = set()\n            total = 0\n            for j in range(i, n):\n                if nums[j] in seen:\n                    break\n                seen.add(nums[j])\n                total += nums[j]\n                ans = max(ans, total)\n        return ans",
+    "optimal": "class Solution:\n    def maximumUniqueSubarray(self, nums: list[int]) -> int:\n        seen = set()\n        left = 0\n        total = 0\n        ans = 0\n        for x in nums:\n            while x in seen:\n                seen.remove(nums[left])\n                total -= nums[left]\n                left += 1\n            seen.add(x)\n            total += x\n            ans = max(ans, total)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def maximumUniqueSubarray(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

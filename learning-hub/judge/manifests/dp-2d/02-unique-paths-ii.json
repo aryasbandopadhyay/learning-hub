@@ -1,0 +1,68 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "uniquePathsWithObstacles",
+  "params": [
+    "obstacleGrid"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "obstacleGrid",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        }
+      ]
+    }
+  },
+  "id": "dp-2d/02-unique-paths-ii",
+  "title": "Unique Paths II",
+  "difficulty": "Medium",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "from typing import List\n\nclass SolutionRecursive:\n    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:\n        m, n = len(obstacleGrid), len(obstacleGrid[0])\n\n        def dfs(r: int, c: int) -> int:\n            if r == m or c == n or obstacleGrid[r][c] == 1:\n                return 0\n            if r == m - 1 and c == n - 1:\n                return 1\n            return dfs(r + 1, c) + dfs(r, c + 1)\n\n        return dfs(0, 0)",
+    "better": "from typing import List\n\nclass SolutionMemoized:\n    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:\n        m, n = len(obstacleGrid), len(obstacleGrid[0])\n        memo = {}\n\n        def dfs(r: int, c: int) -> int:\n            if r == m or c == n or obstacleGrid[r][c] == 1:\n                return 0\n            if r == m - 1 and c == n - 1:\n                return 1\n            if (r, c) not in memo:\n                memo[(r, c)] = dfs(r + 1, c) + dfs(r, c + 1)\n            return memo[(r, c)]\n\n        return dfs(0, 0)",
+    "optimal": "from typing import List\n\nclass Solution:\n    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:\n        m, n = len(obstacleGrid), len(obstacleGrid[0])\n        dp = [0] * n\n        dp[n - 1] = 1 if obstacleGrid[m - 1][n - 1] == 0 else 0\n        for r in range(m - 1, -1, -1):\n            for c in range(n - 1, -1, -1):\n                if obstacleGrid[r][c] == 1:\n                    dp[c] = 0\n                elif c + 1 < n:\n                    dp[c] += dp[c + 1]\n        return dp[0]"
+  },
+  "starterCode": "class Solution:\n    def uniquePathsWithObstacles(self, obstacleGrid):\n        # TODO: write your solution here\n        pass\n"
+}

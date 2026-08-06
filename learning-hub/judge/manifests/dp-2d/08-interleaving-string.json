@@ -1,0 +1,147 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isInterleave",
+  "params": [
+    "s1",
+    "s2",
+    "s3"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "aabcc",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s1",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "s2",
+          "type": "str",
+          "role": "const",
+          "value": "dbbca"
+        },
+        {
+          "name": "s3",
+          "type": "str",
+          "role": "const",
+          "value": "aadbbcbcac"
+        }
+      ]
+    }
+  },
+  "id": "dp-2d/08-interleaving-string",
+  "title": "Interleaving String",
+  "difficulty": "Medium",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "class SolutionRecursive:\n    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:\n        if len(s1) + len(s2) != len(s3):\n            return False\n\n        def dfs(i: int, j: int) -> bool:\n            k = i + j\n            if k == len(s3):\n                return True\n            take1 = i < len(s1) and s1[i] == s3[k] and dfs(i + 1, j)\n            take2 = j < len(s2) and s2[j] == s3[k] and dfs(i, j + 1)\n            return take1 or take2\n\n        return dfs(0, 0)",
+    "better": "class SolutionMemoized:\n    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:\n        if len(s1) + len(s2) != len(s3):\n            return False\n        memo = {}\n\n        def dfs(i: int, j: int) -> bool:\n            k = i + j\n            if k == len(s3):\n                return True\n            if (i, j) not in memo:\n                take1 = i < len(s1) and s1[i] == s3[k] and dfs(i + 1, j)\n                take2 = j < len(s2) and s2[j] == s3[k] and dfs(i, j + 1)\n                memo[(i, j)] = take1 or take2\n            return memo[(i, j)]\n\n        return dfs(0, 0)",
+    "optimal": "class Solution:\n    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:\n        if len(s1) + len(s2) != len(s3):\n            return False\n        n = len(s2)\n        dp = [False] * (n + 1)\n        dp[n] = True\n        for i in range(len(s1), -1, -1):\n            for j in range(n, -1, -1):\n                if i == len(s1) and j == n:\n                    continue\n                k = i + j\n                dp[j] = (i < len(s1) and s1[i] == s3[k] and dp[j]) or (\n                    j < n and s2[j] == s3[k] and dp[j + 1]\n                )\n        return dp[0]"
+  },
+  "starterCode": "class Solution:\n    def isInterleave(self, s1, s2, s3):\n        # TODO: write your solution here\n        pass\n"
+}

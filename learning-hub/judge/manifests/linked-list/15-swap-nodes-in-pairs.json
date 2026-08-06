@@ -1,0 +1,43 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "swapPairs",
+  "params": [
+    "head"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        2,
+        1,
+        4,
+        3
+      ]
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist"
+  ],
+  "id": "linked-list/15-swap-nodes-in-pairs",
+  "title": "Swap Nodes in Pairs",
+  "difficulty": "Medium",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def swapPairs(self, head):\n        values = []\n        cur = head\n        while cur:\n            values.append(cur.val)\n            cur = cur.next\n        for i in range(0, len(values) - 1, 2):\n            values[i], values[i + 1] = values[i + 1], values[i]\n\n        cur = head\n        for value in values:\n            cur.val = value\n            cur = cur.next\n        return head",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def swapPairs(self, head):\n        if not head or not head.next:\n            return head\n        second = head.next\n        head.next = self.swapPairs(second.next)\n        second.next = head\n        return second",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def swapPairs(self, head):\n        dummy = ListNode(0, head)\n        prev = dummy\n        while prev.next and prev.next.next:\n            first = prev.next\n            second = first.next\n            first.next = second.next\n            second.next = first\n            prev.next = second\n            prev = first\n        return dummy.next"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def swapPairs(self, head):\n        # TODO: write your solution here\n        pass\n"
+}

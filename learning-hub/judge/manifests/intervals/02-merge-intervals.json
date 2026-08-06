@@ -1,0 +1,82 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "merge",
+  "params": [
+    "intervals"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "intervals",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "intervals/02-merge-intervals",
+  "title": "Merge Intervals",
+  "difficulty": "Medium",
+  "topic": "intervals",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def merge(self, intervals: List[List[int]]) -> List[List[int]]:\n        arr = [x[:] for x in intervals]\n\n        changed = True\n        while changed:\n            changed = False\n            for i in range(len(arr)):\n                for j in range(i + 1, len(arr)):\n                    if arr[i][0] <= arr[j][1] and arr[j][0] <= arr[i][1]:\n                        arr[i] = [min(arr[i][0], arr[j][0]), max(arr[i][1], arr[j][1])]\n                        arr.pop(j)\n                        changed = True\n                        break\n                if changed:\n                    break\n        return sorted(arr, key=lambda x: x[0])",
+    "better": "from typing import List\n\nclass Solution:\n    def merge(self, intervals: List[List[int]]) -> List[List[int]]:\n        intervals = sorted(intervals, key=lambda x: x[0])\n        result = []\n\n        for start, end in intervals:\n            if not result or start > result[-1][1]:\n                result.append([start, end])\n            else:\n                result[-1][1] = max(result[-1][1], end)\n        return result",
+    "optimal": "from typing import List\n\nclass Solution:\n    def merge(self, intervals: List[List[int]]) -> List[List[int]]:\n        intervals.sort(key=lambda x: x[0])\n        write = 0\n\n        for interval in intervals:\n            if write == 0 or interval[0] > intervals[write - 1][1]:\n                intervals[write] = interval\n                write += 1\n            else:\n                intervals[write - 1][1] = max(intervals[write - 1][1], interval[1])\n        return intervals[:write]"
+  },
+  "starterCode": "class Solution:\n    def merge(self, intervals):\n        # TODO: write your solution here\n        pass\n"
+}

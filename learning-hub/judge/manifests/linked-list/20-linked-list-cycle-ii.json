@@ -1,0 +1,38 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "detectCycle",
+  "params": [
+    "head"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          2,
+          0,
+          -4
+        ]
+      ],
+      "expected": null
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist"
+  ],
+  "id": "linked-list/20-linked-list-cycle-ii",
+  "title": "Linked List Cycle II",
+  "difficulty": "Medium",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def detectCycle(self, head):\n        seen = set()\n        cur = head\n        while cur:\n            if cur in seen:\n                return cur\n            seen.add(cur)\n            cur = cur.next\n        return None",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def detectCycle(self, head):\n        cur = head\n        while cur:\n            if getattr(cur, \"visited\", False):\n                return cur\n            cur.visited = True  # Mutates input; useful only as a conceptual step.\n            cur = cur.next\n        return None",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def detectCycle(self, head):\n        slow = fast = head\n        while fast and fast.next:\n            slow = slow.next\n            fast = fast.next.next\n            if slow is fast:\n                finder = head\n                while finder is not slow:\n                    finder = finder.next\n                    slow = slow.next\n                return finder\n        return None"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def detectCycle(self, head):\n        # TODO: write your solution here\n        pass\n"
+}

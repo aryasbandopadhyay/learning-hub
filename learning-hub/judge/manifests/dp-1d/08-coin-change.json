@@ -1,0 +1,35 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "coinChange",
+  "params": [
+    "coins",
+    "amount"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          5
+        ],
+        11
+      ],
+      "expected": 3
+    }
+  ],
+  "id": "dp-1d/08-coin-change",
+  "title": "Coin Change",
+  "difficulty": "Medium",
+  "topic": "dp-1d",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def coinChange(self, coins: List[int], amount: int) -> int:\n        def dfs(rem: int) -> int:\n            if rem == 0:\n                return 0\n            if rem < 0:\n                return float(\"inf\")\n            return 1 + min(dfs(rem - coin) for coin in coins)\n\n        ans = dfs(amount)\n        return -1 if ans == float(\"inf\") else ans",
+    "better": "from typing import List\n\nclass Solution:\n    def coinChange(self, coins: List[int], amount: int) -> int:\n        memo = {}\n\n        def dfs(rem: int) -> int:\n            if rem == 0:\n                return 0\n            if rem < 0:\n                return float(\"inf\")\n            if rem not in memo:\n                memo[rem] = 1 + min(dfs(rem - coin) for coin in coins)\n            return memo[rem]\n\n        ans = dfs(amount)\n        return -1 if ans == float(\"inf\") else ans",
+    "optimal": "from typing import List\n\nclass Solution:\n    def coinChange(self, coins: List[int], amount: int) -> int:\n        dp = [float(\"inf\")] * (amount + 1)\n        dp[0] = 0\n        for total in range(1, amount + 1):\n            for coin in coins:\n                if total >= coin:\n                    dp[total] = min(dp[total], 1 + dp[total - coin])\n        return -1 if dp[amount] == float(\"inf\") else dp[amount]"
+  },
+  "starterCode": "class Solution:\n    def coinChange(self, coins, amount):\n        # TODO: write your solution here\n        pass\n"
+}

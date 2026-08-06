@@ -1,0 +1,38 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "grayCode",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        3
+      ],
+      "expected": [
+        0,
+        1,
+        3,
+        2,
+        6,
+        7,
+        5,
+        4
+      ]
+    }
+  ],
+  "id": "google/math-bit/07-gray-code",
+  "title": "Gray Code",
+  "difficulty": "Medium",
+  "topic": "google/math-bit",
+  "solutions": {
+    "naive": "class Solution:\n    def grayCode(self, n: int) -> list[int]:\n        total = 1 << n\n        path = [0]\n        used = {0}\n        def dfs(x):\n            if len(path) == total:\n                return (path[-1] ^ path[0]).bit_count() == 1 or total == 1\n            for bit in range(n):\n                y = x ^ (1 << bit)\n                if y not in used:\n                    used.add(y)\n                    path.append(y)\n                    if dfs(y):\n                        return True\n                    path.pop()\n                    used.remove(y)\n            return False\n        dfs(0)\n        return path",
+    "better": "class Solution:\n    def grayCode(self, n: int) -> list[int]:\n        ans = [0]\n        for bit in range(n):\n            add = 1 << bit\n            for x in reversed(ans):\n                ans.append(add | x)\n        return ans",
+    "optimal": "class Solution:\n    def grayCode(self, n: int) -> list[int]:\n        return [i ^ (i >> 1) for i in range(1 << n)]"
+  },
+  "starterCode": "class Solution:\n    def grayCode(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

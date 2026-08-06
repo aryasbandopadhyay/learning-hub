@@ -1,0 +1,63 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findPoisonedDuration",
+  "params": [
+    "timeSeries",
+    "duration"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          4
+        ],
+        2
+      ],
+      "expected": 4
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "timeSeries",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "duration",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/intervals-merge/15-teemo-attacking",
+  "title": "Teemo Attacking",
+  "difficulty": "Easy",
+  "topic": "faang/intervals-merge",
+  "solutions": {
+    "naive": "class Solution:\n    def findPoisonedDuration(self, timeSeries: list[int], duration: int) -> int:\n        poisoned = set()\n        for start in timeSeries:\n            for t in range(start, start + duration):\n                poisoned.add(t)\n        return len(poisoned)",
+    "better": "class Solution:\n    def findPoisonedDuration(self, timeSeries: list[int], duration: int) -> int:\n        if not timeSeries or duration == 0:\n            return 0\n        intervals = [[t, t + duration] for t in timeSeries]\n        total = 0\n        cur_start, cur_end = intervals[0]\n        for start, end in intervals[1:]:\n            if start <= cur_end:\n                cur_end = max(cur_end, end)\n            else:\n                total += cur_end - cur_start\n                cur_start, cur_end = start, end\n        total += cur_end - cur_start\n        return total",
+    "optimal": "class Solution:\n    def findPoisonedDuration(self, timeSeries: list[int], duration: int) -> int:\n        if not timeSeries or duration == 0:\n            return 0\n        total = 0\n        for i in range(len(timeSeries) - 1):\n            total += min(duration, timeSeries[i + 1] - timeSeries[i])\n        total += duration\n        return total"
+  },
+  "starterCode": "class Solution:\n    def findPoisonedDuration(self, timeSeries, duration):\n        # TODO: write your solution here\n        pass\n"
+}

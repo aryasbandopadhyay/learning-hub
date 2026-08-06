@@ -1,0 +1,56 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minimumDeviation",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": 1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/heap-scheduling/13-minimize-deviation-in-array",
+  "title": "Minimize Deviation in Array",
+  "difficulty": "Hard",
+  "topic": "faang/heap-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def minimumDeviation(self, nums):\n        candidates = []\n        for idx, num in enumerate(nums):\n            value = num * 2 if num % 2 else num\n            seen = set()\n            while True:\n                seen.add(value)\n                if value % 2:\n                    break\n                value //= 2\n            for value in seen:\n                candidates.append((value, idx))\n        candidates.sort()\n        need = len(nums)\n        counts = [0] * need\n        covered = 0\n        left = 0\n        best = candidates[-1][0] - candidates[0][0]\n        for right, (value, idx) in enumerate(candidates):\n            if counts[idx] == 0:\n                covered += 1\n            counts[idx] += 1\n            while covered == need:\n                best = min(best, value - candidates[left][0])\n                left_idx = candidates[left][1]\n                counts[left_idx] -= 1\n                if counts[left_idx] == 0:\n                    covered -= 1\n                left += 1\n        return best",
+    "better": "class Solution:\n    def minimumDeviation(self, nums):\n        import heapq\n        lists = []\n        current_max = 0\n        for num in nums:\n            value = num * 2 if num % 2 else num\n            values = []\n            while True:\n                values.append(value)\n                if value % 2:\n                    break\n                value //= 2\n            values.sort()\n            lists.append(values)\n            current_max = max(current_max, values[0])\n        heap = []\n        for i, values in enumerate(lists):\n            heapq.heappush(heap, (values[0], i, 0))\n        best = float(\"inf\")\n        while len(heap) == len(lists):\n            value, list_idx, pos = heapq.heappop(heap)\n            best = min(best, current_max - value)\n            pos += 1\n            if pos == len(lists[list_idx]):\n                break\n            next_value = lists[list_idx][pos]\n            current_max = max(current_max, next_value)\n            heapq.heappush(heap, (next_value, list_idx, pos))\n        return best",
+    "optimal": "class Solution:\n    def minimumDeviation(self, nums):\n        import heapq\n        heap = []\n        current_min = float(\"inf\")\n        for num in nums:\n            value = num * 2 if num % 2 else num\n            current_min = min(current_min, value)\n            heapq.heappush(heap, -value)\n        best = float(\"inf\")\n        while heap:\n            current_max = -heapq.heappop(heap)\n            best = min(best, current_max - current_min)\n            if current_max % 2:\n                break\n            reduced = current_max // 2\n            current_min = min(current_min, reduced)\n            heapq.heappush(heap, -reduced)\n        return best"
+  },
+  "starterCode": "class Solution:\n    def minimumDeviation(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

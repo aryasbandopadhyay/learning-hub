@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "repeatedSubstringPattern",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "abab"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": true
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "strings/07-repeated-substring-pattern",
+  "title": "Repeated Substring Pattern",
+  "difficulty": "Easy",
+  "topic": "strings",
+  "solutions": {
+    "naive": "class Solution:\n    def repeatedSubstringPattern(self, s: str) -> bool:\n        n = len(s)\n        for length in range(1, n):\n            if n % length == 0:\n                part = s[:length]\n                if part * (n // length) == s:\n                    return True\n        return False",
+    "better": "class Solution:\n    def repeatedSubstringPattern(self, s: str) -> bool:\n        doubled_middle = (s + s)[1:-1]\n        return s in doubled_middle",
+    "optimal": "class Solution:\n    def repeatedSubstringPattern(self, s: str) -> bool:\n        n = len(s)\n        lps = [0] * n\n        length = 0\n        for i in range(1, n):\n            while length and s[i] != s[length]:\n                length = lps[length - 1]\n            if s[i] == s[length]:\n                length += 1\n                lps[i] = length\n        longest_border = lps[-1]\n        period = n - longest_border\n        return longest_border > 0 and n % period == 0"
+  },
+  "starterCode": "class Solution:\n    def repeatedSubstringPattern(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

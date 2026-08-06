@@ -1,0 +1,93 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "numberToWords",
+  "params": [
+    "num"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        12345
+      ],
+      "expected": "Twelve Thousand Three Hundred Forty Five"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239
+      ],
+      "expected": "Six Thousand Two Hundred Thirty Nine"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        3773
+      ],
+      "expected": "Three Thousand Seven Hundred Seventy Three"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        4115
+      ],
+      "expected": "Four Thousand One Hundred Fifteen"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017
+      ],
+      "expected": "Eight Thousand Seventeen"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128
+      ],
+      "expected": "Six Thousand One Hundred Twenty Eight"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495
+      ],
+      "expected": "Two Thousand Four Hundred Ninety Five"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9289
+      ],
+      "expected": "Nine Thousand Two Hundred Eighty Nine"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685
+      ],
+      "expected": "Seven Thousand Six Hundred Eighty Five"
+    }
+  ],
+  "id": "strings/20-integer-to-english-words",
+  "title": "Integer to English Words",
+  "difficulty": "Hard",
+  "topic": "strings",
+  "solutions": {
+    "naive": "class Solution:\n    def numberToWords(self, num: int) -> str:\n        if num == 0:\n            return \"Zero\"\n        below_20 = [\"\", \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\",\n                    \"Ten\", \"Eleven\", \"Twelve\", \"Thirteen\", \"Fourteen\", \"Fifteen\",\n                    \"Sixteen\", \"Seventeen\", \"Eighteen\", \"Nineteen\"]\n        tens = [\"\", \"\", \"Twenty\", \"Thirty\", \"Forty\", \"Fifty\", \"Sixty\", \"Seventy\", \"Eighty\", \"Ninety\"]\n\n        def say(n: int) -> str:\n            if n < 20:\n                return below_20[n]\n            if n < 100:\n                return (tens[n // 10] + \" \" + say(n % 10)).strip()\n            if n < 1000:\n                return (say(n // 100) + \" Hundred \" + say(n % 100)).strip()\n            if n < 1_000_000:\n                return (say(n // 1000) + \" Thousand \" + say(n % 1000)).strip()\n            if n < 1_000_000_000:\n                return (say(n // 1_000_000) + \" Million \" + say(n % 1_000_000)).strip()\n            return (say(n // 1_000_000_000) + \" Billion \" + say(n % 1_000_000_000)).strip()\n\n        return say(num)",
+    "better": "class Solution:\n    def numberToWords(self, num: int) -> str:\n        if num == 0:\n            return \"Zero\"\n        below_20 = [\"\", \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\",\n                    \"Ten\", \"Eleven\", \"Twelve\", \"Thirteen\", \"Fourteen\", \"Fifteen\",\n                    \"Sixteen\", \"Seventeen\", \"Eighteen\", \"Nineteen\"]\n        tens = [\"\", \"\", \"Twenty\", \"Thirty\", \"Forty\", \"Fifty\", \"Sixty\", \"Seventy\", \"Eighty\", \"Ninety\"]\n        scales = [\"\", \"Thousand\", \"Million\", \"Billion\"]\n\n        def chunk_to_words(n: int) -> list[str]:\n            words = []\n            if n >= 100:\n                words += [below_20[n // 100], \"Hundred\"]\n                n %= 100\n            if n >= 20:\n                words.append(tens[n // 10])\n                n %= 10\n            if n > 0:\n                words.append(below_20[n])\n            return words\n\n        parts = []\n        scale = 0\n        while num:\n            chunk = num % 1000\n            if chunk:\n                words = chunk_to_words(chunk)\n                if scales[scale]:\n                    words.append(scales[scale])\n                parts = words + parts\n            num //= 1000\n            scale += 1\n        return ' '.join(parts)",
+    "optimal": "class Solution:\n    def numberToWords(self, num: int) -> str:\n        if num == 0:\n            return \"Zero\"\n        below_20 = [\"\", \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\",\n                    \"Ten\", \"Eleven\", \"Twelve\", \"Thirteen\", \"Fourteen\", \"Fifteen\",\n                    \"Sixteen\", \"Seventeen\", \"Eighteen\", \"Nineteen\"]\n        tens = [\"\", \"\", \"Twenty\", \"Thirty\", \"Forty\", \"Fifty\", \"Sixty\", \"Seventy\", \"Eighty\", \"Ninety\"]\n        groups = [(1_000_000_000, \"Billion\"), (1_000_000, \"Million\"), (1000, \"Thousand\"), (1, \"\")]\n\n        def under_thousand(n: int) -> list[str]:\n            words = []\n            if n >= 100:\n                words.append(below_20[n // 100])\n                words.append(\"Hundred\")\n                n %= 100\n            if n >= 20:\n                words.append(tens[n // 10])\n                n %= 10\n            if n:\n                words.append(below_20[n])\n            return words\n\n        result = []\n        for value, name in groups:\n            chunk, num = divmod(num, value)\n            if chunk:\n                result.extend(under_thousand(chunk))\n                if name:\n                    result.append(name)\n        return ' '.join(result)"
+  },
+  "starterCode": "class Solution:\n    def numberToWords(self, num):\n        # TODO: write your solution here\n        pass\n"
+}

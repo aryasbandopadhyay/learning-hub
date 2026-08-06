@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "numberOfSubstrings",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "abcabc"
+      ],
+      "expected": 10
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/sliding-window/06-number-of-substrings-containing-all-three-characters",
+  "title": "Number of Substrings Containing All Three Characters",
+  "difficulty": "Medium",
+  "topic": "google/sliding-window",
+  "solutions": {
+    "naive": "class Solution:\n    def numberOfSubstrings(self, s: str) -> int:\n        n = len(s)\n        ans = 0\n        for i in range(n):\n            for j in range(i, n):\n                seen = set()\n                for p in range(i, j + 1):\n                    seen.add(s[p])\n                if len(seen) == 3:\n                    ans += 1\n        return ans",
+    "better": "class Solution:\n    def numberOfSubstrings(self, s: str) -> int:\n        n = len(s)\n        ans = 0\n        for i in range(n):\n            count = {'a': 0, 'b': 0, 'c': 0}\n            have = 0\n            for j in range(i, n):\n                if count[s[j]] == 0:\n                    have += 1\n                count[s[j]] += 1\n                if have == 3:\n                    ans += n - j\n                    break\n        return ans",
+    "optimal": "class Solution:\n    def numberOfSubstrings(self, s: str) -> int:\n        last = {'a': -1, 'b': -1, 'c': -1}\n        ans = 0\n        for i, ch in enumerate(s):\n            last[ch] = i\n            earliest = min(last['a'], last['b'], last['c'])\n            if earliest != -1:\n                ans += earliest + 1\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def numberOfSubstrings(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

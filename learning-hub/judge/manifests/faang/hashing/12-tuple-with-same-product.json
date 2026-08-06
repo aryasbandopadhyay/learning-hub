@@ -1,0 +1,56 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "tupleSameProduct",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          3,
+          4,
+          6
+        ]
+      ],
+      "expected": 8
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/hashing/12-tuple-with-same-product",
+  "title": "Tuple With Same Product",
+  "difficulty": "Medium",
+  "topic": "faang/hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def tupleSameProduct(self, nums: list[int]) -> int:\n        n = len(nums)\n        ans = 0\n        for i in range(n):\n            for j in range(n):\n                if j == i:\n                    continue\n                for k in range(n):\n                    if k == i or k == j:\n                        continue\n                    for l in range(n):\n                        if l == i or l == j or l == k:\n                            continue\n                        if nums[i] * nums[j] == nums[k] * nums[l]:\n                            ans += 1\n        return ans",
+    "better": "class Solution:\n    def tupleSameProduct(self, nums):\n        products = {}\n        n = len(nums)\n        for i in range(n):\n            for j in range(i + 1, n):\n                p = nums[i] * nums[j]\n                products[p] = products.get(p, 0) + 1\n        ans = 0\n        for count in products.values():\n            ans += count * (count - 1) // 2 * 8\n        return ans",
+    "optimal": "class Solution:\n    def tupleSameProduct(self, nums):\n        products = {}\n        ans = 0\n        n = len(nums)\n        for i in range(n):\n            for j in range(i + 1, n):\n                p = nums[i] * nums[j]\n                ans += products.get(p, 0) * 8\n                products[p] = products.get(p, 0) + 1\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def tupleSameProduct(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

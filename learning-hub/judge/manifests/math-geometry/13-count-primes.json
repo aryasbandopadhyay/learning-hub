@@ -1,0 +1,93 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "countPrimes",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        10
+      ],
+      "expected": 4
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239
+      ],
+      "expected": 811
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        3773
+      ],
+      "expected": 525
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        4115
+      ],
+      "expected": 566
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017
+      ],
+      "expected": 1009
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128
+      ],
+      "expected": 798
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495
+      ],
+      "expected": 367
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9289
+      ],
+      "expected": 1150
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685
+      ],
+      "expected": 974
+    }
+  ],
+  "id": "math-geometry/13-count-primes",
+  "title": "Count Primes",
+  "difficulty": "Medium",
+  "topic": "math-geometry",
+  "solutions": {
+    "naive": "class Solution:\n    def countPrimes(self, n: int) -> int:\n        count = 0\n        for x in range(2, n):\n            prime = True\n            for d in range(2, x):\n                if x % d == 0:\n                    prime = False\n                    break\n            if prime:\n                count += 1\n        return count",
+    "better": "class Solution:\n    def countPrimes(self, n: int) -> int:\n        def is_prime(x: int) -> bool:\n            if x < 2:\n                return False\n            d = 2\n            while d * d <= x:\n                if x % d == 0:\n                    return False\n                d += 1\n            return True\n\n        return sum(1 for x in range(2, n) if is_prime(x))",
+    "optimal": "class Solution:\n    def countPrimes(self, n: int) -> int:\n        if n <= 2:\n            return 0\n        is_prime = [True] * n\n        is_prime[0] = is_prime[1] = False\n        p = 2\n        while p * p < n:\n            if is_prime[p]:\n                # Smaller multiples were already marked by smaller primes.\n                for multiple in range(p * p, n, p):\n                    is_prime[multiple] = False\n            p += 1\n        return sum(is_prime)"
+  },
+  "starterCode": "class Solution:\n    def countPrimes(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

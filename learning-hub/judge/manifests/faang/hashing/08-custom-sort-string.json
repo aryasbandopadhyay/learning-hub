@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "customSortString",
+  "params": [
+    "order",
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "cba",
+        "abcd"
+      ],
+      "expected": "cbad"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "abcd"
+      ],
+      "expected": "dbac"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "abcd"
+      ],
+      "expected": "dbca"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "abcd"
+      ],
+      "expected": "dabc"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "abcd"
+      ],
+      "expected": "dabc"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "abcd"
+      ],
+      "expected": "acbd"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "abcd"
+      ],
+      "expected": "bcda"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "abcd"
+      ],
+      "expected": "dcab"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "abcd"
+      ],
+      "expected": "dabc"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "order",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "s",
+          "type": "str",
+          "role": "const",
+          "value": "abcd"
+        }
+      ]
+    }
+  },
+  "id": "faang/hashing/08-custom-sort-string",
+  "title": "Custom Sort String",
+  "difficulty": "Medium",
+  "topic": "faang/hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def customSortString(self, order: str, s: str) -> str:\n        remaining = list(s)\n        out = []\n        for ch in order:\n            next_remaining = []\n            for cur in remaining:\n                if cur == ch:\n                    out.append(cur)\n                else:\n                    next_remaining.append(cur)\n            remaining = next_remaining\n        out.extend(sorted(remaining))\n        return ''.join(out)",
+    "better": "class Solution:\n    def customSortString(self, order, s):\n        counts = {}\n        for ch in s:\n            counts[ch] = counts.get(ch, 0) + 1\n        out = []\n        for ch in order:\n            if ch in counts:\n                out.append(ch * counts.pop(ch))\n        for ch in sorted(counts):\n            out.append(ch * counts[ch])\n        return ''.join(out)",
+    "optimal": "class Solution:\n    def customSortString(self, order, s):\n        counts = [0] * 26\n        for ch in s:\n            counts[ord(ch) - ord('a')] += 1\n        out = []\n        for ch in order:\n            idx = ord(ch) - ord('a')\n            if counts[idx]:\n                out.append(ch * counts[idx])\n                counts[idx] = 0\n        for idx in range(26):\n            if counts[idx]:\n                out.append(chr(idx + ord('a')) * counts[idx])\n        return ''.join(out)"
+  },
+  "starterCode": "class Solution:\n    def customSortString(self, order, s):\n        # TODO: write your solution here\n        pass\n"
+}

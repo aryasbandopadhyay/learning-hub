@@ -1,0 +1,65 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "removeCoveredIntervals",
+  "params": [
+    "intervals"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            4
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            2,
+            8
+          ]
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "intervals",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/intervals/02-remove-covered-intervals",
+  "title": "Remove Covered Intervals",
+  "difficulty": "Medium",
+  "topic": "google/intervals",
+  "solutions": {
+    "naive": "class Solution:\n    def removeCoveredIntervals(self, intervals: list[list[int]]) -> int:\n        remaining = 0\n        for i, (a, b) in enumerate(intervals):\n            covered = False\n            for j, (c, d) in enumerate(intervals):\n                if i != j and c <= a and b <= d and (c < a or b < d or j < i):\n                    covered = True\n                    break\n            if not covered:\n                remaining += 1\n        return remaining",
+    "better": "class Solution:\n    def removeCoveredIntervals(self, intervals: list[list[int]]) -> int:\n        ordered = sorted(intervals, key=lambda x: (x[0], -x[1]))\n        covered = [False] * len(ordered)\n        farthest = -1\n        for i, (_, end) in enumerate(ordered):\n            if end <= farthest:\n                covered[i] = True\n            else:\n                farthest = end\n        return covered.count(False)",
+    "optimal": "class Solution:\n    def removeCoveredIntervals(self, intervals: list[list[int]]) -> int:\n        intervals.sort(key=lambda x: (x[0], -x[1]))\n        remaining = 0\n        farthest = -1\n        for _, end in intervals:\n            if end > farthest:\n                remaining += 1\n                farthest = end\n        return remaining"
+  },
+  "starterCode": "class Solution:\n    def removeCoveredIntervals(self, intervals):\n        # TODO: write your solution here\n        pass\n"
+}

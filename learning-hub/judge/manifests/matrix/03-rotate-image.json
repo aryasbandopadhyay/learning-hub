@@ -1,0 +1,85 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "rotate",
+  "params": [
+    "matrix"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          7,
+          4,
+          1
+        ],
+        [
+          8,
+          5,
+          2
+        ],
+        [
+          9,
+          6,
+          3
+        ]
+      ]
+    }
+  ],
+  "inPlaceArg": 0,
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "matrix",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        }
+      ]
+    }
+  },
+  "id": "matrix/03-rotate-image",
+  "title": "Rotate Image",
+  "difficulty": "Medium",
+  "topic": "matrix",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def rotate(self, matrix: List[List[int]]) -> None:\n        n = len(matrix)\n        rotated = [[0] * n for _ in range(n)]\n        for r in range(n):\n            for c in range(n):\n                rotated[c][n - 1 - r] = matrix[r][c]\n\n        # Mutate the input as required by LeetCode.\n        for r in range(n):\n            matrix[r][:] = rotated[r]",
+    "better": "from typing import List\n\nclass Solution:\n    def rotate(self, matrix: List[List[int]]) -> None:\n        n = len(matrix)\n        for layer in range(n // 2):\n            first, last = layer, n - 1 - layer\n            for i in range(first, last):\n                offset = i - first\n                top = matrix[first][i]\n                matrix[first][i] = matrix[last - offset][first]\n                matrix[last - offset][first] = matrix[last][last - offset]\n                matrix[last][last - offset] = matrix[i][last]\n                matrix[i][last] = top",
+    "optimal": "from typing import List\n\nclass Solution:\n    def rotate(self, matrix: List[List[int]]) -> None:\n        n = len(matrix)\n        for r in range(n):\n            for c in range(r + 1, n):\n                matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]\n\n        # Reversing rows after transpose gives clockwise rotation.\n        for row in matrix:\n            row.reverse()"
+  },
+  "starterCode": "class Solution:\n    def rotate(self, matrix):\n        # TODO: write your solution here\n        pass\n"
+}

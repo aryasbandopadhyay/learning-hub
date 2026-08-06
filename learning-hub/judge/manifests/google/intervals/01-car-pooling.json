@@ -1,0 +1,72 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "carPooling",
+  "params": [
+    "trips",
+    "capacity"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            2,
+            1,
+            5
+          ],
+          [
+            3,
+            3,
+            7
+          ]
+        ],
+        4
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "trips",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        },
+        {
+          "name": "capacity",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/intervals/01-car-pooling",
+  "title": "Car Pooling",
+  "difficulty": "Medium",
+  "topic": "google/intervals",
+  "solutions": {
+    "naive": "class Solution:\n    def carPooling(self, trips: list[list[int]], capacity: int) -> bool:\n        last = max(end for _, _, end in trips)\n        for pos in range(last):\n            riders = 0\n            for passengers, start, end in trips:\n                if start <= pos < end:\n                    riders += passengers\n            if riders > capacity:\n                return False\n        return True",
+    "better": "class Solution:\n    def carPooling(self, trips: list[list[int]], capacity: int) -> bool:\n        last = max(end for _, _, end in trips)\n        diff = [0] * (last + 1)\n        for passengers, start, end in trips:\n            diff[start] += passengers\n            diff[end] -= passengers\n        riders = 0\n        for change in diff:\n            riders += change\n            if riders > capacity:\n                return False\n        return True",
+    "optimal": "class Solution:\n    def carPooling(self, trips: list[list[int]], capacity: int) -> bool:\n        events = []\n        for passengers, start, end in trips:\n            events.append((start, passengers))\n            events.append((end, -passengers))\n        events.sort()\n        riders = 0\n        for _, change in events:\n            riders += change\n            if riders > capacity:\n                return False\n        return True"
+  },
+  "starterCode": "class Solution:\n    def carPooling(self, trips, capacity):\n        # TODO: write your solution here\n        pass\n"
+}

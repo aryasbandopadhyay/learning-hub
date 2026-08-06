@@ -1,0 +1,55 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "missingNumber",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          0,
+          1
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "arrays-hashing/20-missing-number",
+  "title": "Missing Number",
+  "difficulty": "Easy",
+  "topic": "arrays-hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def missingNumber(self, nums: list[int]) -> int:\n        for x in range(len(nums) + 1):\n            if x not in nums:\n                return x\n        return -1",
+    "better": "class Solution:\n    def missingNumber(self, nums: list[int]) -> int:\n        vals = set(nums)\n        for x in range(len(nums) + 1):\n            if x not in vals:\n                return x\n        return -1",
+    "optimal": "class Solution:\n    def missingNumber(self, nums: list[int]) -> int:\n        n = len(nums)\n        return n * (n + 1) // 2 - sum(nums)"
+  },
+  "starterCode": "class Solution:\n    def missingNumber(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

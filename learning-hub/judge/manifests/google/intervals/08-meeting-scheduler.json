@@ -1,0 +1,103 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minAvailableDuration",
+  "params": [
+    "slots1",
+    "slots2",
+    "duration"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            10,
+            50
+          ],
+          [
+            60,
+            120
+          ],
+          [
+            140,
+            210
+          ]
+        ],
+        [
+          [
+            0,
+            15
+          ],
+          [
+            60,
+            70
+          ]
+        ],
+        8
+      ],
+      "expected": [
+        60,
+        68
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "slots1",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "slots2",
+          "type": "list[list[int]]",
+          "role": "const",
+          "value": [
+            [
+              0,
+              15
+            ],
+            [
+              60,
+              70
+            ]
+          ]
+        },
+        {
+          "name": "duration",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/intervals/08-meeting-scheduler",
+  "title": "Meeting Scheduler",
+  "difficulty": "Medium",
+  "topic": "google/intervals",
+  "solutions": {
+    "naive": "class Solution:\n    def minAvailableDuration(self, slots1: list[list[int]], slots2: list[list[int]], duration: int) -> list[int]:\n        best = None\n        for a_start, a_end in slots1:\n            for b_start, b_end in slots2:\n                start = max(a_start, b_start)\n                end = min(a_end, b_end)\n                if end - start >= duration:\n                    if best is None or start < best:\n                        best = start\n        return [] if best is None else [best, best + duration]",
+    "better": "class Solution:\n    def minAvailableDuration(self, slots1: list[list[int]], slots2: list[list[int]], duration: int) -> list[int]:\n        combined = []\n        for start, end in slots1:\n            if end - start >= duration:\n                combined.append((start, end, 1))\n        for start, end in slots2:\n            if end - start >= duration:\n                combined.append((start, end, 2))\n        combined.sort()\n        best_end = {1: -1, 2: -1}\n        for start, end, person in combined:\n            other = 3 - person\n            if min(end, best_end[other]) - start >= duration:\n                return [start, start + duration]\n            best_end[person] = max(best_end[person], end)\n        return []",
+    "optimal": "class Solution:\n    def minAvailableDuration(self, slots1: list[list[int]], slots2: list[list[int]], duration: int) -> list[int]:\n        slots1.sort()\n        slots2.sort()\n        i = j = 0\n        while i < len(slots1) and j < len(slots2):\n            start = max(slots1[i][0], slots2[j][0])\n            end = min(slots1[i][1], slots2[j][1])\n            if end - start >= duration:\n                return [start, start + duration]\n            if slots1[i][1] < slots2[j][1]:\n                i += 1\n            else:\n                j += 1\n        return []"
+  },
+  "starterCode": "class Solution:\n    def minAvailableDuration(self, slots1, slots2, duration):\n        # TODO: write your solution here\n        pass\n"
+}

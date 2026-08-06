@@ -1,0 +1,71 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "permuteUnique",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          1
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "backtracking/05-permutations-ii",
+  "title": "Permutations II",
+  "difficulty": "Medium",
+  "topic": "backtracking",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def permuteUnique(self, nums: List[int]) -> List[List[int]]:\n        found = set()\n        path = []\n        used = [False] * len(nums)\n\n        def dfs() -> None:\n            if len(path) == len(nums):\n                found.add(tuple(path))\n                return\n            for i, value in enumerate(nums):\n                if used[i]:\n                    continue\n                used[i] = True\n                path.append(value)\n                dfs()\n                path.pop()\n                used[i] = False\n\n        dfs()\n        return [list(p) for p in sorted(found)]",
+    "better": "from typing import List\n\nclass Solution:\n    def permuteUnique(self, nums: List[int]) -> List[List[int]]:\n        nums.sort()\n        result = []\n        path = []\n        used = [False] * len(nums)\n\n        def backtrack() -> None:\n            if len(path) == len(nums):\n                result.append(path.copy())\n                return\n            for i, value in enumerate(nums):\n                if used[i]:\n                    continue\n                if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:\n                    continue\n                used[i] = True\n                path.append(value)\n                backtrack()\n                path.pop()\n                used[i] = False\n\n        backtrack()\n        return result",
+    "optimal": "from collections import Counter\nfrom typing import List\n\nclass Solution:\n    def permuteUnique(self, nums: List[int]) -> List[List[int]]:\n        counts = Counter(nums)\n        result = []\n        path = []\n\n        def backtrack() -> None:\n            if len(path) == len(nums):\n                result.append(path.copy())\n                return\n            for value in list(counts):\n                if counts[value] == 0:\n                    continue\n                counts[value] -= 1\n                path.append(value)\n                backtrack()\n                path.pop()\n                counts[value] += 1\n\n        backtrack()\n        return result"
+  },
+  "starterCode": "class Solution:\n    def permuteUnique(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

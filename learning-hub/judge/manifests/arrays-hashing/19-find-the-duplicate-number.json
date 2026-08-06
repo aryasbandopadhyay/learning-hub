@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findDuplicate",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          3,
+          4,
+          2,
+          2
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "arrays-hashing/19-find-the-duplicate-number",
+  "title": "Find the Duplicate Number",
+  "difficulty": "Medium",
+  "topic": "arrays-hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def findDuplicate(self, nums: list[int]) -> int:\n        for x in range(1, len(nums)):\n            if sum(1 for y in nums if y == x) > 1:\n                return x\n        return -1",
+    "better": "class Solution:\n    def findDuplicate(self, nums: list[int]) -> int:\n        seen = set()\n        for x in nums:\n            if x in seen:\n                return x\n            seen.add(x)\n        return -1",
+    "optimal": "class Solution:\n    def findDuplicate(self, nums: list[int]) -> int:\n        slow = nums[0]\n        fast = nums[nums[0]]\n        while slow != fast:\n            slow = nums[slow]\n            fast = nums[nums[fast]]\n        slow = 0\n        while slow != fast:\n            slow = nums[slow]\n            fast = nums[fast]\n        return slow"
+  },
+  "starterCode": "class Solution:\n    def findDuplicate(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,461 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "camelMatch",
+  "params": [
+    "queries",
+    "pattern"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "FooBar",
+          "FooBarTest",
+          "FootBall",
+          "FrameBuffer",
+          "ForceFeedBack"
+        ],
+        "FB"
+      ],
+      "expected": [
+        true,
+        false,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "dad",
+          "abc",
+          "ead",
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd",
+          "bcb",
+          "cac",
+          "bbd",
+          "cda",
+          "ddc",
+          "aec",
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb",
+          "bcd",
+          "bdc",
+          "daa",
+          "eeb",
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec",
+          "baa",
+          "cae",
+          "aad",
+          "cce"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "bad",
+          "dbc",
+          "dcb",
+          "bdd",
+          "deb",
+          "ccb",
+          "cde",
+          "dbd"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "bae",
+          "bde",
+          "aac",
+          "dac",
+          "aee",
+          "cae",
+          "cdc",
+          "bbe",
+          "ada",
+          "ace",
+          "bec",
+          "bda",
+          "dbb",
+          "adb",
+          "ccc",
+          "aeb",
+          "ebc",
+          "eaa",
+          "bbb",
+          "eaa",
+          "edb",
+          "cbe",
+          "eeb",
+          "cac",
+          "dbc",
+          "bab",
+          "dea",
+          "bda",
+          "bed",
+          "eab",
+          "bdc",
+          "cce",
+          "aed",
+          "acb",
+          "bac",
+          "ecc",
+          "add",
+          "aac",
+          "bec",
+          "cca",
+          "dce",
+          "beb",
+          "acd",
+          "deb",
+          "bed",
+          "abb",
+          "cbe",
+          "ada",
+          "eab",
+          "bbc"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "bed",
+          "baa",
+          "edd",
+          "abe",
+          "bcd",
+          "bde",
+          "ace",
+          "bbe"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "deb",
+          "bbd"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false,
+        false
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "bcb",
+          "eee",
+          "abb",
+          "ebd",
+          "dee"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "cec",
+          "dba",
+          "aad",
+          "acb",
+          "acb",
+          "cca",
+          "eec",
+          "bca"
+        ],
+        "FB"
+      ],
+      "expected": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "queries",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "pattern",
+          "type": "str",
+          "role": "const",
+          "value": "FB"
+        }
+      ]
+    }
+  },
+  "id": "faang/strings-advanced/07-camelcase-matching",
+  "title": "Camelcase Matching",
+  "difficulty": "Medium",
+  "topic": "faang/strings-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def camelMatch(self, queries: list[str], pattern: str) -> list[bool]:\n        from functools import lru_cache\n        def check(query):\n            @lru_cache(None)\n            def dfs(i, j):\n                if i == len(query):\n                    return j == len(pattern)\n                if j < len(pattern) and query[i] == pattern[j] and dfs(i + 1, j + 1):\n                    return True\n                return query[i].islower() and dfs(i + 1, j)\n            return dfs(0, 0)\n        return [check(query) for query in queries]",
+    "better": "class Solution:\n    def camelMatch(self, queries, pattern):\n        ans = []\n        for query in queries:\n            j = 0\n            ok = True\n            for ch in query:\n                if j < len(pattern) and ch == pattern[j]:\n                    j += 1\n                elif ch.isupper():\n                    ok = False\n                    break\n            ans.append(ok and j == len(pattern))\n        return ans",
+    "optimal": "class Solution:\n    def camelMatch(self, queries, pattern):\n        result = []\n        target_caps = ''.join(ch for ch in pattern if ch.isupper())\n        for query in queries:\n            if ''.join(ch for ch in query if ch.isupper()) != target_caps:\n                result.append(False)\n                continue\n            j = 0\n            for ch in query:\n                if j < len(pattern) and ch == pattern[j]:\n                    j += 1\n            result.append(j == len(pattern))\n        return result"
+  },
+  "starterCode": "class Solution:\n    def camelMatch(self, queries, pattern):\n        # TODO: write your solution here\n        pass\n"
+}

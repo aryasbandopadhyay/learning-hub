@@ -1,0 +1,86 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "networkDelayTime",
+  "params": [
+    "times",
+    "n",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            3,
+            4,
+            1
+          ]
+        ],
+        4,
+        2
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "times",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        },
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "advanced-graphs/01-network-delay-time",
+  "title": "Network Delay Time",
+  "difficulty": "Medium",
+  "topic": "advanced-graphs",
+  "solutions": {
+    "naive": "from collections import defaultdict\nfrom typing import List\n\nclass Solution:\n    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:\n        graph = defaultdict(list)\n        for u, v, w in times:\n            graph[u].append((v, w))\n\n        best = [float(\"inf\")] * (n + 1)\n\n        def dfs(node: int, cost: int, seen: set[int]) -> None:\n            if cost >= best[node]:\n                return\n            best[node] = cost\n            for nxt, weight in graph[node]:\n                if nxt not in seen:  # avoid cycles in this path\n                    seen.add(nxt)\n                    dfs(nxt, cost + weight, seen)\n                    seen.remove(nxt)\n\n        dfs(k, 0, {k})\n        ans = max(best[1:])\n        return -1 if ans == float(\"inf\") else ans",
+    "better": "from typing import List\n\nclass Solution:\n    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:\n        dist = [float(\"inf\")] * (n + 1)\n        dist[k] = 0\n\n        for _ in range(n - 1):\n            changed = False\n            for u, v, w in times:\n                if dist[u] + w < dist[v]:\n                    dist[v] = dist[u] + w\n                    changed = True\n            if not changed:\n                break\n\n        ans = max(dist[1:])\n        return -1 if ans == float(\"inf\") else ans",
+    "optimal": "import heapq\nfrom collections import defaultdict\nfrom typing import List\n\nclass Solution:\n    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:\n        graph = defaultdict(list)\n        for u, v, w in times:\n            graph[u].append((v, w))\n\n        dist = {}\n        heap = [(0, k)]\n        while heap:\n            cost, node = heapq.heappop(heap)\n            if node in dist:\n                continue\n            dist[node] = cost\n            for nxt, weight in graph[node]:\n                if nxt not in dist:\n                    heapq.heappush(heap, (cost + weight, nxt))\n\n        return max(dist.values()) if len(dist) == n else -1"
+  },
+  "starterCode": "class Solution:\n    def networkDelayTime(self, times, n, k):\n        # TODO: write your solution here\n        pass\n"
+}

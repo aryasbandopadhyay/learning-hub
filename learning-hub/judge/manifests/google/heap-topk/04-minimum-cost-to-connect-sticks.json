@@ -1,0 +1,33 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "connectSticks",
+  "params": [
+    "sticks"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          4,
+          3
+        ]
+      ],
+      "expected": 14
+    }
+  ],
+  "id": "google/heap-topk/04-minimum-cost-to-connect-sticks",
+  "title": "Minimum Cost to Connect Sticks",
+  "difficulty": "Medium",
+  "topic": "google/heap-topk",
+  "solutions": {
+    "naive": "class Solution:\n    def connectSticks(self, sticks: list[int]) -> int:\n        from functools import lru_cache\n        @lru_cache(None)\n        def solve(state):\n            arr = list(state)\n            if len(arr) <= 1:\n                return 0\n            best = 10**30\n            for i in range(len(arr)):\n                for j in range(i + 1, len(arr)):\n                    merged = arr[i] + arr[j]\n                    nxt = [arr[t] for t in range(len(arr)) if t != i and t != j]\n                    nxt.append(merged)\n                    nxt.sort()\n                    best = min(best, merged + solve(tuple(nxt)))\n            return best\n        return solve(tuple(sorted(sticks)))",
+    "better": "class Solution:\n    def connectSticks(self, sticks: list[int]) -> int:\n        arr = sticks[:]\n        total = 0\n        while len(arr) > 1:\n            arr.sort()\n            merged = arr[0] + arr[1]\n            total += merged\n            arr = arr[2:] + [merged]\n        return total",
+    "optimal": "class Solution:\n    def connectSticks(self, sticks: list[int]) -> int:\n        import heapq\n        heap = sticks[:]\n        heapq.heapify(heap)\n        total = 0\n        while len(heap) > 1:\n            merged = heapq.heappop(heap) + heapq.heappop(heap)\n            total += merged\n            heapq.heappush(heap, merged)\n        return total"
+  },
+  "starterCode": "class Solution:\n    def connectSticks(self, sticks):\n        # TODO: write your solution here\n        pass\n"
+}

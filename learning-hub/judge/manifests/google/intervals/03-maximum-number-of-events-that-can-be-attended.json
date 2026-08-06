@@ -1,0 +1,65 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxEvents",
+  "params": [
+    "events"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "events",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/intervals/03-maximum-number-of-events-that-can-be-attended",
+  "title": "Maximum Number of Events That Can Be Attended",
+  "difficulty": "Medium",
+  "topic": "google/intervals",
+  "solutions": {
+    "naive": "class Solution:\n    def maxEvents(self, events: list[list[int]]) -> int:\n        match_day_to_event = {}\n\n        def can_assign(i, seen_days):\n            start, end = events[i]\n            for day in range(start, end + 1):\n                if day in seen_days:\n                    continue\n                seen_days.add(day)\n                if day not in match_day_to_event or can_assign(match_day_to_event[day], seen_days):\n                    match_day_to_event[day] = i\n                    return True\n            return False\n\n        attended = 0\n        for i in range(len(events)):\n            if can_assign(i, set()):\n                attended += 1\n        return attended",
+    "better": "class Solution:\n    def maxEvents(self, events: list[list[int]]) -> int:\n        used = set()\n        attended = 0\n        for start, end in sorted(events, key=lambda x: (x[1], x[0])):\n            for day in range(start, end + 1):\n                if day not in used:\n                    used.add(day)\n                    attended += 1\n                    break\n        return attended",
+    "optimal": "class Solution:\n    def maxEvents(self, events: list[list[int]]) -> int:\n        import heapq\n        events.sort()\n        i = 0\n        day = 0\n        attended = 0\n        heap = []\n        n = len(events)\n        while i < n or heap:\n            if not heap:\n                day = max(day, events[i][0])\n            while i < n and events[i][0] <= day:\n                heapq.heappush(heap, events[i][1])\n                i += 1\n            while heap and heap[0] < day:\n                heapq.heappop(heap)\n            if heap:\n                heapq.heappop(heap)\n                attended += 1\n                day += 1\n        return attended"
+  },
+  "starterCode": "class Solution:\n    def maxEvents(self, events):\n        # TODO: write your solution here\n        pass\n"
+}

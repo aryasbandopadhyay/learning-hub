@@ -1,0 +1,35 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "generateParenthesis",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        3
+      ],
+      "expected": [
+        "((()))",
+        "(()())",
+        "(())()",
+        "()(())",
+        "()()()"
+      ]
+    }
+  ],
+  "id": "stack/04-generate-parentheses",
+  "title": "Generate Parentheses",
+  "difficulty": "Medium",
+  "topic": "stack",
+  "solutions": {
+    "naive": "class Solution:\n    def generateParenthesis(self, n: int) -> list[str]:\n        ans = []\n\n        def valid(s: str) -> bool:\n            balance = 0\n            for ch in s:\n                balance += 1 if ch == \"(\" else -1\n                if balance < 0:\n                    return False\n            return balance == 0\n\n        def build(s: str) -> None:\n            if len(s) == 2 * n:\n                if valid(s):\n                    ans.append(s)\n                return\n            build(s + \"(\")\n            build(s + \")\")\n\n        build(\"\")\n        return ans",
+    "better": "class Solution:\n    def generateParenthesis(self, n: int) -> list[str]:\n        ans = []\n\n        def dfs(s: str, opened: int, closed: int) -> None:\n            if len(s) == 2 * n:\n                ans.append(s)\n                return\n            # Add '(' if we still have an unused opening bracket.\n            if opened < n:\n                dfs(s + \"(\", opened + 1, closed)\n            # Add ')' only when it will not make the prefix invalid.\n            if closed < opened:\n                dfs(s + \")\", opened, closed + 1)\n\n        dfs(\"\", 0, 0)\n        return ans",
+    "optimal": "class Solution:\n    def generateParenthesis(self, n: int) -> list[str]:\n        ans = []\n        path = []\n\n        def dfs(opened: int, closed: int) -> None:\n            if len(path) == 2 * n:\n                ans.append(\"\".join(path))\n                return\n            if opened < n:\n                path.append(\"(\")\n                dfs(opened + 1, closed)\n                path.pop()\n            if closed < opened:\n                path.append(\")\")\n                dfs(opened, closed + 1)\n                path.pop()\n\n        dfs(0, 0)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def generateParenthesis(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

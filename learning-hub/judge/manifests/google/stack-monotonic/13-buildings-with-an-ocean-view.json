@@ -1,0 +1,60 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findBuildings",
+  "params": [
+    "heights"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          4,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": [
+        0,
+        2,
+        3
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "heights",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/stack-monotonic/13-buildings-with-an-ocean-view",
+  "title": "Buildings With an Ocean View",
+  "difficulty": "Medium",
+  "topic": "google/stack-monotonic",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def findBuildings(self, heights: List[int]) -> List[int]:\n        ans = []\n        for i in range(len(heights)):\n            visible = True\n            for j in range(i + 1, len(heights)):\n                if heights[j] >= heights[i]:\n                    visible = False\n                    break\n            if visible:\n                ans.append(i)\n        return ans",
+    "better": "from typing import List\n\nclass Solution:\n    def findBuildings(self, heights: List[int]) -> List[int]:\n        n = len(heights)\n        suffix_max = [0] * n\n        best_right = 0\n        for i in range(n - 1, -1, -1):\n            suffix_max[i] = best_right\n            best_right = max(best_right, heights[i])\n        return [i for i, height in enumerate(heights) if height > suffix_max[i]]",
+    "optimal": "from typing import List\n\nclass Solution:\n    def findBuildings(self, heights: List[int]) -> List[int]:\n        ans = []\n        max_right = 0\n        for i in range(len(heights) - 1, -1, -1):\n            if heights[i] > max_right:\n                ans.append(i)\n                max_right = heights[i]\n        ans.reverse()\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def findBuildings(self, heights):\n        # TODO: write your solution here\n        pass\n"
+}

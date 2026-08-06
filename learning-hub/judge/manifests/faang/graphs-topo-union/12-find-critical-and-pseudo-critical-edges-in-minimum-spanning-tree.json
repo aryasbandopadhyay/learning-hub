@@ -1,0 +1,108 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findCriticalAndPseudoCriticalEdges",
+  "params": [
+    "n",
+    "edges"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        5,
+        [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            2,
+            3,
+            2
+          ],
+          [
+            0,
+            3,
+            2
+          ],
+          [
+            0,
+            4,
+            3
+          ],
+          [
+            3,
+            4,
+            3
+          ],
+          [
+            1,
+            4,
+            6
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3,
+          4,
+          5
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "edges",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        }
+      ]
+    }
+  },
+  "id": "faang/graphs-topo-union/12-find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree",
+  "title": "Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree",
+  "difficulty": "Hard",
+  "topic": "faang/graphs-topo-union",
+  "solutions": {
+    "naive": "class Solution:\n    def findCriticalAndPseudoCriticalEdges(self, n: int, edges: list[list[int]]) -> list[list[int]]:\n        from itertools import combinations\n        m = len(edges)\n        def classify():\n            order = sorted(range(m), key=lambda i: edges[i][2])\n            def run(blocked, picked):\n                parent = list(range(n)); size = [1] * n\n                def find(x):\n                    while parent[x] != x:\n                        parent[x] = parent[parent[x]]; x = parent[x]\n                    return x\n                def union(a, b):\n                    ra, rb = find(a), find(b)\n                    if ra == rb: return False\n                    if size[ra] < size[rb]: ra, rb = rb, ra\n                    parent[rb] = ra; size[ra] += size[rb]\n                    return True\n                total = used = 0\n                if picked != -1:\n                    u, v, w = edges[picked]\n                    union(u, v); total += w; used += 1\n                for idx in order:\n                    if idx != blocked:\n                        u, v, w = edges[idx]\n                        if union(u, v): total += w; used += 1\n                return total if used == n - 1 else 10**18\n            base = run(-1, -1); critical = []; pseudo = []\n            for i in range(m):\n                if run(i, -1) > base: critical.append(i)\n                elif run(-1, i) == base: pseudo.append(i)\n            return [critical, pseudo]\n        if m > 18:\n            return classify()\n        best = None; msts = []\n        for combo in combinations(range(m), n - 1):\n            parent = list(range(n))\n            def find(x):\n                while parent[x] != x:\n                    parent[x] = parent[parent[x]]; x = parent[x]\n                return x\n            weight = 0; ok = True\n            for idx in combo:\n                u, v, w = edges[idx]; ru, rv = find(u), find(v)\n                if ru == rv:\n                    ok = False; break\n                parent[rv] = ru; weight += w\n            if ok and len({find(i) for i in range(n)}) == 1:\n                if best is None or weight < best:\n                    best = weight; msts = [set(combo)]\n                elif weight == best:\n                    msts.append(set(combo))\n        critical = [i for i in range(m) if msts and all(i in s for s in msts)]\n        pseudo = [i for i in range(m) if msts and any(i in s for s in msts) and i not in critical]\n        return [critical, pseudo]",
+    "better": "class Solution:\n    def findCriticalAndPseudoCriticalEdges(self, n: int, edges: list[list[int]]) -> list[list[int]]:\n        indexed = [e + [i] for i, e in enumerate(edges)]\n        indexed.sort(key=lambda x: x[2])\n        def kruskal(skip=-1, force=-1):\n            parent = list(range(n)); rank = [0] * n\n            def find(x):\n                while parent[x] != x:\n                    parent[x] = parent[parent[x]]; x = parent[x]\n                return x\n            def union(a, b):\n                ra, rb = find(a), find(b)\n                if ra == rb: return False\n                if rank[ra] < rank[rb]: ra, rb = rb, ra\n                parent[rb] = ra\n                if rank[ra] == rank[rb]: rank[ra] += 1\n                return True\n            total = used = 0\n            if force != -1:\n                u, v, w = edges[force]\n                union(u, v); total += w; used += 1\n            for u, v, w, idx in indexed:\n                if idx != skip and union(u, v):\n                    total += w; used += 1\n            return total if used == n - 1 else 10**18\n        base = kruskal(); critical = []; pseudo = []\n        for i in range(len(edges)):\n            if kruskal(skip=i) > base:\n                critical.append(i)\n            elif kruskal(force=i) == base:\n                pseudo.append(i)\n        return [critical, pseudo]",
+    "optimal": "class Solution:\n    def findCriticalAndPseudoCriticalEdges(self, n: int, edges: list[list[int]]) -> list[list[int]]:\n        order = sorted(range(len(edges)), key=lambda i: edges[i][2])\n        def run(blocked: int, picked: int) -> int:\n            parent = list(range(n)); size = [1] * n\n            def find(x):\n                while parent[x] != x:\n                    parent[x] = parent[parent[x]]; x = parent[x]\n                return x\n            def union(a, b):\n                ra, rb = find(a), find(b)\n                if ra == rb:\n                    return False\n                if size[ra] < size[rb]:\n                    ra, rb = rb, ra\n                parent[rb] = ra; size[ra] += size[rb]\n                return True\n            total = used = 0\n            if picked != -1:\n                u, v, w = edges[picked]\n                union(u, v); total += w; used += 1\n            for idx in order:\n                if idx == blocked:\n                    continue\n                u, v, w = edges[idx]\n                if union(u, v):\n                    total += w; used += 1\n            return total if used == n - 1 else 10**18\n        base = run(-1, -1)\n        critical = []; pseudo = []\n        for i in range(len(edges)):\n            if run(i, -1) > base:\n                critical.append(i)\n            elif run(-1, i) == base:\n                pseudo.append(i)\n        return [critical, pseudo]"
+  },
+  "starterCode": "class Solution:\n    def findCriticalAndPseudoCriticalEdges(self, n, edges):\n        # TODO: write your solution here\n        pass\n"
+}

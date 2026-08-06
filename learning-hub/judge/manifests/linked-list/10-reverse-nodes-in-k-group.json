@@ -1,0 +1,48 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "reverseKGroup",
+  "params": [
+    "head",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2
+      ],
+      "expected": [
+        2,
+        1,
+        4,
+        3,
+        5
+      ]
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist",
+    "plain"
+  ],
+  "id": "linked-list/10-reverse-nodes-in-k-group",
+  "title": "Reverse Nodes in k-Group",
+  "difficulty": "Hard",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def reverseKGroup(self, head, k):\n        values = []\n        cur = head\n        while cur:\n            values.append(cur.val)\n            cur = cur.next\n\n        for start in range(0, len(values) - len(values) % k, k):\n            values[start:start + k] = reversed(values[start:start + k])\n\n        cur = head\n        for value in values:\n            cur.val = value\n            cur = cur.next\n        return head",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def reverseKGroup(self, head, k):\n        dummy = ListNode(0)\n        tail = dummy\n        cur = head\n        while cur:\n            stack = []\n            node = cur\n            for _ in range(k):\n                if not node:\n                    tail.next = cur\n                    return dummy.next\n                stack.append(node)\n                node = node.next\n            while stack:\n                tail.next = stack.pop()\n                tail = tail.next\n            cur = node\n        tail.next = None\n        return dummy.next",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def reverseKGroup(self, head, k):\n        def get_kth(node, steps):\n            while node and steps > 0:\n                node = node.next\n                steps -= 1\n            return node\n\n        dummy = ListNode(0, head)\n        group_prev = dummy\n        while True:\n            kth = get_kth(group_prev, k)\n            if not kth:\n                break\n            group_next = kth.next\n\n            prev, cur = group_next, group_prev.next\n            while cur is not group_next:\n                nxt = cur.next\n                cur.next = prev\n                prev = cur\n                cur = nxt\n\n            old_start = group_prev.next\n            group_prev.next = kth\n            group_prev = old_start\n        return dummy.next"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def reverseKGroup(self, head, k):\n        # TODO: write your solution here\n        pass\n"
+}

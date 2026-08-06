@@ -1,0 +1,35 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "combinationSum4",
+  "params": [
+    "nums",
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        4
+      ],
+      "expected": 7
+    }
+  ],
+  "id": "dp-1d/15-combination-sum-iv",
+  "title": "Combination Sum IV",
+  "difficulty": "Medium",
+  "topic": "dp-1d",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def combinationSum4(self, nums: List[int], target: int) -> int:\n        def dfs(rem: int) -> int:\n            if rem == 0:\n                return 1\n            if rem < 0:\n                return 0\n            return sum(dfs(rem - num) for num in nums)\n\n        return dfs(target)",
+    "better": "from typing import List\n\nclass Solution:\n    def combinationSum4(self, nums: List[int], target: int) -> int:\n        memo = {0: 1}\n\n        def dfs(rem: int) -> int:\n            if rem < 0:\n                return 0\n            if rem not in memo:\n                memo[rem] = sum(dfs(rem - num) for num in nums)\n            return memo[rem]\n\n        return dfs(target)",
+    "optimal": "from typing import List\n\nclass Solution:\n    def combinationSum4(self, nums: List[int], target: int) -> int:\n        dp = [0] * (target + 1)\n        dp[0] = 1\n        for total in range(1, target + 1):\n            for num in nums:\n                if total >= num:\n                    dp[total] += dp[total - num]\n        return dp[target]"
+  },
+  "starterCode": "class Solution:\n    def combinationSum4(self, nums, target):\n        # TODO: write your solution here\n        pass\n"
+}

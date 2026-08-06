@@ -1,0 +1,86 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "videoStitching",
+  "params": [
+    "clips",
+    "time"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            2
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            1,
+            9
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            5,
+            9
+          ]
+        ],
+        10
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "clips",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "time",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/intervals/11-video-stitching",
+  "title": "Video Stitching",
+  "difficulty": "Medium",
+  "topic": "google/intervals",
+  "solutions": {
+    "naive": "class Solution:\n    def videoStitching(self, clips: list[list[int]], time: int) -> int:\n        from functools import lru_cache\n        clips = tuple((s, e) for s, e in clips if e > s)\n\n        @lru_cache(None)\n        def solve(covered):\n            if covered >= time:\n                return 0\n            best = 10 ** 9\n            for start, end in clips:\n                if start <= covered < end:\n                    best = min(best, 1 + solve(min(end, time)))\n            return best\n\n        answer = solve(0)\n        return -1 if answer >= 10 ** 9 else answer",
+    "better": "class Solution:\n    def videoStitching(self, clips: list[list[int]], time: int) -> int:\n        inf = 10 ** 9\n        dp = [inf] * (time + 1)\n        dp[0] = 0\n        for t in range(1, time + 1):\n            for start, end in clips:\n                if start < t <= end and dp[start] != inf:\n                    dp[t] = min(dp[t], dp[start] + 1)\n        return -1 if dp[time] == inf else dp[time]",
+    "optimal": "class Solution:\n    def videoStitching(self, clips: list[list[int]], time: int) -> int:\n        clips.sort()\n        i = 0\n        used = 0\n        current_end = 0\n        farthest = 0\n        while current_end < time:\n            while i < len(clips) and clips[i][0] <= current_end:\n                farthest = max(farthest, clips[i][1])\n                i += 1\n            if farthest == current_end:\n                return -1\n            used += 1\n            current_end = farthest\n        return used"
+  },
+  "starterCode": "class Solution:\n    def videoStitching(self, clips, time):\n        # TODO: write your solution here\n        pass\n"
+}

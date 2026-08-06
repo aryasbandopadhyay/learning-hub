@@ -1,0 +1,280 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "snakesAndLadders",
+  "params": [
+    "board"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            -1,
+            -1,
+            -1
+          ],
+          [
+            -1,
+            9,
+            8
+          ],
+          [
+            -1,
+            8,
+            9
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -7341,
+            3940,
+            -7182
+          ],
+          [
+            -5318,
+            151,
+            -9815
+          ],
+          [
+            2486,
+            803,
+            -5550
+          ],
+          [
+            7150,
+            3281,
+            -3421
+          ],
+          [
+            -8185,
+            -3072,
+            4515
+          ],
+          [
+            -1560,
+            7873,
+            3240
+          ],
+          [
+            -5860,
+            1593,
+            5602
+          ],
+          [
+            -8171,
+            -5710,
+            9649
+          ],
+          [
+            -5071,
+            9924,
+            3379
+          ],
+          [
+            -5925,
+            -6839,
+            -6110
+          ],
+          [
+            -5293,
+            -302,
+            -4294
+          ],
+          [
+            -4179,
+            3430,
+            -5232
+          ],
+          [
+            -3199,
+            8381,
+            456
+          ],
+          [
+            6355,
+            -2336,
+            -1560
+          ],
+          [
+            -6160,
+            1852,
+            -3907
+          ],
+          [
+            -7628,
+            6424,
+            -573
+          ],
+          [
+            -9635,
+            9191,
+            -8438
+          ],
+          [
+            1057,
+            -2912,
+            2352
+          ],
+          [
+            3077,
+            1034,
+            3087
+          ],
+          [
+            2646,
+            3568,
+            2156
+          ]
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -6237,
+            805,
+            6191
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            8665,
+            7465,
+            -978
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -538,
+            3092,
+            3733
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          [
+            1179,
+            301,
+            -3753
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -7637,
+            9671,
+            -3519
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          [
+            9508,
+            -1815,
+            1442
+          ],
+          [
+            4469,
+            9038,
+            3360
+          ]
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -5229,
+            8164,
+            7452
+          ]
+        ]
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "board",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        }
+      ]
+    }
+  },
+  "id": "graphs/25-snakes-and-ladders",
+  "title": "Snakes and Ladders",
+  "difficulty": "Medium",
+  "topic": "graphs",
+  "solutions": {
+    "naive": "from typing import List\nfrom collections import deque\n\nclass Solution:\n    def snakesAndLadders(self, board: List[List[int]]) -> int:\n        # Flatten boustrophedon board, then BFS.\n        n = len(board); cells = [-1]; left = True\n        for r in range(n - 1, -1, -1):\n            row = board[r] if left else board[r][::-1]\n            cells.extend(row); left = not left\n        q, seen = deque([(1, 0)]), {1}\n        while q:\n            sq, moves = q.popleft()\n            if sq == n * n: return moves\n            for nxt in range(sq + 1, min(sq + 6, n*n) + 1):\n                dest = cells[nxt] if cells[nxt] != -1 else nxt\n                if dest not in seen:\n                    seen.add(dest); q.append((dest, moves + 1))\n        return -1",
+    "better": "from typing import List\nfrom collections import deque\n\nclass Solution:\n    def snakesAndLadders(self, board: List[List[int]]) -> int:\n        # Flatten boustrophedon board, then BFS.\n        n = len(board); cells = [-1]; left = True\n        for r in range(n - 1, -1, -1):\n            row = board[r] if left else board[r][::-1]\n            cells.extend(row); left = not left\n        q, seen = deque([(1, 0)]), {1}\n        while q:\n            sq, moves = q.popleft()\n            if sq == n * n: return moves\n            for nxt in range(sq + 1, min(sq + 6, n*n) + 1):\n                dest = cells[nxt] if cells[nxt] != -1 else nxt\n                if dest not in seen:\n                    seen.add(dest); q.append((dest, moves + 1))\n        return -1",
+    "optimal": "from typing import List\nfrom collections import deque\n\nclass Solution:\n    def snakesAndLadders(self, board: List[List[int]]) -> int:\n        # Flatten boustrophedon board, then BFS.\n        n = len(board); cells = [-1]; left = True\n        for r in range(n - 1, -1, -1):\n            row = board[r] if left else board[r][::-1]\n            cells.extend(row); left = not left\n        q, seen = deque([(1, 0)]), {1}\n        while q:\n            sq, moves = q.popleft()\n            if sq == n * n: return moves\n            for nxt in range(sq + 1, min(sq + 6, n*n) + 1):\n                dest = cells[nxt] if cells[nxt] != -1 else nxt\n                if dest not in seen:\n                    seen.add(dest); q.append((dest, moves + 1))\n        return -1"
+  },
+  "starterCode": "class Solution:\n    def snakesAndLadders(self, board):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,71 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "uniquePathsIII",
+  "params": [
+    "grid"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            -1
+          ]
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "grid",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 4
+        }
+      ]
+    }
+  },
+  "id": "google/graphs-grid/13-unique-paths-iii",
+  "title": "Unique Paths III",
+  "difficulty": "Hard",
+  "topic": "google/graphs-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def uniquePathsIII(self, grid: list[list[int]]) -> int:\n        m,n=len(grid),len(grid[0]); total=0; start=end=None\n        for r in range(m):\n            for c in range(n):\n                if grid[r][c]!=-1: total+=1\n                if grid[r][c]==1: start=(r,c)\n                if grid[r][c]==2: end=(r,c)\n        def dfs(r,c,seen):\n            if (r,c)==end: return 1 if len(seen)==total else 0\n            ans=0\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<m and 0<=nc<n and grid[nr][nc]!=-1 and (nr,nc) not in seen: ans+=dfs(nr,nc,seen|{(nr,nc)})\n            return ans\n        return dfs(start[0],start[1],{start})",
+    "better": "class Solution:\n    def uniquePathsIII(self, grid: list[list[int]]) -> int:\n        from functools import lru_cache\n        m,n=len(grid),len(grid[0]); idx={}; start=end=None\n        for r in range(m):\n            for c in range(n):\n                if grid[r][c]!=-1: idx[(r,c)]=len(idx)\n                if grid[r][c]==1: start=(r,c)\n                if grid[r][c]==2: end=(r,c)\n        full=(1<<len(idx))-1\n        @lru_cache(None)\n        def dp(r,c,mask):\n            if (r,c)==end: return 1 if mask==full else 0\n            ans=0\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nb=(r+dr,c+dc)\n                if nb in idx:\n                    bit=1<<idx[nb]\n                    if not mask&bit: ans+=dp(nb[0],nb[1],mask|bit)\n            return ans\n        return dp(start[0],start[1],1<<idx[start])",
+    "optimal": "class Solution:\n    def uniquePathsIII(self, grid: list[list[int]]) -> int:\n        m,n=len(grid),len(grid[0]); remain=0; sr=sc=0\n        for r in range(m):\n            for c in range(n):\n                if grid[r][c]!=-1: remain+=1\n                if grid[r][c]==1: sr,sc=r,c\n        def dfs(r,c,left):\n            if grid[r][c]==2: return 1 if left==1 else 0\n            old=grid[r][c]; grid[r][c]=-1; ans=0\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<m and 0<=nc<n and grid[nr][nc]!=-1: ans+=dfs(nr,nc,left-1)\n            grid[r][c]=old\n            return ans\n        return dfs(sr,sc,remain)"
+  },
+  "starterCode": "class Solution:\n    def uniquePathsIII(self, grid):\n        # TODO: write your solution here\n        pass\n"
+}

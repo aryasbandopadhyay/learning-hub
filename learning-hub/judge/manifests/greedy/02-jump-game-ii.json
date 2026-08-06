@@ -1,0 +1,35 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "jump",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          3,
+          1,
+          1,
+          4
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "id": "greedy/02-jump-game-ii",
+  "title": "Jump Game II",
+  "difficulty": "Medium",
+  "topic": "greedy",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def jump(self, nums: List[int]) -> int:\n        n = len(nums)\n\n        def dfs(i: int) -> int:\n            if i >= n - 1:\n                return 0\n            best = float(\"inf\")\n            for step in range(1, nums[i] + 1):\n                best = min(best, 1 + dfs(i + step))\n            return best\n\n        return dfs(0)",
+    "better": "from typing import List\n\nclass Solution:\n    def jump(self, nums: List[int]) -> int:\n        n = len(nums)\n        dp = [float(\"inf\")] * n\n        dp[-1] = 0\n        for i in range(n - 2, -1, -1):\n            for j in range(i + 1, min(n, i + nums[i] + 1)):\n                dp[i] = min(dp[i], 1 + dp[j])\n        return dp[0]",
+    "optimal": "from typing import List\n\nclass Solution:\n    def jump(self, nums: List[int]) -> int:\n        jumps = 0\n        current_end = 0\n        farthest = 0\n\n        for i in range(len(nums) - 1):\n            farthest = max(farthest, i + nums[i])\n            if i == current_end:\n                jumps += 1\n                current_end = farthest\n        return jumps"
+  },
+  "starterCode": "class Solution:\n    def jump(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

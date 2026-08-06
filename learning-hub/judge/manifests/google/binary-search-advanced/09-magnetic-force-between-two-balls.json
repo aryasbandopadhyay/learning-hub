@@ -1,0 +1,66 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxDistance",
+  "params": [
+    "position",
+    "m"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          7
+        ],
+        3
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "position",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "m",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/binary-search-advanced/09-magnetic-force-between-two-balls",
+  "title": "Magnetic Force Between Two Balls",
+  "difficulty": "Medium",
+  "topic": "google/binary-search-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def maxDistance(self, position: list[int], m: int) -> int:\n        position.sort()\n        for dist in range(position[-1] - position[0], 0, -1):\n            count = 1\n            last = position[0]\n            for p in position[1:]:\n                if p - last >= dist:\n                    count += 1\n                    last = p\n            if count >= m:\n                return dist\n        return 0",
+    "better": "class Solution:\n    def maxDistance(self, position: list[int], m: int) -> int:\n        position.sort()\n        lo, hi = 1, position[-1] - position[0]\n        ans = 0\n        while lo <= hi:\n            mid = (lo + hi) // 2\n            count = 1\n            last = position[0]\n            for p in position[1:]:\n                if p - last >= mid:\n                    count += 1\n                    last = p\n            if count >= m:\n                ans = mid\n                lo = mid + 1\n            else:\n                hi = mid - 1\n        return ans",
+    "optimal": "class Solution:\n    def maxDistance(self, position: list[int], m: int) -> int:\n        position.sort()\n        lo, hi = 1, position[-1] - position[0]\n        while lo < hi:\n            mid = (lo + hi + 1) // 2\n            count = 1\n            last = position[0]\n            for p in position[1:]:\n                if p - last >= mid:\n                    count += 1\n                    last = p\n                    if count == m:\n                        break\n            if count >= m:\n                lo = mid\n            else:\n                hi = mid - 1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def maxDistance(self, position, m):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "assignBikes",
+  "params": [
+    "workers",
+    "bikes"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            3
+          ]
+        ]
+      ],
+      "expected": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            1179,
+            301
+          ]
+        ],
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            3
+          ]
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "workers",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "bikes",
+          "type": "list[list[int]]",
+          "role": "const",
+          "value": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "id": "faang/heap-scheduling/07-campus-bikes",
+  "title": "Campus Bikes",
+  "difficulty": "Medium",
+  "topic": "faang/heap-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def assignBikes(self, workers: list[list[int]], bikes: list[list[int]]) -> list[int]:\n        pairs = []\n        for i, (wx, wy) in enumerate(workers):\n            for j, (bx, by) in enumerate(bikes):\n                pairs.append((abs(wx - bx) + abs(wy - by), i, j))\n        pairs.sort()\n        ans = [-1] * len(workers)\n        used_bikes = set()\n        assigned = 0\n        for _, i, j in pairs:\n            if ans[i] == -1 and j not in used_bikes:\n                ans[i] = j\n                used_bikes.add(j)\n                assigned += 1\n                if assigned == len(workers):\n                    break\n        return ans",
+    "better": "class Solution:\n    def assignBikes(self, workers: list[list[int]], bikes: list[list[int]]) -> list[int]:\n        import heapq\n        choices = []\n        for i, (wx, wy) in enumerate(workers):\n            row = []\n            for j, (bx, by) in enumerate(bikes):\n                row.append((abs(wx - bx) + abs(wy - by), i, j))\n            row.sort()\n            choices.append(row)\n        ptr = [0] * len(workers)\n        heap = [choices[i][0] for i in range(len(workers))]\n        heapq.heapify(heap)\n        ans = [-1] * len(workers)\n        used = set()\n        assigned = 0\n        while assigned < len(workers):\n            _, i, j = heapq.heappop(heap)\n            if ans[i] != -1:\n                continue\n            if j in used:\n                ptr[i] += 1\n                while choices[i][ptr[i]][2] in used:\n                    ptr[i] += 1\n                heapq.heappush(heap, choices[i][ptr[i]])\n            else:\n                ans[i] = j\n                used.add(j)\n                assigned += 1\n        return ans",
+    "optimal": "class Solution:\n    def assignBikes(self, workers: list[list[int]], bikes: list[list[int]]) -> list[int]:\n        max_dist = 2000\n        buckets = [[] for _ in range(max_dist + 1)]\n        for i, (wx, wy) in enumerate(workers):\n            for j, (bx, by) in enumerate(bikes):\n                d = abs(wx - bx) + abs(wy - by)\n                buckets[d].append((i, j))\n        ans = [-1] * len(workers)\n        used = set()\n        assigned = 0\n        for bucket in buckets:\n            bucket.sort()\n            for i, j in bucket:\n                if ans[i] == -1 and j not in used:\n                    ans[i] = j\n                    used.add(j)\n                    assigned += 1\n                    if assigned == len(workers):\n                        return ans\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def assignBikes(self, workers, bikes):\n        # TODO: write your solution here\n        pass\n"
+}

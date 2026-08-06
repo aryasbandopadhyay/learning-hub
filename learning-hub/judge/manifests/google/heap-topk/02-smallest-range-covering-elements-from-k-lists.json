@@ -1,0 +1,75 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "smallestRange",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            4,
+            10,
+            15,
+            24,
+            26
+          ],
+          [
+            0,
+            9,
+            12,
+            20
+          ],
+          [
+            5,
+            18,
+            22,
+            30
+          ]
+        ]
+      ],
+      "expected": [
+        20,
+        24
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 5
+        }
+      ]
+    }
+  },
+  "id": "google/heap-topk/02-smallest-range-covering-elements-from-k-lists",
+  "title": "Smallest Range Covering Elements from K Lists",
+  "difficulty": "Hard",
+  "topic": "google/heap-topk",
+  "solutions": {
+    "naive": "class Solution:\n    def smallestRange(self, nums: list[list[int]]) -> list[int]:\n        import bisect\n        values = sorted(set(x for arr in nums for x in arr))\n        best = [-10**18, 10**18]\n        for left in values:\n            right = left\n            ok = True\n            for arr in nums:\n                i = bisect.bisect_left(arr, left)\n                if i == len(arr):\n                    ok = False\n                    break\n                right = max(right, arr[i])\n            if ok and (right - left < best[1] - best[0] or (right - left == best[1] - best[0] and left < best[0])):\n                best = [left, right]\n        return best",
+    "better": "class Solution:\n    def smallestRange(self, nums: list[list[int]]) -> list[int]:\n        from collections import defaultdict\n        merged = []\n        for r, arr in enumerate(nums):\n            for x in arr:\n                merged.append((x, r))\n        merged.sort()\n        need = len(nums)\n        counts = defaultdict(int)\n        have = 0\n        left = 0\n        best = [-10**18, 10**18]\n        for right, (x, r) in enumerate(merged):\n            if counts[r] == 0:\n                have += 1\n            counts[r] += 1\n            while have == need:\n                lo = merged[left][0]\n                if x - lo < best[1] - best[0] or (x - lo == best[1] - best[0] and lo < best[0]):\n                    best = [lo, x]\n                lr = merged[left][1]\n                counts[lr] -= 1\n                if counts[lr] == 0:\n                    have -= 1\n                left += 1\n        return best",
+    "optimal": "class Solution:\n    def smallestRange(self, nums: list[list[int]]) -> list[int]:\n        import heapq\n        heap = []\n        current_max = -10**18\n        for r, arr in enumerate(nums):\n            heapq.heappush(heap, (arr[0], r, 0))\n            current_max = max(current_max, arr[0])\n        best = [heap[0][0], current_max]\n        while True:\n            val, r, c = heapq.heappop(heap)\n            if current_max - val < best[1] - best[0] or (current_max - val == best[1] - best[0] and val < best[0]):\n                best = [val, current_max]\n            if c + 1 == len(nums[r]):\n                return best\n            nxt = nums[r][c + 1]\n            current_max = max(current_max, nxt)\n            heapq.heappush(heap, (nxt, r, c + 1))"
+  },
+  "starterCode": "class Solution:\n    def smallestRange(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

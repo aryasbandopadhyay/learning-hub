@@ -1,0 +1,65 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "smallestDivisor",
+  "params": [
+    "nums",
+    "threshold"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          5,
+          9
+        ],
+        6
+      ],
+      "expected": 5
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "threshold",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/binary-search-advanced/07-smallest-divisor-given-a-threshold",
+  "title": "Smallest Divisor Given a Threshold",
+  "difficulty": "Medium",
+  "topic": "google/binary-search-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def smallestDivisor(self, nums: list[int], threshold: int) -> int:\n        for d in range(1, max(nums) + 1):\n            total = 0\n            for x in nums:\n                total += (x + d - 1) // d\n            if total <= threshold:\n                return d\n        return max(nums)",
+    "better": "class Solution:\n    def smallestDivisor(self, nums: list[int], threshold: int) -> int:\n        def ok(d: int) -> bool:\n            return sum((x + d - 1) // d for x in nums) <= threshold\n        lo, hi = 1, max(nums)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            if ok(mid):\n                hi = mid\n            else:\n                lo = mid + 1\n        return lo",
+    "optimal": "class Solution:\n    def smallestDivisor(self, nums: list[int], threshold: int) -> int:\n        lo, hi = 1, max(nums)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            total = 0\n            for x in nums:\n                total += (x + mid - 1) // mid\n                if total > threshold:\n                    break\n            if total <= threshold:\n                hi = mid\n            else:\n                lo = mid + 1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def smallestDivisor(self, nums, threshold):\n        # TODO: write your solution here\n        pass\n"
+}

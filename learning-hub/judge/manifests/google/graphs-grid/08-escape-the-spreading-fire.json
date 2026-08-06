@@ -1,0 +1,98 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maximumMinutes",
+  "params": [
+    "grid"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            2,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            1,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            2,
+            2,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "grid",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 7
+        }
+      ]
+    }
+  },
+  "id": "google/graphs-grid/08-escape-the-spreading-fire",
+  "title": "Escape the Spreading Fire",
+  "difficulty": "Hard",
+  "topic": "google/graphs-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def maximumMinutes(self, grid: list[list[int]]) -> int:\n        from collections import deque\n        m,n=len(grid),len(grid[0]); INF=10**9\n        fire=[[INF]*n for _ in range(m)]; q=deque()\n        for r in range(m):\n            for c in range(n):\n                if grid[r][c]==1: fire[r][c]=0; q.append((r,c))\n        while q:\n            r,c=q.popleft()\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<m and 0<=nc<n and grid[nr][nc]!=2 and fire[nr][nc]==INF:\n                    fire[nr][nc]=fire[r][c]+1; q.append((nr,nc))\n        def can(wait):\n            if wait>=fire[0][0]: return False\n            q=deque([(0,0,wait)]); seen={(0,0)}\n            while q:\n                r,c,t=q.popleft()\n                if (r,c)==(m-1,n-1): return t<=fire[r][c]\n                for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                    nr,nc=r+dr,c+dc; nt=t+1\n                    if 0<=nr<m and 0<=nc<n and grid[nr][nc]!=2 and (nr,nc) not in seen:\n                        if ((nr,nc)==(m-1,n-1) and nt<=fire[nr][nc]) or ((nr,nc)!=(m-1,n-1) and nt<fire[nr][nc]):\n                            seen.add((nr,nc)); q.append((nr,nc,nt))\n            return False\n        best=-1\n        for w in range(m*n+1):\n            if can(w): best=w\n            else: break\n        return 1000000000 if best==m*n else best",
+    "better": "class Solution:\n    def maximumMinutes(self, grid: list[list[int]]) -> int:\n        from collections import deque\n        m,n=len(grid),len(grid[0]); INF=10**9; fire=[[INF]*n for _ in range(m)]; q=deque()\n        for r in range(m):\n            for c in range(n):\n                if grid[r][c]==1: fire[r][c]=0; q.append((r,c))\n        while q:\n            r,c=q.popleft()\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<m and 0<=nc<n and grid[nr][nc]!=2 and fire[nr][nc]==INF:\n                    fire[nr][nc]=fire[r][c]+1; q.append((nr,nc))\n        def can(wait):\n            if wait>=fire[0][0]: return False\n            q=deque([(0,0,wait)]); seen=[[False]*n for _ in range(m)]; seen[0][0]=True\n            while q:\n                r,c,t=q.popleft()\n                if (r,c)==(m-1,n-1): return t<=fire[r][c]\n                for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                    nr,nc=r+dr,c+dc; nt=t+1\n                    if 0<=nr<m and 0<=nc<n and grid[nr][nc]!=2 and not seen[nr][nc]:\n                        ok=nt<=fire[nr][nc] if (nr,nc)==(m-1,n-1) else nt<fire[nr][nc]\n                        if ok: seen[nr][nc]=True; q.append((nr,nc,nt))\n            return False\n        lo,hi=-1,m*n\n        while lo<hi:\n            mid=(lo+hi+1)//2\n            if can(mid): lo=mid\n            else: hi=mid-1\n        return 1000000000 if lo==m*n else lo",
+    "optimal": "class Solution:\n    def maximumMinutes(self, grid: list[list[int]]) -> int:\n        from collections import deque\n        m,n=len(grid),len(grid[0]); INF=10**9; fire=[[INF]*n for _ in range(m)]; q=deque(); dirs=((1,0),(-1,0),(0,1),(0,-1))\n        for r,row in enumerate(grid):\n            for c,val in enumerate(row):\n                if val==1: fire[r][c]=0; q.append((r,c))\n        while q:\n            r,c=q.popleft()\n            for dr,dc in dirs:\n                nr,nc=r+dr,c+dc\n                if 0<=nr<m and 0<=nc<n and grid[nr][nc]!=2 and fire[nr][nc]==INF:\n                    fire[nr][nc]=fire[r][c]+1; q.append((nr,nc))\n        def ok(wait):\n            if wait>=fire[0][0]: return False\n            q=deque([(0,0)]); seen=[[False]*n for _ in range(m)]; seen[0][0]=True; t=wait\n            while q:\n                for _ in range(len(q)):\n                    r,c=q.popleft()\n                    if (r,c)==(m-1,n-1): return t<=fire[r][c]\n                    for dr,dc in dirs:\n                        nr,nc=r+dr,c+dc; nt=t+1\n                        if 0<=nr<m and 0<=nc<n and grid[nr][nc]!=2 and not seen[nr][nc]:\n                            safe=nt<=fire[nr][nc] if (nr,nc)==(m-1,n-1) else nt<fire[nr][nc]\n                            if safe: seen[nr][nc]=True; q.append((nr,nc))\n                t+=1\n            return False\n        lo,hi=-1,1000000000\n        while lo<hi:\n            mid=(lo+hi+1)//2\n            if ok(mid): lo=mid\n            else: hi=mid-1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def maximumMinutes(self, grid):\n        # TODO: write your solution here\n        pass\n"
+}

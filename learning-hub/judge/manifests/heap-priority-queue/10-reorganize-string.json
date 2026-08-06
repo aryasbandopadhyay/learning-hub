@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "reorganizeString",
+  "params": [
+    "s"
+  ],
+  "compareMode": "sorted",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "aab"
+      ],
+      "expected": "aba"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "bebebdbebdeabdeabcde"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "dbdabcdeabcde"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "babababdbabdbabdabdeabcdeabcdeabcdeabcdeabcdeabcde"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "bcabcabcdeabcdeabcde"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "cbcdbcdabcdabcdabcde"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": ""
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "heap-priority-queue/10-reorganize-string",
+  "title": "Reorganize String",
+  "difficulty": "Medium",
+  "topic": "heap-priority-queue",
+  "solutions": {
+    "naive": "from collections import Counter\n\nclass Solution:\n    def reorganizeString(self, s: str) -> str:\n        counts = Counter(s)\n        result = []\n\n        def backtrack(prev: str) -> bool:\n            if len(result) == len(s):\n                return True\n            for ch in list(counts):\n                if counts[ch] > 0 and ch != prev:\n                    counts[ch] -= 1\n                    result.append(ch)\n                    if backtrack(ch):\n                        return True\n                    result.pop()\n                    counts[ch] += 1\n            return False\n\n        return \"\".join(result) if backtrack(\"\") else \"\"",
+    "better": "from collections import Counter\n\nclass Solution:\n    def reorganizeString(self, s: str) -> str:\n        n = len(s)\n        counts = Counter(s)\n        if max(counts.values()) > (n + 1) // 2:\n            return \"\"\n\n        chars = sorted(counts, key=lambda ch: -counts[ch])\n        result = [\"\"] * n\n        index = 0\n        for ch in chars:\n            for _ in range(counts[ch]):\n                if index >= n:\n                    index = 1\n                result[index] = ch\n                index += 2\n        return \"\".join(result)",
+    "optimal": "from collections import Counter\nimport heapq\n\nclass Solution:\n    def reorganizeString(self, s: str) -> str:\n        counts = Counter(s)\n        if max(counts.values()) > (len(s) + 1) // 2:\n            return \"\"\n\n        heap = [(-count, ch) for ch, count in counts.items()]\n        heapq.heapify(heap)\n        result = []\n        prev_count, prev_ch = 0, \"\"\n\n        while heap:\n            count, ch = heapq.heappop(heap)\n            result.append(ch)\n            count += 1  # One occurrence was used.\n\n            if prev_count < 0:\n                heapq.heappush(heap, (prev_count, prev_ch))\n\n            prev_count, prev_ch = count, ch\n\n        return \"\".join(result)"
+  },
+  "starterCode": "class Solution:\n    def reorganizeString(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

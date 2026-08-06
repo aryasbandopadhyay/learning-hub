@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "predictPartyVictory",
+  "params": [
+    "senate"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "RDD"
+      ],
+      "expected": "Dire"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "Dire"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "Dire"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "Dire"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "Dire"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "Dire"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "Dire"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "Dire"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": "Dire"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "senate",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/greedy-scheduling/18-dota2-senate",
+  "title": "Dota2 Senate",
+  "difficulty": "Medium",
+  "topic": "faang/greedy-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def predictPartyVictory(self, senate: str) -> str:\n        senators = list(senate)\n        counts = {\"R\": senate.count(\"R\"), \"D\": senate.count(\"D\")}\n        bans = {\"R\": 0, \"D\": 0}\n        i = 0\n        while counts[\"R\"] and counts[\"D\"]:\n            party = senators[i]\n            if bans[party] > 0:\n                bans[party] -= 1\n                counts[party] -= 1\n                senators.pop(i)\n                if senators:\n                    i %= len(senators)\n            else:\n                other = \"D\" if party == \"R\" else \"R\"\n                bans[other] += 1\n                i = (i + 1) % len(senators)\n        return \"Radiant\" if counts[\"R\"] else \"Dire\"",
+    "better": "class Solution:\n    def predictPartyVictory(self, senate: str) -> str:\n        current = senate\n        balance = 0\n        while \"R\" in current and \"D\" in current:\n            nxt = []\n            for party in current:\n                if party == \"R\":\n                    if balance >= 0:\n                        nxt.append(\"R\")\n                    balance += 1\n                else:\n                    if balance <= 0:\n                        nxt.append(\"D\")\n                    balance -= 1\n            current = \"\".join(nxt)\n        return \"Radiant\" if current and current[0] == \"R\" else \"Dire\"",
+    "optimal": "class Solution:\n    def predictPartyVictory(self, senate: str) -> str:\n        from collections import deque\n\n        n = len(senate)\n        radiant = deque(i for i, c in enumerate(senate) if c == \"R\")\n        dire = deque(i for i, c in enumerate(senate) if c == \"D\")\n        while radiant and dire:\n            r = radiant.popleft()\n            d = dire.popleft()\n            if r < d:\n                radiant.append(r + n)\n            else:\n                dire.append(d + n)\n        return \"Radiant\" if radiant else \"Dire\""
+  },
+  "starterCode": "class Solution:\n    def predictPartyVictory(self, senate):\n        # TODO: write your solution here\n        pass\n"
+}

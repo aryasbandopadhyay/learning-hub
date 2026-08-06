@@ -1,0 +1,67 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minSubArrayLen",
+  "params": [
+    "target",
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        7,
+        [
+          2,
+          3,
+          1,
+          2,
+          4,
+          3
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "target",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "sliding-window/08-minimum-size-subarray-sum",
+  "title": "Minimum Size Subarray Sum",
+  "difficulty": "Medium",
+  "topic": "sliding-window",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def minSubArrayLen(self, target: int, nums: List[int]) -> int:\n        best = float(\"inf\")\n        for left in range(len(nums)):\n            total = 0\n            for right in range(left, len(nums)):\n                total += nums[right]\n                if total >= target:\n                    best = min(best, right - left + 1)\n                    break\n        return 0 if best == float(\"inf\") else best",
+    "better": "from typing import List\nimport bisect\n\nclass Solution:\n    def minSubArrayLen(self, target: int, nums: List[int]) -> int:\n        prefix = [0]\n        for num in nums:\n            prefix.append(prefix[-1] + num)\n        best = float(\"inf\")\n        for left in range(len(nums)):\n            end = bisect.bisect_left(prefix, prefix[left] + target)\n            if end <= len(nums):\n                best = min(best, end - left)\n        return 0 if best == float(\"inf\") else best",
+    "optimal": "from typing import List\n\nclass Solution:\n    def minSubArrayLen(self, target: int, nums: List[int]) -> int:\n        left = total = 0\n        best = float(\"inf\")\n        for right, value in enumerate(nums):\n            total += value\n            while total >= target:\n                best = min(best, right - left + 1)\n                total -= nums[left]\n                left += 1\n        return 0 if best == float(\"inf\") else best"
+  },
+  "starterCode": "class Solution:\n    def minSubArrayLen(self, target, nums):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,136 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "intervalIntersection",
+  "params": [
+    "firstList",
+    "secondList"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            2
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            13,
+            23
+          ],
+          [
+            24,
+            25
+          ]
+        ],
+        [
+          [
+            1,
+            5
+          ],
+          [
+            8,
+            12
+          ],
+          [
+            15,
+            24
+          ],
+          [
+            25,
+            26
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          23
+        ],
+        [
+          24,
+          24
+        ],
+        [
+          25,
+          25
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "firstList",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "secondList",
+          "type": "list[list[int]]",
+          "role": "const",
+          "value": [
+            [
+              1,
+              5
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              15,
+              24
+            ],
+            [
+              25,
+              26
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "id": "intervals/07-interval-list-intersections",
+  "title": "Interval List Intersections",
+  "difficulty": "Medium",
+  "topic": "intervals",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:\n        result = []\n        for a_start, a_end in firstList:\n            for b_start, b_end in secondList:\n                start = max(a_start, b_start)\n                end = min(a_end, b_end)\n                if start <= end:\n                    result.append([start, end])\n        return sorted(result)",
+    "better": "from typing import List\n\nclass Solution:\n    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:\n        result = []\n        j = 0\n\n        for a_start, a_end in firstList:\n            while j < len(secondList) and secondList[j][1] < a_start:\n                j += 1\n            t = j\n            while t < len(secondList) and secondList[t][0] <= a_end:\n                start = max(a_start, secondList[t][0])\n                end = min(a_end, secondList[t][1])\n                if start <= end:\n                    result.append([start, end])\n                t += 1\n        return result",
+    "optimal": "from typing import List\n\nclass Solution:\n    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:\n        i = j = 0\n        result = []\n\n        while i < len(firstList) and j < len(secondList):\n            start = max(firstList[i][0], secondList[j][0])\n            end = min(firstList[i][1], secondList[j][1])\n            if start <= end:\n                result.append([start, end])\n\n            if firstList[i][1] < secondList[j][1]:\n                i += 1\n            else:\n                j += 1\n        return result"
+  },
+  "starterCode": "class Solution:\n    def intervalIntersection(self, firstList, secondList):\n        # TODO: write your solution here\n        pass\n"
+}

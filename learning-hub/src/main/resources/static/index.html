@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Hub · Spring Boot / LLD / HLD</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%9A%3C/text%3E%3C/svg%3E" />
+
+  <!--
+    Third-party renderers loaded from CDNs (needs internet in the browser):
+      * marked      — Markdown -> HTML
+      * highlight.js— syntax highlighting for code (dark + light themes, toggled at runtime)
+      * mermaid     — renders ```mermaid diagram blocks
+    All three are pure client-side; the Spring Boot backend only serves raw text.
+  -->
+  <!-- Set the theme BEFORE first paint to avoid a flash of the wrong colours. Default: dark. -->
+  <script>
+    (function () {
+      var t = localStorage.getItem("hub-theme") || "dark";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+  <!-- Both hljs themes are loaded; only the one matching the active theme is enabled (see app.js). -->
+  <link rel="stylesheet" id="hljs-dark"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+  <link rel="stylesheet" id="hljs-light" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" disabled />
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <!-- CodeMirror 5 — a real code editor for the Solve panel (line numbers, Python syntax,
+       bracket matching, auto-close brackets, active-line highlight, block comment toggle). -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/neo.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/comment/comment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/selection/active-line.min.js"></script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    // Don't auto-scan on load — we render on demand after inserting each doc.
+    const theme = document.documentElement.getAttribute("data-theme") === "light" ? "default" : "dark";
+    mermaid.initialize({ startOnLoad: false, theme, securityLevel: "loose" });
+    window.mermaid = mermaid;
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button id="menu-toggle" class="icon-btn menu-toggle" aria-label="Toggle menu" title="Menu">☰</button>
+    <div class="brand"><span class="brand-mark">📚</span><span class="brand-text">Learning Hub</span></div>
+    <nav id="tabs" class="tabs"><!-- tabs injected from /api/categories --></nav>
+    <div class="topbar-right">
+      <button id="admin-btn" class="icon-btn admin-btn" aria-label="Admin dashboard" title="Admin dashboard" hidden>⚙️</button>
+      <button id="theme-toggle" class="icon-btn theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">🌙</button>
+      <span id="user-chip" class="user-chip" hidden><span id="user-email" class="user-email"></span><button id="logout-btn" class="logout-btn" title="Sign out">Sign out</button></span>
+    </div>
+  </header>
+
+  <div id="scrim" class="scrim" hidden></div>
+
+  <main class="layout">
+    <aside id="sidebar" class="sidebar">
+      <div id="category-desc" class="category-desc"></div>
+      <div id="tree-search-wrap" class="tree-search-wrap" hidden>
+        <input id="tree-search" class="tree-search" type="search" placeholder="Filter problems…" autocomplete="off" />
+      </div>
+      <div id="tree" class="tree"></div>
+    </aside>
+
+    <section class="content">
+      <div id="breadcrumb" class="breadcrumb"></div>
+      <article id="viewer" class="viewer markdown-body">
+        <p class="hint">Select a file on the left to view it.</p>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

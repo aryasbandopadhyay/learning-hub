@@ -1,0 +1,51 @@
+{
+  "shape": "design",
+  "className": "TimeMap",
+  "entry": null,
+  "params": [],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "TimeMap",
+        "set",
+        "get",
+        "get"
+      ],
+      "args": [
+        [],
+        [
+          "foo",
+          "bar",
+          1
+        ],
+        [
+          "foo",
+          1
+        ],
+        [
+          "foo",
+          3
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        "bar",
+        "bar"
+      ]
+    }
+  ],
+  "id": "binary-search/06-time-based-key-value-store",
+  "title": "Time Based Key-Value Store",
+  "difficulty": "Medium",
+  "topic": "binary-search",
+  "solutions": {
+    "naive": "from collections import defaultdict\n\nclass TimeMap:\n    def __init__(self):\n        self.store = defaultdict(list)\n\n    def set(self, key: str, value: str, timestamp: int) -> None:\n        self.store[key].append((timestamp, value))\n\n    def get(self, key: str, timestamp: int) -> str:\n        answer = \"\"\n        for time, value in self.store[key]:\n            if time <= timestamp:\n                answer = value\n            else:\n                break\n        return answer",
+    "better": "from collections import defaultdict\nfrom bisect import bisect_right\n\nclass TimeMap:\n    def __init__(self):\n        self.times = defaultdict(list)\n        self.values = defaultdict(list)\n\n    def set(self, key: str, value: str, timestamp: int) -> None:\n        self.times[key].append(timestamp)\n        self.values[key].append(value)\n\n    def get(self, key: str, timestamp: int) -> str:\n        index = bisect_right(self.times[key], timestamp) - 1\n        if index < 0:\n            return \"\"\n        return self.values[key][index]",
+    "optimal": "from collections import defaultdict\n\nclass TimeMap:\n    def __init__(self):\n        self.store = defaultdict(list)\n\n    def set(self, key: str, value: str, timestamp: int) -> None:\n        self.store[key].append((timestamp, value))\n\n    def get(self, key: str, timestamp: int) -> str:\n        entries = self.store[key]\n        left, right = 0, len(entries) - 1\n        answer = \"\"\n        while left <= right:\n            mid = (left + right) // 2\n            time, value = entries[mid]\n            if time <= timestamp:\n                answer = value\n                left = mid + 1\n            else:\n                right = mid - 1\n        return answer"
+  },
+  "starterCode": "class TimeMap:\n    def __init__(self):\n        # TODO: write your solution here\n        pass\n\n    def set(self, key, value, timestamp):\n        # TODO: write your solution here\n        pass\n\n    def get(self, key, timestamp):\n        # TODO: write your solution here\n        pass\n"
+}

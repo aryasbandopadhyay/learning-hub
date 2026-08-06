@@ -1,0 +1,59 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "getHint",
+  "params": [
+    "secret",
+    "guess"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "1807",
+        "7810"
+      ],
+      "expected": "1A3B"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "secret",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "guess",
+          "type": "str",
+          "role": "const",
+          "value": "7810"
+        }
+      ]
+    }
+  },
+  "id": "faang/hashing/06-bulls-and-cows",
+  "title": "Bulls and Cows",
+  "difficulty": "Medium",
+  "topic": "faang/hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def getHint(self, secret: str, guess: str) -> str:\n        n = len(secret)\n        bulls = 0\n        used_secret = [False] * n\n        used_guess = [False] * n\n        for i in range(n):\n            if secret[i] == guess[i]:\n                bulls += 1\n                used_secret[i] = True\n                used_guess[i] = True\n        cows = 0\n        for i in range(n):\n            if used_guess[i]:\n                continue\n            for j in range(n):\n                if not used_secret[j] and guess[i] == secret[j]:\n                    used_secret[j] = True\n                    cows += 1\n                    break\n        return str(bulls) + \"A\" + str(cows) + \"B\"",
+    "better": "class Solution:\n    def getHint(self, secret, guess):\n        bulls = 0\n        secret_count = [0] * 10\n        guess_count = [0] * 10\n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                secret_count[ord(s) - ord('0')] += 1\n                guess_count[ord(g) - ord('0')] += 1\n        cows = sum(min(secret_count[i], guess_count[i]) for i in range(10))\n        return str(bulls) + \"A\" + str(cows) + \"B\"",
+    "optimal": "class Solution:\n    def getHint(self, secret, guess):\n        bulls = 0\n        cows = 0\n        balance = [0] * 10\n        for s, g in zip(secret, guess):\n            if s == g:\n                bulls += 1\n            else:\n                si = ord(s) - ord('0')\n                gi = ord(g) - ord('0')\n                if balance[si] < 0:\n                    cows += 1\n                if balance[gi] > 0:\n                    cows += 1\n                balance[si] += 1\n                balance[gi] -= 1\n        return str(bulls) + \"A\" + str(cows) + \"B\""
+  },
+  "starterCode": "class Solution:\n    def getHint(self, secret, guess):\n        # TODO: write your solution here\n        pass\n"
+}

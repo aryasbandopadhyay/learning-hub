@@ -1,0 +1,83 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isCovered",
+  "params": [
+    "ranges",
+    "left",
+    "right"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            6
+          ]
+        ],
+        2,
+        5
+      ],
+      "expected": true
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "ranges",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "left",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "right",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/intervals-merge/16-check-if-all-the-integers-in-a-range-are-covered",
+  "title": "Check if All the Integers in a Range Are Covered",
+  "difficulty": "Easy",
+  "topic": "faang/intervals-merge",
+  "solutions": {
+    "naive": "class Solution:\n    def isCovered(self, ranges: list[list[int]], left: int, right: int) -> bool:\n        for x in range(left, right + 1):\n            found = False\n            for start, end in ranges:\n                if start <= x <= end:\n                    found = True\n                    break\n            if not found:\n                return False\n        return True",
+    "better": "class Solution:\n    def isCovered(self, ranges: list[list[int]], left: int, right: int) -> bool:\n        need = left\n        for start, end in sorted(ranges):\n            if end < need:\n                continue\n            if start > need:\n                return False\n            need = max(need, end + 1)\n            if need > right:\n                return True\n        return False",
+    "optimal": "class Solution:\n    def isCovered(self, ranges: list[list[int]], left: int, right: int) -> bool:\n        diff = [0] * 52\n        for start, end in ranges:\n            diff[start] += 1\n            diff[end + 1] -= 1\n        active = 0\n        for x in range(1, 51):\n            active += diff[x]\n            if left <= x <= right and active == 0:\n                return False\n        return True"
+  },
+  "starterCode": "class Solution:\n    def isCovered(self, ranges, left, right):\n        # TODO: write your solution here\n        pass\n"
+}

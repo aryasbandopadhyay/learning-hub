@@ -1,0 +1,36 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "largestDivisibleSubset",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    }
+  ],
+  "id": "google/dp-sequences/07-largest-divisible-subset",
+  "title": "Largest Divisible Subset",
+  "difficulty": "Medium",
+  "topic": "google/dp-sequences",
+  "solutions": {
+    "naive": "class Solution:\n    def largestDivisibleSubset(self, nums: list[int]) -> list[int]:\n        arr = sorted(nums)\n        n = len(arr)\n        best = []\n        def valid(seq: list[int]) -> bool:\n            for i in range(len(seq)):\n                for j in range(i):\n                    if seq[i] % seq[j] != 0:\n                        return False\n            return True\n        def dfs(i: int, seq: list[int]) -> None:\n            nonlocal best\n            if i == n:\n                if valid(seq) and (len(seq) > len(best) or (len(seq) == len(best) and seq < best)):\n                    best = seq[:]\n                return\n            dfs(i + 1, seq)\n            seq.append(arr[i])\n            dfs(i + 1, seq)\n            seq.pop()\n        dfs(0, [])\n        return best",
+    "better": "class Solution:\n    def largestDivisibleSubset(self, nums: list[int]) -> list[int]:\n        from functools import lru_cache\n        arr = tuple(sorted(nums))\n        n = len(arr)\n        @lru_cache(None)\n        def dfs(i: int, prev: int) -> tuple[int, ...]:\n            if i == n:\n                return ()\n            best = dfs(i + 1, prev)\n            if prev == -1 or arr[i] % arr[prev] == 0:\n                cand = (arr[i],) + dfs(i + 1, i)\n                if len(cand) > len(best) or (len(cand) == len(best) and cand < best):\n                    best = cand\n            return best\n        return list(dfs(0, -1))",
+    "optimal": "class Solution:\n    def largestDivisibleSubset(self, nums: list[int]) -> list[int]:\n        arr = sorted(nums)\n        chains = []\n        best = []\n        for x in arr:\n            cur = [x]\n            for chain in chains:\n                if x % chain[-1] == 0:\n                    cand = chain + [x]\n                    if len(cand) > len(cur) or (len(cand) == len(cur) and cand < cur):\n                        cur = cand\n            chains.append(cur)\n            if len(cur) > len(best) or (len(cur) == len(best) and cur < best):\n                best = cur\n        return best"
+  },
+  "starterCode": "class Solution:\n    def largestDivisibleSubset(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,55 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "totalHammingDistance",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          4,
+          14,
+          2
+        ]
+      ],
+      "expected": 6
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/math-bit/09-total-hamming-distance",
+  "title": "Total Hamming Distance",
+  "difficulty": "Medium",
+  "topic": "google/math-bit",
+  "solutions": {
+    "naive": "class Solution:\n    def totalHammingDistance(self, nums: list[int]) -> int:\n        ans = 0\n        for i in range(len(nums)):\n            for j in range(i + 1, len(nums)):\n                ans += (nums[i] ^ nums[j]).bit_count()\n        return ans",
+    "better": "class Solution:\n    def totalHammingDistance(self, nums: list[int]) -> int:\n        width = max(1, max(nums).bit_length())\n        ans = 0\n        for bit in range(width):\n            ones = 0\n            for x in nums:\n                ones += (x >> bit) & 1\n            ans += ones * (len(nums) - ones)\n        return ans",
+    "optimal": "class Solution:\n    def totalHammingDistance(self, nums: list[int]) -> int:\n        n = len(nums)\n        ans = 0\n        for bit in range(30):\n            ones = sum((x >> bit) & 1 for x in nums)\n            ans += ones * (n - ones)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def totalHammingDistance(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

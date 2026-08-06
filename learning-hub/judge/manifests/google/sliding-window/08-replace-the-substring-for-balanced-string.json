@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "balancedString",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "WQWRQQQW"
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/sliding-window/08-replace-the-substring-for-balanced-string",
+  "title": "Replace the Substring for Balanced String",
+  "difficulty": "Medium",
+  "topic": "google/sliding-window",
+  "solutions": {
+    "naive": "class Solution:\n    def balancedString(self, s: str) -> int:\n        n = len(s)\n        target = n // 4\n        best = n\n        chars = 'QWER'\n        for i in range(n):\n            for j in range(i, n):\n                outside = {c: 0 for c in chars}\n                for p in range(n):\n                    if p < i or p > j:\n                        outside[s[p]] += 1\n                ok = True\n                for c in chars:\n                    if outside[c] > target:\n                        ok = False\n                if ok:\n                    best = min(best, j - i + 1)\n        if all(s.count(c) == target for c in chars):\n            return 0\n        return best",
+    "better": "class Solution:\n    def balancedString(self, s: str) -> int:\n        n = len(s)\n        target = n // 4\n        chars = 'QWER'\n        pref = [{c: 0 for c in chars}]\n        for ch in s:\n            cur = pref[-1].copy()\n            cur[ch] += 1\n            pref.append(cur)\n        if all(pref[n][c] == target for c in chars):\n            return 0\n        best = n\n        for i in range(n):\n            for j in range(i, n):\n                ok = True\n                for c in chars:\n                    inside = pref[j + 1][c] - pref[i][c]\n                    if pref[n][c] - inside > target:\n                        ok = False\n                if ok:\n                    best = min(best, j - i + 1)\n        return best",
+    "optimal": "class Solution:\n    def balancedString(self, s: str) -> int:\n        n = len(s)\n        target = n // 4\n        count = {'Q': 0, 'W': 0, 'E': 0, 'R': 0}\n        for ch in s:\n            count[ch] += 1\n        if all(count[c] == target for c in count):\n            return 0\n        left = 0\n        ans = n\n        for right, ch in enumerate(s):\n            count[ch] -= 1\n            while left <= right and all(count[c] <= target for c in count):\n                ans = min(ans, right - left + 1)\n                count[s[left]] += 1\n                left += 1\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def balancedString(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

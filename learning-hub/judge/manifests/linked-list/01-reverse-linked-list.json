@@ -1,0 +1,45 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "reverseList",
+  "params": [
+    "head"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist"
+  ],
+  "id": "linked-list/01-reverse-linked-list",
+  "title": "Reverse Linked List",
+  "difficulty": "Easy",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def reverseList(self, head):\n        values = []\n        cur = head\n        while cur:\n            values.append(cur.val)\n            cur = cur.next\n\n        cur = head\n        for value in reversed(values):\n            cur.val = value  # Reuse nodes, but reverse the values.\n            cur = cur.next\n        return head",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def reverseList(self, head):\n        if head is None or head.next is None:\n            return head\n\n        new_head = self.reverseList(head.next)\n        head.next.next = head\n        head.next = None\n        return new_head",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def reverseList(self, head):\n        prev = None\n        cur = head\n        while cur:\n            nxt = cur.next      # Save the rest before breaking the link.\n            cur.next = prev\n            prev = cur\n            cur = nxt\n        return prev"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def reverseList(self, head):\n        # TODO: write your solution here\n        pass\n"
+}

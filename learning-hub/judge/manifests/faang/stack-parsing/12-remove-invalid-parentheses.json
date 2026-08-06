@@ -1,0 +1,32 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "removeInvalidParentheses",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "()())()"
+      ],
+      "expected": [
+        "(())()",
+        "()()()"
+      ]
+    }
+  ],
+  "id": "faang/stack-parsing/12-remove-invalid-parentheses",
+  "title": "Remove Invalid Parentheses",
+  "difficulty": "Hard",
+  "topic": "faang/stack-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def removeInvalidParentheses(self, s: str) -> list[str]:\n        def valid(t):\n            bal = 0\n            for ch in t:\n                if ch == '(':\n                    bal += 1\n                elif ch == ')':\n                    bal -= 1\n                    if bal < 0:\n                        return False\n            return bal == 0\n        best_len = -1\n        ans = set()\n        n = len(s)\n        for mask in range(1 << n):\n            if mask.bit_count() < best_len:\n                continue\n            t = ''.join(s[i] for i in range(n) if mask & (1 << i))\n            if valid(t):\n                if len(t) > best_len:\n                    best_len = len(t)\n                    ans.clear()\n                ans.add(t)\n        return sorted(ans)",
+    "better": "class Solution:\n    def removeInvalidParentheses(self, s: str) -> list[str]:\n        def valid(t):\n            bal = 0\n            for ch in t:\n                if ch == '(':\n                    bal += 1\n                elif ch == ')':\n                    bal -= 1\n                    if bal < 0:\n                        return False\n            return bal == 0\n        level = {s}\n        while True:\n            good = [t for t in level if valid(t)]\n            if good:\n                return sorted(good)\n            nxt = set()\n            for t in level:\n                for i, ch in enumerate(t):\n                    if ch in '()':\n                        nxt.add(t[:i] + t[i + 1:])\n            level = nxt",
+    "optimal": "class Solution:\n    def removeInvalidParentheses(self, s: str) -> list[str]:\n        lrem = rrem = 0\n        for ch in s:\n            if ch == '(':\n                lrem += 1\n            elif ch == ')':\n                if lrem:\n                    lrem -= 1\n                else:\n                    rrem += 1\n        ans = set()\n        def dfs(i, bal, lrem, rrem, path):\n            if i == len(s):\n                if bal == 0 and lrem == 0 and rrem == 0:\n                    ans.add(''.join(path))\n                return\n            ch = s[i]\n            if ch == '(':\n                if lrem:\n                    dfs(i + 1, bal, lrem - 1, rrem, path)\n                path.append(ch)\n                dfs(i + 1, bal + 1, lrem, rrem, path)\n                path.pop()\n            elif ch == ')':\n                if rrem:\n                    dfs(i + 1, bal, lrem, rrem - 1, path)\n                if bal:\n                    path.append(ch)\n                    dfs(i + 1, bal - 1, lrem, rrem, path)\n                    path.pop()\n            else:\n                path.append(ch)\n                dfs(i + 1, bal, lrem, rrem, path)\n                path.pop()\n        dfs(0, 0, lrem, rrem, [])\n        return sorted(ans)"
+  },
+  "starterCode": "class Solution:\n    def removeInvalidParentheses(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

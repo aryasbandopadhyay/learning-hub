@@ -1,0 +1,75 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findMaxForm",
+  "params": [
+    "strs",
+    "m",
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "10",
+          "0001",
+          "111001",
+          "1",
+          "0"
+        ],
+        5,
+        3
+      ],
+      "expected": 4
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "strs",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "m",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-knapsack/02-ones-and-zeroes",
+  "title": "Ones and Zeroes",
+  "difficulty": "Medium",
+  "topic": "faang/dp-knapsack",
+  "solutions": {
+    "naive": "class Solution:\n    def findMaxForm(self, strs: list[str], m: int, n: int) -> int:\n        counts = [(s.count(\"0\"), s.count(\"1\")) for s in strs]\n        def dfs(i: int, z: int, o: int) -> int:\n            if i == len(counts):\n                return 0\n            ans = dfs(i + 1, z, o)\n            cz, co = counts[i]\n            if z >= cz and o >= co:\n                ans = max(ans, 1 + dfs(i + 1, z - cz, o - co))\n            return ans\n        return dfs(0, m, n)",
+    "better": "class Solution:\n    def findMaxForm(self, strs: list[str], m: int, n: int) -> int:\n        from functools import lru_cache\n        counts = [(s.count(\"0\"), s.count(\"1\")) for s in strs]\n        @lru_cache(None)\n        def dp(i: int, z: int, o: int) -> int:\n            if i == len(counts):\n                return 0\n            ans = dp(i + 1, z, o)\n            cz, co = counts[i]\n            if z >= cz and o >= co:\n                ans = max(ans, 1 + dp(i + 1, z - cz, o - co))\n            return ans\n        return dp(0, m, n)",
+    "optimal": "class Solution:\n    def findMaxForm(self, strs: list[str], m: int, n: int) -> int:\n        dp = [[0] * (n + 1) for _ in range(m + 1)]\n        for s in strs:\n            z = s.count(\"0\")\n            o = len(s) - z\n            for zeros in range(m, z - 1, -1):\n                for ones in range(n, o - 1, -1):\n                    dp[zeros][ones] = max(dp[zeros][ones], dp[zeros - z][ones - o] + 1)\n        return dp[m][n]"
+  },
+  "starterCode": "class Solution:\n    def findMaxForm(self, strs, m, n):\n        # TODO: write your solution here\n        pass\n"
+}

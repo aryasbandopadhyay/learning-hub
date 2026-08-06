@@ -1,0 +1,61 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "shortestBridge",
+  "params": [
+    "grid"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      ],
+      "expected": 1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "grid",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/graphs-grid/04-shortest-bridge",
+  "title": "Shortest Bridge",
+  "difficulty": "Medium",
+  "topic": "google/graphs-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def shortestBridge(self, grid: list[list[int]]) -> int:\n        n=len(grid); seen=[[False]*n for _ in range(n)]; islands=[]\n        def dfs(r,c,cells):\n            seen[r][c]=True; cells.append((r,c))\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<n and 0<=nc<n and grid[nr][nc] and not seen[nr][nc]: dfs(nr,nc,cells)\n        for r in range(n):\n            for c in range(n):\n                if grid[r][c] and not seen[r][c]:\n                    cells=[]; dfs(r,c,cells); islands.append(cells)\n        return min(abs(a-c)+abs(b-d)-1 for a,b in islands[0] for c,d in islands[1])",
+    "better": "class Solution:\n    def shortestBridge(self, grid: list[list[int]]) -> int:\n        from collections import deque\n        n=len(grid); g=[row[:] for row in grid]; q=deque()\n        def dfs(r,c):\n            g[r][c]=2; q.append((r,c,0))\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<n and 0<=nc<n and g[nr][nc]==1: dfs(nr,nc)\n        done=False\n        for r in range(n):\n            if done: break\n            for c in range(n):\n                if g[r][c]==1: dfs(r,c); done=True; break\n        while q:\n            r,c,d=q.popleft()\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<n and 0<=nc<n:\n                    if g[nr][nc]==1: return d\n                    if g[nr][nc]==0: g[nr][nc]=2; q.append((nr,nc,d+1))\n        return -1",
+    "optimal": "class Solution:\n    def shortestBridge(self, grid: list[list[int]]) -> int:\n        n=len(grid); seen=[[0]*n for _ in range(n)]; islands=[set(),set()]\n        def dfs(r,c,label):\n            seen[r][c]=label; islands[label-1].add((r,c))\n            for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                nr,nc=r+dr,c+dc\n                if 0<=nr<n and 0<=nc<n and grid[nr][nc] and seen[nr][nc]==0: dfs(nr,nc,label)\n        label=1\n        for r in range(n):\n            for c in range(n):\n                if grid[r][c] and seen[r][c]==0: dfs(r,c,label); label+=1\n        f1,f2=islands; v1=set(f1); v2=set(f2); dist=0\n        while f1:\n            if len(f1)>len(f2): f1,f2,v1,v2=f2,f1,v2,v1\n            nxt=set()\n            for r,c in f1:\n                for dr,dc in ((1,0),(-1,0),(0,1),(0,-1)):\n                    nb=(r+dr,c+dc); nr,nc=nb\n                    if 0<=nr<n and 0<=nc<n:\n                        if nb in v2: return dist\n                        if nb not in v1: v1.add(nb); nxt.add(nb)\n            f1=nxt; dist+=1\n        return -1"
+  },
+  "starterCode": "class Solution:\n    def shortestBridge(self, grid):\n        # TODO: write your solution here\n        pass\n"
+}

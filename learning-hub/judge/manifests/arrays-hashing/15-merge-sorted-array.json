@@ -1,0 +1,54 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "merge",
+  "params": [
+    "nums1",
+    "m",
+    "nums2",
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          0,
+          0,
+          0
+        ],
+        3,
+        [
+          2,
+          5,
+          6
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        2,
+        3,
+        5,
+        6
+      ]
+    }
+  ],
+  "inPlaceArg": 0,
+  "id": "arrays-hashing/15-merge-sorted-array",
+  "title": "Merge Sorted Array",
+  "difficulty": "Easy",
+  "topic": "arrays-hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:\n        for i in range(n):\n            nums1[m+i] = nums2[i]\n        for _ in range(m+n):\n            for i in range(1, m+n):\n                if nums1[i-1] > nums1[i]:\n                    nums1[i-1], nums1[i] = nums1[i], nums1[i-1]",
+    "better": "class Solution:\n    def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:\n        left = nums1[:m]\n        i = j = k = 0\n        while i < m and j < n:\n            if left[i] <= nums2[j]:\n                nums1[k] = left[i]; i += 1\n            else:\n                nums1[k] = nums2[j]; j += 1\n            k += 1\n        while i < m:\n            nums1[k] = left[i]; i += 1; k += 1\n        while j < n:\n            nums1[k] = nums2[j]; j += 1; k += 1",
+    "optimal": "class Solution:\n    def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:\n        i, j, w = m - 1, n - 1, m + n - 1\n        while j >= 0:\n            if i >= 0 and nums1[i] > nums2[j]:\n                nums1[w] = nums1[i]\n                i -= 1\n            else:\n                nums1[w] = nums2[j]\n                j -= 1\n            w -= 1"
+  },
+  "starterCode": "class Solution:\n    def merge(self, nums1, m, nums2, n):\n        # TODO: write your solution here\n        pass\n"
+}

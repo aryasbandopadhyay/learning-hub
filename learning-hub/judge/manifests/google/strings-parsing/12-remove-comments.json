@@ -1,0 +1,447 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "removeComments",
+  "params": [
+    "source"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "/*Test program */",
+          "int main()",
+          "{ ",
+          "// variable",
+          "int a, b;",
+          "a = b + c;",
+          "}"
+        ]
+      ],
+      "expected": [
+        "int main()",
+        "{ ",
+        "int a, b;",
+        "a = b + c;",
+        "}"
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ]
+      ],
+      "expected": [
+        "dbe",
+        "bbb",
+        "bac",
+        "dee",
+        "aed",
+        "bde",
+        "ebc",
+        "dbb",
+        "dbe",
+        "cae",
+        "adc",
+        "dac",
+        "ead",
+        "bce",
+        "ade",
+        "bed",
+        "acb",
+        "bbd",
+        "ebe",
+        "baa"
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "dad",
+          "abc",
+          "ead",
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd",
+          "bcb",
+          "cac",
+          "bbd",
+          "cda",
+          "ddc",
+          "aec",
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb",
+          "bcd",
+          "bdc",
+          "daa",
+          "eeb",
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec",
+          "baa",
+          "cae",
+          "aad",
+          "cce"
+        ]
+      ],
+      "expected": [
+        "dad",
+        "abc",
+        "ead",
+        "cbe",
+        "dba",
+        "bdc",
+        "edb",
+        "cda",
+        "beb",
+        "eda",
+        "aab",
+        "cbb",
+        "dbb",
+        "ecd",
+        "bca",
+        "cba",
+        "eca",
+        "eac",
+        "bdd",
+        "cdd",
+        "dce",
+        "aba",
+        "cdd",
+        "bcb",
+        "cac",
+        "bbd",
+        "cda",
+        "ddc",
+        "aec",
+        "cde",
+        "bcd",
+        "cde",
+        "bcd",
+        "eed",
+        "bdc",
+        "bca",
+        "ccb",
+        "bcd",
+        "bdc",
+        "daa",
+        "eeb",
+        "aec",
+        "bed",
+        "bcd",
+        "dee",
+        "eec",
+        "baa",
+        "cae",
+        "aad",
+        "cce"
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "bad",
+          "dbc",
+          "dcb",
+          "bdd",
+          "deb",
+          "ccb",
+          "cde",
+          "dbd"
+        ]
+      ],
+      "expected": [
+        "bad",
+        "dbc",
+        "dcb",
+        "bdd",
+        "deb",
+        "ccb",
+        "cde",
+        "dbd"
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "bae",
+          "bde",
+          "aac",
+          "dac",
+          "aee",
+          "cae",
+          "cdc",
+          "bbe",
+          "ada",
+          "ace",
+          "bec",
+          "bda",
+          "dbb",
+          "adb",
+          "ccc",
+          "aeb",
+          "ebc",
+          "eaa",
+          "bbb",
+          "eaa",
+          "edb",
+          "cbe",
+          "eeb",
+          "cac",
+          "dbc",
+          "bab",
+          "dea",
+          "bda",
+          "bed",
+          "eab",
+          "bdc",
+          "cce",
+          "aed",
+          "acb",
+          "bac",
+          "ecc",
+          "add",
+          "aac",
+          "bec",
+          "cca",
+          "dce",
+          "beb",
+          "acd",
+          "deb",
+          "bed",
+          "abb",
+          "cbe",
+          "ada",
+          "eab",
+          "bbc"
+        ]
+      ],
+      "expected": [
+        "bae",
+        "bde",
+        "aac",
+        "dac",
+        "aee",
+        "cae",
+        "cdc",
+        "bbe",
+        "ada",
+        "ace",
+        "bec",
+        "bda",
+        "dbb",
+        "adb",
+        "ccc",
+        "aeb",
+        "ebc",
+        "eaa",
+        "bbb",
+        "eaa",
+        "edb",
+        "cbe",
+        "eeb",
+        "cac",
+        "dbc",
+        "bab",
+        "dea",
+        "bda",
+        "bed",
+        "eab",
+        "bdc",
+        "cce",
+        "aed",
+        "acb",
+        "bac",
+        "ecc",
+        "add",
+        "aac",
+        "bec",
+        "cca",
+        "dce",
+        "beb",
+        "acd",
+        "deb",
+        "bed",
+        "abb",
+        "cbe",
+        "ada",
+        "eab",
+        "bbc"
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "bed",
+          "baa",
+          "edd",
+          "abe",
+          "bcd",
+          "bde",
+          "ace",
+          "bbe"
+        ]
+      ],
+      "expected": [
+        "bed",
+        "baa",
+        "edd",
+        "abe",
+        "bcd",
+        "bde",
+        "ace",
+        "bbe"
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "deb",
+          "bbd"
+        ]
+      ],
+      "expected": [
+        "deb",
+        "bbd"
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "bcb",
+          "eee",
+          "abb",
+          "ebd",
+          "dee"
+        ]
+      ],
+      "expected": [
+        "bcb",
+        "eee",
+        "abb",
+        "ebd",
+        "dee"
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "cec",
+          "dba",
+          "aad",
+          "acb",
+          "acb",
+          "cca",
+          "eec",
+          "bca"
+        ]
+      ],
+      "expected": [
+        "cec",
+        "dba",
+        "aad",
+        "acb",
+        "acb",
+        "cca",
+        "eec",
+        "bca"
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "source",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/strings-parsing/12-remove-comments",
+  "title": "Remove Comments",
+  "difficulty": "Medium",
+  "topic": "google/strings-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def removeComments(self, source: list[str]) -> list[str]:\n        ans=[]; block=False; buf=[]\n        for line in source:\n            if not block: buf=[]\n            i=0\n            while i<len(line):\n                if block:\n                    if line[i:i+2]=='*/': block=False; i+=2\n                    else: i+=1\n                elif line[i:i+2]=='//': break\n                elif line[i:i+2]=='/*': block=True; i+=2\n                else: buf.append(line[i]); i+=1\n            if not block and buf: ans.append(''.join(buf))\n        return ans",
+    "better": "class Solution:\n    def removeComments(self, source: list[str]) -> list[str]:\n        out=[]; state='code'; cur=[]\n        for line in source:\n            if state=='code': cur=[]\n            i=0\n            while i<len(line):\n                two=line[i:i+2]\n                if state=='block':\n                    if two=='*/': state='code'; i+=2\n                    else: i+=1\n                elif two=='/*': state='block'; i+=2\n                elif two=='//': break\n                else: cur.append(line[i]); i+=1\n            if state=='code' and cur: out.append(''.join(cur))\n        return out",
+    "optimal": "class Solution:\n    def removeComments(self, source: list[str]) -> list[str]:\n        text='\\n'.join(source); kept=[]; i=0; block=False\n        while i<len(text):\n            two=text[i:i+2]\n            if block:\n                if two=='*/': block=False; i+=2\n                else: i+=1\n            elif two=='/*': block=True; i+=2\n            elif two=='//':\n                while i<len(text) and text[i]!='\\n': i+=1\n            else: kept.append(text[i]); i+=1\n        return [line for line in ''.join(kept).split('\\n') if line]"
+  },
+  "starterCode": "class Solution:\n    def removeComments(self, source):\n        # TODO: write your solution here\n        pass\n"
+}

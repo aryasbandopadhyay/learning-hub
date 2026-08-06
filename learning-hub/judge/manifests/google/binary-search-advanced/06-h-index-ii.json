@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "hIndex",
+  "params": [
+    "citations"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          0,
+          1,
+          3,
+          5,
+          6
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "citations",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/binary-search-advanced/06-h-index-ii",
+  "title": "H-Index II",
+  "difficulty": "Medium",
+  "topic": "google/binary-search-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def hIndex(self, citations: list[int]) -> int:\n        n = len(citations)\n        ans = 0\n        for h in range(n + 1):\n            count = 0\n            for c in citations:\n                if c >= h:\n                    count += 1\n            if count >= h:\n                ans = h\n        return ans",
+    "better": "class Solution:\n    def hIndex(self, citations: list[int]) -> int:\n        n = len(citations)\n        for i, c in enumerate(citations):\n            h = n - i\n            if c >= h:\n                return h\n        return 0",
+    "optimal": "class Solution:\n    def hIndex(self, citations: list[int]) -> int:\n        n = len(citations)\n        lo, hi = 0, n\n        while lo < hi:\n            mid = (lo + hi) // 2\n            if citations[mid] >= n - mid:\n                hi = mid\n            else:\n                lo = mid + 1\n        return n - lo"
+  },
+  "starterCode": "class Solution:\n    def hIndex(self, citations):\n        # TODO: write your solution here\n        pass\n"
+}

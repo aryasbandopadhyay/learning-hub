@@ -1,0 +1,36 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "deleteAndEarn",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          2,
+          3,
+          3,
+          3,
+          4
+        ]
+      ],
+      "expected": 9
+    }
+  ],
+  "id": "google/dp-sequences/08-delete-and-earn",
+  "title": "Delete and Earn",
+  "difficulty": "Medium",
+  "topic": "google/dp-sequences",
+  "solutions": {
+    "naive": "class Solution:\n    def deleteAndEarn(self, nums: list[int]) -> int:\n        points = {}\n        for x in nums:\n            points[x] = points.get(x, 0) + x\n        values = sorted(points)\n        n = len(values)\n        def dfs(i: int, prev_taken: bool) -> int:\n            if i == n:\n                return 0\n            skip = dfs(i + 1, False)\n            take = 0\n            if not (prev_taken and i > 0 and values[i] == values[i - 1] + 1):\n                take = points[values[i]] + dfs(i + 1, True)\n            return max(skip, take)\n        return dfs(0, False)",
+    "better": "class Solution:\n    def deleteAndEarn(self, nums: list[int]) -> int:\n        from functools import lru_cache\n        points = {}\n        for x in nums:\n            points[x] = points.get(x, 0) + x\n        values = sorted(points)\n        n = len(values)\n        @lru_cache(None)\n        def dfs(i: int, prev_taken: bool) -> int:\n            if i == n:\n                return 0\n            skip = dfs(i + 1, False)\n            take = 0\n            if not (prev_taken and i > 0 and values[i] == values[i - 1] + 1):\n                take = points[values[i]] + dfs(i + 1, True)\n            return max(skip, take)\n        return dfs(0, False)",
+    "optimal": "class Solution:\n    def deleteAndEarn(self, nums: list[int]) -> int:\n        points = {}\n        for x in nums:\n            points[x] = points.get(x, 0) + x\n        avoid = using = 0\n        prev = None\n        for x in sorted(points):\n            gain = points[x]\n            if prev is not None and x == prev + 1:\n                avoid, using = max(avoid, using), avoid + gain\n            else:\n                best = max(avoid, using)\n                avoid, using = best, best + gain\n            prev = x\n        return max(avoid, using)"
+  },
+  "starterCode": "class Solution:\n    def deleteAndEarn(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

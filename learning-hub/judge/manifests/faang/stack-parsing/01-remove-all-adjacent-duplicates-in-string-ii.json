@@ -1,0 +1,132 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "removeDuplicates",
+  "params": [
+    "s",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "deeedbbcccbdaa",
+        3
+      ],
+      "expected": "aa"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        6128
+      ],
+      "expected": "dbebbbbacdeeaedbdeeb"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "bdbec",
+        1360
+      ],
+      "expected": "bdbec"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "dc",
+        6597
+      ],
+      "expected": "dc"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "d",
+        3339
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "de",
+        3246
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "c",
+        2116
+      ],
+      "expected": "c"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "deb",
+        8245
+      ],
+      "expected": "deb"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "a",
+        382
+      ],
+      "expected": "a"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/stack-parsing/01-remove-all-adjacent-duplicates-in-string-ii",
+  "title": "Remove All Adjacent Duplicates in String II",
+  "difficulty": "Medium",
+  "topic": "faang/stack-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def removeDuplicates(self, s: str, k: int) -> str:\n        changed = True\n        while changed:\n            changed = False\n            i = 0\n            parts = []\n            while i < len(s):\n                j = i\n                while j < len(s) and s[j] == s[i]:\n                    j += 1\n                count = j - i\n                if not changed and count >= k:\n                    keep = count % k\n                    parts.append(s[i] * keep)\n                    changed = True\n                else:\n                    parts.append(s[i:j])\n                i = j\n            s = \"\".join(parts)\n        return s",
+    "better": "class Solution:\n    def removeDuplicates(self, s: str, k: int) -> str:\n        stack = []\n        for ch in s:\n            if stack and stack[-1][0] == ch:\n                stack[-1][1] += 1\n                if stack[-1][1] == k:\n                    stack.pop()\n            else:\n                stack.append([ch, 1])\n        return \"\".join(ch * count for ch, count in stack)",
+    "optimal": "class Solution:\n    def removeDuplicates(self, s: str, k: int) -> str:\n        chars = []\n        counts = []\n        for ch in s:\n            chars.append(ch)\n            if len(chars) > 1 and chars[-2] == ch:\n                counts.append(counts[-1] + 1)\n            else:\n                counts.append(1)\n            if counts[-1] == k:\n                del chars[-k:]\n                del counts[-k:]\n        return \"\".join(chars)"
+  },
+  "starterCode": "class Solution:\n    def removeDuplicates(self, s, k):\n        # TODO: write your solution here\n        pass\n"
+}

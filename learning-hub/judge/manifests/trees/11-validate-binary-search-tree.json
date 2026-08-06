@@ -1,0 +1,37 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isValidBST",
+  "params": [
+    "root"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          1,
+          3
+        ]
+      ],
+      "expected": true
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree"
+  ],
+  "id": "trees/11-validate-binary-search-tree",
+  "title": "Validate Binary Search Tree",
+  "difficulty": "Medium",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isValidBST(self, root):\n        vals = []\n        def inorder(node):\n            if not node: return\n            inorder(node.left); vals.append(node.val); inorder(node.right)\n        inorder(root)\n        return all(vals[i] < vals[i + 1] for i in range(len(vals) - 1))",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isValidBST(self, root):\n        def check(node, lo, hi):\n            if not node: return True\n            if not (lo < node.val < hi): return False\n            return check(node.left, lo, node.val) and check(node.right, node.val, hi)\n        return check(root, float('-inf'), float('inf'))",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isValidBST(self, root):\n        stack, prev = [], None\n        node = root\n        while stack or node:\n            while node:\n                stack.append(node); node = node.left\n            node = stack.pop()\n            if prev is not None and node.val <= prev: return False\n            prev = node.val\n            node = node.right\n        return True"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def isValidBST(self, root):\n        # TODO: write your solution here\n        pass\n"
+}

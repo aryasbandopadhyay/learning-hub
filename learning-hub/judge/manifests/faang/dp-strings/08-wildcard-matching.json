@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isMatch",
+  "params": [
+    "s",
+    "p"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "adceb",
+        "*a*b"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "*a*b"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "*a*b"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "*a*b"
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "p",
+          "type": "str",
+          "role": "const",
+          "value": "*a*b"
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-strings/08-wildcard-matching",
+  "title": "Wildcard Matching",
+  "difficulty": "Hard",
+  "topic": "faang/dp-strings",
+  "solutions": {
+    "naive": "class Solution:\n    def isMatch(self, s: str, p: str) -> bool:\n        def dfs(i, j):\n            if j == len(p):\n                return i == len(s)\n            if i == len(s):\n                return all(ch == '*' for ch in p[j:])\n            if p[j] == '*':\n                return dfs(i, j + 1) or dfs(i + 1, j)\n            if p[j] == '?' or p[j] == s[i]:\n                return dfs(i + 1, j + 1)\n            return False\n        return dfs(0, 0)",
+    "better": "class Solution:\n    def isMatch(self, s, p):\n        from functools import lru_cache\n        @lru_cache(None)\n        def dfs(i, j):\n            if j == len(p):\n                return i == len(s)\n            if i == len(s):\n                return all(ch == '*' for ch in p[j:])\n            if p[j] == '*':\n                return dfs(i, j + 1) or dfs(i + 1, j)\n            if p[j] == '?' or p[j] == s[i]:\n                return dfs(i + 1, j + 1)\n            return False\n        return dfs(0, 0)",
+    "optimal": "class Solution:\n    def isMatch(self, s, p):\n        i = j = 0\n        star = -1\n        match = 0\n        while i < len(s):\n            if j < len(p) and (p[j] == '?' or p[j] == s[i]):\n                i += 1; j += 1\n            elif j < len(p) and p[j] == '*':\n                star = j; match = i; j += 1\n            elif star != -1:\n                j = star + 1; match += 1; i = match\n            else:\n                return False\n        return all(ch == '*' for ch in p[j:])"
+  },
+  "starterCode": "class Solution:\n    def isMatch(self, s, p):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "mergeTwoLists",
+  "params": [
+    "list1",
+    "list2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        2,
+        3,
+        4,
+        4
+      ]
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist",
+    "linkedlist"
+  ],
+  "id": "linked-list/02-merge-two-sorted-lists",
+  "title": "Merge Two Sorted Lists",
+  "difficulty": "Easy",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def mergeTwoLists(self, list1, list2):\n        values = []\n        while list1:\n            values.append(list1.val)\n            list1 = list1.next\n        while list2:\n            values.append(list2.val)\n            list2 = list2.next\n\n        dummy = ListNode()\n        tail = dummy\n        for value in sorted(values):\n            tail.next = ListNode(value)\n            tail = tail.next\n        return dummy.next",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def mergeTwoLists(self, list1, list2):\n        dummy = ListNode()\n        tail = dummy\n        while list1 and list2:\n            if list1.val <= list2.val:\n                tail.next = ListNode(list1.val)\n                list1 = list1.next\n            else:\n                tail.next = ListNode(list2.val)\n                list2 = list2.next\n            tail = tail.next\n\n        rest = list1 or list2\n        while rest:\n            tail.next = ListNode(rest.val)\n            tail = tail.next\n            rest = rest.next\n        return dummy.next",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def mergeTwoLists(self, list1, list2):\n        dummy = ListNode()\n        tail = dummy\n        while list1 and list2:\n            if list1.val <= list2.val:\n                tail.next = list1\n                list1 = list1.next\n            else:\n                tail.next = list2\n                list2 = list2.next\n            tail = tail.next\n\n        tail.next = list1 or list2\n        return dummy.next"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def mergeTwoLists(self, list1, list2):\n        # TODO: write your solution here\n        pass\n"
+}

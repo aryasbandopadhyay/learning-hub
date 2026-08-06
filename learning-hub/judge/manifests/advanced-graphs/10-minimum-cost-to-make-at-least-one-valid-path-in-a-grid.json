@@ -1,0 +1,54 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minCost",
+  "params": [
+    "grid"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            2,
+            2,
+            2,
+            2
+          ]
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "id": "advanced-graphs/10-minimum-cost-to-make-at-least-one-valid-path-in-a-grid",
+  "title": "Minimum Cost to Make at Least One Valid Path in a Grid",
+  "difficulty": "Hard",
+  "topic": "advanced-graphs",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def minCost(self, grid: List[List[int]]) -> int:\n        rows, cols = len(grid), len(grid[0])\n        dirs = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n        best = float(\"inf\")\n\n        def dfs(r: int, c: int, cost: int, seen: set[tuple[int, int]]) -> None:\n            nonlocal best\n            if cost >= best:\n                return\n            if (r, c) == (rows - 1, cols - 1):\n                best = cost\n                return\n            for idx, (dr, dc) in enumerate(dirs, start=1):\n                nr, nc = r + dr, c + dc\n                if 0 <= nr < rows and 0 <= nc < cols and (nr, nc) not in seen:\n                    seen.add((nr, nc))\n                    dfs(nr, nc, cost + (0 if grid[r][c] == idx else 1), seen)\n                    seen.remove((nr, nc))\n\n        dfs(0, 0, 0, {(0, 0)})\n        return best",
+    "better": "import heapq\nfrom typing import List\n\nclass Solution:\n    def minCost(self, grid: List[List[int]]) -> int:\n        rows, cols = len(grid), len(grid[0])\n        dirs = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n        dist = [[float(\"inf\")] * cols for _ in range(rows)]\n        dist[0][0] = 0\n        heap = [(0, 0, 0)]\n\n        while heap:\n            cost, r, c = heapq.heappop(heap)\n            if (r, c) == (rows - 1, cols - 1):\n                return cost\n            if cost != dist[r][c]:\n                continue\n            for idx, (dr, dc) in enumerate(dirs, start=1):\n                nr, nc = r + dr, c + dc\n                if 0 <= nr < rows and 0 <= nc < cols:\n                    new_cost = cost + (0 if grid[r][c] == idx else 1)\n                    if new_cost < dist[nr][nc]:\n                        dist[nr][nc] = new_cost\n                        heapq.heappush(heap, (new_cost, nr, nc))\n        return -1",
+    "optimal": "from collections import deque\nfrom typing import List\n\nclass Solution:\n    def minCost(self, grid: List[List[int]]) -> int:\n        rows, cols = len(grid), len(grid[0])\n        dirs = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n        dist = [[float(\"inf\")] * cols for _ in range(rows)]\n        dist[0][0] = 0\n        dq = deque([(0, 0)])\n\n        while dq:\n            r, c = dq.popleft()\n            for idx, (dr, dc) in enumerate(dirs, start=1):\n                nr, nc = r + dr, c + dc\n                if 0 <= nr < rows and 0 <= nc < cols:\n                    add = 0 if grid[r][c] == idx else 1\n                    new_cost = dist[r][c] + add\n                    if new_cost < dist[nr][nc]:\n                        dist[nr][nc] = new_cost\n                        if add == 0:\n                            dq.appendleft((nr, nc))\n                        else:\n                            dq.append((nr, nc))\n        return dist[rows - 1][cols - 1]"
+  },
+  "starterCode": "class Solution:\n    def minCost(self, grid):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================================================
+  pom.xml — the Maven Project Object Model.
+  ============================================================================================
+  Maven is the build tool. This file declares:
+    * project coordinates (groupId / artifactId / version),
+    * the parent POM (Spring Boot) which centralizes dependency versions,
+    * dependencies (the libraries we use),
+    * build plugins (how the app is packaged/run).
+
+  KEY LEARNING POINTS:
+    * The spring-boot-starter-parent gives us curated, mutually-compatible versions for the
+      whole Spring ecosystem, so most <dependency> entries need NO <version> — Maven inherits it.
+    * "Starters" are opinionated dependency bundles. e.g. spring-boot-starter-web pulls in
+      Spring MVC, Jackson (JSON), and an embedded Tomcat server in one line.
+  ============================================================================================
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Inherit dependency & plugin management from Spring Boot. This is what makes Spring Boot
+         "just work" without you hand-picking compatible versions of dozens of libraries. -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.16</version>
+        <relativePath/> <!-- look the parent up from the Maven repository, not a local path -->
+    </parent>
+
+    <!-- Coordinates that uniquely identify THIS project as an artifact. -->
+    <groupId>com.example</groupId>
+    <artifactId>crud-demo</artifactId>
+    <version>1.0.0</version>
+    <name>crud-demo</name>
+    <description>A heavily-commented Spring Boot CRUD app for learning annotations, IoC and DI</description>
+
+    <properties>
+        <!-- Compile for Java 17 (the Spring Boot 3.x baseline). -->
+        <java.version>17</java.version>
+    </properties>
+
+    <dependencies>
+        <!-- Spring MVC + embedded Tomcat + Jackson JSON. Gives us @RestController, @GetMapping, etc. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Data JPA + Hibernate (the ORM). Gives us JpaRepository, @Entity, @Id, etc. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- Bean Validation (Jakarta Validation + Hibernate Validator). Gives us @NotBlank, @Valid, etc. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- H2: a tiny in-memory SQL database. Perfect for demos/tests — nothing to install.
+             'runtime' scope: needed when the app runs, but we don't compile against its classes. -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Test starter: JUnit 5, Spring Test, MockMvc, Mockito, AssertJ — all in one.
+             'test' scope: only on the test classpath. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Repackages the app into an executable "fat" JAR and enables `mvn spring-boot:run`. -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

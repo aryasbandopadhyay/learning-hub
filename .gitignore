@@ -1,0 +1,43 @@
+# ---- Secrets / local env (NEVER commit) ----
+.env
+.env.*
+!.env.example
+*.local
+application-local.yml
+application-local.yaml
+application-local.properties
+*.pem
+*.key
+*secret*.txt
+lhub_cs.txt
+azure-creds*.json
+
+# ---- Java / Maven ----
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# ---- Node ----
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# ---- Logs / build output ----
+*.log
+build_all.log
+
+# ---- IDE / OS ----
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

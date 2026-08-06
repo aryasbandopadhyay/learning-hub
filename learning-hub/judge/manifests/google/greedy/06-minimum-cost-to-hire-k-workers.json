@@ -1,0 +1,80 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "mincostToHireWorkers",
+  "params": [
+    "quality",
+    "wage",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          10,
+          20,
+          5
+        ],
+        [
+          70,
+          50,
+          30
+        ],
+        2
+      ],
+      "expected": 105.0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "quality",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "wage",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            70,
+            50,
+            30
+          ]
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/greedy/06-minimum-cost-to-hire-k-workers",
+  "title": "Minimum Cost to Hire K Workers",
+  "difficulty": "Hard",
+  "topic": "google/greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def mincostToHireWorkers(self, quality: list[int], wage: list[int], k: int) -> float:\n        n = len(quality)\n        best = float('inf')\n        for i in range(n):\n            rate = wage[i] / quality[i]\n            eligible = []\n            for q, w in zip(quality, wage):\n                if w / q <= rate:\n                    eligible.append(q)\n            if len(eligible) >= k:\n                eligible.sort()\n                best = min(best, sum(eligible[:k]) * rate)\n        return round(best, 5)",
+    "better": "class Solution:\n    def mincostToHireWorkers(self, quality, wage, k):\n        import bisect\n        workers = sorted((w / q, q) for q, w in zip(quality, wage))\n        qualities = []\n        best = float('inf')\n        for rate, q in workers:\n            bisect.insort(qualities, q)\n            if len(qualities) >= k:\n                total_q = sum(qualities[:k])\n                best = min(best, total_q * rate)\n        return round(best, 5)",
+    "optimal": "class Solution:\n    def mincostToHireWorkers(self, quality, wage, k):\n        import heapq\n        workers = sorted((w / q, q) for q, w in zip(quality, wage))\n        heap = []\n        total_q = 0\n        best = float('inf')\n        for rate, q in workers:\n            heapq.heappush(heap, -q)\n            total_q += q\n            if len(heap) > k:\n                total_q += heapq.heappop(heap)\n            if len(heap) == k:\n                best = min(best, total_q * rate)\n        return round(best, 5)"
+  },
+  "starterCode": "class Solution:\n    def mincostToHireWorkers(self, quality, wage, k):\n        # TODO: write your solution here\n        pass\n"
+}

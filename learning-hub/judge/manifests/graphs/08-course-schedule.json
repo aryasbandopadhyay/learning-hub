@@ -1,0 +1,238 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "canFinish",
+  "params": [
+    "numCourses",
+    "prerequisites"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        2,
+        [
+          [
+            1,
+            0
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        9921,
+        [
+          [
+            5161,
+            -8319
+          ],
+          [
+            1715,
+            -5769
+          ],
+          [
+            -2928,
+            -4731
+          ],
+          [
+            4474,
+            9510
+          ],
+          [
+            -4180,
+            6488
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        5529,
+        [
+          [
+            -2912,
+            2352
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        7941,
+        [
+          [
+            -4370,
+            -1061
+          ],
+          [
+            -973,
+            1965
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        9159,
+        [
+          [
+            -4311,
+            1589
+          ],
+          [
+            7529,
+            -7331
+          ],
+          [
+            -6279,
+            -5882
+          ],
+          [
+            -5513,
+            -5079
+          ],
+          [
+            7869,
+            -7166
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        4732,
+        [
+          [
+            3092,
+            3733
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        9966,
+        [
+          [
+            -7434,
+            2438
+          ],
+          [
+            -9409,
+            1758
+          ],
+          [
+            419,
+            2296
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9070,
+        [
+          [
+            777,
+            -6707
+          ],
+          [
+            7996,
+            -315
+          ],
+          [
+            -8922,
+            1244
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7558,
+        [
+          [
+            -1338,
+            5606
+          ],
+          [
+            1549,
+            2017
+          ],
+          [
+            1362,
+            1064
+          ]
+        ]
+      ],
+      "expected": true
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "numCourses",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "prerequisites",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "graphs/08-course-schedule",
+  "title": "Course Schedule",
+  "difficulty": "Medium",
+  "topic": "graphs",
+  "solutions": {
+    "naive": "from typing import List\nfrom collections import deque\n\nclass Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        # Topological sort detects cycles.\n        graph = [[] for _ in range(numCourses)]\n        indeg = [0] * numCourses\n        for c, p in prerequisites:\n            graph[p].append(c); indeg[c] += 1\n        q = deque([i for i,d in enumerate(indeg) if d == 0])\n        seen = 0\n        while q:\n            node = q.popleft(); seen += 1\n            for nei in graph[node]:\n                indeg[nei] -= 1\n                if indeg[nei] == 0: q.append(nei)\n        return seen == numCourses",
+    "better": "from typing import List\nfrom collections import deque\n\nclass Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        # Topological sort detects cycles.\n        graph = [[] for _ in range(numCourses)]\n        indeg = [0] * numCourses\n        for c, p in prerequisites:\n            graph[p].append(c); indeg[c] += 1\n        q = deque([i for i,d in enumerate(indeg) if d == 0])\n        seen = 0\n        while q:\n            node = q.popleft(); seen += 1\n            for nei in graph[node]:\n                indeg[nei] -= 1\n                if indeg[nei] == 0: q.append(nei)\n        return seen == numCourses",
+    "optimal": "from typing import List\nfrom collections import deque\n\nclass Solution:\n    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:\n        # Topological sort detects cycles.\n        graph = [[] for _ in range(numCourses)]\n        indeg = [0] * numCourses\n        for c, p in prerequisites:\n            graph[p].append(c); indeg[c] += 1\n        q = deque([i for i,d in enumerate(indeg) if d == 0])\n        seen = 0\n        while q:\n            node = q.popleft(); seen += 1\n            for nei in graph[node]:\n                indeg[nei] -= 1\n                if indeg[nei] == 0: q.append(nei)\n        return seen == numCourses"
+  },
+  "starterCode": "class Solution:\n    def canFinish(self, numCourses, prerequisites):\n        # TODO: write your solution here\n        pass\n"
+}

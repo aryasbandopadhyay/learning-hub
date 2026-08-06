@@ -1,0 +1,247 @@
+{
+  "shape": "codec",
+  "className": "Solution",
+  "entry": "encode",
+  "params": [
+    "strs"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "lint",
+          "code",
+          "love",
+          "you"
+        ]
+      ],
+      "expected": [
+        "lint",
+        "code",
+        "love",
+        "you"
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ]
+      ],
+      "expected": [
+        "dbe",
+        "bbb",
+        "bac",
+        "dee",
+        "aed",
+        "bde",
+        "ebc",
+        "dbb",
+        "dbe",
+        "cae",
+        "adc",
+        "dac",
+        "ead",
+        "bce",
+        "ade",
+        "bed",
+        "acb",
+        "bbd",
+        "ebe",
+        "baa"
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "bdd"
+        ]
+      ],
+      "expected": [
+        "bdd"
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "dab",
+          "cea"
+        ]
+      ],
+      "expected": [
+        "dab",
+        "cea"
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd"
+        ]
+      ],
+      "expected": [
+        "cbe",
+        "dba",
+        "bdc",
+        "edb",
+        "cda",
+        "beb",
+        "eda",
+        "aab",
+        "cbb",
+        "dbb",
+        "ecd",
+        "bca",
+        "cba",
+        "eca",
+        "eac",
+        "bdd",
+        "cdd",
+        "dce",
+        "aba",
+        "cdd"
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "cbc",
+          "acb",
+          "bdc",
+          "dad",
+          "dca"
+        ]
+      ],
+      "expected": [
+        "cbc",
+        "acb",
+        "bdc",
+        "dad",
+        "dca"
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb"
+        ]
+      ],
+      "expected": [
+        "cde",
+        "bcd",
+        "cde",
+        "bcd",
+        "eed",
+        "bdc",
+        "bca",
+        "ccb"
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "cdb",
+          "dcd",
+          "aae"
+        ]
+      ],
+      "expected": [
+        "cdb",
+        "dcd",
+        "aae"
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec"
+        ]
+      ],
+      "expected": [
+        "aec",
+        "bed",
+        "bcd",
+        "dee",
+        "eec"
+      ]
+    }
+  ],
+  "id": "arrays-hashing/09-encode-and-decode-strings",
+  "title": "Encode and Decode Strings",
+  "difficulty": "Medium",
+  "topic": "arrays-hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def encode(self, strs: list[str]) -> str:\n        return '|'.join(strs)\n\n    def decode(self, s: str) -> list[str]:\n        if s == '':\n            return ['']\n        return s.split('|')",
+    "better": "class Solution:\n    def encode(self, strs: list[str]) -> str:\n        return '|'.join(w.replace('\\\\', '\\\\\\\\').replace('|', '\\\\|') for w in strs)\n\n    def decode(self, s: str) -> list[str]:\n        ans, cur, esc = [], [], False\n        for ch in s:\n            if esc:\n                cur.append(ch); esc = False\n            elif ch == '\\\\':\n                esc = True\n            elif ch == '|':\n                ans.append(''.join(cur)); cur = []\n            else:\n                cur.append(ch)\n        ans.append(''.join(cur))\n        return ans",
+    "optimal": "class Solution:\n    def encode(self, strs: list[str]) -> str:\n        return ''.join(str(len(w)) + '#' + w for w in strs)\n\n    def decode(self, s: str) -> list[str]:\n        ans = []\n        i = 0\n        while i < len(s):\n            j = i\n            while s[j] != '#':\n                j += 1\n            length = int(s[i:j])\n            start = j + 1\n            ans.append(s[start:start+length])\n            i = start + length\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def encode(self, strs):\n        # TODO: write your solution here\n        pass\n\n    def decode(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

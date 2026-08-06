@@ -1,0 +1,69 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "amountPainted",
+  "params": [
+    "paint"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            4
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            2,
+            5
+          ]
+        ]
+      ],
+      "expected": [
+        3,
+        3,
+        0
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "paint",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/intervals/07-amount-of-new-area-painted-each-day",
+  "title": "Amount of New Area Painted Each Day",
+  "difficulty": "Hard",
+  "topic": "google/intervals",
+  "solutions": {
+    "naive": "class Solution:\n    def amountPainted(self, paint: list[list[int]]) -> list[int]:\n        seen = set()\n        answer = []\n        for start, end in paint:\n            fresh = 0\n            for x in range(start, end):\n                if x not in seen:\n                    seen.add(x)\n                    fresh += 1\n            answer.append(fresh)\n        return answer",
+    "better": "class Solution:\n    def amountPainted(self, paint: list[list[int]]) -> list[int]:\n        from bisect import bisect_left\n        intervals = []\n        answer = []\n        for start, end in paint:\n            fresh = end - start\n            i = bisect_left(intervals, [start, -1])\n            if i > 0 and intervals[i - 1][1] >= start:\n                i -= 1\n            new_start, new_end = start, end\n            j = i\n            while j < len(intervals) and intervals[j][0] <= end:\n                a, b = intervals[j]\n                overlap = max(0, min(end, b) - max(start, a))\n                fresh -= overlap\n                new_start = min(new_start, a)\n                new_end = max(new_end, b)\n                j += 1\n            intervals[i:j] = [[new_start, new_end]]\n            answer.append(fresh)\n        return answer",
+    "optimal": "class Solution:\n    def amountPainted(self, paint: list[list[int]]) -> list[int]:\n        parent = {}\n\n        def find(x):\n            if x not in parent:\n                parent[x] = x\n                return x\n            if parent[x] != x:\n                parent[x] = find(parent[x])\n            return parent[x]\n\n        answer = []\n        for start, end in paint:\n            fresh = 0\n            x = find(start)\n            while x < end:\n                fresh += 1\n                parent[x] = find(x + 1)\n                x = find(x)\n            answer.append(fresh)\n        return answer"
+  },
+  "starterCode": "class Solution:\n    def amountPainted(self, paint):\n        # TODO: write your solution here\n        pass\n"
+}

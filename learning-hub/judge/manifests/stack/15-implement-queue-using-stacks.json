@@ -1,0 +1,51 @@
+{
+  "shape": "design",
+  "className": "MyQueue",
+  "entry": null,
+  "params": [],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "MyQueue",
+        "push",
+        "push",
+        "peek",
+        "pop",
+        "empty"
+      ],
+      "args": [
+        [],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        1,
+        1,
+        false
+      ]
+    }
+  ],
+  "id": "stack/15-implement-queue-using-stacks",
+  "title": "Implement Queue using Stacks",
+  "difficulty": "Easy",
+  "topic": "stack",
+  "solutions": {
+    "naive": "class MyQueue:\n    def __init__(self):\n        self.stack = []\n\n    def push(self, x: int) -> None:\n        self.stack.append(x)\n\n    def pop(self) -> int:\n        temp = []\n        while self.stack:\n            temp.append(self.stack.pop())\n        val = temp.pop()\n        while temp:\n            self.stack.append(temp.pop())\n        return val\n\n    def peek(self) -> int:\n        val = self.pop()\n        # Restore the peeked value at the bottom/front of the stack.\n        temp = []\n        while self.stack:\n            temp.append(self.stack.pop())\n        self.stack.append(val)\n        while temp:\n            self.stack.append(temp.pop())\n        return val\n\n    def empty(self) -> bool:\n        return not self.stack",
+    "better": "class MyQueue:\n    def __init__(self):\n        self.stack = []\n\n    def push(self, x: int) -> None:\n        temp = []\n        while self.stack:\n            temp.append(self.stack.pop())\n        self.stack.append(x)\n        while temp:\n            self.stack.append(temp.pop())\n\n    def pop(self) -> int:\n        return self.stack.pop()\n\n    def peek(self) -> int:\n        return self.stack[-1]\n\n    def empty(self) -> bool:\n        return len(self.stack) == 0",
+    "optimal": "class MyQueue:\n    def __init__(self):\n        self.in_stack = []\n        self.out_stack = []\n\n    def push(self, x: int) -> None:\n        self.in_stack.append(x)\n\n    def _move(self) -> None:\n        # Transfer once so the oldest item becomes the top of out_stack.\n        if not self.out_stack:\n            while self.in_stack:\n                self.out_stack.append(self.in_stack.pop())\n\n    def pop(self) -> int:\n        self._move()\n        return self.out_stack.pop()\n\n    def peek(self) -> int:\n        self._move()\n        return self.out_stack[-1]\n\n    def empty(self) -> bool:\n        return not self.in_stack and not self.out_stack"
+  },
+  "starterCode": "class MyQueue:\n    def __init__(self):\n        # TODO: write your solution here\n        pass\n\n    def push(self, x):\n        # TODO: write your solution here\n        pass\n\n    def _move(self):\n        # TODO: write your solution here\n        pass\n\n    def pop(self):\n        # TODO: write your solution here\n        pass\n\n    def peek(self):\n        # TODO: write your solution here\n        pass\n\n    def empty(self):\n        # TODO: write your solution here\n        pass\n"
+}

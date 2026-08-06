@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minWindow",
+  "params": [
+    "s1",
+    "s2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "abcdebdde",
+        "bde"
+      ],
+      "expected": "bcde"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "bde"
+      ],
+      "expected": "bde"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "bde"
+      ],
+      "expected": "bdbe"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "bde"
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "bde"
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "bde"
+      ],
+      "expected": "bde"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "bde"
+      ],
+      "expected": "becdbcacbae"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "bde"
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "bde"
+      ],
+      "expected": ""
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s1",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "s2",
+          "type": "str",
+          "role": "const",
+          "value": "bde"
+        }
+      ]
+    }
+  },
+  "id": "google/strings-parsing/08-minimum-window-subsequence",
+  "title": "Minimum Window Subsequence",
+  "difficulty": "Hard",
+  "topic": "google/strings-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def minWindow(self, s1: str, s2: str) -> str:\n        best=\"\"; n=len(s1)\n        for i in range(n):\n            for j in range(i+1,n+1):\n                if best and j-i>=len(best): break\n                p=0\n                for c in s1[i:j]:\n                    if p<len(s2) and c==s2[p]: p+=1\n                if p==len(s2): best=s1[i:j]; break\n        return best",
+    "better": "class Solution:\n    def minWindow(self, s1: str, s2: str) -> str:\n        from collections import defaultdict\n        from bisect import bisect_left\n        pos=defaultdict(list)\n        for i,c in enumerate(s1): pos[c].append(i)\n        bl,br=-1,len(s1)+1\n        for start in pos.get(s2[0],[]):\n            cur=start; ok=True\n            for c in s2:\n                arr=pos.get(c,[]); k=bisect_left(arr,cur)\n                if k==len(arr): ok=False; break\n                cur=arr[k]+1\n            if ok and cur-start<br-bl: bl,br=start,cur\n        return \"\" if bl<0 else s1[bl:br]",
+    "optimal": "class Solution:\n    def minWindow(self, s1: str, s2: str) -> str:\n        n,m=len(s1),len(s2); best_l=0; best_len=n+1; i=0\n        while i<n:\n            j=0\n            while i<n:\n                if s1[i]==s2[j]:\n                    j+=1\n                    if j==m: break\n                i+=1\n            if i==n: break\n            end=i+1; j=m-1\n            while i>=0:\n                if s1[i]==s2[j]:\n                    j-=1\n                    if j<0: break\n                i-=1\n            if end-i<best_len: best_l,best_len=i,end-i\n            i+=1\n        return \"\" if best_len==n+1 else s1[best_l:best_l+best_len]"
+  },
+  "starterCode": "class Solution:\n    def minWindow(self, s1, s2):\n        # TODO: write your solution here\n        pass\n"
+}

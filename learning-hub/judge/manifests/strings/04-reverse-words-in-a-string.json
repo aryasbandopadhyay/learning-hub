@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "reverseWords",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "  hello world  "
+      ],
+      "expected": "world hello"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "dbebbbbacdeeaedbdeeb"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "dbbdbecaeadcd"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "bbecdbcacbaecaeacbdd"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "ddceabacddbcbcacbbdc"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": "dd"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "strings/04-reverse-words-in-a-string",
+  "title": "Reverse Words in a String",
+  "difficulty": "Medium",
+  "topic": "strings",
+  "solutions": {
+    "naive": "class Solution:\n    def reverseWords(self, s: str) -> str:\n        words = []\n        i = 0\n        while i < len(s):\n            while i < len(s) and s[i] == ' ':\n                i += 1\n            start = i\n            while i < len(s) and s[i] != ' ':\n                i += 1\n            if start < i:\n                words.insert(0, s[start:i])  # Front insertion shifts existing words.\n        return ' '.join(words)",
+    "better": "class Solution:\n    def reverseWords(self, s: str) -> str:\n        words = s.split()\n        words.reverse()\n        return ' '.join(words)",
+    "optimal": "class Solution:\n    def reverseWords(self, s: str) -> str:\n        result = []\n        i = len(s) - 1\n        while i >= 0:\n            while i >= 0 and s[i] == ' ':\n                i -= 1\n            end = i\n            while i >= 0 and s[i] != ' ':\n                i -= 1\n            if i < end:\n                result.append(s[i + 1:end + 1])\n        return ' '.join(result)"
+  },
+  "starterCode": "class Solution:\n    def reverseWords(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

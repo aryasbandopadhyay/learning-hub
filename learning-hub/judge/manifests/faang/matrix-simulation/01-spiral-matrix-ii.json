@@ -1,0 +1,45 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "generateMatrix",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        3
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          8,
+          9,
+          4
+        ],
+        [
+          7,
+          6,
+          5
+        ]
+      ]
+    }
+  ],
+  "id": "faang/matrix-simulation/01-spiral-matrix-ii",
+  "title": "Spiral Matrix II",
+  "difficulty": "Medium",
+  "topic": "faang/matrix-simulation",
+  "solutions": {
+    "naive": "class Solution:\n    def generateMatrix(self, n: int) -> list[list[int]]:\n        ans = [[0] * n for _ in range(n)]\n        dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]\n        r = c = d = 0\n        for val in range(1, n * n + 1):\n            ans[r][c] = val\n            nr, nc = r + dirs[d][0], c + dirs[d][1]\n            if nr < 0 or nr >= n or nc < 0 or nc >= n or ans[nr][nc] != 0:\n                d = (d + 1) % 4\n                nr, nc = r + dirs[d][0], c + dirs[d][1]\n            r, c = nr, nc\n        return ans",
+    "better": "class Solution:\n    def generateMatrix(self, n: int) -> list[list[int]]:\n        ans = [[0] * n for _ in range(n)]\n        val = 1\n        for layer in range((n + 1) // 2):\n            top = left = layer\n            bottom = right = n - 1 - layer\n            for c in range(left, right + 1):\n                ans[top][c] = val; val += 1\n            for r in range(top + 1, bottom + 1):\n                ans[r][right] = val; val += 1\n            if top < bottom:\n                for c in range(right - 1, left - 1, -1):\n                    ans[bottom][c] = val; val += 1\n            if left < right:\n                for r in range(bottom - 1, top, -1):\n                    ans[r][left] = val; val += 1\n        return ans",
+    "optimal": "class Solution:\n    def generateMatrix(self, n: int) -> list[list[int]]:\n        ans = [[0] * n for _ in range(n)]\n        top, bottom, left, right = 0, n - 1, 0, n - 1\n        val = 1\n        while top <= bottom and left <= right:\n            for c in range(left, right + 1):\n                ans[top][c] = val; val += 1\n            top += 1\n            for r in range(top, bottom + 1):\n                ans[r][right] = val; val += 1\n            right -= 1\n            if top <= bottom:\n                for c in range(right, left - 1, -1):\n                    ans[bottom][c] = val; val += 1\n                bottom -= 1\n            if left <= right:\n                for r in range(bottom, top - 1, -1):\n                    ans[r][left] = val; val += 1\n                left += 1\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def generateMatrix(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

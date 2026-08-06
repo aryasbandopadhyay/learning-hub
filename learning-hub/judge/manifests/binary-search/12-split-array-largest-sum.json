@@ -1,0 +1,66 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "splitArray",
+  "params": [
+    "nums",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          7,
+          2,
+          5,
+          10,
+          8
+        ],
+        2
+      ],
+      "expected": 18
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "binary-search/12-split-array-largest-sum",
+  "title": "Split Array Largest Sum",
+  "difficulty": "Hard",
+  "topic": "binary-search",
+  "solutions": {
+    "naive": "from functools import lru_cache\nfrom typing import List\n\nclass Solution:\n    def splitArray(self, nums: List[int], k: int) -> int:\n        prefix = [0]\n        for num in nums:\n            prefix.append(prefix[-1] + num)\n\n        @lru_cache(None)\n        def dp(start: int, parts: int) -> int:\n            if parts == 1:\n                return prefix[len(nums)] - prefix[start]\n            best = float(\"inf\")\n            for end in range(start + 1, len(nums) - parts + 2):\n                left_sum = prefix[end] - prefix[start]\n                best = min(best, max(left_sum, dp(end, parts - 1)))\n            return best\n\n        return dp(0, k)",
+    "better": "from typing import List\n\nclass Solution:\n    def splitArray(self, nums: List[int], k: int) -> int:\n        n = len(nums)\n        prefix = [0]\n        for num in nums:\n            prefix.append(prefix[-1] + num)\n\n        dp = [[float(\"inf\")] * (k + 1) for _ in range(n + 1)]\n        dp[0][0] = 0\n        for i in range(1, n + 1):\n            for parts in range(1, min(k, i) + 1):\n                for prev in range(parts - 1, i):\n                    largest = max(dp[prev][parts - 1], prefix[i] - prefix[prev])\n                    dp[i][parts] = min(dp[i][parts], largest)\n        return int(dp[n][k])",
+    "optimal": "from typing import List\n\nclass Solution:\n    def splitArray(self, nums: List[int], k: int) -> int:\n        def can_split(limit: int) -> bool:\n            parts, current = 1, 0\n            for num in nums:\n                if current + num > limit:\n                    parts += 1\n                    current = 0\n                current += num\n            return parts <= k\n\n        left, right = max(nums), sum(nums)\n        while left < right:\n            mid = (left + right) // 2\n            if can_split(mid):\n                right = mid\n            else:\n                left = mid + 1\n        return left"
+  },
+  "starterCode": "class Solution:\n    def splitArray(self, nums, k):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,52 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "spiralMatrixIII",
+  "params": [
+    "rows",
+    "cols",
+    "rStart",
+    "cStart"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        1,
+        4,
+        0,
+        0
+      ],
+      "expected": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ]
+    }
+  ],
+  "id": "faang/matrix-simulation/02-spiral-matrix-iii",
+  "title": "Spiral Matrix III",
+  "difficulty": "Medium",
+  "topic": "faang/matrix-simulation",
+  "solutions": {
+    "naive": "class Solution:\n    def spiralMatrixIII(self, rows: int, cols: int, rStart: int, cStart: int) -> list[list[int]]:\n        total = rows * cols\n        ans = [[rStart, cStart]]\n        r, c = rStart, cStart\n        dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]\n        step_len = 1; d = 0\n        while len(ans) < total:\n            for _ in range(2):\n                dr, dc = dirs[d]\n                for _ in range(step_len):\n                    r += dr; c += dc\n                    if 0 <= r < rows and 0 <= c < cols:\n                        ans.append([r, c])\n                        if len(ans) == total:\n                            return ans\n                d = (d + 1) % 4\n            step_len += 1\n        return ans",
+    "better": "class Solution:\n    def spiralMatrixIII(self, rows: int, cols: int, rStart: int, cStart: int) -> list[list[int]]:\n        ans = []\n        r, c = rStart, cStart\n        dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]\n        length = 1\n        while len(ans) < rows * cols:\n            for d, (dr, dc) in enumerate(dirs):\n                for _ in range(length):\n                    if 0 <= r < rows and 0 <= c < cols:\n                        ans.append([r, c])\n                    r += dr; c += dc\n                if d % 2 == 1:\n                    length += 1\n                if len(ans) == rows * cols:\n                    return ans\n        return ans",
+    "optimal": "class Solution:\n    def spiralMatrixIII(self, rows: int, cols: int, rStart: int, cStart: int) -> list[list[int]]:\n        ans = [[rStart, cStart]]\n        r, c = rStart, cStart\n        total = rows * cols\n        step = 1\n        while len(ans) < total:\n            for dr, dc, length in ((0, 1, step), (1, 0, step), (0, -1, step + 1), (-1, 0, step + 1)):\n                for _ in range(length):\n                    r += dr; c += dc\n                    if 0 <= r < rows and 0 <= c < cols:\n                        ans.append([r, c])\n                        if len(ans) == total:\n                            return ans\n            step += 2\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def spiralMatrixIII(self, rows, cols, rStart, cStart):\n        # TODO: write your solution here\n        pass\n"
+}

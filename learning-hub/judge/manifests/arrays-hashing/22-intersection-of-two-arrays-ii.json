@@ -1,0 +1,73 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "intersect",
+  "params": [
+    "nums1",
+    "nums2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        2,
+        2
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums1",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "nums2",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            2,
+            2
+          ]
+        }
+      ]
+    }
+  },
+  "id": "arrays-hashing/22-intersection-of-two-arrays-ii",
+  "title": "Intersection of Two Arrays II",
+  "difficulty": "Easy",
+  "topic": "arrays-hashing",
+  "solutions": {
+    "naive": "class Solution:\n    def intersect(self, nums1: list[int], nums2: list[int]) -> list[int]:\n        used = [False] * len(nums2)\n        ans = []\n        for x in nums1:\n            for i, y in enumerate(nums2):\n                if not used[i] and x == y:\n                    used[i] = True\n                    ans.append(x)\n                    break\n        return ans",
+    "better": "class Solution:\n    def intersect(self, nums1: list[int], nums2: list[int]) -> list[int]:\n        nums1.sort(); nums2.sort()\n        i = j = 0\n        ans = []\n        while i < len(nums1) and j < len(nums2):\n            if nums1[i] == nums2[j]:\n                ans.append(nums1[i]); i += 1; j += 1\n            elif nums1[i] < nums2[j]:\n                i += 1\n            else:\n                j += 1\n        return ans",
+    "optimal": "class Solution:\n    def intersect(self, nums1: list[int], nums2: list[int]) -> list[int]:\n        if len(nums1) > len(nums2):\n            nums1, nums2 = nums2, nums1\n        counts = {}\n        for x in nums1:\n            counts[x] = counts.get(x, 0) + 1\n        ans = []\n        for x in nums2:\n            if counts.get(x, 0) > 0:\n                ans.append(x)\n                counts[x] -= 1\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def intersect(self, nums1, nums2):\n        # TODO: write your solution here\n        pass\n"
+}

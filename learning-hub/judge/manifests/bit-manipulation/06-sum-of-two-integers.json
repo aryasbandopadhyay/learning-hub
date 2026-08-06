@@ -1,0 +1,103 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "getSum",
+  "params": [
+    "a",
+    "b"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 5
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239,
+        3279
+      ],
+      "expected": 9518
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        4071,
+        2184
+      ],
+      "expected": 6255
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        6277,
+        8697
+      ],
+      "expected": 14974
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017,
+        3269
+      ],
+      "expected": 11286
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128,
+        6359
+      ],
+      "expected": 12487
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495,
+        7561
+      ],
+      "expected": 10056
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        1360,
+        8663
+      ],
+      "expected": 10023
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685,
+        5184
+      ],
+      "expected": 12869
+    }
+  ],
+  "id": "bit-manipulation/06-sum-of-two-integers",
+  "title": "Sum of Two Integers",
+  "difficulty": "Medium",
+  "topic": "bit-manipulation",
+  "solutions": {
+    "naive": "class Solution:\n    def getSum(self, a: int, b: int) -> int:\n        # This deliberately avoids + and - in the repeated adjustment.\n        while b > 0:\n            a = a.__add__(1)\n            b = b.__sub__(1)\n        while b < 0:\n            a = a.__sub__(1)\n            b = b.__add__(1)\n        return a",
+    "better": "class Solution:\n    def getSum(self, a: int, b: int) -> int:\n        mask = 0xFFFFFFFF\n        a &= mask\n        b &= mask\n        result = 0\n        carry = 0\n        for i in range(32):\n            abit = (a >> i) & 1\n            bbit = (b >> i) & 1\n            total_bit = abit ^ bbit ^ carry\n            carry = (abit & bbit) | (carry & (abit ^ bbit))\n            result |= total_bit << i\n        # Convert unsigned 32-bit result back to signed Python int.\n        return result if result <= 0x7FFFFFFF else ~(result ^ mask)",
+    "optimal": "class Solution:\n    def getSum(self, a: int, b: int) -> int:\n        mask = 0xFFFFFFFF\n        max_int = 0x7FFFFFFF\n        while b:\n            # XOR is sum without carry; AND then shift is the carry.\n            a, b = (a ^ b) & mask, ((a & b) << 1) & mask\n        return a if a <= max_int else ~(a ^ mask)"
+  },
+  "starterCode": "class Solution:\n    def getSum(self, a, b):\n        # TODO: write your solution here\n        pass\n"
+}

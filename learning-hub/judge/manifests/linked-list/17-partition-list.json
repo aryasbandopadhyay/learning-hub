@@ -1,0 +1,50 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "partition",
+  "params": [
+    "head",
+    "x"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          4,
+          3,
+          2,
+          5,
+          2
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        2,
+        4,
+        3,
+        5
+      ]
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist",
+    "plain"
+  ],
+  "id": "linked-list/17-partition-list",
+  "title": "Partition List",
+  "difficulty": "Medium",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def partition(self, head, x):\n        less, greater = [], []\n        while head:\n            if head.val < x:\n                less.append(head.val)\n            else:\n                greater.append(head.val)\n            head = head.next\n\n        dummy = ListNode()\n        tail = dummy\n        for value in less + greater:\n            tail.next = ListNode(value)\n            tail = tail.next\n        return dummy.next",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def partition(self, head, x):\n        before = before_tail = ListNode()\n        after = after_tail = ListNode()\n        while head:\n            if head.val < x:\n                before_tail.next = ListNode(head.val)\n                before_tail = before_tail.next\n            else:\n                after_tail.next = ListNode(head.val)\n                after_tail = after_tail.next\n            head = head.next\n        before_tail.next = after.next\n        return before.next",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def partition(self, head, x):\n        before = before_tail = ListNode()\n        after = after_tail = ListNode()\n        while head:\n            nxt = head.next\n            head.next = None\n            if head.val < x:\n                before_tail.next = head\n                before_tail = head\n            else:\n                after_tail.next = head\n                after_tail = head\n            head = nxt\n        before_tail.next = after.next\n        return before.next"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def partition(self, head, x):\n        # TODO: write your solution here\n        pass\n"
+}

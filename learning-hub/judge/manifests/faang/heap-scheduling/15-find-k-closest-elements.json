@@ -1,0 +1,80 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findClosestElements",
+  "params": [
+    "arr",
+    "k",
+    "x"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        4,
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "arr",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "x",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/heap-scheduling/15-find-k-closest-elements",
+  "title": "Find K Closest Elements",
+  "difficulty": "Medium",
+  "topic": "faang/heap-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def findClosestElements(self, arr, k, x):\n        chosen = sorted(arr, key=lambda value: (abs(value - x), value))[:k]\n        return sorted(chosen)",
+    "better": "class Solution:\n    def findClosestElements(self, arr, k, x):\n        from bisect import bisect_left\n        right = bisect_left(arr, x)\n        left = right - 1\n        result = []\n        while len(result) < k:\n            if left < 0:\n                result.append(arr[right])\n                right += 1\n            elif right >= len(arr):\n                result.append(arr[left])\n                left -= 1\n            elif abs(arr[left] - x) <= abs(arr[right] - x):\n                result.append(arr[left])\n                left -= 1\n            else:\n                result.append(arr[right])\n                right += 1\n        return sorted(result)",
+    "optimal": "class Solution:\n    def findClosestElements(self, arr, k, x):\n        low, high = 0, len(arr) - k\n        while low < high:\n            mid = (low + high) // 2\n            if x - arr[mid] > arr[mid + k] - x:\n                low = mid + 1\n            else:\n                high = mid\n        return arr[low:low + k]"
+  },
+  "starterCode": "class Solution:\n    def findClosestElements(self, arr, k, x):\n        # TODO: write your solution here\n        pass\n"
+}

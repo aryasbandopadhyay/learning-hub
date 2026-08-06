@@ -1,0 +1,31 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "uniquePaths",
+  "params": [
+    "m",
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        3,
+        7
+      ],
+      "expected": 28
+    }
+  ],
+  "id": "dp-2d/01-unique-paths",
+  "title": "Unique Paths",
+  "difficulty": "Medium",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "class SolutionRecursive:\n    def uniquePaths(self, m: int, n: int) -> int:\n        def dfs(r: int, c: int) -> int:\n            # Outside the grid cannot form a path.\n            if r == m or c == n:\n                return 0\n            if r == m - 1 and c == n - 1:\n                return 1\n            return dfs(r + 1, c) + dfs(r, c + 1)\n\n        return dfs(0, 0)",
+    "better": "class SolutionMemoized:\n    def uniquePaths(self, m: int, n: int) -> int:\n        memo = {}\n\n        def dfs(r: int, c: int) -> int:\n            if r == m or c == n:\n                return 0\n            if r == m - 1 and c == n - 1:\n                return 1\n            if (r, c) not in memo:\n                memo[(r, c)] = dfs(r + 1, c) + dfs(r, c + 1)\n            return memo[(r, c)]\n\n        return dfs(0, 0)",
+    "optimal": "class Solution:\n    def uniquePaths(self, m: int, n: int) -> int:\n        # dp[c] is paths from the current row at column c.\n        dp = [1] * n\n        for _ in range(m - 2, -1, -1):\n            for c in range(n - 2, -1, -1):\n                dp[c] += dp[c + 1]\n        return dp[0]"
+  },
+  "starterCode": "class Solution:\n    def uniquePaths(self, m, n):\n        # TODO: write your solution here\n        pass\n"
+}

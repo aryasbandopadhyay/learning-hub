@@ -1,0 +1,294 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "numWays",
+  "params": [
+    "words",
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "acca",
+          "bbbb",
+          "caca"
+        ],
+        "aba"
+      ],
+      "expected": 6
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ],
+        "aba"
+      ],
+      "expected": 28
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "dad",
+          "abc",
+          "ead",
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd",
+          "bcb",
+          "cac",
+          "bbd",
+          "cda",
+          "ddc",
+          "aec",
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb",
+          "bcd",
+          "bdc",
+          "daa",
+          "eeb",
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec",
+          "baa",
+          "cae",
+          "aad",
+          "cce"
+        ],
+        "aba"
+      ],
+      "expected": 528
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "bad",
+          "dbc",
+          "dcb",
+          "bdd",
+          "deb",
+          "ccb",
+          "cde",
+          "dbd"
+        ],
+        "aba"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "bae",
+          "bde",
+          "aac",
+          "dac",
+          "aee",
+          "cae",
+          "cdc",
+          "bbe",
+          "ada",
+          "ace",
+          "bec",
+          "bda",
+          "dbb",
+          "adb",
+          "ccc",
+          "aeb",
+          "ebc",
+          "eaa",
+          "bbb",
+          "eaa",
+          "edb",
+          "cbe",
+          "eeb",
+          "cac",
+          "dbc",
+          "bab",
+          "dea",
+          "bda",
+          "bed",
+          "eab",
+          "bdc",
+          "cce",
+          "aed",
+          "acb",
+          "bac",
+          "ecc",
+          "add",
+          "aac",
+          "bec",
+          "cca",
+          "dce",
+          "beb",
+          "acd",
+          "deb",
+          "bed",
+          "abb",
+          "cbe",
+          "ada",
+          "eab",
+          "bbc"
+        ],
+        "aba"
+      ],
+      "expected": 936
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "bed",
+          "baa",
+          "edd",
+          "abe",
+          "bcd",
+          "bde",
+          "ace",
+          "bbe"
+        ],
+        "aba"
+      ],
+      "expected": 4
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "deb",
+          "bbd"
+        ],
+        "aba"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "bcb",
+          "eee",
+          "abb",
+          "ebd",
+          "dee"
+        ],
+        "aba"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "cec",
+          "dba",
+          "aad",
+          "acb",
+          "acb",
+          "cca",
+          "eec",
+          "bca"
+        ],
+        "aba"
+      ],
+      "expected": 9
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "words",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "target",
+          "type": "str",
+          "role": "const",
+          "value": "aba"
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-strings/07-number-of-ways-to-form-a-target-string-given-a-dictionary",
+  "title": "Number of Ways to Form a Target String Given a Dictionary",
+  "difficulty": "Hard",
+  "topic": "faang/dp-strings",
+  "solutions": {
+    "naive": "class Solution:\n    def numWays(self, words: list[str], target: str) -> int:\n        mod = 1000000007\n        width = len(words[0])\n        def dfs(pos, col):\n            if pos == len(target):\n                return 1\n            total = 0\n            for j in range(col, width):\n                for word in words:\n                    if word[j] == target[pos]:\n                        total += dfs(pos + 1, j + 1)\n            return total % mod\n        return dfs(0, 0)",
+    "better": "class Solution:\n    def numWays(self, words, target):\n        from functools import lru_cache\n        mod = 1000000007\n        width = len(words[0])\n        counts = [[0] * 26 for _ in range(width)]\n        for word in words:\n            for j, ch in enumerate(word):\n                counts[j][ord(ch) - 97] += 1\n        @lru_cache(None)\n        def dfs(pos, col):\n            if pos == len(target):\n                return 1\n            if col == width:\n                return 0\n            skip = dfs(pos, col + 1)\n            use = counts[col][ord(target[pos]) - 97] * dfs(pos + 1, col + 1)\n            return (skip + use) % mod\n        return dfs(0, 0)",
+    "optimal": "class Solution:\n    def numWays(self, words, target):\n        mod = 1000000007\n        dp = [0] * (len(target) + 1)\n        dp[0] = 1\n        for col in range(len(words[0])):\n            freq = [0] * 26\n            for word in words:\n                freq[ord(word[col]) - 97] += 1\n            for pos in range(len(target) - 1, -1, -1):\n                dp[pos + 1] = (dp[pos + 1] + dp[pos] * freq[ord(target[pos]) - 97]) % mod\n        return dp[len(target)]"
+  },
+  "starterCode": "class Solution:\n    def numWays(self, words, target):\n        # TODO: write your solution here\n        pass\n"
+}

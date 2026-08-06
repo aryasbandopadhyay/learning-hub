@@ -1,0 +1,294 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "replaceWords",
+  "params": [
+    "dictionary",
+    "sentence"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "cat",
+          "bat",
+          "rat"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cat was rat by the bat"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cattle was rattled by the battery"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "dad",
+          "abc",
+          "ead",
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd",
+          "bcb",
+          "cac",
+          "bbd",
+          "cda",
+          "ddc",
+          "aec",
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb",
+          "bcd",
+          "bdc",
+          "daa",
+          "eeb",
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec",
+          "baa",
+          "cae",
+          "aad",
+          "cce"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cattle was rattled by the battery"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "bad",
+          "dbc",
+          "dcb",
+          "bdd",
+          "deb",
+          "ccb",
+          "cde",
+          "dbd"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cattle was rattled by the battery"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "bae",
+          "bde",
+          "aac",
+          "dac",
+          "aee",
+          "cae",
+          "cdc",
+          "bbe",
+          "ada",
+          "ace",
+          "bec",
+          "bda",
+          "dbb",
+          "adb",
+          "ccc",
+          "aeb",
+          "ebc",
+          "eaa",
+          "bbb",
+          "eaa",
+          "edb",
+          "cbe",
+          "eeb",
+          "cac",
+          "dbc",
+          "bab",
+          "dea",
+          "bda",
+          "bed",
+          "eab",
+          "bdc",
+          "cce",
+          "aed",
+          "acb",
+          "bac",
+          "ecc",
+          "add",
+          "aac",
+          "bec",
+          "cca",
+          "dce",
+          "beb",
+          "acd",
+          "deb",
+          "bed",
+          "abb",
+          "cbe",
+          "ada",
+          "eab",
+          "bbc"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cattle was rattled by the battery"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "bed",
+          "baa",
+          "edd",
+          "abe",
+          "bcd",
+          "bde",
+          "ace",
+          "bbe"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cattle was rattled by the battery"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "deb",
+          "bbd"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cattle was rattled by the battery"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "bcb",
+          "eee",
+          "abb",
+          "ebd",
+          "dee"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cattle was rattled by the battery"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "cec",
+          "dba",
+          "aad",
+          "acb",
+          "acb",
+          "cca",
+          "eec",
+          "bca"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cattle was rattled by the battery"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "dictionary",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "sentence",
+          "type": "str",
+          "role": "const",
+          "value": "the cattle was rattled by the battery"
+        }
+      ]
+    }
+  },
+  "id": "tries/04-replace-words",
+  "title": "Replace Words",
+  "difficulty": "Medium",
+  "topic": "tries",
+  "solutions": {
+    "naive": "from typing import List\n\n\nclass Solution:\n    def replaceWords(self, dictionary: List[str], sentence: str) -> str:\n        roots = set(dictionary)\n        result = []\n        for word in sentence.split():\n            replacement = word\n            for i in range(1, len(word) + 1):\n                # The first matching prefix is the shortest root.\n                if word[:i] in roots:\n                    replacement = word[:i]\n                    break\n            result.append(replacement)\n        return \" \".join(result)",
+    "better": "from typing import List\n\n\nclass Solution:\n    def replaceWords(self, dictionary: List[str], sentence: str) -> str:\n        roots = sorted(dictionary, key=len)\n\n        def replace(word: str) -> str:\n            for root in roots:\n                # Because roots are sorted, the first match is shortest.\n                if word.startswith(root):\n                    return root\n            return word\n\n        return \" \".join(replace(word) for word in sentence.split())",
+    "optimal": "from typing import List\n\n\nclass TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.word = None\n\n\nclass Solution:\n    def replaceWords(self, dictionary: List[str], sentence: str) -> str:\n        root = TrieNode()\n        for word in dictionary:\n            node = root\n            for ch in word:\n                if ch not in node.children:\n                    node.children[ch] = TrieNode()\n                node = node.children[ch]\n            node.word = word\n\n        def replace(word: str) -> str:\n            node = root\n            for ch in word:\n                if node.word is not None:\n                    return node.word\n                if ch not in node.children:\n                    return word\n                node = node.children[ch]\n            return node.word if node.word is not None else word\n\n        return \" \".join(replace(word) for word in sentence.split())"
+  },
+  "starterCode": "class Solution:\n    def replaceWords(self, dictionary, sentence):\n        # TODO: write your solution here\n        pass\n"
+}

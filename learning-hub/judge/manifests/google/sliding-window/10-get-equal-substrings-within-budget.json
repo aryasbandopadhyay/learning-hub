@@ -1,0 +1,148 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "equalSubstring",
+  "params": [
+    "s",
+    "t",
+    "maxCost"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "abcd",
+        "bcdf",
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dc",
+        "bcdf",
+        6597
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "d",
+        "bcdf",
+        3339
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "de",
+        "bcdf",
+        3246
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "c",
+        "bcdf",
+        2116
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "deb",
+        "bcdf",
+        8245
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "a",
+        "bcdf",
+        382
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddd",
+        "bcdf",
+        9206
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "ccb",
+        "bcdf",
+        4483
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "t",
+          "type": "str",
+          "role": "const",
+          "value": "bcdf"
+        },
+        {
+          "name": "maxCost",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/sliding-window/10-get-equal-substrings-within-budget",
+  "title": "Get Equal Substrings Within Budget",
+  "difficulty": "Medium",
+  "topic": "google/sliding-window",
+  "solutions": {
+    "naive": "class Solution:\n    def equalSubstring(self, s: str, t: str, maxCost: int) -> int:\n        n = len(s)\n        ans = 0\n        for i in range(n):\n            for j in range(i, n):\n                cost = 0\n                for p in range(i, j + 1):\n                    cost += abs(ord(s[p]) - ord(t[p]))\n                if cost <= maxCost:\n                    ans = max(ans, j - i + 1)\n        return ans",
+    "better": "class Solution:\n    def equalSubstring(self, s: str, t: str, maxCost: int) -> int:\n        n = len(s)\n        ans = 0\n        for i in range(n):\n            cost = 0\n            for j in range(i, n):\n                cost += abs(ord(s[j]) - ord(t[j]))\n                if cost > maxCost:\n                    break\n                ans = max(ans, j - i + 1)\n        return ans",
+    "optimal": "class Solution:\n    def equalSubstring(self, s: str, t: str, maxCost: int) -> int:\n        left = 0\n        cost = 0\n        ans = 0\n        for right in range(len(s)):\n            cost += abs(ord(s[right]) - ord(t[right]))\n            while cost > maxCost:\n                cost -= abs(ord(s[left]) - ord(t[left]))\n                left += 1\n            ans = max(ans, right - left + 1)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def equalSubstring(self, s, t, maxCost):\n        # TODO: write your solution here\n        pass\n"
+}

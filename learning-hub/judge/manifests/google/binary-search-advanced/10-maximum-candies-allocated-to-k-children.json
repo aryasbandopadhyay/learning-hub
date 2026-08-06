@@ -1,0 +1,64 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maximumCandies",
+  "params": [
+    "candies",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          5,
+          8,
+          6
+        ],
+        3
+      ],
+      "expected": 5
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "candies",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/binary-search-advanced/10-maximum-candies-allocated-to-k-children",
+  "title": "Maximum Candies Allocated to K Children",
+  "difficulty": "Medium",
+  "topic": "google/binary-search-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def maximumCandies(self, candies: list[int], k: int) -> int:\n        for size in range(max(candies), 0, -1):\n            served = 0\n            for c in candies:\n                served += c // size\n            if served >= k:\n                return size\n        return 0",
+    "better": "class Solution:\n    def maximumCandies(self, candies: list[int], k: int) -> int:\n        lo, hi = 1, max(candies)\n        ans = 0\n        while lo <= hi:\n            mid = (lo + hi) // 2\n            served = sum(c // mid for c in candies)\n            if served >= k:\n                ans = mid\n                lo = mid + 1\n            else:\n                hi = mid - 1\n        return ans",
+    "optimal": "class Solution:\n    def maximumCandies(self, candies: list[int], k: int) -> int:\n        hi = min(max(candies), sum(candies) // k)\n        if hi == 0:\n            return 0\n        lo = 1\n        while lo < hi:\n            mid = (lo + hi + 1) // 2\n            served = 0\n            for c in candies:\n                served += c // mid\n                if served >= k:\n                    break\n            if served >= k:\n                lo = mid\n            else:\n                hi = mid - 1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def maximumCandies(self, candies, k):\n        # TODO: write your solution here\n        pass\n"
+}

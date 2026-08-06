@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "firstUniqChar",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "leetcode"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": 8
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": -1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "strings/15-first-unique-character-in-a-string",
+  "title": "First Unique Character in a String",
+  "difficulty": "Easy",
+  "topic": "strings",
+  "solutions": {
+    "naive": "class Solution:\n    def firstUniqChar(self, s: str) -> int:\n        for i, ch in enumerate(s):\n            count = 0\n            for other in s:\n                if other == ch:\n                    count += 1\n            if count == 1:\n                return i\n        return -1",
+    "better": "from collections import Counter\n\nclass Solution:\n    def firstUniqChar(self, s: str) -> int:\n        counts = Counter(s)\n        for i, ch in enumerate(s):\n            if counts[ch] == 1:\n                return i\n        return -1",
+    "optimal": "class Solution:\n    def firstUniqChar(self, s: str) -> int:\n        counts = [0] * 26\n        for ch in s:\n            counts[ord(ch) - ord('a')] += 1\n        for i, ch in enumerate(s):\n            if counts[ord(ch) - ord('a')] == 1:\n                return i\n        return -1"
+  },
+  "starterCode": "class Solution:\n    def firstUniqChar(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "longestCycle",
+  "params": [
+    "edges"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          3,
+          4,
+          2,
+          3
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "edges",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/graphs-topo-union/03-longest-cycle-in-a-graph",
+  "title": "Longest Cycle in a Graph",
+  "difficulty": "Hard",
+  "topic": "faang/graphs-topo-union",
+  "solutions": {
+    "naive": "class Solution:\n    def longestCycle(self, edges: list[int]) -> int:\n        n = len(edges)\n        ans = -1\n        for s in range(n):\n            pos = {}\n            u = s\n            step = 0\n            while u != -1 and u not in pos and step <= n:\n                pos[u] = step\n                step += 1\n                u = edges[u]\n            if u in pos:\n                ans = max(ans, step - pos[u])\n        return ans",
+    "better": "class Solution:\n    def longestCycle(self, edges: list[int]) -> int:\n        from collections import deque\n        n = len(edges)\n        indeg = [0] * n\n        for v in edges:\n            if v != -1:\n                indeg[v] += 1\n        q = deque([i for i in range(n) if indeg[i] == 0])\n        removed = [False] * n\n        while q:\n            u = q.popleft(); removed[u] = True\n            v = edges[u]\n            if v != -1:\n                indeg[v] -= 1\n                if indeg[v] == 0:\n                    q.append(v)\n        seen = [False] * n\n        ans = -1\n        for i in range(n):\n            if not removed[i] and not seen[i]:\n                cur = i; length = 0\n                while not seen[cur]:\n                    seen[cur] = True; length += 1; cur = edges[cur]\n                ans = max(ans, length)\n        return ans",
+    "optimal": "class Solution:\n    def longestCycle(self, edges: list[int]) -> int:\n        n = len(edges)\n        seen = [0] * n\n        time = 1\n        ans = -1\n        for i in range(n):\n            if seen[i]:\n                continue\n            start = time\n            u = i\n            while u != -1 and seen[u] == 0:\n                seen[u] = time\n                time += 1\n                u = edges[u]\n            if u != -1 and seen[u] >= start:\n                ans = max(ans, time - seen[u])\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def longestCycle(self, edges):\n        # TODO: write your solution here\n        pass\n"
+}

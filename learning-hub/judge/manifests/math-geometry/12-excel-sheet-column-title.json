@@ -1,0 +1,93 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "convertToTitle",
+  "params": [
+    "columnNumber"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        28
+      ],
+      "expected": "AB"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239
+      ],
+      "expected": "IEY"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        3773
+      ],
+      "expected": "EOC"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        4115
+      ],
+      "expected": "FBG"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017
+      ],
+      "expected": "KVI"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128
+      ],
+      "expected": "IAR"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495
+      ],
+      "expected": "CQY"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9289
+      ],
+      "expected": "MSG"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685
+      ],
+      "expected": "KIO"
+    }
+  ],
+  "id": "math-geometry/12-excel-sheet-column-title",
+  "title": "Excel Sheet Column Title",
+  "difficulty": "Easy",
+  "topic": "math-geometry",
+  "solutions": {
+    "naive": "class Solution:\n    def convertToTitle(self, columnNumber: int) -> str:\n        title = \"\"\n        for _ in range(columnNumber):\n            # Increment an Excel-style title by one.\n            i = len(title) - 1\n            chars = list(title)\n            while i >= 0 and chars[i] == 'Z':\n                chars[i] = 'A'\n                i -= 1\n            if i < 0:\n                chars.insert(0, 'A')\n            else:\n                chars[i] = chr(ord(chars[i]) + 1)\n            title = ''.join(chars)\n        return title",
+    "better": "class Solution:\n    def convertToTitle(self, columnNumber: int) -> str:\n        chars = []\n        while columnNumber:\n            columnNumber -= 1\n            chars.append(chr(ord('A') + columnNumber % 26))\n            columnNumber //= 26\n        return ''.join(reversed(chars))",
+    "optimal": "class Solution:\n    def convertToTitle(self, columnNumber: int) -> str:\n        ans = []\n        while columnNumber > 0:\n            columnNumber -= 1\n            ans.append(chr(65 + columnNumber % 26))\n            columnNumber //= 26\n        ans.reverse()\n        return ''.join(ans)"
+  },
+  "starterCode": "class Solution:\n    def convertToTitle(self, columnNumber):\n        # TODO: write your solution here\n        pass\n"
+}

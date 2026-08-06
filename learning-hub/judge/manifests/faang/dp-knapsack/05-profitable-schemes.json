@@ -1,0 +1,86 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "profitableSchemes",
+  "params": [
+    "n",
+    "minProfit",
+    "group",
+    "profit"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        5,
+        3,
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "minProfit",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "group",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "profit",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            2,
+            3
+          ]
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-knapsack/05-profitable-schemes",
+  "title": "Profitable Schemes",
+  "difficulty": "Hard",
+  "topic": "faang/dp-knapsack",
+  "solutions": {
+    "naive": "class Solution:\n    def profitableSchemes(self, n: int, minProfit: int, group: list[int], profit: list[int]) -> int:\n        MOD = 1000000007\n        ans = 0\n        def dfs(i: int, members: int, gain: int) -> None:\n            nonlocal ans\n            if members > n:\n                return\n            if i == len(group):\n                if gain >= minProfit:\n                    ans = (ans + 1) % MOD\n                return\n            dfs(i + 1, members, gain)\n            dfs(i + 1, members + group[i], gain + profit[i])\n        dfs(0, 0, 0)\n        return ans",
+    "better": "class Solution:\n    def profitableSchemes(self, n: int, minProfit: int, group: list[int], profit: list[int]) -> int:\n        from functools import lru_cache\n        MOD = 1000000007\n        @lru_cache(None)\n        def dp(i: int, members: int, gain: int) -> int:\n            if i == len(group):\n                return 1 if gain >= minProfit else 0\n            ans = dp(i + 1, members, gain)\n            if members + group[i] <= n:\n                ans += dp(i + 1, members + group[i], min(minProfit, gain + profit[i]))\n            return ans % MOD\n        return dp(0, 0, 0)",
+    "optimal": "class Solution:\n    def profitableSchemes(self, n: int, minProfit: int, group: list[int], profit: list[int]) -> int:\n        MOD = 1000000007\n        dp = [[0] * (minProfit + 1) for _ in range(n + 1)]\n        dp[0][0] = 1\n        for g, p in zip(group, profit):\n            for members in range(n - g, -1, -1):\n                for prof in range(minProfit, -1, -1):\n                    if dp[members][prof]:\n                        np = min(minProfit, prof + p)\n                        dp[members + g][np] = (dp[members + g][np] + dp[members][prof]) % MOD\n        return sum(dp[m][minProfit] for m in range(n + 1)) % MOD"
+  },
+  "starterCode": "class Solution:\n    def profitableSchemes(self, n, minProfit, group, profit):\n        # TODO: write your solution here\n        pass\n"
+}

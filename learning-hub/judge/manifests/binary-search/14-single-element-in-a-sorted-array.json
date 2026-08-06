@@ -1,0 +1,61 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "singleNonDuplicate",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          3,
+          3,
+          4,
+          4,
+          8,
+          8
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "binary-search/14-single-element-in-a-sorted-array",
+  "title": "Single Element in a Sorted Array",
+  "difficulty": "Medium",
+  "topic": "binary-search",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def singleNonDuplicate(self, nums: List[int]) -> int:\n        counts = {}\n        for num in nums:\n            counts[num] = counts.get(num, 0) + 1\n        for num, count in counts.items():\n            if count == 1:\n                return num\n        return -1",
+    "better": "from typing import List\n\nclass Solution:\n    def singleNonDuplicate(self, nums: List[int]) -> int:\n        answer = 0\n        for num in nums:\n            answer ^= num\n        return answer",
+    "optimal": "from typing import List\n\nclass Solution:\n    def singleNonDuplicate(self, nums: List[int]) -> int:\n        left, right = 0, len(nums) - 1\n        while left < right:\n            mid = (left + right) // 2\n            if mid % 2 == 1:\n                mid -= 1\n            if nums[mid] == nums[mid + 1]:\n                left = mid + 2\n            else:\n                right = mid\n        return nums[left]"
+  },
+  "starterCode": "class Solution:\n    def singleNonDuplicate(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

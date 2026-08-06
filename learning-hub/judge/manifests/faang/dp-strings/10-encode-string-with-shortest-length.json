@@ -1,0 +1,29 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "encode",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "aaaabaaaab"
+      ],
+      "expected": "2[aaaab]"
+    }
+  ],
+  "id": "faang/dp-strings/10-encode-string-with-shortest-length",
+  "title": "Encode String with Shortest Length",
+  "difficulty": "Hard",
+  "topic": "faang/dp-strings",
+  "solutions": {
+    "naive": "class Solution:\n    def encode(self, s: str) -> str:\n        def better(a, b):\n            return a if len(a) <= len(b) else b\n        def period(x):\n            i = (x + x).find(x, 1)\n            return i if i < len(x) else 0\n        def dfs(x):\n            ans = x\n            p = period(x)\n            if p:\n                ans = better(ans, str(len(x) // p) + \"[\" + dfs(x[:p]) + \"]\")\n            for cut in range(1, len(x)):\n                ans = better(ans, dfs(x[:cut]) + dfs(x[cut:]))\n            return ans\n        return dfs(s)",
+    "better": "class Solution:\n    def encode(self, s):\n        from functools import lru_cache\n        def better(a, b):\n            return a if len(a) <= len(b) else b\n        def period(x):\n            i = (x + x).find(x, 1)\n            return i if i < len(x) else 0\n        @lru_cache(None)\n        def dfs(x):\n            ans = x\n            p = period(x)\n            if p:\n                ans = better(ans, str(len(x) // p) + \"[\" + dfs(x[:p]) + \"]\")\n            for cut in range(1, len(x)):\n                ans = better(ans, dfs(x[:cut]) + dfs(x[cut:]))\n            return ans\n        return dfs(s)",
+    "optimal": "class Solution:\n    def encode(self, s):\n        n = len(s)\n        dp = [[\"\"] * n for _ in range(n)]\n        def better(a, b):\n            return a if len(a) <= len(b) else b\n        for length in range(1, n + 1):\n            for l in range(n - length + 1):\n                r = l + length - 1\n                sub = s[l:r + 1]\n                ans = sub\n                p = (sub + sub).find(sub, 1)\n                if p < len(sub):\n                    ans = better(ans, str(length // p) + \"[\" + dp[l][l + p - 1] + \"]\")\n                for mid in range(l, r):\n                    ans = better(ans, dp[l][mid] + dp[mid + 1][r])\n                dp[l][r] = ans\n        return dp[0][n - 1]"
+  },
+  "starterCode": "class Solution:\n    def encode(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

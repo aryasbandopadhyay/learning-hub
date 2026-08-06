@@ -1,0 +1,35 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "nthUglyNumber",
+  "params": [
+    "n",
+    "a",
+    "b",
+    "c"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        5,
+        2,
+        11,
+        13
+      ],
+      "expected": 10
+    }
+  ],
+  "id": "faang/binary-search-on-answer/13-ugly-number-iii",
+  "title": "Ugly Number III",
+  "difficulty": "Medium",
+  "topic": "faang/binary-search-on-answer",
+  "solutions": {
+    "naive": "class Solution:\n    def nthUglyNumber(self, n, a, b, c):\n        count = 0; x = 0\n        while count < n:\n            x += 1\n            if x % a == 0 or x % b == 0 or x % c == 0:\n                count += 1\n        return x",
+    "better": "class Solution:\n    def nthUglyNumber(self, n, a, b, c):\n        import heapq\n        heap=[a,b,c]; heapq.heapify(heap); seen=set(heap); val=0\n        for _ in range(n):\n            val=heapq.heappop(heap)\n            for d in (a,b,c):\n                nxt=val+d\n                if nxt not in seen:\n                    seen.add(nxt); heapq.heappush(heap,nxt)\n        return val",
+    "optimal": "class Solution:\n    def nthUglyNumber(self, n, a, b, c):\n        def gcd(x,y):\n            while y: x,y=y,x%y\n            return x\n        def lcm(x,y): return x//gcd(x,y)*y\n        ab,ac,bc=lcm(a,b),lcm(a,c),lcm(b,c); abc=lcm(ab,c)\n        def cnt(x):\n            return x//a + x//b + x//c - x//ab - x//ac - x//bc + x//abc\n        lo,hi=1,2000000000\n        while lo<hi:\n            mid=(lo+hi)//2\n            if cnt(mid) >= n: hi=mid\n            else: lo=mid+1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def nthUglyNumber(self, n, a, b, c):\n        # TODO: write your solution here\n        pass\n"
+}

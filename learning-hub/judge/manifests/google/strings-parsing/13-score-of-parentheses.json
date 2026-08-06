@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "scoreOfParentheses",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "(()(()))"
+      ],
+      "expected": 6
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/strings-parsing/13-score-of-parentheses",
+  "title": "Score of Parentheses",
+  "difficulty": "Medium",
+  "topic": "google/strings-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def scoreOfParentheses(self, s: str) -> int:\n        def score(l,r):\n            total=bal=0; start=l\n            for i in range(l,r):\n                bal += 1 if s[i]=='(' else -1\n                if bal==0:\n                    total += 1 if i==start+1 else 2*score(start+1,i)\n                    start=i+1\n            return total\n        return score(0,len(s))",
+    "better": "class Solution:\n    def scoreOfParentheses(self, s: str) -> int:\n        st=[0]\n        for c in s:\n            if c=='(': st.append(0)\n            else:\n                v=st.pop(); st[-1]+=max(2*v,1)\n        return st[0]",
+    "optimal": "class Solution:\n    def scoreOfParentheses(self, s: str) -> int:\n        depth=ans=0\n        for i,c in enumerate(s):\n            if c=='(': depth+=1\n            else:\n                depth-=1\n                if s[i-1]=='(': ans += 1 << depth\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def scoreOfParentheses(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

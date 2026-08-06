@@ -1,0 +1,56 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "singleNumber",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          2,
+          3,
+          2
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "bit-manipulation/07-single-number-ii",
+  "title": "Single Number II",
+  "difficulty": "Medium",
+  "topic": "bit-manipulation",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def singleNumber(self, nums: List[int]) -> int:\n        for x in nums:\n            count = 0\n            for y in nums:\n                if x == y:\n                    count += 1\n            if count == 1:\n                return x\n        return 0",
+    "better": "from typing import List\n\nclass Solution:\n    def singleNumber(self, nums: List[int]) -> int:\n        result = 0\n        for i in range(32):\n            bit_sum = 0\n            for x in nums:\n                bit_sum += (x >> i) & 1\n            if bit_sum % 3:\n                result |= 1 << i\n        # Convert from unsigned 32-bit to signed Python integer.\n        return result if result <= 0x7FFFFFFF else result - 0x100000000",
+    "optimal": "from typing import List\n\nclass Solution:\n    def singleNumber(self, nums: List[int]) -> int:\n        ones = 0\n        twos = 0\n        for x in nums:\n            # Move bits through states: unseen -> ones -> twos -> unseen.\n            ones = (ones ^ x) & ~twos\n            twos = (twos ^ x) & ~ones\n        return ones"
+  },
+  "starterCode": "class Solution:\n    def singleNumber(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

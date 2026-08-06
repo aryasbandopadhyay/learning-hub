@@ -1,0 +1,71 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minmaxGasDist",
+  "params": [
+    "stations",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        9
+      ],
+      "expected": 0.5
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "stations",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/binary-search-advanced/04-minimize-max-distance-to-gas-station",
+  "title": "Minimize Max Distance to Gas Station",
+  "difficulty": "Hard",
+  "topic": "google/binary-search-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def minmaxGasDist(self, stations: list[int], k: int) -> float:\n        import heapq\n        gaps = [stations[i + 1] - stations[i] for i in range(len(stations) - 1)]\n        parts = [1] * len(gaps)\n        heap = [(-g, i) for i, g in enumerate(gaps)]\n        heapq.heapify(heap)\n        for _ in range(k):\n            _, i = heapq.heappop(heap)\n            parts[i] += 1\n            heapq.heappush(heap, (-(gaps[i] / parts[i]), i))\n        return round(-heap[0][0], 6)",
+    "better": "class Solution:\n    def minmaxGasDist(self, stations: list[int], k: int) -> float:\n        import math\n        lo, hi = 0.0, float(stations[-1] - stations[0])\n        for _ in range(70):\n            mid = (lo + hi) / 2.0\n            need = 0\n            for i in range(len(stations) - 1):\n                gap = stations[i + 1] - stations[i]\n                need += int(math.ceil(gap / mid)) - 1\n            if need <= k:\n                hi = mid\n            else:\n                lo = mid\n        return round(hi, 6)",
+    "optimal": "class Solution:\n    def minmaxGasDist(self, stations: list[int], k: int) -> float:\n        lo, hi = 0.0, float(stations[-1] - stations[0])\n        while hi - lo > 1e-7:\n            mid = (lo + hi) / 2.0\n            need = 0\n            for i in range(len(stations) - 1):\n                gap = stations[i + 1] - stations[i]\n                q = gap / mid\n                need += int(q)\n                if abs(q - int(q)) < 1e-12:\n                    need -= 1\n            if need <= k:\n                hi = mid\n            else:\n                lo = mid\n        return round(hi, 6)"
+  },
+  "starterCode": "class Solution:\n    def minmaxGasDist(self, stations, k):\n        # TODO: write your solution here\n        pass\n"
+}

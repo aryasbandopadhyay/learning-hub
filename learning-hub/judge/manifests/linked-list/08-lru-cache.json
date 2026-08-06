@@ -1,0 +1,83 @@
+{
+  "shape": "design",
+  "className": "LRUCache",
+  "entry": null,
+  "params": [],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "LRUCache",
+        "put",
+        "put",
+        "get",
+        "put",
+        "get",
+        "put",
+        "get",
+        "get",
+        "get"
+      ],
+      "args": [
+        [
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          1
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        1,
+        null,
+        -1,
+        null,
+        -1,
+        3,
+        4
+      ]
+    }
+  ],
+  "id": "linked-list/08-lru-cache",
+  "title": "LRU Cache",
+  "difficulty": "Medium",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class LRUCache:\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.items = []\n\n    def get(self, key: int) -> int:\n        for i, (k, v) in enumerate(self.items):\n            if k == key:\n                self.items.pop(i)\n                self.items.append((k, v))  # Mark as recently used.\n                return v\n        return -1\n\n    def put(self, key: int, value: int) -> None:\n        for i, (k, _) in enumerate(self.items):\n            if k == key:\n                self.items.pop(i)\n                break\n        self.items.append((key, value))\n        if len(self.items) > self.capacity:\n            self.items.pop(0)",
+    "better": "from collections import OrderedDict\n\nclass LRUCache:\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = OrderedDict()\n\n    def get(self, key: int) -> int:\n        if key not in self.cache:\n            return -1\n        self.cache.move_to_end(key)\n        return self.cache[key]\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            self.cache.move_to_end(key)\n        self.cache[key] = value\n        if len(self.cache) > self.capacity:\n            self.cache.popitem(last=False)",
+    "optimal": "class Node:\n    def __init__(self, key=0, value=0):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init__(self, capacity: int):\n        self.capacity = capacity\n        self.cache = {}\n        self.left = Node()   # Least-recent sentinel.\n        self.right = Node()  # Most-recent sentinel.\n        self.left.next = self.right\n        self.right.prev = self.left\n\n    def _remove(self, node):\n        node.prev.next = node.next\n        node.next.prev = node.prev\n\n    def _insert_recent(self, node):\n        prev = self.right.prev\n        prev.next = node\n        node.prev = prev\n        node.next = self.right\n        self.right.prev = node\n\n    def get(self, key: int) -> int:\n        if key not in self.cache:\n            return -1\n        node = self.cache[key]\n        self._remove(node)\n        self._insert_recent(node)\n        return node.value\n\n    def put(self, key: int, value: int) -> None:\n        if key in self.cache:\n            self._remove(self.cache[key])\n        node = Node(key, value)\n        self.cache[key] = node\n        self._insert_recent(node)\n        if len(self.cache) > self.capacity:\n            lru = self.left.next\n            self._remove(lru)\n            del self.cache[lru.key]"
+  },
+  "starterCode": "class LRUCache:\n    def __init__(self, capacity):\n        # TODO: write your solution here\n        pass\n\n    def _remove(self, node):\n        # TODO: write your solution here\n        pass\n\n    def _insert_recent(self, node):\n        # TODO: write your solution here\n        pass\n\n    def get(self, key):\n        # TODO: write your solution here\n        pass\n\n    def put(self, key, value):\n        # TODO: write your solution here\n        pass\n"
+}

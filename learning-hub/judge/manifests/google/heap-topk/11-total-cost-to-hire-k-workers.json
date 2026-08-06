@@ -1,0 +1,79 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "totalCost",
+  "params": [
+    "costs",
+    "k",
+    "candidates"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          17,
+          12,
+          10,
+          2,
+          7,
+          2,
+          11,
+          20,
+          8
+        ],
+        3,
+        4
+      ],
+      "expected": 11
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "costs",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "candidates",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/heap-topk/11-total-cost-to-hire-k-workers",
+  "title": "Total Cost to Hire K Workers",
+  "difficulty": "Medium",
+  "topic": "google/heap-topk",
+  "solutions": {
+    "naive": "class Solution:\n    def totalCost(self, costs: list[int], k: int, candidates: int) -> int:\n        remaining = list(range(len(costs)))\n        total = 0\n        for _ in range(k):\n            eligible = remaining[:candidates] + remaining[max(candidates, len(remaining) - candidates):]\n            idx = min(eligible, key=lambda i: (costs[i], i))\n            total += costs[idx]\n            remaining.remove(idx)\n        return total",
+    "better": "class Solution:\n    def totalCost(self, costs: list[int], k: int, candidates: int) -> int:\n        import bisect\n        n = len(costs)\n        left, right = 0, n - 1\n        left_pool = []\n        right_pool = []\n        while left <= right and len(left_pool) < candidates:\n            bisect.insort(left_pool, (costs[left], left))\n            left += 1\n        while left <= right and len(right_pool) < candidates:\n            bisect.insort(right_pool, (costs[right], right))\n            right -= 1\n        total = 0\n        for _ in range(k):\n            take_left = right_pool == [] or (left_pool and left_pool[0] <= right_pool[0])\n            if take_left:\n                cost, idx = left_pool.pop(0)\n                if left <= right:\n                    bisect.insort(left_pool, (costs[left], left))\n                    left += 1\n            else:\n                cost, idx = right_pool.pop(0)\n                if left <= right:\n                    bisect.insort(right_pool, (costs[right], right))\n                    right -= 1\n            total += cost\n        return total",
+    "optimal": "class Solution:\n    def totalCost(self, costs: list[int], k: int, candidates: int) -> int:\n        import heapq\n        n = len(costs)\n        left, right = 0, n - 1\n        left_heap = []\n        right_heap = []\n        while left <= right and len(left_heap) < candidates:\n            heapq.heappush(left_heap, (costs[left], left))\n            left += 1\n        while left <= right and len(right_heap) < candidates:\n            heapq.heappush(right_heap, (costs[right], right))\n            right -= 1\n        total = 0\n        for _ in range(k):\n            take_left = not right_heap or (left_heap and left_heap[0] <= right_heap[0])\n            if take_left:\n                cost, _ = heapq.heappop(left_heap)\n                if left <= right:\n                    heapq.heappush(left_heap, (costs[left], left))\n                    left += 1\n            else:\n                cost, _ = heapq.heappop(right_heap)\n                if left <= right:\n                    heapq.heappush(right_heap, (costs[right], right))\n                    right -= 1\n            total += cost\n        return total"
+  },
+  "starterCode": "class Solution:\n    def totalCost(self, costs, k, candidates):\n        # TODO: write your solution here\n        pass\n"
+}

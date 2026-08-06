@@ -1,0 +1,35 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxProfit",
+  "params": [
+    "prices"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          0,
+          2
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "id": "dp-2d/05-best-time-to-buy-and-sell-stock-with-cooldown",
+  "title": "Best Time to Buy and Sell Stock with Cooldown",
+  "difficulty": "Medium",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "from typing import List\n\nclass SolutionRecursive:\n    def maxProfit(self, prices: List[int]) -> int:\n        def dfs(i: int, holding: bool) -> int:\n            if i >= len(prices):\n                return 0\n            if holding:\n                sell = prices[i] + dfs(i + 2, False)\n                keep = dfs(i + 1, True)\n                return max(sell, keep)\n            buy = -prices[i] + dfs(i + 1, True)\n            skip = dfs(i + 1, False)\n            return max(buy, skip)\n\n        return dfs(0, False)",
+    "better": "from typing import List\n\nclass SolutionMemoized:\n    def maxProfit(self, prices: List[int]) -> int:\n        memo = {}\n\n        def dfs(i: int, holding: bool) -> int:\n            if i >= len(prices):\n                return 0\n            if (i, holding) not in memo:\n                if holding:\n                    memo[(i, holding)] = max(prices[i] + dfs(i + 2, False), dfs(i + 1, True))\n                else:\n                    memo[(i, holding)] = max(-prices[i] + dfs(i + 1, True), dfs(i + 1, False))\n            return memo[(i, holding)]\n\n        return dfs(0, False)",
+    "optimal": "from typing import List\n\nclass Solution:\n    def maxProfit(self, prices: List[int]) -> int:\n        # hold: holding stock; sold: just sold today; rest: no stock and can buy.\n        hold = -prices[0]\n        sold = 0\n        rest = 0\n        for price in prices[1:]:\n            prev_sold = sold\n            sold = hold + price\n            hold = max(hold, rest - price)\n            rest = max(rest, prev_sold)\n        return max(sold, rest)"
+  },
+  "starterCode": "class Solution:\n    def maxProfit(self, prices):\n        # TODO: write your solution here\n        pass\n"
+}

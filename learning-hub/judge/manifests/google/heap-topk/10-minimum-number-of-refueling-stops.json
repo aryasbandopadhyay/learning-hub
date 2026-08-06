@@ -1,0 +1,87 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minRefuelStops",
+  "params": [
+    "target",
+    "startFuel",
+    "stations"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        100,
+        10,
+        [
+          [
+            10,
+            60
+          ],
+          [
+            20,
+            30
+          ],
+          [
+            30,
+            30
+          ],
+          [
+            60,
+            40
+          ]
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "target",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "startFuel",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "stations",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/heap-topk/10-minimum-number-of-refueling-stops",
+  "title": "Minimum Number of Refueling Stops",
+  "difficulty": "Hard",
+  "topic": "google/heap-topk",
+  "solutions": {
+    "naive": "class Solution:\n    def minRefuelStops(self, target: int, startFuel: int, stations: list[list[int]]) -> int:\n        n = len(stations)\n        dp = [startFuel] + [-1] * n\n        for i, (pos, fuel) in enumerate(stations):\n            for stops in range(i, -1, -1):\n                if dp[stops] >= pos:\n                    dp[stops + 1] = max(dp[stops + 1], dp[stops] + fuel)\n        for stops, reach in enumerate(dp):\n            if reach >= target:\n                return stops\n        return -1",
+    "better": "class Solution:\n    def minRefuelStops(self, target: int, startFuel: int, stations: list[list[int]]) -> int:\n        def can(limit):\n            dp = [startFuel] + [-1] * limit\n            for pos, fuel in stations:\n                for stops in range(limit - 1, -1, -1):\n                    if dp[stops] >= pos:\n                        dp[stops + 1] = max(dp[stops + 1], dp[stops] + fuel)\n            return max(dp) >= target\n        if startFuel >= target:\n            return 0\n        lo, hi, ans = 1, len(stations), -1\n        while lo <= hi:\n            mid = (lo + hi) // 2\n            if can(mid):\n                ans = mid\n                hi = mid - 1\n            else:\n                lo = mid + 1\n        return ans",
+    "optimal": "class Solution:\n    def minRefuelStops(self, target: int, startFuel: int, stations: list[list[int]]) -> int:\n        import heapq\n        fuel = startFuel\n        prev = 0\n        stops = 0\n        heap = []\n        for pos, amount in stations + [[target, 0]]:\n            fuel -= pos - prev\n            while fuel < 0 and heap:\n                fuel += -heapq.heappop(heap)\n                stops += 1\n            if fuel < 0:\n                return -1\n            heapq.heappush(heap, -amount)\n            prev = pos\n        return stops"
+  },
+  "starterCode": "class Solution:\n    def minRefuelStops(self, target, startFuel, stations):\n        # TODO: write your solution here\n        pass\n"
+}

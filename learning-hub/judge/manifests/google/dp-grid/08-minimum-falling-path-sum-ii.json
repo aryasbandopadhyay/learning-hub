@@ -1,0 +1,68 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minFallingPathSum",
+  "params": [
+    "grid"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ]
+      ],
+      "expected": 13
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "grid",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        }
+      ]
+    }
+  },
+  "id": "google/dp-grid/08-minimum-falling-path-sum-ii",
+  "title": "Minimum Falling Path Sum II",
+  "difficulty": "Hard",
+  "topic": "google/dp-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def minFallingPathSum(self, grid: list[list[int]]) -> int:\n        n = len(grid)\n        if n == 1:\n            return grid[0][0]\n        dp = [row[:] for row in grid]\n        for r in range(1, n):\n            for c in range(n):\n                dp[r][c] += min(dp[r - 1][pc] for pc in range(n) if pc != c)\n        return min(dp[-1])",
+    "better": "class Solution:\n    def minFallingPathSum(self, grid: list[list[int]]) -> int:\n        n = len(grid)\n        prev = grid[0][:]\n        for r in range(1, n):\n            first = second = 10 ** 18\n            idx = -1\n            for c, v in enumerate(prev):\n                if v < first:\n                    second, first, idx = first, v, c\n                elif v < second:\n                    second = v\n            prev = [grid[r][c] + (second if c == idx else first) for c in range(n)]\n        return min(prev)",
+    "optimal": "class Solution:\n    def minFallingPathSum(self, grid: list[list[int]]) -> int:\n        best1 = best2 = 0\n        best_col = -1\n        for row in grid:\n            nb1 = nb2 = 10 ** 18\n            nb_col = -1\n            for c, x in enumerate(row):\n                v = x + (best2 if c == best_col else best1)\n                if v < nb1:\n                    nb2, nb1, nb_col = nb1, v, c\n                elif v < nb2:\n                    nb2 = v\n            best1, best2, best_col = nb1, nb2, nb_col\n        return best1"
+  },
+  "starterCode": "class Solution:\n    def minFallingPathSum(self, grid):\n        # TODO: write your solution here\n        pass\n"
+}

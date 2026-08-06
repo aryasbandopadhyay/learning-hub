@@ -1,0 +1,63 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "pathSum",
+  "params": [
+    "root",
+    "targetSum"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          5,
+          4,
+          8,
+          11,
+          null,
+          13,
+          4,
+          7,
+          2,
+          null,
+          null,
+          5,
+          1
+        ],
+        22
+      ],
+      "expected": [
+        [
+          5,
+          4,
+          11,
+          2
+        ],
+        [
+          5,
+          8,
+          4,
+          5
+        ]
+      ]
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree",
+    "plain"
+  ],
+  "id": "trees/21-path-sum-ii",
+  "title": "Path Sum II",
+  "difficulty": "Medium",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def pathSum(self, root, targetSum):\n        paths=[]\n        def dfs(node,path):\n            if not node: return\n            path = path + [node.val]\n            if not node.left and not node.right: paths.append(path)\n            dfs(node.left,path); dfs(node.right,path)\n        dfs(root,[])\n        return [p for p in paths if sum(p) == targetSum]",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def pathSum(self, root, targetSum):\n        ans=[]; path=[]\n        def dfs(node, rem):\n            if not node: return\n            path.append(node.val); rem -= node.val\n            if not node.left and not node.right and rem == 0: ans.append(path[:])\n            dfs(node.left, rem); dfs(node.right, rem)\n            path.pop()\n        dfs(root, targetSum)\n        return ans",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def pathSum(self, root, targetSum):\n        if not root: return []\n        ans=[]; stack=[(root, root.val, [root.val])]\n        while stack:\n            node,total,path=stack.pop()\n            if not node.left and not node.right and total == targetSum: ans.append(path)\n            if node.right: stack.append((node.right,total+node.right.val,path+[node.right.val]))\n            if node.left: stack.append((node.left,total+node.left.val,path+[node.left.val]))\n        return ans"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def pathSum(self, root, targetSum):\n        # TODO: write your solution here\n        pass\n"
+}

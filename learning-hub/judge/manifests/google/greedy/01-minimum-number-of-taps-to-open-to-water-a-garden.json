@@ -1,0 +1,172 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minTaps",
+  "params": [
+    "n",
+    "ranges"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        5,
+        [
+          3,
+          4,
+          1,
+          1,
+          0,
+          0
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        7174,
+        [
+          3798,
+          -1605
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        6829,
+        [
+          -179
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        5799,
+        [
+          -2413,
+          -2413,
+          -4721
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        3846,
+        [
+          -2120,
+          7186
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        3959,
+        [
+          -1792,
+          618
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        4440,
+        [
+          -2034,
+          -2034
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9912,
+        [
+          7517,
+          -6532,
+          -611,
+          -611,
+          -3171
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7339,
+        [
+          -1734,
+          6387,
+          -1712,
+          -1712,
+          5055,
+          -720,
+          -5118,
+          -3764
+        ]
+      ],
+      "expected": -1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "ranges",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/greedy/01-minimum-number-of-taps-to-open-to-water-a-garden",
+  "title": "Minimum Number of Taps to Open to Water a Garden",
+  "difficulty": "Hard",
+  "topic": "google/greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def minTaps(self, n: int, ranges: list[int]) -> int:\n        INF = 10 ** 9\n        dp = [INF] * (n + 1)\n        dp[0] = 0\n        intervals = [(max(0, i - r), min(n, i + r)) for i, r in enumerate(ranges)]\n        for x in range(n + 1):\n            for left, right in intervals:\n                if left <= x <= right and dp[left] != INF:\n                    dp[x] = min(dp[x], dp[left] + 1)\n        return -1 if dp[n] == INF else dp[n]",
+    "better": "class Solution:\n    def minTaps(self, n, ranges):\n        intervals = sorted((max(0, i - r), min(n, i + r)) for i, r in enumerate(ranges))\n        ans = i = covered = 0\n        while covered < n:\n            best = covered\n            while i < len(intervals) and intervals[i][0] <= covered:\n                best = max(best, intervals[i][1])\n                i += 1\n            if best == covered:\n                return -1\n            ans += 1\n            covered = best\n        return ans",
+    "optimal": "class Solution:\n    def minTaps(self, n, ranges):\n        far = [0] * (n + 1)\n        for i, r in enumerate(ranges):\n            left, right = max(0, i - r), min(n, i + r)\n            far[left] = max(far[left], right)\n        ans = curr = nxt = 0\n        for x in range(n):\n            nxt = max(nxt, far[x])\n            if x == curr:\n                if nxt <= x:\n                    return -1\n                ans += 1\n                curr = nxt\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def minTaps(self, n, ranges):\n        # TODO: write your solution here\n        pass\n"
+}

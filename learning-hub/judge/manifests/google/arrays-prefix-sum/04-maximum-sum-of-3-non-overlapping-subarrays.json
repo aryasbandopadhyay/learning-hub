@@ -1,0 +1,73 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxSumOfThreeSubarrays",
+  "params": [
+    "nums",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          1,
+          2,
+          6,
+          7,
+          5,
+          1
+        ],
+        2
+      ],
+      "expected": [
+        0,
+        3,
+        5
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/arrays-prefix-sum/04-maximum-sum-of-3-non-overlapping-subarrays",
+  "title": "Maximum Sum of 3 Non-Overlapping Subarrays",
+  "difficulty": "Hard",
+  "topic": "google/arrays-prefix-sum",
+  "solutions": {
+    "naive": "class Solution:\n    def maxSumOfThreeSubarrays(self, nums: list[int], k: int) -> list[int]:\n        n = len(nums)\n        prefix = [0]\n        for x in nums:\n            prefix.append(prefix[-1] + x)\n        def window(i):\n            return prefix[i + k] - prefix[i]\n        best_sum = -1\n        ans = []\n        for i in range(0, n - 3 * k + 1):\n            for j in range(i + k, n - 2 * k + 1):\n                for l in range(j + k, n - k + 1):\n                    total = window(i) + window(j) + window(l)\n                    cand = [i, j, l]\n                    if total > best_sum or (total == best_sum and cand < ans):\n                        best_sum = total\n                        ans = cand\n        return ans",
+    "better": "class Solution:\n    def maxSumOfThreeSubarrays(self, nums: list[int], k: int) -> list[int]:\n        n = len(nums)\n        prefix = [0]\n        for x in nums:\n            prefix.append(prefix[-1] + x)\n        def window(i):\n            return prefix[i + k] - prefix[i]\n        best_sum = -1\n        ans = []\n        for mid in range(k, n - 2 * k + 1):\n            best_left_sum = -1\n            best_left = 0\n            for left in range(0, mid - k + 1):\n                s = window(left)\n                if s > best_left_sum:\n                    best_left_sum = s\n                    best_left = left\n            best_right_sum = -1\n            best_right = mid + k\n            for right in range(mid + k, n - k + 1):\n                s = window(right)\n                if s > best_right_sum:\n                    best_right_sum = s\n                    best_right = right\n            total = best_left_sum + window(mid) + best_right_sum\n            cand = [best_left, mid, best_right]\n            if total > best_sum or (total == best_sum and cand < ans):\n                best_sum = total\n                ans = cand\n        return ans",
+    "optimal": "class Solution:\n    def maxSumOfThreeSubarrays(self, nums: list[int], k: int) -> list[int]:\n        n = len(nums)\n        sums = []\n        cur = sum(nums[:k])\n        sums.append(cur)\n        for i in range(k, n):\n            cur += nums[i] - nums[i - k]\n            sums.append(cur)\n        m = len(sums)\n        left = [0] * m\n        best = 0\n        for i in range(m):\n            if sums[i] > sums[best]:\n                best = i\n            left[i] = best\n        right = [0] * m\n        best = m - 1\n        for i in range(m - 1, -1, -1):\n            if sums[i] >= sums[best]:\n                best = i\n            right[i] = best\n        best_sum = -1\n        ans = []\n        for mid in range(k, m - k):\n            l = left[mid - k]\n            r = right[mid + k]\n            total = sums[l] + sums[mid] + sums[r]\n            cand = [l, mid, r]\n            if total > best_sum or (total == best_sum and cand < ans):\n                best_sum = total\n                ans = cand\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def maxSumOfThreeSubarrays(self, nums, k):\n        # TODO: write your solution here\n        pass\n"
+}

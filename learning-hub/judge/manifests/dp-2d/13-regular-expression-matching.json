@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isMatch",
+  "params": [
+    "s",
+    "p"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "aab",
+        "c*a*b"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "c*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "c*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "c*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "c*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "c*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "c*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "c*a*b"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "c*a*b"
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "p",
+          "type": "str",
+          "role": "const",
+          "value": "c*a*b"
+        }
+      ]
+    }
+  },
+  "id": "dp-2d/13-regular-expression-matching",
+  "title": "Regular Expression Matching",
+  "difficulty": "Hard",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "class SolutionRecursive:\n    def isMatch(self, s: str, p: str) -> bool:\n        def dfs(i: int, j: int) -> bool:\n            if j == len(p):\n                return i == len(s)\n            first = i < len(s) and (p[j] == s[i] or p[j] == \".\")\n            if j + 1 < len(p) and p[j + 1] == \"*\":\n                return dfs(i, j + 2) or (first and dfs(i + 1, j))\n            return first and dfs(i + 1, j + 1)\n\n        return dfs(0, 0)",
+    "better": "class SolutionMemoized:\n    def isMatch(self, s: str, p: str) -> bool:\n        memo = {}\n\n        def dfs(i: int, j: int) -> bool:\n            if (i, j) in memo:\n                return memo[(i, j)]\n            if j == len(p):\n                return i == len(s)\n            first = i < len(s) and (p[j] == s[i] or p[j] == \".\")\n            if j + 1 < len(p) and p[j + 1] == \"*\":\n                memo[(i, j)] = dfs(i, j + 2) or (first and dfs(i + 1, j))\n            else:\n                memo[(i, j)] = first and dfs(i + 1, j + 1)\n            return memo[(i, j)]\n\n        return dfs(0, 0)",
+    "optimal": "class Solution:\n    def isMatch(self, s: str, p: str) -> bool:\n        m, n = len(s), len(p)\n        dp = [[False] * (n + 1) for _ in range(m + 1)]\n        dp[m][n] = True\n        for i in range(m, -1, -1):\n            for j in range(n - 1, -1, -1):\n                first = i < m and (p[j] == s[i] or p[j] == \".\")\n                if j + 1 < n and p[j + 1] == \"*\":\n                    dp[i][j] = dp[i][j + 2] or (first and dp[i + 1][j])\n                else:\n                    dp[i][j] = first and dp[i + 1][j + 1]\n        return dp[0][0]"
+  },
+  "starterCode": "class Solution:\n    def isMatch(self, s, p):\n        # TODO: write your solution here\n        pass\n"
+}

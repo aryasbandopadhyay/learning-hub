@@ -1,0 +1,280 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "longestWord",
+  "params": [
+    "words"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "w",
+          "wo",
+          "wor",
+          "worl",
+          "world"
+        ]
+      ],
+      "expected": "world"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "dad",
+          "abc",
+          "ead",
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd",
+          "bcb",
+          "cac",
+          "bbd",
+          "cda",
+          "ddc",
+          "aec",
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb",
+          "bcd",
+          "bdc",
+          "daa",
+          "eeb",
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec",
+          "baa",
+          "cae",
+          "aad",
+          "cce"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "bad",
+          "dbc",
+          "dcb",
+          "bdd",
+          "deb",
+          "ccb",
+          "cde",
+          "dbd"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "bae",
+          "bde",
+          "aac",
+          "dac",
+          "aee",
+          "cae",
+          "cdc",
+          "bbe",
+          "ada",
+          "ace",
+          "bec",
+          "bda",
+          "dbb",
+          "adb",
+          "ccc",
+          "aeb",
+          "ebc",
+          "eaa",
+          "bbb",
+          "eaa",
+          "edb",
+          "cbe",
+          "eeb",
+          "cac",
+          "dbc",
+          "bab",
+          "dea",
+          "bda",
+          "bed",
+          "eab",
+          "bdc",
+          "cce",
+          "aed",
+          "acb",
+          "bac",
+          "ecc",
+          "add",
+          "aac",
+          "bec",
+          "cca",
+          "dce",
+          "beb",
+          "acd",
+          "deb",
+          "bed",
+          "abb",
+          "cbe",
+          "ada",
+          "eab",
+          "bbc"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "bed",
+          "baa",
+          "edd",
+          "abe",
+          "bcd",
+          "bde",
+          "ace",
+          "bbe"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "deb",
+          "bbd"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "bcb",
+          "eee",
+          "abb",
+          "ebd",
+          "dee"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "cec",
+          "dba",
+          "aad",
+          "acb",
+          "acb",
+          "cca",
+          "eec",
+          "bca"
+        ]
+      ],
+      "expected": ""
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "words",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "tries/06-longest-word-in-dictionary",
+  "title": "Longest Word in Dictionary",
+  "difficulty": "Easy",
+  "topic": "tries",
+  "solutions": {
+    "naive": "from typing import List\n\n\nclass Solution:\n    def longestWord(self, words: List[str]) -> str:\n        seen = set(words)\n        best = \"\"\n        for word in words:\n            valid = True\n            for i in range(1, len(word) + 1):\n                if word[:i] not in seen:\n                    valid = False\n                    break\n            if valid and (len(word) > len(best) or (len(word) == len(best) and word < best)):\n                best = word\n        return best",
+    "better": "from typing import List\n\n\nclass Solution:\n    def longestWord(self, words: List[str]) -> str:\n        buildable = {\"\"}\n        best = \"\"\n        for word in sorted(words):\n            # A word is buildable if removing its last char is buildable.\n            if word[:-1] in buildable:\n                buildable.add(word)\n                if len(word) > len(best):\n                    best = word\n        return best",
+    "optimal": "from typing import List\n\n\nclass TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.word = \"\"\n\n\nclass Solution:\n    def longestWord(self, words: List[str]) -> str:\n        root = TrieNode()\n        for word in words:\n            node = root\n            for ch in word:\n                if ch not in node.children:\n                    node.children[ch] = TrieNode()\n                node = node.children[ch]\n            node.word = word\n\n        best = \"\"\n\n        def dfs(node: TrieNode) -> None:\n            nonlocal best\n            if node is not root:\n                if not node.word:\n                    return\n                if len(node.word) > len(best) or (len(node.word) == len(best) and node.word < best):\n                    best = node.word\n            # Visit in sorted order so lexicographic ties are naturally handled.\n            for ch in sorted(node.children):\n                dfs(node.children[ch])\n\n        dfs(root)\n        return best"
+  },
+  "starterCode": "class Solution:\n    def longestWord(self, words):\n        # TODO: write your solution here\n        pass\n"
+}

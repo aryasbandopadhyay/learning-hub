@@ -1,0 +1,93 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "numberToWords",
+  "params": [
+    "num"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        12345
+      ],
+      "expected": "Twelve Thousand Three Hundred Forty Five"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239
+      ],
+      "expected": "Six Thousand Two Hundred Thirty Nine"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        3773
+      ],
+      "expected": "Three Thousand Seven Hundred Seventy Three"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        4115
+      ],
+      "expected": "Four Thousand One Hundred Fifteen"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017
+      ],
+      "expected": "Eight Thousand Seventeen"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128
+      ],
+      "expected": "Six Thousand One Hundred Twenty Eight"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495
+      ],
+      "expected": "Two Thousand Four Hundred Ninety Five"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        9289
+      ],
+      "expected": "Nine Thousand Two Hundred Eighty Nine"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685
+      ],
+      "expected": "Seven Thousand Six Hundred Eighty Five"
+    }
+  ],
+  "id": "faang/strings-advanced/14-integer-to-english-words",
+  "title": "Integer to English Words",
+  "difficulty": "Hard",
+  "topic": "faang/strings-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def numberToWords(self, num: int) -> str:\n        below_20 = [\"\", \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\", \"Ten\", \"Eleven\", \"Twelve\", \"Thirteen\", \"Fourteen\", \"Fifteen\", \"Sixteen\", \"Seventeen\", \"Eighteen\", \"Nineteen\"]\n        tens = [\"\", \"\", \"Twenty\", \"Thirty\", \"Forty\", \"Fifty\", \"Sixty\", \"Seventy\", \"Eighty\", \"Ninety\"]\n        units = [(1000000000, \"Billion\"), (1000000, \"Million\"), (1000, \"Thousand\"), (100, \"Hundred\")]\n\n        def words(n):\n            if n == 0:\n                return []\n            if n < 20:\n                return [below_20[n]]\n            if n < 100:\n                return [tens[n // 10]] + words(n % 10)\n            for value, name in units:\n                if n >= value:\n                    return words(n // value) + [name] + words(n % value)\n            return []\n\n        if num == 0:\n            return \"Zero\"\n        return \" \".join(words(num))",
+    "better": "class Solution:\n    def numberToWords(self, num: int) -> str:\n        ones = [\"\", \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\", \"Ten\", \"Eleven\", \"Twelve\", \"Thirteen\", \"Fourteen\", \"Fifteen\", \"Sixteen\", \"Seventeen\", \"Eighteen\", \"Nineteen\"]\n        tens = [\"\", \"\", \"Twenty\", \"Thirty\", \"Forty\", \"Fifty\", \"Sixty\", \"Seventy\", \"Eighty\", \"Ninety\"]\n        scales = [(1000000000, \"Billion\"), (1000000, \"Million\"), (1000, \"Thousand\"), (1, \"\")]\n\n        def three(n):\n            parts = []\n            if n >= 100:\n                parts.append(ones[n // 100])\n                parts.append(\"Hundred\")\n                n %= 100\n            if n >= 20:\n                parts.append(tens[n // 10])\n                n %= 10\n            if n > 0:\n                parts.append(ones[n])\n            return parts\n\n        if num == 0:\n            return \"Zero\"\n        ans = []\n        for value, scale in scales:\n            group = num // value\n            if group:\n                ans.extend(three(group))\n                if scale:\n                    ans.append(scale)\n                num %= value\n        return \" \".join(ans)",
+    "optimal": "class Solution:\n    def numberToWords(self, num: int) -> str:\n        if num == 0:\n            return \"Zero\"\n        small = [\"\", \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\", \"Ten\", \"Eleven\", \"Twelve\", \"Thirteen\", \"Fourteen\", \"Fifteen\", \"Sixteen\", \"Seventeen\", \"Eighteen\", \"Nineteen\"]\n        tens = [\"\", \"\", \"Twenty\", \"Thirty\", \"Forty\", \"Fifty\", \"Sixty\", \"Seventy\", \"Eighty\", \"Ninety\"]\n        scales = [\"\", \"Thousand\", \"Million\", \"Billion\"]\n\n        def chunk_to_words(n):\n            res = []\n            if n >= 100:\n                res += [small[n // 100], \"Hundred\"]\n                n %= 100\n            if n >= 20:\n                res.append(tens[n // 10])\n                n %= 10\n            if n:\n                res.append(small[n])\n            return res\n\n        parts = []\n        scale = 0\n        while num:\n            chunk = num % 1000\n            if chunk:\n                words = chunk_to_words(chunk)\n                if scales[scale]:\n                    words.append(scales[scale])\n                parts = words + parts\n            num //= 1000\n            scale += 1\n        return \" \".join(parts)"
+  },
+  "starterCode": "class Solution:\n    def numberToWords(self, num):\n        # TODO: write your solution here\n        pass\n"
+}

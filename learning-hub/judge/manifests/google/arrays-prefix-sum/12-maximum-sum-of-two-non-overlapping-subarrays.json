@@ -1,0 +1,79 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxSumTwoNoOverlap",
+  "params": [
+    "nums",
+    "firstLen",
+    "secondLen"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          0,
+          6,
+          5,
+          2,
+          2,
+          5,
+          1,
+          9,
+          4
+        ],
+        1,
+        2
+      ],
+      "expected": 20
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "firstLen",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "secondLen",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/arrays-prefix-sum/12-maximum-sum-of-two-non-overlapping-subarrays",
+  "title": "Maximum Sum of Two Non-Overlapping Subarrays",
+  "difficulty": "Medium",
+  "topic": "google/arrays-prefix-sum",
+  "solutions": {
+    "naive": "class Solution:\n    def maxSumTwoNoOverlap(self, nums: list[int], firstLen: int, secondLen: int) -> int:\n        n = len(nums)\n        prefix = [0]\n        for x in nums:\n            prefix.append(prefix[-1] + x)\n        def window(i, length):\n            return prefix[i + length] - prefix[i]\n        best = 0\n        for i in range(n - firstLen + 1):\n            for j in range(n - secondLen + 1):\n                if i + firstLen <= j or j + secondLen <= i:\n                    best = max(best, window(i, firstLen) + window(j, secondLen))\n        return best",
+    "better": "class Solution:\n    def maxSumTwoNoOverlap(self, nums: list[int], firstLen: int, secondLen: int) -> int:\n        prefix = [0]\n        for x in nums:\n            prefix.append(prefix[-1] + x)\n        n = len(nums)\n        def window(i, length):\n            return prefix[i + length] - prefix[i]\n        def solve(a, b):\n            best = 0\n            for j in range(a, n - b + 1):\n                left_best = 0\n                for i in range(0, j - a + 1):\n                    left_best = max(left_best, window(i, a))\n                best = max(best, left_best + window(j, b))\n            return best\n        return max(solve(firstLen, secondLen), solve(secondLen, firstLen))",
+    "optimal": "class Solution:\n    def maxSumTwoNoOverlap(self, nums: list[int], firstLen: int, secondLen: int) -> int:\n        prefix = [0]\n        for x in nums:\n            prefix.append(prefix[-1] + x)\n        n = len(nums)\n        def window(i, length):\n            return prefix[i + length] - prefix[i]\n        def solve(a, b):\n            best_a = window(0, a)\n            best = 0\n            for j in range(a, n - b + 1):\n                best_a = max(best_a, window(j - a, a))\n                best = max(best, best_a + window(j, b))\n            return best\n        return max(solve(firstLen, secondLen), solve(secondLen, firstLen))"
+  },
+  "starterCode": "class Solution:\n    def maxSumTwoNoOverlap(self, nums, firstLen, secondLen):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "longestValidParentheses",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        ")()())"
+      ],
+      "expected": 4
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/stack-parsing/04-longest-valid-parentheses",
+  "title": "Longest Valid Parentheses",
+  "difficulty": "Hard",
+  "topic": "faang/stack-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def longestValidParentheses(self, s: str) -> int:\n        best = 0\n        n = len(s)\n        for i in range(n):\n            bal = 0\n            for j in range(i, n):\n                bal += 1 if s[j] == '(' else -1\n                if bal < 0:\n                    break\n                if bal == 0:\n                    best = max(best, j - i + 1)\n        return best",
+    "better": "class Solution:\n    def longestValidParentheses(self, s: str) -> int:\n        n = len(s)\n        dp = [0] * n\n        best = 0\n        for i in range(1, n):\n            if s[i] == ')':\n                if s[i - 1] == '(':\n                    dp[i] = 2 + (dp[i - 2] if i >= 2 else 0)\n                else:\n                    j = i - dp[i - 1] - 1\n                    if j >= 0 and s[j] == '(':\n                        dp[i] = dp[i - 1] + 2 + (dp[j - 1] if j >= 1 else 0)\n                best = max(best, dp[i])\n        return best",
+    "optimal": "class Solution:\n    def longestValidParentheses(self, s: str) -> int:\n        stack = [-1]\n        best = 0\n        for i, ch in enumerate(s):\n            if ch == '(':\n                stack.append(i)\n            else:\n                stack.pop()\n                if not stack:\n                    stack.append(i)\n                else:\n                    best = max(best, i - stack[-1])\n        return best"
+  },
+  "starterCode": "class Solution:\n    def longestValidParentheses(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

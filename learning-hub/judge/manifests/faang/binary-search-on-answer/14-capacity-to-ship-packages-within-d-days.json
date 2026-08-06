@@ -1,0 +1,71 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "shipWithinDays",
+  "params": [
+    "weights",
+    "days"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        5
+      ],
+      "expected": 15
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "weights",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "days",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/binary-search-on-answer/14-capacity-to-ship-packages-within-d-days",
+  "title": "Capacity To Ship Packages Within D Days",
+  "difficulty": "Medium",
+  "topic": "faang/binary-search-on-answer",
+  "solutions": {
+    "naive": "class Solution:\n    def shipWithinDays(self, weights, days):\n        def can_ship(capacity):\n            used = 1\n            load = 0\n            for weight in weights:\n                if load + weight > capacity:\n                    used += 1\n                    load = 0\n                load += weight\n            return used <= days\n\n        for capacity in range(max(weights), sum(weights) + 1):\n            if can_ship(capacity):\n                return capacity\n        return sum(weights)",
+    "better": "class Solution:\n    def shipWithinDays(self, weights, days):\n        n = len(weights)\n        if days >= n:\n            return max(weights)\n        prefix = [0]\n        for w in weights:\n            prefix.append(prefix[-1] + w)\n        prev = [0] + [prefix[i] for i in range(1, n + 1)]\n        for d in range(2, days + 1):\n            curr = [0] * (n + 1)\n            for i in range(1, n + 1):\n                best = prefix[i]\n                for cut in range(d - 1, i):\n                    best = min(best, max(prev[cut], prefix[i] - prefix[cut]))\n                curr[i] = best\n            prev = curr\n        return prev[n]",
+    "optimal": "class Solution:\n    def shipWithinDays(self, weights, days):\n        def needed_days(capacity):\n            used = 1\n            load = 0\n            for weight in weights:\n                if load + weight > capacity:\n                    used += 1\n                    load = 0\n                load += weight\n            return used\n\n        lo, hi = max(weights), sum(weights)\n        while lo < hi:\n            mid = (lo + hi) // 2\n            if needed_days(mid) <= days:\n                hi = mid\n            else:\n                lo = mid + 1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def shipWithinDays(self, weights, days):\n        # TODO: write your solution here\n        pass\n"
+}

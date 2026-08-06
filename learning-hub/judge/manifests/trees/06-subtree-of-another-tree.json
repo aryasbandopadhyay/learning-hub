@@ -1,0 +1,46 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isSubtree",
+  "params": [
+    "root",
+    "subRoot"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        [
+          4,
+          1,
+          2
+        ]
+      ],
+      "expected": true
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree",
+    "tree"
+  ],
+  "id": "trees/06-subtree-of-another-tree",
+  "title": "Subtree of Another Tree",
+  "difficulty": "Easy",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isSubtree(self, root, subRoot):\n        def same(a, b):\n            if not a or not b: return a is b\n            return a.val == b.val and same(a.left, b.left) and same(a.right, b.right)\n        if not root: return subRoot is None\n        return same(root, subRoot) or self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isSubtree(self, root, subRoot):\n        def ser(node):\n            if not node: return ',#'\n            return ',' + str(node.val) + ser(node.left) + ser(node.right)\n        return ser(subRoot) in ser(root)",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def isSubtree(self, root, subRoot):\n        def same(a, b):\n            if not a or not b: return a is b\n            return a.val == b.val and same(a.left, b.left) and same(a.right, b.right)\n        stack = [root]\n        while stack:\n            node = stack.pop()\n            if not node: continue\n            if node.val == subRoot.val and same(node, subRoot): return True\n            stack.append(node.left); stack.append(node.right)\n        return subRoot is None"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def isSubtree(self, root, subRoot):\n        # TODO: write your solution here\n        pass\n"
+}

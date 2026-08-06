@@ -1,0 +1,71 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "shipWithinDays",
+  "params": [
+    "weights",
+    "days"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        5
+      ],
+      "expected": 15
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "weights",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "days",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "binary-search/11-capacity-to-ship-packages-within-d-days",
+  "title": "Capacity To Ship Packages Within D Days",
+  "difficulty": "Medium",
+  "topic": "binary-search",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def shipWithinDays(self, weights: List[int], days: int) -> int:\n        def needed(capacity: int) -> int:\n            used_days, load = 1, 0\n            for weight in weights:\n                if load + weight > capacity:\n                    used_days += 1\n                    load = 0\n                load += weight\n            return used_days\n\n        for capacity in range(max(weights), sum(weights) + 1):\n            if needed(capacity) <= days:\n                return capacity\n        return sum(weights)",
+    "better": "from typing import List\n\nclass Solution:\n    def shipWithinDays(self, weights: List[int], days: int) -> int:\n        def can_ship(capacity: int) -> bool:\n            used_days, load = 1, 0\n            for weight in weights:\n                if load + weight > capacity:\n                    used_days += 1\n                    load = 0\n                load += weight\n            return used_days <= days\n\n        start = max(max(weights), (sum(weights) + days - 1) // days)\n        for capacity in range(start, sum(weights) + 1):\n            if can_ship(capacity):\n                return capacity\n        return sum(weights)",
+    "optimal": "from typing import List\n\nclass Solution:\n    def shipWithinDays(self, weights: List[int], days: int) -> int:\n        def can_ship(capacity: int) -> bool:\n            used_days, load = 1, 0\n            for weight in weights:\n                if load + weight > capacity:\n                    used_days += 1\n                    load = 0\n                load += weight\n            return used_days <= days\n\n        left, right = max(weights), sum(weights)\n        while left < right:\n            mid = (left + right) // 2\n            if can_ship(mid):\n                right = mid\n            else:\n                left = mid + 1\n        return left"
+  },
+  "starterCode": "class Solution:\n    def shipWithinDays(self, weights, days):\n        # TODO: write your solution here\n        pass\n"
+}

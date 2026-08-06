@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "validNumber",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "-123.45e+6"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/strings-parsing/01-valid-number",
+  "title": "Valid Number",
+  "difficulty": "Hard",
+  "topic": "google/strings-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def validNumber(self, s: str) -> bool:\n        if not s or any(c not in \"+-.eE0123456789\" for c in s):\n            return False\n        try:\n            float(s)\n        except ValueError:\n            return False\n        t = s.lower()\n        return \"inf\" not in t and \"nan\" not in t",
+    "better": "class Solution:\n    def validNumber(self, s: str) -> bool:\n        def is_int(t: str) -> bool:\n            if t and t[0] in \"+-\": t = t[1:]\n            return bool(t) and all(c.isdigit() for c in t)\n        def is_dec(t: str) -> bool:\n            if t and t[0] in \"+-\": t = t[1:]\n            if not t or t.count(\".\") > 1: return False\n            if \".\" not in t: return all(c.isdigit() for c in t)\n            a, b = t.split(\".\")\n            return (a != \"\" or b != \"\") and all(c.isdigit() for c in a + b)\n        p = s.replace(\"E\", \"e\").split(\"e\")\n        return (len(p) == 1 and is_dec(p[0])) or (len(p) == 2 and is_dec(p[0]) and is_int(p[1]))",
+    "optimal": "class Solution:\n    def validNumber(self, s: str) -> bool:\n        states = [{\"sign\":1,\"digit\":2,\"dot\":3},{\"digit\":2,\"dot\":3},{\"digit\":2,\"dot\":4,\"exp\":5},{\"digit\":4},{\"digit\":4,\"exp\":5},{\"sign\":6,\"digit\":7},{\"digit\":7},{\"digit\":7}]\n        st = 0\n        for c in s:\n            tok = \"digit\" if c.isdigit() else \"sign\" if c in \"+-\" else \"dot\" if c == \".\" else \"exp\" if c in \"eE\" else \"bad\"\n            if tok not in states[st]: return False\n            st = states[st][tok]\n        return st in {2,4,7}"
+  },
+  "starterCode": "class Solution:\n    def validNumber(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

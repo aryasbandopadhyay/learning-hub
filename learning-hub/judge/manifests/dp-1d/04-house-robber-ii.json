@@ -1,0 +1,33 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "rob",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          3,
+          2
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "id": "dp-1d/04-house-robber-ii",
+  "title": "House Robber II",
+  "difficulty": "Medium",
+  "topic": "dp-1d",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        if len(nums) == 1:\n            return nums[0]\n\n        def dfs(lo: int, hi: int, i: int) -> int:\n            if i > hi:\n                return 0\n            return max(nums[i] + dfs(lo, hi, i + 2), dfs(lo, hi, i + 1))\n\n        return max(dfs(0, len(nums) - 2, 0), dfs(1, len(nums) - 1, 1))",
+    "better": "from typing import List\n\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        if len(nums) == 1:\n            return nums[0]\n\n        def solve(lo: int, hi: int) -> int:\n            memo = {}\n\n            def dfs(i: int) -> int:\n                if i > hi:\n                    return 0\n                if i not in memo:\n                    memo[i] = max(nums[i] + dfs(i + 2), dfs(i + 1))\n                return memo[i]\n\n            return dfs(lo)\n\n        return max(solve(0, len(nums) - 2), solve(1, len(nums) - 1))",
+    "optimal": "from typing import List\n\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        if len(nums) == 1:\n            return nums[0]\n\n        def rob_line(arr: List[int]) -> int:\n            rob_prev, skip_prev = 0, 0\n            for money in arr:\n                rob_prev, skip_prev = skip_prev + money, max(rob_prev, skip_prev)\n            return max(rob_prev, skip_prev)\n\n        return max(rob_line(nums[:-1]), rob_line(nums[1:]))"
+  },
+  "starterCode": "class Solution:\n    def rob(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,46 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findMinArrowShots",
+  "params": [
+    "points"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            10,
+            16
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            7,
+            12
+          ]
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "id": "faang/intervals-merge/14-minimum-number-of-arrows-to-burst-balloons",
+  "title": "Minimum Number of Arrows to Burst Balloons",
+  "difficulty": "Medium",
+  "topic": "faang/intervals-merge",
+  "solutions": {
+    "naive": "class Solution:\n    def findMinArrowShots(self, points: list[list[int]]) -> int:\n        n = len(points)\n        burst = [False] * n\n        remaining = n\n        arrows = 0\n        while remaining:\n            arrow = None\n            for i, (_, end) in enumerate(points):\n                if not burst[i] and (arrow is None or end < arrow):\n                    arrow = end\n            arrows += 1\n            for i, (start, end) in enumerate(points):\n                if not burst[i] and start <= arrow <= end:\n                    burst[i] = True\n                    remaining -= 1\n        return arrows",
+    "better": "class Solution:\n    def findMinArrowShots(self, points: list[list[int]]) -> int:\n        if not points:\n            return 0\n        points = sorted(points)\n        arrows = 1\n        overlap_start, overlap_end = points[0]\n        for start, end in points[1:]:\n            if start <= overlap_end:\n                overlap_start = max(overlap_start, start)\n                overlap_end = min(overlap_end, end)\n            else:\n                arrows += 1\n                overlap_start, overlap_end = start, end\n        return arrows",
+    "optimal": "class Solution:\n    def findMinArrowShots(self, points: list[list[int]]) -> int:\n        points = sorted(points, key=lambda p: (p[1], p[0]))\n        arrows = 0\n        last_arrow = None\n        for start, end in points:\n            if last_arrow is None or start > last_arrow:\n                arrows += 1\n                last_arrow = end\n        return arrows"
+  },
+  "starterCode": "class Solution:\n    def findMinArrowShots(self, points):\n        # TODO: write your solution here\n        pass\n"
+}

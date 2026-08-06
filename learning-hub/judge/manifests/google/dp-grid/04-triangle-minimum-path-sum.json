@@ -1,0 +1,107 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minimumTotal",
+  "params": [
+    "triangle"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            6,
+            5,
+            7
+          ],
+          [
+            4,
+            1,
+            8,
+            3
+          ]
+        ]
+      ],
+      "expected": 11
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            9147
+          ]
+        ]
+      ],
+      "expected": 9147
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -9109
+          ]
+        ]
+      ],
+      "expected": -9109
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -9359
+          ]
+        ]
+      ],
+      "expected": -9359
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "triangle",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 1
+        }
+      ]
+    }
+  },
+  "id": "google/dp-grid/04-triangle-minimum-path-sum",
+  "title": "Triangle Minimum Path Sum",
+  "difficulty": "Medium",
+  "topic": "google/dp-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def minimumTotal(self, triangle: list[list[int]]) -> int:\n        dp = [row[:] for row in triangle]\n        for r in range(1, len(triangle)):\n            for c in range(len(triangle[r])):\n                best = 10 ** 18\n                if c < len(triangle[r - 1]):\n                    best = min(best, dp[r - 1][c])\n                if c:\n                    best = min(best, dp[r - 1][c - 1])\n                dp[r][c] += best\n        return min(dp[-1])",
+    "better": "class Solution:\n    def minimumTotal(self, triangle: list[list[int]]) -> int:\n        dp = [10 ** 18] * (len(triangle) + 1)\n        dp[0] = 0\n        for row in triangle:\n            for c in range(len(row) - 1, -1, -1):\n                dp[c] = min(dp[c], dp[c - 1] if c else 10 ** 18) + row[c]\n        return min(dp[:len(triangle)])",
+    "optimal": "class Solution:\n    def minimumTotal(self, triangle: list[list[int]]) -> int:\n        dp = triangle[-1][:]\n        for r in range(len(triangle) - 2, -1, -1):\n            for c in range(len(triangle[r])):\n                dp[c] = triangle[r][c] + min(dp[c], dp[c + 1])\n        return dp[0]"
+  },
+  "starterCode": "class Solution:\n    def minimumTotal(self, triangle):\n        # TODO: write your solution here\n        pass\n"
+}

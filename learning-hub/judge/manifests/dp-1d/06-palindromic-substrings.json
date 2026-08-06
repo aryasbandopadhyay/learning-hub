@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "countSubstrings",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "aaa"
+      ],
+      "expected": 6
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "dp-1d/06-palindromic-substrings",
+  "title": "Palindromic Substrings",
+  "difficulty": "Medium",
+  "topic": "dp-1d",
+  "solutions": {
+    "naive": "class Solution:\n    def countSubstrings(self, s: str) -> int:\n        def is_pal(l: int, r: int) -> bool:\n            if l >= r:\n                return True\n            return s[l] == s[r] and is_pal(l + 1, r - 1)\n\n        def scan(l: int, r: int) -> int:\n            if l == len(s):\n                return 0\n            if r == len(s):\n                return scan(l + 1, l + 1)\n            return (1 if is_pal(l, r) else 0) + scan(l, r + 1)\n\n        return scan(0, 0)",
+    "better": "class Solution:\n    def countSubstrings(self, s: str) -> int:\n        memo = {}\n\n        def is_pal(l: int, r: int) -> bool:\n            if l >= r:\n                return True\n            if (l, r) not in memo:\n                memo[(l, r)] = s[l] == s[r] and is_pal(l + 1, r - 1)\n            return memo[(l, r)]\n\n        count = 0\n        for l in range(len(s)):\n            for r in range(l, len(s)):\n                if is_pal(l, r):\n                    count += 1\n        return count",
+    "optimal": "class Solution:\n    def countSubstrings(self, s: str) -> int:\n        n = len(s)\n        dp = [False] * n\n        count = 0\n\n        for l in range(n - 1, -1, -1):\n            new_dp = [False] * n\n            for r in range(l, n):\n                new_dp[r] = s[l] == s[r] and (r - l < 2 or dp[r - 1])\n                if new_dp[r]:\n                    count += 1\n            dp = new_dp\n\n        return count"
+  },
+  "starterCode": "class Solution:\n    def countSubstrings(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

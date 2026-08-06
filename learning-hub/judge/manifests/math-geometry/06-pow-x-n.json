@@ -1,0 +1,103 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "myPow",
+  "params": [
+    "x",
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        2.0,
+        10
+      ],
+      "expected": 1024.0
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        2.0,
+        6239
+      ],
+      "expected": Infinity
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        2.0,
+        3773
+      ],
+      "expected": Infinity
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        2.0,
+        4115
+      ],
+      "expected": Infinity
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        2.0,
+        8017
+      ],
+      "expected": Infinity
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        2.0,
+        6128
+      ],
+      "expected": Infinity
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2.0,
+        2495
+      ],
+      "expected": Infinity
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        2.0,
+        9289
+      ],
+      "expected": Infinity
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        2.0,
+        7685
+      ],
+      "expected": Infinity
+    }
+  ],
+  "id": "math-geometry/06-pow-x-n",
+  "title": "Pow(x, n)",
+  "difficulty": "Medium",
+  "topic": "math-geometry",
+  "solutions": {
+    "naive": "class Solution:\n    def myPow(self, x: float, n: int) -> float:\n        result = 1.0\n        for _ in range(abs(n)):\n            result *= x\n        return result if n >= 0 else 1.0 / result",
+    "better": "class Solution:\n    def myPow(self, x: float, n: int) -> float:\n        def fast_power(exp: int) -> float:\n            if exp == 0:\n                return 1.0\n            half = fast_power(exp // 2)\n            # Odd exponents need one extra factor of x.\n            return half * half if exp % 2 == 0 else half * half * x\n\n        ans = fast_power(abs(n))\n        return ans if n >= 0 else 1.0 / ans",
+    "optimal": "class Solution:\n    def myPow(self, x: float, n: int) -> float:\n        exp = abs(n)\n        base = x\n        result = 1.0\n        while exp:\n            if exp & 1:\n                result *= base\n            base *= base\n            exp >>= 1\n        return result if n >= 0 else 1.0 / result"
+  },
+  "starterCode": "class Solution:\n    def myPow(self, x, n):\n        # TODO: write your solution here\n        pass\n"
+}

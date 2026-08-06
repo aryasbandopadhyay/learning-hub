@@ -1,0 +1,89 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findMaximizedCapital",
+  "params": [
+    "k",
+    "w",
+    "profits",
+    "capital"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        2,
+        0,
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "expected": 4
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "w",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "profits",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "capital",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            0,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  },
+  "id": "faang/greedy-scheduling/12-ipo",
+  "title": "IPO",
+  "difficulty": "Hard",
+  "topic": "faang/greedy-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def findMaximizedCapital(self, k: int, w: int, profits: list[int], capital: list[int]) -> int:\n        n = len(profits)\n        if n > 16 or k > 16:\n            used = [False] * n\n            for _ in range(k):\n                best = -1\n                for i in range(n):\n                    if not used[i] and capital[i] <= w and (best == -1 or profits[i] > profits[best]):\n                        best = i\n                if best == -1:\n                    break\n                used[best] = True\n                w += profits[best]\n            return w\n        from functools import lru_cache\n        @lru_cache(None)\n        def dfs(mask, cur, steps):\n            if steps == k:\n                return cur\n            best = cur\n            for i in range(n):\n                if not (mask >> i) & 1 and capital[i] <= cur:\n                    best = max(best, dfs(mask | (1 << i), cur + profits[i], steps + 1))\n            return best\n        return dfs(0, w, 0)",
+    "better": "class Solution:\n    def findMaximizedCapital(self, k: int, w: int, profits: list[int], capital: list[int]) -> int:\n        used = [False] * len(profits)\n        for _ in range(k):\n            best = -1\n            for i in range(len(profits)):\n                if not used[i] and capital[i] <= w and (best == -1 or profits[i] > profits[best]):\n                    best = i\n            if best == -1:\n                break\n            used[best] = True\n            w += profits[best]\n        return w",
+    "optimal": "class Solution:\n    def findMaximizedCapital(self, k: int, w: int, profits: list[int], capital: list[int]) -> int:\n        import heapq\n        projects = sorted(zip(capital, profits))\n        heap = []\n        i = 0\n        for _ in range(k):\n            while i < len(projects) and projects[i][0] <= w:\n                heapq.heappush(heap, -projects[i][1])\n                i += 1\n            if not heap:\n                break\n            w += -heapq.heappop(heap)\n        return w"
+  },
+  "starterCode": "class Solution:\n    def findMaximizedCapital(self, k, w, profits, capital):\n        # TODO: write your solution here\n        pass\n"
+}

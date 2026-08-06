@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxSatisfied",
+  "params": [
+    "customers",
+    "grumpy",
+    "minutes"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          0,
+          1,
+          2,
+          1,
+          1,
+          7,
+          5
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        3
+      ],
+      "expected": 16
+    }
+  ],
+  "id": "google/sliding-window/13-grumpy-bookstore-owner",
+  "title": "Grumpy Bookstore Owner",
+  "difficulty": "Medium",
+  "topic": "google/sliding-window",
+  "solutions": {
+    "naive": "class Solution:\n    def maxSatisfied(self, customers: list[int], grumpy: list[int], minutes: int) -> int:\n        n = len(customers)\n        best = 0\n        for start in range(n - minutes + 1):\n            total = 0\n            end = start + minutes\n            for i in range(n):\n                if grumpy[i] == 0 or start <= i < end:\n                    total += customers[i]\n            best = max(best, total)\n        return best",
+    "better": "class Solution:\n    def maxSatisfied(self, customers: list[int], grumpy: list[int], minutes: int) -> int:\n        n = len(customers)\n        base = 0\n        gain_prefix = [0]\n        for c, g in zip(customers, grumpy):\n            if g == 0:\n                base += c\n                gain_prefix.append(gain_prefix[-1])\n            else:\n                gain_prefix.append(gain_prefix[-1] + c)\n        best_gain = 0\n        for start in range(n - minutes + 1):\n            best_gain = max(best_gain, gain_prefix[start + minutes] - gain_prefix[start])\n        return base + best_gain",
+    "optimal": "class Solution:\n    def maxSatisfied(self, customers: list[int], grumpy: list[int], minutes: int) -> int:\n        base = 0\n        gain = 0\n        best_gain = 0\n        for i, c in enumerate(customers):\n            if grumpy[i] == 0:\n                base += c\n            else:\n                gain += c\n            if i >= minutes and grumpy[i - minutes] == 1:\n                gain -= customers[i - minutes]\n            best_gain = max(best_gain, gain)\n        return base + best_gain"
+  },
+  "starterCode": "class Solution:\n    def maxSatisfied(self, customers, grumpy, minutes):\n        # TODO: write your solution here\n        pass\n"
+}

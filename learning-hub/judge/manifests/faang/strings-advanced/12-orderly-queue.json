@@ -1,0 +1,132 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "orderlyQueue",
+  "params": [
+    "s",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "cba",
+        1
+      ],
+      "expected": "acb"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        6128
+      ],
+      "expected": "aabbbbbbbcddddeeeeee"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "bdbec",
+        1360
+      ],
+      "expected": "bbcde"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "dc",
+        6597
+      ],
+      "expected": "cd"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "d",
+        3339
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "de",
+        3246
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "c",
+        2116
+      ],
+      "expected": "c"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "deb",
+        8245
+      ],
+      "expected": "bde"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "a",
+        382
+      ],
+      "expected": "a"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/strings-advanced/12-orderly-queue",
+  "title": "Orderly Queue",
+  "difficulty": "Hard",
+  "topic": "faang/strings-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def orderlyQueue(self, s: str, k: int) -> str:\n        if k == 1:\n            best = s\n            for i in range(1, len(s)):\n                best = min(best, s[i:] + s[:i])\n            return best\n        chars = list(s)\n        for i in range(len(chars)):\n            best = i\n            for j in range(i + 1, len(chars)):\n                if chars[j] < chars[best]:\n                    best = j\n            chars[i], chars[best] = chars[best], chars[i]\n        return ''.join(chars)",
+    "better": "class Solution:\n    def orderlyQueue(self, s, k):\n        if k > 1:\n            return ''.join(sorted(s))\n        ss = s + s\n        n = len(s)\n        i, j, offset = 0, 1, 0\n        while i < n and j < n and offset < n:\n            a, b = ss[i + offset], ss[j + offset]\n            if a == b:\n                offset += 1\n            elif a > b:\n                i = i + offset + 1\n                if i <= j:\n                    i = j + 1\n                offset = 0\n            else:\n                j = j + offset + 1\n                if j <= i:\n                    j = i + 1\n                offset = 0\n        start = min(i, j)\n        return ss[start:start + n]",
+    "optimal": "class Solution:\n    def orderlyQueue(self, s, k):\n        if k == 1:\n            return min(s[i:] + s[:i] for i in range(len(s)))\n        return ''.join(sorted(s))"
+  },
+  "starterCode": "class Solution:\n    def orderlyQueue(self, s, k):\n        # TODO: write your solution here\n        pass\n"
+}

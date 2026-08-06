@@ -1,0 +1,69 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "scheduleCourse",
+  "params": [
+    "courses"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            100,
+            200
+          ],
+          [
+            200,
+            1300
+          ],
+          [
+            1000,
+            1250
+          ],
+          [
+            2000,
+            3200
+          ]
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "courses",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "faang/greedy-scheduling/02-course-schedule-iii",
+  "title": "Course Schedule III",
+  "difficulty": "Hard",
+  "topic": "faang/greedy-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def scheduleCourse(self, courses: list[list[int]]) -> int:\n        courses.sort(key=lambda x: x[1])\n        limit = max(d for _, d in courses)\n        dp = [-10**9] * (limit + 1)\n        dp[0] = 0\n        for duration, last in courses:\n            for t in range(last, duration - 1, -1):\n                dp[t] = max(dp[t], dp[t - duration] + 1)\n        return max(dp)",
+    "better": "class Solution:\n    def scheduleCourse(self, courses: list[list[int]]) -> int:\n        courses.sort(key=lambda x: x[1])\n        n = len(courses)\n        inf = 10**18\n        dp = [0] + [inf] * n\n        best = 0\n        for duration, last in courses:\n            for k in range(best, -1, -1):\n                if dp[k] + duration <= last and dp[k] + duration < dp[k + 1]:\n                    dp[k + 1] = dp[k] + duration\n                    best = max(best, k + 1)\n        return best",
+    "optimal": "class Solution:\n    def scheduleCourse(self, courses: list[list[int]]) -> int:\n        import heapq\n        total = 0\n        heap = []\n        for duration, last in sorted(courses, key=lambda x: x[1]):\n            total += duration\n            heapq.heappush(heap, -duration)\n            if total > last:\n                total += heapq.heappop(heap)\n        return len(heap)"
+  },
+  "starterCode": "class Solution:\n    def scheduleCourse(self, courses):\n        # TODO: write your solution here\n        pass\n"
+}

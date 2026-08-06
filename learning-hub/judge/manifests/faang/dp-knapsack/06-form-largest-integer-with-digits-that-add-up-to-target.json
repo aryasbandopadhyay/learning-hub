@@ -1,0 +1,70 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "largestNumber",
+  "params": [
+    "cost",
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          4,
+          3,
+          2,
+          5,
+          6,
+          7,
+          2,
+          5,
+          5
+        ],
+        9
+      ],
+      "expected": "7772"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "cost",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "target",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-knapsack/06-form-largest-integer-with-digits-that-add-up-to-target",
+  "title": "Form Largest Integer With Digits That Add up to Target",
+  "difficulty": "Hard",
+  "topic": "faang/dp-knapsack",
+  "solutions": {
+    "naive": "class Solution:\n    def largestNumber(self, cost: list[int], target: int) -> str:\n        def better(a: str, b: str) -> str:\n            if a == \"#\":\n                return b\n            if b == \"#\":\n                return a\n            if len(a) != len(b):\n                return a if len(a) > len(b) else b\n            return a if a > b else b\n        def dfs(rem: int) -> str:\n            if rem == 0:\n                return \"\"\n            if rem < 0:\n                return \"#\"\n            ans = \"#\"\n            for d in range(9, 0, -1):\n                tail = dfs(rem - cost[d - 1])\n                if tail != \"#\":\n                    ans = better(ans, str(d) + tail)\n            return ans\n        ans = dfs(target)\n        return \"0\" if ans == \"#\" else ans",
+    "better": "class Solution:\n    def largestNumber(self, cost: list[int], target: int) -> str:\n        from functools import lru_cache\n        def better(a: str, b: str) -> str:\n            if a == \"#\":\n                return b\n            if b == \"#\":\n                return a\n            if len(a) != len(b):\n                return a if len(a) > len(b) else b\n            return a if a > b else b\n        @lru_cache(None)\n        def dp(rem: int) -> str:\n            if rem == 0:\n                return \"\"\n            if rem < 0:\n                return \"#\"\n            ans = \"#\"\n            for d in range(9, 0, -1):\n                tail = dp(rem - cost[d - 1])\n                if tail != \"#\":\n                    ans = better(ans, str(d) + tail)\n            return ans\n        ans = dp(target)\n        return \"0\" if ans == \"#\" else ans",
+    "optimal": "class Solution:\n    def largestNumber(self, cost: list[int], target: int) -> str:\n        NEG = -10**9\n        dp = [NEG] * (target + 1)\n        dp[0] = 0\n        for t in range(1, target + 1):\n            for c in cost:\n                if t >= c and dp[t - c] != NEG:\n                    dp[t] = max(dp[t], dp[t - c] + 1)\n        if dp[target] < 0:\n            return \"0\"\n        ans = []\n        rem = target\n        for d in range(9, 0, -1):\n            c = cost[d - 1]\n            while rem >= c and dp[rem] == dp[rem - c] + 1:\n                ans.append(str(d))\n                rem -= c\n        return \"\".join(ans)"
+  },
+  "starterCode": "class Solution:\n    def largestNumber(self, cost, target):\n        # TODO: write your solution here\n        pass\n"
+}

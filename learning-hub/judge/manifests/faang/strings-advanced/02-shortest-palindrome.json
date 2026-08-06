@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "shortestPalindrome",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "aacecaaa"
+      ],
+      "expected": "aaacecaaa"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "beedbdeaeedcabbbbebdbebbbbacdeeaedbdeeb"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "dcdaeacebdbbdbecaeadcd"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "ede"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "bcbaaadebebadcbdecdbabdebcdaecbadaddbaaabebedbbbcacbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "ddbcaeaceabcacbdcebbecdbcacbaecaeacbdd"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "cdbbcacbcbddcabaecddceabacddbcbcacbbdc"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": "dd"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/strings-advanced/02-shortest-palindrome",
+  "title": "Shortest Palindrome",
+  "difficulty": "Hard",
+  "topic": "faang/strings-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def shortestPalindrome(self, s: str) -> str:\n        for end in range(len(s), -1, -1):\n            prefix = s[:end]\n            if prefix == prefix[::-1]:\n                return s[end:][::-1] + s\n        return s",
+    "better": "class Solution:\n    def shortestPalindrome(self, s):\n        mod, base = 1_000_000_007, 911382323\n        forward = reverse = 0\n        power = 1\n        best = 0\n        for i, ch in enumerate(s):\n            val = ord(ch)\n            forward = (forward * base + val) % mod\n            reverse = (reverse + val * power) % mod\n            power = (power * base) % mod\n            if forward == reverse and s[:i + 1] == s[:i + 1][::-1]:\n                best = i + 1\n        return s[best:][::-1] + s",
+    "optimal": "class Solution:\n    def shortestPalindrome(self, s):\n        rev = s[::-1]\n        combined = s + \"#\" + rev\n        pi = [0] * len(combined)\n        j = 0\n        for i in range(1, len(combined)):\n            while j and combined[i] != combined[j]:\n                j = pi[j - 1]\n            if combined[i] == combined[j]:\n                j += 1\n                pi[i] = j\n        keep = pi[-1] if combined else 0\n        return rev[:len(s) - keep] + s"
+  },
+  "starterCode": "class Solution:\n    def shortestPalindrome(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

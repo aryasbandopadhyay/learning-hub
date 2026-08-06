@@ -1,0 +1,54 @@
+{
+  "shape": "design",
+  "className": "MapSum",
+  "entry": null,
+  "params": [],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "MapSum",
+        "insert",
+        "sum",
+        "insert",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "apple",
+          3
+        ],
+        [
+          "ap"
+        ],
+        [
+          "app",
+          2
+        ],
+        [
+          "ap"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        3,
+        null,
+        5
+      ]
+    }
+  ],
+  "id": "tries/07-map-sum-pairs",
+  "title": "Map Sum Pairs",
+  "difficulty": "Medium",
+  "topic": "tries",
+  "solutions": {
+    "naive": "class MapSum:\n    def __init__(self):\n        self.values = {}\n\n    def insert(self, key: str, val: int) -> None:\n        self.values[key] = val\n\n    def sum(self, prefix: str) -> int:\n        total = 0\n        for key, val in self.values.items():\n            if key.startswith(prefix):\n                total += val\n        return total",
+    "better": "from collections import defaultdict\n\n\nclass MapSum:\n    def __init__(self):\n        self.values = {}\n        self.prefix_sum = defaultdict(int)\n\n    def insert(self, key: str, val: int) -> None:\n        delta = val - self.values.get(key, 0)\n        self.values[key] = val\n        # Apply only the change caused by this insert.\n        for i in range(1, len(key) + 1):\n            self.prefix_sum[key[:i]] += delta\n\n    def sum(self, prefix: str) -> int:\n        return self.prefix_sum[prefix]",
+    "optimal": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.score = 0\n\n\nclass MapSum:\n    def __init__(self):\n        self.root = TrieNode()\n        self.values = {}\n\n    def insert(self, key: str, val: int) -> None:\n        delta = val - self.values.get(key, 0)\n        self.values[key] = val\n        node = self.root\n        for ch in key:\n            if ch not in node.children:\n                node.children[ch] = TrieNode()\n            node = node.children[ch]\n            node.score += delta\n\n    def sum(self, prefix: str) -> int:\n        node = self.root\n        for ch in prefix:\n            if ch not in node.children:\n                return 0\n            node = node.children[ch]\n        return node.score"
+  },
+  "starterCode": "class MapSum:\n    def __init__(self):\n        # TODO: write your solution here\n        pass\n\n    def insert(self, key, val):\n        # TODO: write your solution here\n        pass\n\n    def sum(self, prefix):\n        # TODO: write your solution here\n        pass\n"
+}

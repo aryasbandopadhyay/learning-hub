@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "evalRPN",
+  "params": [
+    "tokens"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "2",
+          "1",
+          "+",
+          "3",
+          "*"
+        ]
+      ],
+      "expected": 9
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "tokens",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "stack/03-evaluate-reverse-polish-notation",
+  "title": "Evaluate Reverse Polish Notation",
+  "difficulty": "Medium",
+  "topic": "stack",
+  "solutions": {
+    "naive": "class Solution:\n    def evalRPN(self, tokens: list[str]) -> int:\n        arr = tokens[:]\n        ops = {\"+\", \"-\", \"*\", \"/\"}\n        while len(arr) > 1:\n            for i, tok in enumerate(arr):\n                if tok in ops:\n                    a, b = int(arr[i - 2]), int(arr[i - 1])\n                    if tok == \"+\":\n                        val = a + b\n                    elif tok == \"-\":\n                        val = a - b\n                    elif tok == \"*\":\n                        val = a * b\n                    else:\n                        val = int(a / b)  # Truncates toward zero.\n                    arr[i - 2:i + 1] = [str(val)]\n                    break\n        return int(arr[0])",
+    "better": "class Solution:\n    def evalRPN(self, tokens: list[str]) -> int:\n        stack = []\n        for tok in tokens:\n            if tok not in \"+-*/\":\n                stack.append(int(tok))\n                continue\n            b = stack.pop()\n            a = stack.pop()\n            # Apply the operator to the earlier operand first.\n            if tok == \"+\":\n                stack.append(a + b)\n            elif tok == \"-\":\n                stack.append(a - b)\n            elif tok == \"*\":\n                stack.append(a * b)\n            else:\n                stack.append(int(a / b))\n        return stack[-1]",
+    "optimal": "class Solution:\n    def evalRPN(self, tokens: list[str]) -> int:\n        def div(a: int, b: int) -> int:\n            return int(a / b)  # LeetCode requires truncation toward zero.\n\n        ops = {\n            \"+\": lambda a, b: a + b,\n            \"-\": lambda a, b: a - b,\n            \"*\": lambda a, b: a * b,\n            \"/\": div,\n        }\n        stack = []\n        for tok in tokens:\n            if tok in ops:\n                b = stack.pop()\n                a = stack.pop()\n                stack.append(ops[tok](a, b))\n            else:\n                stack.append(int(tok))\n        return stack.pop()"
+  },
+  "starterCode": "class Solution:\n    def evalRPN(self, tokens):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,70 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "topKFrequent",
+  "params": [
+    "words",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "i",
+          "love",
+          "leetcode",
+          "i",
+          "love",
+          "coding"
+        ],
+        2
+      ],
+      "expected": [
+        "i",
+        "love"
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "words",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "heap-priority-queue/09-top-k-frequent-words",
+  "title": "Top K Frequent Words",
+  "difficulty": "Medium",
+  "topic": "heap-priority-queue",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def topKFrequent(self, words: List[str], k: int) -> List[str]:\n        unique = set(words)\n        counts = []\n        for word in unique:\n            # Re-scanning words for each unique word is the brute force cost.\n            counts.append((words.count(word), word))\n\n        counts.sort(key=lambda item: (-item[0], item[1]))\n        return [word for _, word in counts[:k]]",
+    "better": "from typing import List\nfrom collections import Counter\n\nclass Solution:\n    def topKFrequent(self, words: List[str], k: int) -> List[str]:\n        freq = Counter(words)\n        ordered = sorted(freq.keys(), key=lambda word: (-freq[word], word))\n        return ordered[:k]",
+    "optimal": "from typing import List\nfrom collections import Counter\nimport heapq\n\nclass Solution:\n    def topKFrequent(self, words: List[str], k: int) -> List[str]:\n        freq = Counter(words)\n        heap = [(-count, word) for word, count in freq.items()]\n        heapq.heapify(heap)\n\n        answer = []\n        for _ in range(k):\n            answer.append(heapq.heappop(heap)[1])\n        return answer"
+  },
+  "starterCode": "class Solution:\n    def topKFrequent(self, words, k):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "checkInclusion",
+  "params": [
+    "s1",
+    "s2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "ab",
+        "eidbaooo"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "eidbaooo"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "eidbaooo"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "eidbaooo"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "eidbaooo"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "eidbaooo"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "eidbaooo"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "eidbaooo"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "eidbaooo"
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s1",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "s2",
+          "type": "str",
+          "role": "const",
+          "value": "eidbaooo"
+        }
+      ]
+    }
+  },
+  "id": "sliding-window/03-permutation-in-string",
+  "title": "Permutation in String",
+  "difficulty": "Medium",
+  "topic": "sliding-window",
+  "solutions": {
+    "naive": "class Solution:\n    def checkInclusion(self, s1: str, s2: str) -> bool:\n        m = len(s1)\n        target = sorted(s1)\n        for i in range(len(s2) - m + 1):\n            if sorted(s2[i:i + m]) == target:\n                return True\n        return False",
+    "better": "from collections import Counter\n\nclass Solution:\n    def checkInclusion(self, s1: str, s2: str) -> bool:\n        m = len(s1)\n        if m > len(s2):\n            return False\n        need = Counter(s1)\n        window = Counter(s2[:m])\n        if window == need:\n            return True\n        for right in range(m, len(s2)):\n            left_char = s2[right - m]\n            window[left_char] -= 1\n            if window[left_char] == 0:\n                del window[left_char]\n            window[s2[right]] += 1\n            if window == need:\n                return True\n        return False",
+    "optimal": "class Solution:\n    def checkInclusion(self, s1: str, s2: str) -> bool:\n        m, n = len(s1), len(s2)\n        if m > n:\n            return False\n        need = [0] * 26\n        window = [0] * 26\n        for i in range(m):\n            need[ord(s1[i]) - 97] += 1\n            window[ord(s2[i]) - 97] += 1\n        matches = sum(1 for i in range(26) if need[i] == window[i])\n        if matches == 26:\n            return True\n\n        for right in range(m, n):\n            add = ord(s2[right]) - 97\n            remove = ord(s2[right - m]) - 97\n            # Update match count before and after each changed bucket.\n            matches -= need[add] == window[add]\n            window[add] += 1\n            matches += need[add] == window[add]\n            matches -= need[remove] == window[remove]\n            window[remove] -= 1\n            matches += need[remove] == window[remove]\n            if matches == 26:\n                return True\n        return False"
+  },
+  "starterCode": "class Solution:\n    def checkInclusion(self, s1, s2):\n        # TODO: write your solution here\n        pass\n"
+}

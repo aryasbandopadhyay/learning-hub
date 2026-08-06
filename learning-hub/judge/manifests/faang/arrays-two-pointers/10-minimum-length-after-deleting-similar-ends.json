@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minimumLength",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "cabaabac"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": 20
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": 11
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": 50
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": 20
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": 20
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/arrays-two-pointers/10-minimum-length-after-deleting-similar-ends",
+  "title": "Minimum Length After Deleting Similar Ends",
+  "difficulty": "Medium",
+  "topic": "faang/arrays-two-pointers",
+  "solutions": {
+    "naive": "class Solution:\n    def minimumLength(self, s: str) -> int:\n        while len(s) > 1 and s[0] == s[-1]:\n            ch=s[0]; l=0\n            while l < len(s) and s[l] == ch: l += 1\n            r=len(s)-1\n            while r >= l and s[r] == ch: r -= 1\n            s=s[l:r+1]\n        return len(s)",
+    "better": "class Solution:\n    def minimumLength(self, s: str) -> int:\n        seen=[]; l,r=0,len(s)-1\n        while l < r and s[l] == s[r]:\n            ch=s[l]\n            while l <= r and s[l] == ch: l += 1\n            while l <= r and s[r] == ch: r -= 1\n            seen.append((l,r))\n        return max(0,r-l+1)",
+    "optimal": "class Solution:\n    def minimumLength(self, s: str) -> int:\n        l,r=0,len(s)-1\n        while l < r and s[l] == s[r]:\n            ch=s[l]\n            while l <= r and s[l] == ch: l += 1\n            while l <= r and s[r] == ch: r -= 1\n        return max(0,r-l+1)"
+  },
+  "starterCode": "class Solution:\n    def minimumLength(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

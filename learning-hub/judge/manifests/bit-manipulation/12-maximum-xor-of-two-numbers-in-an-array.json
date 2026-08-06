@@ -1,0 +1,58 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findMaximumXOR",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          10,
+          5,
+          25,
+          2,
+          8
+        ]
+      ],
+      "expected": 28
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "bit-manipulation/12-maximum-xor-of-two-numbers-in-an-array",
+  "title": "Maximum XOR of Two Numbers in an Array",
+  "difficulty": "Medium",
+  "topic": "bit-manipulation",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def findMaximumXOR(self, nums: List[int]) -> int:\n        best = 0\n        for i in range(len(nums)):\n            for j in range(i, len(nums)):\n                best = max(best, nums[i] ^ nums[j])\n        return best",
+    "better": "from typing import List\n\nclass Solution:\n    def findMaximumXOR(self, nums: List[int]) -> int:\n        best = 0\n        mask = 0\n        for bit in range(30, -1, -1):\n            mask |= 1 << bit\n            prefixes = {x & mask for x in nums}\n            candidate = best | (1 << bit)\n            for prefix in prefixes:\n                if (prefix ^ candidate) in prefixes:\n                    best = candidate\n                    break\n        return best",
+    "optimal": "from typing import List\n\nclass Solution:\n    def findMaximumXOR(self, nums: List[int]) -> int:\n        trie = {}\n        for x in nums:\n            node = trie\n            for bit in range(30, -1, -1):\n                b = (x >> bit) & 1\n                node = node.setdefault(b, {})\n\n        best = 0\n        for x in nums:\n            node = trie\n            current = 0\n            for bit in range(30, -1, -1):\n                b = (x >> bit) & 1\n                want = 1 - b\n                if want in node:\n                    current |= 1 << bit\n                    node = node[want]\n                else:\n                    node = node[b]\n            best = max(best, current)\n        return best"
+  },
+  "starterCode": "class Solution:\n    def findMaximumXOR(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

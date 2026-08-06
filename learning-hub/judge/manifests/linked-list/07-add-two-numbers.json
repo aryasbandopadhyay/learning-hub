@@ -1,0 +1,48 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "addTwoNumbers",
+  "params": [
+    "l1",
+    "l2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          4,
+          3
+        ],
+        [
+          5,
+          6,
+          4
+        ]
+      ],
+      "expected": [
+        7,
+        0,
+        8
+      ]
+    }
+  ],
+  "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
+  "argKinds": [
+    "linkedlist",
+    "linkedlist"
+  ],
+  "id": "linked-list/07-add-two-numbers",
+  "title": "Add Two Numbers",
+  "difficulty": "Medium",
+  "topic": "linked-list",
+  "solutions": {
+    "naive": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def addTwoNumbers(self, l1, l2):\n        def to_int(node):\n            value, place = 0, 1\n            while node:\n                value += node.val * place\n                place *= 10\n                node = node.next\n            return value\n\n        total = to_int(l1) + to_int(l2)\n        dummy = ListNode()\n        tail = dummy\n        if total == 0:\n            return ListNode(0)\n        while total:\n            total, digit = divmod(total, 10)\n            tail.next = ListNode(digit)\n            tail = tail.next\n        return dummy.next",
+    "better": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def addTwoNumbers(self, l1, l2):\n        a, b = [], []\n        while l1:\n            a.append(l1.val)\n            l1 = l1.next\n        while l2:\n            b.append(l2.val)\n            l2 = l2.next\n\n        dummy = ListNode()\n        tail = dummy\n        carry = i = 0\n        while i < len(a) or i < len(b) or carry:\n            total = carry\n            if i < len(a):\n                total += a[i]\n            if i < len(b):\n                total += b[i]\n            carry, digit = divmod(total, 10)\n            tail.next = ListNode(digit)\n            tail = tail.next\n            i += 1\n        return dummy.next",
+    "optimal": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\nclass Solution:\n    def addTwoNumbers(self, l1, l2):\n        dummy = ListNode()\n        tail = dummy\n        carry = 0\n        while l1 or l2 or carry:\n            total = carry\n            if l1:\n                total += l1.val\n                l1 = l1.next\n            if l2:\n                total += l2.val\n                l2 = l2.next\n            carry, digit = divmod(total, 10)\n            tail.next = ListNode(digit)\n            tail = tail.next\n        return dummy.next"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\n\nclass Solution:\n    def addTwoNumbers(self, l1, l2):\n        # TODO: write your solution here\n        pass\n"
+}

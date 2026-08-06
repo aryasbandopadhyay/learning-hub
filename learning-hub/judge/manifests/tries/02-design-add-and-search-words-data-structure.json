@@ -1,0 +1,67 @@
+{
+  "shape": "design",
+  "className": "WordDictionary",
+  "entry": null,
+  "params": [],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "WordDictionary",
+        "addWord",
+        "addWord",
+        "addWord",
+        "search",
+        "search",
+        "search",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "bad"
+        ],
+        [
+          "dad"
+        ],
+        [
+          "mad"
+        ],
+        [
+          "pad"
+        ],
+        [
+          "bad"
+        ],
+        [
+          ".ad"
+        ],
+        [
+          "b.."
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        false,
+        true,
+        true,
+        true
+      ]
+    }
+  ],
+  "id": "tries/02-design-add-and-search-words-data-structure",
+  "title": "Design Add and Search Words Data Structure",
+  "difficulty": "Medium",
+  "topic": "tries",
+  "solutions": {
+    "naive": "class WordDictionary:\n    def __init__(self):\n        self.words = []\n\n    def addWord(self, word: str) -> None:\n        self.words.append(word)\n\n    def search(self, word: str) -> bool:\n        for candidate in self.words:\n            if len(candidate) != len(word):\n                continue\n            # Every literal must match; '.' matches any one char.\n            if all(p == \".\" or p == c for p, c in zip(word, candidate)):\n                return True\n        return False",
+    "better": "from collections import defaultdict\n\n\nclass WordDictionary:\n    def __init__(self):\n        self.by_len = defaultdict(list)\n\n    def addWord(self, word: str) -> None:\n        self.by_len[len(word)].append(word)\n\n    def search(self, word: str) -> bool:\n        for candidate in self.by_len[len(word)]:\n            ok = True\n            for p, c in zip(word, candidate):\n                if p != \".\" and p != c:\n                    ok = False\n                    break\n            if ok:\n                return True\n        return False",
+    "optimal": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.is_word = False\n\n\nclass WordDictionary:\n    def __init__(self):\n        self.root = TrieNode()\n\n    def addWord(self, word: str) -> None:\n        node = self.root\n        for ch in word:\n            if ch not in node.children:\n                node.children[ch] = TrieNode()\n            node = node.children[ch]\n        node.is_word = True\n\n    def search(self, word: str) -> bool:\n        def dfs(i: int, node: TrieNode) -> bool:\n            if i == len(word):\n                return node.is_word\n            ch = word[i]\n            if ch == \".\":\n                # Try only real trie branches, not all 26 letters blindly.\n                return any(dfs(i + 1, child) for child in node.children.values())\n            return ch in node.children and dfs(i + 1, node.children[ch])\n\n        return dfs(0, self.root)"
+  },
+  "starterCode": "class WordDictionary:\n    def __init__(self):\n        # TODO: write your solution here\n        pass\n\n    def addWord(self, word):\n        # TODO: write your solution here\n        pass\n\n    def search(self, word):\n        # TODO: write your solution here\n        pass\n"
+}

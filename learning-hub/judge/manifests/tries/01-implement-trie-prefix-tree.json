@@ -1,0 +1,62 @@
+{
+  "shape": "design",
+  "className": "Trie",
+  "entry": null,
+  "params": [],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "ops": [
+        "Trie",
+        "insert",
+        "search",
+        "search",
+        "startsWith",
+        "insert",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "apple"
+        ],
+        [
+          "apple"
+        ],
+        [
+          "app"
+        ],
+        [
+          "app"
+        ],
+        [
+          "app"
+        ],
+        [
+          "app"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        true,
+        false,
+        true,
+        null,
+        true
+      ]
+    }
+  ],
+  "id": "tries/01-implement-trie-prefix-tree",
+  "title": "Implement Trie (Prefix Tree)",
+  "difficulty": "Medium",
+  "topic": "tries",
+  "solutions": {
+    "naive": "class Trie:\n    def __init__(self):\n        self.words = set()\n        self.prefixes = set()\n\n    def insert(self, word: str) -> None:\n        self.words.add(word)\n        # Precompute every prefix for fast startsWith.\n        for i in range(1, len(word) + 1):\n            self.prefixes.add(word[:i])\n\n    def search(self, word: str) -> bool:\n        return word in self.words\n\n    def startsWith(self, prefix: str) -> bool:\n        return prefix in self.prefixes",
+    "better": "class Trie:\n    def __init__(self):\n        self.root = {}\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for ch in word:\n            # Create the next dictionary only when needed.\n            node = node.setdefault(ch, {})\n        node[\"#\"] = True\n\n    def search(self, word: str) -> bool:\n        node = self.root\n        for ch in word:\n            if ch not in node:\n                return False\n            node = node[ch]\n        return \"#\" in node\n\n    def startsWith(self, prefix: str) -> bool:\n        node = self.root\n        for ch in prefix:\n            if ch not in node:\n                return False\n            node = node[ch]\n        return True",
+    "optimal": "class TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.is_word = False\n\n\nclass Trie:\n    def __init__(self):\n        self.root = TrieNode()\n\n    def insert(self, word: str) -> None:\n        node = self.root\n        for ch in word:\n            if ch not in node.children:\n                node.children[ch] = TrieNode()\n            node = node.children[ch]\n        node.is_word = True\n\n    def _walk(self, text: str):\n        node = self.root\n        for ch in text:\n            if ch not in node.children:\n                return None\n            node = node.children[ch]\n        return node\n\n    def search(self, word: str) -> bool:\n        node = self._walk(word)\n        return node is not None and node.is_word\n\n    def startsWith(self, prefix: str) -> bool:\n        return self._walk(prefix) is not None"
+  },
+  "starterCode": "class Trie:\n    def __init__(self):\n        # TODO: write your solution here\n        pass\n\n    def insert(self, word):\n        # TODO: write your solution here\n        pass\n\n    def _walk(self, text):\n        # TODO: write your solution here\n        pass\n\n    def search(self, word):\n        # TODO: write your solution here\n        pass\n\n    def startsWith(self, prefix):\n        # TODO: write your solution here\n        pass\n"
+}

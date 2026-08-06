@@ -1,0 +1,56 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "longestSubarray",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          1,
+          0,
+          1
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "sliding-window/14-longest-subarray-of-1s-after-deleting-one-element",
+  "title": "Longest Subarray of 1's After Deleting One Element",
+  "difficulty": "Medium",
+  "topic": "sliding-window",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def longestSubarray(self, nums: List[int]) -> int:\n        best = 0\n        for delete in range(len(nums)):\n            current = 0\n            for i, value in enumerate(nums):\n                if i == delete:\n                    continue\n                if value == 1:\n                    current += 1\n                    best = max(best, current)\n                else:\n                    current = 0\n        return best",
+    "better": "from typing import List\n\nclass Solution:\n    def longestSubarray(self, nums: List[int]) -> int:\n        left = zeros = best = 0\n        for right, value in enumerate(nums):\n            zeros += value == 0\n            while zeros > 1:\n                zeros -= nums[left] == 0\n                left += 1\n            # Exactly one element must be deleted from the valid window.\n            best = max(best, right - left)\n        return best",
+    "optimal": "from typing import List\n\nclass Solution:\n    def longestSubarray(self, nums: List[int]) -> int:\n        left = 0\n        last_zero = -1\n        best = 0\n        for right, value in enumerate(nums):\n            if value == 0:\n                # A second zero forces the window to start after the prior zero.\n                left = last_zero + 1\n                last_zero = right\n            best = max(best, right - left)\n        return best"
+  },
+  "starterCode": "class Solution:\n    def longestSubarray(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

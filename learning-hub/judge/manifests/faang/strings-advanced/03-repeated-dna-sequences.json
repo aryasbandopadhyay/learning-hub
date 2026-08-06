@@ -1,0 +1,54 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findRepeatedDnaSequences",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+      ],
+      "expected": [
+        "AAAAACCCCC",
+        "CCCCCAAAAA"
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/strings-advanced/03-repeated-dna-sequences",
+  "title": "Repeated DNA Sequences",
+  "difficulty": "Medium",
+  "topic": "faang/strings-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def findRepeatedDnaSequences(self, s: str) -> list[str]:\n        counts = {}\n        for i in range(len(s) - 9):\n            sub = s[i:i + 10]\n            counts[sub] = counts.get(sub, 0) + 1\n        return sorted([sub for sub, count in counts.items() if count > 1])",
+    "better": "class Solution:\n    def findRepeatedDnaSequences(self, s):\n        code = {\"A\": 0, \"C\": 1, \"G\": 2, \"T\": 3}\n        seen = {}\n        repeated = set()\n        value = 0\n        mask = (1 << 20) - 1\n        for i, ch in enumerate(s):\n            value = ((value << 2) | code[ch]) & mask\n            if i >= 9:\n                sub = s[i - 9:i + 1]\n                if value in seen:\n                    repeated.add(sub)\n                else:\n                    seen[value] = sub\n        return sorted(repeated)",
+    "optimal": "class Solution:\n    def findRepeatedDnaSequences(self, s):\n        code = {\"A\": 0, \"C\": 1, \"G\": 2, \"T\": 3}\n        seen = set()\n        repeated = set()\n        value = 0\n        mask = (1 << 20) - 1\n        for i, ch in enumerate(s):\n            value = ((value << 2) | code[ch]) & mask\n            if i >= 9:\n                if value in seen:\n                    repeated.add(s[i - 9:i + 1])\n                else:\n                    seen.add(value)\n        return sorted(repeated)"
+  },
+  "starterCode": "class Solution:\n    def findRepeatedDnaSequences(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

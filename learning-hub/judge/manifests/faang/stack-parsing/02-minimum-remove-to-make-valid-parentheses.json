@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minRemoveToMakeValid",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "lee(t(c)o)de)"
+      ],
+      "expected": "lee(t(c)o)de"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "dbebbbbacdeeaedbdeeb"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "dbbdbecaeadcd"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "bbecdbcacbaecaeacbdd"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "ddceabacddbcbcacbbdc"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": "dd"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/stack-parsing/02-minimum-remove-to-make-valid-parentheses",
+  "title": "Minimum Remove to Make Valid Parentheses",
+  "difficulty": "Medium",
+  "topic": "faang/stack-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def minRemoveToMakeValid(self, s: str) -> str:\n        stack = []\n        remove = set()\n        for i, ch in enumerate(s):\n            if ch == '(':\n                stack.append(i)\n            elif ch == ')':\n                if stack:\n                    stack.pop()\n                else:\n                    remove.add(i)\n        remove.update(stack)\n        return ''.join(ch for i, ch in enumerate(s) if i not in remove)",
+    "better": "class Solution:\n    def minRemoveToMakeValid(self, s: str) -> str:\n        first = []\n        balance = 0\n        for ch in s:\n            if ch == '(':\n                balance += 1\n                first.append(ch)\n            elif ch == ')':\n                if balance:\n                    balance -= 1\n                    first.append(ch)\n            else:\n                first.append(ch)\n        second = []\n        opens_to_skip = balance\n        for ch in reversed(first):\n            if ch == '(' and opens_to_skip:\n                opens_to_skip -= 1\n            else:\n                second.append(ch)\n        return ''.join(reversed(second))",
+    "optimal": "class Solution:\n    def minRemoveToMakeValid(self, s: str) -> str:\n        out = []\n        opens = []\n        for ch in s:\n            if ch == '(':\n                opens.append(len(out))\n                out.append(ch)\n            elif ch == ')':\n                if opens:\n                    opens.pop()\n                    out.append(ch)\n            else:\n                out.append(ch)\n        bad = set(opens)\n        return ''.join(ch for i, ch in enumerate(out) if i not in bad)"
+  },
+  "starterCode": "class Solution:\n    def minRemoveToMakeValid(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

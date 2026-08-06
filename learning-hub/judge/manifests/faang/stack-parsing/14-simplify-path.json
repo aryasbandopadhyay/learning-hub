@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "simplifyPath",
+  "params": [
+    "path"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "/a/./b/../../c/"
+      ],
+      "expected": "/c"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "/dbebbbbacdeeaedbdeeb"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "/dbbdbecaeadcd"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "/d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "/de"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "/acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "/bbecdbcacbaecaeacbdd"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "/ddceabacddbcbcacbbdc"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": "/dd"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "path",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/stack-parsing/14-simplify-path",
+  "title": "Simplify Path",
+  "difficulty": "Medium",
+  "topic": "faang/stack-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def simplifyPath(self, path: str) -> str:\n        parts = path.split('/')\n        changed = True\n        while changed:\n            changed = False\n            new_parts = []\n            i = 0\n            while i < len(parts):\n                token = parts[i]\n                if token == '' or token == '.':\n                    changed = True\n                elif token == '..':\n                    if new_parts:\n                        new_parts.pop()\n                    changed = True\n                else:\n                    new_parts.append(token)\n                i += 1\n            parts = new_parts\n        return '/' + '/'.join(parts)",
+    "better": "class Solution:\n    def simplifyPath(self, path: str) -> str:\n        stack = []\n        token = []\n        for ch in path + '/':\n            if ch == '/':\n                part = \"\".join(token)\n                if part == '..':\n                    if stack:\n                        stack.pop()\n                elif part and part != '.':\n                    stack.append(part)\n                token = []\n            else:\n                token.append(ch)\n        return '/' + '/'.join(stack)",
+    "optimal": "class Solution:\n    def simplifyPath(self, path: str) -> str:\n        stack = []\n        for part in path.split('/'):\n            if part == '' or part == '.':\n                continue\n            if part == '..':\n                if stack:\n                    stack.pop()\n            else:\n                stack.append(part)\n        return '/' + '/'.join(stack)"
+  },
+  "starterCode": "class Solution:\n    def simplifyPath(self, path):\n        # TODO: write your solution here\n        pass\n"
+}

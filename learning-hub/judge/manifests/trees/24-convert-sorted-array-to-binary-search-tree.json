@@ -1,0 +1,66 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "sortedArrayToBST",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "set",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ]
+      ],
+      "expected": [
+        0,
+        -10,
+        5,
+        null,
+        -3,
+        null,
+        9
+      ]
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "trees/24-convert-sorted-array-to-binary-search-tree",
+  "title": "Convert Sorted Array to Binary Search Tree",
+  "difficulty": "Easy",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\nclass Solution:\n    def sortedArrayToBST(self, nums):\n        def insert(root,val):\n            if not root: return TreeNode(val)\n            if val < root.val: root.left=insert(root.left,val)\n            else: root.right=insert(root.right,val)\n            return root\n        root=None\n        for v in nums: root=insert(root,v)\n        return root",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\nclass Solution:\n    def sortedArrayToBST(self, nums):\n        if not nums: return None\n        mid=len(nums)//2\n        root=TreeNode(nums[mid])\n        root.left=self.sortedArrayToBST(nums[:mid])\n        root.right=self.sortedArrayToBST(nums[mid+1:])\n        return root",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\nclass Solution:\n    def sortedArrayToBST(self, nums):\n        def build(lo,hi):\n            if lo > hi: return None\n            mid=(lo+hi)//2\n            root=TreeNode(nums[mid])\n            root.left=build(lo,mid-1); root.right=build(mid+1,hi)\n            return root\n        return build(0,len(nums)-1)"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def sortedArrayToBST(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

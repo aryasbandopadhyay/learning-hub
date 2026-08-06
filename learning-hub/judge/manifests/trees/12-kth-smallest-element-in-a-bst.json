@@ -1,0 +1,42 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "kthSmallest",
+  "params": [
+    "root",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          1,
+          4,
+          null,
+          2
+        ],
+        1
+      ],
+      "expected": 1
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree",
+    "plain"
+  ],
+  "id": "trees/12-kth-smallest-element-in-a-bst",
+  "title": "Kth Smallest Element in a BST",
+  "difficulty": "Medium",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def kthSmallest(self, root, k):\n        vals = []\n        def dfs(node):\n            if not node: return\n            vals.append(node.val); dfs(node.left); dfs(node.right)\n        dfs(root)\n        vals.sort()\n        return vals[k - 1]",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def kthSmallest(self, root, k):\n        vals = []\n        def inorder(node):\n            if not node: return\n            inorder(node.left); vals.append(node.val); inorder(node.right)\n        inorder(root)\n        return vals[k - 1]",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def kthSmallest(self, root, k):\n        stack, node = [], root\n        while True:\n            while node:\n                stack.append(node); node = node.left\n            node = stack.pop(); k -= 1\n            if k == 0: return node.val\n            node = node.right"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def kthSmallest(self, root, k):\n        # TODO: write your solution here\n        pass\n"
+}

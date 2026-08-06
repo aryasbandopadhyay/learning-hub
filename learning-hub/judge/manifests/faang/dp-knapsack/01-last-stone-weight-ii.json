@@ -1,0 +1,139 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "lastStoneWeightII",
+  "params": [
+    "stones"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          7,
+          4,
+          1,
+          8,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          4546,
+          2226,
+          4546
+        ]
+      ],
+      "expected": 2226
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          2342
+        ]
+      ],
+      "expected": 2342
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          6902,
+          6531,
+          6902
+        ]
+      ],
+      "expected": 6531
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          3795,
+          2957,
+          7182,
+          8396,
+          7182
+        ]
+      ],
+      "expected": 784
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          4223,
+          4223
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          1641,
+          7550,
+          1641
+        ]
+      ],
+      "expected": 4268
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          4779
+        ]
+      ],
+      "expected": 4779
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "stones",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-knapsack/01-last-stone-weight-ii",
+  "title": "Last Stone Weight II",
+  "difficulty": "Medium",
+  "topic": "faang/dp-knapsack",
+  "solutions": {
+    "naive": "class Solution:\n    def lastStoneWeightII(self, stones: list[int]) -> int:\n        best = sum(stones)\n        def dfs(i: int, left: int, right: int) -> None:\n            nonlocal best\n            if i == len(stones):\n                best = min(best, abs(left - right))\n                return\n            dfs(i + 1, left + stones[i], right)\n            dfs(i + 1, left, right + stones[i])\n        dfs(0, 0, 0)\n        return best",
+    "better": "class Solution:\n    def lastStoneWeightII(self, stones: list[int]) -> int:\n        total = sum(stones)\n        reachable = {0}\n        for w in stones:\n            reachable |= {s + w for s in reachable}\n        return min(abs(total - 2 * s) for s in reachable)",
+    "optimal": "class Solution:\n    def lastStoneWeightII(self, stones: list[int]) -> int:\n        total = sum(stones)\n        half = total // 2\n        dp = [False] * (half + 1)\n        dp[0] = True\n        for w in stones:\n            for s in range(half, w - 1, -1):\n                dp[s] = dp[s] or dp[s - w]\n        for s in range(half, -1, -1):\n            if dp[s]:\n                return total - 2 * s\n        return total"
+  },
+  "starterCode": "class Solution:\n    def lastStoneWeightII(self, stones):\n        # TODO: write your solution here\n        pass\n"
+}

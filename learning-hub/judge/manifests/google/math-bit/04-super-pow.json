@@ -1,0 +1,63 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "superPow",
+  "params": [
+    "a",
+    "b"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        2,
+        [
+          1,
+          0
+        ]
+      ],
+      "expected": 1024
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "a",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "b",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/math-bit/04-super-pow",
+  "title": "Super Pow",
+  "difficulty": "Medium",
+  "topic": "google/math-bit",
+  "solutions": {
+    "naive": "class Solution:\n    def superPow(self, a: int, b: list[int]) -> int:\n        mod = 1337\n        exp = 0\n        for digit in b:\n            exp = exp * 10 + digit\n        return pow(a, exp, mod)",
+    "better": "class Solution:\n    def superPow(self, a: int, b: list[int]) -> int:\n        mod = 1337\n        exp = 0\n        for digit in b:\n            exp = exp * 10 + digit\n        ans, base = 1, a % mod\n        while exp:\n            if exp & 1:\n                ans = (ans * base) % mod\n            base = (base * base) % mod\n            exp >>= 1\n        return ans",
+    "optimal": "class Solution:\n    def superPow(self, a: int, b: list[int]) -> int:\n        mod = 1337\n        def mod_pow(x, e):\n            res = 1\n            x %= mod\n            while e:\n                if e & 1:\n                    res = (res * x) % mod\n                x = (x * x) % mod\n                e >>= 1\n            return res\n        ans = 1\n        for digit in b:\n            ans = (mod_pow(ans, 10) * mod_pow(a, digit)) % mod\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def superPow(self, a, b):\n        # TODO: write your solution here\n        pass\n"
+}

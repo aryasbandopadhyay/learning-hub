@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isValid",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "()[]{}"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "stack/01-valid-parentheses",
+  "title": "Valid Parentheses",
+  "difficulty": "Easy",
+  "topic": "stack",
+  "solutions": {
+    "naive": "class Solution:\n    def isValid(self, s: str) -> bool:\n        # Keep deleting simple valid pairs; remaining text means invalid nesting.\n        changed = True\n        while changed:\n            old = s\n            s = s.replace(\"()\", \"\").replace(\"[]\", \"\").replace(\"{}\", \"\")\n            changed = s != old\n        return s == \"\"",
+    "better": "class Solution:\n    def isValid(self, s: str) -> bool:\n        stack = []\n        for ch in s:\n            if ch in \"([{\":\n                stack.append(ch)\n            else:\n                if not stack:\n                    return False\n                top = stack.pop()\n                # The popped opener must match the current closer.\n                if (ch == \")\" and top != \"(\") or (ch == \"]\" and top != \"[\") or (ch == \"}\" and top != \"{\"):\n                    return False\n        return not stack",
+    "optimal": "class Solution:\n    def isValid(self, s: str) -> bool:\n        pairs = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\n        stack = []\n        for ch in s:\n            if ch in pairs:\n                # Pop a sentinel if there is no opener, forcing a mismatch.\n                if not stack or stack.pop() != pairs[ch]:\n                    return False\n            else:\n                stack.append(ch)\n        return len(stack) == 0"
+  },
+  "starterCode": "class Solution:\n    def isValid(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

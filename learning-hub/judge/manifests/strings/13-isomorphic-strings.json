@@ -1,0 +1,59 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isIsomorphic",
+  "params": [
+    "s",
+    "t"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "egg",
+        "add"
+      ],
+      "expected": true
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "t",
+          "type": "str",
+          "role": "const",
+          "value": "add"
+        }
+      ]
+    }
+  },
+  "id": "strings/13-isomorphic-strings",
+  "title": "Isomorphic Strings",
+  "difficulty": "Easy",
+  "topic": "strings",
+  "solutions": {
+    "naive": "class Solution:\n    def isIsomorphic(self, s: str, t: str) -> bool:\n        if len(s) != len(t):\n            return False\n        n = len(s)\n        for i in range(n):\n            for j in range(i + 1, n):\n                if (s[i] == s[j]) != (t[i] == t[j]):\n                    return False\n        return True",
+    "better": "class Solution:\n    def isIsomorphic(self, s: str, t: str) -> bool:\n        s_to_t = {}\n        t_to_s = {}\n        for a, b in zip(s, t):\n            if a in s_to_t and s_to_t[a] != b:\n                return False\n            if b in t_to_s and t_to_s[b] != a:\n                return False\n            s_to_t[a] = b\n            t_to_s[b] = a\n        return True",
+    "optimal": "class Solution:\n    def isIsomorphic(self, s: str, t: str) -> bool:\n        def pattern(word: str) -> list[int]:\n            first_seen = {}\n            encoded = []\n            for i, ch in enumerate(word):\n                if ch not in first_seen:\n                    first_seen[ch] = i\n                encoded.append(first_seen[ch])\n            return encoded\n\n        return pattern(s) == pattern(t)"
+  },
+  "starterCode": "class Solution:\n    def isIsomorphic(self, s, t):\n        # TODO: write your solution here\n        pass\n"
+}

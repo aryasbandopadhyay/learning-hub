@@ -1,0 +1,364 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxTaskAssign",
+  "params": [
+    "tasks",
+    "workers",
+    "pills",
+    "strength"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          2,
+          1
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        1,
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          -1860,
+          2717
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        3484,
+        2495
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          -7282,
+          7324,
+          -7123,
+          5369,
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          5369,
+          3933,
+          -3324,
+          1879
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        8755,
+        1325
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240,
+          -5860,
+          1593,
+          5602,
+          -8171,
+          -5710,
+          9649,
+          -5071,
+          9924,
+          3379,
+          -5925,
+          -6839,
+          -6110,
+          -5293,
+          -302,
+          -4294,
+          -4179
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        6716,
+        2385
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -3907,
+          1057,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          1057
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        3545,
+        6177
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          3568,
+          2156,
+          4548,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          -6535,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289,
+          4356
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        1313,
+        7174
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          505,
+          5633,
+          7473,
+          3413,
+          -1585,
+          4120,
+          -469,
+          3413
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        2612,
+        4626
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          1037,
+          -3524,
+          1317,
+          -9859,
+          1642,
+          -321,
+          -3667,
+          -4376,
+          -1449,
+          3654,
+          -2423,
+          3377,
+          1322,
+          3103,
+          -9882,
+          -6320,
+          6438,
+          7424,
+          -3365,
+          -9958
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        8555,
+        5088
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          6748,
+          4552,
+          -3273
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        4324,
+        6830
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "tasks",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "workers",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            0,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "pills",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "strength",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/heap-scheduling/14-maximum-number-of-tasks-you-can-assign",
+  "title": "Maximum Number of Tasks You Can Assign",
+  "difficulty": "Hard",
+  "topic": "faang/heap-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def maxTaskAssign(self, tasks, workers, pills, strength):\n        from bisect import bisect_left\n        sorted_tasks = sorted(tasks)\n        sorted_workers = sorted(workers)\n\n        def can(k):\n            available = sorted_workers[-k:] if k else []\n            pills_left = pills\n            for task in reversed(sorted_tasks[:k]):\n                pos = bisect_left(available, task)\n                if pos < len(available):\n                    available.pop(pos)\n                    continue\n                if pills_left == 0:\n                    return False\n                pos = bisect_left(available, task - strength)\n                if pos == len(available):\n                    return False\n                available.pop(pos)\n                pills_left -= 1\n            return True\n\n        answer = 0\n        for k in range(1, min(len(tasks), len(workers)) + 1):\n            if can(k):\n                answer = k\n            else:\n                break\n        return answer",
+    "better": "class Solution:\n    def maxTaskAssign(self, tasks, workers, pills, strength):\n        from bisect import bisect_left\n        sorted_tasks = sorted(tasks)\n        sorted_workers = sorted(workers)\n\n        def can(k):\n            available = sorted_workers[-k:] if k else []\n            pills_left = pills\n            for task in reversed(sorted_tasks[:k]):\n                pos = bisect_left(available, task)\n                if pos < len(available):\n                    available.pop(pos)\n                    continue\n                if pills_left == 0:\n                    return False\n                pos = bisect_left(available, task - strength)\n                if pos == len(available):\n                    return False\n                available.pop(pos)\n                pills_left -= 1\n            return True\n\n        low, high = 0, min(len(tasks), len(workers))\n        while low < high:\n            mid = (low + high + 1) // 2\n            if can(mid):\n                low = mid\n            else:\n                high = mid - 1\n        return low",
+    "optimal": "class Solution:\n    def maxTaskAssign(self, tasks, workers, pills, strength):\n        from collections import deque\n        sorted_tasks = sorted(tasks)\n        sorted_workers = sorted(workers)\n\n        def can(k):\n            queue = deque()\n            task_index = 0\n            pills_left = pills\n            selected_workers = sorted_workers[-k:] if k else []\n            for worker in selected_workers:\n                while task_index < k and sorted_tasks[task_index] <= worker + strength:\n                    queue.append(sorted_tasks[task_index])\n                    task_index += 1\n                if not queue:\n                    return False\n                if queue[0] <= worker:\n                    queue.popleft()\n                else:\n                    if pills_left == 0:\n                        return False\n                    queue.pop()\n                    pills_left -= 1\n            return True\n\n        low, high = 0, min(len(tasks), len(workers))\n        while low < high:\n            mid = (low + high + 1) // 2\n            if can(mid):\n                low = mid\n            else:\n                high = mid - 1\n        return low"
+  },
+  "starterCode": "class Solution:\n    def maxTaskAssign(self, tasks, workers, pills, strength):\n        # TODO: write your solution here\n        pass\n"
+}

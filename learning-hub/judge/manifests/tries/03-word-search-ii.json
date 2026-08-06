@@ -1,0 +1,98 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findWords",
+  "params": [
+    "board",
+    "words"
+  ],
+  "compareMode": "sorted",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            "o",
+            "a",
+            "a",
+            "n"
+          ],
+          [
+            "e",
+            "t",
+            "a",
+            "e"
+          ],
+          [
+            "i",
+            "h",
+            "k",
+            "r"
+          ],
+          [
+            "i",
+            "f",
+            "l",
+            "v"
+          ]
+        ],
+        [
+          "oath",
+          "pea",
+          "eat",
+          "rain"
+        ]
+      ],
+      "expected": [
+        "eat",
+        "oath"
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "board",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 4
+        },
+        {
+          "name": "words",
+          "type": "list[str]",
+          "role": "const",
+          "value": [
+            "oath",
+            "pea",
+            "eat",
+            "rain"
+          ]
+        }
+      ]
+    }
+  },
+  "id": "tries/03-word-search-ii",
+  "title": "Word Search II",
+  "difficulty": "Hard",
+  "topic": "tries",
+  "solutions": {
+    "naive": "from typing import List\n\n\nclass Solution:\n    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:\n        rows, cols = len(board), len(board[0])\n\n        def exists(word: str) -> bool:\n            def dfs(r: int, c: int, i: int) -> bool:\n                if i == len(word):\n                    return True\n                if r < 0 or r == rows or c < 0 or c == cols or board[r][c] != word[i]:\n                    return False\n                ch = board[r][c]\n                board[r][c] = \"#\"  # Mark visited for this path.\n                found = (dfs(r + 1, c, i + 1) or dfs(r - 1, c, i + 1) or\n                         dfs(r, c + 1, i + 1) or dfs(r, c - 1, i + 1))\n                board[r][c] = ch\n                return found\n\n            return any(dfs(r, c, 0) for r in range(rows) for c in range(cols))\n\n        return [word for word in words if exists(word)]",
+    "better": "from typing import List\n\n\nclass Solution:\n    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:\n        root = {}\n        for word in words:\n            node = root\n            for ch in word:\n                node = node.setdefault(ch, {})\n            node[\"$\"] = word\n\n        rows, cols = len(board), len(board[0])\n        ans = []\n\n        def dfs(r: int, c: int, parent: dict) -> None:\n            ch = board[r][c]\n            if ch not in parent:\n                return\n            node = parent[ch]\n            word = node.pop(\"$\", None)\n            if word is not None:\n                ans.append(word)\n\n            board[r][c] = \"#\"\n            for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):\n                if 0 <= nr < rows and 0 <= nc < cols and board[nr][nc] != \"#\":\n                    dfs(nr, nc, node)\n            board[r][c] = ch\n\n        for r in range(rows):\n            for c in range(cols):\n                dfs(r, c, root)\n        return ans",
+    "optimal": "from typing import List\n\n\nclass TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.word = None\n\n\nclass Solution:\n    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:\n        root = TrieNode()\n        for word in words:\n            node = root\n            for ch in word:\n                if ch not in node.children:\n                    node.children[ch] = TrieNode()\n                node = node.children[ch]\n            node.word = word\n\n        rows, cols = len(board), len(board[0])\n        ans = []\n\n        def dfs(r: int, c: int, parent: TrieNode) -> None:\n            ch = board[r][c]\n            node = parent.children.get(ch)\n            if node is None:\n                return\n            if node.word is not None:\n                ans.append(node.word)\n                node.word = None  # Prevent duplicate output.\n\n            board[r][c] = \"#\"\n            for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):\n                if 0 <= nr < rows and 0 <= nc < cols and board[nr][nc] != \"#\":\n                    dfs(nr, nc, node)\n            board[r][c] = ch\n\n            if not node.children and node.word is None:\n                del parent.children[ch]  # Future paths can skip this branch.\n\n        for r in range(rows):\n            for c in range(cols):\n                dfs(r, c, root)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def findWords(self, board, words):\n        # TODO: write your solution here\n        pass\n"
+}

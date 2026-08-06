@@ -1,0 +1,83 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "corpFlightBookings",
+  "params": [
+    "bookings",
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            2,
+            10
+          ],
+          [
+            2,
+            3,
+            20
+          ],
+          [
+            2,
+            5,
+            25
+          ]
+        ],
+        5
+      ],
+      "expected": [
+        10,
+        55,
+        45,
+        25,
+        25
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "bookings",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        },
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/arrays-prefix-sum/13-corporate-flight-bookings",
+  "title": "Corporate Flight Bookings",
+  "difficulty": "Medium",
+  "topic": "google/arrays-prefix-sum",
+  "solutions": {
+    "naive": "class Solution:\n    def corpFlightBookings(self, bookings: list[list[int]], n: int) -> list[int]:\n        ans = [0] * n\n        for first, last, seats in bookings:\n            for flight in range(first - 1, last):\n                ans[flight] += seats\n        return ans",
+    "better": "class Solution:\n    def corpFlightBookings(self, bookings: list[list[int]], n: int) -> list[int]:\n        events = []\n        for first, last, seats in bookings:\n            events.append((first, seats))\n            events.append((last + 1, -seats))\n        events.sort()\n        ans = [0] * n\n        active = 0\n        idx = 0\n        for flight in range(1, n + 1):\n            while idx < len(events) and events[idx][0] == flight:\n                active += events[idx][1]\n                idx += 1\n            ans[flight - 1] = active\n        return ans",
+    "optimal": "class Solution:\n    def corpFlightBookings(self, bookings: list[list[int]], n: int) -> list[int]:\n        diff = [0] * (n + 1)\n        for first, last, seats in bookings:\n            diff[first - 1] += seats\n            diff[last] -= seats\n        ans = [0] * n\n        running = 0\n        for i in range(n):\n            running += diff[i]\n            ans[i] = running\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def corpFlightBookings(self, bookings, n):\n        # TODO: write your solution here\n        pass\n"
+}

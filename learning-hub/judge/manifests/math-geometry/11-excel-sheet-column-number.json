@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "titleToNumber",
+  "params": [
+    "columnTitle"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "AB"
+      ],
+      "expected": 28
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "columnTitle",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "math-geometry/11-excel-sheet-column-number",
+  "title": "Excel Sheet Column Number",
+  "difficulty": "Easy",
+  "topic": "math-geometry",
+  "solutions": {
+    "naive": "class Solution:\n    def titleToNumber(self, columnTitle: str) -> int:\n        total = 0\n        power = 1\n        for ch in reversed(columnTitle):\n            total += (ord(ch) - ord('A') + 1) * power\n            power *= 26\n        return total",
+    "better": "class Solution:\n    def titleToNumber(self, columnTitle: str) -> int:\n        value = {chr(ord('A') + i): i + 1 for i in range(26)}\n        total = 0\n        for ch in columnTitle:\n            total = total * 26 + value[ch]\n        return total",
+    "optimal": "class Solution:\n    def titleToNumber(self, columnTitle: str) -> int:\n        total = 0\n        for ch in columnTitle:\n            total = total * 26 + (ord(ch) - ord('A') + 1)\n        return total"
+  },
+  "starterCode": "class Solution:\n    def titleToNumber(self, columnTitle):\n        # TODO: write your solution here\n        pass\n"
+}

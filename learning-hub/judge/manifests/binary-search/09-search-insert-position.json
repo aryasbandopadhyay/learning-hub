@@ -1,0 +1,65 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "searchInsert",
+  "params": [
+    "nums",
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          3,
+          5,
+          6
+        ],
+        5
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "target",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "binary-search/09-search-insert-position",
+  "title": "Search Insert Position",
+  "difficulty": "Easy",
+  "topic": "binary-search",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def searchInsert(self, nums: List[int], target: int) -> int:\n        for i, value in enumerate(nums):\n            if value >= target:\n                return i\n        return len(nums)",
+    "better": "from bisect import bisect_left\nfrom typing import List\n\nclass Solution:\n    def searchInsert(self, nums: List[int], target: int) -> int:\n        return bisect_left(nums, target)",
+    "optimal": "from typing import List\n\nclass Solution:\n    def searchInsert(self, nums: List[int], target: int) -> int:\n        left, right = 0, len(nums)\n        while left < right:\n            mid = (left + right) // 2\n            if nums[mid] < target:\n                left = mid + 1\n            else:\n                right = mid\n        return left"
+  },
+  "starterCode": "class Solution:\n    def searchInsert(self, nums, target):\n        # TODO: write your solution here\n        pass\n"
+}

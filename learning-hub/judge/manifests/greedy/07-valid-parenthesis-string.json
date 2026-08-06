@@ -1,0 +1,29 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "checkValidString",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "(*)"
+      ],
+      "expected": true
+    }
+  ],
+  "id": "greedy/07-valid-parenthesis-string",
+  "title": "Valid Parenthesis String",
+  "difficulty": "Medium",
+  "topic": "greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def checkValidString(self, s: str) -> bool:\n        def dfs(i: int, opened: int) -> bool:\n            if opened < 0:\n                return False\n            if i == len(s):\n                return opened == 0\n            if s[i] == \"(\":\n                return dfs(i + 1, opened + 1)\n            if s[i] == \")\":\n                return dfs(i + 1, opened - 1)\n            return (\n                dfs(i + 1, opened + 1) or\n                dfs(i + 1, opened - 1) or\n                dfs(i + 1, opened)\n            )\n\n        return dfs(0, 0)",
+    "better": "from functools import lru_cache\n\nclass Solution:\n    def checkValidString(self, s: str) -> bool:\n        @lru_cache(None)\n        def possible(i: int, opened: int) -> bool:\n            if opened < 0:\n                return False\n            if i == len(s):\n                return opened == 0\n            if s[i] == \"(\":\n                return possible(i + 1, opened + 1)\n            if s[i] == \")\":\n                return possible(i + 1, opened - 1)\n            return any((\n                possible(i + 1, opened + 1),\n                possible(i + 1, opened - 1),\n                possible(i + 1, opened),\n            ))\n\n        return possible(0, 0)",
+    "optimal": "class Solution:\n    def checkValidString(self, s: str) -> bool:\n        low = 0\n        high = 0\n\n        for ch in s:\n            if ch == \"(\":\n                low += 1\n                high += 1\n            elif ch == \")\":\n                low -= 1\n                high -= 1\n            else:\n                low -= 1      # Treat '*' as ')' or empty for the minimum.\n                high += 1     # Treat '*' as '(' for the maximum.\n\n            if high < 0:\n                return False\n            low = max(low, 0)\n\n        return low == 0"
+  },
+  "starterCode": "class Solution:\n    def checkValidString(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

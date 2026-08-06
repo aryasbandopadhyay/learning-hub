@@ -1,0 +1,377 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "sortedSquares",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "sorted",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          -4,
+          -1,
+          0,
+          3,
+          10
+        ]
+      ],
+      "expected": [
+        0,
+        1,
+        9,
+        16,
+        100
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          2254,
+          2717
+        ]
+      ],
+      "expected": [
+        3136441,
+        51308569,
+        31741956,
+        3459600,
+        6512704,
+        54656449,
+        58507201,
+        49801249,
+        36385024,
+        11999296,
+        14561856,
+        86118400,
+        8410000,
+        5080516,
+        6027025,
+        17156164,
+        92968164,
+        11861136,
+        6130576,
+        7382089
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          1102,
+          5121,
+          -4135,
+          8576,
+          1102
+        ]
+      ],
+      "expected": [
+        1214404,
+        26224641,
+        17098225,
+        73547776,
+        1214404
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          -9751,
+          3933,
+          -3324,
+          1879,
+          7508,
+          -7352,
+          5141,
+          6995,
+          -3510,
+          9841,
+          5161,
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240
+        ]
+      ],
+      "expected": [
+        22801,
+        28281124,
+        51581124,
+        15523600,
+        53890281,
+        13912900,
+        30503529,
+        19280881,
+        85322169,
+        40998409,
+        77193796,
+        17918289,
+        42094144,
+        17472400,
+        90440100,
+        20016676,
+        22382361,
+        8573184,
+        33281361,
+        2941225,
+        69205761,
+        26635921,
+        96845281,
+        12320100,
+        48930025,
+        26429881,
+        54051904,
+        56370064,
+        3530641,
+        11048976,
+        15468489,
+        95082001,
+        68591524,
+        1375929,
+        74011609,
+        10195249,
+        134689,
+        96334225,
+        6180196,
+        644809,
+        30802500,
+        51122500,
+        10764961,
+        11703241,
+        66994225,
+        9437184,
+        20385225,
+        2433600,
+        61984129,
+        10497600
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          1593,
+          5602,
+          -8171
+        ]
+      ],
+      "expected": [
+        2537649,
+        31382404,
+        66765241
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          9924,
+          9924,
+          -5925
+        ]
+      ],
+      "expected": [
+        35105625,
+        98485776,
+        98485776
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          -4179,
+          3430,
+          -5232
+        ]
+      ],
+      "expected": [
+        11764900,
+        17464041,
+        27373824
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -7628,
+          -7628,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          1057
+        ]
+      ],
+      "expected": [
+        328329,
+        92833225,
+        84474481,
+        71199844,
+        1117249,
+        41267776,
+        58186384,
+        58186384,
+        3429904,
+        37945600,
+        2433600,
+        5456896,
+        40386025
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          2646,
+          3568,
+          2156,
+          7510,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          2156,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289
+        ]
+      ],
+      "expected": [
+        32041,
+        6723649,
+        41616,
+        4648336,
+        81796,
+        8048569,
+        3305124,
+        6594624,
+        83521,
+        6036849,
+        20684304,
+        9363600,
+        4937284,
+        76895361,
+        16499844,
+        48497296,
+        56400100,
+        4648336,
+        12730624,
+        7001316
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "two-pointers/10-squares-of-a-sorted-array",
+  "title": "Squares of a Sorted Array",
+  "difficulty": "Easy",
+  "topic": "two-pointers",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def sortedSquares(self, nums: List[int]) -> List[int]:\n        return sorted(x * x for x in nums)",
+    "better": "from typing import List\n\nclass Solution:\n    def sortedSquares(self, nums: List[int]) -> List[int]:\n        neg = []\n        pos = []\n        for x in nums:\n            if x < 0:\n                neg.append(x * x)\n            else:\n                pos.append(x * x)\n        neg.reverse()\n        i = j = 0\n        result = []\n        while i < len(neg) or j < len(pos):\n            if j == len(pos) or (i < len(neg) and neg[i] <= pos[j]):\n                result.append(neg[i])\n                i += 1\n            else:\n                result.append(pos[j])\n                j += 1\n        return result",
+    "optimal": "from typing import List\n\nclass Solution:\n    def sortedSquares(self, nums: List[int]) -> List[int]:\n        n = len(nums)\n        result = [0] * n\n        left, right = 0, n - 1\n        for write in range(n - 1, -1, -1):\n            if abs(nums[left]) > abs(nums[right]):\n                result[write] = nums[left] * nums[left]\n                left += 1\n            else:\n                result[write] = nums[right] * nums[right]\n                right -= 1\n        return result"
+  },
+  "starterCode": "class Solution:\n    def sortedSquares(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

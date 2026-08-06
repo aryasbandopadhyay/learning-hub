@@ -1,0 +1,58 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maximalSquare",
+  "params": [
+    "matrix"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            "1",
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "1",
+            "1",
+            "1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "1",
+            "0"
+          ]
+        ]
+      ],
+      "expected": 4
+    }
+  ],
+  "id": "dp-2d/15-maximal-square",
+  "title": "Maximal Square",
+  "difficulty": "Medium",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "from typing import List\n\nclass SolutionRecursive:\n    def maximalSquare(self, matrix: List[List[str]]) -> int:\n        m, n = len(matrix), len(matrix[0])\n\n        def dfs(r: int, c: int) -> int:\n            if r == m or c == n or matrix[r][c] == \"0\":\n                return 0\n            return 1 + min(dfs(r + 1, c), dfs(r, c + 1), dfs(r + 1, c + 1))\n\n        best = 0\n        for r in range(m):\n            for c in range(n):\n                best = max(best, dfs(r, c))\n        return best * best",
+    "better": "from typing import List\n\nclass SolutionMemoized:\n    def maximalSquare(self, matrix: List[List[str]]) -> int:\n        m, n = len(matrix), len(matrix[0])\n        memo = {}\n\n        def dfs(r: int, c: int) -> int:\n            if r == m or c == n or matrix[r][c] == \"0\":\n                return 0\n            if (r, c) not in memo:\n                memo[(r, c)] = 1 + min(dfs(r + 1, c), dfs(r, c + 1), dfs(r + 1, c + 1))\n            return memo[(r, c)]\n\n        best = 0\n        for r in range(m):\n            for c in range(n):\n                best = max(best, dfs(r, c))\n        return best * best",
+    "optimal": "from typing import List\n\nclass Solution:\n    def maximalSquare(self, matrix: List[List[str]]) -> int:\n        m, n = len(matrix), len(matrix[0])\n        dp = [0] * (n + 1)\n        best = 0\n        for r in range(m - 1, -1, -1):\n            diag = 0\n            for c in range(n - 1, -1, -1):\n                old = dp[c]\n                if matrix[r][c] == \"1\":\n                    dp[c] = 1 + min(dp[c], dp[c + 1], diag)\n                    best = max(best, dp[c])\n                else:\n                    dp[c] = 0\n                diag = old\n        return best * best"
+  },
+  "starterCode": "class Solution:\n    def maximalSquare(self, matrix):\n        # TODO: write your solution here\n        pass\n"
+}

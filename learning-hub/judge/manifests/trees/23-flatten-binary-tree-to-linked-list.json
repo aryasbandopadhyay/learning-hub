@@ -1,0 +1,54 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "flatten",
+  "params": [
+    "root"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ]
+      ],
+      "expected": [
+        1,
+        null,
+        2,
+        null,
+        3,
+        null,
+        4,
+        null,
+        5,
+        null,
+        6
+      ]
+    }
+  ],
+  "inPlaceArg": 0,
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree"
+  ],
+  "id": "trees/23-flatten-binary-tree-to-linked-list",
+  "title": "Flatten Binary Tree to Linked List",
+  "difficulty": "Medium",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def flatten(self, root):\n        nodes=[]\n        def pre(node):\n            if not node: return\n            nodes.append(node); pre(node.left); pre(node.right)\n        pre(root)\n        for i,node in enumerate(nodes):\n            node.left=None\n            node.right = nodes[i+1] if i+1 < len(nodes) else None",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def flatten(self, root):\n        prev=None\n        def dfs(node):\n            nonlocal prev\n            if not node: return\n            dfs(node.right); dfs(node.left)\n            node.right=prev; node.left=None; prev=node\n        dfs(root)",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def flatten(self, root):\n        cur=root\n        while cur:\n            if cur.left:\n                pred=cur.left\n                while pred.right: pred=pred.right\n                pred.right=cur.right\n                cur.right=cur.left\n                cur.left=None\n            cur=cur.right"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def flatten(self, root):\n        # TODO: write your solution here\n        pass\n"
+}

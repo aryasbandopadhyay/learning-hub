@@ -1,0 +1,103 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "change",
+  "params": [
+    "amount",
+    "coins"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        5,
+        [
+          1,
+          2,
+          5
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        1516,
+        [
+          5559,
+          2812,
+          4048
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        4344,
+        [
+          4228,
+          4228,
+          2579
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        523,
+        [
+          802,
+          8875,
+          2219
+        ]
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "amount",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "coins",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "dp-2d/06-coin-change-ii",
+  "title": "Coin Change II",
+  "difficulty": "Medium",
+  "topic": "dp-2d",
+  "solutions": {
+    "naive": "from typing import List\n\nclass SolutionRecursive:\n    def change(self, amount: int, coins: List[int]) -> int:\n        def dfs(i: int, rem: int) -> int:\n            if rem == 0:\n                return 1\n            if rem < 0 or i == len(coins):\n                return 0\n            return dfs(i, rem - coins[i]) + dfs(i + 1, rem)\n\n        return dfs(0, amount)",
+    "better": "from typing import List\n\nclass SolutionMemoized:\n    def change(self, amount: int, coins: List[int]) -> int:\n        memo = {}\n\n        def dfs(i: int, rem: int) -> int:\n            if rem == 0:\n                return 1\n            if rem < 0 or i == len(coins):\n                return 0\n            if (i, rem) not in memo:\n                memo[(i, rem)] = dfs(i, rem - coins[i]) + dfs(i + 1, rem)\n            return memo[(i, rem)]\n\n        return dfs(0, amount)",
+    "optimal": "from typing import List\n\nclass Solution:\n    def change(self, amount: int, coins: List[int]) -> int:\n        dp = [0] * (amount + 1)\n        dp[0] = 1\n        for coin in coins:\n            # Forward pass allows reusing the same coin.\n            for total in range(coin, amount + 1):\n                dp[total] += dp[total - coin]\n        return dp[amount]"
+  },
+  "starterCode": "class Solution:\n    def change(self, amount, coins):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,65 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findLongestChain",
+  "params": [
+    "pairs"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "pairs",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/dp-sequences/03-maximum-length-of-pair-chain",
+  "title": "Maximum Length of Pair Chain",
+  "difficulty": "Medium",
+  "topic": "google/dp-sequences",
+  "solutions": {
+    "naive": "class Solution:\n    def findLongestChain(self, pairs: list[list[int]]) -> int:\n        arr = sorted(pairs)\n        n = len(arr)\n        def dfs(i: int, prev: int) -> int:\n            if i == n:\n                return 0\n            ans = dfs(i + 1, prev)\n            if prev == -1 or arr[prev][1] < arr[i][0]:\n                ans = max(ans, 1 + dfs(i + 1, i))\n            return ans\n        return dfs(0, -1)",
+    "better": "class Solution:\n    def findLongestChain(self, pairs: list[list[int]]) -> int:\n        arr = sorted(pairs)\n        n = len(arr)\n        dp = [1] * n\n        for i in range(n):\n            for j in range(i):\n                if arr[j][1] < arr[i][0]:\n                    dp[i] = max(dp[i], dp[j] + 1)\n        return max(dp, default=0)",
+    "optimal": "class Solution:\n    def findLongestChain(self, pairs: list[list[int]]) -> int:\n        cur = -10**20\n        ans = 0\n        for left, right in sorted(pairs, key=lambda p: p[1]):\n            if left > cur:\n                ans += 1\n                cur = right\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def findLongestChain(self, pairs):\n        # TODO: write your solution here\n        pass\n"
+}

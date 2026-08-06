@@ -1,0 +1,57 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findMin",
+  "params": [
+    "nums"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          2,
+          2,
+          0,
+          1
+        ]
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/binary-search-advanced/02-find-minimum-in-rotated-sorted-array-ii",
+  "title": "Find Minimum in Rotated Sorted Array II",
+  "difficulty": "Hard",
+  "topic": "google/binary-search-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def findMin(self, nums: list[int]) -> int:\n        ans = nums[0]\n        for x in nums:\n            if x < ans:\n                ans = x\n        return ans",
+    "better": "class Solution:\n    def findMin(self, nums: list[int]) -> int:\n        arr = []\n        for x in nums:\n            if not arr or arr[-1] != x:\n                arr.append(x)\n        lo, hi = 0, len(arr) - 1\n        while lo < hi:\n            mid = (lo + hi) // 2\n            if arr[mid] > arr[hi]:\n                lo = mid + 1\n            else:\n                hi = mid\n        return arr[lo]",
+    "optimal": "class Solution:\n    def findMin(self, nums: list[int]) -> int:\n        lo, hi = 0, len(nums) - 1\n        while lo < hi:\n            mid = (lo + hi) // 2\n            if nums[mid] > nums[hi]:\n                lo = mid + 1\n            elif nums[mid] < nums[hi]:\n                hi = mid\n            else:\n                hi -= 1\n        return nums[lo]"
+  },
+  "starterCode": "class Solution:\n    def findMin(self, nums):\n        # TODO: write your solution here\n        pass\n"
+}

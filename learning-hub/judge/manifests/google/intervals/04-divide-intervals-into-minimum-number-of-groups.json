@@ -1,0 +1,73 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minGroups",
+  "params": [
+    "intervals"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            5,
+            10
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            1,
+            10
+          ]
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "intervals",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/intervals/04-divide-intervals-into-minimum-number-of-groups",
+  "title": "Divide Intervals Into Minimum Number of Groups",
+  "difficulty": "Medium",
+  "topic": "google/intervals",
+  "solutions": {
+    "naive": "class Solution:\n    def minGroups(self, intervals: list[list[int]]) -> int:\n        points = set()\n        for start, end in intervals:\n            points.add(start)\n            points.add(end)\n        answer = 0\n        for point in points:\n            active = 0\n            for start, end in intervals:\n                if start <= point <= end:\n                    active += 1\n            answer = max(answer, active)\n        return answer",
+    "better": "class Solution:\n    def minGroups(self, intervals: list[list[int]]) -> int:\n        events = []\n        for start, end in intervals:\n            events.append((start, 1))\n            events.append((end + 1, -1))\n        events.sort()\n        active = 0\n        answer = 0\n        for _, delta in events:\n            active += delta\n            answer = max(answer, active)\n        return answer",
+    "optimal": "class Solution:\n    def minGroups(self, intervals: list[list[int]]) -> int:\n        import heapq\n        intervals.sort()\n        heap = []\n        answer = 0\n        for start, end in intervals:\n            while heap and heap[0] < start:\n                heapq.heappop(heap)\n            heapq.heappush(heap, end)\n            answer = max(answer, len(heap))\n        return answer"
+  },
+  "starterCode": "class Solution:\n    def minGroups(self, intervals):\n        # TODO: write your solution here\n        pass\n"
+}

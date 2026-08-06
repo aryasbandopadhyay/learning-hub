@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "decodeString",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "3[a2[c]]"
+      ],
+      "expected": "accaccacc"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "dbebbbbacdeeaedbdeeb"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "dbbdbecaeadcd"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "bbecdbcacbaecaeacbdd"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "ddceabacddbcbcacbbdc"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": "dd"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/stack-parsing/13-decode-string",
+  "title": "Decode String",
+  "difficulty": "Medium",
+  "topic": "faang/stack-parsing",
+  "solutions": {
+    "naive": "class Solution:\n    def decodeString(self, s: str) -> str:\n        def parse(i):\n            out = []\n            while i < len(s) and s[i] != ']':\n                if s[i].isdigit():\n                    count = 0\n                    while i < len(s) and s[i].isdigit():\n                        count = count * 10 + int(s[i])\n                        i += 1\n                    i += 1\n                    inner, i = parse(i)\n                    out.append(inner * count)\n                    i += 1\n                else:\n                    out.append(s[i])\n                    i += 1\n            return \"\".join(out), i\n        decoded, _ = parse(0)\n        return decoded",
+    "better": "class Solution:\n    def decodeString(self, s: str) -> str:\n        count_stack = []\n        string_stack = []\n        current = []\n        count = 0\n        for ch in s:\n            if ch.isdigit():\n                count = count * 10 + int(ch)\n            elif ch == '[':\n                count_stack.append(count)\n                string_stack.append(current)\n                current = []\n                count = 0\n            elif ch == ']':\n                repeat = count_stack.pop()\n                previous = string_stack.pop()\n                current = previous + current * repeat\n            else:\n                current.append(ch)\n        return \"\".join(current)",
+    "optimal": "class Solution:\n    def decodeString(self, s: str) -> str:\n        stack = []\n        for ch in s:\n            if ch != ']':\n                stack.append(ch)\n            else:\n                segment = []\n                while stack and stack[-1] != '[':\n                    segment.append(stack.pop())\n                stack.pop()\n                multiplier = 0\n                base = 1\n                while stack and stack[-1].isdigit():\n                    multiplier += (ord(stack.pop()) - ord('0')) * base\n                    base *= 10\n                stack.append(\"\".join(reversed(segment)) * multiplier)\n        return \"\".join(stack)"
+  },
+  "starterCode": "class Solution:\n    def decodeString(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

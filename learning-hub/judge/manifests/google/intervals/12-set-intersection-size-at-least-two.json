@@ -1,0 +1,69 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "intersectionSizeTwo",
+  "params": [
+    "intervals"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            5
+          ]
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "intervals",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        }
+      ]
+    }
+  },
+  "id": "google/intervals/12-set-intersection-size-at-least-two",
+  "title": "Set Intersection Size At Least Two",
+  "difficulty": "Hard",
+  "topic": "google/intervals",
+  "solutions": {
+    "naive": "class Solution:\n    def intersectionSizeTwo(self, intervals: list[list[int]]) -> int:\n        intervals.sort(key=lambda x: (x[1], -x[0]))\n        chosen = []\n        for start, end in intervals:\n            have = sum(1 for point in chosen if start <= point <= end)\n            for point in range(end, start - 1, -1):\n                if have >= 2:\n                    break\n                if point not in chosen:\n                    chosen.append(point)\n                    have += 1\n        return len(chosen)",
+    "better": "class Solution:\n    def intersectionSizeTwo(self, intervals: list[list[int]]) -> int:\n        intervals.sort(key=lambda x: (x[1], -x[0]))\n        chosen = []\n        for start, end in intervals:\n            have = 0\n            for point in chosen:\n                if start <= point <= end:\n                    have += 1\n            point = end\n            while have < 2:\n                if point >= start and point not in chosen:\n                    chosen.append(point)\n                    have += 1\n                point -= 1\n        return len(chosen)",
+    "optimal": "class Solution:\n    def intersectionSizeTwo(self, intervals: list[list[int]]) -> int:\n        intervals.sort(key=lambda x: (x[1], -x[0]))\n        first = -1\n        second = -1\n        answer = 0\n        for start, end in intervals:\n            if start <= first:\n                continue\n            if start <= second:\n                answer += 1\n                first, second = second, end\n            else:\n                answer += 2\n                first, second = end - 1, end\n        return answer"
+  },
+  "starterCode": "class Solution:\n    def intersectionSizeTwo(self, intervals):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,435 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minPathCost",
+  "params": [
+    "grid",
+    "moveCost"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            5,
+            3
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        [
+          [
+            9,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            18,
+            6
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            14,
+            3
+          ]
+        ]
+      ],
+      "expected": 17
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          [
+            7108,
+            175
+          ]
+        ],
+        [
+          [
+            9,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            18,
+            6
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            14,
+            3
+          ]
+        ]
+      ],
+      "expected": 175
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          [
+            1630,
+            -2411
+          ]
+        ],
+        [
+          [
+            9,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            18,
+            6
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            14,
+            3
+          ]
+        ]
+      ],
+      "expected": -2411
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          [
+            7960,
+            6641
+          ]
+        ],
+        [
+          [
+            9,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            18,
+            6
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            14,
+            3
+          ]
+        ]
+      ],
+      "expected": 6641
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -8932,
+            -118
+          ]
+        ],
+        [
+          [
+            9,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            18,
+            6
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            14,
+            3
+          ]
+        ]
+      ],
+      "expected": -8932
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -1836,
+            8663
+          ]
+        ],
+        [
+          [
+            9,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            18,
+            6
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            14,
+            3
+          ]
+        ]
+      ],
+      "expected": -1836
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -1805,
+            -2405
+          ]
+        ],
+        [
+          [
+            9,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            18,
+            6
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            14,
+            3
+          ]
+        ]
+      ],
+      "expected": -2405
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -4777,
+            7320
+          ]
+        ],
+        [
+          [
+            9,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            18,
+            6
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            14,
+            3
+          ]
+        ]
+      ],
+      "expected": -4777
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          [
+            -6298,
+            -5861
+          ]
+        ],
+        [
+          [
+            9,
+            8
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            18,
+            6
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            14,
+            3
+          ]
+        ]
+      ],
+      "expected": -6298
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "grid",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 2
+        },
+        {
+          "name": "moveCost",
+          "type": "list[list[int]]",
+          "role": "const",
+          "value": [
+            [
+              9,
+              8
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              10,
+              12
+            ],
+            [
+              18,
+              6
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              14,
+              3
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "id": "google/dp-grid/05-minimum-path-cost-in-a-grid",
+  "title": "Minimum Path Cost in a Grid",
+  "difficulty": "Medium",
+  "topic": "google/dp-grid",
+  "solutions": {
+    "naive": "class Solution:\n    def minPathCost(self, grid: list[list[int]], moveCost: list[list[int]]) -> int:\n        from functools import lru_cache\n        m, n = len(grid), len(grid[0])\n        @lru_cache(None)\n        def dfs(r, c):\n            if r == m - 1:\n                return grid[r][c]\n            return grid[r][c] + min(moveCost[grid[r][c]][nc] + dfs(r + 1, nc) for nc in range(n))\n        return min(dfs(0, c) for c in range(n))",
+    "better": "class Solution:\n    def minPathCost(self, grid: list[list[int]], moveCost: list[list[int]]) -> int:\n        m, n = len(grid), len(grid[0])\n        dp = [[10 ** 18] * n for _ in range(m)]\n        dp[0] = grid[0][:]\n        for r in range(1, m):\n            for pc in range(n):\n                for c in range(n):\n                    dp[r][c] = min(dp[r][c], dp[r - 1][pc] + moveCost[grid[r - 1][pc]][c] + grid[r][c])\n        return min(dp[-1])",
+    "optimal": "class Solution:\n    def minPathCost(self, grid: list[list[int]], moveCost: list[list[int]]) -> int:\n        m, n = len(grid), len(grid[0])\n        prev = grid[0][:]\n        for r in range(1, m):\n            cur = [10 ** 18] * n\n            for pc, cost in enumerate(prev):\n                for c in range(n):\n                    cur[c] = min(cur[c], cost + moveCost[grid[r - 1][pc]][c] + grid[r][c])\n            prev = cur\n        return min(prev)"
+  },
+  "starterCode": "class Solution:\n    def minPathCost(self, grid, moveCost):\n        # TODO: write your solution here\n        pass\n"
+}

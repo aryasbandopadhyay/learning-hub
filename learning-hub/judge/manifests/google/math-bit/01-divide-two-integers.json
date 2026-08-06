@@ -1,0 +1,103 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "divide",
+  "params": [
+    "dividend",
+    "divisor"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        43,
+        -8
+      ],
+      "expected": -5
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        6239,
+        3279
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        4071,
+        2184
+      ],
+      "expected": 1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        6277,
+        8697
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        8017,
+        3269
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        6128,
+        6359
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        2495,
+        7561
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        1360,
+        8663
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        7685,
+        5184
+      ],
+      "expected": 1
+    }
+  ],
+  "id": "google/math-bit/01-divide-two-integers",
+  "title": "Divide Two Integers",
+  "difficulty": "Medium",
+  "topic": "google/math-bit",
+  "solutions": {
+    "naive": "class Solution:\n    def divide(self, dividend: int, divisor: int) -> int:\n        INT_MIN, INT_MAX = -2**31, 2**31 - 1\n        if dividend == INT_MIN and divisor == -1:\n            return INT_MAX\n        negative = (dividend < 0) != (divisor < 0)\n        a, b = abs(dividend), abs(divisor)\n        q = a // b\n        if negative:\n            q = -q\n        return max(INT_MIN, min(INT_MAX, q))",
+    "better": "class Solution:\n    def divide(self, dividend: int, divisor: int) -> int:\n        INT_MIN, INT_MAX = -2**31, 2**31 - 1\n        if dividend == INT_MIN and divisor == -1:\n            return INT_MAX\n        negative = (dividend < 0) != (divisor < 0)\n        a, b = abs(dividend), abs(divisor)\n        lo, hi, ans = 0, a, 0\n        while lo <= hi:\n            mid = (lo + hi) >> 1\n            prod = 0\n            x, y = b, mid\n            while y:\n                if y & 1:\n                    prod += x\n                x += x\n                y >>= 1\n            if prod <= a:\n                ans = mid\n                lo = mid + 1\n            else:\n                hi = mid - 1\n        ans = -ans if negative else ans\n        return max(INT_MIN, min(INT_MAX, ans))",
+    "optimal": "class Solution:\n    def divide(self, dividend: int, divisor: int) -> int:\n        INT_MIN, INT_MAX = -2**31, 2**31 - 1\n        if dividend == INT_MIN and divisor == -1:\n            return INT_MAX\n        negative = (dividend < 0) != (divisor < 0)\n        a, b = abs(dividend), abs(divisor)\n        q = 0\n        for shift in range(31, -1, -1):\n            if (b << shift) <= a:\n                a -= b << shift\n                q |= 1 << shift\n        q = -q if negative else q\n        return max(INT_MIN, min(INT_MAX, q))"
+  },
+  "starterCode": "class Solution:\n    def divide(self, dividend, divisor):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,311 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "countSubarrays",
+  "params": [
+    "nums",
+    "minK",
+    "maxK"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          3,
+          5,
+          2,
+          7,
+          5
+        ],
+        1,
+        5
+      ],
+      "expected": 2
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          -1860,
+          2717
+        ],
+        3484,
+        2495
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          -7282,
+          7324,
+          -7123,
+          5369,
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          5369,
+          3933,
+          -3324,
+          1879
+        ],
+        8755,
+        1325
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240,
+          -5860,
+          1593,
+          5602,
+          -8171,
+          -5710,
+          9649,
+          -5071,
+          9924,
+          3379,
+          -5925,
+          -6839,
+          -6110,
+          -5293,
+          -302,
+          -4294,
+          -4179
+        ],
+        6716,
+        2385
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -3907,
+          1057,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          1057
+        ],
+        3545,
+        6177
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          3568,
+          2156,
+          4548,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          -6535,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289,
+          4356
+        ],
+        1313,
+        7174
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          505,
+          5633,
+          7473,
+          3413,
+          -1585,
+          4120,
+          -469,
+          3413
+        ],
+        2612,
+        4626
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          1037,
+          -3524,
+          1317,
+          -9859,
+          1642,
+          -321,
+          -3667,
+          -4376,
+          -1449,
+          3654,
+          -2423,
+          3377,
+          1322,
+          3103,
+          -9882,
+          -6320,
+          6438,
+          7424,
+          -3365,
+          -9958
+        ],
+        8555,
+        5088
+      ],
+      "expected": 0
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          6748,
+          4552,
+          -3273
+        ],
+        4324,
+        6830
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "minK",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "maxK",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/arrays-prefix-sum/05-count-subarrays-with-fixed-bounds",
+  "title": "Count Subarrays With Fixed Bounds",
+  "difficulty": "Hard",
+  "topic": "google/arrays-prefix-sum",
+  "solutions": {
+    "naive": "class Solution:\n    def countSubarrays(self, nums: list[int], minK: int, maxK: int) -> int:\n        n = len(nums)\n        ans = 0\n        for i in range(n):\n            lo = nums[i]\n            hi = nums[i]\n            for j in range(i, n):\n                lo = min(lo, nums[j])\n                hi = max(hi, nums[j])\n                if lo == minK and hi == maxK:\n                    ans += 1\n        return ans",
+    "better": "class Solution:\n    def countSubarrays(self, nums: list[int], minK: int, maxK: int) -> int:\n        ans = 0\n        start = 0\n        n = len(nums)\n        while start < n:\n            while start < n and not (minK <= nums[start] <= maxK):\n                start += 1\n            end = start\n            while end < n and minK <= nums[end] <= maxK:\n                end += 1\n            for i in range(start, end):\n                seen_min = False\n                seen_max = False\n                for j in range(i, end):\n                    if nums[j] == minK:\n                        seen_min = True\n                    if nums[j] == maxK:\n                        seen_max = True\n                    if seen_min and seen_max:\n                        ans += 1\n            start = end + 1\n        return ans",
+    "optimal": "class Solution:\n    def countSubarrays(self, nums: list[int], minK: int, maxK: int) -> int:\n        ans = 0\n        last_bad = -1\n        last_min = -1\n        last_max = -1\n        for i, x in enumerate(nums):\n            if x < minK or x > maxK:\n                last_bad = i\n            if x == minK:\n                last_min = i\n            if x == maxK:\n                last_max = i\n            ans += max(0, min(last_min, last_max) - last_bad)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def countSubarrays(self, nums, minK, maxK):\n        # TODO: write your solution here\n        pass\n"
+}

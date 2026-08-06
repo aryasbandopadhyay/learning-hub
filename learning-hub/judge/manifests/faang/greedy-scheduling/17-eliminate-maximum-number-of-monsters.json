@@ -1,0 +1,71 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "eliminateMaximum",
+  "params": [
+    "dist",
+    "speed"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "dist",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "speed",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  },
+  "id": "faang/greedy-scheduling/17-eliminate-maximum-number-of-monsters",
+  "title": "Eliminate Maximum Number of Monsters",
+  "difficulty": "Medium",
+  "topic": "faang/greedy-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def eliminateMaximum(self, dist: list[int], speed: list[int]) -> int:\n        n = len(dist)\n        alive = [True] * n\n        for minute in range(n):\n            for i in range(n):\n                if alive[i] and dist[i] <= speed[i] * minute:\n                    return minute\n            best = -1\n            for i in range(n):\n                if alive[i]:\n                    if best == -1 or dist[i] * speed[best] < dist[best] * speed[i]:\n                        best = i\n            alive[best] = False\n        return n",
+    "better": "class Solution:\n    def eliminateMaximum(self, dist: list[int], speed: list[int]) -> int:\n        deadlines = []\n        for d, s in zip(dist, speed):\n            deadlines.append((d + s - 1) // s)\n        deadlines.sort()\n        for minute, deadline in enumerate(deadlines):\n            if deadline <= minute:\n                return minute\n        return len(dist)",
+    "optimal": "class Solution:\n    def eliminateMaximum(self, dist: list[int], speed: list[int]) -> int:\n        n = len(dist)\n        buckets = [0] * (n + 1)\n        for d, s in zip(dist, speed):\n            deadline = (d + s - 1) // s\n            buckets[min(deadline, n)] += 1\n        arrived = 0\n        for minute in range(n):\n            arrived += buckets[minute]\n            if arrived > minute:\n                return minute\n        return n"
+  },
+  "starterCode": "class Solution:\n    def eliminateMaximum(self, dist, speed):\n        # TODO: write your solution here\n        pass\n"
+}

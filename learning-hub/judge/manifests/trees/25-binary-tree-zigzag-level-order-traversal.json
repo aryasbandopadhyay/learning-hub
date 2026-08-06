@@ -1,0 +1,53 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "zigzagLevelOrder",
+  "params": [
+    "root"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ]
+      ],
+      "expected": [
+        [
+          3
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          15,
+          7
+        ]
+      ]
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree"
+  ],
+  "id": "trees/25-binary-tree-zigzag-level-order-traversal",
+  "title": "Binary Tree Zigzag Level Order Traversal",
+  "difficulty": "Medium",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def zigzagLevelOrder(self, root):\n        from collections import deque\n        if not root: return []\n        levels=[]; q=deque([root])\n        while q:\n            row=[]\n            for _ in range(len(q)):\n                node=q.popleft(); row.append(node.val)\n                if node.left: q.append(node.left)\n                if node.right: q.append(node.right)\n            levels.append(row)\n        for i in range(1,len(levels),2): levels[i].reverse()\n        return levels",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def zigzagLevelOrder(self, root):\n        from collections import deque\n        ans=[]\n        def dfs(node, depth):\n            if not node: return\n            if depth == len(ans): ans.append(deque())\n            if depth % 2 == 0: ans[depth].append(node.val)\n            else: ans[depth].appendleft(node.val)\n            dfs(node.left, depth+1); dfs(node.right, depth+1)\n        dfs(root,0)\n        return [list(row) for row in ans]",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def zigzagLevelOrder(self, root):\n        from collections import deque\n        if not root: return []\n        ans=[]; q=deque([root]); left=True\n        while q:\n            row=deque()\n            for _ in range(len(q)):\n                node=q.popleft()\n                if left: row.append(node.val)\n                else: row.appendleft(node.val)\n                if node.left: q.append(node.left)\n                if node.right: q.append(node.right)\n            ans.append(list(row)); left = not left\n        return ans"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def zigzagLevelOrder(self, root):\n        # TODO: write your solution here\n        pass\n"
+}

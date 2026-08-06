@@ -1,0 +1,280 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "alienOrder",
+  "params": [
+    "words"
+  ],
+  "compareMode": "sorted",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "wrt",
+          "wrf",
+          "er",
+          "ett",
+          "rftt"
+        ]
+      ],
+      "expected": "wertf"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "dad",
+          "abc",
+          "ead",
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd",
+          "bcb",
+          "cac",
+          "bbd",
+          "cda",
+          "ddc",
+          "aec",
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb",
+          "bcd",
+          "bdc",
+          "daa",
+          "eeb",
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec",
+          "baa",
+          "cae",
+          "aad",
+          "cce"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "bad",
+          "dbc",
+          "dcb",
+          "bdd",
+          "deb",
+          "ccb",
+          "cde",
+          "dbd"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "bae",
+          "bde",
+          "aac",
+          "dac",
+          "aee",
+          "cae",
+          "cdc",
+          "bbe",
+          "ada",
+          "ace",
+          "bec",
+          "bda",
+          "dbb",
+          "adb",
+          "ccc",
+          "aeb",
+          "ebc",
+          "eaa",
+          "bbb",
+          "eaa",
+          "edb",
+          "cbe",
+          "eeb",
+          "cac",
+          "dbc",
+          "bab",
+          "dea",
+          "bda",
+          "bed",
+          "eab",
+          "bdc",
+          "cce",
+          "aed",
+          "acb",
+          "bac",
+          "ecc",
+          "add",
+          "aac",
+          "bec",
+          "cca",
+          "dce",
+          "beb",
+          "acd",
+          "deb",
+          "bed",
+          "abb",
+          "cbe",
+          "ada",
+          "eab",
+          "bbc"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "bed",
+          "baa",
+          "edd",
+          "abe",
+          "bcd",
+          "bde",
+          "ace",
+          "bbe"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "deb",
+          "bbd"
+        ]
+      ],
+      "expected": "deb"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "bcb",
+          "eee",
+          "abb",
+          "ebd",
+          "dee"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "cec",
+          "dba",
+          "aad",
+          "acb",
+          "acb",
+          "cca",
+          "eec",
+          "bca"
+        ]
+      ],
+      "expected": ""
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "words",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "advanced-graphs/06-alien-dictionary",
+  "title": "Alien Dictionary",
+  "difficulty": "Hard",
+  "topic": "advanced-graphs",
+  "solutions": {
+    "naive": "from itertools import permutations\nfrom typing import List\n\nclass Solution:\n    def alienOrder(self, words: List[str]) -> str:\n        chars = sorted(set(\"\".join(words)))\n        edges = []\n        for a, b in zip(words, words[1:]):\n            if len(a) > len(b) and a.startswith(b):\n                return \"\"\n            for x, y in zip(a, b):\n                if x != y:\n                    edges.append((x, y))\n                    break\n\n        for perm in permutations(chars):\n            pos = {ch: i for i, ch in enumerate(perm)}\n            if all(pos[u] < pos[v] for u, v in edges):\n                return \"\".join(perm)\n        return \"\"",
+    "better": "from collections import defaultdict\nfrom typing import List\n\nclass Solution:\n    def alienOrder(self, words: List[str]) -> str:\n        graph = {ch: set() for word in words for ch in word}\n        for a, b in zip(words, words[1:]):\n            if len(a) > len(b) and a.startswith(b):\n                return \"\"\n            for x, y in zip(a, b):\n                if x != y:\n                    graph[x].add(y)\n                    break\n\n        color = defaultdict(int)  # 0=unvisited, 1=visiting, 2=done\n        order = []\n\n        def dfs(ch: str) -> bool:\n            if color[ch] == 1:\n                return False\n            if color[ch] == 2:\n                return True\n            color[ch] = 1\n            for nxt in graph[ch]:\n                if not dfs(nxt):\n                    return False\n            color[ch] = 2\n            order.append(ch)\n            return True\n\n        for ch in graph:\n            if not dfs(ch):\n                return \"\"\n        return \"\".join(reversed(order))",
+    "optimal": "from collections import deque\nfrom typing import List\n\nclass Solution:\n    def alienOrder(self, words: List[str]) -> str:\n        graph = {ch: set() for word in words for ch in word}\n        indegree = {ch: 0 for ch in graph}\n\n        for a, b in zip(words, words[1:]):\n            if len(a) > len(b) and a.startswith(b):\n                return \"\"\n            for x, y in zip(a, b):\n                if x != y:\n                    if y not in graph[x]:\n                        graph[x].add(y)\n                        indegree[y] += 1\n                    break\n\n        queue = deque([ch for ch in graph if indegree[ch] == 0])\n        order = []\n        while queue:\n            ch = queue.popleft()\n            order.append(ch)\n            for nxt in graph[ch]:\n                indegree[nxt] -= 1\n                if indegree[nxt] == 0:\n                    queue.append(nxt)\n\n        return \"\".join(order) if len(order) == len(graph) else \"\""
+  },
+  "starterCode": "class Solution:\n    def alienOrder(self, words):\n        # TODO: write your solution here\n        pass\n"
+}

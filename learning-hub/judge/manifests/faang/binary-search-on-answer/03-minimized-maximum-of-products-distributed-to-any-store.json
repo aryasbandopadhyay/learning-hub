@@ -1,0 +1,63 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minimizedMaximum",
+  "params": [
+    "n",
+    "quantities"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        6,
+        [
+          11,
+          6
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "quantities",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/binary-search-on-answer/03-minimized-maximum-of-products-distributed-to-any-store",
+  "title": "Minimized Maximum of Products Distributed to Any Store",
+  "difficulty": "Medium",
+  "topic": "faang/binary-search-on-answer",
+  "solutions": {
+    "naive": "class Solution:\n    def minimizedMaximum(self, n, quantities):\n        def need(limit):\n            total = 0\n            for q in quantities:\n                total += (q + limit - 1) // limit\n            return total\n        for x in range(1, max(quantities)+1):\n            if need(x) <= n: return x\n        return max(quantities)",
+    "better": "class Solution:\n    def minimizedMaximum(self, n, quantities):\n        def need(limit):\n            total = 0\n            for q in quantities:\n                total += (q + limit - 1) // limit\n            return total\n        lo,hi,ans=1,max(quantities),max(quantities)\n        while lo<=hi:\n            mid=(lo+hi)//2\n            if need(mid)<=n: ans=mid; hi=mid-1\n            else: lo=mid+1\n        return ans",
+    "optimal": "class Solution:\n    def minimizedMaximum(self, n, quantities):\n        lo=max(1,(sum(quantities)+n-1)//n); hi=max(quantities)\n        def can(limit):\n            used=0\n            for q in quantities:\n                used += (q + limit - 1) // limit\n                if used > n: return False\n            return True\n        while lo < hi:\n            mid=(lo+hi)//2\n            if can(mid): hi=mid\n            else: lo=mid+1\n        return lo"
+  },
+  "starterCode": "class Solution:\n    def minimizedMaximum(self, n, quantities):\n        # TODO: write your solution here\n        pass\n"
+}

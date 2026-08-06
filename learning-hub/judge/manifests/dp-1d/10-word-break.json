@@ -1,0 +1,161 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "wordBreak",
+  "params": [
+    "s",
+    "wordDict"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "leetcode",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "wordDict",
+          "type": "list[str]",
+          "role": "const",
+          "value": [
+            "leet",
+            "code"
+          ]
+        }
+      ]
+    }
+  },
+  "id": "dp-1d/10-word-break",
+  "title": "Word Break",
+  "difficulty": "Medium",
+  "topic": "dp-1d",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def wordBreak(self, s: str, wordDict: List[str]) -> bool:\n        def dfs(i: int) -> bool:\n            if i == len(s):\n                return True\n            for word in wordDict:\n                if s.startswith(word, i) and dfs(i + len(word)):\n                    return True\n            return False\n\n        return dfs(0)",
+    "better": "from typing import List\n\nclass Solution:\n    def wordBreak(self, s: str, wordDict: List[str]) -> bool:\n        memo = {}\n\n        def dfs(i: int) -> bool:\n            if i == len(s):\n                return True\n            if i not in memo:\n                memo[i] = any(\n                    s.startswith(word, i) and dfs(i + len(word))\n                    for word in wordDict\n                )\n            return memo[i]\n\n        return dfs(0)",
+    "optimal": "from typing import List\n\nclass Solution:\n    def wordBreak(self, s: str, wordDict: List[str]) -> bool:\n        dp = [False] * (len(s) + 1)\n        dp[len(s)] = True\n        for i in range(len(s) - 1, -1, -1):\n            for word in wordDict:\n                if s.startswith(word, i) and dp[i + len(word)]:\n                    dp[i] = True\n                    break\n        return dp[0]"
+  },
+  "starterCode": "class Solution:\n    def wordBreak(self, s, wordDict):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,51 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "smallestGoodBase",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "4681"
+      ],
+      "expected": "8"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/math-bit/12-smallest-good-base",
+  "title": "Smallest Good Base",
+  "difficulty": "Hard",
+  "topic": "google/math-bit",
+  "solutions": {
+    "naive": "class Solution:\n    def smallestGoodBase(self, n: str) -> str:\n        N = int(n)\n        for length in range(N.bit_length(), 2, -1):\n            lo, hi = 2, N - 1\n            while lo <= hi:\n                base = (lo + hi) // 2\n                total = 0\n                for _ in range(length):\n                    total = total * base + 1\n                    if total > N:\n                        break\n                if total == N:\n                    return str(base)\n                if total < N:\n                    lo = base + 1\n                else:\n                    hi = base - 1\n        return str(N - 1)",
+    "better": "class Solution:\n    def smallestGoodBase(self, n: str) -> str:\n        N = int(n)\n        max_m = N.bit_length() - 1\n        for m in range(max_m, 1, -1):\n            k = int(N ** (1.0 / m))\n            for base in range(max(2, k - 2), k + 3):\n                total, cur = 1, 1\n                for _ in range(m):\n                    cur *= base\n                    total += cur\n                    if total > N:\n                        break\n                if total == N:\n                    return str(base)\n        return str(N - 1)",
+    "optimal": "class Solution:\n    def smallestGoodBase(self, n: str) -> str:\n        N = int(n)\n        max_m = N.bit_length() - 1\n        for m in range(max_m, 1, -1):\n            lo, hi = 2, int(N ** (1.0 / m)) + 2\n            while lo <= hi:\n                base = (lo + hi) // 2\n                total, cur = 1, 1\n                for _ in range(m):\n                    cur *= base\n                    total += cur\n                    if total > N:\n                        break\n                if total == N:\n                    return str(base)\n                if total < N:\n                    lo = base + 1\n                else:\n                    hi = base - 1\n        return str(N - 1)"
+  },
+  "starterCode": "class Solution:\n    def smallestGoodBase(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

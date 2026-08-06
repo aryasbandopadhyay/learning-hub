@@ -1,0 +1,132 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "isValidPalindrome",
+  "params": [
+    "s",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "abcdeca",
+        2
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        6128
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "bdbec",
+        1360
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "dc",
+        6597
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "d",
+        3339
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "de",
+        3246
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "c",
+        2116
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "deb",
+        8245
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "a",
+        382
+      ],
+      "expected": true
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-strings/13-valid-palindrome-iii",
+  "title": "Valid Palindrome III",
+  "difficulty": "Hard",
+  "topic": "faang/dp-strings",
+  "solutions": {
+    "naive": "class Solution:\n    def isValidPalindrome(self, s: str, k: int) -> bool:\n        def dfs(l, r):\n            if l >= r:\n                return 0\n            if s[l] == s[r]:\n                return dfs(l + 1, r - 1)\n            return 1 + min(dfs(l + 1, r), dfs(l, r - 1))\n        return dfs(0, len(s) - 1) <= k",
+    "better": "class Solution:\n    def isValidPalindrome(self, s, k):\n        from functools import lru_cache\n        @lru_cache(None)\n        def dfs(l, r):\n            if l >= r:\n                return 0\n            if s[l] == s[r]:\n                return dfs(l + 1, r - 1)\n            return 1 + min(dfs(l + 1, r), dfs(l, r - 1))\n        return dfs(0, len(s) - 1) <= k",
+    "optimal": "class Solution:\n    def isValidPalindrome(self, s, k):\n        n = len(s)\n        dp = [1] * n\n        for l in range(n - 2, -1, -1):\n            prev = 0\n            for r in range(l + 1, n):\n                old = dp[r]\n                if s[l] == s[r]:\n                    dp[r] = prev + 2\n                else:\n                    dp[r] = max(dp[r], dp[r - 1])\n                prev = old\n        return n - dp[-1] <= k"
+  },
+  "starterCode": "class Solution:\n    def isValidPalindrome(self, s, k):\n        # TODO: write your solution here\n        pass\n"
+}

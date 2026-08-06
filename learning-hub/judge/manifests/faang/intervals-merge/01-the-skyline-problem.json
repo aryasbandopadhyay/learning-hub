@@ -1,0 +1,107 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "getSkyline",
+  "params": [
+    "buildings"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            2,
+            9,
+            10
+          ],
+          [
+            3,
+            7,
+            15
+          ],
+          [
+            5,
+            12,
+            12
+          ],
+          [
+            15,
+            20,
+            10
+          ],
+          [
+            19,
+            24,
+            8
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          15
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          24,
+          0
+        ]
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "buildings",
+          "type": "list[list[int]]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000,
+          "width": 3
+        }
+      ]
+    }
+  },
+  "id": "faang/intervals-merge/01-the-skyline-problem",
+  "title": "The Skyline Problem",
+  "difficulty": "Hard",
+  "topic": "faang/intervals-merge",
+  "solutions": {
+    "naive": "class Solution:\n    def getSkyline(self, buildings: list[list[int]]) -> list[list[int]]:\n        xs = sorted(set([x for l, r, h in buildings for x in (l, r)]))\n        ans = []\n        for x in xs:\n            height = 0\n            for l, r, h in buildings:\n                if l <= x < r and h > height:\n                    height = h\n            if not ans or ans[-1][1] != height:\n                ans.append([x, height])\n        return ans",
+    "better": "class Solution:\n    def getSkyline(self, buildings: list[list[int]]) -> list[list[int]]:\n        from bisect import insort, bisect_left\n        events = []\n        for l, r, h in buildings:\n            events.append((l, -h))\n            events.append((r, h))\n        events.sort()\n        active = [0]\n        ans = []\n        i = 0\n        while i < len(events):\n            x = events[i][0]\n            while i < len(events) and events[i][0] == x:\n                h = events[i][1]\n                if h < 0:\n                    insort(active, -h)\n                else:\n                    j = bisect_left(active, h)\n                    active.pop(j)\n                i += 1\n            cur = active[-1]\n            if not ans or ans[-1][1] != cur:\n                ans.append([x, cur])\n        return ans",
+    "optimal": "class Solution:\n    def getSkyline(self, buildings: list[list[int]]) -> list[list[int]]:\n        import heapq\n        events = []\n        for l, r, h in buildings:\n            events.append((l, -h, r))\n            events.append((r, 0, 0))\n        events.sort()\n        heap = [(0, float('inf'))]\n        ans = []\n        i = 0\n        while i < len(events):\n            x = events[i][0]\n            while i < len(events) and events[i][0] == x:\n                neg_h, r = events[i][1], events[i][2]\n                if neg_h:\n                    heapq.heappush(heap, (neg_h, r))\n                i += 1\n            while heap and heap[0][1] <= x:\n                heapq.heappop(heap)\n            cur = -heap[0][0]\n            if not ans or ans[-1][1] != cur:\n                ans.append([x, cur])\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def getSkyline(self, buildings):\n        # TODO: write your solution here\n        pass\n"
+}

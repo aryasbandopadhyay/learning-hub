@@ -1,0 +1,42 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "solveNQueens",
+  "params": [
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        4
+      ],
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ]
+    }
+  ],
+  "id": "backtracking/10-n-queens",
+  "title": "N-Queens",
+  "difficulty": "Hard",
+  "topic": "backtracking",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def solveNQueens(self, n: int) -> List[List[str]]:\n        result = []\n        cols = []\n\n        def valid() -> bool:\n            for r1 in range(n):\n                for r2 in range(r1 + 1, n):\n                    c1, c2 = cols[r1], cols[r2]\n                    if c1 == c2 or abs(r1 - r2) == abs(c1 - c2):\n                        return False\n            return True\n\n        def dfs(row: int) -> None:\n            if row == n:\n                if valid():\n                    result.append([\".\" * c + \"Q\" + \".\" * (n - c - 1) for c in cols])\n                return\n            for c in range(n):\n                cols.append(c)\n                dfs(row + 1)\n                cols.pop()\n\n        dfs(0)\n        return result",
+    "better": "from typing import List\n\nclass Solution:\n    def solveNQueens(self, n: int) -> List[List[str]]:\n        result = []\n        board = [[\".\"] * n for _ in range(n)]\n        cols, diag1, diag2 = set(), set(), set()\n\n        def backtrack(row: int) -> None:\n            if row == n:\n                result.append([\"\".join(r) for r in board])\n                return\n            for c in range(n):\n                if c in cols or row - c in diag1 or row + c in diag2:\n                    continue\n                cols.add(c); diag1.add(row - c); diag2.add(row + c)\n                board[row][c] = \"Q\"\n                backtrack(row + 1)\n                board[row][c] = \".\"\n                cols.remove(c); diag1.remove(row - c); diag2.remove(row + c)\n\n        backtrack(0)\n        return result",
+    "optimal": "from typing import List\n\nclass Solution:\n    def solveNQueens(self, n: int) -> List[List[str]]:\n        result = []\n        cols = [-1] * n\n        full = (1 << n) - 1\n\n        def make_board() -> List[str]:\n            return [\".\" * c + \"Q\" + \".\" * (n - c - 1) for c in cols]\n\n        def backtrack(row: int, col_mask: int, left_diag: int, right_diag: int) -> None:\n            if row == n:\n                result.append(make_board())\n                return\n            available = full & ~(col_mask | left_diag | right_diag)\n            while available:\n                bit = available & -available\n                available -= bit\n                c = bit.bit_length() - 1\n                cols[row] = c\n                backtrack(row + 1,\n                          col_mask | bit,\n                          (left_diag | bit) << 1,\n                          (right_diag | bit) >> 1)\n\n        backtrack(0, 0, 0, 0)\n        return result"
+  },
+  "starterCode": "class Solution:\n    def solveNQueens(self, n):\n        # TODO: write your solution here\n        pass\n"
+}

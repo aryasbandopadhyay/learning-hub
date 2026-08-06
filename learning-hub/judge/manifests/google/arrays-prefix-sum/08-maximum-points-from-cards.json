@@ -1,0 +1,68 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxScore",
+  "params": [
+    "cardPoints",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          1
+        ],
+        3
+      ],
+      "expected": 12
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "cardPoints",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/arrays-prefix-sum/08-maximum-points-from-cards",
+  "title": "Maximum Points You Can Obtain from Cards",
+  "difficulty": "Medium",
+  "topic": "google/arrays-prefix-sum",
+  "solutions": {
+    "naive": "class Solution:\n    def maxScore(self, cardPoints: list[int], k: int) -> int:\n        n = len(cardPoints)\n        best = 0\n        for left in range(k + 1):\n            total = 0\n            for i in range(left):\n                total += cardPoints[i]\n            for i in range(n - (k - left), n):\n                total += cardPoints[i]\n            best = max(best, total)\n        return best",
+    "better": "class Solution:\n    def maxScore(self, cardPoints: list[int], k: int) -> int:\n        front = [0]\n        for x in cardPoints:\n            front.append(front[-1] + x)\n        back = [0]\n        for x in reversed(cardPoints):\n            back.append(back[-1] + x)\n        best = 0\n        for left in range(k + 1):\n            best = max(best, front[left] + back[k - left])\n        return best",
+    "optimal": "class Solution:\n    def maxScore(self, cardPoints: list[int], k: int) -> int:\n        n = len(cardPoints)\n        total = sum(cardPoints)\n        keep = n - k\n        if keep == 0:\n            return total\n        window = sum(cardPoints[:keep])\n        min_keep = window\n        for i in range(keep, n):\n            window += cardPoints[i] - cardPoints[i - keep]\n            min_keep = min(min_keep, window)\n        return total - min_keep"
+  },
+  "starterCode": "class Solution:\n    def maxScore(self, cardPoints, k):\n        # TODO: write your solution here\n        pass\n"
+}

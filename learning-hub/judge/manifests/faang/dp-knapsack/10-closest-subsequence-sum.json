@@ -1,0 +1,65 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minAbsDifference",
+  "params": [
+    "nums",
+    "goal"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          5,
+          -7,
+          3,
+          5
+        ],
+        6
+      ],
+      "expected": 0
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "goal",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-knapsack/10-closest-subsequence-sum",
+  "title": "Closest Subsequence Sum",
+  "difficulty": "Hard",
+  "topic": "faang/dp-knapsack",
+  "solutions": {
+    "naive": "class Solution:\n    def minAbsDifference(self, nums: list[int], goal: int) -> int:\n        best = abs(goal)\n        def dfs(i: int, total: int) -> None:\n            nonlocal best\n            if i == len(nums):\n                best = min(best, abs(goal - total))\n                return\n            dfs(i + 1, total)\n            dfs(i + 1, total + nums[i])\n        dfs(0, 0)\n        return best",
+    "better": "class Solution:\n    def minAbsDifference(self, nums: list[int], goal: int) -> int:\n        sums = {0}\n        for x in nums:\n            sums |= {s + x for s in sums}\n        return min(abs(goal - s) for s in sums)",
+    "optimal": "class Solution:\n    def minAbsDifference(self, nums: list[int], goal: int) -> int:\n        from bisect import bisect_left\n        def build(arr: list[int]) -> list[int]:\n            res = [0]\n            for x in arr:\n                res += [s + x for s in res]\n            return res\n        mid = len(nums) // 2\n        left = build(nums[:mid])\n        right = sorted(build(nums[mid:]))\n        ans = abs(goal)\n        for s in left:\n            need = goal - s\n            i = bisect_left(right, need)\n            if i < len(right):\n                ans = min(ans, abs(need - right[i]))\n            if i > 0:\n                ans = min(ans, abs(need - right[i - 1]))\n            if ans == 0:\n                return 0\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def minAbsDifference(self, nums, goal):\n        # TODO: write your solution here\n        pass\n"
+}

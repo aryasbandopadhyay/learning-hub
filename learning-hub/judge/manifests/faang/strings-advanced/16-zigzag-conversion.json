@@ -1,0 +1,132 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "convert",
+  "params": [
+    "s",
+    "numRows"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "PAYPALISHIRING",
+        3
+      ],
+      "expected": "PAHNAPLSIIGYIR"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        6128
+      ],
+      "expected": "dbebbbbacdeeaedbdeeb"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "bdbec",
+        1360
+      ],
+      "expected": "bdbec"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "dc",
+        6597
+      ],
+      "expected": "dc"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "d",
+        3339
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "de",
+        3246
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "c",
+        2116
+      ],
+      "expected": "c"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "deb",
+        8245
+      ],
+      "expected": "deb"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "a",
+        382
+      ],
+      "expected": "a"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "numRows",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "faang/strings-advanced/16-zigzag-conversion",
+  "title": "Zigzag Conversion",
+  "difficulty": "Medium",
+  "topic": "faang/strings-advanced",
+  "solutions": {
+    "naive": "class Solution:\n    def convert(self, s: str, numRows: int) -> str:\n        if numRows == 1 or numRows >= len(s):\n            return s\n        grid = [[\"\"] * len(s) for _ in range(numRows)]\n        row = col = 0\n        going_down = True\n        for ch in s:\n            grid[row][col] = ch\n            if going_down:\n                if row == numRows - 1:\n                    going_down = False\n                    row -= 1\n                    col += 1\n                else:\n                    row += 1\n            else:\n                if row == 0:\n                    going_down = True\n                    row += 1\n                else:\n                    row -= 1\n                    col += 1\n        out = []\n        for r in range(numRows):\n            for c in range(len(s)):\n                if grid[r][c]:\n                    out.append(grid[r][c])\n        return \"\".join(out)",
+    "better": "class Solution:\n    def convert(self, s: str, numRows: int) -> str:\n        if numRows == 1 or numRows >= len(s):\n            return s\n        rows = [[] for _ in range(numRows)]\n        row = 0\n        step = 1\n        for ch in s:\n            rows[row].append(ch)\n            if row == 0:\n                step = 1\n            elif row == numRows - 1:\n                step = -1\n            row += step\n        return \"\".join(\"\".join(r) for r in rows)",
+    "optimal": "class Solution:\n    def convert(self, s: str, numRows: int) -> str:\n        if numRows == 1 or numRows >= len(s):\n            return s\n        cycle = 2 * numRows - 2\n        ans = []\n        for row in range(numRows):\n            i = row\n            while i < len(s):\n                ans.append(s[i])\n                diag = i + cycle - 2 * row\n                if 0 < row < numRows - 1 and diag < len(s):\n                    ans.append(s[diag])\n                i += cycle\n        return \"\".join(ans)"
+  },
+  "starterCode": "class Solution:\n    def convert(self, s, numRows):\n        # TODO: write your solution here\n        pass\n"
+}

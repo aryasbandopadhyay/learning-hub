@@ -1,0 +1,58 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minInterval",
+  "params": [
+    "intervals",
+    "queries"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        [
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        3,
+        3,
+        1,
+        4
+      ]
+    }
+  ],
+  "id": "faang/intervals-merge/18-minimum-interval-to-include-each-query",
+  "title": "Minimum Interval to Include Each Query",
+  "difficulty": "Hard",
+  "topic": "faang/intervals-merge",
+  "solutions": {
+    "naive": "class Solution:\n    def minInterval(self, intervals: list[list[int]], queries: list[int]) -> list[int]:\n        ans = []\n        for q in queries:\n            best = None\n            for start, end in intervals:\n                if start <= q <= end:\n                    length = end - start + 1\n                    if best is None or length < best:\n                        best = length\n            ans.append(-1 if best is None else best)\n        return ans",
+    "better": "class Solution:\n    def minInterval(self, intervals: list[list[int]], queries: list[int]) -> list[int]:\n        by_length = sorted(intervals, key=lambda x: (x[1] - x[0] + 1, x[0], x[1]))\n        ans = []\n        for q in queries:\n            found = -1\n            for start, end in by_length:\n                if start <= q <= end:\n                    found = end - start + 1\n                    break\n            ans.append(found)\n        return ans",
+    "optimal": "class Solution:\n    def minInterval(self, intervals: list[list[int]], queries: list[int]) -> list[int]:\n        import heapq\n        intervals = sorted(intervals)\n        indexed_queries = sorted((q, i) for i, q in enumerate(queries))\n        ans = [-1] * len(queries)\n        heap = []\n        i = 0\n        for q, idx in indexed_queries:\n            while i < len(intervals) and intervals[i][0] <= q:\n                start, end = intervals[i]\n                heapq.heappush(heap, (end - start + 1, end))\n                i += 1\n            while heap and heap[0][1] < q:\n                heapq.heappop(heap)\n            if heap:\n                ans[idx] = heap[0][0]\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def minInterval(self, intervals, queries):\n        # TODO: write your solution here\n        pass\n"
+}

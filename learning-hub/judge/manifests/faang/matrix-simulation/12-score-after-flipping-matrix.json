@@ -1,0 +1,48 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "matrixScore",
+  "params": [
+    "grid"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 39
+    }
+  ],
+  "id": "faang/matrix-simulation/12-score-after-flipping-matrix",
+  "title": "Score After Flipping Matrix",
+  "difficulty": "Medium",
+  "topic": "faang/matrix-simulation",
+  "solutions": {
+    "naive": "class Solution:\n    def matrixScore(self, grid: list[list[int]]) -> int:\n        m, n = len(grid), len(grid[0])\n        best = 0\n        for mask in range(1 << m):\n            total = 0\n            for c in range(n):\n                ones = 0\n                for r in range(m):\n                    bit = grid[r][c]\n                    if (mask >> r) & 1:\n                        bit ^= 1\n                    ones += bit\n                ones = max(ones, m - ones)\n                total += ones * (1 << (n - 1 - c))\n            best = max(best, total)\n        return best",
+    "better": "class Solution:\n    def matrixScore(self, grid: list[list[int]]) -> int:\n        mat = [row[:] for row in grid]\n        m, n = len(mat), len(mat[0])\n        for r in range(m):\n            if mat[r][0] == 0:\n                for c in range(n):\n                    mat[r][c] ^= 1\n        for c in range(1, n):\n            ones = sum(mat[r][c] for r in range(m))\n            if ones < m - ones:\n                for r in range(m):\n                    mat[r][c] ^= 1\n        score = 0\n        for row in mat:\n            value = 0\n            for bit in row:\n                value = value * 2 + bit\n            score += value\n        return score",
+    "optimal": "class Solution:\n    def matrixScore(self, grid: list[list[int]]) -> int:\n        m, n = len(grid), len(grid[0])\n        score = m * (1 << (n - 1))\n        for c in range(1, n):\n            ones = 0\n            for r in range(m):\n                bit = grid[r][c]\n                if grid[r][0] == 0:\n                    bit ^= 1\n                ones += bit\n            score += max(ones, m - ones) * (1 << (n - 1 - c))\n        return score"
+  },
+  "starterCode": "class Solution:\n    def matrixScore(self, grid):\n        # TODO: write your solution here\n        pass\n"
+}

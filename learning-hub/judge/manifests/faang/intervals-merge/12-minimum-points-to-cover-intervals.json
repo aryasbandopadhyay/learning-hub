@@ -1,0 +1,49 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minimumCoverPoints",
+  "params": [
+    "intervals"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            7,
+            9
+          ]
+        ]
+      ],
+      "expected": [
+        3,
+        9
+      ]
+    }
+  ],
+  "id": "faang/intervals-merge/12-minimum-points-to-cover-intervals",
+  "title": "Minimum Points to Cover Intervals",
+  "difficulty": "Medium",
+  "topic": "faang/intervals-merge",
+  "solutions": {
+    "naive": "class Solution:\n    def minimumCoverPoints(self, intervals: list[list[int]]) -> list[int]:\n        covered = [False] * len(intervals)\n        ans = []\n        remaining = len(intervals)\n        while remaining:\n            best_end = None\n            for i, (s, e) in enumerate(intervals):\n                if not covered[i] and (best_end is None or e < best_end):\n                    best_end = e\n            ans.append(best_end)\n            for i, (s, e) in enumerate(intervals):\n                if not covered[i] and s <= best_end <= e:\n                    covered[i] = True\n                    remaining -= 1\n        return ans",
+    "better": "class Solution:\n    def minimumCoverPoints(self, intervals: list[list[int]]) -> list[int]:\n        intervals = sorted(intervals)\n        ans = []\n        cur_l, cur_r = intervals[0]\n        for s, e in intervals[1:]:\n            if s <= cur_r:\n                cur_l = max(cur_l, s)\n                cur_r = min(cur_r, e)\n            else:\n                ans.append(cur_r)\n                cur_l, cur_r = s, e\n        ans.append(cur_r)\n        return ans",
+    "optimal": "class Solution:\n    def minimumCoverPoints(self, intervals: list[list[int]]) -> list[int]:\n        intervals = sorted(intervals, key=lambda x: (x[1], x[0]))\n        ans = []\n        last = None\n        for s, e in intervals:\n            if last is None or last < s:\n                last = e\n                ans.append(last)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def minimumCoverPoints(self, intervals):\n        # TODO: write your solution here\n        pass\n"
+}

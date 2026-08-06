@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "simplifyPath",
+  "params": [
+    "path"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "/home//foo/"
+      ],
+      "expected": "/home/foo"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "/dbebbbbacdeeaedbdeeb"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "/dbbdbecaeadcd"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "/d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "/de"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "/acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "/bbecdbcacbaecaeacbdd"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "/ddceabacddbcbcacbbdc"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": "/dd"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "path",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "stack/12-simplify-path",
+  "title": "Simplify Path",
+  "difficulty": "Medium",
+  "topic": "stack",
+  "solutions": {
+    "naive": "class Solution:\n    def simplifyPath(self, path: str) -> str:\n        parts = [p for p in path.split(\"/\") if p != \"\" and p != \".\"]\n        changed = True\n        while changed:\n            changed = False\n            for i, part in enumerate(parts):\n                if part == \"..\":\n                    start = max(0, i - 1)\n                    parts[start:i + 1] = []\n                    changed = True\n                    break\n        return \"/\" + \"/\".join(p for p in parts if p != \"..\")",
+    "better": "class Solution:\n    def simplifyPath(self, path: str) -> str:\n        stack = []\n        for part in path.split(\"/\"):\n            if part == \"\" or part == \".\":\n                continue\n            if part == \"..\":\n                if stack:\n                    stack.pop()\n            else:\n                stack.append(part)\n        return \"/\" + \"/\".join(stack)",
+    "optimal": "class Solution:\n    def simplifyPath(self, path: str) -> str:\n        stack = []\n        skip = {\"\", \".\"}\n        for part in path.split(\"/\"):\n            if part in skip:\n                continue\n            if part == \"..\":\n                if stack:\n                    stack.pop()\n            else:\n                # Names like \"...\" are valid directory names.\n                stack.append(part)\n        return \"/\" + \"/\".join(stack)"
+  },
+  "starterCode": "class Solution:\n    def simplifyPath(self, path):\n        # TODO: write your solution here\n        pass\n"
+}

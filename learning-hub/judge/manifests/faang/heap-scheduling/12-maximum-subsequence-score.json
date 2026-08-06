@@ -1,0 +1,43 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxScore",
+  "params": [
+    "nums1",
+    "nums2",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          3,
+          3,
+          2
+        ],
+        [
+          2,
+          1,
+          3,
+          4
+        ],
+        3
+      ],
+      "expected": 12
+    }
+  ],
+  "id": "faang/heap-scheduling/12-maximum-subsequence-score",
+  "title": "Maximum Subsequence Score",
+  "difficulty": "Medium",
+  "topic": "faang/heap-scheduling",
+  "solutions": {
+    "naive": "class Solution:\n    def maxScore(self, nums1, nums2, k):\n        from itertools import combinations\n        n = len(nums1)\n        best = 0\n        for combo in combinations(range(n), k):\n            total = 0\n            minimum = None\n            for idx in combo:\n                total += nums1[idx]\n                if minimum is None or nums2[idx] < minimum:\n                    minimum = nums2[idx]\n            best = max(best, total * minimum)\n        return best",
+    "better": "class Solution:\n    def maxScore(self, nums1, nums2, k):\n        n = len(nums1)\n        best = 0\n        for i in range(n):\n            threshold = nums2[i]\n            candidates = []\n            for j in range(n):\n                if nums2[j] >= threshold:\n                    candidates.append(nums1[j])\n            if len(candidates) >= k:\n                candidates.sort(reverse=True)\n                best = max(best, sum(candidates[:k]) * threshold)\n        return best",
+    "optimal": "class Solution:\n    def maxScore(self, nums1, nums2, k):\n        import heapq\n        pairs = sorted(zip(nums2, nums1), reverse=True)\n        heap = []\n        total = 0\n        best = 0\n        for value2, value1 in pairs:\n            heapq.heappush(heap, value1)\n            total += value1\n            if len(heap) > k:\n                total -= heapq.heappop(heap)\n            if len(heap) == k:\n                best = max(best, total * value2)\n        return best"
+  },
+  "starterCode": "class Solution:\n    def maxScore(self, nums1, nums2, k):\n        # TODO: write your solution here\n        pass\n"
+}

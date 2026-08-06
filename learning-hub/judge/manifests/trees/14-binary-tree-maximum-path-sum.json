@@ -1,0 +1,41 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxPathSum",
+  "params": [
+    "root"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          -10,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ]
+      ],
+      "expected": 42
+    }
+  ],
+  "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
+  "argKinds": [
+    "tree"
+  ],
+  "id": "trees/14-binary-tree-maximum-path-sum",
+  "title": "Binary Tree Maximum Path Sum",
+  "difficulty": "Hard",
+  "topic": "trees",
+  "solutions": {
+    "naive": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def maxPathSum(self, root):\n        def gain(node):\n            if not node: return 0\n            return max(0, node.val + max(gain(node.left), gain(node.right)))\n        if not root: return float('-inf')\n        here = root.val + gain(root.left) + gain(root.right)\n        return max(here, self.maxPathSum(root.left), self.maxPathSum(root.right))",
+    "better": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def maxPathSum(self, root):\n        best = float('-inf')\n        def dfs(node):\n            nonlocal best\n            if not node: return 0\n            left = max(0, dfs(node.left)); right = max(0, dfs(node.right))\n            best = max(best, node.val + left + right)\n            return node.val + max(left, right)\n        dfs(root)\n        return best",
+    "optimal": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Solution:\n    def maxPathSum(self, root):\n        gain, best = {None: 0}, float('-inf')\n        stack = [(root, False)]\n        while stack:\n            node, seen = stack.pop()\n            if not node: continue\n            if seen:\n                left = max(0, gain[node.left]); right = max(0, gain[node.right])\n                best = max(best, node.val + left + right)\n                gain[node] = node.val + max(left, right)\n            else:\n                stack.append((node, True)); stack.append((node.right, False)); stack.append((node.left, False))\n        return best"
+  },
+  "starterCode": "# Helper classes (TreeNode/ListNode) are provided automatically.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\n\nclass Solution:\n    def maxPathSum(self, root):\n        # TODO: write your solution here\n        pass\n"
+}

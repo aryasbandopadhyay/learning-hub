@@ -1,0 +1,58 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "fullBloomFlowers",
+  "params": [
+    "flowers",
+    "people"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          [
+            1,
+            6
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            4,
+            13
+          ]
+        ],
+        [
+          2,
+          3,
+          7,
+          11
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        2,
+        2
+      ]
+    }
+  ],
+  "id": "faang/intervals-merge/02-number-of-flowers-in-full-bloom",
+  "title": "Number of Flowers in Full Bloom",
+  "difficulty": "Hard",
+  "topic": "faang/intervals-merge",
+  "solutions": {
+    "naive": "class Solution:\n    def fullBloomFlowers(self, flowers: list[list[int]], people: list[int]) -> list[int]:\n        ans = []\n        for t in people:\n            count = 0\n            for s, e in flowers:\n                if s <= t <= e:\n                    count += 1\n            ans.append(count)\n        return ans",
+    "better": "class Solution:\n    def fullBloomFlowers(self, flowers: list[list[int]], people: list[int]) -> list[int]:\n        events = []\n        for s, e in flowers:\n            events.append((s, 0, -1))\n            events.append((e, 2, -1))\n        for i, t in enumerate(people):\n            events.append((t, 1, i))\n        events.sort()\n        ans = [0] * len(people)\n        active = 0\n        for _, kind, idx in events:\n            if kind == 0:\n                active += 1\n            elif kind == 1:\n                ans[idx] = active\n            else:\n                active -= 1\n        return ans",
+    "optimal": "class Solution:\n    def fullBloomFlowers(self, flowers: list[list[int]], people: list[int]) -> list[int]:\n        from bisect import bisect_right, bisect_left\n        starts = sorted(s for s, _ in flowers)\n        ends = sorted(e for _, e in flowers)\n        ans = []\n        for t in people:\n            ans.append(bisect_right(starts, t) - bisect_left(ends, t))\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def fullBloomFlowers(self, flowers, people):\n        # TODO: write your solution here\n        pass\n"
+}

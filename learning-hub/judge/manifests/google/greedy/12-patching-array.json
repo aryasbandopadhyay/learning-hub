@@ -1,0 +1,64 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minPatches",
+  "params": [
+    "nums",
+    "n"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          1,
+          5,
+          10
+        ],
+        20
+      ],
+      "expected": 2
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/greedy/12-patching-array",
+  "title": "Patching Array",
+  "difficulty": "Hard",
+  "topic": "google/greedy",
+  "solutions": {
+    "naive": "class Solution:\n    def minPatches(self, nums: list[int], n: int) -> int:\n        reachable = {0}\n        patches = i = 0\n        nums = list(nums)\n        while True:\n            miss = 1\n            while miss <= n and miss in reachable:\n                miss += 1\n            if miss > n:\n                return patches\n            if i < len(nums) and nums[i] <= miss:\n                x = nums[i]\n                i += 1\n            else:\n                x = miss\n                patches += 1\n            for s in list(reachable):\n                if s + x <= n:\n                    reachable.add(s + x)",
+    "better": "class Solution:\n    def minPatches(self, nums, n):\n        arr = list(nums)\n        patches = i = 0\n        miss = 1\n        while miss <= n:\n            if i < len(arr) and arr[i] <= miss:\n                miss += arr[i]\n                i += 1\n            else:\n                arr.insert(i, miss)\n                patches += 1\n        return patches",
+    "optimal": "class Solution:\n    def minPatches(self, nums, n):\n        patches = i = 0\n        miss = 1\n        while miss <= n:\n            if i < len(nums) and nums[i] <= miss:\n                miss += nums[i]\n                i += 1\n            else:\n                miss += miss\n                patches += 1\n        return patches"
+  },
+  "starterCode": "class Solution:\n    def minPatches(self, nums, n):\n        # TODO: write your solution here\n        pass\n"
+}

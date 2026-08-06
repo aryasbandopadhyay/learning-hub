@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minimumDeleteSum",
+  "params": [
+    "s1",
+    "s2"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "sea",
+        "eat"
+      ],
+      "expected": 231
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "eat"
+      ],
+      "expected": 1903
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "eat"
+      ],
+      "expected": 1206
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "eat"
+      ],
+      "expected": 414
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "eat"
+      ],
+      "expected": 313
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "eat"
+      ],
+      "expected": 4853
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "eat"
+      ],
+      "expected": 1894
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "eat"
+      ],
+      "expected": 1894
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "eat"
+      ],
+      "expected": 514
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s1",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "s2",
+          "type": "str",
+          "role": "const",
+          "value": "eat"
+        }
+      ]
+    }
+  },
+  "id": "faang/dp-strings/05-minimum-ascii-delete-sum-for-two-strings",
+  "title": "Minimum ASCII Delete Sum for Two Strings",
+  "difficulty": "Medium",
+  "topic": "faang/dp-strings",
+  "solutions": {
+    "naive": "class Solution:\n    def minimumDeleteSum(self, s1: str, s2: str) -> int:\n        def dfs(i, j):\n            if i == len(s1):\n                return sum(ord(c) for c in s2[j:])\n            if j == len(s2):\n                return sum(ord(c) for c in s1[i:])\n            if s1[i] == s2[j]:\n                return dfs(i + 1, j + 1)\n            return min(ord(s1[i]) + dfs(i + 1, j), ord(s2[j]) + dfs(i, j + 1))\n        return dfs(0, 0)",
+    "better": "class Solution:\n    def minimumDeleteSum(self, s1, s2):\n        from functools import lru_cache\n        a = [0] * (len(s1) + 1)\n        b = [0] * (len(s2) + 1)\n        for i in range(len(s1) - 1, -1, -1):\n            a[i] = a[i + 1] + ord(s1[i])\n        for j in range(len(s2) - 1, -1, -1):\n            b[j] = b[j + 1] + ord(s2[j])\n        @lru_cache(None)\n        def dfs(i, j):\n            if i == len(s1):\n                return b[j]\n            if j == len(s2):\n                return a[i]\n            if s1[i] == s2[j]:\n                return dfs(i + 1, j + 1)\n            return min(ord(s1[i]) + dfs(i + 1, j), ord(s2[j]) + dfs(i, j + 1))\n        return dfs(0, 0)",
+    "optimal": "class Solution:\n    def minimumDeleteSum(self, s1, s2):\n        m = len(s2)\n        dp = [0] * (m + 1)\n        for j in range(m - 1, -1, -1):\n            dp[j] = dp[j + 1] + ord(s2[j])\n        for i in range(len(s1) - 1, -1, -1):\n            ndp = [0] * (m + 1)\n            ndp[m] = dp[m] + ord(s1[i])\n            for j in range(m - 1, -1, -1):\n                if s1[i] == s2[j]:\n                    ndp[j] = dp[j + 1]\n                else:\n                    ndp[j] = min(ord(s1[i]) + dp[j], ord(s2[j]) + ndp[j + 1])\n            dp = ndp\n        return dp[0]"
+  },
+  "starterCode": "class Solution:\n    def minimumDeleteSum(self, s1, s2):\n        # TODO: write your solution here\n        pass\n"
+}

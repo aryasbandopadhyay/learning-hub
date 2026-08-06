@@ -1,0 +1,294 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "minStickers",
+  "params": [
+    "stickers",
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          "with",
+          "example",
+          "science"
+        ],
+        "thehat"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          "dbe",
+          "bbb",
+          "bac",
+          "dee",
+          "aed",
+          "bde",
+          "ebc",
+          "dbb",
+          "dbe",
+          "cae",
+          "adc",
+          "dac",
+          "ead",
+          "bce",
+          "ade",
+          "bed",
+          "acb",
+          "bbd",
+          "ebe",
+          "baa"
+        ],
+        "thehat"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          "dad",
+          "abc",
+          "ead",
+          "cbe",
+          "dba",
+          "bdc",
+          "edb",
+          "cda",
+          "beb",
+          "eda",
+          "aab",
+          "cbb",
+          "dbb",
+          "ecd",
+          "bca",
+          "cba",
+          "eca",
+          "eac",
+          "bdd",
+          "cdd",
+          "dce",
+          "aba",
+          "cdd",
+          "bcb",
+          "cac",
+          "bbd",
+          "cda",
+          "ddc",
+          "aec",
+          "cde",
+          "bcd",
+          "cde",
+          "bcd",
+          "eed",
+          "bdc",
+          "bca",
+          "ccb",
+          "bcd",
+          "bdc",
+          "daa",
+          "eeb",
+          "aec",
+          "bed",
+          "bcd",
+          "dee",
+          "eec",
+          "baa",
+          "cae",
+          "aad",
+          "cce"
+        ],
+        "thehat"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          "bad",
+          "dbc",
+          "dcb",
+          "bdd",
+          "deb",
+          "ccb",
+          "cde",
+          "dbd"
+        ],
+        "thehat"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          "bae",
+          "bde",
+          "aac",
+          "dac",
+          "aee",
+          "cae",
+          "cdc",
+          "bbe",
+          "ada",
+          "ace",
+          "bec",
+          "bda",
+          "dbb",
+          "adb",
+          "ccc",
+          "aeb",
+          "ebc",
+          "eaa",
+          "bbb",
+          "eaa",
+          "edb",
+          "cbe",
+          "eeb",
+          "cac",
+          "dbc",
+          "bab",
+          "dea",
+          "bda",
+          "bed",
+          "eab",
+          "bdc",
+          "cce",
+          "aed",
+          "acb",
+          "bac",
+          "ecc",
+          "add",
+          "aac",
+          "bec",
+          "cca",
+          "dce",
+          "beb",
+          "acd",
+          "deb",
+          "bed",
+          "abb",
+          "cbe",
+          "ada",
+          "eab",
+          "bbc"
+        ],
+        "thehat"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          "bed",
+          "baa",
+          "edd",
+          "abe",
+          "bcd",
+          "bde",
+          "ace",
+          "bbe"
+        ],
+        "thehat"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          "deb",
+          "bbd"
+        ],
+        "thehat"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          "bcb",
+          "eee",
+          "abb",
+          "ebd",
+          "dee"
+        ],
+        "thehat"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          "cec",
+          "dba",
+          "aad",
+          "acb",
+          "acb",
+          "cca",
+          "eec",
+          "bca"
+        ],
+        "thehat"
+      ],
+      "expected": -1
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "stickers",
+          "type": "list[str]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "target",
+          "type": "str",
+          "role": "const",
+          "value": "thehat"
+        }
+      ]
+    }
+  },
+  "id": "google/dp-sequences/09-stickers-to-spell-word",
+  "title": "Stickers to Spell Word",
+  "difficulty": "Hard",
+  "topic": "google/dp-sequences",
+  "solutions": {
+    "naive": "class Solution:\n    def minStickers(self, stickers: list[str], target: str) -> int:\n        counts = []\n        for st in stickers:\n            d = {}\n            for ch in st:\n                d[ch] = d.get(ch, 0) + 1\n            counts.append(d)\n        def apply(rem: str, d: dict) -> str:\n            left = []\n            used = d.copy()\n            for ch in rem:\n                if used.get(ch, 0):\n                    used[ch] -= 1\n                else:\n                    left.append(ch)\n            return ''.join(left)\n        def dfs(rem: str) -> int:\n            if not rem:\n                return 0\n            best = 10**9\n            for d in counts:\n                if rem[0] not in d:\n                    continue\n                nxt = apply(rem, d)\n                if len(nxt) < len(rem):\n                    sub = dfs(nxt)\n                    if sub != -1:\n                        best = min(best, 1 + sub)\n            return -1 if best == 10**9 else best\n        return dfs(''.join(sorted(target)))",
+    "better": "class Solution:\n    def minStickers(self, stickers: list[str], target: str) -> int:\n        from functools import lru_cache\n        counts = []\n        for st in stickers:\n            d = {}\n            for ch in st:\n                d[ch] = d.get(ch, 0) + 1\n            counts.append(d)\n        def apply(rem: str, d: dict) -> str:\n            left = []\n            used = d.copy()\n            for ch in rem:\n                if used.get(ch, 0):\n                    used[ch] -= 1\n                else:\n                    left.append(ch)\n            return ''.join(left)\n        @lru_cache(None)\n        def dfs(rem: str) -> int:\n            if not rem:\n                return 0\n            best = 10**9\n            for d in counts:\n                if rem[0] not in d:\n                    continue\n                nxt = apply(rem, d)\n                if len(nxt) < len(rem):\n                    sub = dfs(nxt)\n                    if sub != -1:\n                        best = min(best, 1 + sub)\n            return -1 if best == 10**9 else best\n        return dfs(''.join(sorted(target)))",
+    "optimal": "class Solution:\n    def minStickers(self, stickers: list[str], target: str) -> int:\n        n = len(target)\n        full = (1 << n) - 1\n        dp = [10**9] * (1 << n)\n        dp[0] = 0\n        for mask in range(1 << n):\n            if dp[mask] == 10**9:\n                continue\n            for st in stickers:\n                nxt = mask\n                for ch in st:\n                    for i, need in enumerate(target):\n                        if need == ch and not (nxt >> i) & 1:\n                            nxt |= 1 << i\n                            break\n                if dp[mask] + 1 < dp[nxt]:\n                    dp[nxt] = dp[mask] + 1\n        return -1 if dp[full] == 10**9 else dp[full]"
+  },
+  "starterCode": "class Solution:\n    def minStickers(self, stickers, target):\n        # TODO: write your solution here\n        pass\n"
+}

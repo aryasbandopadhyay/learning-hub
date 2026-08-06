@@ -1,0 +1,160 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "findAnagrams",
+  "params": [
+    "s",
+    "p"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "cbaebabacd",
+        "abc"
+      ],
+      "expected": [
+        0,
+        6
+      ]
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "abc"
+      ],
+      "expected": [
+        6
+      ]
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "abc"
+      ],
+      "expected": [
+        0,
+        18,
+        46
+      ]
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "abc"
+      ],
+      "expected": [
+        5,
+        7,
+        8,
+        15
+      ]
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "abc"
+      ],
+      "expected": [
+        5,
+        12,
+        14
+      ]
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "bcaccbbcdbdcd",
+        "abc"
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bcddeeeecbaacaeaadcceeecbaddbcdcbbdddebccbcdedbded",
+        "abc"
+      ],
+      "expected": [
+        8,
+        23
+      ]
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "bcbeeebcacdbcbabdeab",
+        "abc"
+      ],
+      "expected": [
+        6,
+        12
+      ]
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "cceaedacbbace",
+        "abc"
+      ],
+      "expected": [
+        6,
+        9
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "p",
+          "type": "str",
+          "role": "const",
+          "value": "abc"
+        }
+      ]
+    }
+  },
+  "id": "sliding-window/10-find-all-anagrams-in-a-string",
+  "title": "Find All Anagrams in a String",
+  "difficulty": "Medium",
+  "topic": "sliding-window",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def findAnagrams(self, s: str, p: str) -> List[int]:\n        m = len(p)\n        target = sorted(p)\n        ans = []\n        for i in range(len(s) - m + 1):\n            if sorted(s[i:i + m]) == target:\n                ans.append(i)\n        return ans",
+    "better": "from typing import List\nfrom collections import Counter\n\nclass Solution:\n    def findAnagrams(self, s: str, p: str) -> List[int]:\n        m = len(p)\n        if m > len(s):\n            return []\n        need = Counter(p)\n        window = Counter(s[:m])\n        ans = [0] if window == need else []\n        for right in range(m, len(s)):\n            old = s[right - m]\n            window[old] -= 1\n            if window[old] == 0:\n                del window[old]\n            window[s[right]] += 1\n            if window == need:\n                ans.append(right - m + 1)\n        return ans",
+    "optimal": "from typing import List\n\nclass Solution:\n    def findAnagrams(self, s: str, p: str) -> List[int]:\n        m, n = len(p), len(s)\n        if m > n:\n            return []\n        need = [0] * 26\n        window = [0] * 26\n        for i in range(m):\n            need[ord(p[i]) - 97] += 1\n            window[ord(s[i]) - 97] += 1\n        matches = sum(need[i] == window[i] for i in range(26))\n        ans = [0] if matches == 26 else []\n        for right in range(m, n):\n            add = ord(s[right]) - 97\n            remove = ord(s[right - m]) - 97\n            matches -= need[add] == window[add]\n            window[add] += 1\n            matches += need[add] == window[add]\n            matches -= need[remove] == window[remove]\n            window[remove] -= 1\n            matches += need[remove] == window[remove]\n            if matches == 26:\n                ans.append(right - m + 1)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def findAnagrams(self, s, p):\n        # TODO: write your solution here\n        pass\n"
+}

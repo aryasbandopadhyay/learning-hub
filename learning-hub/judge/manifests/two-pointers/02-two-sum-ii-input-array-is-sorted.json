@@ -1,0 +1,68 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "twoSum",
+  "params": [
+    "numbers",
+    "target"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          2,
+          7,
+          11,
+          15
+        ],
+        9
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "numbers",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "target",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "two-pointers/02-two-sum-ii-input-array-is-sorted",
+  "title": "Two Sum II - Input Array Is Sorted",
+  "difficulty": "Medium",
+  "topic": "two-pointers",
+  "solutions": {
+    "naive": "from typing import List\n\nclass Solution:\n    def twoSum(self, numbers: List[int], target: int) -> List[int]:\n        n = len(numbers)\n        for i in range(n):\n            for j in range(i + 1, n):\n                # Return 1-indexed positions as required.\n                if numbers[i] + numbers[j] == target:\n                    return [i + 1, j + 1]\n        return []",
+    "better": "from typing import List\nimport bisect\n\nclass Solution:\n    def twoSum(self, numbers: List[int], target: int) -> List[int]:\n        for i, value in enumerate(numbers):\n            need = target - value\n            j = bisect.bisect_left(numbers, need, i + 1)\n            # Check that binary search found the exact complement.\n            if j < len(numbers) and numbers[j] == need:\n                return [i + 1, j + 1]\n        return []",
+    "optimal": "from typing import List\n\nclass Solution:\n    def twoSum(self, numbers: List[int], target: int) -> List[int]:\n        left, right = 0, len(numbers) - 1\n        while left < right:\n            total = numbers[left] + numbers[right]\n            if total == target:\n                return [left + 1, right + 1]\n            if total < target:\n                left += 1\n            else:\n                right -= 1\n        return []"
+  },
+  "starterCode": "class Solution:\n    def twoSum(self, numbers, target):\n        # TODO: write your solution here\n        pass\n"
+}

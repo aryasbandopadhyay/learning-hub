@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "reorganizeStringSmallest",
+  "params": [
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "vvvlo"
+      ],
+      "expected": "vlvov"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "ababcbdbdebebebedede"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "ababcbdcdeded"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "ababababababababababababcbcbcbcdcdcdededededededed"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "ababababcbcdcdcecede"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "abababcbcbcdcdcdcded"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": ""
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/heap-topk/09-lexicographically-smallest-reorganized-string",
+  "title": "Lexicographically Smallest Reorganized String",
+  "difficulty": "Hard",
+  "topic": "google/heap-topk",
+  "solutions": {
+    "naive": "class Solution:\n    def reorganizeStringSmallest(self, s: str) -> str:\n        from collections import Counter\n        from functools import lru_cache\n        chars = tuple(sorted(set(s)))\n        start = tuple(Counter(s).get(ch, 0) for ch in chars)\n        def feasible(counts, prev):\n            total = sum(counts)\n            for i, c in enumerate(counts):\n                limit = total // 2 if chars[i] == prev else (total + 1) // 2\n                if c > limit:\n                    return False\n            return True\n        if not feasible(start, ''):\n            return \"\"\n        @lru_cache(None)\n        def dfs(counts, prev):\n            if sum(counts) == 0:\n                return \"\"\n            for i, ch in enumerate(chars):\n                if counts[i] and ch != prev:\n                    nxt = list(counts)\n                    nxt[i] -= 1\n                    nxt = tuple(nxt)\n                    if feasible(nxt, ch):\n                        tail = dfs(nxt, ch)\n                        if tail is not None:\n                            return ch + tail\n            return None\n        return dfs(start, '') or \"\"",
+    "better": "class Solution:\n    def reorganizeStringSmallest(self, s: str) -> str:\n        from collections import Counter\n        counts = Counter(s)\n        chars = sorted(counts)\n        def feasible(prev):\n            total = sum(counts.values())\n            for ch in chars:\n                limit = total // 2 if ch == prev else (total + 1) // 2\n                if counts[ch] > limit:\n                    return False\n            return True\n        if not feasible(''):\n            return \"\"\n        ans = []\n        prev = ''\n        for _ in range(len(s)):\n            for ch in chars:\n                if counts[ch] == 0 or ch == prev:\n                    continue\n                counts[ch] -= 1\n                if feasible(ch):\n                    ans.append(ch)\n                    prev = ch\n                    break\n                counts[ch] += 1\n            else:\n                return \"\"\n        return ''.join(ans)",
+    "optimal": "class Solution:\n    def reorganizeStringSmallest(self, s: str) -> str:\n        from collections import Counter\n        import heapq\n        counts = Counter(s)\n        chars = sorted(counts)\n        def feasible(prev):\n            total = sum(counts.values())\n            for ch in chars:\n                limit = total // 2 if ch == prev else (total + 1) // 2\n                if counts[ch] > limit:\n                    return False\n            return True\n        if not feasible(''):\n            return \"\"\n        heap = chars[:]\n        heapq.heapify(heap)\n        ans = []\n        prev = ''\n        for _ in range(len(s)):\n            skipped = []\n            placed = None\n            while heap:\n                ch = heapq.heappop(heap)\n                if counts[ch] == 0:\n                    continue\n                if ch == prev:\n                    skipped.append(ch)\n                    continue\n                counts[ch] -= 1\n                if feasible(ch):\n                    placed = ch\n                    break\n                counts[ch] += 1\n                skipped.append(ch)\n            for ch in skipped:\n                heapq.heappush(heap, ch)\n            if placed is None:\n                return \"\"\n            ans.append(placed)\n            prev = placed\n            if counts[placed] > 0:\n                heapq.heappush(heap, placed)\n        return ''.join(ans)"
+  },
+  "starterCode": "class Solution:\n    def reorganizeStringSmallest(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,315 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "constrainedSubsetSum",
+  "params": [
+    "nums",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        [
+          10,
+          2,
+          -10,
+          5,
+          20
+        ],
+        2
+      ],
+      "expected": 37
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        [
+          2476,
+          -3444,
+          9642,
+          -4142,
+          -2455,
+          -1860,
+          -5634,
+          -7163,
+          -1771,
+          2552,
+          7393,
+          7649,
+          -7057,
+          6032,
+          -3464,
+          3816,
+          9280,
+          -2900,
+          -1860,
+          2717
+        ],
+        3484
+      ],
+      "expected": 51557
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        [
+          -7282,
+          7324,
+          -7123,
+          8282,
+          367,
+          3193,
+          -8603,
+          -1173,
+          8282,
+          -9751,
+          3933,
+          -3324,
+          1879
+        ],
+        8755
+      ],
+      "expected": 33260
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        [
+          -8319,
+          1715,
+          -5769,
+          -2928,
+          -4731,
+          4474,
+          9510,
+          -4180,
+          6488,
+          -4233,
+          -8786,
+          -6403,
+          -9237,
+          -4391,
+          5523,
+          3730,
+          -7341,
+          3940,
+          -7182,
+          -5318,
+          151,
+          -9815,
+          2486,
+          803,
+          -5550,
+          7150,
+          3281,
+          -3421,
+          -8185,
+          -3072,
+          4515,
+          -1560,
+          7873,
+          3240,
+          -5860,
+          -4391,
+          5602,
+          -8171,
+          -5710,
+          9649,
+          -5071,
+          9924,
+          3379,
+          -5925,
+          -6839,
+          -6110,
+          -5293,
+          -302,
+          -4294,
+          -4179
+        ],
+        6716
+      ],
+      "expected": 93433
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        [
+          6355,
+          -2336,
+          -1560,
+          -6160,
+          1852,
+          -3907,
+          -7628,
+          6424,
+          -573,
+          -9635,
+          9191,
+          -8438,
+          -3907
+        ],
+        3545
+      ],
+      "expected": 23822
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        [
+          2646,
+          3568,
+          2156,
+          7510,
+          -6964,
+          -4062,
+          -8769,
+          2222,
+          3060,
+          4548,
+          -2457,
+          204,
+          -2593,
+          179,
+          -6535,
+          286,
+          -2837,
+          -1818,
+          2568,
+          -289
+        ],
+        7179
+      ],
+      "expected": 28947
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        [
+          4346,
+          3798
+        ],
+        4198
+      ],
+      "expected": 8144
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        [
+          7473,
+          -5830,
+          -1585,
+          4120,
+          -469,
+          3413,
+          -4777,
+          -750,
+          2417,
+          9800,
+          4419,
+          -3628,
+          2446,
+          1037,
+          -3524,
+          1317,
+          -9859,
+          1642,
+          -321,
+          -3667,
+          -4376,
+          -1449,
+          3654,
+          -2423,
+          3377,
+          1322,
+          3103,
+          -9882,
+          -6320,
+          6438,
+          7424,
+          -3365,
+          -9958,
+          7108,
+          175,
+          -4516,
+          6748,
+          4552,
+          -3273,
+          -1353,
+          3658,
+          5336,
+          8362,
+          7400,
+          9855,
+          -580,
+          -3438,
+          -9325,
+          -6555,
+          76
+        ],
+        1239
+      ],
+      "expected": 116672
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        [
+          3656
+        ],
+        4911
+      ],
+      "expected": 3656
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "nums",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/sliding-window/03-constrained-subsequence-sum",
+  "title": "Constrained Subsequence Sum",
+  "difficulty": "Hard",
+  "topic": "google/sliding-window",
+  "solutions": {
+    "naive": "class Solution:\n    def constrainedSubsetSum(self, nums: list[int], k: int) -> int:\n        n = len(nums)\n        dp = nums[:]\n        ans = nums[0]\n        for i in range(n):\n            best = 0\n            for j in range(max(0, i - k), i):\n                if dp[j] > best:\n                    best = dp[j]\n            dp[i] = nums[i] + best\n            ans = max(ans, dp[i])\n        return ans",
+    "better": "class Solution:\n    def constrainedSubsetSum(self, nums: list[int], k: int) -> int:\n        from heapq import heappush, heappop\n        heap = []\n        ans = nums[0]\n        for i, x in enumerate(nums):\n            while heap and heap[0][1] < i - k:\n                heappop(heap)\n            best = -heap[0][0] if heap and -heap[0][0] > 0 else 0\n            cur = x + best\n            ans = max(ans, cur)\n            heappush(heap, (-cur, i))\n        return ans",
+    "optimal": "class Solution:\n    def constrainedSubsetSum(self, nums: list[int], k: int) -> int:\n        n = len(nums)\n        dp = [0] * n\n        q = []\n        head = 0\n        ans = nums[0]\n        for i, x in enumerate(nums):\n            while head < len(q) and q[head] < i - k:\n                head += 1\n            best = dp[q[head]] if head < len(q) and dp[q[head]] > 0 else 0\n            dp[i] = x + best\n            ans = max(ans, dp[i])\n            while head < len(q) and dp[q[-1]] <= dp[i]:\n                q.pop()\n            q.append(i)\n        return ans"
+  },
+  "starterCode": "class Solution:\n    def constrainedSubsetSum(self, nums, k):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,131 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "wordPattern",
+  "params": [
+    "pattern",
+    "s"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "abba",
+        "dog cat cat dog"
+      ],
+      "expected": true
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb",
+        "dog cat cat dog"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd",
+        "dog cat cat dog"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d",
+        "dog cat cat dog"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de",
+        "dog cat cat dog"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "dog cat cat dog"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd",
+        "dog cat cat dog"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc",
+        "dog cat cat dog"
+      ],
+      "expected": false
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd",
+        "dog cat cat dog"
+      ],
+      "expected": false
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "pattern",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "s",
+          "type": "str",
+          "role": "const",
+          "value": "dog cat cat dog"
+        }
+      ]
+    }
+  },
+  "id": "strings/14-word-pattern",
+  "title": "Word Pattern",
+  "difficulty": "Easy",
+  "topic": "strings",
+  "solutions": {
+    "naive": "class Solution:\n    def wordPattern(self, pattern: str, s: str) -> bool:\n        words = s.split()\n        if len(pattern) != len(words):\n            return False\n        for i in range(len(pattern)):\n            for j in range(i + 1, len(pattern)):\n                if (pattern[i] == pattern[j]) != (words[i] == words[j]):\n                    return False\n        return True",
+    "better": "class Solution:\n    def wordPattern(self, pattern: str, s: str) -> bool:\n        words = s.split()\n        if len(pattern) != len(words):\n            return False\n        p_to_w = {}\n        w_to_p = {}\n        for p, word in zip(pattern, words):\n            if p in p_to_w and p_to_w[p] != word:\n                return False\n            if word in w_to_p and w_to_p[word] != p:\n                return False\n            p_to_w[p] = word\n            w_to_p[word] = p\n        return True",
+    "optimal": "class Solution:\n    def wordPattern(self, pattern: str, s: str) -> bool:\n        words = s.split()\n        if len(pattern) != len(words):\n            return False\n\n        def encode(items) -> list[int]:\n            first_seen = {}\n            result = []\n            for i, item in enumerate(items):\n                if item not in first_seen:\n                    first_seen[item] = i\n                result.append(first_seen[item])\n            return result\n\n        return encode(pattern) == encode(words)"
+  },
+  "starterCode": "class Solution:\n    def wordPattern(self, pattern, s):\n        # TODO: write your solution here\n        pass\n"
+}

@@ -1,0 +1,115 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "frequencySort",
+  "params": [
+    "s"
+  ],
+  "compareMode": "sorted",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        "tree"
+      ],
+      "expected": "eert"
+    },
+    {
+      "id": "rand-1",
+      "kind": "random",
+      "args": [
+        "dbebbbbacdeeaedbdeeb"
+      ],
+      "expected": "bbbbbbbeeeeeeddddaac"
+    },
+    {
+      "id": "rand-2",
+      "kind": "random",
+      "args": [
+        "dbbdbecaeadcd"
+      ],
+      "expected": "ddddbbbaaccee"
+    },
+    {
+      "id": "rand-3",
+      "kind": "random",
+      "args": [
+        "d"
+      ],
+      "expected": "d"
+    },
+    {
+      "id": "rand-4",
+      "kind": "random",
+      "args": [
+        "de"
+      ],
+      "expected": "de"
+    },
+    {
+      "id": "rand-5",
+      "kind": "random",
+      "args": [
+        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      ],
+      "expected": "bbbbbbbbbbbbbbbaaaaaaaaaaaaddddddddddeeeeeeecccccc"
+    },
+    {
+      "id": "rand-6",
+      "kind": "random",
+      "args": [
+        "bbecdbcacbaecaeacbdd"
+      ],
+      "expected": "bbbbbcccccaaaadddeee"
+    },
+    {
+      "id": "rand-7",
+      "kind": "random",
+      "args": [
+        "ddceabacddbcbcacbbdc"
+      ],
+      "expected": "ccccccbbbbbdddddaaae"
+    },
+    {
+      "id": "rand-8",
+      "kind": "random",
+      "args": [
+        "dd"
+      ],
+      "expected": "dd"
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "s",
+          "type": "str",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "heap-priority-queue/11-sort-characters-by-frequency",
+  "title": "Sort Characters By Frequency",
+  "difficulty": "Medium",
+  "topic": "heap-priority-queue",
+  "solutions": {
+    "naive": "class Solution:\n    def frequencySort(self, s: str) -> str:\n        parts = []\n        for ch in set(s):\n            # Re-counting for every unique character is brute force.\n            parts.append((s.count(ch), ch))\n        parts.sort(reverse=True)\n        return \"\".join(ch * count for count, ch in parts)",
+    "better": "from collections import Counter\n\nclass Solution:\n    def frequencySort(self, s: str) -> str:\n        counts = Counter(s)\n        chars = sorted(counts, key=lambda ch: counts[ch], reverse=True)\n        return \"\".join(ch * counts[ch] for ch in chars)",
+    "optimal": "from collections import Counter\nimport heapq\n\nclass Solution:\n    def frequencySort(self, s: str) -> str:\n        heap = [(-count, ch) for ch, count in Counter(s).items()]\n        heapq.heapify(heap)\n        result = []\n\n        while heap:\n            neg_count, ch = heapq.heappop(heap)\n            result.append(ch * (-neg_count))\n\n        return \"\".join(result)"
+  },
+  "starterCode": "class Solution:\n    def frequencySort(self, s):\n        # TODO: write your solution here\n        pass\n"
+}

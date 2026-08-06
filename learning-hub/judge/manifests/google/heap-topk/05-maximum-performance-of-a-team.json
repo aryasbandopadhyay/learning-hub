@@ -1,0 +1,98 @@
+{
+  "shape": "function",
+  "className": "Solution",
+  "entry": "maxPerformance",
+  "params": [
+    "n",
+    "speed",
+    "efficiency",
+    "k"
+  ],
+  "compareMode": "exact",
+  "tests": [
+    {
+      "id": "example-1",
+      "kind": "example",
+      "args": [
+        6,
+        [
+          2,
+          10,
+          3,
+          1,
+          5,
+          8
+        ],
+        [
+          5,
+          4,
+          3,
+          9,
+          7,
+          2
+        ],
+        2
+      ],
+      "expected": 60
+    }
+  ],
+  "complexity": {
+    "supported": true,
+    "sizes": [
+      500,
+      1000,
+      2000,
+      4000,
+      8000
+    ],
+    "repeats": 3,
+    "genSpec": {
+      "params": [
+        {
+          "name": "n",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        },
+        {
+          "name": "speed",
+          "type": "list[int]",
+          "role": "size",
+          "lo": -10000,
+          "hi": 10000
+        },
+        {
+          "name": "efficiency",
+          "type": "list[int]",
+          "role": "const",
+          "value": [
+            5,
+            4,
+            3,
+            9,
+            7,
+            2
+          ]
+        },
+        {
+          "name": "k",
+          "type": "int",
+          "role": "target",
+          "lo": 1,
+          "hi": 10000
+        }
+      ]
+    }
+  },
+  "id": "google/heap-topk/05-maximum-performance-of-a-team",
+  "title": "Maximum Performance of a Team",
+  "difficulty": "Hard",
+  "topic": "google/heap-topk",
+  "solutions": {
+    "naive": "class Solution:\n    def maxPerformance(self, n: int, speed: list[int], efficiency: list[int], k: int) -> int:\n        mod = 1000000007\n        best = 0\n        for e in efficiency:\n            eligible = [speed[i] for i in range(n) if efficiency[i] >= e]\n            eligible.sort(reverse=True)\n            best = max(best, sum(eligible[:k]) * e)\n        return best % mod",
+    "better": "class Solution:\n    def maxPerformance(self, n: int, speed: list[int], efficiency: list[int], k: int) -> int:\n        import bisect\n        mod = 1000000007\n        engineers = sorted(zip(efficiency, speed), reverse=True)\n        chosen = []\n        speed_sum = 0\n        best = 0\n        for e, s in engineers:\n            bisect.insort(chosen, s)\n            speed_sum += s\n            if len(chosen) > k:\n                speed_sum -= chosen.pop(0)\n            best = max(best, speed_sum * e)\n        return best % mod",
+    "optimal": "class Solution:\n    def maxPerformance(self, n: int, speed: list[int], efficiency: list[int], k: int) -> int:\n        import heapq\n        mod = 1000000007\n        engineers = sorted(zip(efficiency, speed), reverse=True)\n        heap = []\n        speed_sum = 0\n        best = 0\n        for e, s in engineers:\n            heapq.heappush(heap, s)\n            speed_sum += s\n            if len(heap) > k:\n                speed_sum -= heapq.heappop(heap)\n            best = max(best, speed_sum * e)\n        return best % mod"
+  },
+  "starterCode": "class Solution:\n    def maxPerformance(self, n, speed, efficiency, k):\n        # TODO: write your solution here\n        pass\n"
+}
