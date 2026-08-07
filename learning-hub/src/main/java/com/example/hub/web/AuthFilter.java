@@ -1,7 +1,9 @@
 package com.example.hub.web;
 
 import com.example.hub.config.AuthProperties;
+import com.example.hub.service.AuthCookieService;
 import com.example.hub.service.AuthService;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,9 +41,11 @@ public class AuthFilter extends OncePerRequestFilter {
     );
 
     private final AuthService auth;
+    private final AuthCookieService cookies;
 
-    public AuthFilter(AuthService auth, AuthProperties props) {
+    public AuthFilter(AuthService auth, AuthCookieService cookies, AuthProperties props) {
         this.auth = auth;
+        this.cookies = cookies;
     }
 
     @Override
@@ -59,14 +63,14 @@ public class AuthFilter extends OncePerRequestFilter {
             path = path.substring(req.getContextPath().length());
         }
 
+        HttpSession session = rehydrateSessionFromCookieIfNeeded(req);
+        String email = session == null ? null : (String) session.getAttribute(AuthService.SESSION_EMAIL);
+        String role = session == null ? null : (String) session.getAttribute(AuthService.SESSION_ROLE);
+
         if (PUBLIC_PATHS.contains(path)) {
             chain.doFilter(req, res);
             return;
         }
-
-        HttpSession session = req.getSession(false);
-        String email = session == null ? null : (String) session.getAttribute(AuthService.SESSION_EMAIL);
-        String role = session == null ? null : (String) session.getAttribute(AuthService.SESSION_ROLE);
 
         boolean isApi = path.startsWith("/api/");
 
@@ -90,5 +94,33 @@ public class AuthFilter extends OncePerRequestFilter {
         }
 
         chain.doFilter(req, res);
+    }
+
+    /**
+     * If the in-memory servlet session is gone (browser restart/redeploy), verify the signed
+     * remember-me cookie and recreate the session attributes downstream controllers already use.
+     */
+    private HttpSession rehydrateSessionFromCookieIfNeeded(HttpServletRequest req) {
+        HttpSession session = req.getSession(false);
+        if (session != null && session.getAttribute(AuthService.SESSION_EMAIL) != null) return session;
+
+        String token = null;
+        Cookie[] requestCookies = req.getCookies();
+        if (requestCookies != null) {
+            for (Cookie cookie : requestCookies) {
+                if (AuthCookieService.COOKIE_NAME.equals(cookie.getName())) {
+                    token = cookie.getValue();
+                    break;
+                }
+            }
+        }
+        if (token == null) return session;
+
+        return cookies.verify(token).map(authToken -> {
+            HttpSession fresh = req.getSession(true);
+            fresh.setAttribute(AuthService.SESSION_EMAIL, authToken.email());
+            fresh.setAttribute(AuthService.SESSION_ROLE, authToken.role());
+            return fresh;
+        }).orElse(session);
     }
 }

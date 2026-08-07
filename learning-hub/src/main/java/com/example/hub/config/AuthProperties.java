@@ -23,13 +23,15 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @param adminEmail    the single admin account's email (case-insensitive).
  * @param adminPassword the admin password (plain — acceptable for this personal app only).
  * @param usersTable    Azure Table that stores allow-listed user emails.
+ * @param cookieSecret  stable HMAC secret for the signed remember-me cookie.
  */
 @ConfigurationProperties(prefix = "hub.auth")
 public record AuthProperties(
         Boolean enabled,
         String adminEmail,
         String adminPassword,
-        String usersTable
+        String usersTable,
+        String cookieSecret
 ) {
     public AuthProperties {
         if (enabled == null) enabled = Boolean.TRUE;
@@ -40,6 +42,9 @@ public record AuthProperties(
         if (adminEmail == null) adminEmail = "";
         if (adminPassword == null) adminPassword = "";
         if (usersTable == null || usersTable.isBlank()) usersTable = "users";
+        // Local-only placeholder. In Azure Container Apps this must be set to a stable secret
+        // (HUB_AUTH_COOKIE_SECRET); changing it invalidates all remember-me cookies.
+        if (cookieSecret == null || cookieSecret.isBlank()) cookieSecret = "local-dev-only-change-me";
     }
 
     /** True when an admin password has actually been configured (non-blank). */

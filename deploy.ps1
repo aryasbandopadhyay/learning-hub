@@ -31,11 +31,14 @@ $TargetPort    = 8080
 # HUB_PROGRESS_CONNECTION_STRING : Azure Table storage conn string  -> secret 'progress-cs'.
 # HUB_AUTH_ADMIN_PASSWORD        : admin login password             -> secret 'admin-pw'.
 # HUB_AUTH_ADMIN_EMAIL           : admin login email                -> secret 'admin-email'.
+# HUB_AUTH_COOKIE_SECRET         : HMAC secret for remember-me cookie -> secret 'auth-cookie-secret'.
+#                                  MUST stay stable across deploys, or all logins are invalidated.
 $EnvVars = @(
     'HUB_JUDGE_PYTHON_EXE=python3',
     'HUB_PROGRESS_CONNECTION_STRING=secretref:progress-cs',
     'HUB_AUTH_ADMIN_PASSWORD=secretref:admin-pw',
-    'HUB_AUTH_ADMIN_EMAIL=secretref:admin-email'
+    'HUB_AUTH_ADMIN_EMAIL=secretref:admin-email',
+    'HUB_AUTH_COOKIE_SECRET=secretref:auth-cookie-secret'
 )
 
 Write-Host "==> Selecting personal subscription $Subscription" -ForegroundColor Cyan

@@ -16,14 +16,16 @@ class AuthServiceTest {
 
     /** Wire AuthService + a UserService backed by the in-memory allow-list. */
     private AuthService authWith(UserService users) {
-        AuthProperties auth = new AuthProperties(true, "admin@example.com", "s3cret", "users");
+        AuthProperties auth = new AuthProperties(true, "admin@example.com", "s3cret", "users",
+                "local-dev-only-change-me");
         return new AuthService(auth, users);
     }
 
     private UserService inMemoryUsers() {
         // Blank connection string => in-memory allow-list.
         return new UserService(
-                new AuthProperties(true, "admin@example.com", "s3cret", "users"),
+                new AuthProperties(true, "admin@example.com", "s3cret", "users",
+                        "local-dev-only-change-me"),
                 new ProgressProperties(true, "", "progress"));
     }
 
@@ -70,7 +72,8 @@ class AuthServiceTest {
     @Test
     void adminIsDisabledWhenNoPasswordConfigured() {
         // Simulates HUB_AUTH_ADMIN_PASSWORD being unset (blank) — the redacted default.
-        AuthProperties noPw = new AuthProperties(true, "admin@example.com", "", "users");
+        AuthProperties noPw = new AuthProperties(true, "admin@example.com", "", "users",
+                "local-dev-only-change-me");
         AuthService svc = new AuthService(noPw, inMemoryUsers());
         assertThat(noPw.adminPasswordConfigured()).isFalse();
         // No password (blank or otherwise) may grant admin when none is configured.
@@ -82,7 +85,8 @@ class AuthServiceTest {
     @Test
     void adminIsDisabledWhenNoEmailConfigured() {
         // Simulates HUB_AUTH_ADMIN_EMAIL being unset (blank) — the redacted default.
-        AuthProperties noEmail = new AuthProperties(true, "", "s3cret", "users");
+        AuthProperties noEmail = new AuthProperties(true, "", "s3cret", "users",
+                "local-dev-only-change-me");
         AuthService svc = new AuthService(noEmail, inMemoryUsers());
         assertThat(noEmail.adminEmailConfigured()).isFalse();
         // A blank submitted email is always rejected, and no email may match an unconfigured admin.

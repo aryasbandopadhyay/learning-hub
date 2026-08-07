@@ -1,5 +1,13 @@
 server:
   port: 8080
+  servlet:
+    session:
+      timeout: 30d
+      cookie:
+        http-only: true
+        secure: true
+        same-site: lax
+        max-age: 30d
 
 # ============================================================================================
 # learning-hub configuration
@@ -63,6 +71,9 @@ hub:
     # When either is unset, admin login is disabled (allow-listed guests still work).
     admin-email: ${HUB_AUTH_ADMIN_EMAIL:}
     admin-password: ${HUB_AUTH_ADMIN_PASSWORD:}
+    # Local dev fallback only. In Azure Container Apps set HUB_AUTH_COOKIE_SECRET as a
+    # stable secret; changing it invalidates all signed remember-me cookies.
+    cookie-secret: ${HUB_AUTH_COOKIE_SECRET:local-dev-only-change-me}
     users-table: users
 
   categories:

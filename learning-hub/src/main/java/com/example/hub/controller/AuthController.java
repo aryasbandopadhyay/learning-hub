@@ -1,8 +1,12 @@
 package com.example.hub.controller;
 
 import com.example.hub.service.AuthService;
+import com.example.hub.service.AuthCookieService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,13 +32,16 @@ import java.util.Map;
 public class AuthController {
 
     private final AuthService auth;
+    private final AuthCookieService cookies;
 
-    public AuthController(AuthService auth) {
+    public AuthController(AuthService auth, AuthCookieService cookies) {
         this.auth = auth;
+        this.cookies = cookies;
     }
 
     @PostMapping("/login")
-    public Map<String, Object> login(@RequestBody Map<String, String> body, HttpServletRequest req) {
+    public Map<String, Object> login(@RequestBody Map<String, String> body, HttpServletRequest req,
+                                     HttpServletResponse res) {
         String email = body == null ? null : body.get("email");
         String password = body == null ? null : body.get("password");
         String role = auth.authenticate(email, password);
@@ -47,14 +54,18 @@ public class AuthController {
         HttpSession session = req.getSession(true); // create a fresh session
         session.setAttribute(AuthService.SESSION_EMAIL, norm);
         session.setAttribute(AuthService.SESSION_ROLE, role);
+
+        // A signed cookie keeps users logged in across browser restarts and server redeploys.
+        res.addHeader(HttpHeaders.SET_COOKIE, authCookie(cookies.createToken(norm, role)).build().toString());
         return Map.of("authenticated", true, "email", norm, "role", role,
                 "admin", AuthService.ROLE_ADMIN.equals(role));
     }
 
     @PostMapping("/logout")
-    public Map<String, Object> logout(HttpServletRequest req) {
+    public Map<String, Object> logout(HttpServletRequest req, HttpServletResponse res) {
         HttpSession session = req.getSession(false);
         if (session != null) session.invalidate();
+        res.addHeader(HttpHeaders.SET_COOKIE, authCookie("").maxAge(0).build().toString());
         return Map.of("ok", true);
     }
 
@@ -68,5 +79,14 @@ public class AuthController {
         }
         return Map.of("authenticated", true, "email", email, "role", role,
                 "admin", AuthService.ROLE_ADMIN.equals(role));
+    }
+
+    private ResponseCookie.ResponseCookieBuilder authCookie(String value) {
+        return ResponseCookie.from(AuthCookieService.COOKIE_NAME, value)
+                .httpOnly(true)
+                .secure(true)
+                .sameSite("Lax")
+                .path("/")
+                .maxAge(AuthCookieService.MAX_AGE);
     }
 }
