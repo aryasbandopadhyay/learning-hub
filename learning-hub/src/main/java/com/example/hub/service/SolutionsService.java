@@ -1,6 +1,6 @@
 package com.example.hub.service;
 
-import com.azure.core.exception.ResourceNotFoundException;
+import com.azure.core.exception.HttpResponseException;
 import com.azure.data.tables.TableClient;
 import com.azure.data.tables.TableClientBuilder;
 import com.azure.data.tables.models.ListEntitiesOptions;
@@ -125,8 +125,13 @@ public class SolutionsService {
                         prop(e, "Language"),
                         prop(e, "Section"),
                         prop(e, "Path")));
-            } catch (ResourceNotFoundException missing) {
-                return Optional.empty();
+            } catch (HttpResponseException missing) {
+                // A missing row — or a not-yet-created table — surfaces as a 404
+                // (ResourceNotFoundException or TableServiceException). Treat both as "no saved solution".
+                if (missing.getResponse() != null && missing.getResponse().getStatusCode() == 404) {
+                    return Optional.empty();
+                }
+                throw missing;
             }
         }
 
