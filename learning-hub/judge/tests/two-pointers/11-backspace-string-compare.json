@@ -1,0 +1,70 @@
+{
+  "id": "two-pointers/11-backspace-string-compare",
+  "note": "'#' is a backspace. Compare the two resulting strings.",
+  "cases": [
+    {
+      "label": "classic equal",
+      "args": [
+        "ab#c",
+        "ad#c"
+      ],
+      "expected": true
+    },
+    {
+      "label": "both become empty",
+      "args": [
+        "a##c",
+        "#a#c"
+      ],
+      "expected": true
+    },
+    {
+      "label": "unequal",
+      "args": [
+        "a#c",
+        "b"
+      ],
+      "expected": false
+    },
+    {
+      "label": "leading backspaces ignored",
+      "args": [
+        "#a",
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "label": "no backspaces equal",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "label": "no backspaces unequal",
+      "args": [
+        "abc",
+        "abd"
+      ],
+      "expected": false
+    },
+    {
+      "label": "all backspaces",
+      "args": [
+        "####",
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "label": "trailing backspace removes last",
+      "args": [
+        "ab#",
+        "a"
+      ],
+      "expected": true
+    }
+  ]
+}

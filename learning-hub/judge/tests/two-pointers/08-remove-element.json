@@ -1,0 +1,88 @@
+{
+  "id": "two-pointers/08-remove-element",
+  "note": "In-place removal of all occurrences of val; entry returns new length k.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          3,
+          2,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": 2
+    },
+    {
+      "label": "second example",
+      "args": [
+        [
+          0,
+          1,
+          2,
+          2,
+          3,
+          0,
+          4,
+          2
+        ],
+        2
+      ],
+      "expected": 5
+    },
+    {
+      "label": "val absent",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        9
+      ],
+      "expected": 3
+    },
+    {
+      "label": "remove everything",
+      "args": [
+        [
+          4,
+          4,
+          4
+        ],
+        4
+      ],
+      "expected": 0
+    },
+    {
+      "label": "empty array",
+      "args": [
+        [],
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single element removed",
+      "args": [
+        [
+          5
+        ],
+        5
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single element kept",
+      "args": [
+        [
+          5
+        ],
+        1
+      ],
+      "expected": 1
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "two-pointers/12-is-subsequence",
+  "note": "Is s a subsequence of t?",
+  "cases": [
+    {
+      "label": "classic true",
+      "args": [
+        "abc",
+        "ahbgdc"
+      ],
+      "expected": true
+    },
+    {
+      "label": "classic false",
+      "args": [
+        "axc",
+        "ahbgdc"
+      ],
+      "expected": false
+    },
+    {
+      "label": "empty s is always a subsequence",
+      "args": [
+        "",
+        "anything"
+      ],
+      "expected": true
+    },
+    {
+      "label": "empty t with non-empty s",
+      "args": [
+        "a",
+        ""
+      ],
+      "expected": false
+    },
+    {
+      "label": "both empty",
+      "args": [
+        "",
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "label": "s equals t",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "label": "s longer than t",
+      "args": [
+        "abcd",
+        "abc"
+      ],
+      "expected": false
+    },
+    {
+      "label": "requires order",
+      "args": [
+        "ba",
+        "ab"
+      ],
+      "expected": false
+    }
+  ]
+}

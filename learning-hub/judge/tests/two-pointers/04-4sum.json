@@ -1,0 +1,148 @@
+{
+  "id": "two-pointers/04-4sum",
+  "note": "Unique quadruplets summing to target.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          0,
+          -1,
+          0,
+          -2,
+          2
+        ],
+        0
+      ],
+      "expected": [
+        [
+          -2,
+          -1,
+          1,
+          2
+        ],
+        [
+          -2,
+          0,
+          0,
+          2
+        ],
+        [
+          -1,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "label": "all same value meets target",
+      "args": [
+        [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        8
+      ],
+      "expected": [
+        [
+          2,
+          2,
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "label": "no quadruplet",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        100
+      ],
+      "expected": []
+    },
+    {
+      "label": "fewer than four elements",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        6
+      ],
+      "expected": []
+    },
+    {
+      "label": "negatives and positives",
+      "args": [
+        [
+          -3,
+          -1,
+          0,
+          2,
+          4,
+          5
+        ],
+        2
+      ],
+      "expected": [
+        [
+          -3,
+          -1,
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "label": "duplicates collapse",
+      "args": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        0
+      ],
+      "expected": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "label": "exactly four elements matching",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        10
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ]
+    }
+  ]
+}

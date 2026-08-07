@@ -1,0 +1,105 @@
+{
+  "id": "two-pointers/09-reverse-string",
+  "note": "In-place reversal of a list of single characters.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          "h",
+          "e",
+          "l",
+          "l",
+          "o"
+        ]
+      ],
+      "expected": [
+        "o",
+        "l",
+        "l",
+        "e",
+        "h"
+      ]
+    },
+    {
+      "label": "even length",
+      "args": [
+        [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      ],
+      "expected": [
+        "d",
+        "c",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "label": "single character",
+      "args": [
+        [
+          "z"
+        ]
+      ],
+      "expected": [
+        "z"
+      ]
+    },
+    {
+      "label": "two characters",
+      "args": [
+        [
+          "x",
+          "y"
+        ]
+      ],
+      "expected": [
+        "y",
+        "x"
+      ]
+    },
+    {
+      "label": "empty",
+      "args": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "label": "palindrome unchanged in value",
+      "args": [
+        [
+          "a",
+          "b",
+          "a"
+        ]
+      ],
+      "expected": [
+        "a",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "label": "repeated characters",
+      "args": [
+        [
+          "m",
+          "m",
+          "m",
+          "m"
+        ]
+      ],
+      "expected": [
+        "m",
+        "m",
+        "m",
+        "m"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "two-pointers/13-partition-labels",
+  "note": "Partition so each letter appears in at most one part; return part sizes.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        "ababcbacadefegdehijhklij"
+      ],
+      "expected": [
+        9,
+        7,
+        8
+      ]
+    },
+    {
+      "label": "single character",
+      "args": [
+        "a"
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "all distinct -> all size 1",
+      "args": [
+        "abcde"
+      ],
+      "expected": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "all same -> one part",
+      "args": [
+        "aaaa"
+      ],
+      "expected": [
+        4
+      ]
+    },
+    {
+      "label": "two interleaved letters -> one part",
+      "args": [
+        "abab"
+      ],
+      "expected": [
+        4
+      ]
+    },
+    {
+      "label": "two separable groups",
+      "args": [
+        "aabbcc"
+      ],
+      "expected": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "label": "nested spans",
+      "args": [
+        "eccbbbbdec"
+      ],
+      "expected": [
+        10
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "two-pointers/05-container-with-most-water",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ]
+      ],
+      "expected": 49
+    },
+    {
+      "label": "two lines",
+      "args": [
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "increasing heights",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "label": "decreasing heights",
+      "args": [
+        [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "label": "tall ends dominate",
+      "args": [
+        [
+          9,
+          1,
+          1,
+          1,
+          9
+        ]
+      ],
+      "expected": 36
+    },
+    {
+      "label": "contains zeros",
+      "args": [
+        [
+          0,
+          2,
+          0,
+          4,
+          0
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "flat",
+      "args": [
+        [
+          3,
+          3,
+          3,
+          3
+        ]
+      ],
+      "expected": 9
+    }
+  ]
+}

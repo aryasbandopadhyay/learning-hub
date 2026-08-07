@@ -20,84 +20,88 @@
       ]
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
       "args": [
-        "dbebbbbacdeeaedbdeeb"
+        "ababcbacadefegdehijhklij"
       ],
       "expected": [
-        20
+        9,
+        7,
+        8
       ]
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single character",
       "args": [
-        "dbbdbecaeadcd"
-      ],
-      "expected": [
-        13
-      ]
-    },
-    {
-      "id": "rand-3",
-      "kind": "random",
-      "args": [
-        "d"
+        "a"
       ],
       "expected": [
         1
       ]
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "all distinct -> all size 1",
       "args": [
-        "de"
+        "abcde"
       ],
       "expected": [
+        1,
+        1,
+        1,
         1,
         1
       ]
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "all same -> one part",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+        "aaaa"
       ],
       "expected": [
-        50
+        4
       ]
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "two interleaved letters -> one part",
       "args": [
-        "bbecdbcacbaecaeacbdd"
+        "abab"
       ],
       "expected": [
-        20
+        4
       ]
     },
     {
-      "id": "rand-7",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "two separable groups",
       "args": [
-        "ddceabacddbcbcacbbdc"
+        "aabbcc"
       ],
       "expected": [
-        20
-      ]
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd"
-      ],
-      "expected": [
+        2,
+        2,
         2
+      ]
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "nested spans",
+      "args": [
+        "eccbbbbdec"
+      ],
+      "expected": [
+        10
       ]
     }
   ],

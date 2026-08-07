@@ -1,0 +1,149 @@
+{
+  "id": "two-pointers/03-3sum",
+  "note": "Unique triplets summing to zero.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          -1,
+          0,
+          1,
+          2,
+          -1,
+          -4
+        ]
+      ],
+      "expected": [
+        [
+          -1,
+          -1,
+          2
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "label": "all zeros -> one triplet",
+      "args": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "label": "no triplet",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "label": "fewer than three elements",
+      "args": [
+        [
+          0,
+          1
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "label": "many duplicates",
+      "args": [
+        [
+          -2,
+          -2,
+          0,
+          0,
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        [
+          -2,
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "label": "symmetric values",
+      "args": [
+        [
+          -4,
+          -2,
+          -2,
+          0,
+          2,
+          2,
+          4
+        ]
+      ],
+      "expected": [
+        [
+          -4,
+          0,
+          4
+        ],
+        [
+          -4,
+          2,
+          2
+        ],
+        [
+          -2,
+          -2,
+          4
+        ],
+        [
+          -2,
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "label": "single triplet with duplicates in input",
+      "args": [
+        [
+          -1,
+          -1,
+          2
+        ]
+      ],
+      "expected": [
+        [
+          -1,
+          -1,
+          2
+        ]
+      ]
+    },
+    {
+      "label": "empty array",
+      "args": [
+        []
+      ],
+      "expected": []
+    }
+  ]
+}

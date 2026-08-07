@@ -18,74 +18,82 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic true",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
-        "ahbgdc"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-2",
-      "kind": "random",
-      "args": [
-        "dbbdbecaeadcd",
-        "ahbgdc"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-3",
-      "kind": "random",
-      "args": [
-        "d",
+        "abc",
         "ahbgdc"
       ],
       "expected": true
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "classic false",
       "args": [
-        "de",
+        "axc",
         "ahbgdc"
       ],
       "expected": false
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "empty s is always a subsequence",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "ahbgdc"
+        "",
+        "anything"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "empty t with non-empty s",
+      "args": [
+        "a",
+        ""
       ],
       "expected": false
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "both empty",
       "args": [
-        "bbecdbcacbaecaeacbdd",
-        "ahbgdc"
+        "",
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "s equals t",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "s longer than t",
+      "args": [
+        "abcd",
+        "abc"
       ],
       "expected": false
     },
     {
-      "id": "rand-7",
-      "kind": "random",
+      "id": "edge-8",
+      "kind": "edge",
+      "label": "requires order",
       "args": [
-        "ddceabacddbcbcacbbdc",
-        "ahbgdc"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "ahbgdc"
+        "ba",
+        "ab"
       ],
       "expected": false
     }

@@ -1,0 +1,62 @@
+{
+  "id": "two-pointers/01-valid-palindrome",
+  "note": "Alphanumeric-only, case-insensitive palindrome check.",
+  "cases": [
+    {
+      "label": "empty string is a palindrome",
+      "args": [
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "label": "single character",
+      "args": [
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "label": "classic true with punctuation",
+      "args": [
+        "A man, a plan, a canal: Panama"
+      ],
+      "expected": true
+    },
+    {
+      "label": "classic false",
+      "args": [
+        "race a car"
+      ],
+      "expected": false
+    },
+    {
+      "label": "only non-alphanumeric collapses to empty (true)",
+      "args": [
+        ".,!?"
+      ],
+      "expected": true
+    },
+    {
+      "label": "digits palindrome",
+      "args": [
+        "12321"
+      ],
+      "expected": true
+    },
+    {
+      "label": "mixed case palindrome",
+      "args": [
+        "AbBa"
+      ],
+      "expected": true
+    },
+    {
+      "label": "not a palindrome by one char",
+      "args": [
+        "abca"
+      ],
+      "expected": false
+    }
+  ]
+}

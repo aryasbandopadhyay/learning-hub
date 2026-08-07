@@ -18,76 +18,84 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic equal",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
+        "ab#c",
         "ad#c"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "both become empty",
+      "args": [
+        "a##c",
+        "#a#c"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "unequal",
+      "args": [
+        "a#c",
+        "b"
       ],
       "expected": false
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "leading backspaces ignored",
       "args": [
-        "dbbdbecaeadcd",
-        "ad#c"
+        "#a",
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "no backspaces equal",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "no backspaces unequal",
+      "args": [
+        "abc",
+        "abd"
       ],
       "expected": false
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "all backspaces",
       "args": [
-        "d",
-        "ad#c"
+        "####",
+        ""
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-8",
+      "kind": "edge",
+      "label": "trailing backspace removes last",
       "args": [
-        "de",
-        "ad#c"
+        "ab#",
+        "a"
       ],
-      "expected": false
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "ad#c"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "ad#c"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "ad#c"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "ad#c"
-      ],
-      "expected": false
+      "expected": true
     }
   ],
   "complexity": {
