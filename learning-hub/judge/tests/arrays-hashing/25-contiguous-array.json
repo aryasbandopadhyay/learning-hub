@@ -1,0 +1,90 @@
+{
+  "id": "arrays-hashing/25-contiguous-array",
+  "note": "Binary array; longest subarray with equal number of 0s and 1s.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          0,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "example with prefix",
+      "args": [
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "no balanced subarray",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "all balanced",
+      "args": [
+        [
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "single element",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "balanced but not contiguous whole",
+      "args": [
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "label": "alternating",
+      "args": [
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ]
+      ],
+      "expected": 6
+    }
+  ]
+}

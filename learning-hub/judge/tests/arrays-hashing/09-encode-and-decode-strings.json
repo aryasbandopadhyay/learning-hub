@@ -1,0 +1,105 @@
+{
+  "id": "arrays-hashing/09-encode-and-decode-strings",
+  "note": "Codec round-trip: decode(encode(strs)) must equal strs. Inputs stress the length/delimiter encoding.",
+  "cases": [
+    {
+      "label": "single empty string",
+      "args": [
+        [
+          ""
+        ]
+      ],
+      "expected": [
+        ""
+      ]
+    },
+    {
+      "label": "multiple empty strings",
+      "args": [
+        [
+          "",
+          "",
+          ""
+        ]
+      ],
+      "expected": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "label": "strings containing a naive delimiter '#'",
+      "args": [
+        [
+          "a#b",
+          "c#d"
+        ]
+      ],
+      "expected": [
+        "a#b",
+        "c#d"
+      ]
+    },
+    {
+      "label": "strings that look like length prefixes",
+      "args": [
+        [
+          "12",
+          "3",
+          "45"
+        ]
+      ],
+      "expected": [
+        "12",
+        "3",
+        "45"
+      ]
+    },
+    {
+      "label": "spaces and colons",
+      "args": [
+        [
+          "hello world",
+          "a:b:c"
+        ]
+      ],
+      "expected": [
+        "hello world",
+        "a:b:c"
+      ]
+    },
+    {
+      "label": "unicode content",
+      "args": [
+        [
+          "caf\u00e9",
+          "na\u00efve",
+          "\u03c0"
+        ]
+      ],
+      "expected": [
+        "caf\u00e9",
+        "na\u00efve",
+        "\u03c0"
+      ]
+    },
+    {
+      "label": "mixed empty and non-empty",
+      "args": [
+        [
+          "",
+          "x",
+          "",
+          "yz"
+        ]
+      ],
+      "expected": [
+        "",
+        "x",
+        "",
+        "yz"
+      ]
+    }
+  ]
+}

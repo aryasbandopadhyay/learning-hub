@@ -1,123 +1,8 @@
 {
-  "shape": "function",
-  "className": "Solution",
-  "entry": "isValidSudoku",
-  "params": [
-    "board"
-  ],
-  "compareMode": "exact",
-  "tests": [
+  "id": "arrays-hashing/07-valid-sudoku",
+  "note": "board is a 9x9 grid of single-character strings; '.' denotes empty.",
+  "cases": [
     {
-      "id": "example-1",
-      "kind": "example",
-      "args": [
-        [
-          [
-            "5",
-            "3",
-            ".",
-            ".",
-            "7",
-            ".",
-            ".",
-            ".",
-            "."
-          ],
-          [
-            "6",
-            ".",
-            ".",
-            "1",
-            "9",
-            "5",
-            ".",
-            ".",
-            "."
-          ],
-          [
-            ".",
-            "9",
-            "8",
-            ".",
-            ".",
-            ".",
-            ".",
-            "6",
-            "."
-          ],
-          [
-            "8",
-            ".",
-            ".",
-            ".",
-            "6",
-            ".",
-            ".",
-            ".",
-            "3"
-          ],
-          [
-            "4",
-            ".",
-            ".",
-            "8",
-            ".",
-            "3",
-            ".",
-            ".",
-            "1"
-          ],
-          [
-            "7",
-            ".",
-            ".",
-            ".",
-            "2",
-            ".",
-            ".",
-            ".",
-            "6"
-          ],
-          [
-            ".",
-            "6",
-            ".",
-            ".",
-            ".",
-            ".",
-            "2",
-            "8",
-            "."
-          ],
-          [
-            ".",
-            ".",
-            ".",
-            "4",
-            "1",
-            "9",
-            ".",
-            ".",
-            "5"
-          ],
-          [
-            ".",
-            ".",
-            ".",
-            ".",
-            "8",
-            ".",
-            ".",
-            "7",
-            "9"
-          ]
-        ]
-      ],
-      "expected": true
-    },
-    {
-      "id": "edge-1",
-      "kind": "edge",
       "label": "completely empty board is valid",
       "args": [
         [
@@ -225,8 +110,6 @@
       "expected": true
     },
     {
-      "id": "edge-2",
-      "kind": "edge",
       "label": "valid partially-filled board",
       "args": [
         [
@@ -334,8 +217,6 @@
       "expected": true
     },
     {
-      "id": "edge-3",
-      "kind": "edge",
       "label": "duplicate in a column",
       "args": [
         [
@@ -443,8 +324,6 @@
       "expected": false
     },
     {
-      "id": "edge-4",
-      "kind": "edge",
       "label": "duplicate in a row",
       "args": [
         [
@@ -552,8 +431,6 @@
       "expected": false
     },
     {
-      "id": "edge-5",
-      "kind": "edge",
       "label": "duplicate in a 3x3 box",
       "args": [
         [
@@ -660,38 +537,5 @@
       ],
       "expected": false
     }
-  ],
-  "complexity": {
-    "supported": true,
-    "sizes": [
-      500,
-      1000,
-      2000,
-      4000,
-      8000
-    ],
-    "repeats": 3,
-    "genSpec": {
-      "params": [
-        {
-          "name": "board",
-          "type": "list[list[int]]",
-          "role": "size",
-          "lo": -10000,
-          "hi": 10000,
-          "width": 9
-        }
-      ]
-    }
-  },
-  "id": "arrays-hashing/07-valid-sudoku",
-  "title": "Valid Sudoku",
-  "difficulty": "Medium",
-  "topic": "arrays-hashing",
-  "solutions": {
-    "naive": "class Solution:\n    def isValidSudoku(self, board: list[list[str]]) -> bool:\n        def ok(vals):\n            seen = set()\n            for v in vals:\n                if v == '.':\n                    continue\n                if v in seen:\n                    return False\n                seen.add(v)\n            return True\n        for r in range(9):\n            if not ok(board[r]):\n                return False\n        for c in range(9):\n            if not ok([board[r][c] for r in range(9)]):\n                return False\n        for br in range(0, 9, 3):\n            for bc in range(0, 9, 3):\n                if not ok([board[r][c] for r in range(br, br+3) for c in range(bc, bc+3)]):\n                    return False\n        return True",
-    "better": "class Solution:\n    def isValidSudoku(self, board: list[list[str]]) -> bool:\n        rows = [set() for _ in range(9)]\n        cols = [set() for _ in range(9)]\n        boxes = [set() for _ in range(9)]\n        for r in range(9):\n            for c in range(9):\n                v = board[r][c]\n                if v == '.':\n                    continue\n                b = (r // 3) * 3 + c // 3\n                if v in rows[r] or v in cols[c] or v in boxes[b]:\n                    return False\n                rows[r].add(v); cols[c].add(v); boxes[b].add(v)\n        return True",
-    "optimal": "class Solution:\n    def isValidSudoku(self, board: list[list[str]]) -> bool:\n        seen = set()\n        for r in range(9):\n            for c in range(9):\n                v = board[r][c]\n                if v == '.':\n                    continue\n                tags = ((v, 'r', r), (v, 'c', c), (v, 'b', r//3, c//3))\n                for tag in tags:\n                    if tag in seen:\n                        return False\n                    seen.add(tag)\n        return True"
-  },
-  "starterCode": "class Solution:\n    def isValidSudoku(self, board):\n        # TODO: write your solution here\n        pass\n"
+  ]
 }

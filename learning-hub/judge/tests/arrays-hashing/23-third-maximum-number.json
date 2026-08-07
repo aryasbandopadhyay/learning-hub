@@ -1,0 +1,83 @@
+{
+  "id": "arrays-hashing/23-third-maximum-number",
+  "note": "Third distinct maximum; if fewer than 3 distinct values, return the maximum.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "only two distinct -> return max",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "duplicates collapse to two distinct",
+      "args": [
+        [
+          2,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "single element",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "label": "negatives",
+      "args": [
+        [
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "expected": -3
+    },
+    {
+      "label": "third max with duplicates of the max",
+      "args": [
+        [
+          5,
+          5,
+          4,
+          3,
+          2
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "includes zero",
+      "args": [
+        [
+          0,
+          -1,
+          -2
+        ]
+      ],
+      "expected": -2
+    }
+  ]
+}

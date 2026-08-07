@@ -27,6 +27,117 @@
         2,
         2
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        2,
+        2
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "no intersection",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "one side empty",
+      "args": [
+        [],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "identical arrays",
+      "args": [
+        [
+          7,
+          7,
+          7
+        ],
+        [
+          7,
+          7,
+          7
+        ]
+      ],
+      "expected": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "partial multiplicity",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "single shared element",
+      "args": [
+        [
+          5
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": [
+        5
+      ]
     }
   ],
   "complexity": {

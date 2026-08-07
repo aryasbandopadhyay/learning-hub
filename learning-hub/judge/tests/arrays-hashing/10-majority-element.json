@@ -1,0 +1,91 @@
+{
+  "id": "arrays-hashing/10-majority-element",
+  "note": "A majority element (appears > n/2 times) is guaranteed to exist.",
+  "cases": [
+    {
+      "label": "single element",
+      "args": [
+        [
+          9
+        ]
+      ],
+      "expected": 9
+    },
+    {
+      "label": "classic majority",
+      "args": [
+        [
+          3,
+          2,
+          3
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "majority exactly over half",
+      "args": [
+        [
+          2,
+          2,
+          1,
+          1,
+          2,
+          2,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "all identical",
+      "args": [
+        [
+          7,
+          7,
+          7,
+          7
+        ]
+      ],
+      "expected": 7
+    },
+    {
+      "label": "negative majority",
+      "args": [
+        [
+          -5,
+          -5,
+          -5,
+          1,
+          2
+        ]
+      ],
+      "expected": -5
+    },
+    {
+      "label": "majority at the end",
+      "args": [
+        [
+          1,
+          2,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "two elements identical",
+      "args": [
+        [
+          6,
+          6
+        ]
+      ],
+      "expected": 6
+    }
+  ]
+}

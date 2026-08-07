@@ -1,0 +1,69 @@
+{
+  "id": "arrays-hashing/03-valid-anagram",
+  "cases": [
+    {
+      "label": "both empty are anagrams",
+      "args": [
+        "",
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "label": "different lengths cannot be anagrams",
+      "args": [
+        "a",
+        "ab"
+      ],
+      "expected": false
+    },
+    {
+      "label": "same string is its own anagram",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "label": "classic reordering",
+      "args": [
+        "anagram",
+        "nagaram"
+      ],
+      "expected": true
+    },
+    {
+      "label": "one char differs",
+      "args": [
+        "rat",
+        "car"
+      ],
+      "expected": false
+    },
+    {
+      "label": "repeated letters counts must match",
+      "args": [
+        "aabb",
+        "bbaa"
+      ],
+      "expected": true
+    },
+    {
+      "label": "same letters but different multiplicities",
+      "args": [
+        "aacc",
+        "ccac"
+      ],
+      "expected": false
+    },
+    {
+      "label": "single identical char",
+      "args": [
+        "z",
+        "z"
+      ],
+      "expected": true
+    }
+  ]
+}

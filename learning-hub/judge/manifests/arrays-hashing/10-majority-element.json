@@ -18,6 +18,105 @@
         ]
       ],
       "expected": 3
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "single element",
+      "args": [
+        [
+          9
+        ]
+      ],
+      "expected": 9
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "classic majority",
+      "args": [
+        [
+          3,
+          2,
+          3
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "majority exactly over half",
+      "args": [
+        [
+          2,
+          2,
+          1,
+          1,
+          2,
+          2,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "all identical",
+      "args": [
+        [
+          7,
+          7,
+          7,
+          7
+        ]
+      ],
+      "expected": 7
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "negative majority",
+      "args": [
+        [
+          -5,
+          -5,
+          -5,
+          1,
+          2
+        ]
+      ],
+      "expected": -5
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "majority at the end",
+      "args": [
+        [
+          1,
+          2,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "two elements identical",
+      "args": [
+        [
+          6,
+          6
+        ]
+      ],
+      "expected": 6
     }
   ],
   "complexity": {

@@ -1,0 +1,99 @@
+{
+  "id": "arrays-hashing/11-subarray-sum-equals-k",
+  "cases": [
+    {
+      "label": "single element equals k",
+      "args": [
+        [
+          3
+        ],
+        3
+      ],
+      "expected": 1
+    },
+    {
+      "label": "single element not equal to k",
+      "args": [
+        [
+          3
+        ],
+        5
+      ],
+      "expected": 0
+    },
+    {
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ],
+        2
+      ],
+      "expected": 2
+    },
+    {
+      "label": "includes zeros and negatives",
+      "args": [
+        [
+          1,
+          -1,
+          0
+        ],
+        0
+      ],
+      "expected": 3
+    },
+    {
+      "label": "k is zero with cancelling prefix",
+      "args": [
+        [
+          3,
+          4,
+          -7,
+          1,
+          2
+        ],
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "label": "no subarray sums to k",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        100
+      ],
+      "expected": 0
+    },
+    {
+      "label": "whole array is the only match",
+      "args": [
+        [
+          2,
+          2,
+          2
+        ],
+        6
+      ],
+      "expected": 1
+    },
+    {
+      "label": "negative target",
+      "args": [
+        [
+          -1,
+          -1,
+          1
+        ],
+        -2
+      ],
+      "expected": 1
+    }
+  ]
+}

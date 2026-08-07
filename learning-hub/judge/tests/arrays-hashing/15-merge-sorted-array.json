@@ -1,0 +1,165 @@
+{
+  "id": "arrays-hashing/15-merge-sorted-array",
+  "note": "In-place merge into nums1 (length m+n, last n slots are 0 placeholders). args = [nums1, m, nums2, n].",
+  "cases": [
+    {
+      "label": "classic interleave",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          0,
+          0,
+          0
+        ],
+        3,
+        [
+          2,
+          5,
+          6
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        2,
+        3,
+        5,
+        6
+      ]
+    },
+    {
+      "label": "nums2 is empty",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        3,
+        [],
+        0
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "nums1 has no real elements",
+      "args": [
+        [
+          0
+        ],
+        0,
+        [
+          1
+        ],
+        1
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "all nums2 smaller",
+      "args": [
+        [
+          4,
+          5,
+          6,
+          0,
+          0,
+          0
+        ],
+        3,
+        [
+          1,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "label": "all nums2 larger",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          0,
+          0,
+          0
+        ],
+        3,
+        [
+          4,
+          5,
+          6
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "label": "duplicates across arrays",
+      "args": [
+        [
+          2,
+          2,
+          0,
+          0
+        ],
+        2,
+        [
+          2,
+          2
+        ],
+        2
+      ],
+      "expected": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "label": "single each",
+      "args": [
+        [
+          5,
+          0
+        ],
+        1,
+        [
+          3
+        ],
+        1
+      ],
+      "expected": [
+        3,
+        5
+      ]
+    }
+  ]
+}

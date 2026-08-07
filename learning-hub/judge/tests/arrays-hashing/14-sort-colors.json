@@ -1,0 +1,125 @@
+{
+  "id": "arrays-hashing/14-sort-colors",
+  "note": "In-place Dutch national flag; array contains only 0, 1, 2.",
+  "cases": [
+    {
+      "label": "already sorted",
+      "args": [
+        [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "label": "reverse sorted",
+      "args": [
+        [
+          2,
+          2,
+          1,
+          1,
+          0,
+          0
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "label": "single element",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "all the same color",
+      "args": [
+        [
+          2,
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "label": "classic mix",
+      "args": [
+        [
+          2,
+          0,
+          2,
+          1,
+          1,
+          0
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "label": "no ones",
+      "args": [
+        [
+          2,
+          0,
+          0,
+          2
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "label": "two elements swapped",
+      "args": [
+        [
+          1,
+          0
+        ]
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    }
+  ]
+}

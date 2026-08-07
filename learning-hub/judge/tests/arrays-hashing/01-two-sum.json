@@ -1,0 +1,86 @@
+{
+  "id": "arrays-hashing/01-two-sum",
+  "note": "Edge-case inputs chosen to have a UNIQUE valid pair so all three reference solutions agree (Two Sum otherwise accepts any valid pair). Expected outputs are filled in by the optimal oracle via apply_llm_tests.py.",
+  "cases": [
+    {
+      "label": "minimal: exactly two equal elements",
+      "args": [
+        [
+          3,
+          3
+        ],
+        6
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    },
+    {
+      "label": "mix of negatives and positives summing to zero",
+      "args": [
+        [
+          -3,
+          4,
+          3,
+          90
+        ],
+        0
+      ],
+      "expected": [
+        0,
+        2
+      ]
+    },
+    {
+      "label": "the two zeros are the unique pair",
+      "args": [
+        [
+          0,
+          4,
+          3,
+          0
+        ],
+        0
+      ],
+      "expected": [
+        0,
+        3
+      ]
+    },
+    {
+      "label": "answer is the last two (largest) elements",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        15
+      ],
+      "expected": [
+        6,
+        7
+      ]
+    },
+    {
+      "label": "two-element negative array",
+      "args": [
+        [
+          -5,
+          5
+        ],
+        0
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    }
+  ]
+}

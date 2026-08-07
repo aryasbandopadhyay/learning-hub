@@ -28,6 +28,139 @@
         2,
         2
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "already sorted",
+      "args": [
+        [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "reverse sorted",
+      "args": [
+        [
+          2,
+          2,
+          1,
+          1,
+          0,
+          0
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single element",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "all the same color",
+      "args": [
+        [
+          2,
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "classic mix",
+      "args": [
+        [
+          2,
+          0,
+          2,
+          1,
+          1,
+          0
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "no ones",
+      "args": [
+        [
+          2,
+          0,
+          0,
+          2
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "two elements swapped",
+      "args": [
+        [
+          1,
+          0
+        ]
+      ],
+      "expected": [
+        0,
+        1
+      ]
     }
   ],
   "inPlaceArg": 0,

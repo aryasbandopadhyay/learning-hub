@@ -1,0 +1,134 @@
+{
+  "id": "arrays-hashing/04-group-anagrams",
+  "cases": [
+    {
+      "label": "empty input",
+      "args": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "label": "single word",
+      "args": [
+        [
+          "abc"
+        ]
+      ],
+      "expected": [
+        [
+          "abc"
+        ]
+      ]
+    },
+    {
+      "label": "all empty strings group together",
+      "args": [
+        [
+          "",
+          "",
+          ""
+        ]
+      ],
+      "expected": [
+        [
+          "",
+          "",
+          ""
+        ]
+      ]
+    },
+    {
+      "label": "classic example",
+      "args": [
+        [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
+      ],
+      "expected": [
+        [
+          "eat",
+          "tea",
+          "ate"
+        ],
+        [
+          "tan",
+          "nat"
+        ],
+        [
+          "bat"
+        ]
+      ]
+    },
+    {
+      "label": "no two are anagrams",
+      "args": [
+        [
+          "abc",
+          "def",
+          "ghi"
+        ]
+      ],
+      "expected": [
+        [
+          "abc"
+        ],
+        [
+          "def"
+        ],
+        [
+          "ghi"
+        ]
+      ]
+    },
+    {
+      "label": "single letters",
+      "args": [
+        [
+          "a",
+          "b",
+          "a",
+          "c",
+          "b"
+        ]
+      ],
+      "expected": [
+        [
+          "a",
+          "a"
+        ],
+        [
+          "b",
+          "b"
+        ],
+        [
+          "c"
+        ]
+      ]
+    },
+    {
+      "label": "repeated identical words",
+      "args": [
+        [
+          "tab",
+          "bat",
+          "tab",
+          "bat"
+        ]
+      ],
+      "expected": [
+        [
+          "tab",
+          "bat",
+          "tab",
+          "bat"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "id": "arrays-hashing/21-set-mismatch",
+  "note": "Values are 1..n; one number is duplicated (replacing another which goes missing). Returns [duplicated, missing].",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          4
+        ]
+      ],
+      "expected": [
+        2,
+        3
+      ]
+    },
+    {
+      "label": "duplicate is 1, missing 2",
+      "args": [
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "missing the max",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          3
+        ]
+      ],
+      "expected": [
+        3,
+        4
+      ]
+    },
+    {
+      "label": "missing 1",
+      "args": [
+        [
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        2,
+        1
+      ]
+    },
+    {
+      "label": "duplicate in the middle",
+      "args": [
+        [
+          3,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        3,
+        1
+      ]
+    },
+    {
+      "label": "missing a middle value",
+      "args": [
+        [
+          1,
+          5,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        5,
+        2
+      ]
+    }
+  ]
+}

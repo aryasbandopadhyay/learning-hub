@@ -1,0 +1,93 @@
+{
+  "id": "arrays-hashing/02-contains-duplicate",
+  "cases": [
+    {
+      "label": "empty array has no duplicates",
+      "args": [
+        []
+      ],
+      "expected": false
+    },
+    {
+      "label": "single element",
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "all distinct",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "duplicate at the very end",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "adjacent duplicates",
+      "args": [
+        [
+          5,
+          5
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "negatives with a duplicate",
+      "args": [
+        [
+          -1,
+          -2,
+          -3,
+          -1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "zeros duplicated",
+      "args": [
+        [
+          0,
+          0
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "large distinct then one repeat",
+      "args": [
+        [
+          10,
+          20,
+          30,
+          40,
+          50,
+          30
+        ]
+      ],
+      "expected": true
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "id": "arrays-hashing/22-intersection-of-two-arrays-ii",
+  "note": "Multiset intersection (element appears min(count in each) times).",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        2,
+        2
+      ]
+    },
+    {
+      "label": "no intersection",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "label": "one side empty",
+      "args": [
+        [],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "label": "identical arrays",
+      "args": [
+        [
+          7,
+          7,
+          7
+        ],
+        [
+          7,
+          7,
+          7
+        ]
+      ],
+      "expected": [
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "label": "partial multiplicity",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": [
+        1,
+        1
+      ]
+    },
+    {
+      "label": "single shared element",
+      "args": [
+        [
+          5
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": [
+        5
+      ]
+    }
+  ]
+}

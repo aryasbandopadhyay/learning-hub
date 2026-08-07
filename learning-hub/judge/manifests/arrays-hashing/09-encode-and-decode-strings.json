@@ -26,211 +26,116 @@
       ]
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "single empty string",
       "args": [
         [
-          "dbe",
-          "bbb",
-          "bac",
-          "dee",
-          "aed",
-          "bde",
-          "ebc",
-          "dbb",
-          "dbe",
-          "cae",
-          "adc",
-          "dac",
-          "ead",
-          "bce",
-          "ade",
-          "bed",
-          "acb",
-          "bbd",
-          "ebe",
-          "baa"
+          ""
         ]
       ],
       "expected": [
-        "dbe",
-        "bbb",
-        "bac",
-        "dee",
-        "aed",
-        "bde",
-        "ebc",
-        "dbb",
-        "dbe",
-        "cae",
-        "adc",
-        "dac",
-        "ead",
-        "bce",
-        "ade",
-        "bed",
-        "acb",
-        "bbd",
-        "ebe",
-        "baa"
+        ""
       ]
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "multiple empty strings",
       "args": [
         [
-          "bdd"
+          "",
+          "",
+          ""
         ]
       ],
       "expected": [
-        "bdd"
+        "",
+        "",
+        ""
       ]
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "strings containing a naive delimiter '#'",
       "args": [
         [
-          "dab",
-          "cea"
+          "a#b",
+          "c#d"
         ]
       ],
       "expected": [
-        "dab",
-        "cea"
+        "a#b",
+        "c#d"
       ]
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "strings that look like length prefixes",
       "args": [
         [
-          "cbe",
-          "dba",
-          "bdc",
-          "edb",
-          "cda",
-          "beb",
-          "eda",
-          "aab",
-          "cbb",
-          "dbb",
-          "ecd",
-          "bca",
-          "cba",
-          "eca",
-          "eac",
-          "bdd",
-          "cdd",
-          "dce",
-          "aba",
-          "cdd"
+          "12",
+          "3",
+          "45"
         ]
       ],
       "expected": [
-        "cbe",
-        "dba",
-        "bdc",
-        "edb",
-        "cda",
-        "beb",
-        "eda",
-        "aab",
-        "cbb",
-        "dbb",
-        "ecd",
-        "bca",
-        "cba",
-        "eca",
-        "eac",
-        "bdd",
-        "cdd",
-        "dce",
-        "aba",
-        "cdd"
+        "12",
+        "3",
+        "45"
       ]
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "spaces and colons",
       "args": [
         [
-          "cbc",
-          "acb",
-          "bdc",
-          "dad",
-          "dca"
+          "hello world",
+          "a:b:c"
         ]
       ],
       "expected": [
-        "cbc",
-        "acb",
-        "bdc",
-        "dad",
-        "dca"
+        "hello world",
+        "a:b:c"
       ]
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "unicode content",
       "args": [
         [
-          "cde",
-          "bcd",
-          "cde",
-          "bcd",
-          "eed",
-          "bdc",
-          "bca",
-          "ccb"
+          "caf\u00e9",
+          "na\u00efve",
+          "\u03c0"
         ]
       ],
       "expected": [
-        "cde",
-        "bcd",
-        "cde",
-        "bcd",
-        "eed",
-        "bdc",
-        "bca",
-        "ccb"
+        "caf\u00e9",
+        "na\u00efve",
+        "\u03c0"
       ]
     },
     {
-      "id": "rand-7",
-      "kind": "random",
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "mixed empty and non-empty",
       "args": [
         [
-          "cdb",
-          "dcd",
-          "aae"
+          "",
+          "x",
+          "",
+          "yz"
         ]
       ],
       "expected": [
-        "cdb",
-        "dcd",
-        "aae"
-      ]
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        [
-          "aec",
-          "bed",
-          "bcd",
-          "dee",
-          "eec"
-        ]
-      ],
-      "expected": [
-        "aec",
-        "bed",
-        "bcd",
-        "dee",
-        "eec"
+        "",
+        "x",
+        "",
+        "yz"
       ]
     }
   ],

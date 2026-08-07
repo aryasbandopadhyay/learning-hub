@@ -1,0 +1,165 @@
+{
+  "id": "arrays-hashing/24-range-sum-query-immutable",
+  "note": "Design problem NumArray. ops[0] constructs with the array; sumRange(i,j) is inclusive.",
+  "cases": [
+    {
+      "label": "classic example",
+      "ops": [
+        "NumArray",
+        "sumRange",
+        "sumRange",
+        "sumRange"
+      ],
+      "args": [
+        [
+          [
+            -2,
+            0,
+            3,
+            -5,
+            2,
+            -1
+          ]
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "expected": [
+        null,
+        1,
+        -1,
+        -3
+      ]
+    },
+    {
+      "label": "single-element ranges",
+      "ops": [
+        "NumArray",
+        "sumRange",
+        "sumRange",
+        "sumRange"
+      ],
+      "args": [
+        [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        null,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "full range and prefix",
+      "ops": [
+        "NumArray",
+        "sumRange",
+        "sumRange"
+      ],
+      "args": [
+        [
+          [
+            5,
+            -3,
+            4,
+            1
+          ]
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        7,
+        2
+      ]
+    },
+    {
+      "label": "all negatives",
+      "ops": [
+        "NumArray",
+        "sumRange",
+        "sumRange"
+      ],
+      "args": [
+        [
+          [
+            -1,
+            -2,
+            -3,
+            -4
+          ]
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "expected": [
+        null,
+        -9,
+        -6
+      ]
+    },
+    {
+      "label": "single-element array",
+      "ops": [
+        "NumArray",
+        "sumRange"
+      ],
+      "args": [
+        [
+          [
+            7
+          ]
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "expected": [
+        null,
+        7
+      ]
+    }
+  ]
+}

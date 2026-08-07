@@ -1,0 +1,99 @@
+{
+  "id": "arrays-hashing/18-best-time-to-buy-and-sell-stock",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "label": "monotonically decreasing -> no profit",
+      "args": [
+        [
+          7,
+          6,
+          4,
+          3,
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "monotonically increasing",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "single day",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "two days profit",
+      "args": [
+        [
+          1,
+          100
+        ]
+      ],
+      "expected": 99
+    },
+    {
+      "label": "two days loss",
+      "args": [
+        [
+          100,
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "best buy is last-but-one dip",
+      "args": [
+        [
+          3,
+          2,
+          6,
+          1,
+          4
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "flat prices",
+      "args": [
+        [
+          5,
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected": 0
+    }
+  ]
+}

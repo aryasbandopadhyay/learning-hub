@@ -24,6 +24,96 @@
         0,
         1
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "minimal: exactly two equal elements",
+      "args": [
+        [
+          3,
+          3
+        ],
+        6
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "mix of negatives and positives summing to zero",
+      "args": [
+        [
+          -3,
+          4,
+          3,
+          90
+        ],
+        0
+      ],
+      "expected": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "the two zeros are the unique pair",
+      "args": [
+        [
+          0,
+          4,
+          3,
+          0
+        ],
+        0
+      ],
+      "expected": [
+        0,
+        3
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "answer is the last two (largest) elements",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        15
+      ],
+      "expected": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "two-element negative array",
+      "args": [
+        [
+          -5,
+          5
+        ],
+        0
+      ],
+      "expected": [
+        0,
+        1
+      ]
     }
   ],
   "complexity": {

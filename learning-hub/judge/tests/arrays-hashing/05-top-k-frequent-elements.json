@@ -1,0 +1,104 @@
+{
+  "id": "arrays-hashing/05-top-k-frequent-elements",
+  "cases": [
+    {
+      "label": "single element k=1",
+      "args": [
+        [
+          1
+        ],
+        1
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "k equals number of distinct",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          2,
+          3,
+          3
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "clear frequency ordering",
+      "args": [
+        [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "negatives and positives",
+      "args": [
+        [
+          -1,
+          -1,
+          -1,
+          2,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected": [
+        -1,
+        2
+      ]
+    },
+    {
+      "label": "all identical",
+      "args": [
+        [
+          4,
+          4,
+          4,
+          4
+        ],
+        1
+      ],
+      "expected": [
+        4
+      ]
+    },
+    {
+      "label": "zeros most frequent",
+      "args": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          2
+        ],
+        1
+      ],
+      "expected": [
+        0
+      ]
+    }
+  ]
+}

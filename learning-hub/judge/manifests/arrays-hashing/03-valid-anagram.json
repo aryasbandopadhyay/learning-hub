@@ -18,76 +18,84 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "both empty are anagrams",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
-        "nagaram"
+        "",
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "different lengths cannot be anagrams",
+      "args": [
+        "a",
+        "ab"
       ],
       "expected": false
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "same string is its own anagram",
       "args": [
-        "dbbdbecaeadcd",
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "classic reordering",
+      "args": [
+        "anagram",
         "nagaram"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "one char differs",
+      "args": [
+        "rat",
+        "car"
       ],
       "expected": false
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "repeated letters counts must match",
       "args": [
-        "d",
-        "nagaram"
+        "aabb",
+        "bbaa"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "same letters but different multiplicities",
+      "args": [
+        "aacc",
+        "ccac"
       ],
       "expected": false
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-8",
+      "kind": "edge",
+      "label": "single identical char",
       "args": [
-        "de",
-        "nagaram"
+        "z",
+        "z"
       ],
-      "expected": false
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "nagaram"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "nagaram"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "nagaram"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "nagaram"
-      ],
-      "expected": false
+      "expected": true
     }
   ],
   "complexity": {

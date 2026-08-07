@@ -22,6 +22,106 @@
         2,
         3
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          4
+        ]
+      ],
+      "expected": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "duplicate is 1, missing 2",
+      "args": [
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "missing the max",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          3
+        ]
+      ],
+      "expected": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "missing 1",
+      "args": [
+        [
+          2,
+          2
+        ]
+      ],
+      "expected": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "duplicate in the middle",
+      "args": [
+        [
+          3,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        3,
+        1
+      ]
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "missing a middle value",
+      "args": [
+        [
+          1,
+          5,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        5,
+        2
+      ]
     }
   ],
   "complexity": {
