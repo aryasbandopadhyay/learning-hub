@@ -1,0 +1,91 @@
+{
+  "id": "trees/20-path-sum",
+  "note": "hasPathSum(root, targetSum): root-to-leaf path with given sum.",
+  "cases": [
+    {
+      "label": "classic true",
+      "args": [
+        [
+          5,
+          4,
+          8,
+          11,
+          null,
+          13,
+          4,
+          7,
+          2,
+          null,
+          null,
+          null,
+          1
+        ],
+        22
+      ],
+      "expected": true
+    },
+    {
+      "label": "no path",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expected": false
+    },
+    {
+      "label": "empty tree",
+      "args": [
+        [],
+        0
+      ],
+      "expected": false
+    },
+    {
+      "label": "single node match",
+      "args": [
+        [
+          7
+        ],
+        7
+      ],
+      "expected": true
+    },
+    {
+      "label": "single node no match",
+      "args": [
+        [
+          7
+        ],
+        5
+      ],
+      "expected": false
+    },
+    {
+      "label": "negative values",
+      "args": [
+        [
+          -2,
+          null,
+          -3
+        ],
+        -5
+      ],
+      "expected": true
+    },
+    {
+      "label": "must reach leaf not partial",
+      "args": [
+        [
+          1,
+          2
+        ],
+        1
+      ],
+      "expected": false
+    }
+  ]
+}

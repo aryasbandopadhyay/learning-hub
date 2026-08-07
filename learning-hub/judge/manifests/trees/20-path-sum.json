@@ -30,6 +30,105 @@
         22
       ],
       "expected": true
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic true",
+      "args": [
+        [
+          5,
+          4,
+          8,
+          11,
+          null,
+          13,
+          4,
+          7,
+          2,
+          null,
+          null,
+          null,
+          1
+        ],
+        22
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "no path",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "empty tree",
+      "args": [
+        [],
+        0
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single node match",
+      "args": [
+        [
+          7
+        ],
+        7
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single node no match",
+      "args": [
+        [
+          7
+        ],
+        5
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "negative values",
+      "args": [
+        [
+          -2,
+          null,
+          -3
+        ],
+        -5
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "must reach leaf not partial",
+      "args": [
+        [
+          1,
+          2
+        ],
+        1
+      ],
+      "expected": false
     }
   ],
   "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",

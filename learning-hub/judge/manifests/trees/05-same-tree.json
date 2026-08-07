@@ -24,6 +24,117 @@
         ]
       ],
       "expected": true
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "identical",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "different structure",
+      "args": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          null,
+          2
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "different values",
+      "args": [
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "both empty",
+      "args": [
+        [],
+        []
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "one empty",
+      "args": [
+        [
+          1
+        ],
+        []
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "identical single",
+      "args": [
+        [
+          5
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "identical larger",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": true
     }
   ],
   "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",

@@ -1,0 +1,93 @@
+{
+  "id": "trees/04-balanced-binary-tree",
+  "note": "isBalanced(root): boolean.",
+  "cases": [
+    {
+      "label": "balanced classic",
+      "args": [
+        [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "unbalanced",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          3,
+          null,
+          null,
+          4,
+          4
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "empty tree",
+      "args": [
+        []
+      ],
+      "expected": true
+    },
+    {
+      "label": "left skewed unbalanced",
+      "args": [
+        [
+          1,
+          2,
+          null,
+          3
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "perfectly balanced",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "slightly unbalanced but ok",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": true
+    }
+  ]
+}

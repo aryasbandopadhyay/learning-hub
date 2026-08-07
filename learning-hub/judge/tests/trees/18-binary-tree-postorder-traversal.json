@@ -1,0 +1,101 @@
+{
+  "id": "trees/18-binary-tree-postorder-traversal",
+  "note": "postorderTraversal(root): left-right-root.",
+  "cases": [
+    {
+      "label": "classic",
+      "args": [
+        [
+          1,
+          null,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "empty tree",
+      "args": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "label": "balanced",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      ],
+      "expected": [
+        4,
+        5,
+        2,
+        6,
+        7,
+        3,
+        1
+      ]
+    },
+    {
+      "label": "right skewed",
+      "args": [
+        [
+          1,
+          null,
+          2,
+          null,
+          3
+        ]
+      ],
+      "expected": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "label": "sparse",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          null,
+          null,
+          5
+        ]
+      ],
+      "expected": [
+        4,
+        2,
+        5,
+        3,
+        1
+      ]
+    }
+  ]
+}

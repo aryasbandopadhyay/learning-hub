@@ -1,0 +1,102 @@
+{
+  "id": "trees/21-path-sum-ii",
+  "note": "pathSum(root, targetSum): all root-to-leaf paths summing to target. compare=exact so path/order must match reference. Inputs kept simple to avoid ordering ambiguity.",
+  "cases": [
+    {
+      "label": "classic two paths",
+      "args": [
+        [
+          5,
+          4,
+          8,
+          11,
+          null,
+          13,
+          4,
+          7,
+          2,
+          null,
+          null,
+          5,
+          1
+        ],
+        22
+      ],
+      "expected": [
+        [
+          5,
+          4,
+          11,
+          2
+        ],
+        [
+          5,
+          8,
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "label": "no path",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expected": []
+    },
+    {
+      "label": "empty tree",
+      "args": [
+        [],
+        0
+      ],
+      "expected": []
+    },
+    {
+      "label": "single node match",
+      "args": [
+        [
+          7
+        ],
+        7
+      ],
+      "expected": [
+        [
+          7
+        ]
+      ]
+    },
+    {
+      "label": "single node no match",
+      "args": [
+        [
+          7
+        ],
+        1
+      ],
+      "expected": []
+    },
+    {
+      "label": "single valid path",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ]
+      ]
+    }
+  ]
+}

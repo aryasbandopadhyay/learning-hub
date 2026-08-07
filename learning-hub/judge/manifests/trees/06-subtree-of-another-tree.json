@@ -26,6 +26,114 @@
         ]
       ],
       "expected": true
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "is subtree",
+      "args": [
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        [
+          4,
+          1,
+          2
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "not subtree (extra node)",
+      "args": [
+        [
+          3,
+          4,
+          5,
+          1,
+          2,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          4,
+          1,
+          2
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "identical trees",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single node match",
+      "args": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single node no match",
+      "args": [
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "value present but structure differs",
+      "args": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          null,
+          1
+        ]
+      ],
+      "expected": false
     }
   ],
   "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",

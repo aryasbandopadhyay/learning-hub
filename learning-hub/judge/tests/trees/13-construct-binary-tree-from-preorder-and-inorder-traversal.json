@@ -1,0 +1,151 @@
+{
+  "id": "trees/13-construct-binary-tree-from-preorder-and-inorder-traversal",
+  "note": "buildTree(preorder, inorder): each pair MUST describe one real tree with unique values. Returns the serialized tree.",
+  "cases": [
+    {
+      "label": "classic",
+      "args": [
+        [
+          3,
+          9,
+          20,
+          15,
+          7
+        ],
+        [
+          9,
+          3,
+          15,
+          20,
+          7
+        ]
+      ],
+      "expected": [
+        3,
+        9,
+        20,
+        null,
+        null,
+        15,
+        7
+      ]
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "empty",
+      "args": [
+        [],
+        []
+      ],
+      "expected": null
+    },
+    {
+      "label": "root with two children",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          1,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "left chain",
+      "args": [
+        [
+          3,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        3,
+        2,
+        null,
+        1
+      ]
+    },
+    {
+      "label": "right chain",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        null,
+        2,
+        null,
+        3
+      ]
+    },
+    {
+      "label": "perfect tree",
+      "args": [
+        [
+          1,
+          2,
+          4,
+          5,
+          3,
+          6,
+          7
+        ],
+        [
+          4,
+          2,
+          5,
+          1,
+          6,
+          3,
+          7
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  ]
+}

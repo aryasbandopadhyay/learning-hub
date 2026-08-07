@@ -1,0 +1,92 @@
+{
+  "id": "trees/19-symmetric-tree",
+  "note": "isSymmetric(root): boolean mirror symmetry.",
+  "cases": [
+    {
+      "label": "symmetric",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "not symmetric",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          null,
+          3,
+          null,
+          3
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "empty tree",
+      "args": [
+        []
+      ],
+      "expected": true
+    },
+    {
+      "label": "asymmetric values",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          4,
+          3,
+          3
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "symmetric deeper",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "two nodes not symmetric",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "id": "trees/05-same-tree",
+  "note": "isSameTree(p, q): two trees.",
+  "cases": [
+    {
+      "label": "identical",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "different structure",
+      "args": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          null,
+          2
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "different values",
+      "args": [
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "both empty",
+      "args": [
+        [],
+        []
+      ],
+      "expected": true
+    },
+    {
+      "label": "one empty",
+      "args": [
+        [
+          1
+        ],
+        []
+      ],
+      "expected": false
+    },
+    {
+      "label": "identical single",
+      "args": [
+        [
+          5
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "identical larger",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": true
+    }
+  ]
+}

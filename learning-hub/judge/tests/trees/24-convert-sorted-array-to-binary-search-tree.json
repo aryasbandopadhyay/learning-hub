@@ -1,0 +1,66 @@
+{
+  "id": "trees/24-convert-sorted-array-to-binary-search-tree",
+  "note": "sortedArrayToBST(nums): any height-balanced BST. compare=set so structure may vary between reference solutions.",
+  "cases": [
+    {
+      "label": "classic",
+      "args": [
+        [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ]
+      ],
+      "expected": [
+        0,
+        -10,
+        5,
+        null,
+        -3,
+        null,
+        9
+      ]
+    },
+    {
+      "label": "single element",
+      "args": [
+        [
+          0
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "label": "empty",
+      "args": [
+        []
+      ],
+      "expected": null
+    },
+    {
+      "label": "negatives",
+      "args": [
+        [
+          -5,
+          -4,
+          -3,
+          -2,
+          -1
+        ]
+      ],
+      "expected": [
+        -3,
+        -5,
+        -2,
+        null,
+        -4,
+        null,
+        -1
+      ]
+    }
+  ]
+}

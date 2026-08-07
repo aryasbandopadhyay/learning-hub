@@ -1,0 +1,117 @@
+{
+  "id": "trees/23-flatten-binary-tree-to-linked-list",
+  "note": "flatten(root): in-place flatten to a right-skewed list following preorder (inPlaceArg=0).",
+  "cases": [
+    {
+      "label": "classic",
+      "args": [
+        [
+          1,
+          2,
+          5,
+          3,
+          4,
+          null,
+          6
+        ]
+      ],
+      "expected": [
+        1,
+        null,
+        2,
+        null,
+        3,
+        null,
+        4,
+        null,
+        5,
+        null,
+        6
+      ]
+    },
+    {
+      "label": "empty tree",
+      "args": [
+        []
+      ],
+      "expected": null
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "left only",
+      "args": [
+        [
+          1,
+          2,
+          null,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        null,
+        2,
+        null,
+        3
+      ]
+    },
+    {
+      "label": "right only",
+      "args": [
+        [
+          1,
+          null,
+          2,
+          null,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        null,
+        2,
+        null,
+        3
+      ]
+    },
+    {
+      "label": "balanced",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      ],
+      "expected": [
+        1,
+        null,
+        2,
+        null,
+        4,
+        null,
+        5,
+        null,
+        3,
+        null,
+        6,
+        null,
+        7
+      ]
+    }
+  ]
+}

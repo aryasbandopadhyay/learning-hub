@@ -22,6 +22,105 @@
         ]
       ],
       "expected": 4
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic",
+      "args": [
+        [
+          3,
+          1,
+          4,
+          3,
+          null,
+          1,
+          5
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "second example",
+      "args": [
+        [
+          3,
+          3,
+          null,
+          4,
+          2
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "all increasing right",
+      "args": [
+        [
+          1,
+          null,
+          2,
+          null,
+          3
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "root largest",
+      "args": [
+        [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "all equal",
+      "args": [
+        [
+          2,
+          2,
+          2
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "negatives",
+      "args": [
+        [
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "expected": 1
     }
   ],
   "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",

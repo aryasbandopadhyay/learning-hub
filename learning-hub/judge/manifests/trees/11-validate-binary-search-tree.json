@@ -18,6 +18,104 @@
         ]
       ],
       "expected": true
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "valid small",
+      "args": [
+        [
+          2,
+          1,
+          3
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "invalid root",
+      "args": [
+        [
+          5,
+          1,
+          4,
+          null,
+          null,
+          3,
+          6
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "empty tree",
+      "args": [
+        []
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "valid larger",
+      "args": [
+        [
+          5,
+          3,
+          8,
+          2,
+          4,
+          7,
+          9
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "invalid subtle (right subtree)",
+      "args": [
+        [
+          3,
+          1,
+          5,
+          null,
+          null,
+          2,
+          6
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "valid left skewed",
+      "args": [
+        [
+          3,
+          2,
+          null,
+          1
+        ]
+      ],
+      "expected": true
     }
   ],
   "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",

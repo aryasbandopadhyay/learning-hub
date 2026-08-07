@@ -1,0 +1,102 @@
+{
+  "id": "trees/06-subtree-of-another-tree",
+  "note": "isSubtree(root, subRoot): boolean.",
+  "cases": [
+    {
+      "label": "is subtree",
+      "args": [
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ],
+        [
+          4,
+          1,
+          2
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "not subtree (extra node)",
+      "args": [
+        [
+          3,
+          4,
+          5,
+          1,
+          2,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          4,
+          1,
+          2
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "identical trees",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "single node match",
+      "args": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "single node no match",
+      "args": [
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "value present but structure differs",
+      "args": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          null,
+          1
+        ]
+      ],
+      "expected": false
+    }
+  ]
+}

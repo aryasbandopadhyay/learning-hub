@@ -22,6 +22,106 @@
         ]
       ],
       "expected": true
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "symmetric",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "not symmetric",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          null,
+          3,
+          null,
+          3
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "empty tree",
+      "args": [
+        []
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "asymmetric values",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          4,
+          3,
+          3
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "symmetric deeper",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          3
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "two nodes not symmetric",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": false
     }
   ],
   "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",

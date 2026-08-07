@@ -1,0 +1,91 @@
+{
+  "id": "trees/10-count-good-nodes-in-binary-tree",
+  "note": "goodNodes(root): nodes with no ancestor greater than themselves.",
+  "cases": [
+    {
+      "label": "classic",
+      "args": [
+        [
+          3,
+          1,
+          4,
+          3,
+          null,
+          1,
+          5
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "second example",
+      "args": [
+        [
+          3,
+          3,
+          null,
+          4,
+          2
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all increasing right",
+      "args": [
+        [
+          1,
+          null,
+          2,
+          null,
+          3
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "root largest",
+      "args": [
+        [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all equal",
+      "args": [
+        [
+          2,
+          2,
+          2
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "negatives",
+      "args": [
+        [
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "expected": 1
+    }
+  ]
+}

@@ -28,6 +28,74 @@
         null,
         9
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic",
+      "args": [
+        [
+          -10,
+          -3,
+          0,
+          5,
+          9
+        ]
+      ],
+      "expected": [
+        0,
+        -10,
+        5,
+        null,
+        -3,
+        null,
+        9
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single element",
+      "args": [
+        [
+          0
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "empty",
+      "args": [
+        []
+      ],
+      "expected": null
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "negatives",
+      "args": [
+        [
+          -5,
+          -4,
+          -3,
+          -2,
+          -1
+        ]
+      ],
+      "expected": [
+        -3,
+        -5,
+        -2,
+        null,
+        -4,
+        null,
+        -1
+      ]
     }
   ],
   "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",

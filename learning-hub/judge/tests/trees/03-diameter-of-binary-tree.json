@@ -1,0 +1,89 @@
+{
+  "id": "trees/03-diameter-of-binary-tree",
+  "note": "diameterOfBinaryTree(root): number of edges on longest path.",
+  "cases": [
+    {
+      "label": "classic",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "empty tree",
+      "args": [
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "label": "two nodes",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "path through root",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          null,
+          null,
+          5
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "left skewed",
+      "args": [
+        [
+          1,
+          2,
+          null,
+          3,
+          null,
+          4
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "balanced",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      ],
+      "expected": 4
+    }
+  ]
+}

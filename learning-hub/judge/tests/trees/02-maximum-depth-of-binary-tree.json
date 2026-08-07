@@ -1,0 +1,93 @@
+{
+  "id": "trees/02-maximum-depth-of-binary-tree",
+  "note": "maxDepth(root).",
+  "cases": [
+    {
+      "label": "classic",
+      "args": [
+        [
+          3,
+          9,
+          20,
+          null,
+          null,
+          15,
+          7
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "empty tree",
+      "args": [
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "label": "left skewed depth 3",
+      "args": [
+        [
+          1,
+          2,
+          null,
+          3
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "right skewed depth 3",
+      "args": [
+        [
+          1,
+          null,
+          2,
+          null,
+          3
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "balanced depth 3",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "unbalanced",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          null,
+          null,
+          null,
+          5
+        ]
+      ],
+      "expected": 4
+    }
+  ]
+}

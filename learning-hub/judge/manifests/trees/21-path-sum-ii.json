@@ -43,6 +43,114 @@
           5
         ]
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic two paths",
+      "args": [
+        [
+          5,
+          4,
+          8,
+          11,
+          null,
+          13,
+          4,
+          7,
+          2,
+          null,
+          null,
+          5,
+          1
+        ],
+        22
+      ],
+      "expected": [
+        [
+          5,
+          4,
+          11,
+          2
+        ],
+        [
+          5,
+          8,
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "no path",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        5
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "empty tree",
+      "args": [
+        [],
+        0
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single node match",
+      "args": [
+        [
+          7
+        ],
+        7
+      ],
+      "expected": [
+        [
+          7
+        ]
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single node no match",
+      "args": [
+        [
+          7
+        ],
+        1
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "single valid path",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ]
+      ]
     }
   ],
   "helperCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right",
