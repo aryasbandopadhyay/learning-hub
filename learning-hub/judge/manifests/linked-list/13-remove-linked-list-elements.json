@@ -30,6 +30,124 @@
         4,
         5
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic remove 6",
+      "args": [
+        [
+          1,
+          2,
+          6,
+          3,
+          4,
+          5,
+          6
+        ],
+        6
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "empty list",
+      "args": [
+        [],
+        1
+      ],
+      "expected": null
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "remove all",
+      "args": [
+        [
+          7,
+          7,
+          7
+        ],
+        7
+      ],
+      "expected": null
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "remove head only",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        1
+      ],
+      "expected": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "remove tail only",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "value absent",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        9
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "consecutive targets",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          1,
+          1
+        ],
+        1
+      ],
+      "expected": [
+        2
+      ]
     }
   ],
   "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",

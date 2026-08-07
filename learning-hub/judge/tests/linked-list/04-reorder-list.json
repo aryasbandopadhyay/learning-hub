@@ -1,0 +1,94 @@
+{
+  "id": "linked-list/04-reorder-list",
+  "note": "reorderList(head): in-place reorder L0->Ln->L1->Ln-1->... (inPlaceArg=0).",
+  "cases": [
+    {
+      "label": "even length",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        1,
+        4,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "odd length",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        1,
+        5,
+        2,
+        4,
+        3
+      ]
+    },
+    {
+      "label": "two nodes",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "empty list",
+      "args": [
+        []
+      ],
+      "expected": null
+    },
+    {
+      "label": "longer even",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      ],
+      "expected": [
+        1,
+        6,
+        2,
+        5,
+        3,
+        4
+      ]
+    }
+  ]
+}

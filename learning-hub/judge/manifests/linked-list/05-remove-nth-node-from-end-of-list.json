@@ -27,6 +27,109 @@
         3,
         5
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic remove 2nd from end",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "remove only node",
+      "args": [
+        [
+          1
+        ],
+        1
+      ],
+      "expected": null
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "remove head (n=length)",
+      "args": [
+        [
+          1,
+          2
+        ],
+        2
+      ],
+      "expected": [
+        2
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "remove tail (n=1)",
+      "args": [
+        [
+          1,
+          2
+        ],
+        1
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "remove middle",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "remove head of longer",
+      "args": [
+        [
+          10,
+          20,
+          30,
+          40
+        ],
+        4
+      ],
+      "expected": [
+        20,
+        30,
+        40
+      ]
     }
   ],
   "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",

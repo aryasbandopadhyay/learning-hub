@@ -1,0 +1,93 @@
+{
+  "id": "linked-list/11-middle-of-the-linked-list",
+  "note": "middleNode(head): second middle for even length.",
+  "cases": [
+    {
+      "label": "odd length",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "label": "even length (second middle)",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      ],
+      "expected": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "label": "two nodes",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": [
+        2
+      ]
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "four nodes",
+      "args": [
+        [
+          10,
+          20,
+          30,
+          40
+        ]
+      ],
+      "expected": [
+        30,
+        40
+      ]
+    },
+    {
+      "label": "duplicates",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": [
+        1,
+        1
+      ]
+    }
+  ]
+}

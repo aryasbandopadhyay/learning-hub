@@ -1,0 +1,122 @@
+{
+  "id": "linked-list/10-reverse-nodes-in-k-group",
+  "note": "reverseKGroup(head, k): reverse in groups of k; leftover tail stays as-is.",
+  "cases": [
+    {
+      "label": "k=2 even",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        2
+      ],
+      "expected": [
+        2,
+        1,
+        4,
+        3
+      ]
+    },
+    {
+      "label": "k=2 with leftover",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2
+      ],
+      "expected": [
+        2,
+        1,
+        4,
+        3,
+        5
+      ]
+    },
+    {
+      "label": "k=3",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        3
+      ],
+      "expected": [
+        3,
+        2,
+        1,
+        4,
+        5
+      ]
+    },
+    {
+      "label": "k=1 no change",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        1
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "k equals length",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "label": "k larger than length",
+      "args": [
+        [
+          1,
+          2
+        ],
+        5
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          7
+        ],
+        2
+      ],
+      "expected": [
+        7
+      ]
+    }
+  ]
+}

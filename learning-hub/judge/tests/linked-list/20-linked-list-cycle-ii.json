@@ -1,0 +1,56 @@
+{
+  "id": "linked-list/20-linked-list-cycle-ii",
+  "note": "detectCycle(head): returns the cycle-start node or None. The test harness only builds ACYCLIC lists (no pos encoding), so every case has no cycle and expects null. This still guards against solutions that wrongly report a cycle on a plain list.",
+  "cases": [
+    {
+      "label": "no cycle",
+      "args": [
+        [
+          3,
+          2,
+          0,
+          -4
+        ]
+      ],
+      "expected": null
+    },
+    {
+      "label": "single node no cycle",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": null
+    },
+    {
+      "label": "empty list",
+      "args": [
+        []
+      ],
+      "expected": null
+    },
+    {
+      "label": "two nodes no cycle",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": null
+    },
+    {
+      "label": "duplicates but acyclic",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          2
+        ]
+      ],
+      "expected": null
+    }
+  ]
+}

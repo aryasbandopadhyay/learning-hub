@@ -28,6 +28,129 @@
         0,
         8
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic 342+465",
+      "args": [
+        [
+          2,
+          4,
+          3
+        ],
+        [
+          5,
+          6,
+          4
+        ]
+      ],
+      "expected": [
+        7,
+        0,
+        8
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "zero plus zero",
+      "args": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "carry propagation",
+      "args": [
+        [
+          9,
+          9,
+          9
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single digits with carry",
+      "args": [
+        [
+          5
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "no carry",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "expected": [
+        5,
+        7,
+        9
+      ]
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "long carry chain",
+      "args": [
+        [
+          9,
+          9,
+          9,
+          9
+        ],
+        [
+          9,
+          9,
+          9
+        ]
+      ],
+      "expected": [
+        8,
+        9,
+        9,
+        0,
+        1
+      ]
     }
   ],
   "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",

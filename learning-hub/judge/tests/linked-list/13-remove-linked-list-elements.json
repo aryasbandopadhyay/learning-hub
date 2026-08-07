@@ -1,0 +1,110 @@
+{
+  "id": "linked-list/13-remove-linked-list-elements",
+  "note": "removeElements(head, val).",
+  "cases": [
+    {
+      "label": "classic remove 6",
+      "args": [
+        [
+          1,
+          2,
+          6,
+          3,
+          4,
+          5,
+          6
+        ],
+        6
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "label": "empty list",
+      "args": [
+        [],
+        1
+      ],
+      "expected": null
+    },
+    {
+      "label": "remove all",
+      "args": [
+        [
+          7,
+          7,
+          7
+        ],
+        7
+      ],
+      "expected": null
+    },
+    {
+      "label": "remove head only",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        1
+      ],
+      "expected": [
+        2,
+        3
+      ]
+    },
+    {
+      "label": "remove tail only",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "value absent",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        9
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "consecutive targets",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          1,
+          1
+        ],
+        1
+      ],
+      "expected": [
+        2
+      ]
+    }
+  ]
+}

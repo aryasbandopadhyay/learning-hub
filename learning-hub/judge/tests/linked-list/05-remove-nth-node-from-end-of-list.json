@@ -1,0 +1,97 @@
+{
+  "id": "linked-list/05-remove-nth-node-from-end-of-list",
+  "note": "removeNthFromEnd(head, n).",
+  "cases": [
+    {
+      "label": "classic remove 2nd from end",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "label": "remove only node",
+      "args": [
+        [
+          1
+        ],
+        1
+      ],
+      "expected": null
+    },
+    {
+      "label": "remove head (n=length)",
+      "args": [
+        [
+          1,
+          2
+        ],
+        2
+      ],
+      "expected": [
+        2
+      ]
+    },
+    {
+      "label": "remove tail (n=1)",
+      "args": [
+        [
+          1,
+          2
+        ],
+        1
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "remove middle",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        4,
+        5
+      ]
+    },
+    {
+      "label": "remove head of longer",
+      "args": [
+        [
+          10,
+          20,
+          30,
+          40
+        ],
+        4
+      ],
+      "expected": [
+        20,
+        30,
+        40
+      ]
+    }
+  ]
+}

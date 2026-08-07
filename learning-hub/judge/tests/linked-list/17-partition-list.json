@@ -1,0 +1,116 @@
+{
+  "id": "linked-list/17-partition-list",
+  "note": "partition(head, x): nodes < x before nodes >= x, preserving relative order.",
+  "cases": [
+    {
+      "label": "classic x=3",
+      "args": [
+        [
+          1,
+          4,
+          3,
+          2,
+          5,
+          2
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        2,
+        4,
+        3,
+        5
+      ]
+    },
+    {
+      "label": "already partitioned",
+      "args": [
+        [
+          1,
+          2,
+          4,
+          5
+        ],
+        3
+      ],
+      "expected": [
+        1,
+        2,
+        4,
+        5
+      ]
+    },
+    {
+      "label": "all less than x",
+      "args": [
+        [
+          1,
+          2
+        ],
+        5
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "all >= x",
+      "args": [
+        [
+          4,
+          5,
+          6
+        ],
+        3
+      ],
+      "expected": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ],
+        2
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "empty list",
+      "args": [
+        [],
+        1
+      ],
+      "expected": null
+    },
+    {
+      "label": "reverse order",
+      "args": [
+        [
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        3
+      ],
+      "expected": [
+        2,
+        1,
+        5,
+        4,
+        3
+      ]
+    }
+  ]
+}

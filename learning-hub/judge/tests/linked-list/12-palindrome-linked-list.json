@@ -1,0 +1,81 @@
+{
+  "id": "linked-list/12-palindrome-linked-list",
+  "note": "isPalindrome(head): boolean.",
+  "cases": [
+    {
+      "label": "even palindrome",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "odd palindrome",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "not palindrome",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "empty list",
+      "args": [
+        []
+      ],
+      "expected": true
+    },
+    {
+      "label": "all same",
+      "args": [
+        [
+          7,
+          7,
+          7
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "almost palindrome",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          1
+        ]
+      ],
+      "expected": false
+    }
+  ]
+}

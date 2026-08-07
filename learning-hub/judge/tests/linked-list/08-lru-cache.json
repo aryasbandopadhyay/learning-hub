@@ -1,0 +1,224 @@
+{
+  "id": "linked-list/08-lru-cache",
+  "note": "design: LRUCache(capacity), put/get. get returns -1 if missing.",
+  "cases": [
+    {
+      "label": "classic example",
+      "ops": [
+        "LRUCache",
+        "put",
+        "put",
+        "get",
+        "put",
+        "get",
+        "put",
+        "get",
+        "get",
+        "get"
+      ],
+      "args": [
+        [
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          1
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        1,
+        null,
+        -1,
+        null,
+        -1,
+        3,
+        4
+      ]
+    },
+    {
+      "label": "capacity one eviction",
+      "ops": [
+        "LRUCache",
+        "put",
+        "put",
+        "get",
+        "get"
+      ],
+      "args": [
+        [
+          1
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          20
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        -1,
+        20
+      ]
+    },
+    {
+      "label": "update existing key",
+      "ops": [
+        "LRUCache",
+        "put",
+        "put",
+        "put",
+        "get",
+        "get"
+      ],
+      "args": [
+        [
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          100
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        100,
+        2
+      ]
+    },
+    {
+      "label": "get refreshes recency",
+      "ops": [
+        "LRUCache",
+        "put",
+        "put",
+        "get",
+        "put",
+        "get",
+        "get"
+      ],
+      "args": [
+        [
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        1,
+        null,
+        -1,
+        1
+      ]
+    },
+    {
+      "label": "miss then hit",
+      "ops": [
+        "LRUCache",
+        "get",
+        "put",
+        "get"
+      ],
+      "args": [
+        [
+          2
+        ],
+        [
+          5
+        ],
+        [
+          5,
+          50
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": [
+        null,
+        -1,
+        null,
+        50
+      ]
+    }
+  ]
+}

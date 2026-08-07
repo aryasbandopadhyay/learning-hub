@@ -1,0 +1,117 @@
+{
+  "id": "linked-list/07-add-two-numbers",
+  "note": "addTwoNumbers(l1, l2): digits in reverse order, return reversed-order sum list.",
+  "cases": [
+    {
+      "label": "classic 342+465",
+      "args": [
+        [
+          2,
+          4,
+          3
+        ],
+        [
+          5,
+          6,
+          4
+        ]
+      ],
+      "expected": [
+        7,
+        0,
+        8
+      ]
+    },
+    {
+      "label": "zero plus zero",
+      "args": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "label": "carry propagation",
+      "args": [
+        [
+          9,
+          9,
+          9
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "single digits with carry",
+      "args": [
+        [
+          5
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    },
+    {
+      "label": "no carry",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "expected": [
+        5,
+        7,
+        9
+      ]
+    },
+    {
+      "label": "long carry chain",
+      "args": [
+        [
+          9,
+          9,
+          9,
+          9
+        ],
+        [
+          9,
+          9,
+          9
+        ]
+      ],
+      "expected": [
+        8,
+        9,
+        9,
+        0,
+        1
+      ]
+    }
+  ]
+}

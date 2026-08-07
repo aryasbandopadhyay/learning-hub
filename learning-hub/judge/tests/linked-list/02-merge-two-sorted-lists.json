@@ -1,0 +1,131 @@
+{
+  "id": "linked-list/02-merge-two-sorted-lists",
+  "note": "mergeTwoLists(l1, l2): both ascending.",
+  "cases": [
+    {
+      "label": "classic",
+      "args": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        2,
+        3,
+        4,
+        4
+      ]
+    },
+    {
+      "label": "one empty",
+      "args": [
+        [],
+        [
+          0
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "label": "both empty",
+      "args": [
+        [],
+        []
+      ],
+      "expected": null
+    },
+    {
+      "label": "disjoint ranges",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "label": "interleaved",
+      "args": [
+        [
+          1,
+          3,
+          5
+        ],
+        [
+          2,
+          4,
+          6
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "label": "duplicates across lists",
+      "args": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "single each",
+      "args": [
+        [
+          5
+        ],
+        [
+          3
+        ]
+      ],
+      "expected": [
+        3,
+        5
+      ]
+    }
+  ]
+}

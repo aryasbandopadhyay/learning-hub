@@ -19,6 +19,95 @@
         ]
       ],
       "expected": true
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "even palindrome",
+      "args": [
+        [
+          1,
+          2,
+          2,
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "odd palindrome",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "not palindrome",
+      "args": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single node",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "empty list",
+      "args": [
+        []
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "all same",
+      "args": [
+        [
+          7,
+          7,
+          7
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "almost palindrome",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          1
+        ]
+      ],
+      "expected": false
     }
   ],
   "helperCode": "class ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next",
