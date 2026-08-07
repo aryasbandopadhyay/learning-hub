@@ -20,8 +20,12 @@ learning-hub/judge/build_all.log
 # Node (if any tooling ever added it)
 **/node_modules/
 
-# Not part of the deployed app (orchestrator tooling / docs)
-coding-orchestrator/
+# Orchestrator: ship src + docs + pom + README (shown in the app); exclude build/scratch/secrets
+coding-orchestrator/target/
+coding-orchestrator/.env
+coding-orchestrator/.env.*
+coding-orchestrator/plan.md
+coding-orchestrator/dependency-reduced-pom.xml
 
 # The Dockerfile itself and this ignore file don't need to ship
 Dockerfile

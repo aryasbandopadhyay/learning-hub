@@ -64,6 +64,14 @@ COPY find-command/        /app/find-command/
 COPY docs-learning-hub/     /app/docs-learning-hub/
 COPY coding-orchestrator/docs/ /app/coding-orchestrator/docs/
 
+# ----- Source code shown in the "Learning Hub" and "Coding Orchestrator" tabs -----
+# (learning-hub/judge is already copied above; these add the app + orchestrator sources.)
+COPY learning-hub/src/      /app/learning-hub/src/
+COPY learning-hub/pom.xml   /app/learning-hub/pom.xml
+COPY coding-orchestrator/src/     /app/coding-orchestrator/src/
+COPY coding-orchestrator/pom.xml  /app/coding-orchestrator/pom.xml
+COPY coding-orchestrator/README.md /app/coding-orchestrator/README.md
+
 # ----- The judge engine + generated manifests (live under learning-hub/judge) -----
 COPY learning-hub/judge/  /app/learning-hub/judge/
 

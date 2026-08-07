@@ -156,16 +156,27 @@ hub:
         - spring-theory
 
     - id: learning-hub-docs
-      label: Learning Hub Docs
-      description: "How this app was built: architecture, the content engine, the judge, auth & progress, the UI, Azure deployment, and testing/CI."
+      label: Learning Hub
+      description: "How this app was built (docs/) plus its full source: the Spring Boot backend, the vanilla-JS frontend (static/), and the Python judge engine."
       paths:
         - docs-learning-hub
+        - learning-hub/src
+        - learning-hub/pom.xml
+        - learning-hub/judge/runner.py
+        - learning-hub/judge/genlib.py
+        - learning-hub/judge/build_manifests.py
+        - learning-hub/judge/build_section.py
+        - learning-hub/judge/test_runner.py
+        - learning-hub/judge/README.md
 
     - id: coding-orchestrator
       label: Coding Orchestrator
-      description: "The LangGraph4j master-worker coding orchestrator: end-to-end flow plus an AI-concepts library (agentic AI, LLMs, training, quantization, RAG, LangGraph, MCP, tools/skills, agent architectures, evaluation)."
+      description: "The LangGraph4j master-worker coding orchestrator: docs (end-to-end flow + AI-concepts library) plus the full Java source (agents, tools, graph, MCP server)."
       paths:
         - coding-orchestrator/docs
+        - coding-orchestrator/src
+        - coding-orchestrator/pom.xml
+        - coding-orchestrator/README.md
 
     # ----------------------------------------------------------------------------------------
     # EXAMPLE — how you'd add another subject later. Uncomment, create the folder, and restart.
