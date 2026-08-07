@@ -16,7 +16,7 @@ class ProgressServiceTest {
 
     /** A ProgressService with a blank connection string => in-memory store. */
     private ProgressService inMemory() {
-        return new ProgressService(new ProgressProperties(true, "", "progress"));
+        return new ProgressService(new ProgressProperties(true, "", "progress", "solutions"));
     }
 
     @Test

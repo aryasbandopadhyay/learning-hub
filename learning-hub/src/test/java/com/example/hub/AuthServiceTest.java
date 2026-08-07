@@ -26,7 +26,7 @@ class AuthServiceTest {
         return new UserService(
                 new AuthProperties(true, "admin@example.com", "s3cret", "users",
                         "local-dev-only-change-me"),
-                new ProgressProperties(true, "", "progress"));
+                new ProgressProperties(true, "", "progress", "solutions"));
     }
 
     @Test

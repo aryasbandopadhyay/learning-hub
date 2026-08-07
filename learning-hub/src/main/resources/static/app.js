@@ -464,6 +464,8 @@ async function maybeMountJudge(path) {
   const difficulty = meta.difficulty || idxMeta.difficulty || "";
   const solved = state.completed.has(path);
 
+  const savedSolution = await loadSavedSolution(path);
+  if (state.activePath !== path) return; // user navigated away while loading the saved solution
   const panel = document.createElement("section");
   panel.className = "judge";
   panel.innerHTML = `
@@ -473,6 +475,7 @@ async function maybeMountJudge(path) {
     </div>
     <div class="judge-body">
       <p class="judge-hint">Fill in the function body — the driver is auto-generated, so your method is called directly. <kbd>Ctrl</kbd>+<kbd>Enter</kbd> runs, <kbd>Ctrl</kbd>+<kbd>/</kbd> toggles a comment.</p>
+      <div class="judge-saved${savedSolution.saved ? " on" : ""}">✓ Loaded your saved solution</div>
       <div class="judge-editor-host"></div>
       <div class="judge-actions">
         <button class="btn-run" type="button">▶ Run tests</button>
@@ -521,7 +524,7 @@ async function maybeMountJudge(path) {
   const host = panel.querySelector(".judge-editor-host");
   const starter = meta.starterCode || "class Solution:\n    def solve(self):\n        pass\n";
   const cm = CodeMirror(host, {
-    value: starter,
+    value: savedSolution.saved ? savedSolution.code : starter,
     mode: "python",
     theme: cmTheme(),
     lineNumbers: true,
@@ -547,6 +550,16 @@ async function maybeMountJudge(path) {
   panel.querySelector(".btn-run").onclick = () => runJudge(path, cm.getValue(), "run", panel);
   panel.querySelector(".btn-cx").onclick = () => runJudge(path, cm.getValue(), "complexity", panel);
   panel.querySelector(".btn-compare").onclick = () => toggleCompare(panel, meta);
+}
+
+/** Load a previously accepted solution. Fail open so the starter stub still appears offline. */
+async function loadSavedSolution(path) {
+  try {
+    const data = await getJSON(`/api/judge/solution?path=${encodeURIComponent(path)}`);
+    return data && data.saved ? data : { saved: false };
+  } catch (e) {
+    return { saved: false };
+  }
 }
 
 /** CodeMirror theme name matching the active app theme. */
@@ -596,6 +609,12 @@ async function runJudge(path, code, mode, panel) {
 
   // Auto-mark the problem complete the first time every test passes.
   if (mode === "run" && res && res.summary && res.summary.allPassed) {
+    const saved = panel.querySelector(".judge-saved");
+    if (saved) {
+      saved.textContent = "✓ Solution saved";
+      saved.classList.add("on");
+    }
+    showToast("✓ Solution saved");
     if (state.progressOn && !state.completed.has(path)) {
       setComplete(path, true, /*silent=*/ false, "🎉 Solved! Marked complete");
     }

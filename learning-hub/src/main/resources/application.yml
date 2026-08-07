@@ -57,6 +57,7 @@ hub:
     enabled: true
     connection-string: ""       # set via env HUB_PROGRESS_CONNECTION_STRING
     table-name: progress
+    solutions-table: solutions  # accepted submissions, same storage account as progress
 
   # ----------------------------------------------------------------------------------------
   # Simple allow-list auth. Admin logs in with email + password and manages the allow-list;
