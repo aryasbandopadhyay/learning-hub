@@ -178,6 +178,12 @@ hub:
         - coding-orchestrator/pom.xml
         - coding-orchestrator/README.md
 
+    - id: salesforce
+      label: Salesforce
+      description: "Salesforce SDE/MTS prep in one place: an index of the 150 most-asked DSA questions (linked to their full solutions, with new write-ups for gaps) plus the most-asked LLD/machine-coding problems as full dual-language (Java + Python) projects with tests."
+      paths:
+        - salesforce
+
     # ----------------------------------------------------------------------------------------
     # EXAMPLE — how you'd add another subject later. Uncomment, create the folder, and restart.
     # No code changes needed; a new tab shows up automatically.

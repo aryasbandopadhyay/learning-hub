@@ -72,6 +72,9 @@ COPY coding-orchestrator/src/     /app/coding-orchestrator/src/
 COPY coding-orchestrator/pom.xml  /app/coding-orchestrator/pom.xml
 COPY coding-orchestrator/README.md /app/coding-orchestrator/README.md
 
+# ----- Salesforce DSA + LLD section (index + new dual-language LLD builds) -----
+COPY salesforce/           /app/salesforce/
+
 # ----- The judge engine + generated manifests (live under learning-hub/judge) -----
 COPY learning-hub/judge/  /app/learning-hub/judge/
 
