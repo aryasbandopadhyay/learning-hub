@@ -1,0 +1,116 @@
+{
+  "id": "binary-search/08-find-first-and-last-position-of-element-in-sorted-array",
+  "note": "searchRange(nums, target): [first,last] or [-1,-1].",
+  "cases": [
+    {
+      "label": "classic found",
+      "args": [
+        [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        8
+      ],
+      "expected": [
+        3,
+        4
+      ]
+    },
+    {
+      "label": "classic not found",
+      "args": [
+        [
+          5,
+          7,
+          7,
+          8,
+          8,
+          10
+        ],
+        6
+      ],
+      "expected": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "label": "empty array",
+      "args": [
+        [],
+        0
+      ],
+      "expected": [
+        -1,
+        -1
+      ]
+    },
+    {
+      "label": "single occurrence",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected": [
+        1,
+        1
+      ]
+    },
+    {
+      "label": "all same match",
+      "args": [
+        [
+          2,
+          2,
+          2,
+          2
+        ],
+        2
+      ],
+      "expected": [
+        0,
+        3
+      ]
+    },
+    {
+      "label": "target at start",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          3
+        ],
+        1
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    },
+    {
+      "label": "target at end",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          3
+        ],
+        3
+      ],
+      "expected": [
+        2,
+        3
+      ]
+    }
+  ]
+}

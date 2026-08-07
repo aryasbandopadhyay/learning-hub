@@ -21,61 +21,73 @@
       ]
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic cbaebabacd",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
-        "abc"
-      ],
-      "expected": [
-        6
-      ]
-    },
-    {
-      "id": "rand-2",
-      "kind": "random",
-      "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "cbaebabacd",
         "abc"
       ],
       "expected": [
         0,
-        18,
-        46
+        6
       ]
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "classic abab",
       "args": [
-        "bbecdbcacbaecaeacbdd",
-        "abc"
+        "abab",
+        "ab"
       ],
       "expected": [
-        5,
-        7,
-        8,
-        15
+        0,
+        1,
+        2
       ]
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "p longer than s",
       "args": [
-        "ddceabacddbcbcacbbdc",
+        "ab",
         "abc"
       ],
+      "expected": []
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "no anagram",
+      "args": [
+        "abcdef",
+        "xyz"
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single char repeated",
+      "args": [
+        "aaaa",
+        "a"
+      ],
       "expected": [
-        5,
-        12,
-        14
+        0,
+        1,
+        2,
+        3
       ]
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "exact whole-string anagram",
       "args": [
-        "bcaccbbcdbdcd",
+        "cba",
         "abc"
       ],
       "expected": [
@@ -83,39 +95,15 @@
       ]
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "duplicates in p",
       "args": [
-        "bcddeeeecbaacaeaadcceeecbaddbcdcbbdddebccbcdedbded",
-        "abc"
+        "baa",
+        "aa"
       ],
       "expected": [
-        8,
-        23
-      ]
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "bcbeeebcacdbcbabdeab",
-        "abc"
-      ],
-      "expected": [
-        6,
-        12
-      ]
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "cceaedacbbace",
-        "abc"
-      ],
-      "expected": [
-        6,
-        9
+        1
       ]
     }
   ],

@@ -18,76 +18,74 @@
       "expected": "BANC"
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
+        "ADOBECODEBANC",
         "ABC"
+      ],
+      "expected": "BANC"
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single char match",
+      "args": [
+        "a",
+        "a"
+      ],
+      "expected": "a"
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "no valid window",
+      "args": [
+        "a",
+        "aa"
       ],
       "expected": ""
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "t longer than s",
       "args": [
-        "dbbdbecaeadcd",
-        "ABC"
+        "ab",
+        "abc"
       ],
       "expected": ""
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "whole string is the window",
       "args": [
-        "d",
-        "ABC"
+        "abc",
+        "cba"
       ],
-      "expected": ""
+      "expected": "abc"
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "duplicates in t",
       "args": [
-        "de",
-        "ABC"
+        "aabbcc",
+        "abc"
       ],
-      "expected": ""
+      "expected": "abbc"
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "window at the start",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
+        "ABCxyz",
         "ABC"
       ],
-      "expected": ""
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "ABC"
-      ],
-      "expected": ""
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "ABC"
-      ],
-      "expected": ""
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "ABC"
-      ],
-      "expected": ""
+      "expected": "ABC"
     }
   ],
   "complexity": {

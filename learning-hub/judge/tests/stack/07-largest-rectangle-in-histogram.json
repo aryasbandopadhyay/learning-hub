@@ -1,0 +1,103 @@
+{
+  "id": "stack/07-largest-rectangle-in-histogram",
+  "note": "largestRectangleArea(heights).",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          2,
+          1,
+          5,
+          6,
+          2,
+          3
+        ]
+      ],
+      "expected": 10
+    },
+    {
+      "label": "two bars",
+      "args": [
+        [
+          2,
+          4
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "increasing",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 9
+    },
+    {
+      "label": "decreasing",
+      "args": [
+        [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": 9
+    },
+    {
+      "label": "all equal",
+      "args": [
+        [
+          3,
+          3,
+          3,
+          3
+        ]
+      ],
+      "expected": 12
+    },
+    {
+      "label": "single bar",
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expected": 7
+    },
+    {
+      "label": "valley",
+      "args": [
+        [
+          6,
+          2,
+          5,
+          4,
+          5,
+          1,
+          6
+        ]
+      ],
+      "expected": 12
+    },
+    {
+      "label": "zero height included",
+      "args": [
+        [
+          2,
+          0,
+          2
+        ]
+      ],
+      "expected": 2
+    }
+  ]
+}

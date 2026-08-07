@@ -1,0 +1,113 @@
+{
+  "id": "stack/10-asteroid-collision",
+  "note": "asteroidCollision(asteroids): sign=direction, magnitude=size.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          5,
+          10,
+          -5
+        ]
+      ],
+      "expected": [
+        5,
+        10
+      ]
+    },
+    {
+      "label": "equal sizes annihilate",
+      "args": [
+        [
+          8,
+          -8
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "label": "chain destruction",
+      "args": [
+        [
+          10,
+          2,
+          -5
+        ]
+      ],
+      "expected": [
+        10
+      ]
+    },
+    {
+      "label": "all moving right",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "all moving left",
+      "args": [
+        [
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "expected": [
+        -1,
+        -2,
+        -3
+      ]
+    },
+    {
+      "label": "no collision (left then right)",
+      "args": [
+        [
+          -2,
+          1,
+          2
+        ]
+      ],
+      "expected": [
+        -2,
+        1,
+        2
+      ]
+    },
+    {
+      "label": "single asteroid",
+      "args": [
+        [
+          -4
+        ]
+      ],
+      "expected": [
+        -4
+      ]
+    },
+    {
+      "label": "big survives multiple",
+      "args": [
+        [
+          10,
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "expected": [
+        10
+      ]
+    }
+  ]
+}

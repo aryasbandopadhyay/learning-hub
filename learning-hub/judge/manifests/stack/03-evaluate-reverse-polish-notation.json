@@ -20,6 +20,109 @@
         ]
       ],
       "expected": 9
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic add-mul",
+      "args": [
+        [
+          "2",
+          "1",
+          "+",
+          "3",
+          "*"
+        ]
+      ],
+      "expected": 9
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "classic with div",
+      "args": [
+        [
+          "4",
+          "13",
+          "5",
+          "/",
+          "+"
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "negative truncation toward zero",
+      "args": [
+        [
+          "10",
+          "6",
+          "9",
+          "3",
+          "+",
+          "-11",
+          "*",
+          "/",
+          "*",
+          "17",
+          "+",
+          "5",
+          "+"
+        ]
+      ],
+      "expected": 22
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single number",
+      "args": [
+        [
+          "42"
+        ]
+      ],
+      "expected": 42
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "subtraction order",
+      "args": [
+        [
+          "5",
+          "3",
+          "-"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "division truncates toward zero",
+      "args": [
+        [
+          "7",
+          "-3",
+          "/"
+        ]
+      ],
+      "expected": -2
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "negative number literal",
+      "args": [
+        [
+          "-4",
+          "2",
+          "*"
+        ]
+      ],
+      "expected": -8
     }
   ],
   "complexity": {

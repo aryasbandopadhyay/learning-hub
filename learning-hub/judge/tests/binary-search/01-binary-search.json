@@ -1,0 +1,108 @@
+{
+  "id": "binary-search/01-binary-search",
+  "note": "search(nums, target): index or -1.",
+  "cases": [
+    {
+      "label": "classic found",
+      "args": [
+        [
+          -1,
+          0,
+          3,
+          5,
+          9,
+          12
+        ],
+        9
+      ],
+      "expected": 4
+    },
+    {
+      "label": "classic not found",
+      "args": [
+        [
+          -1,
+          0,
+          3,
+          5,
+          9,
+          12
+        ],
+        2
+      ],
+      "expected": -1
+    },
+    {
+      "label": "first element",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "label": "last element",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        5
+      ],
+      "expected": 4
+    },
+    {
+      "label": "single found",
+      "args": [
+        [
+          7
+        ],
+        7
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single not found",
+      "args": [
+        [
+          7
+        ],
+        3
+      ],
+      "expected": -1
+    },
+    {
+      "label": "target below range",
+      "args": [
+        [
+          2,
+          4,
+          6
+        ],
+        1
+      ],
+      "expected": -1
+    },
+    {
+      "label": "target above range",
+      "args": [
+        [
+          2,
+          4,
+          6
+        ],
+        9
+      ],
+      "expected": -1
+    }
+  ]
+}

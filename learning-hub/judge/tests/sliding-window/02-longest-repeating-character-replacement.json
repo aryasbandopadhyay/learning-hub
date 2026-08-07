@@ -1,0 +1,61 @@
+{
+  "id": "sliding-window/02-longest-repeating-character-replacement",
+  "cases": [
+    {
+      "label": "classic ABAB k=2",
+      "args": [
+        "ABAB",
+        2
+      ],
+      "expected": 4
+    },
+    {
+      "label": "classic AABABBA k=1",
+      "args": [
+        "AABABBA",
+        1
+      ],
+      "expected": 4
+    },
+    {
+      "label": "single character",
+      "args": [
+        "A",
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all same, no replacement",
+      "args": [
+        "AAAA",
+        0
+      ],
+      "expected": 4
+    },
+    {
+      "label": "k covers whole string",
+      "args": [
+        "ABCD",
+        3
+      ],
+      "expected": 4
+    },
+    {
+      "label": "k zero mixed",
+      "args": [
+        "ABAB",
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "label": "replace to extend run",
+      "args": [
+        "AABBBCCC",
+        2
+      ],
+      "expected": 5
+    }
+  ]
+}

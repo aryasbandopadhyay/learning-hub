@@ -1,0 +1,79 @@
+{
+  "id": "binary-search/13-find-peak-element",
+  "note": "findPeakElement(nums): return index of A peak. Inputs are strictly unimodal so the peak is unique and reference solutions agree.",
+  "cases": [
+    {
+      "label": "single peak middle",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "increasing then decreasing",
+      "args": [
+        [
+          1,
+          2,
+          4,
+          8,
+          3,
+          1
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "strictly increasing (peak at end)",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "strictly decreasing (peak at start)",
+      "args": [
+        [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single element",
+      "args": [
+        [
+          42
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "peak near start",
+      "args": [
+        [
+          10,
+          20,
+          15,
+          2
+        ]
+      ],
+      "expected": 1
+    }
+  ]
+}

@@ -23,6 +23,110 @@
         ]
       ],
       "expected": 2
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
+      "args": [
+        7,
+        [
+          2,
+          3,
+          1,
+          2,
+          4,
+          3
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single element meets target",
+      "args": [
+        4,
+        [
+          1,
+          4,
+          4
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "no subarray reaches target",
+      "args": [
+        11,
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "whole array needed",
+      "args": [
+        15,
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "first element already >= target",
+      "args": [
+        3,
+        [
+          5
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "single element too small",
+      "args": [
+        3,
+        [
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "target exactly total",
+      "args": [
+        6,
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": 3
     }
   ],
   "complexity": {

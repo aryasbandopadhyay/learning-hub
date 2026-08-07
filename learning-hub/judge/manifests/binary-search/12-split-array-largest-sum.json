@@ -22,6 +22,111 @@
         2
       ],
       "expected": 18
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
+      "args": [
+        [
+          7,
+          2,
+          5,
+          10,
+          8
+        ],
+        2
+      ],
+      "expected": 18
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "k=1 whole array",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        1
+      ],
+      "expected": 15
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "k equals length",
+      "args": [
+        [
+          1,
+          4,
+          4
+        ],
+        3
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "three splits",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        3
+      ],
+      "expected": 6
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single element",
+      "args": [
+        [
+          10
+        ],
+        1
+      ],
+      "expected": 10
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "dominant element",
+      "args": [
+        [
+          2,
+          3,
+          1,
+          100,
+          4
+        ],
+        2
+      ],
+      "expected": 104
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "all equal",
+      "args": [
+        [
+          5,
+          5,
+          5,
+          5
+        ],
+        2
+      ],
+      "expected": 10
     }
   ],
   "complexity": {

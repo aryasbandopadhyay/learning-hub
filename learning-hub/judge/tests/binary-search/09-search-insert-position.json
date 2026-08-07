@@ -1,0 +1,88 @@
+{
+  "id": "binary-search/09-search-insert-position",
+  "note": "searchInsert(nums, target): index of target or insertion point.",
+  "cases": [
+    {
+      "label": "found",
+      "args": [
+        [
+          1,
+          3,
+          5,
+          6
+        ],
+        5
+      ],
+      "expected": 2
+    },
+    {
+      "label": "insert middle",
+      "args": [
+        [
+          1,
+          3,
+          5,
+          6
+        ],
+        2
+      ],
+      "expected": 1
+    },
+    {
+      "label": "insert end",
+      "args": [
+        [
+          1,
+          3,
+          5,
+          6
+        ],
+        7
+      ],
+      "expected": 4
+    },
+    {
+      "label": "insert start",
+      "args": [
+        [
+          1,
+          3,
+          5,
+          6
+        ],
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single below",
+      "args": [
+        [
+          5
+        ],
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single above",
+      "args": [
+        [
+          5
+        ],
+        9
+      ],
+      "expected": 1
+    },
+    {
+      "label": "single equal",
+      "args": [
+        [
+          5
+        ],
+        5
+      ],
+      "expected": 0
+    }
+  ]
+}

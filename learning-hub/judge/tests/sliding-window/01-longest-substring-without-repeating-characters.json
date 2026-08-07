@@ -1,0 +1,61 @@
+{
+  "id": "sliding-window/01-longest-substring-without-repeating-characters",
+  "cases": [
+    {
+      "label": "empty string",
+      "args": [
+        ""
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single character",
+      "args": [
+        "a"
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all unique",
+      "args": [
+        "abcdef"
+      ],
+      "expected": 6
+    },
+    {
+      "label": "all identical",
+      "args": [
+        "bbbbb"
+      ],
+      "expected": 1
+    },
+    {
+      "label": "classic pwwkew",
+      "args": [
+        "pwwkew"
+      ],
+      "expected": 3
+    },
+    {
+      "label": "repeat forces reset",
+      "args": [
+        "abba"
+      ],
+      "expected": 2
+    },
+    {
+      "label": "spaces and symbols",
+      "args": [
+        "a b!a b!"
+      ],
+      "expected": 4
+    },
+    {
+      "label": "long with late repeat",
+      "args": [
+        "abcabcbb"
+      ],
+      "expected": 3
+    }
+  ]
+}

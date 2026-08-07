@@ -1,0 +1,89 @@
+{
+  "id": "sliding-window/14-longest-subarray-of-1s-after-deleting-one-element",
+  "note": "longestSubarray(nums): longest run of 1s after deleting exactly one element.",
+  "cases": [
+    {
+      "label": "classic [1,1,0,1]",
+      "args": [
+        [
+          1,
+          1,
+          0,
+          1
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "classic [0,1,1,1,0,1,1,0,1]",
+      "args": [
+        [
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "label": "all ones must delete one",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "single one",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single zero",
+      "args": [
+        [
+          0
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "all zeros",
+      "args": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "one gap",
+      "args": [
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ]
+      ],
+      "expected": 5
+    }
+  ]
+}

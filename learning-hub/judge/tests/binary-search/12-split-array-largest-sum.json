@@ -1,0 +1,97 @@
+{
+  "id": "binary-search/12-split-array-largest-sum",
+  "note": "splitArray(nums, k): minimize the largest subarray sum.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          7,
+          2,
+          5,
+          10,
+          8
+        ],
+        2
+      ],
+      "expected": 18
+    },
+    {
+      "label": "k=1 whole array",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        1
+      ],
+      "expected": 15
+    },
+    {
+      "label": "k equals length",
+      "args": [
+        [
+          1,
+          4,
+          4
+        ],
+        3
+      ],
+      "expected": 4
+    },
+    {
+      "label": "three splits",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        3
+      ],
+      "expected": 6
+    },
+    {
+      "label": "single element",
+      "args": [
+        [
+          10
+        ],
+        1
+      ],
+      "expected": 10
+    },
+    {
+      "label": "dominant element",
+      "args": [
+        [
+          2,
+          3,
+          1,
+          100,
+          4
+        ],
+        2
+      ],
+      "expected": 104
+    },
+    {
+      "label": "all equal",
+      "args": [
+        [
+          5,
+          5,
+          5,
+          5
+        ],
+        2
+      ],
+      "expected": 10
+    }
+  ]
+}

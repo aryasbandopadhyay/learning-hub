@@ -1,0 +1,150 @@
+{
+  "id": "binary-search/06-time-based-key-value-store",
+  "note": "design: TimeMap set(key,value,timestamp)/get(key,timestamp) returns value with largest timestamp <= query, else ''.",
+  "cases": [
+    {
+      "label": "classic example",
+      "ops": [
+        "TimeMap",
+        "set",
+        "get",
+        "get",
+        "set",
+        "get",
+        "get"
+      ],
+      "args": [
+        [],
+        [
+          "foo",
+          "bar",
+          1
+        ],
+        [
+          "foo",
+          1
+        ],
+        [
+          "foo",
+          3
+        ],
+        [
+          "foo",
+          "bar2",
+          4
+        ],
+        [
+          "foo",
+          4
+        ],
+        [
+          "foo",
+          5
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        "bar",
+        "bar",
+        null,
+        "bar2",
+        "bar2"
+      ]
+    },
+    {
+      "label": "query before any set",
+      "ops": [
+        "TimeMap",
+        "set",
+        "get"
+      ],
+      "args": [
+        [],
+        [
+          "a",
+          "x",
+          5
+        ],
+        [
+          "a",
+          3
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        ""
+      ]
+    },
+    {
+      "label": "missing key",
+      "ops": [
+        "TimeMap",
+        "get"
+      ],
+      "args": [
+        [],
+        [
+          "nope",
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        ""
+      ]
+    },
+    {
+      "label": "multiple timestamps pick latest <= t",
+      "ops": [
+        "TimeMap",
+        "set",
+        "set",
+        "set",
+        "get",
+        "get",
+        "get"
+      ],
+      "args": [
+        [],
+        [
+          "k",
+          "v1",
+          10
+        ],
+        [
+          "k",
+          "v2",
+          20
+        ],
+        [
+          "k",
+          "v3",
+          30
+        ],
+        [
+          "k",
+          25
+        ],
+        [
+          "k",
+          30
+        ],
+        [
+          "k",
+          100
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        "v2",
+        "v3",
+        "v3"
+      ]
+    }
+  ]
+}

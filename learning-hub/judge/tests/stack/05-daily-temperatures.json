@@ -1,0 +1,123 @@
+{
+  "id": "stack/05-daily-temperatures",
+  "note": "dailyTemperatures(T): days to wait for a warmer temperature.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        4,
+        2,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "strictly increasing",
+      "args": [
+        [
+          30,
+          40,
+          50,
+          60
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "strictly decreasing",
+      "args": [
+        [
+          60,
+          50,
+          40,
+          30
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "all equal",
+      "args": [
+        [
+          50,
+          50,
+          50
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "single day",
+      "args": [
+        [
+          40
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "label": "warmer at end",
+      "args": [
+        [
+          30,
+          60,
+          90
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "plateau then spike",
+      "args": [
+        [
+          55,
+          55,
+          55,
+          60
+        ]
+      ],
+      "expected": [
+        3,
+        2,
+        1,
+        0
+      ]
+    }
+  ]
+}

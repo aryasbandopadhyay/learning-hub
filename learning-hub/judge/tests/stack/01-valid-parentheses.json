@@ -1,0 +1,68 @@
+{
+  "id": "stack/01-valid-parentheses",
+  "cases": [
+    {
+      "label": "simple pair",
+      "args": [
+        "()"
+      ],
+      "expected": true
+    },
+    {
+      "label": "all three types",
+      "args": [
+        "()[]{}"
+      ],
+      "expected": true
+    },
+    {
+      "label": "mismatch",
+      "args": [
+        "(]"
+      ],
+      "expected": false
+    },
+    {
+      "label": "wrong order",
+      "args": [
+        "([)]"
+      ],
+      "expected": false
+    },
+    {
+      "label": "nested",
+      "args": [
+        "{[()]}"
+      ],
+      "expected": true
+    },
+    {
+      "label": "only open",
+      "args": [
+        "((("
+      ],
+      "expected": false
+    },
+    {
+      "label": "only close",
+      "args": [
+        "]"
+      ],
+      "expected": false
+    },
+    {
+      "label": "empty",
+      "args": [
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "label": "long valid",
+      "args": [
+        "((()))[]{{}}"
+      ],
+      "expected": true
+    }
+  ]
+}

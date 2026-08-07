@@ -1,0 +1,92 @@
+{
+  "id": "binary-search/04-find-minimum-in-rotated-sorted-array",
+  "note": "findMin(nums): distinct values.",
+  "cases": [
+    {
+      "label": "classic rotated",
+      "args": [
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "rotated larger",
+      "args": [
+        [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "not rotated",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "single element",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "label": "two elements rotated",
+      "args": [
+        [
+          2,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "min at end",
+      "args": [
+        [
+          2,
+          3,
+          4,
+          5,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "rotated by one",
+      "args": [
+        [
+          11,
+          13,
+          15,
+          17,
+          10
+        ]
+      ],
+      "expected": 10
+    }
+  ]
+}

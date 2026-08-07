@@ -1,0 +1,101 @@
+{
+  "id": "binary-search/11-capacity-to-ship-packages-within-d-days",
+  "note": "shipWithinDays(weights, days): minimum capacity.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        5
+      ],
+      "expected": 15
+    },
+    {
+      "label": "tight one day",
+      "args": [
+        [
+          3,
+          2,
+          2,
+          4,
+          1,
+          4
+        ],
+        3
+      ],
+      "expected": 6
+    },
+    {
+      "label": "each own day",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          1,
+          1
+        ],
+        4
+      ],
+      "expected": 3
+    },
+    {
+      "label": "all in one day",
+      "args": [
+        [
+          5,
+          5,
+          5
+        ],
+        1
+      ],
+      "expected": 15
+    },
+    {
+      "label": "days equal count",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "label": "single package",
+      "args": [
+        [
+          7
+        ],
+        1
+      ],
+      "expected": 7
+    },
+    {
+      "label": "heavy dominates",
+      "args": [
+        [
+          10,
+          1,
+          1,
+          1
+        ],
+        2
+      ],
+      "expected": 10
+    }
+  ]
+}

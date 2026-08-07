@@ -18,76 +18,84 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic true",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
-        "eidbaooo"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-2",
-      "kind": "random",
-      "args": [
-        "dbbdbecaeadcd",
-        "eidbaooo"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-3",
-      "kind": "random",
-      "args": [
-        "d",
+        "ab",
         "eidbaooo"
       ],
       "expected": true
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "classic false",
       "args": [
-        "de",
-        "eidbaooo"
+        "ab",
+        "eidboaoo"
       ],
       "expected": false
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "s1 longer than s2",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "eidbaooo"
+        "abc",
+        "ab"
       ],
       "expected": false
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "exact match",
       "args": [
-        "bbecdbcacbaecaeacbdd",
-        "eidbaooo"
+        "abc",
+        "cba"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single char present",
+      "args": [
+        "a",
+        "ba"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "single char absent",
+      "args": [
+        "a",
+        "bb"
       ],
       "expected": false
     },
     {
-      "id": "rand-7",
-      "kind": "random",
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "permutation at the very end",
       "args": [
-        "ddceabacddbcbcacbbdc",
-        "eidbaooo"
+        "ab",
+        "oooba"
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-8",
-      "kind": "random",
+      "id": "edge-8",
+      "kind": "edge",
+      "label": "repeated letters",
       "args": [
-        "dd",
-        "eidbaooo"
+        "aab",
+        "abaab"
       ],
-      "expected": false
+      "expected": true
     }
   ],
   "complexity": {

@@ -1,0 +1,55 @@
+{
+  "id": "stack/13-basic-calculator",
+  "note": "calculate(s): +, -, parentheses, unary minus.",
+  "cases": [
+    {
+      "label": "simple add",
+      "args": [
+        "1 + 1"
+      ],
+      "expected": 2
+    },
+    {
+      "label": "spaces and mixed",
+      "args": [
+        " 2-1 + 2 "
+      ],
+      "expected": 3
+    },
+    {
+      "label": "nested parens",
+      "args": [
+        "(1+(4+5+2)-3)+(6+8)"
+      ],
+      "expected": 23
+    },
+    {
+      "label": "leading minus paren",
+      "args": [
+        "-(3+2)"
+      ],
+      "expected": -5
+    },
+    {
+      "label": "single number",
+      "args": [
+        "42"
+      ],
+      "expected": 42
+    },
+    {
+      "label": "deep nesting",
+      "args": [
+        "2-(5-(6-(3-1)))"
+      ],
+      "expected": 1
+    },
+    {
+      "label": "unary inside",
+      "args": [
+        "1-(-2)"
+      ],
+      "expected": 3
+    }
+  ]
+}

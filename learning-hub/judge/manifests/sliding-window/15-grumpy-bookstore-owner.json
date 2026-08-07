@@ -36,6 +36,151 @@
         3
       ],
       "expected": 16
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          0,
+          1,
+          2,
+          1,
+          1,
+          7,
+          5
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        3
+      ],
+      "expected": 16
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single minute window",
+      "args": [
+        [
+          4,
+          10,
+          10
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        1
+      ],
+      "expected": 20
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "never grumpy",
+      "args": [
+        [
+          3,
+          3,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        2
+      ],
+      "expected": 9
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "always grumpy, window covers all",
+      "args": [
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        3
+      ],
+      "expected": 6
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "window size 1",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          1,
+          0,
+          1,
+          0
+        ],
+        1
+      ],
+      "expected": 9
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "single customer grumpy",
+      "args": [
+        [
+          5
+        ],
+        [
+          1
+        ],
+        1
+      ],
+      "expected": 5
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "window at the end",
+      "args": [
+        [
+          1,
+          1,
+          1,
+          10,
+          10
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        2
+      ],
+      "expected": 23
     }
   ],
   "id": "sliding-window/15-grumpy-bookstore-owner",

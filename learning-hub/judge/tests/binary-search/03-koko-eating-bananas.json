@@ -1,0 +1,95 @@
+{
+  "id": "binary-search/03-koko-eating-bananas",
+  "note": "minEatingSpeed(piles, h): minimum integer speed.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          3,
+          6,
+          7,
+          11
+        ],
+        8
+      ],
+      "expected": 4
+    },
+    {
+      "label": "tight hours",
+      "args": [
+        [
+          30,
+          11,
+          23,
+          4,
+          20
+        ],
+        5
+      ],
+      "expected": 30
+    },
+    {
+      "label": "loose hours",
+      "args": [
+        [
+          30,
+          11,
+          23,
+          4,
+          20
+        ],
+        6
+      ],
+      "expected": 23
+    },
+    {
+      "label": "single pile",
+      "args": [
+        [
+          24
+        ],
+        2
+      ],
+      "expected": 12
+    },
+    {
+      "label": "h equals piles count",
+      "args": [
+        [
+          3,
+          6,
+          7,
+          11
+        ],
+        4
+      ],
+      "expected": 11
+    },
+    {
+      "label": "all ones",
+      "args": [
+        [
+          1,
+          1,
+          1,
+          1
+        ],
+        4
+      ],
+      "expected": 1
+    },
+    {
+      "label": "plenty of time",
+      "args": [
+        [
+          5,
+          5,
+          5
+        ],
+        100
+      ],
+      "expected": 1
+    }
+  ]
+}

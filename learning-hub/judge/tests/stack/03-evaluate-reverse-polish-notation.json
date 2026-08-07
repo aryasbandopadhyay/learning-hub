@@ -1,0 +1,94 @@
+{
+  "id": "stack/03-evaluate-reverse-polish-notation",
+  "cases": [
+    {
+      "label": "classic add-mul",
+      "args": [
+        [
+          "2",
+          "1",
+          "+",
+          "3",
+          "*"
+        ]
+      ],
+      "expected": 9
+    },
+    {
+      "label": "classic with div",
+      "args": [
+        [
+          "4",
+          "13",
+          "5",
+          "/",
+          "+"
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "label": "negative truncation toward zero",
+      "args": [
+        [
+          "10",
+          "6",
+          "9",
+          "3",
+          "+",
+          "-11",
+          "*",
+          "/",
+          "*",
+          "17",
+          "+",
+          "5",
+          "+"
+        ]
+      ],
+      "expected": 22
+    },
+    {
+      "label": "single number",
+      "args": [
+        [
+          "42"
+        ]
+      ],
+      "expected": 42
+    },
+    {
+      "label": "subtraction order",
+      "args": [
+        [
+          "5",
+          "3",
+          "-"
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "division truncates toward zero",
+      "args": [
+        [
+          "7",
+          "-3",
+          "/"
+        ]
+      ],
+      "expected": -2
+    },
+    {
+      "label": "negative number literal",
+      "args": [
+        [
+          "-4",
+          "2",
+          "*"
+        ]
+      ],
+      "expected": -8
+    }
+  ]
+}

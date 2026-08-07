@@ -1,0 +1,119 @@
+{
+  "id": "stack/06-car-fleet",
+  "note": "carFleet(target, position, speed): number of fleets arriving at target.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        12,
+        [
+          10,
+          8,
+          0,
+          5,
+          3
+        ],
+        [
+          2,
+          4,
+          1,
+          1,
+          3
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "single car",
+      "args": [
+        10,
+        [
+          3
+        ],
+        [
+          3
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all same speed different start",
+      "args": [
+        100,
+        [
+          0,
+          2,
+          4
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "faster catches slower -> one fleet",
+      "args": [
+        10,
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "slower ahead stays separate",
+      "args": [
+        10,
+        [
+          6,
+          8
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "two cars merge at target",
+      "args": [
+        10,
+        [
+          8,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "three separate fleets",
+      "args": [
+        20,
+        [
+          0,
+          5,
+          10
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 3
+    }
+  ]
+}

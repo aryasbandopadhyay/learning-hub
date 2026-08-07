@@ -32,6 +32,137 @@
         0,
         0
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
+      "args": [
+        [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        4,
+        2,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "strictly increasing",
+      "args": [
+        [
+          30,
+          40,
+          50,
+          60
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "strictly decreasing",
+      "args": [
+        [
+          60,
+          50,
+          40,
+          30
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "all equal",
+      "args": [
+        [
+          50,
+          50,
+          50
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single day",
+      "args": [
+        [
+          40
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "warmer at end",
+      "args": [
+        [
+          30,
+          60,
+          90
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "plateau then spike",
+      "args": [
+        [
+          55,
+          55,
+          55,
+          60
+        ]
+      ],
+      "expected": [
+        3,
+        2,
+        1,
+        0
+      ]
     }
   ],
   "complexity": {

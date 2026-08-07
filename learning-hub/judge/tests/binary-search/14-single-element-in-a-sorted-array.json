@@ -1,0 +1,86 @@
+{
+  "id": "binary-search/14-single-element-in-a-sorted-array",
+  "note": "singleNonDuplicate(nums): the element appearing once.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          3,
+          3,
+          4,
+          4,
+          8,
+          8
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "single at start",
+      "args": [
+        [
+          2,
+          3,
+          3,
+          4,
+          4
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "single at end",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          2,
+          5
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "label": "single element only",
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expected": 7
+    },
+    {
+      "label": "single in middle",
+      "args": [
+        [
+          1,
+          1,
+          2,
+          2,
+          3,
+          4,
+          4
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "negatives",
+      "args": [
+        [
+          -5,
+          -5,
+          -3,
+          -1,
+          -1
+        ]
+      ],
+      "expected": -3
+    }
+  ]
+}

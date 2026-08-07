@@ -19,6 +19,91 @@
         ]
       ],
       "expected": 2
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "single peak middle",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "increasing then decreasing",
+      "args": [
+        [
+          1,
+          2,
+          4,
+          8,
+          3,
+          1
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "strictly increasing (peak at end)",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "strictly decreasing (peak at start)",
+      "args": [
+        [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single element",
+      "args": [
+        [
+          42
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "peak near start",
+      "args": [
+        [
+          10,
+          20,
+          15,
+          2
+        ]
+      ],
+      "expected": 1
     }
   ],
   "complexity": {

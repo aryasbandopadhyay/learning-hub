@@ -1,0 +1,55 @@
+{
+  "id": "stack/11-decode-string",
+  "note": "decodeString(s): k[encoded] expansion.",
+  "cases": [
+    {
+      "label": "classic nested",
+      "args": [
+        "3[a2[c]]"
+      ],
+      "expected": "accaccacc"
+    },
+    {
+      "label": "simple repeat",
+      "args": [
+        "3[a]"
+      ],
+      "expected": "aaa"
+    },
+    {
+      "label": "concatenation",
+      "args": [
+        "2[abc]3[cd]ef"
+      ],
+      "expected": "abcabccdcdcdef"
+    },
+    {
+      "label": "no brackets",
+      "args": [
+        "abc"
+      ],
+      "expected": "abc"
+    },
+    {
+      "label": "multi-digit count",
+      "args": [
+        "10[a]"
+      ],
+      "expected": "aaaaaaaaaa"
+    },
+    {
+      "label": "deep nesting",
+      "args": [
+        "2[2[2[b]]]"
+      ],
+      "expected": "bbbbbbbb"
+    },
+    {
+      "label": "letters around group",
+      "args": [
+        "x2[y]z"
+      ],
+      "expected": "xyyz"
+    }
+  ]
+}

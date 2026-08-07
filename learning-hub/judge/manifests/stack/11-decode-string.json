@@ -16,68 +16,67 @@
       "expected": "accaccacc"
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic nested",
       "args": [
-        "dbebbbbacdeeaedbdeeb"
+        "3[a2[c]]"
       ],
-      "expected": "dbebbbbacdeeaedbdeeb"
+      "expected": "accaccacc"
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "simple repeat",
       "args": [
-        "dbbdbecaeadcd"
+        "3[a]"
       ],
-      "expected": "dbbdbecaeadcd"
+      "expected": "aaa"
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "concatenation",
       "args": [
-        "d"
+        "2[abc]3[cd]ef"
       ],
-      "expected": "d"
+      "expected": "abcabccdcdcdef"
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "no brackets",
       "args": [
-        "de"
+        "abc"
       ],
-      "expected": "de"
+      "expected": "abc"
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "multi-digit count",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+        "10[a]"
       ],
-      "expected": "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+      "expected": "aaaaaaaaaa"
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "deep nesting",
       "args": [
-        "bbecdbcacbaecaeacbdd"
+        "2[2[2[b]]]"
       ],
-      "expected": "bbecdbcacbaecaeacbdd"
+      "expected": "bbbbbbbb"
     },
     {
-      "id": "rand-7",
-      "kind": "random",
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "letters around group",
       "args": [
-        "ddceabacddbcbcacbbdc"
+        "x2[y]z"
       ],
-      "expected": "ddceabacddbcbcacbbdc"
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd"
-      ],
-      "expected": "dd"
+      "expected": "xyyz"
     }
   ],
   "complexity": {

@@ -1,0 +1,96 @@
+{
+  "id": "sliding-window/08-minimum-size-subarray-sum",
+  "note": "minSubArrayLen(target, nums): min length of a contiguous subarray with sum >= target; 0 if none. NOTE target is the FIRST argument.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        7,
+        [
+          2,
+          3,
+          1,
+          2,
+          4,
+          3
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "single element meets target",
+      "args": [
+        4,
+        [
+          1,
+          4,
+          4
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "no subarray reaches target",
+      "args": [
+        11,
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "whole array needed",
+      "args": [
+        15,
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "label": "first element already >= target",
+      "args": [
+        3,
+        [
+          5
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "single element too small",
+      "args": [
+        3,
+        [
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "target exactly total",
+      "args": [
+        6,
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": 3
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "sliding-window/03-permutation-in-string",
+  "note": "checkInclusion(s1, s2): does s2 contain a permutation of s1?",
+  "cases": [
+    {
+      "label": "classic true",
+      "args": [
+        "ab",
+        "eidbaooo"
+      ],
+      "expected": true
+    },
+    {
+      "label": "classic false",
+      "args": [
+        "ab",
+        "eidboaoo"
+      ],
+      "expected": false
+    },
+    {
+      "label": "s1 longer than s2",
+      "args": [
+        "abc",
+        "ab"
+      ],
+      "expected": false
+    },
+    {
+      "label": "exact match",
+      "args": [
+        "abc",
+        "cba"
+      ],
+      "expected": true
+    },
+    {
+      "label": "single char present",
+      "args": [
+        "a",
+        "ba"
+      ],
+      "expected": true
+    },
+    {
+      "label": "single char absent",
+      "args": [
+        "a",
+        "bb"
+      ],
+      "expected": false
+    },
+    {
+      "label": "permutation at the very end",
+      "args": [
+        "ab",
+        "oooba"
+      ],
+      "expected": true
+    },
+    {
+      "label": "repeated letters",
+      "args": [
+        "aab",
+        "abaab"
+      ],
+      "expected": true
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "sliding-window/09-longest-substring-with-at-most-k-distinct-characters",
+  "cases": [
+    {
+      "label": "classic eceba k=2",
+      "args": [
+        "eceba",
+        2
+      ],
+      "expected": 3
+    },
+    {
+      "label": "classic aa k=1",
+      "args": [
+        "aa",
+        1
+      ],
+      "expected": 2
+    },
+    {
+      "label": "k zero -> empty",
+      "args": [
+        "abc",
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "label": "k larger than distinct",
+      "args": [
+        "abc",
+        5
+      ],
+      "expected": 3
+    },
+    {
+      "label": "all same",
+      "args": [
+        "aaaa",
+        1
+      ],
+      "expected": 4
+    },
+    {
+      "label": "single char",
+      "args": [
+        "a",
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "label": "exactly k distinct whole string",
+      "args": [
+        "abaccc",
+        3
+      ],
+      "expected": 6
+    }
+  ]
+}

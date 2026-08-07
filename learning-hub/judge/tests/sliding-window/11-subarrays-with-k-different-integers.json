@@ -1,0 +1,91 @@
+{
+  "id": "sliding-window/11-subarrays-with-k-different-integers",
+  "note": "subarraysWithKDistinct(nums, k): count of subarrays with exactly k distinct integers.",
+  "cases": [
+    {
+      "label": "classic [1,2,1,2,3] k=2",
+      "args": [
+        [
+          1,
+          2,
+          1,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected": 7
+    },
+    {
+      "label": "classic [1,2,1,3,4] k=3",
+      "args": [
+        [
+          1,
+          2,
+          1,
+          3,
+          4
+        ],
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "label": "single element k=1",
+      "args": [
+        [
+          5
+        ],
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all same k=1",
+      "args": [
+        [
+          2,
+          2,
+          2
+        ],
+        1
+      ],
+      "expected": 6
+    },
+    {
+      "label": "k larger than distinct -> 0",
+      "args": [
+        [
+          1,
+          2
+        ],
+        3
+      ],
+      "expected": 0
+    },
+    {
+      "label": "all distinct k=1",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        1
+      ],
+      "expected": 3
+    },
+    {
+      "label": "k equals total distinct",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        3
+      ],
+      "expected": 1
+    }
+  ]
+}

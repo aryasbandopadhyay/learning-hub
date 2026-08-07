@@ -1,0 +1,55 @@
+{
+  "id": "stack/12-simplify-path",
+  "note": "simplifyPath(path): canonical Unix path.",
+  "cases": [
+    {
+      "label": "trailing slash",
+      "args": [
+        "/home/"
+      ],
+      "expected": "/home"
+    },
+    {
+      "label": "double dot",
+      "args": [
+        "/../"
+      ],
+      "expected": "/"
+    },
+    {
+      "label": "multiple slashes",
+      "args": [
+        "/home//foo/"
+      ],
+      "expected": "/home/foo"
+    },
+    {
+      "label": "dot and dotdot",
+      "args": [
+        "/a/./b/../../c/"
+      ],
+      "expected": "/c"
+    },
+    {
+      "label": "root only",
+      "args": [
+        "/"
+      ],
+      "expected": "/"
+    },
+    {
+      "label": "complex",
+      "args": [
+        "/a/../../b/../c//.//"
+      ],
+      "expected": "/c"
+    },
+    {
+      "label": "no navigation",
+      "args": [
+        "/usr/local/bin"
+      ],
+      "expected": "/usr/local/bin"
+    }
+  ]
+}

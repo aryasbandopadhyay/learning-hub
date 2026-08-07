@@ -1,0 +1,62 @@
+{
+  "id": "sliding-window/04-minimum-window-substring",
+  "note": "minWindow(s, t): smallest window in s containing all chars of t (with multiplicity); '' if none.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        "ADOBECODEBANC",
+        "ABC"
+      ],
+      "expected": "BANC"
+    },
+    {
+      "label": "single char match",
+      "args": [
+        "a",
+        "a"
+      ],
+      "expected": "a"
+    },
+    {
+      "label": "no valid window",
+      "args": [
+        "a",
+        "aa"
+      ],
+      "expected": ""
+    },
+    {
+      "label": "t longer than s",
+      "args": [
+        "ab",
+        "abc"
+      ],
+      "expected": ""
+    },
+    {
+      "label": "whole string is the window",
+      "args": [
+        "abc",
+        "cba"
+      ],
+      "expected": "abc"
+    },
+    {
+      "label": "duplicates in t",
+      "args": [
+        "aabbcc",
+        "abc"
+      ],
+      "expected": "abbc"
+    },
+    {
+      "label": "window at the start",
+      "args": [
+        "ABCxyz",
+        "ABC"
+      ],
+      "expected": "ABC"
+    }
+  ]
+}

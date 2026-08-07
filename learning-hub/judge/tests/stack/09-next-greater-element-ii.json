@@ -1,0 +1,113 @@
+{
+  "id": "stack/09-next-greater-element-ii",
+  "note": "nextGreaterElements(nums): circular array, -1 if none.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          1,
+          2,
+          1
+        ]
+      ],
+      "expected": [
+        2,
+        -1,
+        2
+      ]
+    },
+    {
+      "label": "with duplicates",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          3
+        ]
+      ],
+      "expected": [
+        2,
+        3,
+        4,
+        -1,
+        4
+      ]
+    },
+    {
+      "label": "all equal",
+      "args": [
+        [
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected": [
+        -1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "label": "strictly decreasing",
+      "args": [
+        [
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": [
+        -1,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "label": "single element",
+      "args": [
+        [
+          7
+        ]
+      ],
+      "expected": [
+        -1
+      ]
+    },
+    {
+      "label": "wrap needed",
+      "args": [
+        [
+          3,
+          1,
+          2
+        ]
+      ],
+      "expected": [
+        -1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "negatives",
+      "args": [
+        [
+          -1,
+          0,
+          -2
+        ]
+      ],
+      "expected": [
+        0,
+        -1,
+        -1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "id": "binary-search/05-search-in-rotated-sorted-array",
+  "note": "search(nums, target): index or -1, distinct values.",
+  "cases": [
+    {
+      "label": "classic found",
+      "args": [
+        [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        0
+      ],
+      "expected": 4
+    },
+    {
+      "label": "classic not found",
+      "args": [
+        [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        3
+      ],
+      "expected": -1
+    },
+    {
+      "label": "found in left segment",
+      "args": [
+        [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ],
+        5
+      ],
+      "expected": 1
+    },
+    {
+      "label": "single found",
+      "args": [
+        [
+          1
+        ],
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single not found",
+      "args": [
+        [
+          1
+        ],
+        0
+      ],
+      "expected": -1
+    },
+    {
+      "label": "not rotated found",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        4
+      ],
+      "expected": 3
+    },
+    {
+      "label": "target at pivot",
+      "args": [
+        [
+          5,
+          1,
+          2,
+          3,
+          4
+        ],
+        1
+      ],
+      "expected": 1
+    }
+  ]
+}

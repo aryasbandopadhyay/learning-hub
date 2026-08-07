@@ -1,0 +1,78 @@
+{
+  "id": "sliding-window/10-find-all-anagrams-in-a-string",
+  "note": "findAnagrams(s, p): start indices of anagrams of p in s.",
+  "cases": [
+    {
+      "label": "classic cbaebabacd",
+      "args": [
+        "cbaebabacd",
+        "abc"
+      ],
+      "expected": [
+        0,
+        6
+      ]
+    },
+    {
+      "label": "classic abab",
+      "args": [
+        "abab",
+        "ab"
+      ],
+      "expected": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "label": "p longer than s",
+      "args": [
+        "ab",
+        "abc"
+      ],
+      "expected": []
+    },
+    {
+      "label": "no anagram",
+      "args": [
+        "abcdef",
+        "xyz"
+      ],
+      "expected": []
+    },
+    {
+      "label": "single char repeated",
+      "args": [
+        "aaaa",
+        "a"
+      ],
+      "expected": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "exact whole-string anagram",
+      "args": [
+        "cba",
+        "abc"
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "label": "duplicates in p",
+      "args": [
+        "baa",
+        "aa"
+      ],
+      "expected": [
+        1
+      ]
+    }
+  ]
+}
