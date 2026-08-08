@@ -1,0 +1,86 @@
+{
+  "id": "matrix/04-word-search",
+  "cases": [
+    {
+      "label": "found",
+      "args": [
+        [
+          [
+            "A",
+            "B",
+            "C",
+            "E"
+          ],
+          [
+            "S",
+            "F",
+            "C",
+            "S"
+          ],
+          [
+            "A",
+            "D",
+            "E",
+            "E"
+          ]
+        ],
+        "ABCCED"
+      ],
+      "expected": true
+    },
+    {
+      "label": "not found",
+      "args": [
+        [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "ABDC"
+      ],
+      "expected": true
+    },
+    {
+      "label": "single hit",
+      "args": [
+        [
+          [
+            "A"
+          ]
+        ],
+        "A"
+      ],
+      "expected": true
+    },
+    {
+      "label": "single miss",
+      "args": [
+        [
+          [
+            "A"
+          ]
+        ],
+        "B"
+      ],
+      "expected": false
+    },
+    {
+      "label": "reuse blocked",
+      "args": [
+        [
+          [
+            "A",
+            "A"
+          ]
+        ],
+        "AAA"
+      ],
+      "expected": false
+    }
+  ]
+}
