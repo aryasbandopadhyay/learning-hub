@@ -1,0 +1,59 @@
+{
+  "id": "bit-manipulation/12-maximum-xor-of-two-numbers-in-an-array",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          3,
+          10,
+          5,
+          25,
+          2,
+          8
+        ]
+      ],
+      "expected": 28
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "two",
+      "args": [
+        [
+          2,
+          4
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "label": "with zero",
+      "args": [
+        [
+          0,
+          7
+        ]
+      ],
+      "expected": 7
+    },
+    {
+      "label": "all same",
+      "args": [
+        [
+          3,
+          3,
+          3
+        ]
+      ],
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "bit-manipulation/01-single-number",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          4,
+          1,
+          2,
+          1,
+          2
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "single element",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "negatives",
+      "args": [
+        [
+          -1,
+          -1,
+          -2
+        ]
+      ],
+      "expected": -2
+    },
+    {
+      "label": "zero",
+      "args": [
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "first unique",
+      "args": [
+        [
+          7,
+          3,
+          3
+        ]
+      ],
+      "expected": 7
+    }
+  ]
+}

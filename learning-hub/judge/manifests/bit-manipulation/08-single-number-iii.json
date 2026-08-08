@@ -24,6 +24,42 @@
         3,
         5
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        [
+          1,
+          2,
+          1,
+          3,
+          2,
+          5
+        ]
+      ],
+      "expected": [
+        3,
+        5
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "with dups",
+      "args": [
+        [
+          4,
+          4,
+          7,
+          9
+        ]
+      ],
+      "expected": [
+        7,
+        9
+      ]
     }
   ],
   "complexity": {

@@ -20,6 +20,71 @@
         ]
       ],
       "expected": 4
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        [
+          4,
+          1,
+          2,
+          1,
+          2
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single element",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "negatives",
+      "args": [
+        [
+          -1,
+          -1,
+          -2
+        ]
+      ],
+      "expected": -2
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "zero",
+      "args": [
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "first unique",
+      "args": [
+        [
+          7,
+          3,
+          3
+        ]
+      ],
+      "expected": 7
     }
   ],
   "complexity": {

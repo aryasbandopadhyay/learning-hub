@@ -18,76 +18,54 @@
       "expected": 5
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        6239,
-        3279
+        2,
+        3
       ],
-      "expected": 9518
+      "expected": 5
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "with zero",
       "args": [
-        4071,
-        2184
+        0,
+        5
       ],
-      "expected": 6255
+      "expected": 5
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "both zero",
       "args": [
-        6277,
-        8697
+        0,
+        0
       ],
-      "expected": 14974
+      "expected": 0
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "negative",
       "args": [
-        8017,
-        3269
+        -1,
+        1
       ],
-      "expected": 11286
+      "expected": 0
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "both negative",
       "args": [
-        6128,
-        6359
+        -2,
+        -3
       ],
-      "expected": 12487
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        2495,
-        7561
-      ],
-      "expected": 10056
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        1360,
-        8663
-      ],
-      "expected": 10023
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        7685,
-        5184
-      ],
-      "expected": 12869
+      "expected": -5
     }
   ],
   "id": "bit-manipulation/06-sum-of-two-integers",

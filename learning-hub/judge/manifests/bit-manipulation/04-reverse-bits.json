@@ -16,68 +16,40 @@
       "expected": 964176192
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        6239
+        43261596
       ],
-      "expected": 4195876864
+      "expected": 964176192
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "zero",
       "args": [
-        3773
+        0
       ],
-      "expected": 3178233856
+      "expected": 0
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "one",
       "args": [
-        4115
+        1
       ],
-      "expected": 3355967488
+      "expected": 2147483648
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "all set-ish",
       "args": [
-        8017
+        4294967293
       ],
-      "expected": 2331508736
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        6128
-      ],
-      "expected": 266862592
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        2495
-      ],
-      "expected": 4254072832
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        9289
-      ],
-      "expected": 2451832832
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        7685
-      ],
-      "expected": 2692218880
+      "expected": 3221225471
     }
   ],
   "id": "bit-manipulation/04-reverse-bits",

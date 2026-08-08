@@ -16,68 +16,49 @@
       "expected": 3
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "eleven",
       "args": [
-        6239
+        11
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "zero",
+      "args": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "one",
+      "args": [
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "power of two",
+      "args": [
+        16
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "all set small",
+      "args": [
+        255
       ],
       "expected": 8
-    },
-    {
-      "id": "rand-2",
-      "kind": "random",
-      "args": [
-        3773
-      ],
-      "expected": 9
-    },
-    {
-      "id": "rand-3",
-      "kind": "random",
-      "args": [
-        4115
-      ],
-      "expected": 4
-    },
-    {
-      "id": "rand-4",
-      "kind": "random",
-      "args": [
-        8017
-      ],
-      "expected": 8
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        6128
-      ],
-      "expected": 8
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        2495
-      ],
-      "expected": 9
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        9289
-      ],
-      "expected": 5
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        7685
-      ],
-      "expected": 6
     }
   ],
   "id": "bit-manipulation/02-number-of-1-bits",

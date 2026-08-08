@@ -1,0 +1,45 @@
+{
+  "id": "bit-manipulation/06-sum-of-two-integers",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        2,
+        3
+      ],
+      "expected": 5
+    },
+    {
+      "label": "with zero",
+      "args": [
+        0,
+        5
+      ],
+      "expected": 5
+    },
+    {
+      "label": "both zero",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "label": "negative",
+      "args": [
+        -1,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "label": "both negative",
+      "args": [
+        -2,
+        -3
+      ],
+      "expected": -5
+    }
+  ]
+}

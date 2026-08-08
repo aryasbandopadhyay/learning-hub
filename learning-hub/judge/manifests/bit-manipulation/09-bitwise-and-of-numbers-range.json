@@ -16,6 +16,56 @@
         7
       ],
       "expected": 4
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        5,
+        7
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "equal range",
+      "args": [
+        4,
+        4
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "zero to one",
+      "args": [
+        0,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single left",
+      "args": [
+        1,
+        2
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "large gap",
+      "args": [
+        1,
+        10
+      ],
+      "expected": 0
     }
   ],
   "id": "bit-manipulation/09-bitwise-and-of-numbers-range",

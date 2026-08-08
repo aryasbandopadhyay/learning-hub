@@ -1,0 +1,45 @@
+{
+  "id": "bit-manipulation/11-add-binary",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "1010",
+        "1011"
+      ],
+      "expected": "10101"
+    },
+    {
+      "label": "carry all",
+      "args": [
+        "1",
+        "1"
+      ],
+      "expected": "10"
+    },
+    {
+      "label": "zero",
+      "args": [
+        "0",
+        "0"
+      ],
+      "expected": "0"
+    },
+    {
+      "label": "different length",
+      "args": [
+        "11",
+        "1"
+      ],
+      "expected": "100"
+    },
+    {
+      "label": "leading result",
+      "args": [
+        "111",
+        "1"
+      ],
+      "expected": "1000"
+    }
+  ]
+}
