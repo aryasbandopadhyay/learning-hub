@@ -1,0 +1,73 @@
+{
+  "id": "advanced-graphs/09-path-with-minimum-effort",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          [
+            1,
+            2,
+            2
+          ],
+          [
+            3,
+            8,
+            2
+          ],
+          [
+            5,
+            3,
+            5
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "single cell",
+      "args": [
+        [
+          [
+            5
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "flat",
+      "args": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single row",
+      "args": [
+        [
+          [
+            1,
+            10,
+            6,
+            7,
+            9,
+            10,
+            4,
+            9
+          ]
+        ]
+      ],
+      "expected": 9
+    }
+  ]
+}

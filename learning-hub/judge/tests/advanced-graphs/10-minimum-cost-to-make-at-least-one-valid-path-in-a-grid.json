@@ -1,0 +1,80 @@
+{
+  "id": "advanced-graphs/10-minimum-cost-to-make-at-least-one-valid-path-in-a-grid",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          [
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            2,
+            2,
+            2,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            2,
+            2,
+            2,
+            2
+          ]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "single cell",
+      "args": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "straight path",
+      "args": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "small turn",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            3
+          ]
+        ]
+      ],
+      "expected": 1
+    }
+  ]
+}

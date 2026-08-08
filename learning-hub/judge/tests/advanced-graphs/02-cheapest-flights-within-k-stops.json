@@ -1,0 +1,120 @@
+{
+  "id": "advanced-graphs/02-cheapest-flights-within-k-stops",
+  "cases": [
+    {
+      "label": "example k1",
+      "args": [
+        4,
+        [
+          [
+            0,
+            1,
+            100
+          ],
+          [
+            1,
+            2,
+            100
+          ],
+          [
+            2,
+            0,
+            100
+          ],
+          [
+            1,
+            3,
+            600
+          ],
+          [
+            2,
+            3,
+            200
+          ]
+        ],
+        0,
+        3,
+        1
+      ],
+      "expected": 700
+    },
+    {
+      "label": "no route",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1,
+            5
+          ]
+        ],
+        0,
+        2,
+        1
+      ],
+      "expected": -1
+    },
+    {
+      "label": "direct k0",
+      "args": [
+        2,
+        [
+          [
+            0,
+            1,
+            50
+          ]
+        ],
+        0,
+        1,
+        0
+      ],
+      "expected": 50
+    },
+    {
+      "label": "same city",
+      "args": [
+        2,
+        [
+          [
+            0,
+            1,
+            50
+          ]
+        ],
+        0,
+        0,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "label": "cheaper with more stops",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1,
+            100
+          ],
+          [
+            1,
+            2,
+            100
+          ],
+          [
+            0,
+            2,
+            500
+          ]
+        ],
+        0,
+        2,
+        1
+      ],
+      "expected": 200
+    }
+  ]
+}

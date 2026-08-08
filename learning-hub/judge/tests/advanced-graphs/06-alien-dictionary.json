@@ -1,0 +1,48 @@
+{
+  "id": "advanced-graphs/06-alien-dictionary",
+  "note": "compareMode=sorted (permutation/validity check).",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          "wrt",
+          "wrf",
+          "er",
+          "ett",
+          "rftt"
+        ]
+      ],
+      "expected": "wertf"
+    },
+    {
+      "label": "simple order",
+      "args": [
+        [
+          "z",
+          "x"
+        ]
+      ],
+      "expected": "zx"
+    },
+    {
+      "label": "invalid prefix",
+      "args": [
+        [
+          "abc",
+          "ab"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "label": "single word",
+      "args": [
+        [
+          "abc"
+        ]
+      ],
+      "expected": "abc"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "id": "advanced-graphs/03-reconstruct-itinerary",
+  "note": "unique JFK-start lexicographic Eulerian path.",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          [
+            "MUC",
+            "LHR"
+          ],
+          [
+            "JFK",
+            "MUC"
+          ],
+          [
+            "SFO",
+            "SJC"
+          ],
+          [
+            "LHR",
+            "SFO"
+          ]
+        ]
+      ],
+      "expected": [
+        "JFK",
+        "MUC",
+        "LHR",
+        "SFO",
+        "SJC"
+      ]
+    },
+    {
+      "label": "lexicographic choice",
+      "args": [
+        [
+          [
+            "JFK",
+            "SFO"
+          ],
+          [
+            "JFK",
+            "ATL"
+          ],
+          [
+            "SFO",
+            "ATL"
+          ],
+          [
+            "ATL",
+            "JFK"
+          ],
+          [
+            "ATL",
+            "SFO"
+          ]
+        ]
+      ],
+      "expected": [
+        "JFK",
+        "ATL",
+        "JFK",
+        "SFO",
+        "ATL",
+        "SFO"
+      ]
+    },
+    {
+      "label": "single ticket",
+      "args": [
+        [
+          [
+            "JFK",
+            "ABC"
+          ]
+        ]
+      ],
+      "expected": [
+        "JFK",
+        "ABC"
+      ]
+    },
+    {
+      "label": "simple chain",
+      "args": [
+        [
+          [
+            "JFK",
+            "A"
+          ],
+          [
+            "A",
+            "B"
+          ]
+        ]
+      ],
+      "expected": [
+        "JFK",
+        "A",
+        "B"
+      ]
+    }
+  ]
+}

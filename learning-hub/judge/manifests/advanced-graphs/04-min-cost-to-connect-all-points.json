@@ -35,6 +35,90 @@
         ]
       ],
       "expected": 20
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            10
+          ],
+          [
+            5,
+            2
+          ],
+          [
+            7,
+            0
+          ]
+        ]
+      ],
+      "expected": 20
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single point",
+      "args": [
+        [
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "two points",
+      "args": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "three points",
+      "args": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            4,
+            0
+          ]
+        ]
+      ],
+      "expected": 7
     }
   ],
   "id": "advanced-graphs/04-min-cost-to-connect-all-points",
