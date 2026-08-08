@@ -1,0 +1,60 @@
+{
+  "id": "graphs/25-snakes-and-ladders",
+  "cases": [
+    {
+      "label": "small board",
+      "args": [
+        [
+          [
+            -1,
+            -1,
+            -1
+          ],
+          [
+            -1,
+            9,
+            8
+          ],
+          [
+            -1,
+            8,
+            9
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "2x2 no ladders",
+      "args": [
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "direct ladder",
+      "args": [
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            2,
+            -1
+          ]
+        ]
+      ],
+      "expected": 1
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "id": "graphs/11-number-of-connected-components-in-an-undirected-graph",
+  "cases": [
+    {
+      "label": "two comps",
+      "args": [
+        5,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "all isolated",
+      "args": [
+        3,
+        []
+      ],
+      "expected": 3
+    },
+    {
+      "label": "one comp",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "single",
+      "args": [
+        1,
+        []
+      ],
+      "expected": 1
+    }
+  ]
+}

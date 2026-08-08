@@ -1,0 +1,68 @@
+{
+  "id": "graphs/19-keys-and-rooms",
+  "cases": [
+    {
+      "label": "all reachable",
+      "args": [
+        [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          []
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "locked",
+      "args": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            3,
+            0,
+            1
+          ],
+          [
+            2
+          ],
+          [
+            0
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "single room",
+      "args": [
+        [
+          []
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "cannot reach",
+      "args": [
+        [
+          [
+            1
+          ],
+          [],
+          []
+        ]
+      ],
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "graphs/05-rotting-oranges",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "all fresh no rot",
+      "args": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "label": "all empty",
+      "args": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "already rotten",
+      "args": [
+        [
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "isolated fresh",
+      "args": [
+        [
+          [
+            2,
+            1,
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": -1
+    }
+  ]
+}

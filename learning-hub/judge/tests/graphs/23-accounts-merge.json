@@ -1,0 +1,73 @@
+{
+  "id": "graphs/23-accounts-merge",
+  "note": "output ordering ambiguous -> may drop.",
+  "cases": [
+    {
+      "label": "merge two",
+      "args": [
+        [
+          [
+            "John",
+            "a@mail.com",
+            "b@mail.com"
+          ],
+          [
+            "John",
+            "b@mail.com",
+            "c@mail.com"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "John",
+          "a@mail.com",
+          "b@mail.com",
+          "c@mail.com"
+        ]
+      ]
+    },
+    {
+      "label": "no merge",
+      "args": [
+        [
+          [
+            "Alex",
+            "x@mail.com"
+          ],
+          [
+            "Bob",
+            "y@mail.com"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "Alex",
+          "x@mail.com"
+        ],
+        [
+          "Bob",
+          "y@mail.com"
+        ]
+      ]
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          [
+            "Kevin",
+            "k@mail.com"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "Kevin",
+          "k@mail.com"
+        ]
+      ]
+    }
+  ]
+}

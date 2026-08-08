@@ -1,0 +1,92 @@
+{
+  "id": "graphs/21-minimum-number-of-vertices-to-reach-all-nodes",
+  "note": "result set order may vary -> may drop.",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        6,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            2
+          ]
+        ]
+      ],
+      "expected": [
+        0,
+        3
+      ]
+    },
+    {
+      "label": "no edges",
+      "args": [
+        3,
+        []
+      ],
+      "expected": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "label": "single root",
+      "args": [
+        3,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "label": "chain",
+      "args": [
+        4,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    }
+  ]
+}

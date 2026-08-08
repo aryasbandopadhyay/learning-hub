@@ -27,10 +27,11 @@
       "expected": 5
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
+        "hit",
         "cog",
         [
           "hot",
@@ -41,123 +42,49 @@
           "cog"
         ]
       ],
-      "expected": 0
+      "expected": 5
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "no path",
       "args": [
-        "dbbdbecaeadcd",
+        "hit",
         "cog",
         [
           "hot",
           "dot",
           "dog",
           "lot",
-          "log",
-          "cog"
+          "log"
         ]
       ],
       "expected": 0
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "one step",
       "args": [
-        "d",
-        "cog",
+        "a",
+        "c",
         [
-          "hot",
-          "dot",
-          "dog",
-          "lot",
-          "log",
-          "cog"
+          "b",
+          "c"
         ]
       ],
-      "expected": 0
+      "expected": 2
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "same word target",
       "args": [
-        "de",
-        "cog",
+        "hot",
+        "dog",
         [
           "hot",
-          "dot",
-          "dog",
-          "lot",
-          "log",
-          "cog"
-        ]
-      ],
-      "expected": 0
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "cog",
-        [
-          "hot",
-          "dot",
-          "dog",
-          "lot",
-          "log",
-          "cog"
-        ]
-      ],
-      "expected": 0
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "cog",
-        [
-          "hot",
-          "dot",
-          "dog",
-          "lot",
-          "log",
-          "cog"
-        ]
-      ],
-      "expected": 0
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "cog",
-        [
-          "hot",
-          "dot",
-          "dog",
-          "lot",
-          "log",
-          "cog"
-        ]
-      ],
-      "expected": 0
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "cog",
-        [
-          "hot",
-          "dot",
-          "dog",
-          "lot",
-          "log",
-          "cog"
+          "dog"
         ]
       ],
       "expected": 0

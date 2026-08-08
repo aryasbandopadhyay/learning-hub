@@ -1,0 +1,73 @@
+{
+  "id": "graphs/08-course-schedule",
+  "cases": [
+    {
+      "label": "simple ok",
+      "args": [
+        2,
+        [
+          [
+            1,
+            0
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "cycle",
+      "args": [
+        2,
+        [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "no prereqs",
+      "args": [
+        3,
+        []
+      ],
+      "expected": true
+    },
+    {
+      "label": "chain ok",
+      "args": [
+        3,
+        [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            1
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "self loop",
+      "args": [
+        1,
+        [
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": false
+    }
+  ]
+}

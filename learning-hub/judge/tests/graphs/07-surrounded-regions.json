@@ -1,0 +1,109 @@
+{
+  "id": "graphs/07-surrounded-regions",
+  "cases": [
+    {
+      "label": "surrounded flips",
+      "args": [
+        [
+          [
+            "X",
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "O",
+            "X"
+          ],
+          [
+            "X",
+            "X",
+            "X"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ]
+      ]
+    },
+    {
+      "label": "border O stays",
+      "args": [
+        [
+          [
+            "O",
+            "O"
+          ],
+          [
+            "O",
+            "O"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "O",
+          "O"
+        ],
+        [
+          "O",
+          "O"
+        ]
+      ]
+    },
+    {
+      "label": "single O",
+      "args": [
+        [
+          [
+            "O"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "O"
+        ]
+      ]
+    },
+    {
+      "label": "no O",
+      "args": [
+        [
+          [
+            "X",
+            "X"
+          ],
+          [
+            "X",
+            "X"
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X"
+        ]
+      ]
+    }
+  ]
+}

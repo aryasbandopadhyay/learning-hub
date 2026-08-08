@@ -1,0 +1,93 @@
+{
+  "id": "graphs/10-graph-valid-tree",
+  "cases": [
+    {
+      "label": "valid",
+      "args": [
+        5,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            4
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "has cycle",
+      "args": [
+        4,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "disconnected",
+      "args": [
+        4,
+        [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "single node",
+      "args": [
+        1,
+        []
+      ],
+      "expected": true
+    },
+    {
+      "label": "two connected",
+      "args": [
+        2,
+        [
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": true
+    }
+  ]
+}
