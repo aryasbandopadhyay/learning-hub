@@ -371,6 +371,10 @@ function renderDashboard(catId) {
     });
   });
   paintDashboardRows();
+
+  // Feature hook: inject extra dashboard widgets (review queue, streak heatmap, topic mastery,
+  // random/interview mode) above the problem table.
+  window.HubFeatures?.onDashboard?.(catId, el.viewer.querySelector(".dashboard"));
 }
 
 function paintDashboardRows() {
@@ -720,6 +724,15 @@ async function maybeMountJudge(path) {
   panel.querySelector(".btn-run").onclick = () => runJudge(path, cm.getValue(), "run", panel);
   panel.querySelector(".btn-cx").onclick = () => runJudge(path, cm.getValue(), "complexity", panel);
   panel.querySelector(".btn-compare").onclick = () => toggleCompare(panel, meta);
+
+  // Feature hook: let the optional features layer (features.js) augment the Solve panel
+  // (notes, custom test input, hints, submission history, review buttons, self-report, …).
+  window.HubFeatures?.onSolvePanel?.({
+    path, panel, meta,
+    getCode: () => cm.getValue(),
+    setCode: (v) => cm.setValue(v),
+    cm,
+  });
 }
 
 /** Load a previously accepted solution. Fail open so the starter stub still appears offline. */
@@ -789,6 +802,9 @@ async function runJudge(path, code, mode, panel) {
       setComplete(path, true, /*silent=*/ false, "🎉 Solved! Marked complete");
     }
   }
+
+  // Feature hook: record attempts/time-to-solve, self-report comparison, review scheduling, etc.
+  window.HubFeatures?.onRunResult?.(path, mode, res, panel);
 }
 
 function renderRun(res) {

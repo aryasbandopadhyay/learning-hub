@@ -33,6 +33,7 @@ TWO_SUM_MANIFEST = {
 GOOD_SOLUTION = (
     "class Solution:\n"
     "    def twoSum(self, nums, target):\n"
+    "        print('searching', target)\n"
     "        seen = {}\n"
     "        for i, n in enumerate(nums):\n"
     "            if target - n in seen:\n"
@@ -65,6 +66,17 @@ def test_mode_run_reports_compile_error():
     out = runner.mode_run(TWO_SUM_MANIFEST, "class Solution:\n    def twoSum(  # syntax error\n")
     assert out["ok"] is False
     assert "compileError" in out
+
+
+def test_mode_custom_runs_one_case_and_captures_stdout():
+    out = runner.mode_custom(
+        TWO_SUM_MANIFEST,
+        GOOD_SOLUTION,
+        {"args": [[2, 7, 11, 15], 9]},
+    )
+    assert out["ok"] is True
+    assert out["result"] == [0, 1]
+    assert out["stdout"] == "searching 9\n"
 
 
 def _run_in_subprocess(snippet: str) -> subprocess.CompletedProcess:

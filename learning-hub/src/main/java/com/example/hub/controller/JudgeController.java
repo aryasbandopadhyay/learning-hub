@@ -3,14 +3,20 @@ package com.example.hub.controller;
 import com.example.hub.service.AuthService;
 import com.example.hub.service.JudgeService;
 import com.example.hub.service.SolutionsService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Map;
 
@@ -32,10 +38,12 @@ public class JudgeController {
 
     private final JudgeService judge;
     private final SolutionsService solutions;
+    private final ObjectMapper mapper;
 
-    public JudgeController(JudgeService judge, SolutionsService solutions) {
+    public JudgeController(JudgeService judge, SolutionsService solutions, ObjectMapper mapper) {
         this.judge = judge;
         this.solutions = solutions;
+        this.mapper = mapper;
     }
 
     /** Editor-facing metadata for a problem (or {@code available:false} if no manifest exists). */
@@ -66,6 +74,22 @@ public class JudgeController {
                 .orElseGet(() -> Map.of("saved", false));
     }
 
+    /** Newest-first accepted-submission history, capped at fifteen entries. */
+    @GetMapping("/history")
+    public Map<String, Object> history(@RequestParam("path") String path, HttpServletRequest req) {
+        var history = solutions.history(user(req), path, 15);
+        return Map.of("history", history, "count", history.size());
+    }
+
+    /** Reveal up to five hidden/generated tests for deliberate study after an attempt. */
+    @GetMapping("/reveal")
+    public Map<String, Object> reveal(@RequestParam("path") String path,
+                                      @RequestParam(value = "n", defaultValue = "2") int n) {
+        int count = Math.max(1, Math.min(5, n));
+        var tests = judge.revealTests(path, count);
+        return Map.of("tests", tests, "count", tests.size());
+    }
+
     /**
      * Run a submission. Body: {@code {"path": "...", "code": "...", "mode": "run"|"complexity"}}.
      * {@code @RequestBody} binds the JSON body to a Map (Jackson).
@@ -84,6 +108,29 @@ public class JudgeController {
             solutions.save(user(req), path, section(path), code, "python");
         }
         return result;
+    }
+
+    /**
+     * Run one custom argument array. The browser sends {@code input} as JSON text (for example
+     * {@code [[2,7,11,15],9]}); validating it here prevents malformed runner input documents.
+     */
+    @PostMapping("/custom")
+    public Map<String, Object> custom(@RequestBody Map<String, Object> body) {
+        String input = str(body.get("input"));
+        JsonNode args;
+        try {
+            args = mapper.readTree(input == null ? "" : input);
+        } catch (JsonProcessingException invalid) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "input must be a valid JSON array", invalid);
+        }
+        if (args == null || !args.isArray()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "input must be a valid JSON array");
+        }
+        ObjectNode document = mapper.createObjectNode();
+        document.set("args", args);
+        return judge.runCustom(str(body.get("path")), str(body.get("code")), document.toString());
     }
 
     /* ---- Helpers ----------------------------------------------------------------------- */
@@ -107,6 +154,10 @@ public class JudgeController {
         if (norm.startsWith("dsa/faang/")) return "faang";
         int slash = norm.indexOf('/');
         return slash < 0 ? norm : norm.substring(0, slash);
+    }
+
+    private static String str(Object value) {
+        return value == null ? null : value.toString();
     }
 
     @SuppressWarnings("unchecked")

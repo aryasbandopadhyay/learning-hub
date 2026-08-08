@@ -14,12 +14,16 @@ import java.nio.charset.StandardCharsets;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.Base64;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * ============================================================================================
@@ -32,7 +36,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * <h3>Table schema</h3>
  * <ul>
  *   <li><b>PartitionKey</b> = normalized user id / email.</li>
- *   <li><b>RowKey</b> = URL-safe Base64 of the problem path.</li>
+ *   <li><b>RowKey</b> = URL-safe Base64 of the problem path for the current row; immutable
+ *       history rows append {@code |<13-digit epoch millis>}.</li>
  *   <li>Properties: {@code Path}, {@code Section}, {@code Code}, {@code Language},
  *       {@code UpdatedAt}. One row is the user's current saved solution for that problem.</li>
  * </ul>
@@ -54,6 +59,9 @@ public class SolutionsService {
 
     /** In-memory fallback: user -> (path -> saved solution row). */
     private final Map<String, Map<String, SavedSolution>> memory = new ConcurrentHashMap<>();
+
+    /** In-memory history: user -> (path -> oldest-to-newest accepted submissions). */
+    private final Map<String, Map<String, List<HistoryEntry>>> historyMemory = new ConcurrentHashMap<>();
 
     public SolutionsService(ProgressProperties props) {
         TableClient client = null;
@@ -98,6 +106,7 @@ public class SolutionsService {
         String updatedAt = OffsetDateTime.now(ZoneOffset.UTC).toString();
 
         if (table != null) {
+            String currentKey = rowKey(path);
             TableEntity entity = new TableEntity(u, rowKey(path))
                     .addProperty("Path", path)
                     .addProperty("Section", sec)
@@ -105,9 +114,21 @@ public class SolutionsService {
                     .addProperty("Language", lang)
                     .addProperty("UpdatedAt", updatedAt);
             table.upsertEntity(entity); // insert-or-replace: one current solution per problem
+            TableEntity history = new TableEntity(u,
+                    currentKey + "|" + String.format("%013d", System.currentTimeMillis()))
+                    .addProperty("Path", path)
+                    .addProperty("Section", sec)
+                    .addProperty("Code", code)
+                    .addProperty("Language", lang)
+                    .addProperty("UpdatedAt", updatedAt)
+                    .addProperty("Passed", true);
+            table.upsertEntity(history);
         } else {
             memory.computeIfAbsent(u, k -> new ConcurrentHashMap<>())
                     .put(path, new SavedSolution(path, sec, code, lang, updatedAt));
+            historyMemory.computeIfAbsent(u, k -> new ConcurrentHashMap<>())
+                    .computeIfAbsent(path, k -> new CopyOnWriteArrayList<>())
+                    .add(new HistoryEntry(code, lang, updatedAt, true));
         }
     }
 
@@ -148,10 +169,67 @@ public class SolutionsService {
             String filter = "PartitionKey eq '" + escape(u) + "'";
             for (TableEntity e : table.listEntities(new ListEntitiesOptions().setFilter(filter), null, null)) {
                 Object p = e.getProperty("Path");
-                if (p != null) out.add(p.toString());
+                if (p != null && e.getRowKey().equals(rowKey(p.toString()))) out.add(p.toString());
             }
         } else {
             out.addAll(memory.getOrDefault(u, Map.of()).keySet());
+        }
+        return out;
+    }
+
+    /** Newest accepted submissions for one problem, excluding the mutable current row. */
+    public List<Map<String, Object>> history(String user, String path, int limit) {
+        String u = norm(user);
+        if (path == null || path.isBlank() || limit <= 0) return List.of();
+        int capped = Math.max(0, limit);
+        List<Map<String, Object>> out = new ArrayList<>();
+        if (table != null) {
+            String prefix = rowKey(path) + "|";
+            String filter = "PartitionKey eq '" + escape(u) + "' and Path eq '" + escape(path) + "'";
+            List<TableEntity> rows = new ArrayList<>();
+            for (TableEntity e : table.listEntities(new ListEntitiesOptions().setFilter(filter), null, null)) {
+                if (e.getRowKey().startsWith(prefix)) rows.add(e);
+            }
+            rows.sort(Comparator.comparing(TableEntity::getRowKey).reversed());
+            for (TableEntity e : rows) {
+                if (out.size() >= capped) break;
+                out.add(historyMap(prop(e, "Code"), prop(e, "Language"),
+                        prop(e, "UpdatedAt"), boolProp(e, "Passed")));
+            }
+        } else {
+            List<HistoryEntry> rows = historyMemory.getOrDefault(u, Map.of())
+                    .getOrDefault(path, List.of());
+            for (int i = rows.size() - 1; i >= 0 && out.size() < capped; i--) {
+                HistoryEntry h = rows.get(i);
+                out.add(historyMap(h.code(), h.language(), h.updatedAt(), h.passed()));
+            }
+        }
+        return out;
+    }
+
+    /** Export all current saved solutions; history rows are intentionally excluded. */
+    public List<Map<String, Object>> allCurrent(String user) {
+        String u = norm(user);
+        List<Map<String, Object>> out = new ArrayList<>();
+        if (table != null) {
+            String filter = "PartitionKey eq '" + escape(u) + "'";
+            for (TableEntity e : table.listEntities(new ListEntitiesOptions().setFilter(filter), null, null)) {
+                String path = prop(e, "Path");
+                if (path.isBlank() || !e.getRowKey().equals(rowKey(path))) continue;
+                Map<String, Object> row = new LinkedHashMap<>();
+                row.put("path", path);
+                row.put("code", prop(e, "Code"));
+                row.put("language", language(prop(e, "Language")));
+                out.add(row);
+            }
+        } else {
+            memory.getOrDefault(u, Map.of()).values().forEach(s -> {
+                Map<String, Object> row = new LinkedHashMap<>();
+                row.put("path", s.path());
+                row.put("code", s.code());
+                row.put("language", language(s.language()));
+                out.add(row);
+            });
         }
         return out;
     }
@@ -174,6 +252,25 @@ public class SolutionsService {
         return v == null ? "" : v.toString();
     }
 
+    private static boolean boolProp(TableEntity e, String name) {
+        Object value = e.getProperty(name);
+        return value instanceof Boolean b ? b : Boolean.parseBoolean(value == null ? "false" : value.toString());
+    }
+
+    private static Map<String, Object> historyMap(String code, String language, String updatedAt,
+                                                   boolean passed) {
+        Map<String, Object> out = new LinkedHashMap<>();
+        out.put("code", code == null ? "" : code);
+        out.put("language", language(language));
+        out.put("updatedAt", updatedAt == null ? "" : updatedAt);
+        out.put("passed", passed);
+        return out;
+    }
+
+    private static String language(String language) {
+        return language == null || language.isBlank() ? "python" : language;
+    }
+
     private static String norm(String user) {
         return (user == null || user.isBlank()) ? "default" : user;
     }
@@ -191,4 +288,6 @@ public class SolutionsService {
 
     private record SavedSolution(String path, String section, String code, String language,
                                  String updatedAt) { }
+
+    private record HistoryEntry(String code, String language, String updatedAt, boolean passed) { }
 }

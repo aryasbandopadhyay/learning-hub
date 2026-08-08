@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
@@ -95,6 +98,35 @@ public class ProgressService {
         } else {
             memory.getOrDefault(u, Map.of()).forEach((path, sec) -> {
                 if (section == null || section.isBlank() || section.equals(sec)) out.add(path);
+            });
+        }
+        return out;
+    }
+
+    /**
+     * Return every completion row with the section retained. Unlike {@link #completed(String,
+     * String)}, this export-oriented view does not discard the {@code Section} property.
+     */
+    public List<Map<String, Object>> entries(String user) {
+        String u = norm(user);
+        List<Map<String, Object>> out = new ArrayList<>();
+        if (table != null) {
+            String filter = "PartitionKey eq '" + escape(u) + "'";
+            for (TableEntity e : table.listEntities(new ListEntitiesOptions().setFilter(filter), null, null)) {
+                Object path = e.getProperty("Path");
+                if (path == null) continue;
+                Map<String, Object> row = new LinkedHashMap<>();
+                row.put("path", path.toString());
+                Object section = e.getProperty("Section");
+                row.put("section", section == null ? "" : section.toString());
+                out.add(row);
+            }
+        } else {
+            memory.getOrDefault(u, Map.of()).forEach((path, section) -> {
+                Map<String, Object> row = new LinkedHashMap<>();
+                row.put("path", path);
+                row.put("section", section == null ? "" : section);
+                out.add(row);
             });
         }
         return out;

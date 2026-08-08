@@ -14,6 +14,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -125,6 +128,7 @@ public class JudgeService {
             out.put("reason", "Judge is disabled.");
             return mapper.convertValue(out, Map.class);
         }
+
         Path mf = manifestForPath(contentPath);
         if (mf == null) {
             out.put("available", false);
@@ -163,6 +167,36 @@ public class JudgeService {
         }
         out.set("solutions", solOut);
         return mapper.convertValue(out, Map.class);
+    }
+
+    /**
+     * Reveal a small learner-requested sample of non-example tests. Generated/random tests are
+     * preferred; manifests containing examples only fall back to those examples.
+     */
+    public List<Map<String, Object>> revealTests(String contentPath, int n) {
+        Path mf = manifestForPath(contentPath);
+        if (mf == null) return List.of();
+        JsonNode tests = readManifest(mf).path("tests");
+        List<JsonNode> candidates = new ArrayList<>();
+        for (JsonNode test : tests) {
+            if (!"example".equals(test.path("kind").asText())) candidates.add(test);
+        }
+        if (candidates.isEmpty()) {
+            for (JsonNode test : tests) {
+                if ("example".equals(test.path("kind").asText())) candidates.add(test);
+            }
+        }
+        List<Map<String, Object>> out = new ArrayList<>();
+        for (JsonNode test : candidates) {
+            if (out.size() >= Math.max(0, n)) break;
+            Map<String, Object> row = new LinkedHashMap<>();
+            row.put("id", test.path("id").asText(""));
+            row.put("kind", test.path("kind").asText(""));
+            row.put("input", mapper.convertValue(test.path("args"), Object.class));
+            row.put("expected", mapper.convertValue(test.path("expected"), Object.class));
+            out.add(row);
+        }
+        return out;
     }
 
     // -----------------------------------------------------------------------------------------
@@ -284,18 +318,55 @@ public class JudgeService {
                     "Judge runner not found at " + runner);
         }
 
+        return executeRunner(mf, code, runMode, null);
+    }
+
+    /**
+     * Execute one caller-supplied argument list. {@code inputJson} is the runner document
+     * {@code {"args":[...]}} prepared and validated by the controller.
+     */
+    public Map<String, Object> runCustom(String contentPath, String code, String inputJson) {
+        if (!enabled()) {
+            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Judge is disabled");
+        }
+        if (code == null || code.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "code is required");
+        }
+        if (inputJson == null || inputJson.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "input is required");
+        }
+        Path mf = manifestForPath(contentPath);
+        if (mf == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No judge manifest for this problem");
+        }
+        if (!Files.isRegularFile(runner)) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Judge runner not found at " + runner);
+        }
+        return executeRunner(mf, code, "custom", inputJson);
+    }
+
+    /** Write invocation files, run the one-shot Python process, parse JSON, and clean up. */
+    private Map<String, Object> executeRunner(Path mf, String code, String mode, String inputJson) {
         Path submission = null;
+        Path input = null;
         Process proc = null;
         try {
-            submission = Files.createTempFile("submission-", ".py");
+            submission = Files.createTempFile(judgeDir, "submission-", ".py");
             Files.writeString(submission, code, StandardCharsets.UTF_8);
 
-            ProcessBuilder pb = new ProcessBuilder(
-                    props.pythonExe(),
-                    runner.toString(),
+            List<String> command = new ArrayList<>(List.of(
+                    props.pythonExe(), runner.toString(),
                     "--manifest", mf.toString(),
                     "--submission", submission.toString(),
-                    "--mode", runMode);
+                    "--mode", mode));
+            if (inputJson != null) {
+                input = Files.createTempFile(judgeDir, "custom-input-", ".json");
+                Files.writeString(input, inputJson, StandardCharsets.UTF_8);
+                command.add("--input");
+                command.add(input.toString());
+            }
+            ProcessBuilder pb = new ProcessBuilder(command);
             pb.directory(judgeDir.toFile());
             pb.redirectErrorStream(false);
             proc = pb.start();
@@ -343,6 +414,13 @@ public class JudgeService {
             if (submission != null) {
                 try {
                     Files.deleteIfExists(submission);
+                } catch (IOException ignore) {
+                    // temp file cleanup is best-effort
+                }
+            }
+            if (input != null) {
+                try {
+                    Files.deleteIfExists(input);
                 } catch (IOException ignore) {
                     // temp file cleanup is best-effort
                 }

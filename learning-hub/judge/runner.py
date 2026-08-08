@@ -6,6 +6,7 @@ Given a *manifest* (JSON describing a problem + its test cases) and a *submissio
 
   * mode="run"        -> executes the submission against every test case and reports
                          per-test pass/fail, timing and the captured output.
+  * mode="custom"     -> executes the submission once with a caller-supplied args array.
   * mode="complexity" -> runs the submission across increasing input sizes and
                          estimates time and space complexity. TIME is estimated by
                          *counting operations* deterministically (executed submission
@@ -25,6 +26,7 @@ best-fit class, a confidence score, and mark low-confidence fits as "inconclusiv
 
 Usage:
     python runner.py --manifest <path> --submission <path> --mode run
+    python runner.py --manifest <path> --submission <path> --mode custom --input <path>
     python runner.py --manifest <path> --submission <path> --mode complexity
 """
 
@@ -303,13 +305,43 @@ def _run_design_case(cls, ops, args_list):
     return outputs
 
 
-def mode_run(manifest: dict, source: str) -> dict:
+def run_single_case(manifest: dict, ns: dict, cls, args):
+    """Dispatch one invocation using the manifest's normal shape/adaptation rules.
+
+    Both graded tests and custom runs call this helper so tree/list conversion, codecs,
+    in-place results, and ordinary function calls cannot drift between the two modes.
+    For design problems `args` is a small internal document containing `ops` and `args`.
+    """
     shape = manifest.get("shape", "function")
+    entry = manifest.get("entry")
+    arg_kinds = manifest.get("argKinds")
+    in_place_arg = manifest.get("inPlaceArg")
+
+    if shape == "design":
+        return _run_design_case(cls, args["ops"], args["args"])
+    if shape == "codec":
+        instance = cls()
+        call_args = json.loads(json.dumps(args))
+        encoded = instance.encode(*call_args)
+        return instance.decode(encoded)
+    if in_place_arg is not None:
+        instance = cls()
+        method = getattr(instance, entry)
+        call_args = json.loads(json.dumps(args))
+        if arg_kinds and ns is not None:
+            call_args = [_convert_arg(v, arg_kinds[i] if i < len(arg_kinds) else "plain", ns)
+                         for i, v in enumerate(call_args)]
+        method(*call_args)
+        got = call_args[in_place_arg]
+        return _convert_result(got, ns) if ns is not None else got
+    return _run_function_case(cls, entry, args, arg_kinds, ns)
+
+
+def mode_run(manifest: dict, source: str) -> dict:
     class_name = manifest.get("className", "Solution")
     entry = manifest.get("entry")
     compare_mode = manifest.get("compareMode", "exact")
     helper_code = manifest.get("helperCode", "")
-    arg_kinds = manifest.get("argKinds")
 
     try:
         ns = _compile_namespace(source, helper_code)
@@ -331,7 +363,6 @@ def mode_run(manifest: dict, source: str) -> dict:
             "summary": {"passed": 0, "total": 0},
         }
 
-    in_place_arg = manifest.get("inPlaceArg")
     results = []
     passed = 0
     tests = manifest.get("tests", [])
@@ -341,28 +372,9 @@ def mode_run(manifest: dict, source: str) -> dict:
         try:
             t0 = time.perf_counter()
             with redirect_stdout(buf):
-                if shape == "design":
-                    got = _run_design_case(cls, tc["ops"], tc["args"])
-                elif shape == "codec":
-                    # Round-trip codec: decode(encode(x)) must equal the original input.
-                    instance = cls()
-                    call_args = json.loads(json.dumps(tc["args"]))
-                    encoded = instance.encode(*call_args)
-                    got = instance.decode(encoded)
-                elif in_place_arg is not None:
-                    # In-place problem: the solution mutates an argument and returns None.
-                    instance = cls()
-                    method = getattr(instance, entry)
-                    call_args = json.loads(json.dumps(tc["args"]))
-                    if arg_kinds and ns is not None:
-                        call_args = [_convert_arg(v, arg_kinds[i] if i < len(arg_kinds) else "plain", ns)
-                                     for i, v in enumerate(call_args)]
-                    method(*call_args)
-                    got = call_args[in_place_arg]
-                    if ns is not None:
-                        got = _convert_result(got, ns)
-                else:
-                    got = _run_function_case(cls, entry, tc["args"], arg_kinds, ns)
+                case_args = ({"ops": tc["ops"], "args": tc["args"]}
+                             if manifest.get("shape") == "design" else tc["args"])
+                got = run_single_case(manifest, ns, cls, case_args)
             elapsed_ms = (time.perf_counter() - t0) * 1000.0
 
             validator = _build_validator(tc.get("validatorCode") or manifest.get("validatorCode"))
@@ -402,6 +414,30 @@ def mode_run(manifest: dict, source: str) -> dict:
             "totalTimeMs": round(sum(r.get("timeMs", 0.0) for r in results), 4),
         },
     }
+
+
+def mode_custom(manifest: dict, source: str, input_document: dict) -> dict:
+    """Compile and execute one caller-provided `{"args": [...]}` input document."""
+    buf = io.StringIO()
+    try:
+        with redirect_stdout(buf):
+            ns = _compile_namespace(source, manifest.get("helperCode", ""))
+            cls = _find_solution_class(
+                ns, manifest.get("className", "Solution"), manifest.get("entry"))
+            args = input_document["args"]
+            if manifest.get("shape") == "design":
+                # Direct runner callers may supply {"args": {"ops": [...], "args": [...]}}.
+                # The web endpoint intentionally accepts arrays for ordinary coding problems.
+                if not isinstance(args, dict) or "ops" not in args or "args" not in args:
+                    raise ValueError("custom design input requires args containing ops and args")
+            result = run_single_case(manifest, ns, cls, args)
+        return {"ok": True, "result": result, "stdout": buf.getvalue()}
+    except Exception:
+        return {
+            "ok": False,
+            "error": traceback.format_exc(limit=4),
+            "stdout": buf.getvalue(),
+        }
 
 
 # --------------------------------------------------------------------------------------
@@ -875,13 +911,20 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="Local DSA judge runner")
     parser.add_argument("--manifest", required=True)
     parser.add_argument("--submission", required=True)
-    parser.add_argument("--mode", choices=["run", "complexity"], default="run")
+    parser.add_argument("--mode", choices=["run", "custom", "complexity"], default="run")
+    parser.add_argument("--input", help="JSON file containing {'args': [...]} for custom mode")
     args = parser.parse_args(argv)
 
     with open(args.manifest, encoding="utf-8") as f:
         manifest = json.load(f)
     with open(args.submission, encoding="utf-8") as f:
         source = f.read()
+    input_document = None
+    if args.mode == "custom":
+        if not args.input:
+            parser.error("--input is required when --mode custom")
+        with open(args.input, encoding="utf-8") as f:
+            input_document = json.load(f)
 
     # Everything below runs untrusted code — turn on the sandbox now that the manifest
     # and submission files have already been read from disk.
@@ -889,6 +932,8 @@ def main(argv=None):
 
     if args.mode == "complexity":
         out = mode_complexity(manifest, source)
+    elif args.mode == "custom":
+        out = mode_custom(manifest, source, input_document)
     else:
         out = mode_run(manifest, source)
 
