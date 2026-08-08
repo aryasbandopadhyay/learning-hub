@@ -834,12 +834,19 @@ function renderComplexity(res) {
           ? `inconclusive <em>(best guess ${escapeHtml(guess)}, conf ${conf})</em>`
           : `inconclusive <em>(conf ${conf})</em>`)
       : `${escapeHtml(label)} <em>(conf ${conf})</em>`;
+  const expected = res.expected
+    ? `<p class="judge-note"><strong>Expected (multi-variable):</strong> ${escapeHtml(res.expected)}</p>`
+    : "";
+  const table = (res.samples && res.samples.length)
+    ? `<table class="judge-table"><thead><tr><th>n</th><th>ops</th><th>peak mem</th></tr></thead><tbody>${rows}</tbody></table>`
+    : "";
   return `
     <div class="judge-summary">
       <span class="verdict est">⏱ time ≈ ${fmt(res.timeComplexity, res.timeConfidence, res.timeGuess)}</span>
       <span class="verdict est">💾 space ≈ ${fmt(res.spaceComplexity, res.spaceConfidence, res.spaceGuess)}</span>
     </div>
-    <table class="judge-table"><thead><tr><th>n</th><th>ops</th><th>peak mem</th></tr></thead><tbody>${rows}</tbody></table>
+    ${expected}
+    ${table}
     <p class="judge-note">${escapeHtml(res.note || "")}</p>`;
 }
 

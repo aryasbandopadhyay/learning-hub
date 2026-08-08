@@ -472,6 +472,7 @@ def _fit_complexity(sizes, measures):
 # The resulting counts are fit to a Big-O class exactly like the timing curve was.
 
 _OPS = [0]  # single-slot mutable counter shared by the tracer and instrumented built-ins
+_COVERED = set()  # submission line numbers that actually executed (for coverage detection)
 
 
 def _add_ops(k):
@@ -583,13 +584,38 @@ def _install_builtin_surcharges(ns):
 
 
 def _op_tracer(frame, event, arg):
-    """sys.settrace hook: count one op per executed *submission* source line. Non-user
-    frames (stdlib, runner) are not traced, so their C work is handled by the surcharges."""
+    """sys.settrace hook: count one op per executed *submission* source line and record
+    which lines actually ran (for coverage). Non-user frames (stdlib, runner) are not
+    traced, so their C work is handled by the surcharges."""
     if frame.f_code.co_filename == "<submission>":
         if event == "line":
             _OPS[0] += 1
+            _COVERED.add(frame.f_lineno)
         return _op_tracer
     return None
+
+
+def _candidate_lines(code):
+    """Collect every source line that carries an instruction in `code` and all of its
+    nested code objects (e.g. an inner `dfs`). Used as the denominator for coverage."""
+    lines = set()
+    stack = [code]
+    seen = set()
+    while stack:
+        c = stack.pop()
+        if id(c) in seen:
+            continue
+        seen.add(id(c))
+        try:
+            for _start, _end, lineno in c.co_lines():
+                if lineno is not None:
+                    lines.add(lineno)
+        except AttributeError:  # pragma: no cover - older interpreters
+            lines.add(c.co_firstlineno)
+        for const in c.co_consts:
+            if hasattr(const, "co_code"):
+                stack.append(const)
+    return lines
 
 
 def _count_ops(cls, entry, gen_spec, n, seed):
@@ -635,18 +661,26 @@ def _make_input(gen_spec: dict, n: int, rng: random.Random, counting: bool = Fal
             hi_t = max(lo, min(hi, max(1, n)))
             args.append(rng.randint(lo, hi_t))
         elif role == "size":
+            charset = p.get("charset", "abcde")
+            cell_len = p.get("cellLen", 3)  # token length for list[str]; cells default to 3 chars
             if typ == "list[int]":
                 vals = [rng.randint(lo, hi) for _ in range(n)]
                 args.append(_CountingList(vals) if counting else vals)
             elif typ == "list[str]":
-                vals = ["".join(rng.choice("abcde") for _ in range(3)) for _ in range(n)]
+                vals = ["".join(rng.choice(charset) for _ in range(cell_len)) for _ in range(n)]
                 args.append(_CountingList(vals) if counting else vals)
             elif typ == "list[list[int]]":
                 w = p.get("width", 3)
                 rows = [[rng.randint(lo, hi) for _ in range(w)] for _ in range(n)]
                 args.append(_CountingList(rows) if counting else rows)
+            elif typ == "list[list[str]]":
+                # Character grid (e.g. board of single letters). Each cell is one char so
+                # neighbour comparisons against word letters actually match and recurse.
+                w = p.get("width", 4)
+                rows = [[rng.choice(charset) for _ in range(w)] for _ in range(n)]
+                args.append(_CountingList(rows) if counting else rows)
             elif typ == "str":
-                args.append("".join(rng.choice("abcde") for _ in range(n)))
+                args.append("".join(rng.choice(charset) for _ in range(n)))
             else:
                 vals = [rng.randint(lo, hi) for _ in range(n)]
                 args.append(_CountingList(vals) if counting else vals)
@@ -673,8 +707,36 @@ def mode_complexity(manifest: dict, source: str) -> dict:
     except Exception:
         return {"supported": True, "error": traceback.format_exc(limit=3)}
 
+    # ---- Multi-variable / non-estimable problems ----------------------------------------
+    # Some problems have complexity governed by a dimension we hold constant (e.g. Word
+    # Search II is O(W·m·n·4^L) — exponential in word length L). Single-axis input scaling
+    # structurally cannot recover such formulas, so the manifest can opt out with
+    # "estimable": false and provide the authoritative "expected" Big-O to display instead.
+    if comp.get("estimable") is False:
+        expected = comp.get("expected", "")
+        return {
+            "supported": True,
+            "method": "not-estimable",
+            "timeComplexity": "inconclusive",
+            "timeConfidence": 0.0,
+            "spaceComplexity": "inconclusive",
+            "spaceConfidence": 0.0,
+            "expected": expected,
+            "samples": [],
+            "note": "This problem's complexity is multi-variable and cannot be measured by "
+                    "scaling a single input dimension"
+                    + (f". Expected: {expected}." if expected else "."),
+        }
+
     gen_spec = comp.get("genSpec", {})
     seed = 1234567
+
+    # Candidate lines of the entry method (+ nested functions) for coverage detection.
+    try:
+        entry_fn = getattr(cls, entry)
+        candidate_lines = _candidate_lines(entry_fn.__code__)
+    except Exception:
+        candidate_lines = set()
 
     # ---- Adaptive input sizes -----------------------------------------------------------
     # A geometric ladder gives the curve fit maximum leverage. We stop early once a run
@@ -688,6 +750,7 @@ def mode_complexity(manifest: dict, source: str) -> dict:
     TIME_GUARD = 1.5  # seconds per size before we stop growing
 
     # ---- Pass 1: deterministic operation counting (TIME) --------------------------------
+    _COVERED.clear()
     restore = _install_builtin_surcharges(ns)
     sizes, ops, samples = [], [], []
     try:
@@ -742,14 +805,32 @@ def mode_complexity(manifest: dict, source: str) -> dict:
     else:
         space_label, space_conf = "inconclusive", 0.0
 
+    # ---- Coverage check: did the generated input actually exercise the solution? --------
+    # If a large fraction of the entry method / its nested functions never ran (e.g. a DFS
+    # that was never triggered because the generated grid didn't match), the measurement
+    # reflects only a trivial code path and the estimate is not trustworthy.
+    coverage = 1.0
+    if candidate_lines:
+        covered = len(candidate_lines & _COVERED)
+        coverage = covered / len(candidate_lines)
+    low_coverage = coverage < 0.6
+
     # ---- Inconclusive gating: never assert a class we don't trust -----------------------
     CONF_MIN = 0.35
     time_guess = time_label
-    if time_label != "inconclusive" and time_conf < CONF_MIN:
+    if time_label != "inconclusive" and (time_conf < CONF_MIN or low_coverage):
         time_label = "inconclusive"
     space_guess = space_label
-    if space_label != "inconclusive" and space_conf < CONF_MIN:
+    if space_label != "inconclusive" and (space_conf < CONF_MIN or low_coverage):
         space_label = "inconclusive"
+
+    note = ("Time is estimated by counting operations (deterministic, wall-clock free); "
+            "space is peak auxiliary memory with the input excluded. Low-confidence fits "
+            "are reported as 'inconclusive'.")
+    if low_coverage:
+        note = (f"Only {round(coverage * 100)}% of your solution's lines ran on the generated "
+                "input, so parts of the algorithm (e.g. a recursion/branch) were never "
+                "exercised — the estimate is unreliable and reported as 'inconclusive'. " + note)
 
     return {
         "supported": True,
@@ -760,10 +841,9 @@ def mode_complexity(manifest: dict, source: str) -> dict:
         "spaceComplexity": space_label,
         "spaceConfidence": space_conf,
         "spaceGuess": space_guess,
+        "coverage": round(coverage, 3),
         "samples": samples,
-        "note": "Time is estimated by counting operations (deterministic, wall-clock free); "
-                "space is peak auxiliary memory with the input excluded. Low-confidence "
-                "fits are reported as 'inconclusive'.",
+        "note": note,
     }
 
 

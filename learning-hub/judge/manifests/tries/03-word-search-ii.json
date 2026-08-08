@@ -222,11 +222,12 @@
       "params": [
         {
           "name": "board",
-          "type": "list[list[int]]",
+          "type": "list[list[str]]",
           "role": "size",
           "lo": -10000,
           "hi": 10000,
-          "width": 4
+          "width": 4,
+          "charset": "oaenrtip"
         },
         {
           "name": "words",
@@ -240,7 +241,9 @@
           ]
         }
       ]
-    }
+    },
+    "estimable": false,
+    "expected": "O(W * m * n * 4^L)  (words * board cells * 4-way DFS to word length L)"
   },
   "id": "tries/03-word-search-ii",
   "title": "Word Search II",
