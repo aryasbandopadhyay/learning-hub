@@ -52,6 +52,171 @@
         true,
         true
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
+      "ops": [
+        "WordDictionary",
+        "addWord",
+        "addWord",
+        "addWord",
+        "search",
+        "search",
+        "search",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "bad"
+        ],
+        [
+          "dad"
+        ],
+        [
+          "mad"
+        ],
+        [
+          "pad"
+        ],
+        [
+          "bad"
+        ],
+        [
+          ".ad"
+        ],
+        [
+          "b.."
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        false,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "wildcard no match by length",
+      "ops": [
+        "WordDictionary",
+        "addWord",
+        "search",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "abc"
+        ],
+        [
+          "...."
+        ],
+        [
+          "..."
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        false,
+        true
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "all wildcards",
+      "ops": [
+        "WordDictionary",
+        "addWord",
+        "addWord",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "a"
+        ],
+        [
+          "b"
+        ],
+        [
+          "."
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        true
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "no words added",
+      "ops": [
+        "WordDictionary",
+        "search",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "a"
+        ],
+        [
+          "."
+        ]
+      ],
+      "expected": [
+        null,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "mixed literal and wildcard",
+      "ops": [
+        "WordDictionary",
+        "addWord",
+        "addWord",
+        "search",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "cat"
+        ],
+        [
+          "cot"
+        ],
+        [
+          "c.t"
+        ],
+        [
+          "c.g"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        true,
+        false
+      ]
     }
   ],
   "id": "tries/02-design-add-and-search-words-data-structure",

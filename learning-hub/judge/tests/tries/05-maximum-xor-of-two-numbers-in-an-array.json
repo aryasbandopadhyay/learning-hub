@@ -1,0 +1,93 @@
+{
+  "id": "tries/05-maximum-xor-of-two-numbers-in-an-array",
+  "note": "findMaximumXOR(nums): max XOR of any two elements.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          3,
+          10,
+          5,
+          25,
+          2,
+          8
+        ]
+      ],
+      "expected": 28
+    },
+    {
+      "label": "second example",
+      "args": [
+        [
+          14,
+          70,
+          53,
+          83,
+          49,
+          91,
+          36,
+          80,
+          92,
+          51,
+          66,
+          70
+        ]
+      ],
+      "expected": 127
+    },
+    {
+      "label": "two elements",
+      "args": [
+        [
+          2,
+          4
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "label": "all same",
+      "args": [
+        [
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "includes zero",
+      "args": [
+        [
+          0,
+          8
+        ]
+      ],
+      "expected": 8
+    },
+    {
+      "label": "powers of two",
+      "args": [
+        [
+          1,
+          2,
+          4,
+          8
+        ]
+      ],
+      "expected": 12
+    },
+    {
+      "label": "small pair",
+      "args": [
+        [
+          3,
+          1
+        ]
+      ],
+      "expected": 2
+    }
+  ]
+}

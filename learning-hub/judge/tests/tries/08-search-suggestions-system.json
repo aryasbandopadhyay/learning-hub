@@ -1,0 +1,159 @@
+{
+  "id": "tries/08-search-suggestions-system",
+  "note": "suggestedProducts(products, searchWord): up to 3 lexicographically smallest products per prefix.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          "mobile",
+          "mouse",
+          "moneypot",
+          "monitor",
+          "mousepad"
+        ],
+        "mouse"
+      ],
+      "expected": [
+        [
+          "mobile",
+          "moneypot",
+          "monitor"
+        ],
+        [
+          "mobile",
+          "moneypot",
+          "monitor"
+        ],
+        [
+          "mouse",
+          "mousepad"
+        ],
+        [
+          "mouse",
+          "mousepad"
+        ],
+        [
+          "mouse",
+          "mousepad"
+        ]
+      ]
+    },
+    {
+      "label": "all share prefix",
+      "args": [
+        [
+          "bags",
+          "baggage",
+          "banner",
+          "box",
+          "cloths"
+        ],
+        "bags"
+      ],
+      "expected": [
+        [
+          "baggage",
+          "bags",
+          "banner"
+        ],
+        [
+          "baggage",
+          "bags",
+          "banner"
+        ],
+        [
+          "baggage",
+          "bags"
+        ],
+        [
+          "bags"
+        ]
+      ]
+    },
+    {
+      "label": "no matches partway",
+      "args": [
+        [
+          "a",
+          "abc"
+        ],
+        "abz"
+      ],
+      "expected": [
+        [
+          "a",
+          "abc"
+        ],
+        [
+          "abc"
+        ],
+        []
+      ]
+    },
+    {
+      "label": "single product",
+      "args": [
+        [
+          "apple"
+        ],
+        "app"
+      ],
+      "expected": [
+        [
+          "apple"
+        ],
+        [
+          "apple"
+        ],
+        [
+          "apple"
+        ]
+      ]
+    },
+    {
+      "label": "fewer than three matches",
+      "args": [
+        [
+          "cat",
+          "car"
+        ],
+        "ca"
+      ],
+      "expected": [
+        [
+          "car",
+          "cat"
+        ],
+        [
+          "car",
+          "cat"
+        ]
+      ]
+    },
+    {
+      "label": "exact three",
+      "args": [
+        [
+          "ab",
+          "abc",
+          "abd",
+          "abe"
+        ],
+        "ab"
+      ],
+      "expected": [
+        [
+          "ab",
+          "abc",
+          "abd"
+        ],
+        [
+          "ab",
+          "abc",
+          "abd"
+        ]
+      ]
+    }
+  ]
+}

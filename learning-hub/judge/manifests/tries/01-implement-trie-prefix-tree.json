@@ -47,6 +47,181 @@
         null,
         true
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
+      "ops": [
+        "Trie",
+        "insert",
+        "search",
+        "search",
+        "startsWith",
+        "insert",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "apple"
+        ],
+        [
+          "apple"
+        ],
+        [
+          "app"
+        ],
+        [
+          "app"
+        ],
+        [
+          "app"
+        ],
+        [
+          "app"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        true,
+        false,
+        true,
+        null,
+        true
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "prefix vs word",
+      "ops": [
+        "Trie",
+        "insert",
+        "startsWith",
+        "search",
+        "startsWith"
+      ],
+      "args": [
+        [],
+        [
+          "hello"
+        ],
+        [
+          "hell"
+        ],
+        [
+          "hell"
+        ],
+        [
+          "world"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "empty trie searches",
+      "ops": [
+        "Trie",
+        "search",
+        "startsWith"
+      ],
+      "args": [
+        [],
+        [
+          "a"
+        ],
+        [
+          "a"
+        ]
+      ],
+      "expected": [
+        null,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "shared prefixes",
+      "ops": [
+        "Trie",
+        "insert",
+        "insert",
+        "search",
+        "search",
+        "startsWith",
+        "startsWith"
+      ],
+      "args": [
+        [],
+        [
+          "car"
+        ],
+        [
+          "card"
+        ],
+        [
+          "car"
+        ],
+        [
+          "ca"
+        ],
+        [
+          "car"
+        ],
+        [
+          "cards"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        true,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "reinsert same word",
+      "ops": [
+        "Trie",
+        "insert",
+        "insert",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "dog"
+        ],
+        [
+          "dog"
+        ],
+        [
+          "dog"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        true
+      ]
     }
   ],
   "id": "tries/01-implement-trie-prefix-tree",

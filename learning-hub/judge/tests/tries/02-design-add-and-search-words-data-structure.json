@@ -1,0 +1,161 @@
+{
+  "id": "tries/02-design-add-and-search-words-data-structure",
+  "note": "design: WordDictionary addWord/search where '.' matches any single char.",
+  "cases": [
+    {
+      "label": "classic example",
+      "ops": [
+        "WordDictionary",
+        "addWord",
+        "addWord",
+        "addWord",
+        "search",
+        "search",
+        "search",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "bad"
+        ],
+        [
+          "dad"
+        ],
+        [
+          "mad"
+        ],
+        [
+          "pad"
+        ],
+        [
+          "bad"
+        ],
+        [
+          ".ad"
+        ],
+        [
+          "b.."
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        false,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "label": "wildcard no match by length",
+      "ops": [
+        "WordDictionary",
+        "addWord",
+        "search",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "abc"
+        ],
+        [
+          "...."
+        ],
+        [
+          "..."
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        false,
+        true
+      ]
+    },
+    {
+      "label": "all wildcards",
+      "ops": [
+        "WordDictionary",
+        "addWord",
+        "addWord",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "a"
+        ],
+        [
+          "b"
+        ],
+        [
+          "."
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        true
+      ]
+    },
+    {
+      "label": "no words added",
+      "ops": [
+        "WordDictionary",
+        "search",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "a"
+        ],
+        [
+          "."
+        ]
+      ],
+      "expected": [
+        null,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "mixed literal and wildcard",
+      "ops": [
+        "WordDictionary",
+        "addWord",
+        "addWord",
+        "search",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "cat"
+        ],
+        [
+          "cot"
+        ],
+        [
+          "c.t"
+        ],
+        [
+          "c.g"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        true,
+        false
+      ]
+    }
+  ]
+}

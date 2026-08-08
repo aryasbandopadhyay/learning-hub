@@ -49,6 +49,163 @@
         "eat",
         "oath"
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
+      "args": [
+        [
+          [
+            "o",
+            "a",
+            "a",
+            "n"
+          ],
+          [
+            "e",
+            "t",
+            "a",
+            "e"
+          ],
+          [
+            "i",
+            "h",
+            "k",
+            "r"
+          ],
+          [
+            "i",
+            "f",
+            "l",
+            "v"
+          ]
+        ],
+        [
+          "oath",
+          "pea",
+          "eat",
+          "rain"
+        ]
+      ],
+      "expected": [
+        "oath",
+        "eat"
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "none found",
+      "args": [
+        [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "c",
+            "d"
+          ]
+        ],
+        [
+          "xyz",
+          "efg"
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single cell match",
+      "args": [
+        [
+          [
+            "a"
+          ]
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected": [
+        "a"
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "simple two-letter",
+      "args": [
+        [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "c",
+            "d"
+          ]
+        ],
+        [
+          "ab",
+          "cd",
+          "ac",
+          "bd"
+        ]
+      ],
+      "expected": [
+        "ac",
+        "ab",
+        "bd",
+        "cd"
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "no reuse of cell",
+      "args": [
+        [
+          [
+            "a",
+            "a"
+          ]
+        ],
+        [
+          "aaa",
+          "aa"
+        ]
+      ],
+      "expected": [
+        "aa"
+      ]
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "word longer than board",
+      "args": [
+        [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "c",
+            "d"
+          ]
+        ],
+        [
+          "abcd",
+          "abdc"
+        ]
+      ],
+      "expected": [
+        "abdc"
+      ]
     }
   ],
   "complexity": {

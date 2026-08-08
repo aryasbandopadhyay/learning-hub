@@ -1,0 +1,72 @@
+{
+  "id": "tries/04-replace-words",
+  "note": "replaceWords(dictionary, sentence): replace each word by shortest root prefix.",
+  "cases": [
+    {
+      "label": "classic example",
+      "args": [
+        [
+          "cat",
+          "bat",
+          "rat"
+        ],
+        "the cattle was rattled by the battery"
+      ],
+      "expected": "the cat was rat by the bat"
+    },
+    {
+      "label": "second example",
+      "args": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        "aadsfasf absbs bbab cadsfafs"
+      ],
+      "expected": "a a b c"
+    },
+    {
+      "label": "no roots apply",
+      "args": [
+        [
+          "xyz"
+        ],
+        "hello world"
+      ],
+      "expected": "hello world"
+    },
+    {
+      "label": "shortest root wins",
+      "args": [
+        [
+          "a",
+          "aa",
+          "aaa"
+        ],
+        "aaaa a aa aaa"
+      ],
+      "expected": "a a a a"
+    },
+    {
+      "label": "single word",
+      "args": [
+        [
+          "catt"
+        ],
+        "cattle"
+      ],
+      "expected": "catt"
+    },
+    {
+      "label": "root equals word",
+      "args": [
+        [
+          "cat"
+        ],
+        "cat dog"
+      ],
+      "expected": "cat dog"
+    }
+  ]
+}

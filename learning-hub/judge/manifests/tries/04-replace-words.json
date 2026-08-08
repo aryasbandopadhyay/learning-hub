@@ -22,235 +22,82 @@
       "expected": "the cat was rat by the bat"
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
       "args": [
         [
-          "dbe",
-          "bbb",
-          "bac",
-          "dee",
-          "aed",
-          "bde",
-          "ebc",
-          "dbb",
-          "dbe",
-          "cae",
-          "adc",
-          "dac",
-          "ead",
-          "bce",
-          "ade",
-          "bed",
-          "acb",
-          "bbd",
-          "ebe",
-          "baa"
+          "cat",
+          "bat",
+          "rat"
         ],
         "the cattle was rattled by the battery"
       ],
-      "expected": "the cattle was rattled by the battery"
+      "expected": "the cat was rat by the bat"
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "second example",
       "args": [
         [
-          "dad",
-          "abc",
-          "ead",
-          "cbe",
-          "dba",
-          "bdc",
-          "edb",
-          "cda",
-          "beb",
-          "eda",
-          "aab",
-          "cbb",
-          "dbb",
-          "ecd",
-          "bca",
-          "cba",
-          "eca",
-          "eac",
-          "bdd",
-          "cdd",
-          "dce",
-          "aba",
-          "cdd",
-          "bcb",
-          "cac",
-          "bbd",
-          "cda",
-          "ddc",
-          "aec",
-          "cde",
-          "bcd",
-          "cde",
-          "bcd",
-          "eed",
-          "bdc",
-          "bca",
-          "ccb",
-          "bcd",
-          "bdc",
-          "daa",
-          "eeb",
-          "aec",
-          "bed",
-          "bcd",
-          "dee",
-          "eec",
-          "baa",
-          "cae",
-          "aad",
-          "cce"
+          "a",
+          "b",
+          "c"
         ],
-        "the cattle was rattled by the battery"
+        "aadsfasf absbs bbab cadsfafs"
       ],
-      "expected": "the cattle was rattled by the battery"
+      "expected": "a a b c"
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "no roots apply",
       "args": [
         [
-          "bad",
-          "dbc",
-          "dcb",
-          "bdd",
-          "deb",
-          "ccb",
-          "cde",
-          "dbd"
+          "xyz"
         ],
-        "the cattle was rattled by the battery"
+        "hello world"
       ],
-      "expected": "the cattle was rattled by the battery"
+      "expected": "hello world"
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "shortest root wins",
       "args": [
         [
-          "bae",
-          "bde",
-          "aac",
-          "dac",
-          "aee",
-          "cae",
-          "cdc",
-          "bbe",
-          "ada",
-          "ace",
-          "bec",
-          "bda",
-          "dbb",
-          "adb",
-          "ccc",
-          "aeb",
-          "ebc",
-          "eaa",
-          "bbb",
-          "eaa",
-          "edb",
-          "cbe",
-          "eeb",
-          "cac",
-          "dbc",
-          "bab",
-          "dea",
-          "bda",
-          "bed",
-          "eab",
-          "bdc",
-          "cce",
-          "aed",
-          "acb",
-          "bac",
-          "ecc",
-          "add",
-          "aac",
-          "bec",
-          "cca",
-          "dce",
-          "beb",
-          "acd",
-          "deb",
-          "bed",
-          "abb",
-          "cbe",
-          "ada",
-          "eab",
-          "bbc"
+          "a",
+          "aa",
+          "aaa"
         ],
-        "the cattle was rattled by the battery"
+        "aaaa a aa aaa"
       ],
-      "expected": "the cattle was rattled by the battery"
+      "expected": "a a a a"
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single word",
       "args": [
         [
-          "bed",
-          "baa",
-          "edd",
-          "abe",
-          "bcd",
-          "bde",
-          "ace",
-          "bbe"
+          "catt"
         ],
-        "the cattle was rattled by the battery"
+        "cattle"
       ],
-      "expected": "the cattle was rattled by the battery"
+      "expected": "catt"
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "root equals word",
       "args": [
         [
-          "deb",
-          "bbd"
+          "cat"
         ],
-        "the cattle was rattled by the battery"
+        "cat dog"
       ],
-      "expected": "the cattle was rattled by the battery"
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        [
-          "bcb",
-          "eee",
-          "abb",
-          "ebd",
-          "dee"
-        ],
-        "the cattle was rattled by the battery"
-      ],
-      "expected": "the cattle was rattled by the battery"
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        [
-          "cec",
-          "dba",
-          "aad",
-          "acb",
-          "acb",
-          "cca",
-          "eec",
-          "bca"
-        ],
-        "the cattle was rattled by the battery"
-      ],
-      "expected": "the cattle was rattled by the battery"
+      "expected": "cat dog"
     }
   ],
   "complexity": {

@@ -39,6 +39,165 @@
         null,
         5
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic example",
+      "ops": [
+        "MapSum",
+        "insert",
+        "sum",
+        "insert",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "apple",
+          3
+        ],
+        [
+          "ap"
+        ],
+        [
+          "app",
+          2
+        ],
+        [
+          "ap"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        3,
+        null,
+        5
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "overwrite key value",
+      "ops": [
+        "MapSum",
+        "insert",
+        "insert",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "a",
+          3
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          "a"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        2
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "prefix matches none",
+      "ops": [
+        "MapSum",
+        "insert",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "apple",
+          3
+        ],
+        [
+          "b"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        0
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "multiple keys share prefix",
+      "ops": [
+        "MapSum",
+        "insert",
+        "insert",
+        "insert",
+        "sum",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "ab",
+          1
+        ],
+        [
+          "abc",
+          2
+        ],
+        [
+          "abd",
+          4
+        ],
+        [
+          "ab"
+        ],
+        [
+          "abc"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        7,
+        2
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "full key as prefix",
+      "ops": [
+        "MapSum",
+        "insert",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "hello",
+          5
+        ],
+        [
+          "hello"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        5
+      ]
     }
   ],
   "id": "tries/07-map-sum-pairs",

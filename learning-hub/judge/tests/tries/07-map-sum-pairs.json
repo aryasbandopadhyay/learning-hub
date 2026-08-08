@@ -1,0 +1,155 @@
+{
+  "id": "tries/07-map-sum-pairs",
+  "note": "design: MapSum insert(key,val)/sum(prefix) = sum of values whose keys start with prefix.",
+  "cases": [
+    {
+      "label": "classic example",
+      "ops": [
+        "MapSum",
+        "insert",
+        "sum",
+        "insert",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "apple",
+          3
+        ],
+        [
+          "ap"
+        ],
+        [
+          "app",
+          2
+        ],
+        [
+          "ap"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        3,
+        null,
+        5
+      ]
+    },
+    {
+      "label": "overwrite key value",
+      "ops": [
+        "MapSum",
+        "insert",
+        "insert",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "a",
+          3
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          "a"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        2
+      ]
+    },
+    {
+      "label": "prefix matches none",
+      "ops": [
+        "MapSum",
+        "insert",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "apple",
+          3
+        ],
+        [
+          "b"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        0
+      ]
+    },
+    {
+      "label": "multiple keys share prefix",
+      "ops": [
+        "MapSum",
+        "insert",
+        "insert",
+        "insert",
+        "sum",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "ab",
+          1
+        ],
+        [
+          "abc",
+          2
+        ],
+        [
+          "abd",
+          4
+        ],
+        [
+          "ab"
+        ],
+        [
+          "abc"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        7,
+        2
+      ]
+    },
+    {
+      "label": "full key as prefix",
+      "ops": [
+        "MapSum",
+        "insert",
+        "sum"
+      ],
+      "args": [
+        [],
+        [
+          "hello",
+          5
+        ],
+        [
+          "hello"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        5
+      ]
+    }
+  ]
+}

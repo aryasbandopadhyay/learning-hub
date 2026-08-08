@@ -1,0 +1,171 @@
+{
+  "id": "tries/01-implement-trie-prefix-tree",
+  "note": "design: Trie insert/search/startsWith.",
+  "cases": [
+    {
+      "label": "classic example",
+      "ops": [
+        "Trie",
+        "insert",
+        "search",
+        "search",
+        "startsWith",
+        "insert",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "apple"
+        ],
+        [
+          "apple"
+        ],
+        [
+          "app"
+        ],
+        [
+          "app"
+        ],
+        [
+          "app"
+        ],
+        [
+          "app"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        true,
+        false,
+        true,
+        null,
+        true
+      ]
+    },
+    {
+      "label": "prefix vs word",
+      "ops": [
+        "Trie",
+        "insert",
+        "startsWith",
+        "search",
+        "startsWith"
+      ],
+      "args": [
+        [],
+        [
+          "hello"
+        ],
+        [
+          "hell"
+        ],
+        [
+          "hell"
+        ],
+        [
+          "world"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "empty trie searches",
+      "ops": [
+        "Trie",
+        "search",
+        "startsWith"
+      ],
+      "args": [
+        [],
+        [
+          "a"
+        ],
+        [
+          "a"
+        ]
+      ],
+      "expected": [
+        null,
+        false,
+        false
+      ]
+    },
+    {
+      "label": "shared prefixes",
+      "ops": [
+        "Trie",
+        "insert",
+        "insert",
+        "search",
+        "search",
+        "startsWith",
+        "startsWith"
+      ],
+      "args": [
+        [],
+        [
+          "car"
+        ],
+        [
+          "card"
+        ],
+        [
+          "car"
+        ],
+        [
+          "ca"
+        ],
+        [
+          "car"
+        ],
+        [
+          "cards"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        true,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "label": "reinsert same word",
+      "ops": [
+        "Trie",
+        "insert",
+        "insert",
+        "search"
+      ],
+      "args": [
+        [],
+        [
+          "dog"
+        ],
+        [
+          "dog"
+        ],
+        [
+          "dog"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        true
+      ]
+    }
+  ]
+}

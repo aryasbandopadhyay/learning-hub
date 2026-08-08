@@ -22,227 +22,109 @@
       "expected": "world"
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "single chain",
       "args": [
         [
-          "dbe",
-          "bbb",
-          "bac",
-          "dee",
-          "aed",
-          "bde",
-          "ebc",
-          "dbb",
-          "dbe",
-          "cae",
-          "adc",
-          "dac",
-          "ead",
-          "bce",
-          "ade",
-          "bed",
-          "acb",
-          "bbd",
-          "ebe",
-          "baa"
+          "w",
+          "wo",
+          "wor",
+          "worl",
+          "world"
         ]
       ],
-      "expected": ""
+      "expected": "world"
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "tie broken lexicographically",
       "args": [
         [
-          "dad",
+          "a",
+          "banana",
+          "app",
+          "appl",
+          "ap",
+          "apply",
+          "apple"
+        ]
+      ],
+      "expected": "apple"
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "no buildable word",
+      "args": [
+        [
           "abc",
-          "ead",
-          "cbe",
-          "dba",
-          "bdc",
-          "edb",
-          "cda",
-          "beb",
-          "eda",
-          "aab",
-          "cbb",
-          "dbb",
-          "ecd",
-          "bca",
-          "cba",
-          "eca",
-          "eac",
-          "bdd",
-          "cdd",
-          "dce",
-          "aba",
-          "cdd",
-          "bcb",
-          "cac",
-          "bbd",
-          "cda",
-          "ddc",
-          "aec",
-          "cde",
-          "bcd",
-          "cde",
-          "bcd",
-          "eed",
-          "bdc",
-          "bca",
-          "ccb",
-          "bcd",
-          "bdc",
-          "daa",
-          "eeb",
-          "aec",
-          "bed",
-          "bcd",
-          "dee",
-          "eec",
-          "baa",
-          "cae",
-          "aad",
-          "cce"
+          "bc",
+          "c"
         ]
       ],
-      "expected": ""
+      "expected": "c"
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single letters",
       "args": [
         [
-          "bad",
-          "dbc",
-          "dcb",
-          "bdd",
-          "deb",
-          "ccb",
-          "cde",
-          "dbd"
+          "a",
+          "b",
+          "c"
         ]
       ],
-      "expected": ""
+      "expected": "a"
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "two independent chains",
       "args": [
         [
-          "bae",
-          "bde",
-          "aac",
-          "dac",
-          "aee",
-          "cae",
-          "cdc",
-          "bbe",
-          "ada",
-          "ace",
-          "bec",
-          "bda",
-          "dbb",
-          "adb",
-          "ccc",
-          "aeb",
-          "ebc",
-          "eaa",
-          "bbb",
-          "eaa",
-          "edb",
-          "cbe",
-          "eeb",
-          "cac",
-          "dbc",
-          "bab",
-          "dea",
-          "bda",
-          "bed",
-          "eab",
-          "bdc",
-          "cce",
-          "aed",
-          "acb",
-          "bac",
-          "ecc",
-          "add",
-          "aac",
-          "bec",
-          "cca",
-          "dce",
-          "beb",
-          "acd",
-          "deb",
-          "bed",
-          "abb",
-          "cbe",
-          "ada",
-          "eab",
-          "bbc"
+          "m",
+          "mo",
+          "moc",
+          "moch",
+          "mocha",
+          "l",
+          "la",
+          "lat",
+          "latt",
+          "latte"
         ]
       ],
-      "expected": ""
+      "expected": "latte"
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "one word only",
       "args": [
         [
-          "bed",
-          "baa",
-          "edd",
-          "abe",
-          "bcd",
-          "bde",
-          "ace",
-          "bbe"
+          "x"
         ]
       ],
-      "expected": ""
+      "expected": "x"
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-7",
+      "kind": "edge",
+      "label": "missing intermediate",
       "args": [
         [
-          "deb",
-          "bbd"
+          "t",
+          "ti",
+          "tig",
+          "tige",
+          "tiger",
+          "z"
         ]
       ],
-      "expected": ""
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        [
-          "bcb",
-          "eee",
-          "abb",
-          "ebd",
-          "dee"
-        ]
-      ],
-      "expected": ""
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        [
-          "cec",
-          "dba",
-          "aad",
-          "acb",
-          "acb",
-          "cca",
-          "eec",
-          "bca"
-        ]
-      ],
-      "expected": ""
+      "expected": "tiger"
     }
   ],
   "complexity": {
