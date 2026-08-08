@@ -495,13 +495,30 @@ async function enhanceSalesforceDoc() {
 
   let total = 0;
   let solved = 0;
-  el.viewer.querySelectorAll("code").forEach((code) => {
-    if (code.closest("pre")) return; // skip fenced code blocks
-    const path = code.textContent.trim();
+  // Per-subsection stats: keyed by the section's <h3> element (headings like "### Arrays & Hashing").
+  const sectionStats = new Map(); // h3 -> { solved, total }
+  let currentH3 = null;
+
+  // Walk headings and inline code in document order so each trackable problem can be attributed
+  // to the subsection (nearest preceding <h3>) it appears under.
+  el.viewer.querySelectorAll("h3, code").forEach((node) => {
+    if (node.tagName === "H3") {
+      currentH3 = node;
+      if (!sectionStats.has(node)) sectionStats.set(node, { solved: 0, total: 0 });
+      return;
+    }
+    // node is a <code> element
+    if (node.closest("pre")) return; // skip fenced code blocks
+    const path = node.textContent.trim();
     if (!path.endsWith(".md") || !judgePaths.has(path)) return; // only trackable problems
     total++;
     const isDone = done.has(path);
     if (isDone) solved++;
+    if (currentH3) {
+      const s = sectionStats.get(currentH3);
+      s.total++;
+      if (isDone) s.solved++;
+    }
 
     // Make the referenced problem reachable: wrap the inline path in a link that switches to
     // the owning section (dsa/google/faang) and opens it in the judge.
@@ -513,8 +530,8 @@ async function enhanceSalesforceDoc() {
       e.preventDefault();
       openProblemByPath(path);
     });
-    code.replaceWith(link);
-    link.appendChild(code);
+    node.replaceWith(link);
+    link.appendChild(node);
 
     if (isDone) {
       const badge = document.createElement("span");
@@ -522,6 +539,12 @@ async function enhanceSalesforceDoc() {
       badge.textContent = "✔ solved";
       link.after(badge);
     }
+  });
+
+  // Per-subsection bars: insert a compact progress bar right after each heading that has
+  // trackable problems. Done after the walk so DOM insertions don't disturb iteration.
+  sectionStats.forEach((s, h3) => {
+    if (s.total > 0) h3.after(buildSalesforceProgressBar(s.solved, s.total, true));
   });
 
   if (total > 0) injectSalesforceProgressBar(solved, total);
@@ -542,19 +565,24 @@ function openProblemByPath(path) {
   else location.hash = target; // triggers hashchange -> applyRoute()
 }
 
-/** Prepend a solved/unsolved progress bar to the top of the current Salesforce doc. */
-function injectSalesforceProgressBar(solved, total) {
-  if (el.viewer.querySelector(".sf-progress")) return; // already present
+/** Build a solved/unsolved progress-bar element. `compact` renders the smaller per-subsection style. */
+function buildSalesforceProgressBar(solved, total, compact = false) {
   const pct = total ? Math.round((solved / total) * 100) : 0;
   const bar = document.createElement("div");
-  bar.className = "sf-progress";
+  bar.className = compact ? "sf-progress sf-progress-sub" : "sf-progress";
   bar.innerHTML = `
     <div class="progress-top">
-      <span class="progress-label">Your progress</span>
+      <span class="progress-label">${compact ? "Section" : "Your progress"}</span>
       <span class="progress-count">${solved} / ${total} solved · ${pct}%</span>
     </div>
-    <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>`;
-  el.viewer.insertBefore(bar, el.viewer.firstChild);
+    <div class="progress-track${compact ? " sm" : ""}"><div class="progress-fill" style="width:${pct}%"></div></div>`;
+  return bar;
+}
+
+/** Prepend an overall solved/unsolved progress bar to the top of the current Salesforce doc. */
+function injectSalesforceProgressBar(solved, total) {
+  if (el.viewer.querySelector(".sf-progress:not(.sf-progress-sub)")) return; // already present
+  el.viewer.insertBefore(buildSalesforceProgressBar(solved, total), el.viewer.firstChild);
 }
 
 function renderCode(content, ext) {
