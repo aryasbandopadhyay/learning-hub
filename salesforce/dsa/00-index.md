@@ -11,6 +11,9 @@ anywhere got brand-new solutions under the `gaps/` folder. The list is **grouped
 
 **Legend:**  ✅ already covered (points to the existing solution)  ·  🆕 new solution in the `gaps/` folder  ·  🧩 "design" question built as a full LLD project (see the **LLD** tab).
 
+> A green **✔ solved** badge appears automatically next to any problem you've already solved in
+> the DSA / Google / FAANG sections — solving a question anywhere propagates here.
+
 ### Arrays & Hashing  ·  18
 - 🆕 **K-diff Pairs in an Array**  ·  _Easy_  ·  `gaps/02-k-diff-pairs-in-an-array.md`
 - ✅ **Two Sum**  ·  _Easy_  ·  `dsa/arrays-hashing/01-two-sum.md`

@@ -132,6 +132,32 @@ class JudgeServiceTest {
     }
 
     @Test
+    void siblingsOfMatchesSameSlugAcrossSections() throws IOException {
+        // Same problem ("candy") in the main bank and FAANG, plus an unrelated problem.
+        writeIndexManifest("greedy/09-candy", "Candy", "Hard", "greedy");
+        writeIndexManifest("faang/greedy-scheduling/14-candy", "Candy", "Hard", "faang/greedy-scheduling");
+        writeIndexManifest("greedy/10-task-scheduler", "Task Scheduler", "Medium", "greedy");
+        JudgeService svc = serviceWith(realJudgeDir());
+
+        List<Map<String, Object>> sibs = svc.siblingsOf("dsa/greedy/09-candy.md");
+        assertThat(sibs).hasSize(2); // includes the input problem itself
+        assertThat(sibs.stream().map(m -> m.get("path")))
+                .containsExactlyInAnyOrder("dsa/greedy/09-candy.md",
+                        "dsa/faang/greedy-scheduling/14-candy.md");
+        assertThat(sibs.stream().map(m -> m.get("section")))
+                .containsExactlyInAnyOrder("dsa", "faang");
+    }
+
+    @Test
+    void siblingsOfReturnsJustItselfWhenNoOverlap() throws IOException {
+        writeIndexManifest("greedy/10-task-scheduler", "Task Scheduler", "Medium", "greedy");
+        JudgeService svc = serviceWith(realJudgeDir());
+        assertThat(svc.siblingsOf("dsa/greedy/10-task-scheduler.md"))
+                .singleElement()
+                .satisfies(m -> assertThat(m.get("path")).isEqualTo("dsa/greedy/10-task-scheduler.md"));
+    }
+
+    @Test
     void indexFiltersToRequestedSection() throws IOException {
         writeIndexManifest("arrays-hashing/two-sum", "Two Sum", "Easy", "arrays-hashing");
         writeIndexManifest("google/dp/edit-distance", "Edit Distance", "Hard", "google/dp");

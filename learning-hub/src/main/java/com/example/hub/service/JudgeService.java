@@ -193,6 +193,34 @@ public class JudgeService {
         return out;
     }
 
+    /**
+     * All judge problems that share the same <em>slug</em> as {@code contentPath} — i.e. the
+     * "same" problem appearing across the DSA / Google / FAANG sections. The slug is the file
+     * name with its {@code NN-} ordering prefix and {@code .md} suffix stripped
+     * (e.g. {@code dsa/greedy/09-candy.md} and {@code dsa/faang/greedy-scheduling/14-candy.md}
+     * both have slug {@code candy}). Each returned item carries its own {@code path} and
+     * {@code section}. The input problem itself is included. Used to propagate solved-status
+     * across overlapping questions in different sections.
+     */
+    public java.util.List<Map<String, Object>> siblingsOf(String contentPath) {
+        String slug = slugOf(contentPath);
+        if (slug == null || slug.isBlank()) return java.util.List.of();
+        java.util.List<Map<String, Object>> out = new java.util.ArrayList<>();
+        for (Map<String, Object> item : fullIndex()) {
+            if (slug.equals(slugOf(String.valueOf(item.get("path"))))) out.add(item);
+        }
+        return out;
+    }
+
+    /** Extract the overlap slug from a content path (last segment, minus {@code NN-} and {@code .md}). */
+    private static String slugOf(String contentPath) {
+        if (contentPath == null) return null;
+        int i = contentPath.lastIndexOf('/');
+        String file = i >= 0 ? contentPath.substring(i + 1) : contentPath;
+        if (file.endsWith(".md")) file = file.substring(0, file.length() - 3);
+        return file.replaceFirst("^\\d+-", "");
+    }
+
     private java.util.List<Map<String, Object>> fullIndex() {
         java.util.List<Map<String, Object>> cache = indexCache;
         if (cache != null) return cache;

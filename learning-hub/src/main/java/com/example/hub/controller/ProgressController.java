@@ -2,6 +2,7 @@ package com.example.hub.controller;
 
 import com.example.hub.service.ProgressService;
 import com.example.hub.service.AuthService;
+import com.example.hub.service.JudgeService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +35,11 @@ import java.util.Set;
 public class ProgressController {
 
     private final ProgressService progress;
+    private final JudgeService judge;
 
-    public ProgressController(ProgressService progress) {
+    public ProgressController(ProgressService progress, JudgeService judge) {
         this.progress = progress;
+        this.judge = judge;
     }
 
     /** Completed paths for the current user, optionally filtered by section. */
@@ -47,14 +50,26 @@ public class ProgressController {
         return Map.of("completed", done, "count", done.size());
     }
 
-    /** Toggle a single problem's completion. */
+    /** Toggle a single problem's completion. The same problem may appear in several sections
+     *  (DSA / Google / FAANG) — propagate the mark to every same-slug sibling so overlapping
+     *  questions stay in sync. */
     @PostMapping
     public Map<String, Object> set(@RequestBody Map<String, Object> body, HttpServletRequest req) {
         String path = str(body.get("path"));
         String section = str(body.get("section"));
         boolean completed = Boolean.parseBoolean(str(body.getOrDefault("completed", "true")));
-        progress.set(user(req), path, section, completed);
-        return Map.of("ok", true, "path", path, "completed", completed);
+        String u = user(req);
+        progress.set(u, path, section, completed);
+        // Propagate to overlapping questions in the other sections (each stored under its own
+        // section so a section-scoped GET/reset still behaves correctly).
+        int propagated = 0;
+        for (Map<String, Object> sib : judge.siblingsOf(path)) {
+            String sp = str(sib.get("path"));
+            if (sp == null || sp.equals(path)) continue;
+            progress.set(u, sp, str(sib.get("section")), completed);
+            propagated++;
+        }
+        return Map.of("ok", true, "path", path, "completed", completed, "propagated", propagated);
     }
 
     /** Reset a whole section (or all sections when 'section' is absent/blank). */

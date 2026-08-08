@@ -301,6 +301,13 @@ html, body {
 }
 .tree .file.done .fname { color: var(--muted); }
 
+/* Live "solved" badge next to a referenced problem path in the Salesforce index. */
+.sf-solved {
+  display: inline-block; margin-left: 6px; padding: 1px 7px;
+  font-size: 11px; font-weight: 600; line-height: 1.5; vertical-align: middle;
+  color: #fff; background: var(--success); border-radius: 999px; white-space: nowrap;
+}
+
 /* ---- Viewer ------------------------------------------------------------------------------- */
 .viewer { max-width: 980px; line-height: 1.65; animation: fadeInUp .25s ease; }
 .viewer.has-solve { max-width: 1500px; }

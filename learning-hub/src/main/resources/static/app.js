@@ -416,6 +416,31 @@ function renderMarkdown(md) {
   el.viewer.querySelectorAll("pre code").forEach((code) => {
     if (!code.classList.contains("language-mermaid")) hljs.highlightElement(code);
   });
+
+  // 3) Salesforce section: its DSA index links straight to main-bank problem paths. Since that
+  //    section isn't itself progress-tracked, decorate each referenced path with a live
+  //    "solved" badge sourced from the user's global (cross-section) progress.
+  if (state.activeCategory === "salesforce") applySolvedBadges();
+}
+
+/** Append a "✔ solved" badge to inline-code problem paths already completed by the user. */
+async function applySolvedBadges() {
+  let done;
+  try {
+    done = new Set((await getJSON("/api/progress")).completed || []);
+  } catch (e) {
+    return; // progress disabled/unreachable — no badges
+  }
+  el.viewer.querySelectorAll("code").forEach((code) => {
+    if (code.closest("pre")) return; // skip fenced code blocks
+    const path = code.textContent.trim();
+    if (!path.endsWith(".md") || !done.has(path)) return;
+    if (code.nextElementSibling && code.nextElementSibling.classList.contains("sf-solved")) return;
+    const badge = document.createElement("span");
+    badge.className = "sf-solved";
+    badge.textContent = "✔ solved";
+    code.after(badge);
+  });
 }
 
 function renderCode(content, ext) {
