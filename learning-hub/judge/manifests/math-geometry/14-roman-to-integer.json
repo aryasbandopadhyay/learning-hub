@@ -14,6 +14,51 @@
         "MCMXCIV"
       ],
       "expected": 1994
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "MCMXCIV",
+      "args": [
+        "MCMXCIV"
+      ],
+      "expected": 1994
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "III",
+      "args": [
+        "III"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "IV",
+      "args": [
+        "IV"
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "LVIII",
+      "args": [
+        "LVIII"
+      ],
+      "expected": 58
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single",
+      "args": [
+        "M"
+      ],
+      "expected": 1000
     }
   ],
   "complexity": {

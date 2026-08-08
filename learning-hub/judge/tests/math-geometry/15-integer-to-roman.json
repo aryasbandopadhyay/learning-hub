@@ -1,0 +1,47 @@
+{
+  "id": "math-geometry/15-integer-to-roman",
+  "cases": [
+    {
+      "label": "1994",
+      "args": [
+        1994
+      ],
+      "expected": "MCMXCIV"
+    },
+    {
+      "label": "3",
+      "args": [
+        3
+      ],
+      "expected": "III"
+    },
+    {
+      "label": "4",
+      "args": [
+        4
+      ],
+      "expected": "IV"
+    },
+    {
+      "label": "58",
+      "args": [
+        58
+      ],
+      "expected": "LVIII"
+    },
+    {
+      "label": "9",
+      "args": [
+        9
+      ],
+      "expected": "IX"
+    },
+    {
+      "label": "40",
+      "args": [
+        40
+      ],
+      "expected": "XL"
+    }
+  ]
+}

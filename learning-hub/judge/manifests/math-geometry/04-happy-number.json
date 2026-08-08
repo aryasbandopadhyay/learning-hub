@@ -16,66 +16,47 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "happy 19",
       "args": [
-        6239
+        19
       ],
       "expected": true
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "one",
       "args": [
-        3773
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-3",
-      "kind": "random",
-      "args": [
-        4115
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-4",
-      "kind": "random",
-      "args": [
-        8017
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        6128
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        2495
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        9289
+        1
       ],
       "expected": true
     },
     {
-      "id": "rand-8",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "not happy 2",
       "args": [
-        7685
+        2
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "happy 7",
+      "args": [
+        7
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "not happy 4",
+      "args": [
+        4
       ],
       "expected": false
     }

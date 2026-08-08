@@ -14,6 +14,51 @@
         "AB"
       ],
       "expected": 28
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "AB",
+      "args": [
+        "AB"
+      ],
+      "expected": 28
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "A",
+      "args": [
+        "A"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "Z",
+      "args": [
+        "Z"
+      ],
+      "expected": 26
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "AA",
+      "args": [
+        "AA"
+      ],
+      "expected": 27
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "ZY",
+      "args": [
+        "ZY"
+      ],
+      "expected": 701
     }
   ],
   "complexity": {

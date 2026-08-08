@@ -1,0 +1,47 @@
+{
+  "id": "math-geometry/09-palindrome-number",
+  "cases": [
+    {
+      "label": "palindrome",
+      "args": [
+        121
+      ],
+      "expected": true
+    },
+    {
+      "label": "negative",
+      "args": [
+        -121
+      ],
+      "expected": false
+    },
+    {
+      "label": "single digit",
+      "args": [
+        7
+      ],
+      "expected": true
+    },
+    {
+      "label": "not palindrome",
+      "args": [
+        123
+      ],
+      "expected": false
+    },
+    {
+      "label": "trailing zero",
+      "args": [
+        10
+      ],
+      "expected": false
+    },
+    {
+      "label": "zero",
+      "args": [
+        0
+      ],
+      "expected": true
+    }
+  ]
+}

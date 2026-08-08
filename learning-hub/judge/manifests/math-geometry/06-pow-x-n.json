@@ -18,76 +18,64 @@
       "expected": 1024.0
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "positive exp",
       "args": [
         2.0,
-        6239
+        10
       ],
-      "expected": Infinity
+      "expected": 1024.0
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "zero exp",
       "args": [
-        2.0,
-        3773
+        3.0,
+        0
       ],
-      "expected": Infinity
+      "expected": 1.0
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "negative exp",
       "args": [
         2.0,
-        4115
+        -2
       ],
-      "expected": Infinity
+      "expected": 0.25
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "base one",
       "args": [
-        2.0,
-        8017
+        1.0,
+        100
       ],
-      "expected": Infinity
+      "expected": 1.0
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "negative base even",
       "args": [
-        2.0,
-        6128
+        -2.0,
+        2
       ],
-      "expected": Infinity
+      "expected": 4.0
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "negative base odd",
       "args": [
-        2.0,
-        2495
+        -2.0,
+        3
       ],
-      "expected": Infinity
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        2.0,
-        9289
-      ],
-      "expected": Infinity
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        2.0,
-        7685
-      ],
-      "expected": Infinity
+      "expected": -8.0
     }
   ],
   "id": "math-geometry/06-pow-x-n",

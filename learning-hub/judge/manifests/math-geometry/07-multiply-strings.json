@@ -18,76 +18,54 @@
       "expected": "56088"
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
+        "123",
         "456"
       ],
-      "expected": "262590132933555033593280"
+      "expected": "56088"
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "zero",
       "args": [
-        "dbbdbecaeadcd",
-        "456"
+        "0",
+        "123"
       ],
-      "expected": "26246259437051472"
+      "expected": "0"
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single digits",
       "args": [
-        "d",
-        "456"
+        "2",
+        "3"
       ],
-      "expected": "23712"
+      "expected": "6"
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "both large",
       "args": [
-        "de",
-        "456"
+        "99",
+        "99"
       ],
-      "expected": "261288"
+      "expected": "9801"
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "one",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "456"
+        "1",
+        "555"
       ],
-      "expected": "249229438349627273284032253239208705530761115874719360"
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "456"
-      ],
-      "expected": "253475609482618370036832"
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "456"
-      ],
-      "expected": "263424153329699348300376"
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "456"
-      ],
-      "expected": "260832"
+      "expected": "555"
     }
   ],
   "complexity": {

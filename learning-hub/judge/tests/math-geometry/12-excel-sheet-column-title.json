@@ -1,0 +1,40 @@
+{
+  "id": "math-geometry/12-excel-sheet-column-title",
+  "cases": [
+    {
+      "label": "28",
+      "args": [
+        28
+      ],
+      "expected": "AB"
+    },
+    {
+      "label": "1",
+      "args": [
+        1
+      ],
+      "expected": "A"
+    },
+    {
+      "label": "26",
+      "args": [
+        26
+      ],
+      "expected": "Z"
+    },
+    {
+      "label": "27",
+      "args": [
+        27
+      ],
+      "expected": "AA"
+    },
+    {
+      "label": "701",
+      "args": [
+        701
+      ],
+      "expected": "ZY"
+    }
+  ]
+}

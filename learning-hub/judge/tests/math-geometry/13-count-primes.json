@@ -1,0 +1,40 @@
+{
+  "id": "math-geometry/13-count-primes",
+  "cases": [
+    {
+      "label": "ten",
+      "args": [
+        10
+      ],
+      "expected": 4
+    },
+    {
+      "label": "zero",
+      "args": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "label": "two",
+      "args": [
+        2
+      ],
+      "expected": 0
+    },
+    {
+      "label": "three",
+      "args": [
+        3
+      ],
+      "expected": 1
+    },
+    {
+      "label": "hundred",
+      "args": [
+        100
+      ],
+      "expected": 25
+    }
+  ]
+}

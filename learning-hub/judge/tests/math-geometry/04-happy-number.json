@@ -1,0 +1,40 @@
+{
+  "id": "math-geometry/04-happy-number",
+  "cases": [
+    {
+      "label": "happy 19",
+      "args": [
+        19
+      ],
+      "expected": true
+    },
+    {
+      "label": "one",
+      "args": [
+        1
+      ],
+      "expected": true
+    },
+    {
+      "label": "not happy 2",
+      "args": [
+        2
+      ],
+      "expected": false
+    },
+    {
+      "label": "happy 7",
+      "args": [
+        7
+      ],
+      "expected": true
+    },
+    {
+      "label": "not happy 4",
+      "args": [
+        4
+      ],
+      "expected": false
+    }
+  ]
+}

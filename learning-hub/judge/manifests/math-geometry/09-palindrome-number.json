@@ -16,68 +16,58 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "palindrome",
       "args": [
-        6239
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-2",
-      "kind": "random",
-      "args": [
-        3773
+        121
       ],
       "expected": true
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "negative",
       "args": [
-        4115
+        -121
       ],
       "expected": false
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single digit",
       "args": [
-        8017
+        7
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "not palindrome",
+      "args": [
+        123
       ],
       "expected": false
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "trailing zero",
       "args": [
-        6128
+        10
       ],
       "expected": false
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "zero",
       "args": [
-        2495
+        0
       ],
-      "expected": false
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        9289
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        7685
-      ],
-      "expected": false
+      "expected": true
     }
   ],
   "id": "math-geometry/09-palindrome-number",

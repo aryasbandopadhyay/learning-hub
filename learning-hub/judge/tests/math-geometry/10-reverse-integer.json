@@ -1,0 +1,47 @@
+{
+  "id": "math-geometry/10-reverse-integer",
+  "cases": [
+    {
+      "label": "negative",
+      "args": [
+        -123
+      ],
+      "expected": -321
+    },
+    {
+      "label": "positive",
+      "args": [
+        123
+      ],
+      "expected": 321
+    },
+    {
+      "label": "trailing zero",
+      "args": [
+        120
+      ],
+      "expected": 21
+    },
+    {
+      "label": "single",
+      "args": [
+        5
+      ],
+      "expected": 5
+    },
+    {
+      "label": "zero",
+      "args": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "label": "overflow",
+      "args": [
+        1534236469
+      ],
+      "expected": 0
+    }
+  ]
+}

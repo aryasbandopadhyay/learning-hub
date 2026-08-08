@@ -1,0 +1,73 @@
+{
+  "id": "math-geometry/05-plus-one",
+  "cases": [
+    {
+      "label": "carry",
+      "args": [
+        [
+          9,
+          9
+        ]
+      ],
+      "expected": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "no carry",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "label": "single nine",
+      "args": [
+        [
+          9
+        ]
+      ],
+      "expected": [
+        1,
+        0
+      ]
+    },
+    {
+      "label": "all nines",
+      "args": [
+        [
+          9,
+          9,
+          9
+        ]
+      ],
+      "expected": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": [
+        6
+      ]
+    }
+  ]
+}

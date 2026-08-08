@@ -16,68 +16,58 @@
       "expected": -321
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "negative",
       "args": [
-        6239
+        -123
       ],
-      "expected": 9326
+      "expected": -321
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "positive",
       "args": [
-        3773
+        123
       ],
-      "expected": 3773
+      "expected": 321
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "trailing zero",
       "args": [
-        4115
+        120
       ],
-      "expected": 5114
+      "expected": 21
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single",
       "args": [
-        8017
+        5
       ],
-      "expected": 7108
+      "expected": 5
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "zero",
       "args": [
-        6128
+        0
       ],
-      "expected": 8216
+      "expected": 0
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "overflow",
       "args": [
-        2495
+        1534236469
       ],
-      "expected": 5942
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        9289
-      ],
-      "expected": 9829
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        7685
-      ],
-      "expected": 5867
+      "expected": 0
     }
   ],
   "id": "math-geometry/10-reverse-integer",

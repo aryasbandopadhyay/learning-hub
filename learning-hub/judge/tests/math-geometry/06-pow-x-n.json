@@ -1,0 +1,54 @@
+{
+  "id": "math-geometry/06-pow-x-n",
+  "note": "keep results as clean floats to avoid precision issues.",
+  "cases": [
+    {
+      "label": "positive exp",
+      "args": [
+        2.0,
+        10
+      ],
+      "expected": 1024.0
+    },
+    {
+      "label": "zero exp",
+      "args": [
+        3.0,
+        0
+      ],
+      "expected": 1.0
+    },
+    {
+      "label": "negative exp",
+      "args": [
+        2.0,
+        -2
+      ],
+      "expected": 0.25
+    },
+    {
+      "label": "base one",
+      "args": [
+        1.0,
+        100
+      ],
+      "expected": 1.0
+    },
+    {
+      "label": "negative base even",
+      "args": [
+        -2.0,
+        2
+      ],
+      "expected": 4.0
+    },
+    {
+      "label": "negative base odd",
+      "args": [
+        -2.0,
+        3
+      ],
+      "expected": -8.0
+    }
+  ]
+}

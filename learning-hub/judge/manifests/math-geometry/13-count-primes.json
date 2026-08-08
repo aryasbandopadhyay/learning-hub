@@ -16,68 +16,49 @@
       "expected": 4
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "ten",
       "args": [
-        6239
+        10
       ],
-      "expected": 811
+      "expected": 4
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "zero",
       "args": [
-        3773
+        0
       ],
-      "expected": 525
+      "expected": 0
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "two",
       "args": [
-        4115
+        2
       ],
-      "expected": 566
+      "expected": 0
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "three",
       "args": [
-        8017
+        3
       ],
-      "expected": 1009
+      "expected": 1
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "hundred",
       "args": [
-        6128
+        100
       ],
-      "expected": 798
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        2495
-      ],
-      "expected": 367
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        9289
-      ],
-      "expected": 1150
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        7685
-      ],
-      "expected": 974
+      "expected": 25
     }
   ],
   "id": "math-geometry/13-count-primes",

@@ -1,0 +1,45 @@
+{
+  "id": "math-geometry/07-multiply-strings",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "123",
+        "456"
+      ],
+      "expected": "56088"
+    },
+    {
+      "label": "zero",
+      "args": [
+        "0",
+        "123"
+      ],
+      "expected": "0"
+    },
+    {
+      "label": "single digits",
+      "args": [
+        "2",
+        "3"
+      ],
+      "expected": "6"
+    },
+    {
+      "label": "both large",
+      "args": [
+        "99",
+        "99"
+      ],
+      "expected": "9801"
+    },
+    {
+      "label": "one",
+      "args": [
+        "1",
+        "555"
+      ],
+      "expected": "555"
+    }
+  ]
+}

@@ -46,6 +46,136 @@
         null,
         1
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "ops": [
+        "DetectSquares",
+        "add",
+        "add",
+        "add",
+        "count"
+      ],
+      "args": [
+        [],
+        [
+          [
+            3,
+            10
+          ]
+        ],
+        [
+          [
+            11,
+            2
+          ]
+        ],
+        [
+          [
+            3,
+            2
+          ]
+        ],
+        [
+          [
+            11,
+            10
+          ]
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        1
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "no square",
+      "ops": [
+        "DetectSquares",
+        "add",
+        "count"
+      ],
+      "args": [
+        [],
+        [
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        0
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "duplicate points",
+      "ops": [
+        "DetectSquares",
+        "add",
+        "add",
+        "add",
+        "add",
+        "count"
+      ],
+      "args": [
+        [],
+        [
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          [
+            2,
+            2
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        1
+      ]
     }
   ],
   "id": "math-geometry/08-detect-squares",

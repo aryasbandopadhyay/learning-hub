@@ -1,0 +1,130 @@
+{
+  "id": "math-geometry/08-detect-squares",
+  "note": "design: DetectSquares add/count; compareMode=set.",
+  "cases": [
+    {
+      "label": "example",
+      "ops": [
+        "DetectSquares",
+        "add",
+        "add",
+        "add",
+        "count"
+      ],
+      "args": [
+        [],
+        [
+          [
+            3,
+            10
+          ]
+        ],
+        [
+          [
+            11,
+            2
+          ]
+        ],
+        [
+          [
+            3,
+            2
+          ]
+        ],
+        [
+          [
+            11,
+            10
+          ]
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        1
+      ]
+    },
+    {
+      "label": "no square",
+      "ops": [
+        "DetectSquares",
+        "add",
+        "count"
+      ],
+      "args": [
+        [],
+        [
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        0
+      ]
+    },
+    {
+      "label": "duplicate points",
+      "ops": [
+        "DetectSquares",
+        "add",
+        "add",
+        "add",
+        "add",
+        "count"
+      ],
+      "args": [
+        [],
+        [
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            2
+          ]
+        ],
+        [
+          [
+            2,
+            0
+          ]
+        ],
+        [
+          [
+            2,
+            2
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        1
+      ]
+    }
+  ]
+}

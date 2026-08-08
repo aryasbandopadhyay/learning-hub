@@ -1,0 +1,40 @@
+{
+  "id": "math-geometry/14-roman-to-integer",
+  "cases": [
+    {
+      "label": "MCMXCIV",
+      "args": [
+        "MCMXCIV"
+      ],
+      "expected": 1994
+    },
+    {
+      "label": "III",
+      "args": [
+        "III"
+      ],
+      "expected": 3
+    },
+    {
+      "label": "IV",
+      "args": [
+        "IV"
+      ],
+      "expected": 4
+    },
+    {
+      "label": "LVIII",
+      "args": [
+        "LVIII"
+      ],
+      "expected": 58
+    },
+    {
+      "label": "single",
+      "args": [
+        "M"
+      ],
+      "expected": 1000
+    }
+  ]
+}

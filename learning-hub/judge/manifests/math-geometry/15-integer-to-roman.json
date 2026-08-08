@@ -14,6 +14,60 @@
         1994
       ],
       "expected": "MCMXCIV"
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "1994",
+      "args": [
+        1994
+      ],
+      "expected": "MCMXCIV"
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "3",
+      "args": [
+        3
+      ],
+      "expected": "III"
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "4",
+      "args": [
+        4
+      ],
+      "expected": "IV"
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "58",
+      "args": [
+        58
+      ],
+      "expected": "LVIII"
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "9",
+      "args": [
+        9
+      ],
+      "expected": "IX"
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "40",
+      "args": [
+        40
+      ],
+      "expected": "XL"
     }
   ],
   "id": "math-geometry/15-integer-to-roman",
