@@ -22,43 +22,68 @@
       "expected": 4
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        1516,
+        5,
         [
-          5559,
-          2812,
-          4048
+          1,
+          2,
+          5
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "impossible",
+      "args": [
+        3,
+        [
+          2
         ]
       ],
       "expected": 0
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "amount zero",
       "args": [
-        4344,
+        0,
         [
-          4228,
-          4228,
-          2579
+          1,
+          2
         ]
       ],
-      "expected": 0
+      "expected": 1
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "exact single",
       "args": [
-        523,
+        5,
         [
-          802,
-          8875,
-          2219
+          5
         ]
       ],
-      "expected": 0
+      "expected": 1
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "two coins",
+      "args": [
+        4,
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": 3
     }
   ],
   "complexity": {

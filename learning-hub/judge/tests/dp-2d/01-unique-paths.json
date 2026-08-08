@@ -1,0 +1,53 @@
+{
+  "id": "dp-2d/01-unique-paths",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        3,
+        7
+      ],
+      "expected": 28
+    },
+    {
+      "label": "1x1",
+      "args": [
+        1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "label": "single row",
+      "args": [
+        1,
+        5
+      ],
+      "expected": 1
+    },
+    {
+      "label": "single col",
+      "args": [
+        5,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "label": "2x2",
+      "args": [
+        2,
+        2
+      ],
+      "expected": 2
+    },
+    {
+      "label": "3x3",
+      "args": [
+        3,
+        3
+      ],
+      "expected": 6
+    }
+  ]
+}

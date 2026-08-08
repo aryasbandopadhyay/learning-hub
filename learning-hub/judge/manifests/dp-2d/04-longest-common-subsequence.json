@@ -18,76 +18,64 @@
       "expected": 3
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
+        "abcde",
         "ace"
       ],
       "expected": 3
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "no common",
       "args": [
-        "dbbdbecaeadcd",
-        "ace"
-      ],
-      "expected": 2
-    },
-    {
-      "id": "rand-3",
-      "kind": "random",
-      "args": [
-        "d",
-        "ace"
+        "abc",
+        "def"
       ],
       "expected": 0
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "identical",
       "args": [
-        "de",
-        "ace"
+        "abc",
+        "abc"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "one empty",
+      "args": [
+        "",
+        "abc"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single char match",
+      "args": [
+        "a",
+        "a"
       ],
       "expected": 1
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "repeat",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "ace"
-      ],
-      "expected": 3
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "ace"
-      ],
-      "expected": 3
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "ace"
+        "aaa",
+        "aa"
       ],
       "expected": 2
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "ace"
-      ],
-      "expected": 0
     }
   ],
   "complexity": {

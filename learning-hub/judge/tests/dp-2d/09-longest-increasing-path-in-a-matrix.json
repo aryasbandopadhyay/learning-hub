@@ -1,0 +1,91 @@
+{
+  "id": "dp-2d/09-longest-increasing-path-in-a-matrix",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          [
+            9,
+            9,
+            4
+          ],
+          [
+            6,
+            6,
+            8
+          ],
+          [
+            2,
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "single cell",
+      "args": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "flat",
+      "args": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "increasing row",
+      "args": [
+        [
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "snake",
+      "args": [
+        [
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            3,
+            2,
+            6
+          ],
+          [
+            2,
+            2,
+            1
+          ]
+        ]
+      ],
+      "expected": 4
+    }
+  ]
+}

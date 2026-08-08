@@ -19,6 +19,56 @@
         ]
       ],
       "expected": 167
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        [
+          3,
+          1,
+          5,
+          8
+        ]
+      ],
+      "expected": 167
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "two",
+      "args": [
+        [
+          1,
+          5
+        ]
+      ],
+      "expected": 10
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "all ones",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 3
     }
   ],
   "id": "dp-2d/12-burst-balloons",

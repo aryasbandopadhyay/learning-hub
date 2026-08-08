@@ -43,6 +43,106 @@
         ]
       ],
       "expected": 4
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        [
+          [
+            "1",
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "1",
+            "1",
+            "1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          [
+            "1",
+            "0",
+            "0",
+            "1",
+            "0"
+          ]
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "all zero",
+      "args": [
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "all one",
+      "args": [
+        [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single one",
+      "args": [
+        [
+          [
+            "1"
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single zero",
+      "args": [
+        [
+          [
+            "0"
+          ]
+        ]
+      ],
+      "expected": 0
     }
   ],
   "id": "dp-2d/15-maximal-square",

@@ -1,0 +1,50 @@
+{
+  "id": "dp-2d/08-interleaving-string",
+  "cases": [
+    {
+      "label": "example true",
+      "args": [
+        "aabcc",
+        "dbbca",
+        "aadbbcbcac"
+      ],
+      "expected": true
+    },
+    {
+      "label": "example false",
+      "args": [
+        "aabcc",
+        "dbbca",
+        "aadbbbaccc"
+      ],
+      "expected": false
+    },
+    {
+      "label": "empty parts",
+      "args": [
+        "",
+        "",
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "label": "length mismatch",
+      "args": [
+        "a",
+        "b",
+        "ab"
+      ],
+      "expected": true
+    },
+    {
+      "label": "length mismatch false",
+      "args": [
+        "a",
+        "b",
+        "a"
+      ],
+      "expected": false
+    }
+  ]
+}

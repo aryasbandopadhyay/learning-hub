@@ -20,6 +20,57 @@
         ]
       ],
       "expected": 3
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          0,
+          2
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "descending",
+      "args": [
+        [
+          5,
+          4,
+          3
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "two up",
+      "args": [
+        [
+          1,
+          5
+        ]
+      ],
+      "expected": 4
     }
   ],
   "id": "dp-2d/05-best-time-to-buy-and-sell-stock-with-cooldown",

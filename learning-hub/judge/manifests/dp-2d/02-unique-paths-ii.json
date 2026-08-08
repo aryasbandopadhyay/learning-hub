@@ -30,6 +30,98 @@
         ]
       ],
       "expected": 2
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "start blocked",
+      "args": [
+        [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "end blocked",
+      "args": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "no obstacle",
+      "args": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single free",
+      "args": [
+        [
+          [
+            0
+          ]
+        ]
+      ],
+      "expected": 1
     }
   ],
   "complexity": {

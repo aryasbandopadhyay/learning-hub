@@ -18,76 +18,64 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "star match",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
+        "aab",
         "c*a*b"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "simple false",
+      "args": [
+        "aa",
+        "a"
       ],
       "expected": false
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "dot star",
       "args": [
-        "dbbdbecaeadcd",
-        "c*a*b"
+        "ab",
+        ".*"
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "exact",
       "args": [
-        "d",
-        "c*a*b"
+        "abc",
+        "abc"
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "star zero",
       "args": [
-        "de",
-        "c*a*b"
+        "aa",
+        "a*"
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "empty pattern",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "c*a*b"
+        "",
+        ""
       ],
-      "expected": false
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "c*a*b"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "c*a*b"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "c*a*b"
-      ],
-      "expected": false
+      "expected": true
     }
   ],
   "complexity": {

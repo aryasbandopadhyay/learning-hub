@@ -1,0 +1,45 @@
+{
+  "id": "dp-2d/10-distinct-subsequences",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "rabbbit",
+        "rabbit"
+      ],
+      "expected": 3
+    },
+    {
+      "label": "empty target",
+      "args": [
+        "abc",
+        ""
+      ],
+      "expected": 1
+    },
+    {
+      "label": "no match",
+      "args": [
+        "abc",
+        "d"
+      ],
+      "expected": 0
+    },
+    {
+      "label": "identical",
+      "args": [
+        "aa",
+        "aa"
+      ],
+      "expected": 1
+    },
+    {
+      "label": "repeat count",
+      "args": [
+        "aaa",
+        "a"
+      ],
+      "expected": 3
+    }
+  ]
+}

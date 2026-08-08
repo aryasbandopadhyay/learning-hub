@@ -20,82 +20,57 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example true",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
+        "aabcc",
         "dbbca",
         "aadbbcbcac"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "example false",
+      "args": [
+        "aabcc",
+        "dbbca",
+        "aadbbbaccc"
       ],
       "expected": false
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "empty parts",
       "args": [
-        "dbbdbecaeadcd",
-        "dbbca",
-        "aadbbcbcac"
+        "",
+        "",
+        ""
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "length mismatch",
       "args": [
-        "d",
-        "dbbca",
-        "aadbbcbcac"
+        "a",
+        "b",
+        "ab"
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "length mismatch false",
       "args": [
-        "de",
-        "dbbca",
-        "aadbbcbcac"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "dbbca",
-        "aadbbcbcac"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "dbbca",
-        "aadbbcbcac"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "dbbca",
-        "aadbbcbcac"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "dbbca",
-        "aadbbcbcac"
+        "a",
+        "b",
+        "a"
       ],
       "expected": false
     }

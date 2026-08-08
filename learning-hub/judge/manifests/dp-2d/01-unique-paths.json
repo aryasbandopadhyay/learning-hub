@@ -16,6 +16,66 @@
         7
       ],
       "expected": 28
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        3,
+        7
+      ],
+      "expected": 28
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "1x1",
+      "args": [
+        1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single row",
+      "args": [
+        1,
+        5
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single col",
+      "args": [
+        5,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "2x2",
+      "args": [
+        2,
+        2
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "3x3",
+      "args": [
+        3,
+        3
+      ],
+      "expected": 6
     }
   ],
   "id": "dp-2d/01-unique-paths",

@@ -1,0 +1,53 @@
+{
+  "id": "dp-2d/13-regular-expression-matching",
+  "cases": [
+    {
+      "label": "star match",
+      "args": [
+        "aab",
+        "c*a*b"
+      ],
+      "expected": true
+    },
+    {
+      "label": "simple false",
+      "args": [
+        "aa",
+        "a"
+      ],
+      "expected": false
+    },
+    {
+      "label": "dot star",
+      "args": [
+        "ab",
+        ".*"
+      ],
+      "expected": true
+    },
+    {
+      "label": "exact",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "label": "star zero",
+      "args": [
+        "aa",
+        "a*"
+      ],
+      "expected": true
+    },
+    {
+      "label": "empty pattern",
+      "args": [
+        "",
+        ""
+      ],
+      "expected": true
+    }
+  ]
+}

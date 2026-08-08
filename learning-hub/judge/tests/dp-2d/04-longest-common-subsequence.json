@@ -1,0 +1,53 @@
+{
+  "id": "dp-2d/04-longest-common-subsequence",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "abcde",
+        "ace"
+      ],
+      "expected": 3
+    },
+    {
+      "label": "no common",
+      "args": [
+        "abc",
+        "def"
+      ],
+      "expected": 0
+    },
+    {
+      "label": "identical",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": 3
+    },
+    {
+      "label": "one empty",
+      "args": [
+        "",
+        "abc"
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single char match",
+      "args": [
+        "a",
+        "a"
+      ],
+      "expected": 1
+    },
+    {
+      "label": "repeat",
+      "args": [
+        "aaa",
+        "aa"
+      ],
+      "expected": 2
+    }
+  ]
+}

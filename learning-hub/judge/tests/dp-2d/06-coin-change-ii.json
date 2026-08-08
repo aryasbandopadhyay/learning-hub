@@ -1,0 +1,59 @@
+{
+  "id": "dp-2d/06-coin-change-ii",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        5,
+        [
+          1,
+          2,
+          5
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "impossible",
+      "args": [
+        3,
+        [
+          2
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "amount zero",
+      "args": [
+        0,
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "exact single",
+      "args": [
+        5,
+        [
+          5
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "two coins",
+      "args": [
+        4,
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": 3
+    }
+  ]
+}
