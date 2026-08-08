@@ -24,6 +24,61 @@
         "ce",
         "cf"
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "two digits",
+      "args": [
+        "23"
+      ],
+      "expected": [
+        "ad",
+        "ae",
+        "af",
+        "bd",
+        "be",
+        "bf",
+        "cd",
+        "ce",
+        "cf"
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "empty",
+      "args": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single",
+      "args": [
+        "2"
+      ],
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "with 7 four letters",
+      "args": [
+        "7"
+      ],
+      "expected": [
+        "p",
+        "q",
+        "r",
+        "s"
+      ]
     }
   ],
   "complexity": {

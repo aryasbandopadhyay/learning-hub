@@ -17,6 +17,53 @@
         "255.255.11.135",
         "255.255.111.35"
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        "25525511135"
+      ],
+      "expected": [
+        "255.255.11.135",
+        "255.255.111.35"
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "zeros",
+      "args": [
+        "0000"
+      ],
+      "expected": [
+        "0.0.0.0"
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "too short",
+      "args": [
+        "1"
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "one valid",
+      "args": [
+        "101023"
+      ],
+      "expected": [
+        "1.0.10.23",
+        "1.0.102.3",
+        "10.1.0.23",
+        "10.10.2.3",
+        "101.0.2.3"
+      ]
     }
   ],
   "complexity": {

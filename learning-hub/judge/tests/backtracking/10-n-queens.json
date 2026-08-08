@@ -1,0 +1,50 @@
+{
+  "id": "backtracking/10-n-queens",
+  "cases": [
+    {
+      "label": "n1",
+      "args": [
+        1
+      ],
+      "expected": [
+        [
+          "Q"
+        ]
+      ]
+    },
+    {
+      "label": "n4",
+      "args": [
+        4
+      ],
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ]
+    },
+    {
+      "label": "n2 none",
+      "args": [
+        2
+      ],
+      "expected": []
+    },
+    {
+      "label": "n3 none",
+      "args": [
+        3
+      ],
+      "expected": []
+    }
+  ]
+}

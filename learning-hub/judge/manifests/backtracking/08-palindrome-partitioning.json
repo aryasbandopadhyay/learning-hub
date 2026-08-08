@@ -24,6 +24,78 @@
           "b"
         ]
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "aab",
+      "args": [
+        "aab"
+      ],
+      "expected": [
+        [
+          "a",
+          "a",
+          "b"
+        ],
+        [
+          "aa",
+          "b"
+        ]
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single",
+      "args": [
+        "a"
+      ],
+      "expected": [
+        [
+          "a"
+        ]
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "all same",
+      "args": [
+        "aaa"
+      ],
+      "expected": [
+        [
+          "a",
+          "a",
+          "a"
+        ],
+        [
+          "a",
+          "aa"
+        ],
+        [
+          "aa",
+          "a"
+        ],
+        [
+          "aaa"
+        ]
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "no split needed",
+      "args": [
+        "ab"
+      ],
+      "expected": [
+        [
+          "a",
+          "b"
+        ]
+      ]
     }
   ],
   "id": "backtracking/08-palindrome-partitioning",

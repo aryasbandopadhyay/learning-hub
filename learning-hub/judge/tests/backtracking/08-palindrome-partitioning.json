@@ -1,0 +1,69 @@
+{
+  "id": "backtracking/08-palindrome-partitioning",
+  "cases": [
+    {
+      "label": "aab",
+      "args": [
+        "aab"
+      ],
+      "expected": [
+        [
+          "a",
+          "a",
+          "b"
+        ],
+        [
+          "aa",
+          "b"
+        ]
+      ]
+    },
+    {
+      "label": "single",
+      "args": [
+        "a"
+      ],
+      "expected": [
+        [
+          "a"
+        ]
+      ]
+    },
+    {
+      "label": "all same",
+      "args": [
+        "aaa"
+      ],
+      "expected": [
+        [
+          "a",
+          "a",
+          "a"
+        ],
+        [
+          "a",
+          "aa"
+        ],
+        [
+          "aa",
+          "a"
+        ],
+        [
+          "aaa"
+        ]
+      ]
+    },
+    {
+      "label": "no split needed",
+      "args": [
+        "ab"
+      ],
+      "expected": [
+        [
+          "a",
+          "b"
+        ]
+      ]
+    }
+  ]
+}

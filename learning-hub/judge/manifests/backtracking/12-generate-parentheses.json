@@ -20,6 +20,44 @@
         "()(())",
         "()()()"
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "n1",
+      "args": [
+        1
+      ],
+      "expected": [
+        "()"
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "n2",
+      "args": [
+        2
+      ],
+      "expected": [
+        "(())",
+        "()()"
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "n3",
+      "args": [
+        3
+      ],
+      "expected": [
+        "((()))",
+        "(()())",
+        "(())()",
+        "()(())",
+        "()()()"
+      ]
     }
   ],
   "id": "backtracking/12-generate-parentheses",

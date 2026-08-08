@@ -30,6 +30,99 @@
           7
         ]
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "basic",
+      "args": [
+        [
+          2,
+          3,
+          6,
+          7
+        ],
+        7
+      ],
+      "expected": [
+        [
+          2,
+          2,
+          3
+        ],
+        [
+          7
+        ]
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single reuse",
+      "args": [
+        [
+          2
+        ],
+        4
+      ],
+      "expected": [
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "no solution",
+      "args": [
+        [
+          3,
+          5
+        ],
+        1
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "one cand equals",
+      "args": [
+        [
+          5
+        ],
+        5
+      ],
+      "expected": [
+        [
+          5
+        ]
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "two options",
+      "args": [
+        [
+          2,
+          3
+        ],
+        6
+      ],
+      "expected": [
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ]
     }
   ],
   "complexity": {

@@ -1,0 +1,88 @@
+{
+  "id": "backtracking/02-combination-sum",
+  "cases": [
+    {
+      "label": "basic",
+      "args": [
+        [
+          2,
+          3,
+          6,
+          7
+        ],
+        7
+      ],
+      "expected": [
+        [
+          2,
+          2,
+          3
+        ],
+        [
+          7
+        ]
+      ]
+    },
+    {
+      "label": "single reuse",
+      "args": [
+        [
+          2
+        ],
+        4
+      ],
+      "expected": [
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "label": "no solution",
+      "args": [
+        [
+          3,
+          5
+        ],
+        1
+      ],
+      "expected": []
+    },
+    {
+      "label": "one cand equals",
+      "args": [
+        [
+          5
+        ],
+        5
+      ],
+      "expected": [
+        [
+          5
+        ]
+      ]
+    },
+    {
+      "label": "two options",
+      "args": [
+        [
+          2,
+          3
+        ],
+        6
+      ],
+      "expected": [
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ]
+    }
+  ]
+}

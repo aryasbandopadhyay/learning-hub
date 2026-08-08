@@ -27,6 +27,59 @@
           ".Q.."
         ]
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "n1",
+      "args": [
+        1
+      ],
+      "expected": [
+        [
+          "Q"
+        ]
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "n4",
+      "args": [
+        4
+      ],
+      "expected": [
+        [
+          ".Q..",
+          "...Q",
+          "Q...",
+          "..Q."
+        ],
+        [
+          "..Q.",
+          "Q...",
+          "...Q",
+          ".Q.."
+        ]
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "n2 none",
+      "args": [
+        2
+      ],
+      "expected": []
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "n3 none",
+      "args": [
+        3
+      ],
+      "expected": []
     }
   ],
   "id": "backtracking/10-n-queens",

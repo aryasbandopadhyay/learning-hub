@@ -1,0 +1,52 @@
+{
+  "id": "backtracking/09-letter-combinations-of-a-phone-number",
+  "cases": [
+    {
+      "label": "two digits",
+      "args": [
+        "23"
+      ],
+      "expected": [
+        "ad",
+        "ae",
+        "af",
+        "bd",
+        "be",
+        "bf",
+        "cd",
+        "ce",
+        "cf"
+      ]
+    },
+    {
+      "label": "empty",
+      "args": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "label": "single",
+      "args": [
+        "2"
+      ],
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "label": "with 7 four letters",
+      "args": [
+        "7"
+      ],
+      "expected": [
+        "p",
+        "q",
+        "r",
+        "s"
+      ]
+    }
+  ]
+}
