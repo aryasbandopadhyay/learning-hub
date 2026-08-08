@@ -83,13 +83,63 @@ async function init() {
     if (i === 0) btn.classList.add("active");
   });
   if (state.categories.length) {
-    selectCategory(state.categories[0].id);
+    // Hash-based routing: restore the current location on load and on back/forward/reload.
+    window.addEventListener("hashchange", () => {
+      if (location.hash === lastWrittenHash) { lastWrittenHash = null; return; }
+      applyRoute();
+    });
+    applyRoute();
   } else {
     el.tree.innerHTML = `<p class="hint">No categories configured.</p>`;
   }
 }
 
-async function selectCategory(id) {
+/* ---- Client-side routing (hash-based; deep-linkable and reload-safe) ---------------------- */
+// The URL hash encodes the current location as "#cat=<id>&path=<contentPath>". Every navigation
+// (tab click, tree/dashboard file open, Salesforce link) reflects into the hash via writeHash();
+// a genuine hash change (reload, back/forward, link) is replayed by applyRoute(). lastWrittenHash
+// records hashes we set ourselves so they aren't mistaken for user navigation.
+let lastWrittenHash = null;
+
+function buildHash(cat, path) {
+  const p = new URLSearchParams();
+  if (cat) p.set("cat", cat);
+  if (path) p.set("path", path);
+  const s = p.toString();
+  return s ? "#" + s : "#";
+}
+
+function parseHash() {
+  const p = new URLSearchParams(location.hash.replace(/^#/, ""));
+  return { cat: p.get("cat"), path: p.get("path") };
+}
+
+/** Reflect the current location in the URL hash without triggering a re-navigation. */
+function writeHash(cat, path) {
+  const h = buildHash(cat, path);
+  if (location.hash !== h) { lastWrittenHash = h; location.hash = h; }
+}
+
+/** Navigate to whatever the URL hash describes (load, back/forward, reload, internal links). */
+async function applyRoute() {
+  const { cat, path } = parseHash();
+  const category = (cat && state.categories.some((c) => c.id === cat))
+    ? cat
+    : (state.categories[0] && state.categories[0].id);
+  if (!category) return;
+  if (state.activeCategory !== category) {
+    await selectCategory(category, /*skipAutoOpen=*/ !!path);
+  } else if (!path && !state.showingDashboard && state.progressOn && state.problemIndex.size) {
+    renderDashboard(category); // returning to the section root
+  }
+  if (path) {
+    const name = path.split("/").pop();
+    const ext = name.includes(".") ? name.split(".").pop() : "md";
+    await openFile(path, name, ext);
+  }
+}
+
+async function selectCategory(id, skipAutoOpen = false) {
   state.activeCategory = id;
   state.progressOn = JUDGE_CATEGORIES.has(id);
   state.completed = new Set();
@@ -144,12 +194,14 @@ async function selectCategory(id) {
   if (state.progressOn && state.problemIndex.size) {
     // Judge categories land on the problems dashboard (LeetCode/NeetCode-style overview).
     renderDashboard(id);
-  } else {
+    if (!skipAutoOpen) writeHash(id, null);
+  } else if (!skipAutoOpen) {
     // Doc categories: auto-open the first README (or first file) so the pane isn't empty.
     const first = findFirstFile(root, true) || findFirstFile(root, false);
     if (first) openFile(first.path, first.name, first.ext);
-    else resetViewer();
+    else { resetViewer(); writeHash(id, null); }
   }
+  // When skipAutoOpen is set, applyRoute() opens the routed file (and writes the hash) next.
 }
 
 /* ---- Difficulty helpers ------------------------------------------------------------------ */
@@ -387,6 +439,7 @@ async function openFile(path, name, ext) {
   if (file.markdown && JUDGE_CATEGORIES.has(state.activeCategory)) {
     maybeMountJudge(path);
   }
+  writeHash(state.activeCategory, path); // reflect the open file in the URL for deep-linking
 }
 
 function renderMarkdown(md) {
@@ -454,7 +507,7 @@ async function enhanceSalesforceDoc() {
     // the owning section (dsa/google/faang) and opens it in the judge.
     const link = document.createElement("a");
     link.className = "sf-link";
-    link.href = "#";
+    link.href = buildHash(categoryForPath(path), path); // real deep-link (new-tab friendly)
     link.title = "Open problem";
     link.addEventListener("click", (e) => {
       e.preventDefault();
@@ -481,15 +534,12 @@ function categoryForPath(path) {
   return "dsa";
 }
 
-/** Navigate to a problem by its content path: switch to its section, then open the file. */
-async function openProblemByPath(path) {
-  const cat = categoryForPath(path);
-  const name = path.split("/").pop();
-  if (state.activeCategory !== cat) {
-    await selectCategory(cat);
-    if (state.activeCategory !== cat) return; // user switched away mid-load
-  }
-  openFile(path, name, "md");
+/** Navigate to a problem by its content path: route to its owning section, then open the file.
+ *  Driving this through the URL hash keeps navigation deep-linkable and reload-safe. */
+function openProblemByPath(path) {
+  const target = buildHash(categoryForPath(path), path);
+  if (location.hash === target) applyRoute(); // already there — re-open explicitly
+  else location.hash = target; // triggers hashchange -> applyRoute()
 }
 
 /** Prepend a solved/unsolved progress bar to the top of the current Salesforce doc. */
@@ -584,7 +634,10 @@ async function maybeMountJudge(path) {
     <h1 class="pt-title">${escapeHtml(title)}</h1>
     ${difficultyPill(difficulty)}
     <span class="pt-solved${solved ? " on" : ""}">✓ Solved</span>`;
-  header.querySelector(".back-to-list").onclick = () => renderDashboard(state.activeCategory);
+  header.querySelector(".back-to-list").onclick = () => {
+    renderDashboard(state.activeCategory);
+    writeHash(state.activeCategory, null);
+  };
 
   // Reflow the viewer into two columns: problem statement (left) + Solve panel (right, sticky),
   // separated by a draggable divider. Reference solutions live further down the markdown, so the
