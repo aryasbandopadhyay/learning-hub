@@ -449,15 +449,47 @@ async function enhanceSalesforceDoc() {
     total++;
     const isDone = done.has(path);
     if (isDone) solved++;
-    if (isDone && !(code.nextElementSibling && code.nextElementSibling.classList.contains("sf-solved"))) {
+
+    // Make the referenced problem reachable: wrap the inline path in a link that switches to
+    // the owning section (dsa/google/faang) and opens it in the judge.
+    const link = document.createElement("a");
+    link.className = "sf-link";
+    link.href = "#";
+    link.title = "Open problem";
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      openProblemByPath(path);
+    });
+    code.replaceWith(link);
+    link.appendChild(code);
+
+    if (isDone) {
       const badge = document.createElement("span");
       badge.className = "sf-solved";
       badge.textContent = "✔ solved";
-      code.after(badge);
+      link.after(badge);
     }
   });
 
   if (total > 0) injectSalesforceProgressBar(solved, total);
+}
+
+/** Which judge category (tab) owns a given content path. */
+function categoryForPath(path) {
+  if (path.startsWith("dsa/google/")) return "google";
+  if (path.startsWith("dsa/faang/")) return "faang";
+  return "dsa";
+}
+
+/** Navigate to a problem by its content path: switch to its section, then open the file. */
+async function openProblemByPath(path) {
+  const cat = categoryForPath(path);
+  const name = path.split("/").pop();
+  if (state.activeCategory !== cat) {
+    await selectCategory(cat);
+    if (state.activeCategory !== cat) return; // user switched away mid-load
+  }
+  openFile(path, name, "md");
 }
 
 /** Prepend a solved/unsolved progress bar to the top of the current Salesforce doc. */

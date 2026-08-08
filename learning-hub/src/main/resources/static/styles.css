@@ -318,6 +318,11 @@ html, body {
 }
 .tree .file.done .fname { color: var(--muted); }
 
+/* Clickable link wrapping a referenced problem path in the Salesforce index. */
+.sf-link { text-decoration: none; cursor: pointer; }
+.sf-link code { color: var(--accent); border-bottom: 1px dashed transparent; transition: border-color .15s ease; }
+.sf-link:hover code { border-bottom-color: var(--accent); }
+
 /* Live "solved" badge next to a referenced problem path in the Salesforce index. */
 .sf-solved {
   display: inline-block; margin-left: 6px; padding: 1px 7px;
