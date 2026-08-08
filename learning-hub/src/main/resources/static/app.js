@@ -419,28 +419,60 @@ function renderMarkdown(md) {
 
   // 3) Salesforce section: its DSA index links straight to main-bank problem paths. Since that
   //    section isn't itself progress-tracked, decorate each referenced path with a live
-  //    "solved" badge sourced from the user's global (cross-section) progress.
-  if (state.activeCategory === "salesforce") applySolvedBadges();
+  //    "solved" badge and inject an overall solved/unsolved progress bar — both sourced from the
+  //    user's global (cross-section) progress.
+  if (state.activeCategory === "salesforce") enhanceSalesforceDoc();
 }
 
-/** Append a "✔ solved" badge to inline-code problem paths already completed by the user. */
-async function applySolvedBadges() {
-  let done;
+/** Badge solved problem links and prepend an overall solved/unsolved progress bar to a
+ *  Salesforce doc. Only judge-trackable linked problems (those present in the judge index —
+ *  i.e. excluding the `gaps/` write-ups that have no judge) are counted. */
+async function enhanceSalesforceDoc() {
+  let done, judgePaths;
   try {
-    done = new Set((await getJSON("/api/progress")).completed || []);
+    const [prog, idx] = await Promise.all([
+      getJSON("/api/progress"), // no section => the user's completed paths across all sections
+      getJSON("/api/judge/index"), // no section => every judge-trackable problem
+    ]);
+    done = new Set(prog.completed || []);
+    judgePaths = new Set((idx.problems || []).map((p) => p.path));
   } catch (e) {
-    return; // progress disabled/unreachable — no badges
+    return; // progress/index unreachable — leave the doc untouched
   }
+
+  let total = 0;
+  let solved = 0;
   el.viewer.querySelectorAll("code").forEach((code) => {
     if (code.closest("pre")) return; // skip fenced code blocks
     const path = code.textContent.trim();
-    if (!path.endsWith(".md") || !done.has(path)) return;
-    if (code.nextElementSibling && code.nextElementSibling.classList.contains("sf-solved")) return;
-    const badge = document.createElement("span");
-    badge.className = "sf-solved";
-    badge.textContent = "✔ solved";
-    code.after(badge);
+    if (!path.endsWith(".md") || !judgePaths.has(path)) return; // only trackable problems
+    total++;
+    const isDone = done.has(path);
+    if (isDone) solved++;
+    if (isDone && !(code.nextElementSibling && code.nextElementSibling.classList.contains("sf-solved"))) {
+      const badge = document.createElement("span");
+      badge.className = "sf-solved";
+      badge.textContent = "✔ solved";
+      code.after(badge);
+    }
   });
+
+  if (total > 0) injectSalesforceProgressBar(solved, total);
+}
+
+/** Prepend a solved/unsolved progress bar to the top of the current Salesforce doc. */
+function injectSalesforceProgressBar(solved, total) {
+  if (el.viewer.querySelector(".sf-progress")) return; // already present
+  const pct = total ? Math.round((solved / total) * 100) : 0;
+  const bar = document.createElement("div");
+  bar.className = "sf-progress";
+  bar.innerHTML = `
+    <div class="progress-top">
+      <span class="progress-label">Your progress</span>
+      <span class="progress-count">${solved} / ${total} solved · ${pct}%</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>`;
+  el.viewer.insertBefore(bar, el.viewer.firstChild);
 }
 
 function renderCode(content, ext) {
@@ -726,14 +758,30 @@ let progressCardEl = null;
 
 function mountProgressCard(catId) {
   removeProgressCard();
+  const { total, buckets } = diffStats();
+  const order = ["easy", "medium", "hard"];
+  const rows = order
+    .filter((d) => buckets[d].total > 0)
+    .map(
+      (d) => `
+      <div class="progress-diff" data-diff="${d}">
+        <div class="progress-diff-top">
+          <span class="pill pill-${d}">${d[0].toUpperCase()}${d.slice(1)}</span>
+          <span class="pd-count">0 / ${buckets[d].total}</span>
+        </div>
+        <div class="progress-track sm"><div class="progress-fill pf-${d}"></div></div>
+      </div>`
+    )
+    .join("");
   const card = document.createElement("div");
   card.className = "progress-card";
   card.innerHTML = `
     <div class="progress-top">
       <span class="progress-label">Progress</span>
-      <span class="progress-count">0 / ${state.problemPaths.size}</span>
+      <span class="progress-count">0 / ${total}</span>
     </div>
-    <div class="progress-track"><div class="progress-fill"></div></div>
+    <div class="progress-track"><div class="progress-fill pf-overall"></div></div>
+    <div class="progress-diffs">${rows}</div>
     <div class="progress-actions">
       <button class="progress-reset" type="button">↺ Reset progress</button>
     </div>`;
@@ -760,18 +808,42 @@ async function loadProgress(catId) {
   updateProgressUI();
 }
 
-function updateProgressUI() {
-  // Count only completed paths that are actual problems in this section.
+/** Overall + per-difficulty completion stats over this section's problems. */
+function diffStats() {
+  const buckets = {
+    easy: { done: 0, total: 0 },
+    medium: { done: 0, total: 0 },
+    hard: { done: 0, total: 0 },
+  };
   let done = 0;
   state.problemPaths.forEach((p) => {
-    if (state.completed.has(p)) done++;
+    const isDone = state.completed.has(p);
+    if (isDone) done++;
+    const d = (difficultyOf(p) || "").toLowerCase();
+    if (buckets[d]) {
+      buckets[d].total++;
+      if (isDone) buckets[d].done++;
+    }
   });
-  const total = state.problemPaths.size || 1;
-  const pct = Math.round((done / total) * 100);
+  return { done, total: state.problemPaths.size, buckets };
+}
+
+function updateProgressUI() {
+  const { done, total, buckets } = diffStats();
+  const denom = total || 1;
+  const pct = Math.round((done / denom) * 100);
   if (progressCardEl) {
-    progressCardEl.querySelector(".progress-count").textContent =
-      `${done} / ${state.problemPaths.size} · ${pct}%`;
-    progressCardEl.querySelector(".progress-fill").style.width = `${pct}%`;
+    progressCardEl.querySelector(".progress-count").textContent = `${done} / ${total} · ${pct}%`;
+    const overall = progressCardEl.querySelector(".pf-overall");
+    if (overall) overall.style.width = `${pct}%`;
+    ["easy", "medium", "hard"].forEach((d) => {
+      const row = progressCardEl.querySelector(`.progress-diff[data-diff="${d}"]`);
+      if (!row) return;
+      const b = buckets[d];
+      const p = b.total ? Math.round((b.done / b.total) * 100) : 0;
+      row.querySelector(".pd-count").textContent = `${b.done} / ${b.total}`;
+      row.querySelector(".progress-fill").style.width = `${p}%`;
+    });
   }
   // Reflect completion on each tree file badge.
   state.fileEls.forEach(({ el: fileEl }, path) => {

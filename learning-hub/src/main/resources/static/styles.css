@@ -245,6 +245,23 @@ html, body {
   transition: width .5s cubic-bezier(.4, 0, .2, 1);
   box-shadow: 0 0 10px var(--accent-glow);
 }
+
+/* Per-difficulty mini progress bars inside the sidebar card. */
+.progress-diffs { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.progress-diff-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.pd-count { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.progress-track.sm { height: 6px; }
+.pf-easy   { background: var(--success); box-shadow: none; }
+.pf-medium { background: var(--warn);    box-shadow: none; }
+.pf-hard   { background: var(--danger);  box-shadow: none; }
+
+/* Salesforce doc: injected overall solved/unsolved progress bar. */
+.sf-progress {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border-radius: 10px; padding: 11px 13px; margin: 0 0 20px;
+}
+
 .progress-actions { display: flex; align-items: center; justify-content: flex-end; margin-top: 8px; }
 .progress-reset {
   font-size: 11.5px; font-weight: 600; cursor: pointer;
