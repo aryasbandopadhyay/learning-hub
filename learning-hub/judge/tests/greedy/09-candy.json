@@ -1,0 +1,58 @@
+{
+  "id": "greedy/09-candy",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          1,
+          0,
+          2
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "label": "descending",
+      "args": [
+        [
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "label": "all equal",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "valley",
+      "args": [
+        [
+          1,
+          2,
+          1
+        ]
+      ],
+      "expected": 4
+    }
+  ]
+}

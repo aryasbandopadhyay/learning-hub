@@ -1,0 +1,62 @@
+{
+  "id": "greedy/14-lemonade-change",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          5,
+          5,
+          5,
+          10,
+          20
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "cannot change first",
+      "args": [
+        [
+          10
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "simple ok",
+      "args": [
+        [
+          5,
+          5,
+          10
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "fail on twenty",
+      "args": [
+        [
+          5,
+          5,
+          10,
+          10,
+          20
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "all fives",
+      "args": [
+        [
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected": true
+    }
+  ]
+}

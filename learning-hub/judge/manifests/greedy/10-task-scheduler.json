@@ -25,210 +25,78 @@
       "expected": 8
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "classic n2",
       "args": [
         [
-          "dbe",
-          "bbb",
-          "bac",
-          "dee",
-          "aed",
-          "bde",
-          "ebc",
-          "dbb",
-          "dbe",
-          "cae",
-          "adc",
-          "dac",
-          "ead",
-          "bce",
-          "ade",
-          "bed",
-          "acb",
-          "bbd",
-          "ebe",
-          "baa"
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B"
         ],
-        382
+        2
       ],
-      "expected": 384
+      "expected": 8
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "n0",
       "args": [
         [
-          "ada",
-          "bce",
-          "adc",
-          "bed",
-          "bab",
-          "dce",
-          "dbc",
-          "dab",
-          "ebe",
-          "daa",
-          "abc",
-          "bbd",
-          "bbe",
-          "cdb",
-          "cac",
-          "bae",
-          "cae",
-          "acb",
-          "ddc",
-          "ddd"
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B"
         ],
-        6079
+        0
       ],
-      "expected": 20
+      "expected": 6
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single",
       "args": [
         [
-          "acd",
-          "dbc",
-          "bca"
+          "A"
         ],
-        5144
+        2
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "all distinct",
+      "args": [
+        [
+          "A",
+          "B",
+          "C"
+        ],
+        5
       ],
       "expected": 3
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "one spread",
       "args": [
         [
-          "dcd",
-          "add",
-          "cae",
-          "ccd",
-          "ebc"
+          "A",
+          "A",
+          "A"
         ],
-        7061
+        2
       ],
-      "expected": 5
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        [
-          "ebc",
-          "dee",
-          "dbd",
-          "cbc",
-          "acc",
-          "bbc",
-          "dbd",
-          "cda",
-          "aee",
-          "bae",
-          "cbe",
-          "dbc",
-          "dde",
-          "eee",
-          "cba",
-          "aca",
-          "eaa",
-          "dcc",
-          "eee",
-          "cba"
-        ],
-        6467
-      ],
-      "expected": 6471
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        [
-          "cdc",
-          "bbd",
-          "dde"
-        ],
-        2931
-      ],
-      "expected": 3
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        [
-          "cde",
-          "dbd",
-          "edb",
-          "aeb",
-          "dea"
-        ],
-        1882
-      ],
-      "expected": 5
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        [
-          "aca",
-          "eec",
-          "aec",
-          "dcb",
-          "bea",
-          "daa",
-          "ceb",
-          "ecb",
-          "dad",
-          "bba",
-          "dbc",
-          "cca",
-          "ebe",
-          "bce",
-          "aab",
-          "bbe",
-          "aae",
-          "dbc",
-          "bee",
-          "ebc",
-          "acd",
-          "bcb",
-          "abd",
-          "eab",
-          "dab",
-          "ede",
-          "abb",
-          "dcc",
-          "cea",
-          "eda",
-          "cbb",
-          "ace",
-          "cca",
-          "dda",
-          "acb",
-          "ecc",
-          "cad",
-          "ceb",
-          "eba",
-          "cdd",
-          "ebb",
-          "eda",
-          "bbc",
-          "bea",
-          "dae",
-          "abb",
-          "bca",
-          "cbe",
-          "dba",
-          "aed"
-        ],
-        7312
-      ],
-      "expected": 7319
+      "expected": 7
     }
   ],
   "complexity": {

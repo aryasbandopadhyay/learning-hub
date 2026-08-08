@@ -18,6 +18,66 @@
         7,
         8
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        "ababcbacadefegdehijhklij"
+      ],
+      "expected": [
+        9,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single char",
+      "args": [
+        "a"
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "all same",
+      "args": [
+        "aaaa"
+      ],
+      "expected": [
+        4
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "no repeats",
+      "args": [
+        "abc"
+      ],
+      "expected": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "two groups",
+      "args": [
+        "abac"
+      ],
+      "expected": [
+        3,
+        1
+      ]
     }
   ],
   "id": "greedy/06-partition-labels",

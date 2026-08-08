@@ -14,6 +14,60 @@
         "(*)"
       ],
       "expected": true
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "star as close",
+      "args": [
+        "(*)"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "star as open",
+      "args": [
+        "(*"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "balanced",
+      "args": [
+        "()"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "unbalanced open",
+      "args": [
+        "("
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "all stars",
+      "args": [
+        "***"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "close first",
+      "args": [
+        ")("
+      ],
+      "expected": false
     }
   ],
   "id": "greedy/07-valid-parenthesis-string",

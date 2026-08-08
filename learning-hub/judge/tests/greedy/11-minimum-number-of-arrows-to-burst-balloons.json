@@ -1,0 +1,97 @@
+{
+  "id": "greedy/11-minimum-number-of-arrows-to-burst-balloons",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          [
+            10,
+            16
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            7,
+            12
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "no overlap",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            6
+          ]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "all overlap",
+      "args": [
+        [
+          [
+            1,
+            10
+          ],
+          [
+            2,
+            9
+          ],
+          [
+            3,
+            8
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          [
+            1,
+            2
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "touching edges",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      ],
+      "expected": 1
+    }
+  ]
+}

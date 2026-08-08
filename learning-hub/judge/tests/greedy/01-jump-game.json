@@ -1,0 +1,61 @@
+{
+  "id": "greedy/01-jump-game",
+  "cases": [
+    {
+      "label": "example true",
+      "args": [
+        [
+          2,
+          3,
+          1,
+          1,
+          4
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "stuck at zero",
+      "args": [
+        [
+          3,
+          2,
+          1,
+          0,
+          4
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          0
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "all ones",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "first is zero multi",
+      "args": [
+        [
+          0,
+          1
+        ]
+      ],
+      "expected": false
+    }
+  ]
+}

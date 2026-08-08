@@ -1,0 +1,55 @@
+{
+  "id": "greedy/06-partition-labels",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "ababcbacadefegdehijhklij"
+      ],
+      "expected": [
+        9,
+        7,
+        8
+      ]
+    },
+    {
+      "label": "single char",
+      "args": [
+        "a"
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "label": "all same",
+      "args": [
+        "aaaa"
+      ],
+      "expected": [
+        4
+      ]
+    },
+    {
+      "label": "no repeats",
+      "args": [
+        "abc"
+      ],
+      "expected": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "two groups",
+      "args": [
+        "abac"
+      ],
+      "expected": [
+        3,
+        1
+      ]
+    }
+  ]
+}

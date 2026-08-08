@@ -1,0 +1,69 @@
+{
+  "id": "greedy/10-task-scheduler",
+  "cases": [
+    {
+      "label": "classic n2",
+      "args": [
+        [
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B"
+        ],
+        2
+      ],
+      "expected": 8
+    },
+    {
+      "label": "n0",
+      "args": [
+        [
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B"
+        ],
+        0
+      ],
+      "expected": 6
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          "A"
+        ],
+        2
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all distinct",
+      "args": [
+        [
+          "A",
+          "B",
+          "C"
+        ],
+        5
+      ],
+      "expected": 3
+    },
+    {
+      "label": "one spread",
+      "args": [
+        [
+          "A",
+          "A",
+          "A"
+        ],
+        2
+      ],
+      "expected": 7
+    }
+  ]
+}

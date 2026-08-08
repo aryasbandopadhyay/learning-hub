@@ -1,0 +1,81 @@
+{
+  "id": "greedy/03-gas-station",
+  "cases": [
+    {
+      "label": "possible",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "impossible",
+      "args": [
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          3
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "label": "single ok",
+      "args": [
+        [
+          5
+        ],
+        [
+          4
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "single fail",
+      "args": [
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "label": "start not zero",
+      "args": [
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "expected": 0
+    }
+  ]
+}

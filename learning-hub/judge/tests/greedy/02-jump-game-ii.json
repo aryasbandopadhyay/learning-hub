@@ -1,0 +1,60 @@
+{
+  "id": "greedy/02-jump-game-ii",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          2,
+          3,
+          1,
+          1,
+          4
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          0
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "two",
+      "args": [
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "big first",
+      "args": [
+        [
+          5,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "min jumps",
+      "args": [
+        [
+          2,
+          1
+        ]
+      ],
+      "expected": 1
+    }
+  ]
+}

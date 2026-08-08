@@ -28,6 +28,92 @@
         ]
       ],
       "expected": 3
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "possible",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "impossible",
+      "args": [
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          3
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single ok",
+      "args": [
+        [
+          5
+        ],
+        [
+          4
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single fail",
+      "args": [
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "start not zero",
+      "args": [
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "expected": 0
     }
   ],
   "complexity": {

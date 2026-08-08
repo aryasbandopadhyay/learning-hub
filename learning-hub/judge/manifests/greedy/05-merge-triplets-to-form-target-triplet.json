@@ -36,6 +36,116 @@
         ]
       ],
       "expected": true
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example true",
+      "args": [
+        [
+          [
+            2,
+            5,
+            3
+          ],
+          [
+            1,
+            8,
+            4
+          ],
+          [
+            1,
+            7,
+            5
+          ]
+        ],
+        [
+          2,
+          7,
+          5
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "cannot form",
+      "args": [
+        [
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            4,
+            5,
+            6
+          ]
+        ],
+        [
+          3,
+          2,
+          5
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single exact",
+      "args": [
+        [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "overshoot excluded",
+      "args": [
+        [
+          [
+            2,
+            5,
+            3
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            5
+          ],
+          [
+            5,
+            2,
+            3
+          ]
+        ],
+        [
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected": true
     }
   ],
   "id": "greedy/05-merge-triplets-to-form-target-triplet",

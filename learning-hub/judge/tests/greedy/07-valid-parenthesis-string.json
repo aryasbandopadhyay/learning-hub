@@ -1,0 +1,47 @@
+{
+  "id": "greedy/07-valid-parenthesis-string",
+  "cases": [
+    {
+      "label": "star as close",
+      "args": [
+        "(*)"
+      ],
+      "expected": true
+    },
+    {
+      "label": "star as open",
+      "args": [
+        "(*"
+      ],
+      "expected": true
+    },
+    {
+      "label": "balanced",
+      "args": [
+        "()"
+      ],
+      "expected": true
+    },
+    {
+      "label": "unbalanced open",
+      "args": [
+        "("
+      ],
+      "expected": false
+    },
+    {
+      "label": "all stars",
+      "args": [
+        "***"
+      ],
+      "expected": true
+    },
+    {
+      "label": "close first",
+      "args": [
+        ")("
+      ],
+      "expected": false
+    }
+  ]
+}

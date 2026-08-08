@@ -1,0 +1,73 @@
+{
+  "id": "greedy/13-assign-cookies",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all satisfied",
+      "args": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "none satisfied",
+      "args": [
+        [
+          3,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "empty cookies",
+      "args": [
+        [
+          1
+        ],
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "label": "exact",
+      "args": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": 2
+    }
+  ]
+}

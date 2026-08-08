@@ -31,6 +31,108 @@
         ]
       ],
       "expected": 2
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        [
+          [
+            10,
+            16
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            7,
+            12
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "no overlap",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            6
+          ]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "all overlap",
+      "args": [
+        [
+          [
+            1,
+            10
+          ],
+          [
+            2,
+            9
+          ],
+          [
+            3,
+            8
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single",
+      "args": [
+        [
+          [
+            1,
+            2
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "touching edges",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      ],
+      "expected": 1
     }
   ],
   "complexity": {
