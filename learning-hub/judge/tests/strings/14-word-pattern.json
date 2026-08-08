@@ -1,0 +1,45 @@
+{
+  "id": "strings/14-word-pattern",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "abba",
+        "dog cat cat dog"
+      ],
+      "expected": true
+    },
+    {
+      "label": "mismatch",
+      "args": [
+        "abba",
+        "dog cat cat fish"
+      ],
+      "expected": false
+    },
+    {
+      "label": "count mismatch",
+      "args": [
+        "aaaa",
+        "dog cat cat dog"
+      ],
+      "expected": false
+    },
+    {
+      "label": "single",
+      "args": [
+        "a",
+        "dog"
+      ],
+      "expected": true
+    },
+    {
+      "label": "two-to-one",
+      "args": [
+        "ab",
+        "dog dog"
+      ],
+      "expected": false
+    }
+  ]
+}

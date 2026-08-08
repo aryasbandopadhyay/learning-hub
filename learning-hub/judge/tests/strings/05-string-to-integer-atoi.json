@@ -1,0 +1,47 @@
+{
+  "id": "strings/05-string-to-integer-atoi",
+  "cases": [
+    {
+      "label": "negative with spaces",
+      "args": [
+        "   -42"
+      ],
+      "expected": -42
+    },
+    {
+      "label": "with trailing text",
+      "args": [
+        "4193 with words"
+      ],
+      "expected": 4193
+    },
+    {
+      "label": "leading text",
+      "args": [
+        "words and 987"
+      ],
+      "expected": 0
+    },
+    {
+      "label": "plus sign",
+      "args": [
+        "+1"
+      ],
+      "expected": 1
+    },
+    {
+      "label": "just spaces",
+      "args": [
+        "   "
+      ],
+      "expected": 0
+    },
+    {
+      "label": "overflow positive",
+      "args": [
+        "2147483648"
+      ],
+      "expected": 2147483647
+    }
+  ]
+}

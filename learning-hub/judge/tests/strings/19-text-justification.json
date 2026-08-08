@@ -1,0 +1,65 @@
+{
+  "id": "strings/19-text-justification",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          "This",
+          "is",
+          "an",
+          "example",
+          "of",
+          "text",
+          "justification."
+        ],
+        16
+      ],
+      "expected": [
+        "This    is    an",
+        "example  of text",
+        "justification.  "
+      ]
+    },
+    {
+      "label": "single word",
+      "args": [
+        [
+          "word"
+        ],
+        10
+      ],
+      "expected": [
+        "word      "
+      ]
+    },
+    {
+      "label": "exact fit",
+      "args": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        5
+      ],
+      "expected": [
+        "a b c"
+      ]
+    },
+    {
+      "label": "one per line",
+      "args": [
+        [
+          "aaaa",
+          "bbbb"
+        ],
+        4
+      ],
+      "expected": [
+        "aaaa",
+        "bbbb"
+      ]
+    }
+  ]
+}

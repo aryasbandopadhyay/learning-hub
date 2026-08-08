@@ -18,76 +18,44 @@
       "expected": 0
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
+        "sadbutsad",
         "sad"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "not found",
+      "args": [
+        "leetcode",
+        "leeto"
       ],
       "expected": -1
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "at start",
       "args": [
-        "dbbdbecaeadcd",
-        "sad"
+        "abc",
+        "a"
       ],
-      "expected": -1
+      "expected": 0
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "at end",
       "args": [
-        "d",
-        "sad"
+        "abc",
+        "c"
       ],
-      "expected": -1
-    },
-    {
-      "id": "rand-4",
-      "kind": "random",
-      "args": [
-        "de",
-        "sad"
-      ],
-      "expected": -1
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "sad"
-      ],
-      "expected": -1
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "sad"
-      ],
-      "expected": -1
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "sad"
-      ],
-      "expected": -1
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "sad"
-      ],
-      "expected": -1
+      "expected": 2
     }
   ],
   "complexity": {

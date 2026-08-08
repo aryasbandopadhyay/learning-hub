@@ -1,0 +1,45 @@
+{
+  "id": "strings/13-isomorphic-strings",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "egg",
+        "add"
+      ],
+      "expected": true
+    },
+    {
+      "label": "not isomorphic",
+      "args": [
+        "foo",
+        "bar"
+      ],
+      "expected": false
+    },
+    {
+      "label": "badc",
+      "args": [
+        "badc",
+        "baba"
+      ],
+      "expected": false
+    },
+    {
+      "label": "single",
+      "args": [
+        "a",
+        "b"
+      ],
+      "expected": true
+    },
+    {
+      "label": "same",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    }
+  ]
+}

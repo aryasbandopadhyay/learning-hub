@@ -1,0 +1,56 @@
+{
+  "id": "strings/03-longest-common-prefix",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          "flower",
+          "flow",
+          "flight"
+        ]
+      ],
+      "expected": "fl"
+    },
+    {
+      "label": "no common",
+      "args": [
+        [
+          "dog",
+          "racecar",
+          "car"
+        ]
+      ],
+      "expected": ""
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          "alone"
+        ]
+      ],
+      "expected": "alone"
+    },
+    {
+      "label": "full match",
+      "args": [
+        [
+          "abc",
+          "abc"
+        ]
+      ],
+      "expected": "abc"
+    },
+    {
+      "label": "empty string in list",
+      "args": [
+        [
+          "",
+          "abc"
+        ]
+      ],
+      "expected": ""
+    }
+  ]
+}

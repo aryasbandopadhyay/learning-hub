@@ -16,68 +16,49 @@
       "expected": "Twelve Thousand Three Hundred Forty Five"
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        6239
+        12345
       ],
-      "expected": "Six Thousand Two Hundred Thirty Nine"
+      "expected": "Twelve Thousand Three Hundred Forty Five"
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "zero",
       "args": [
-        3773
+        0
       ],
-      "expected": "Three Thousand Seven Hundred Seventy Three"
+      "expected": "Zero"
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "one",
       "args": [
-        4115
+        1
       ],
-      "expected": "Four Thousand One Hundred Fifteen"
+      "expected": "One"
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "hundred",
       "args": [
-        8017
+        100
       ],
-      "expected": "Eight Thousand Seventeen"
+      "expected": "One Hundred"
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "thousand",
       "args": [
-        6128
+        1000000
       ],
-      "expected": "Six Thousand One Hundred Twenty Eight"
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        2495
-      ],
-      "expected": "Two Thousand Four Hundred Ninety Five"
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        9289
-      ],
-      "expected": "Nine Thousand Two Hundred Eighty Nine"
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        7685
-      ],
-      "expected": "Seven Thousand Six Hundred Eighty Five"
+      "expected": "One Million"
     }
   ],
   "id": "strings/20-integer-to-english-words",

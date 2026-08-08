@@ -18,76 +18,54 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
+        "anagram",
         "nagaram"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "not anagram",
+      "args": [
+        "rat",
+        "car"
       ],
       "expected": false
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "different length",
       "args": [
-        "dbbdbecaeadcd",
-        "nagaram"
+        "a",
+        "ab"
       ],
       "expected": false
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "empty both",
       "args": [
-        "d",
-        "nagaram"
+        "",
+        ""
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "same string",
       "args": [
-        "de",
-        "nagaram"
+        "abc",
+        "abc"
       ],
-      "expected": false
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "nagaram"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "nagaram"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "nagaram"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "nagaram"
-      ],
-      "expected": false
+      "expected": true
     }
   ],
   "complexity": {

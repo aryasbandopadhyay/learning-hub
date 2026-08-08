@@ -16,6 +16,56 @@
         "add"
       ],
       "expected": true
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        "egg",
+        "add"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "not isomorphic",
+      "args": [
+        "foo",
+        "bar"
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "badc",
+      "args": [
+        "badc",
+        "baba"
+      ],
+      "expected": false
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single",
+      "args": [
+        "a",
+        "b"
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "same",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": true
     }
   ],
   "complexity": {

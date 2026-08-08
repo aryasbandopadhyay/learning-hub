@@ -1,0 +1,40 @@
+{
+  "id": "strings/15-first-unique-character-in-a-string",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "leetcode"
+      ],
+      "expected": 0
+    },
+    {
+      "label": "second unique",
+      "args": [
+        "loveleetcode"
+      ],
+      "expected": 2
+    },
+    {
+      "label": "no unique",
+      "args": [
+        "aabb"
+      ],
+      "expected": -1
+    },
+    {
+      "label": "single",
+      "args": [
+        "z"
+      ],
+      "expected": 0
+    },
+    {
+      "label": "all same",
+      "args": [
+        "aaaa"
+      ],
+      "expected": -1
+    }
+  ]
+}

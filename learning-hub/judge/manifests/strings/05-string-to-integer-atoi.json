@@ -16,68 +16,58 @@
       "expected": -42
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "negative with spaces",
       "args": [
-        "dbebbbbacdeeaedbdeeb"
+        "   -42"
+      ],
+      "expected": -42
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "with trailing text",
+      "args": [
+        "4193 with words"
+      ],
+      "expected": 4193
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "leading text",
+      "args": [
+        "words and 987"
       ],
       "expected": 0
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "plus sign",
       "args": [
-        "dbbdbecaeadcd"
+        "+1"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "just spaces",
+      "args": [
+        "   "
       ],
       "expected": 0
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "overflow positive",
       "args": [
-        "d"
+        "2147483648"
       ],
-      "expected": 0
-    },
-    {
-      "id": "rand-4",
-      "kind": "random",
-      "args": [
-        "de"
-      ],
-      "expected": 0
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
-      ],
-      "expected": 0
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd"
-      ],
-      "expected": 0
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc"
-      ],
-      "expected": 0
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd"
-      ],
-      "expected": 0
+      "expected": 2147483647
     }
   ],
   "complexity": {

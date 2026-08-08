@@ -1,0 +1,41 @@
+{
+  "id": "strings/10-longest-palindromic-substring",
+  "note": "exact compare -> use single-answer inputs only.",
+  "cases": [
+    {
+      "label": "cbbd",
+      "args": [
+        "cbbd"
+      ],
+      "expected": "bb"
+    },
+    {
+      "label": "single char",
+      "args": [
+        "a"
+      ],
+      "expected": "a"
+    },
+    {
+      "label": "full palindrome",
+      "args": [
+        "racecar"
+      ],
+      "expected": "racecar"
+    },
+    {
+      "label": "no repeat",
+      "args": [
+        "abcd"
+      ],
+      "expected": "a"
+    },
+    {
+      "label": "even palindrome",
+      "args": [
+        "abba"
+      ],
+      "expected": "abba"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "strings/17-longest-substring-without-repeating-characters",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "abcabcbb"
+      ],
+      "expected": 3
+    },
+    {
+      "label": "all same",
+      "args": [
+        "bbbbb"
+      ],
+      "expected": 1
+    },
+    {
+      "label": "pwwkew",
+      "args": [
+        "pwwkew"
+      ],
+      "expected": 3
+    },
+    {
+      "label": "empty",
+      "args": [
+        ""
+      ],
+      "expected": 0
+    },
+    {
+      "label": "all unique",
+      "args": [
+        "abcde"
+      ],
+      "expected": 5
+    }
+  ]
+}

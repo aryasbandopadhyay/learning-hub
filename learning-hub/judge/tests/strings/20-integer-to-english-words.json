@@ -1,0 +1,40 @@
+{
+  "id": "strings/20-integer-to-english-words",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        12345
+      ],
+      "expected": "Twelve Thousand Three Hundred Forty Five"
+    },
+    {
+      "label": "zero",
+      "args": [
+        0
+      ],
+      "expected": "Zero"
+    },
+    {
+      "label": "one",
+      "args": [
+        1
+      ],
+      "expected": "One"
+    },
+    {
+      "label": "hundred",
+      "args": [
+        100
+      ],
+      "expected": "One Hundred"
+    },
+    {
+      "label": "thousand",
+      "args": [
+        1000000
+      ],
+      "expected": "One Million"
+    }
+  ]
+}

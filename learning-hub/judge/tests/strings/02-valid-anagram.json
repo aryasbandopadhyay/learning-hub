@@ -1,0 +1,45 @@
+{
+  "id": "strings/02-valid-anagram",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "anagram",
+        "nagaram"
+      ],
+      "expected": true
+    },
+    {
+      "label": "not anagram",
+      "args": [
+        "rat",
+        "car"
+      ],
+      "expected": false
+    },
+    {
+      "label": "different length",
+      "args": [
+        "a",
+        "ab"
+      ],
+      "expected": false
+    },
+    {
+      "label": "empty both",
+      "args": [
+        "",
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "label": "same string",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    }
+  ]
+}

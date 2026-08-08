@@ -1,0 +1,45 @@
+{
+  "id": "strings/09-zigzag-conversion",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "PAYPALISHIRING",
+        3
+      ],
+      "expected": "PAHNAPLSIIGYIR"
+    },
+    {
+      "label": "one row",
+      "args": [
+        "ABCD",
+        1
+      ],
+      "expected": "ABCD"
+    },
+    {
+      "label": "rows exceed length",
+      "args": [
+        "AB",
+        5
+      ],
+      "expected": "AB"
+    },
+    {
+      "label": "two rows",
+      "args": [
+        "ABCDE",
+        2
+      ],
+      "expected": "ACEBD"
+    },
+    {
+      "label": "single char",
+      "args": [
+        "A",
+        3
+      ],
+      "expected": "A"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "strings/16-ransom-note",
+  "cases": [
+    {
+      "label": "cannot construct",
+      "args": [
+        "aa",
+        "ab"
+      ],
+      "expected": false
+    },
+    {
+      "label": "can construct",
+      "args": [
+        "aa",
+        "aab"
+      ],
+      "expected": true
+    },
+    {
+      "label": "empty note",
+      "args": [
+        "",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "label": "exact",
+      "args": [
+        "abc",
+        "abc"
+      ],
+      "expected": true
+    },
+    {
+      "label": "not enough",
+      "args": [
+        "aaa",
+        "aa"
+      ],
+      "expected": false
+    }
+  ]
+}

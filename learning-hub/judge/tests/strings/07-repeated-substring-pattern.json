@@ -1,0 +1,40 @@
+{
+  "id": "strings/07-repeated-substring-pattern",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "abab"
+      ],
+      "expected": true
+    },
+    {
+      "label": "no pattern",
+      "args": [
+        "aba"
+      ],
+      "expected": false
+    },
+    {
+      "label": "single char",
+      "args": [
+        "a"
+      ],
+      "expected": false
+    },
+    {
+      "label": "all same",
+      "args": [
+        "aaaa"
+      ],
+      "expected": true
+    },
+    {
+      "label": "abcabc",
+      "args": [
+        "abcabc"
+      ],
+      "expected": true
+    }
+  ]
+}

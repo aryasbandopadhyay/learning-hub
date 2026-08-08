@@ -16,68 +16,49 @@
       "expected": "bab"
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "cbbd",
       "args": [
-        "dbebbbbacdeeaedbdeeb"
+        "cbbd"
       ],
-      "expected": "edbde"
+      "expected": "bb"
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single char",
       "args": [
-        "dbbdbecaeadcd"
+        "a"
       ],
-      "expected": "dbbd"
+      "expected": "a"
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "full palindrome",
       "args": [
-        "d"
+        "racecar"
       ],
-      "expected": "d"
+      "expected": "racecar"
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "no repeat",
       "args": [
-        "de"
+        "abcd"
       ],
-      "expected": "d"
+      "expected": "a"
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "even palindrome",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+        "abba"
       ],
-      "expected": "baaab"
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd"
-      ],
-      "expected": "bcacb"
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc"
-      ],
-      "expected": "bcacb"
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd"
-      ],
-      "expected": "dd"
+      "expected": "abba"
     }
   ],
   "complexity": {

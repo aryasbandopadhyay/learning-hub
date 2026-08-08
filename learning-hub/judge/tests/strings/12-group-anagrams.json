@@ -1,0 +1,70 @@
+{
+  "id": "strings/12-group-anagrams",
+  "note": "exact compare on list-of-lists -> use inputs with deterministic grouping.",
+  "cases": [
+    {
+      "label": "no anagrams",
+      "args": [
+        [
+          "abc",
+          "def",
+          "ghi"
+        ]
+      ],
+      "expected": [
+        [
+          "abc"
+        ],
+        [
+          "def"
+        ],
+        [
+          "ghi"
+        ]
+      ]
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          "a"
+        ]
+      ],
+      "expected": [
+        [
+          "a"
+        ]
+      ]
+    },
+    {
+      "label": "empty strings",
+      "args": [
+        [
+          "",
+          ""
+        ]
+      ],
+      "expected": [
+        [
+          "",
+          ""
+        ]
+      ]
+    },
+    {
+      "label": "one pair",
+      "args": [
+        [
+          "ab",
+          "ba"
+        ]
+      ],
+      "expected": [
+        [
+          "ab",
+          "ba"
+        ]
+      ]
+    }
+  ]
+}

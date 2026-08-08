@@ -1,0 +1,47 @@
+{
+  "id": "strings/01-valid-palindrome",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "A man, a plan, a canal: Panama"
+      ],
+      "expected": true
+    },
+    {
+      "label": "not palindrome",
+      "args": [
+        "race a car"
+      ],
+      "expected": false
+    },
+    {
+      "label": "empty",
+      "args": [
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "label": "single char",
+      "args": [
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "label": "only punctuation",
+      "args": [
+        ".,"
+      ],
+      "expected": true
+    },
+    {
+      "label": "mixed case",
+      "args": [
+        "Aa"
+      ],
+      "expected": true
+    }
+  ]
+}

@@ -30,225 +30,71 @@
       ]
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
         [
-          "dbe",
-          "bbb",
-          "bac",
-          "dee",
-          "aed",
-          "bde",
-          "ebc",
-          "dbb",
-          "dbe",
-          "cae",
-          "adc",
-          "dac",
-          "ead",
-          "bce",
-          "ade",
-          "bed",
-          "acb",
-          "bbd",
-          "ebe",
-          "baa"
+          "This",
+          "is",
+          "an",
+          "example",
+          "of",
+          "text",
+          "justification."
         ],
-        382
+        16
       ],
       "expected": [
-        "dbe bbb bac dee aed bde ebc dbb dbe cae adc dac ead bce ade bed acb bbd ebe baa                                                                                                                                                                                                                                                                                                               "
+        "This    is    an",
+        "example  of text",
+        "justification.  "
       ]
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single word",
       "args": [
         [
-          "ada",
-          "bce",
-          "adc",
-          "bed",
-          "bab",
-          "dce",
-          "dbc",
-          "dab",
-          "ebe",
-          "daa",
-          "abc",
-          "bbd",
-          "bbe",
-          "cdb",
-          "cac",
-          "bae",
-          "cae",
-          "acb",
-          "ddc",
-          "ddd"
+          "word"
         ],
-        6079
+        10
       ],
       "expected": [
-        "ada bce adc bed bab dce dbc dab ebe daa abc bbd bbe cdb cac bae cae acb ddc ddd                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "
+        "word      "
       ]
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "exact fit",
       "args": [
         [
-          "acd",
-          "dbc",
-          "bca"
+          "a",
+          "b",
+          "c"
         ],
-        5144
+        5
       ],
       "expected": [
-        "acd dbc bca                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             "
+        "a b c"
       ]
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "one per line",
       "args": [
         [
-          "dcd",
-          "add",
-          "cae",
-          "ccd",
-          "ebc"
+          "aaaa",
+          "bbbb"
         ],
-        7061
+        4
       ],
       "expected": [
-        "dcd add cae ccd ebc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  "
-      ]
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        [
-          "ebc",
-          "dee",
-          "dbd",
-          "cbc",
-          "acc",
-          "bbc",
-          "dbd",
-          "cda",
-          "aee",
-          "bae",
-          "cbe",
-          "dbc",
-          "dde",
-          "eee",
-          "cba",
-          "aca",
-          "eaa",
-          "dcc",
-          "eee",
-          "cba"
-        ],
-        6467
-      ],
-      "expected": [
-        "ebc dee dbd cbc acc bbc dbd cda aee bae cbe dbc dde eee cba aca eaa dcc eee cba                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "
-      ]
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        [
-          "cdc",
-          "bbd",
-          "dde"
-        ],
-        2931
-      ],
-      "expected": [
-        "cdc bbd dde                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "
-      ]
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        [
-          "cde",
-          "dbd",
-          "edb",
-          "aeb",
-          "dea"
-        ],
-        1882
-      ],
-      "expected": [
-        "cde dbd edb aeb dea                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       "
-      ]
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        [
-          "aca",
-          "eec",
-          "aec",
-          "dcb",
-          "bea",
-          "daa",
-          "ceb",
-          "ecb",
-          "dad",
-          "bba",
-          "dbc",
-          "cca",
-          "ebe",
-          "bce",
-          "aab",
-          "bbe",
-          "aae",
-          "dbc",
-          "bee",
-          "ebc",
-          "acd",
-          "bcb",
-          "abd",
-          "eab",
-          "dab",
-          "ede",
-          "abb",
-          "dcc",
-          "cea",
-          "eda",
-          "cbb",
-          "ace",
-          "cca",
-          "dda",
-          "acb",
-          "ecc",
-          "cad",
-          "ceb",
-          "eba",
-          "cdd",
-          "ebb",
-          "eda",
-          "bbc",
-          "bea",
-          "dae",
-          "abb",
-          "bca",
-          "cbe",
-          "dba",
-          "aed"
-        ],
-        7312
-      ],
-      "expected": [
-        "aca eec aec dcb bea daa ceb ecb dad bba dbc cca ebe bce aab bbe aae dbc bee ebc acd bcb abd eab dab ede abb dcc cea eda cbb ace cca dda acb ecc cad ceb eba cdd ebb eda bbc bea dae abb bca cbe dba aed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         "
+        "aaaa",
+        "bbbb"
       ]
     }
   ],

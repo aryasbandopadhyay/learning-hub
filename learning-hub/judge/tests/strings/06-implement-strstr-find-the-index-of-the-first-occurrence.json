@@ -1,0 +1,37 @@
+{
+  "id": "strings/06-implement-strstr-find-the-index-of-the-first-occurrence",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "sadbutsad",
+        "sad"
+      ],
+      "expected": 0
+    },
+    {
+      "label": "not found",
+      "args": [
+        "leetcode",
+        "leeto"
+      ],
+      "expected": -1
+    },
+    {
+      "label": "at start",
+      "args": [
+        "abc",
+        "a"
+      ],
+      "expected": 0
+    },
+    {
+      "label": "at end",
+      "args": [
+        "abc",
+        "c"
+      ],
+      "expected": 2
+    }
+  ]
+}

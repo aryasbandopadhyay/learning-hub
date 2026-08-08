@@ -1,0 +1,40 @@
+{
+  "id": "strings/04-reverse-words-in-a-string",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "  hello world  "
+      ],
+      "expected": "world hello"
+    },
+    {
+      "label": "single word",
+      "args": [
+        "word"
+      ],
+      "expected": "word"
+    },
+    {
+      "label": "multiple spaces",
+      "args": [
+        "a good   example"
+      ],
+      "expected": "example good a"
+    },
+    {
+      "label": "leading trailing",
+      "args": [
+        "  spaces  "
+      ],
+      "expected": "spaces"
+    },
+    {
+      "label": "single with space",
+      "args": [
+        " a "
+      ],
+      "expected": "a"
+    }
+  ]
+}

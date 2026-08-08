@@ -16,6 +16,56 @@
         "1.001"
       ],
       "expected": 0
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "leading zeros equal",
+      "args": [
+        "1.01",
+        "1.001"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "trailing zero",
+      "args": [
+        "1.0",
+        "1.0.0"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "greater",
+      "args": [
+        "0.1",
+        "1.1"
+      ],
+      "expected": -1
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "equal",
+      "args": [
+        "1.0",
+        "1"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "less minor",
+      "args": [
+        "1.0.1",
+        "1"
+      ],
+      "expected": 1
     }
   ],
   "complexity": {

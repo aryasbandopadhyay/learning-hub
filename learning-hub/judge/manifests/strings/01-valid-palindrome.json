@@ -16,66 +16,56 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        "dbebbbbacdeeaedbdeeb"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-2",
-      "kind": "random",
-      "args": [
-        "dbbdbecaeadcd"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-3",
-      "kind": "random",
-      "args": [
-        "d"
+        "A man, a plan, a canal: Panama"
       ],
       "expected": true
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "not palindrome",
       "args": [
-        "de"
+        "race a car"
       ],
       "expected": false
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "empty",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+        ""
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-6",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single char",
       "args": [
-        "bbecdbcacbaecaeacbdd"
+        "a"
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-7",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "only punctuation",
       "args": [
-        "ddceabacddbcbcacbbdc"
+        ".,"
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-8",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "mixed case",
       "args": [
-        "dd"
+        "Aa"
       ],
       "expected": true
     }

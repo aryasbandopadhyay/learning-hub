@@ -1,0 +1,40 @@
+{
+  "id": "strings/11-palindromic-substrings",
+  "cases": [
+    {
+      "label": "aaa",
+      "args": [
+        "aaa"
+      ],
+      "expected": 6
+    },
+    {
+      "label": "single",
+      "args": [
+        "a"
+      ],
+      "expected": 1
+    },
+    {
+      "label": "abc",
+      "args": [
+        "abc"
+      ],
+      "expected": 3
+    },
+    {
+      "label": "aba",
+      "args": [
+        "aba"
+      ],
+      "expected": 4
+    },
+    {
+      "label": "empty",
+      "args": [
+        ""
+      ],
+      "expected": 0
+    }
+  ]
+}

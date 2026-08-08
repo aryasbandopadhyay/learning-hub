@@ -18,74 +18,52 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "cannot construct",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
-        "aab"
+        "aa",
+        "ab"
       ],
       "expected": false
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "can construct",
       "args": [
-        "dbbdbecaeadcd",
+        "aa",
         "aab"
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "empty note",
       "args": [
-        "d",
-        "aab"
+        "",
+        "abc"
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "exact",
       "args": [
-        "de",
-        "aab"
+        "abc",
+        "abc"
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "not enough",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        "aab"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        "aab"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        "aab"
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        "aab"
+        "aaa",
+        "aa"
       ],
       "expected": false
     }

@@ -18,76 +18,54 @@
       "expected": "PAHNAPLSIIGYIR"
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
-        6128
+        "PAYPALISHIRING",
+        3
       ],
-      "expected": "dbebbbbacdeeaedbdeeb"
+      "expected": "PAHNAPLSIIGYIR"
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "one row",
       "args": [
-        "bdbec",
-        1360
+        "ABCD",
+        1
       ],
-      "expected": "bdbec"
+      "expected": "ABCD"
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "rows exceed length",
       "args": [
-        "dc",
-        6597
+        "AB",
+        5
       ],
-      "expected": "dc"
+      "expected": "AB"
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "two rows",
       "args": [
-        "d",
-        3339
+        "ABCDE",
+        2
       ],
-      "expected": "d"
+      "expected": "ACEBD"
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single char",
       "args": [
-        "de",
-        3246
+        "A",
+        3
       ],
-      "expected": "de"
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "c",
-        2116
-      ],
-      "expected": "c"
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "deb",
-        8245
-      ],
-      "expected": "deb"
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "a",
-        382
-      ],
-      "expected": "a"
+      "expected": "A"
     }
   ],
   "complexity": {
