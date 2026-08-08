@@ -1,0 +1,80 @@
+{
+  "id": "intervals/05-meeting-rooms-ii",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          [
+            0,
+            30
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            15,
+            20
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "no overlap",
+      "args": [
+        [
+          [
+            7,
+            10
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all overlap",
+      "args": [
+        [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            7
+          ]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          [
+            1,
+            5
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "empty",
+      "args": [
+        []
+      ],
+      "expected": 0
+    }
+  ]
+}

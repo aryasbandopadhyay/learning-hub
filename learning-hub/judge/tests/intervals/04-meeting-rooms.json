@@ -1,0 +1,76 @@
+{
+  "id": "intervals/04-meeting-rooms",
+  "cases": [
+    {
+      "label": "cannot attend",
+      "args": [
+        [
+          [
+            0,
+            30
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            15,
+            20
+          ]
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "can attend",
+      "args": [
+        [
+          [
+            7,
+            10
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          [
+            1,
+            5
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "touching ok",
+      "args": [
+        [
+          [
+            1,
+            5
+          ],
+          [
+            5,
+            10
+          ]
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "empty",
+      "args": [
+        []
+      ],
+      "expected": true
+    }
+  ]
+}

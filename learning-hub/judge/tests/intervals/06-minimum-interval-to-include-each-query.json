@@ -1,0 +1,103 @@
+{
+  "id": "intervals/06-minimum-interval-to-include-each-query",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        [
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        3,
+        3,
+        1,
+        4
+      ]
+    },
+    {
+      "label": "no covering interval",
+      "args": [
+        [
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": [
+        -1
+      ]
+    },
+    {
+      "label": "single interval",
+      "args": [
+        [
+          [
+            1,
+            10
+          ]
+        ],
+        [
+          1,
+          5,
+          10
+        ]
+      ],
+      "expected": [
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "label": "multiple sizes",
+      "args": [
+        [
+          [
+            1,
+            8
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            5,
+            6
+          ]
+        ],
+        [
+          3
+        ]
+      ],
+      "expected": [
+        2
+      ]
+    }
+  ]
+}
