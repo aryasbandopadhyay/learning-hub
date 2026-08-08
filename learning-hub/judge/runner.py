@@ -7,16 +7,21 @@ Given a *manifest* (JSON describing a problem + its test cases) and a *submissio
   * mode="run"        -> executes the submission against every test case and reports
                          per-test pass/fail, timing and the captured output.
   * mode="complexity" -> runs the submission across increasing input sizes and
-                         *empirically estimates* time and space complexity by
-                         curve-fitting the measurements to common Big-O classes.
+                         estimates time and space complexity. TIME is estimated by
+                         *counting operations* deterministically (executed submission
+                         lines + asymptotic surcharges for heavy built-ins such as
+                         sort/`in`/heapq/bisect), which removes wall-clock noise; SPACE
+                         is estimated from peak auxiliary memory (input excluded). Both
+                         curves are fit to common Big-O classes.
 
 It is intentionally dependency-free (only the Python standard library) so it can run
 locally on any machine with a Python 3 interpreter, and it emits a single JSON object
 on stdout so the Spring Boot backend can parse it.
 
-IMPORTANT: empirical complexity is an *estimate* derived from wall-clock measurements,
-not a static proof. Big-O cannot be decided statically in general; we report the best
-fit and a confidence score.
+IMPORTANT: complexity is still an *estimate*, not a static proof. Big-O cannot be decided
+statically in general. Operation-counting is deterministic and far more stable than
+timing, but built-in C routines are approximated by asymptotic surcharges; we report the
+best-fit class, a confidence score, and mark low-confidence fits as "inconclusive".
 
 Usage:
     python runner.py --manifest <path> --submission <path> --mode run
@@ -452,7 +457,159 @@ def _fit_complexity(sizes, measures):
     return best_label, round(confidence, 3)
 
 
-def _make_input(gen_spec: dict, n: int, rng: random.Random):
+# --------------------------------------------------------------------------------------
+# Deterministic operation counting (primary TIME signal — no wall-clock noise)
+# --------------------------------------------------------------------------------------
+# Wall-clock timing at small n is dominated by interpreter constant factors and OS
+# scheduling, so O(n) and O(n log n) are indistinguishable. Instead we count the *number
+# of basic operations* a submission performs as n grows — a deterministic quantity that
+# scales with the true time complexity. Two sources are combined:
+#   1. executed source lines of the submission (via sys.settrace) — captures explicit
+#      loops and recursion; and
+#   2. asymptotic surcharges for expensive built-ins that run in C and would otherwise be
+#      invisible to line tracing (list.sort, `x in list`, sorted, sum/min/max/any/all,
+#      heapq.*, bisect.*).
+# The resulting counts are fit to a Big-O class exactly like the timing curve was.
+
+_OPS = [0]  # single-slot mutable counter shared by the tracer and instrumented built-ins
+
+
+def _add_ops(k):
+    if k > 0:
+        _OPS[0] += int(k)
+
+
+def _logn(n):
+    import math
+    return max(1, math.ceil(math.log2(n + 1)))
+
+
+class _CountingList(list):
+    """List subclass that charges an asymptotic cost for its expensive operations, so
+    submissions that lean on built-in list methods are still measured accurately by the
+    deterministic estimator."""
+
+    def sort(self, *a, **k):
+        _add_ops(len(self) * _logn(len(self)))
+        return list.sort(self, *a, **k)
+
+    def __contains__(self, x):
+        _add_ops(len(self))
+        return list.__contains__(self, x)
+
+    def count(self, x):
+        _add_ops(len(self))
+        return list.count(self, x)
+
+    def index(self, *a):
+        _add_ops(len(self))
+        return list.index(self, *a)
+
+    def remove(self, x):
+        _add_ops(len(self))
+        return list.remove(self, x)
+
+    def reverse(self):
+        _add_ops(len(self))
+        return list.reverse(self)
+
+    def insert(self, i, x):
+        _add_ops(len(self))
+        return list.insert(self, i, x)
+
+
+def _install_builtin_surcharges(ns):
+    """Wrap heavy built-ins with cost-charging shims. Bare-name built-ins (sum, sorted, …)
+    are shadowed in the submission globals; heapq/bisect are monkeypatched at the module
+    level (and re-bound in `ns` if imported by name). Returns a restore() callback."""
+    import builtins, heapq, bisect
+
+    def linear(fn):
+        def w(iterable=(), *a, **k):
+            seq = iterable if hasattr(iterable, "__len__") else list(iterable)
+            _add_ops(len(seq) if hasattr(seq, "__len__") else 0)
+            return fn(seq, *a, **k)
+        return w
+
+    def _sorted(iterable=(), *a, **k):
+        seq = list(iterable)
+        _add_ops(len(seq) * _logn(len(seq)))
+        return builtins.sorted(seq, *a, **k)
+
+    ns.setdefault("__builtins__", builtins)
+    for name in ("sum", "min", "max", "any", "all"):
+        ns[name] = linear(getattr(builtins, name))
+    ns["sorted"] = _sorted
+
+    saved = {}
+
+    def patch(mod, name, wrapper):
+        if hasattr(mod, name):
+            saved[(mod, name)] = getattr(mod, name)
+            setattr(mod, name, wrapper)
+
+    patch(heapq, "heappush", lambda h, item, _f=heapq.heappush: (_add_ops(_logn(len(h))), _f(h, item))[1])
+    patch(heapq, "heappop", lambda h, _f=heapq.heappop: (_add_ops(_logn(len(h))), _f(h))[1])
+    patch(heapq, "heapify", lambda h, _f=heapq.heapify: (_add_ops(len(h)), _f(h))[1])
+    patch(heapq, "heappushpop", lambda h, item, _f=heapq.heappushpop: (_add_ops(_logn(len(h))), _f(h, item))[1])
+    patch(heapq, "heapreplace", lambda h, item, _f=heapq.heapreplace: (_add_ops(_logn(len(h))), _f(h, item))[1])
+
+    def _nlargest(k, it, *a, _f=heapq.nlargest):
+        seq = list(it); _add_ops(len(seq) * _logn(k)); return _f(k, seq, *a)
+
+    def _nsmallest(k, it, *a, _f=heapq.nsmallest):
+        seq = list(it); _add_ops(len(seq) * _logn(k)); return _f(k, seq, *a)
+
+    patch(heapq, "nlargest", _nlargest)
+    patch(heapq, "nsmallest", _nsmallest)
+
+    for bname in ("bisect_left", "bisect_right", "bisect", "insort_left", "insort_right", "insort"):
+        if hasattr(bisect, bname):
+            f = getattr(bisect, bname)
+            patch(bisect, bname, (lambda a, x, *r, _f=f: (_add_ops(_logn(len(a))), _f(a, x, *r))[1]))
+
+    # If the submission did `from heapq import heappush`, its globals hold the *original*
+    # function; re-point those names at the freshly patched module attributes.
+    originals = {orig: getattr(mod, name) for (mod, name), orig in saved.items()}
+    for key, val in list(ns.items()):
+        if callable(val) and val in originals:
+            ns[key] = originals[val]
+
+    def restore():
+        for (mod, name), fn in saved.items():
+            setattr(mod, name, fn)
+
+    return restore
+
+
+def _op_tracer(frame, event, arg):
+    """sys.settrace hook: count one op per executed *submission* source line. Non-user
+    frames (stdlib, runner) are not traced, so their C work is handled by the surcharges."""
+    if frame.f_code.co_filename == "<submission>":
+        if event == "line":
+            _OPS[0] += 1
+        return _op_tracer
+    return None
+
+
+def _count_ops(cls, entry, gen_spec, n, seed):
+    """Run the submission once at input size n and return the deterministic op count."""
+    args = _make_input(gen_spec, n, random.Random(seed), counting=True)
+    instance = cls()
+    method = getattr(instance, entry)
+    _OPS[0] = 0
+    gc.disable()
+    sys.settrace(_op_tracer)
+    try:
+        with redirect_stdout(io.StringIO()):
+            method(*args)
+    finally:
+        sys.settrace(None)
+        gc.enable()
+    return _OPS[0]
+
+
+def _make_input(gen_spec: dict, n: int, rng: random.Random, counting: bool = False):
     """Build a call-argument list of "size n" from a generator spec.
 
     Each param spec: {name, type, role, lo, hi, ...}
@@ -473,19 +630,26 @@ def _make_input(gen_spec: dict, n: int, rng: random.Random):
         elif role == "n":
             args.append(n)
         elif role == "target":
-            args.append(rng.randint(lo, hi))
+            # A "target" is typically a k / index-like value; clamp its upper bound to n so
+            # submissions that index by it (nums[k-1], range(k), ...) stay in range as n grows.
+            hi_t = max(lo, min(hi, max(1, n)))
+            args.append(rng.randint(lo, hi_t))
         elif role == "size":
             if typ == "list[int]":
-                args.append([rng.randint(lo, hi) for _ in range(n)])
+                vals = [rng.randint(lo, hi) for _ in range(n)]
+                args.append(_CountingList(vals) if counting else vals)
             elif typ == "list[str]":
-                args.append(["".join(rng.choice("abcde") for _ in range(3)) for _ in range(n)])
+                vals = ["".join(rng.choice("abcde") for _ in range(3)) for _ in range(n)]
+                args.append(_CountingList(vals) if counting else vals)
             elif typ == "list[list[int]]":
                 w = p.get("width", 3)
-                args.append([[rng.randint(lo, hi) for _ in range(w)] for _ in range(n)])
+                rows = [[rng.randint(lo, hi) for _ in range(w)] for _ in range(n)]
+                args.append(_CountingList(rows) if counting else rows)
             elif typ == "str":
                 args.append("".join(rng.choice("abcde") for _ in range(n)))
             else:
-                args.append([rng.randint(lo, hi) for _ in range(n)])
+                vals = [rng.randint(lo, hi) for _ in range(n)]
+                args.append(_CountingList(vals) if counting else vals)
         else:
             args.append(p.get("value"))
     return args
@@ -509,50 +673,97 @@ def mode_complexity(manifest: dict, source: str) -> dict:
     except Exception:
         return {"supported": True, "error": traceback.format_exc(limit=3)}
 
-    sizes = comp.get("sizes", [1000, 2000, 4000, 8000])
     gen_spec = comp.get("genSpec", {})
-    repeats = comp.get("repeats", 3)
-    rng = random.Random(1234567)
+    seed = 1234567
 
-    times = []
+    # ---- Adaptive input sizes -----------------------------------------------------------
+    # A geometric ladder gives the curve fit maximum leverage. We stop early once a run
+    # becomes expensive (operation budget or wall-clock) so O(n^2)/O(n^3) submissions
+    # don't hang — the collected points still span enough spread to classify.
+    base_sizes = comp.get("sizes")
+    if not base_sizes:
+        base_sizes = [64 * (2 ** i) for i in range(8)]  # 64,128,...,8192
+    base_sizes = sorted(set(int(s) for s in base_sizes if int(s) > 0))
+    OP_BUDGET = 4_000_000
+    TIME_GUARD = 1.5  # seconds per size before we stop growing
+
+    # ---- Pass 1: deterministic operation counting (TIME) --------------------------------
+    restore = _install_builtin_surcharges(ns)
+    sizes, ops, samples = [], [], []
+    try:
+        for n in base_sizes:
+            t0 = time.perf_counter()
+            try:
+                c = _count_ops(cls, entry, gen_spec, n, seed)
+            except Exception:
+                return {"supported": True, "error": traceback.format_exc(limit=4)}
+            elapsed = time.perf_counter() - t0
+            sizes.append(n)
+            ops.append(c)
+            if c > OP_BUDGET or elapsed > TIME_GUARD:
+                break
+    finally:
+        restore()
+
+    if len(sizes) >= 3:
+        time_label, time_conf = _fit_complexity(sizes, ops)
+    else:
+        time_label, time_conf = "inconclusive", 0.0
+
+    # ---- Pass 2: peak auxiliary memory (SPACE) ------------------------------------------
+    # Inputs are built *before* tracemalloc starts, so the measured peak is auxiliary
+    # space only (the O(n) input footprint is excluded). Median over repeats reduces noise.
+    space_repeats = comp.get("repeats", 3)
     mems = []
-    samples = []
-    for n in sizes:
-        best_t = float("inf")
-        peak_mem = 0
-        for _ in range(repeats):
-            args = _make_input(gen_spec, n, rng)
-            call_args = json.loads(json.dumps(args))
+    for i, n in enumerate(sizes):
+        peaks = []
+        for _ in range(space_repeats):
+            args = _make_input(gen_spec, n, random.Random(seed), counting=False)
             instance = cls()
             method = getattr(instance, entry)
             gc.collect()
             tracemalloc.start()
-            t0 = time.perf_counter()
             try:
                 with redirect_stdout(io.StringIO()):
-                    method(*call_args)
+                    method(*args)
             except Exception:
                 tracemalloc.stop()
                 return {"supported": True, "error": traceback.format_exc(limit=4)}
-            dt = time.perf_counter() - t0
             _cur, pk = tracemalloc.get_traced_memory()
             tracemalloc.stop()
-            best_t = min(best_t, dt)
-            peak_mem = max(peak_mem, pk)
-        times.append(best_t)
-        mems.append(peak_mem)
-        samples.append({"n": n, "timeMs": round(best_t * 1000.0, 4), "peakBytes": peak_mem})
+            peaks.append(pk)
+        peaks.sort()
+        med = peaks[len(peaks) // 2]
+        mems.append(med)
+        samples.append({"n": n, "ops": ops[i], "peakBytes": med})
 
-    time_label, time_conf = _fit_complexity(sizes, times)
-    space_label, space_conf = _fit_complexity(sizes, mems)
+    if len(sizes) >= 3:
+        space_label, space_conf = _fit_complexity(sizes, mems)
+    else:
+        space_label, space_conf = "inconclusive", 0.0
+
+    # ---- Inconclusive gating: never assert a class we don't trust -----------------------
+    CONF_MIN = 0.35
+    time_guess = time_label
+    if time_label != "inconclusive" and time_conf < CONF_MIN:
+        time_label = "inconclusive"
+    space_guess = space_label
+    if space_label != "inconclusive" and space_conf < CONF_MIN:
+        space_label = "inconclusive"
+
     return {
         "supported": True,
+        "method": "deterministic-op-count",
         "timeComplexity": time_label,
         "timeConfidence": time_conf,
+        "timeGuess": time_guess,
         "spaceComplexity": space_label,
         "spaceConfidence": space_conf,
+        "spaceGuess": space_guess,
         "samples": samples,
-        "note": "Estimated empirically from measured runtime/memory at increasing input sizes.",
+        "note": "Time is estimated by counting operations (deterministic, wall-clock free); "
+                "space is peak auxiliary memory with the input excluded. Low-confidence "
+                "fits are reported as 'inconclusive'.",
     }
 
 

@@ -75,8 +75,12 @@ public class JudgeController {
         String path = body.get("path");
         String code = body.get("code");
         String mode = body.getOrDefault("mode", "run");
+        // Opt-out flag for automated verification: a caller (e.g. a test harness) can send
+        // "persist":"false" so its runs are NOT written to the user's saved-solutions store.
+        // The UI never sends this, so a real user's passing submissions still save normally.
+        boolean persist = !"false".equalsIgnoreCase(body.getOrDefault("persist", "true"));
         Map<String, Object> result = judge.run(path, code, mode);
-        if ("run".equals(mode) && allPassed(result)) {
+        if (persist && "run".equals(mode) && allPassed(result)) {
             solutions.save(user(req), path, section(path), code, "python");
         }
         return result;

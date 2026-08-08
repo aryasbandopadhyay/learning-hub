@@ -825,14 +825,21 @@ function renderComplexity(res) {
   if (!res.supported) return `<p class="hint">Complexity estimation is not available for this problem.</p>`;
   if (res.error) return `<p class="error">Could not measure:\n<pre>${escapeHtml(res.error)}</pre></p>`;
   const rows = (res.samples || []).map(
-    (x) => `<tr><td>${x.n}</td><td>${x.timeMs} ms</td><td>${(x.peakBytes / 1024).toFixed(1)} KB</td></tr>`
+    (x) => `<tr><td>${x.n}</td><td>${(x.ops ?? 0).toLocaleString()}</td><td>${(x.peakBytes / 1024).toFixed(1)} KB</td></tr>`
   ).join("");
+  // When a fit is low-confidence we report "inconclusive" but still surface the best guess.
+  const fmt = (label, conf, guess) =>
+    label === "inconclusive"
+      ? (guess && guess !== "inconclusive"
+          ? `inconclusive <em>(best guess ${escapeHtml(guess)}, conf ${conf})</em>`
+          : `inconclusive <em>(conf ${conf})</em>`)
+      : `${escapeHtml(label)} <em>(conf ${conf})</em>`;
   return `
     <div class="judge-summary">
-      <span class="verdict est">⏱ time ≈ ${escapeHtml(res.timeComplexity)} <em>(conf ${res.timeConfidence})</em></span>
-      <span class="verdict est">💾 space ≈ ${escapeHtml(res.spaceComplexity)} <em>(conf ${res.spaceConfidence})</em></span>
+      <span class="verdict est">⏱ time ≈ ${fmt(res.timeComplexity, res.timeConfidence, res.timeGuess)}</span>
+      <span class="verdict est">💾 space ≈ ${fmt(res.spaceComplexity, res.spaceConfidence, res.spaceGuess)}</span>
     </div>
-    <table class="judge-table"><thead><tr><th>n</th><th>time</th><th>peak mem</th></tr></thead><tbody>${rows}</tbody></table>
+    <table class="judge-table"><thead><tr><th>n</th><th>ops</th><th>peak mem</th></tr></thead><tbody>${rows}</tbody></table>
     <p class="judge-note">${escapeHtml(res.note || "")}</p>`;
 }
 
