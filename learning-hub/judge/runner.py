@@ -380,6 +380,11 @@ def mode_run(manifest: dict, source: str) -> dict:
                 "error": traceback.format_exc(limit=4),
                 "expected": tc.get("expected"),
             })
+        # Surface anything the user's code printed (e.g. debug statements) so the UI can
+        # show a console panel. Captured whether the case passed or raised.
+        out_text = buf.getvalue()
+        if out_text:
+            entry_result["stdout"] = out_text[:4000] + ("\n…(truncated)" if len(out_text) > 4000 else "")
         results.append(entry_result)
 
     return {

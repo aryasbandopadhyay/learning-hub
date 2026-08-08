@@ -579,6 +579,18 @@ html, body {
   border: 1px solid var(--border);
 }
 
+/* Captured console output (user print statements) shown per test case. */
+.judge-console { margin-top: 6px; }
+.judge-console .jc-h {
+  font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 3px;
+}
+.judge-console pre {
+  background: #0b0e13; color: #cfe3ff; border-radius: 8px; padding: 10px; margin: 0;
+  font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+  border: 1px solid var(--border);
+}
+
 .judge-table { border-collapse: collapse; margin: 8px 0; font-size: 13px; }
 .judge-table th, .judge-table td { border: 1px solid var(--border); padding: 5px 12px; text-align: right; }
 .judge-table th { background: var(--code-bg); }

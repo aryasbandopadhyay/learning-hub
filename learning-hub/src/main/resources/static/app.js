@@ -697,8 +697,12 @@ function renderRun(res) {
       if (r.error) detail = `<pre class="judge-stderr">${escapeHtml(r.error)}</pre>`;
       else detail = `<div class="judge-diff"><span>expected: <code>${escapeHtml(JSON.stringify(r.expected))}</code></span><span>got: <code>${escapeHtml(JSON.stringify(r.got))}</code></span></div>`;
     }
+    // Console output captured from the user's print() statements, shown for pass or fail.
+    const console = r.stdout
+      ? `<div class="judge-console"><div class="jc-h">🖨 console</div><pre>${escapeHtml(r.stdout)}</pre></div>`
+      : "";
     const t = r.timeMs != null ? `<span class="t">${r.timeMs} ms</span>` : "";
-    return `<div class="tc ${ok}"><div class="tc-h">${icon} ${escapeHtml(r.id || "test")} <span class="kind">${escapeHtml(r.kind || "")}</span> ${t}</div>${detail}</div>`;
+    return `<div class="tc ${ok}"><div class="tc-h">${icon} ${escapeHtml(r.id || "test")} <span class="kind">${escapeHtml(r.kind || "")}</span> ${t}</div>${detail}${console}</div>`;
   }).join("");
   const total = s.totalTimeMs != null ? `<div class="judge-total">total ${s.totalTimeMs} ms</div>` : "";
   return `<div class="judge-summary">${badge}${total}</div>${rows}`;
