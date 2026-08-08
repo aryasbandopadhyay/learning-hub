@@ -1,0 +1,105 @@
+{
+  "id": "heap-priority-queue/09-top-k-frequent-words",
+  "cases": [
+    {
+      "label": "example k2",
+      "args": [
+        [
+          "i",
+          "love",
+          "leetcode",
+          "i",
+          "love",
+          "coding"
+        ],
+        2
+      ],
+      "expected": [
+        "i",
+        "love"
+      ]
+    },
+    {
+      "label": "tie lexicographic k4",
+      "args": [
+        [
+          "the",
+          "day",
+          "is",
+          "sunny",
+          "the",
+          "the",
+          "the",
+          "sunny",
+          "is",
+          "is"
+        ],
+        4
+      ],
+      "expected": [
+        "the",
+        "is",
+        "sunny",
+        "day"
+      ]
+    },
+    {
+      "label": "single word",
+      "args": [
+        [
+          "a"
+        ],
+        1
+      ],
+      "expected": [
+        "a"
+      ]
+    },
+    {
+      "label": "all same freq",
+      "args": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        3
+      ],
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "label": "k1 clear winner",
+      "args": [
+        [
+          "z",
+          "z",
+          "a"
+        ],
+        1
+      ],
+      "expected": [
+        "z"
+      ]
+    },
+    {
+      "label": "tie k2",
+      "args": [
+        [
+          "b",
+          "a",
+          "b",
+          "a"
+        ],
+        2
+      ],
+      "expected": [
+        "a",
+        "b"
+      ]
+    }
+  ]
+}

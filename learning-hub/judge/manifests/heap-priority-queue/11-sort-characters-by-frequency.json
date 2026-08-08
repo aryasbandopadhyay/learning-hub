@@ -16,68 +16,49 @@
       "expected": "eert"
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "tree",
       "args": [
-        "dbebbbbacdeeaedbdeeb"
+        "tree"
       ],
-      "expected": "bbbbbbbeeeeeeddddaac"
+      "expected": "eert"
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "cccaaa",
       "args": [
-        "dbbdbecaeadcd"
+        "cccaaa"
       ],
-      "expected": "ddddbbbaaccee"
+      "expected": "aaaccc"
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "case sensitive",
       "args": [
-        "d"
+        "Aabb"
       ],
-      "expected": "d"
+      "expected": "bbAa"
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single",
       "args": [
-        "de"
+        "x"
       ],
-      "expected": "de"
+      "expected": "x"
     },
     {
-      "id": "rand-5",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "all distinct",
       "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb"
+        "abcd"
       ],
-      "expected": "bbbbbbbbbbbbbbbaaaaaaaaaaaaddddddddddeeeeeeecccccc"
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd"
-      ],
-      "expected": "bbbbbcccccaaaadddeee"
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc"
-      ],
-      "expected": "ccccccbbbbbdddddaaae"
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd"
-      ],
-      "expected": "dd"
+      "expected": "abcd"
     }
   ],
   "complexity": {

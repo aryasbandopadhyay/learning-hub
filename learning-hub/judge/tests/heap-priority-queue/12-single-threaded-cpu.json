@@ -1,0 +1,107 @@
+{
+  "id": "heap-priority-queue/12-single-threaded-cpu",
+  "note": "sorted compare = permutation/set check.",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            4,
+            1
+          ]
+        ]
+      ],
+      "expected": [
+        0,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "label": "single task",
+      "args": [
+        [
+          [
+            0,
+            5
+          ]
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "label": "all at zero",
+      "args": [
+        [
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "label": "staggered",
+      "args": [
+        [
+          [
+            7,
+            10
+          ],
+          [
+            7,
+            12
+          ],
+          [
+            7,
+            5
+          ],
+          [
+            7,
+            4
+          ],
+          [
+            7,
+            2
+          ]
+        ]
+      ],
+      "expected": [
+        4,
+        3,
+        2,
+        0,
+        1
+      ]
+    }
+  ]
+}

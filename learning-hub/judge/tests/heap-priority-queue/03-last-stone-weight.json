@@ -1,0 +1,91 @@
+{
+  "id": "heap-priority-queue/03-last-stone-weight",
+  "cases": [
+    {
+      "label": "single",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "pair cancels",
+      "args": [
+        [
+          2,
+          2
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "three",
+      "args": [
+        [
+          3,
+          7,
+          2
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "odd out",
+      "args": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "one big",
+      "args": [
+        [
+          10
+        ]
+      ],
+      "expected": 10
+    },
+    {
+      "label": "cancels to zero",
+      "args": [
+        [
+          9,
+          3,
+          2,
+          10
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "simple diff",
+      "args": [
+        [
+          1,
+          3
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "example",
+      "args": [
+        [
+          2,
+          7,
+          4,
+          1,
+          8,
+          1
+        ]
+      ],
+      "expected": 1
+    }
+  ]
+}

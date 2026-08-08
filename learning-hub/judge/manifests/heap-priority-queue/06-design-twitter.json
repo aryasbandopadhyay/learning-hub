@@ -63,6 +63,179 @@
           5
         ]
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "basic feed",
+      "ops": [
+        "Twitter",
+        "postTweet",
+        "getNewsFeed"
+      ],
+      "args": [
+        [],
+        [
+          1,
+          5
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        [
+          5
+        ]
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "empty feed",
+      "ops": [
+        "Twitter",
+        "getNewsFeed"
+      ],
+      "args": [
+        [],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        []
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "follow unfollow",
+      "ops": [
+        "Twitter",
+        "postTweet",
+        "postTweet",
+        "follow",
+        "getNewsFeed",
+        "unfollow",
+        "getNewsFeed"
+      ],
+      "args": [
+        [],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        [
+          6,
+          5
+        ],
+        null,
+        [
+          5
+        ]
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "own tweets recent first",
+      "ops": [
+        "Twitter",
+        "postTweet",
+        "postTweet",
+        "postTweet",
+        "getNewsFeed"
+      ],
+      "args": [
+        [],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        [
+          3,
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "unfollow not followed",
+      "ops": [
+        "Twitter",
+        "postTweet",
+        "unfollow",
+        "getNewsFeed"
+      ],
+      "args": [
+        [],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        [
+          7
+        ]
+      ]
     }
   ],
   "id": "heap-priority-queue/06-design-twitter",

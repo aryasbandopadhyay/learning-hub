@@ -1,0 +1,154 @@
+{
+  "id": "heap-priority-queue/04-k-closest-points-to-origin",
+  "note": "avoid equal-distance ties (ambiguous ordering).",
+  "cases": [
+    {
+      "label": "single point",
+      "args": [
+        [
+          [
+            1,
+            1
+          ]
+        ],
+        1
+      ],
+      "expected": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "label": "distinct k1",
+      "args": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        1
+      ],
+      "expected": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "label": "k2 distinct",
+      "args": [
+        [
+          [
+            5,
+            5
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        2
+      ],
+      "expected": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "label": "negatives k1",
+      "args": [
+        [
+          [
+            -1,
+            -1
+          ],
+          [
+            -2,
+            -2
+          ],
+          [
+            -3,
+            -3
+          ]
+        ],
+        1
+      ],
+      "expected": [
+        [
+          -1,
+          -1
+        ]
+      ]
+    },
+    {
+      "label": "example k1",
+      "args": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            -2,
+            2
+          ]
+        ],
+        1
+      ],
+      "expected": [
+        [
+          -2,
+          2
+        ]
+      ]
+    },
+    {
+      "label": "k equals len",
+      "args": [
+        [
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        2
+      ],
+      "expected": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          3
+        ]
+      ]
+    }
+  ]
+}

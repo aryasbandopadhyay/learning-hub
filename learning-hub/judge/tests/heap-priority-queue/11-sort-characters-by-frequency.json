@@ -1,0 +1,41 @@
+{
+  "id": "heap-priority-queue/11-sort-characters-by-frequency",
+  "note": "sorted compare = anagram check.",
+  "cases": [
+    {
+      "label": "tree",
+      "args": [
+        "tree"
+      ],
+      "expected": "eert"
+    },
+    {
+      "label": "cccaaa",
+      "args": [
+        "cccaaa"
+      ],
+      "expected": "aaaccc"
+    },
+    {
+      "label": "case sensitive",
+      "args": [
+        "Aabb"
+      ],
+      "expected": "bbAa"
+    },
+    {
+      "label": "single",
+      "args": [
+        "x"
+      ],
+      "expected": "x"
+    },
+    {
+      "label": "all distinct",
+      "args": [
+        "abcd"
+      ],
+      "expected": "abcd"
+    }
+  ]
+}

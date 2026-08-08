@@ -1,0 +1,41 @@
+{
+  "id": "heap-priority-queue/10-reorganize-string",
+  "note": "sorted compare = anagram/validity check.",
+  "cases": [
+    {
+      "label": "valid small",
+      "args": [
+        "aab"
+      ],
+      "expected": "aba"
+    },
+    {
+      "label": "impossible",
+      "args": [
+        "aaab"
+      ],
+      "expected": ""
+    },
+    {
+      "label": "single",
+      "args": [
+        "a"
+      ],
+      "expected": "a"
+    },
+    {
+      "label": "longer valid",
+      "args": [
+        "aaabbc"
+      ],
+      "expected": "ababac"
+    },
+    {
+      "label": "two chars",
+      "args": [
+        "ab"
+      ],
+      "expected": "ab"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "id": "heap-priority-queue/05-task-scheduler",
+  "cases": [
+    {
+      "label": "classic n2",
+      "args": [
+        [
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B"
+        ],
+        2
+      ],
+      "expected": 8
+    },
+    {
+      "label": "n0 no idle",
+      "args": [
+        [
+          "A",
+          "A",
+          "A",
+          "B",
+          "B",
+          "B"
+        ],
+        0
+      ],
+      "expected": 6
+    },
+    {
+      "label": "single task",
+      "args": [
+        [
+          "A"
+        ],
+        2
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all distinct",
+      "args": [
+        [
+          "A",
+          "B",
+          "C"
+        ],
+        5
+      ],
+      "expected": 3
+    },
+    {
+      "label": "one type spread",
+      "args": [
+        [
+          "A",
+          "A",
+          "A"
+        ],
+        2
+      ],
+      "expected": 7
+    },
+    {
+      "label": "two types",
+      "args": [
+        [
+          "A",
+          "A",
+          "B"
+        ],
+        2
+      ],
+      "expected": 4
+    },
+    {
+      "label": "many fillers",
+      "args": [
+        [
+          "A",
+          "A",
+          "A",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        2
+      ],
+      "expected": 10
+    }
+  ]
+}

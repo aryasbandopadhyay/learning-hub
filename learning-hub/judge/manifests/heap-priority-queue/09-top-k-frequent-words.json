@@ -26,6 +26,118 @@
         "i",
         "love"
       ]
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example k2",
+      "args": [
+        [
+          "i",
+          "love",
+          "leetcode",
+          "i",
+          "love",
+          "coding"
+        ],
+        2
+      ],
+      "expected": [
+        "i",
+        "love"
+      ]
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "tie lexicographic k4",
+      "args": [
+        [
+          "the",
+          "day",
+          "is",
+          "sunny",
+          "the",
+          "the",
+          "the",
+          "sunny",
+          "is",
+          "is"
+        ],
+        4
+      ],
+      "expected": [
+        "the",
+        "is",
+        "sunny",
+        "day"
+      ]
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "single word",
+      "args": [
+        [
+          "a"
+        ],
+        1
+      ],
+      "expected": [
+        "a"
+      ]
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "all same freq",
+      "args": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        3
+      ],
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "k1 clear winner",
+      "args": [
+        [
+          "z",
+          "z",
+          "a"
+        ],
+        1
+      ],
+      "expected": [
+        "z"
+      ]
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "tie k2",
+      "args": [
+        [
+          "b",
+          "a",
+          "b",
+          "a"
+        ],
+        2
+      ],
+      "expected": [
+        "a",
+        "b"
+      ]
     }
   ],
   "complexity": {
