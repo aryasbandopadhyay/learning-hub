@@ -1,0 +1,59 @@
+{
+  "id": "dp-1d/12-partition-equal-subset-sum",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          1,
+          5,
+          11,
+          5
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "odd sum",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          5
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          1
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "two equal",
+      "args": [
+        [
+          2,
+          2
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "cannot split",
+      "args": [
+        [
+          1,
+          2,
+          5
+        ]
+      ],
+      "expected": false
+    }
+  ]
+}

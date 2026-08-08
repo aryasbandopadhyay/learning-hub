@@ -1,0 +1,41 @@
+{
+  "id": "dp-1d/05-longest-palindromic-substring",
+  "note": "compareMode=set: ambiguous multi-answer inputs auto-drop.",
+  "cases": [
+    {
+      "label": "babad",
+      "args": [
+        "babad"
+      ],
+      "expected": "aba"
+    },
+    {
+      "label": "single char",
+      "args": [
+        "a"
+      ],
+      "expected": "a"
+    },
+    {
+      "label": "cbbd",
+      "args": [
+        "cbbd"
+      ],
+      "expected": "bb"
+    },
+    {
+      "label": "full palindrome",
+      "args": [
+        "aba"
+      ],
+      "expected": "aba"
+    },
+    {
+      "label": "no repeat",
+      "args": [
+        "abcd"
+      ],
+      "expected": "a"
+    }
+  ]
+}

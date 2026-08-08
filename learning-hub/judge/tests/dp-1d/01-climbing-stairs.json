@@ -1,0 +1,40 @@
+{
+  "id": "dp-1d/01-climbing-stairs",
+  "cases": [
+    {
+      "label": "n1",
+      "args": [
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "label": "n2",
+      "args": [
+        2
+      ],
+      "expected": 2
+    },
+    {
+      "label": "n3",
+      "args": [
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "label": "n5",
+      "args": [
+        5
+      ],
+      "expected": 8
+    },
+    {
+      "label": "n10",
+      "args": [
+        10
+      ],
+      "expected": 89
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "dp-1d/14-perfect-squares",
+  "cases": [
+    {
+      "label": "12",
+      "args": [
+        12
+      ],
+      "expected": 3
+    },
+    {
+      "label": "13",
+      "args": [
+        13
+      ],
+      "expected": 2
+    },
+    {
+      "label": "perfect square",
+      "args": [
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "label": "four",
+      "args": [
+        4
+      ],
+      "expected": 1
+    },
+    {
+      "label": "seven",
+      "args": [
+        7
+      ],
+      "expected": 4
+    }
+  ]
+}

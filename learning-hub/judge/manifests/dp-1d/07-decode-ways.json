@@ -16,68 +16,58 @@
       "expected": 3
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "226",
       "args": [
-        "d"
+        "226"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single digit",
+      "args": [
+        "6"
       ],
       "expected": 1
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "leading zero",
       "args": [
-        "a"
+        "06"
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "with zero",
+      "args": [
+        "10"
       ],
       "expected": 1
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "all ones",
       "args": [
-        "c"
+        "111"
       ],
-      "expected": 1
+      "expected": 3
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "invalid zero",
       "args": [
-        "b"
+        "100"
       ],
-      "expected": 1
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        "b"
-      ],
-      "expected": 1
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "a"
-      ],
-      "expected": 1
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "b"
-      ],
-      "expected": 1
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "b"
-      ],
-      "expected": 1
+      "expected": 0
     }
   ],
   "complexity": {

@@ -1,0 +1,59 @@
+{
+  "id": "dp-1d/15-combination-sum-iv",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ],
+        4
+      ],
+      "expected": 7
+    },
+    {
+      "label": "single coin",
+      "args": [
+        [
+          2
+        ],
+        4
+      ],
+      "expected": 1
+    },
+    {
+      "label": "target zero",
+      "args": [
+        [
+          1,
+          2
+        ],
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "label": "no way",
+      "args": [
+        [
+          3
+        ],
+        2
+      ],
+      "expected": 0
+    },
+    {
+      "label": "two coins",
+      "args": [
+        [
+          1,
+          2
+        ],
+        3
+      ],
+      "expected": 3
+    }
+  ]
+}

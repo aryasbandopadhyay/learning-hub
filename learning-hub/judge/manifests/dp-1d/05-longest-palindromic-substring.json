@@ -14,6 +14,51 @@
         "babad"
       ],
       "expected": "bab"
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "babad",
+      "args": [
+        "babad"
+      ],
+      "expected": "aba"
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single char",
+      "args": [
+        "a"
+      ],
+      "expected": "a"
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "cbbd",
+      "args": [
+        "cbbd"
+      ],
+      "expected": "bb"
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "full palindrome",
+      "args": [
+        "aba"
+      ],
+      "expected": "aba"
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "no repeat",
+      "args": [
+        "abcd"
+      ],
+      "expected": "a"
     }
   ],
   "complexity": {

@@ -19,6 +19,84 @@
         ]
       ],
       "expected": 4
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "two pick max",
+      "args": [
+        [
+          2,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "all same",
+      "args": [
+        [
+          4,
+          4,
+          4,
+          4
+        ]
+      ],
+      "expected": 8
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "zeros",
+      "args": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-6",
+      "kind": "edge",
+      "label": "alternating big",
+      "args": [
+        [
+          100,
+          1,
+          1,
+          100
+        ]
+      ],
+      "expected": 200
     }
   ],
   "id": "dp-1d/03-house-robber",

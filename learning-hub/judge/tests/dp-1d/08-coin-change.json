@@ -1,0 +1,59 @@
+{
+  "id": "dp-1d/08-coin-change",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          1,
+          2,
+          5
+        ],
+        11
+      ],
+      "expected": 3
+    },
+    {
+      "label": "impossible",
+      "args": [
+        [
+          2
+        ],
+        3
+      ],
+      "expected": -1
+    },
+    {
+      "label": "zero amount",
+      "args": [
+        [
+          1
+        ],
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "label": "exact single",
+      "args": [
+        [
+          5
+        ],
+        5
+      ],
+      "expected": 1
+    },
+    {
+      "label": "greedy trap",
+      "args": [
+        [
+          1,
+          3,
+          4
+        ],
+        6
+      ],
+      "expected": 2
+    }
+  ]
+}

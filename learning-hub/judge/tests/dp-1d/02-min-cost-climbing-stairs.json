@@ -1,0 +1,59 @@
+{
+  "id": "dp-1d/02-min-cost-climbing-stairs",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          10,
+          15,
+          20
+        ]
+      ],
+      "expected": 15
+    },
+    {
+      "label": "two steps",
+      "args": [
+        [
+          1,
+          100
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all zero",
+      "args": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "descending",
+      "args": [
+        [
+          10,
+          5,
+          1,
+          1
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "label": "single pair",
+      "args": [
+        [
+          5,
+          5
+        ]
+      ],
+      "expected": 5
+    }
+  ]
+}

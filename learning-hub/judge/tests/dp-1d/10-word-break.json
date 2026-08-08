@@ -1,0 +1,61 @@
+{
+  "id": "dp-1d/10-word-break",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        "leetcode",
+        [
+          "leet",
+          "code"
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "repeat use",
+      "args": [
+        "applepenapple",
+        [
+          "apple",
+          "pen"
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "cannot break",
+      "args": [
+        "catsandog",
+        [
+          "cats",
+          "dog",
+          "sand",
+          "and",
+          "cat"
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "label": "single word",
+      "args": [
+        "a",
+        [
+          "a"
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "label": "no match",
+      "args": [
+        "ab",
+        [
+          "c"
+        ]
+      ],
+      "expected": false
+    }
+  ]
+}

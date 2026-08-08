@@ -14,6 +14,51 @@
         12
       ],
       "expected": 3
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "12",
+      "args": [
+        12
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "13",
+      "args": [
+        13
+      ],
+      "expected": 2
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "perfect square",
+      "args": [
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "four",
+      "args": [
+        4
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "seven",
+      "args": [
+        7
+      ],
+      "expected": 4
     }
   ],
   "id": "dp-1d/14-perfect-squares",

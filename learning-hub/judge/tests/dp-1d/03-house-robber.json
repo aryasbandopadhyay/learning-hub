@@ -1,0 +1,71 @@
+{
+  "id": "dp-1d/03-house-robber",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          1,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          5
+        ]
+      ],
+      "expected": 5
+    },
+    {
+      "label": "two pick max",
+      "args": [
+        [
+          2,
+          1
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "label": "all same",
+      "args": [
+        [
+          4,
+          4,
+          4,
+          4
+        ]
+      ],
+      "expected": 8
+    },
+    {
+      "label": "zeros",
+      "args": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "alternating big",
+      "args": [
+        [
+          100,
+          1,
+          1,
+          100
+        ]
+      ],
+      "expected": 200
+    }
+  ]
+}

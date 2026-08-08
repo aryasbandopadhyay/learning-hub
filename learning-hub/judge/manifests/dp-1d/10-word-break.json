@@ -21,97 +21,67 @@
       "expected": true
     },
     {
-      "id": "rand-1",
-      "kind": "random",
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
       "args": [
-        "dbebbbbacdeeaedbdeeb",
+        "leetcode",
         [
           "leet",
           "code"
         ]
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-2",
-      "kind": "random",
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "repeat use",
       "args": [
-        "dbbdbecaeadcd",
+        "applepenapple",
         [
-          "leet",
-          "code"
+          "apple",
+          "pen"
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "cannot break",
+      "args": [
+        "catsandog",
+        [
+          "cats",
+          "dog",
+          "sand",
+          "and",
+          "cat"
         ]
       ],
       "expected": false
     },
     {
-      "id": "rand-3",
-      "kind": "random",
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "single word",
       "args": [
-        "d",
+        "a",
         [
-          "leet",
-          "code"
+          "a"
         ]
       ],
-      "expected": false
+      "expected": true
     },
     {
-      "id": "rand-4",
-      "kind": "random",
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "no match",
       "args": [
-        "de",
+        "ab",
         [
-          "leet",
-          "code"
-        ]
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-5",
-      "kind": "random",
-      "args": [
-        "acbbbdebebaaabddadabceadcbedbabdcedbcdabebedaaabcb",
-        [
-          "leet",
-          "code"
-        ]
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-6",
-      "kind": "random",
-      "args": [
-        "bbecdbcacbaecaeacbdd",
-        [
-          "leet",
-          "code"
-        ]
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-7",
-      "kind": "random",
-      "args": [
-        "ddceabacddbcbcacbbdc",
-        [
-          "leet",
-          "code"
-        ]
-      ],
-      "expected": false
-    },
-    {
-      "id": "rand-8",
-      "kind": "random",
-      "args": [
-        "dd",
-        [
-          "leet",
-          "code"
+          "c"
         ]
       ],
       "expected": false

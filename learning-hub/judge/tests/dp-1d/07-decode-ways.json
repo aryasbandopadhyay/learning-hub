@@ -1,0 +1,47 @@
+{
+  "id": "dp-1d/07-decode-ways",
+  "cases": [
+    {
+      "label": "226",
+      "args": [
+        "226"
+      ],
+      "expected": 3
+    },
+    {
+      "label": "single digit",
+      "args": [
+        "6"
+      ],
+      "expected": 1
+    },
+    {
+      "label": "leading zero",
+      "args": [
+        "06"
+      ],
+      "expected": 0
+    },
+    {
+      "label": "with zero",
+      "args": [
+        "10"
+      ],
+      "expected": 1
+    },
+    {
+      "label": "all ones",
+      "args": [
+        "111"
+      ],
+      "expected": 3
+    },
+    {
+      "label": "invalid zero",
+      "args": [
+        "100"
+      ],
+      "expected": 0
+    }
+  ]
+}

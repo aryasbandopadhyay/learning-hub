@@ -1,0 +1,68 @@
+{
+  "id": "dp-1d/09-maximum-product-subarray",
+  "cases": [
+    {
+      "label": "example",
+      "args": [
+        [
+          2,
+          3,
+          -2,
+          4
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "label": "single neg",
+      "args": [
+        [
+          -2
+        ]
+      ],
+      "expected": -2
+    },
+    {
+      "label": "with zero",
+      "args": [
+        [
+          -2,
+          0,
+          -1
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "label": "two negatives",
+      "args": [
+        [
+          -2,
+          3,
+          -4
+        ]
+      ],
+      "expected": 24
+    },
+    {
+      "label": "all positive",
+      "args": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "label": "single",
+      "args": [
+        [
+          3
+        ]
+      ],
+      "expected": 3
+    }
+  ]
+}

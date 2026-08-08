@@ -14,6 +14,51 @@
         "aaa"
       ],
       "expected": 6
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "aaa",
+      "args": [
+        "aaa"
+      ],
+      "expected": 6
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "single",
+      "args": [
+        "a"
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "abc",
+      "args": [
+        "abc"
+      ],
+      "expected": 3
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "aba",
+      "args": [
+        "aba"
+      ],
+      "expected": 4
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "empty",
+      "args": [
+        ""
+      ],
+      "expected": 0
     }
   ],
   "complexity": {

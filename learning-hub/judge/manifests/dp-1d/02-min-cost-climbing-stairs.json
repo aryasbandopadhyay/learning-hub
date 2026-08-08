@@ -18,6 +18,70 @@
         ]
       ],
       "expected": 15
+    },
+    {
+      "id": "edge-1",
+      "kind": "edge",
+      "label": "example",
+      "args": [
+        [
+          10,
+          15,
+          20
+        ]
+      ],
+      "expected": 15
+    },
+    {
+      "id": "edge-2",
+      "kind": "edge",
+      "label": "two steps",
+      "args": [
+        [
+          1,
+          100
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "id": "edge-3",
+      "kind": "edge",
+      "label": "all zero",
+      "args": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "id": "edge-4",
+      "kind": "edge",
+      "label": "descending",
+      "args": [
+        [
+          10,
+          5,
+          1,
+          1
+        ]
+      ],
+      "expected": 6
+    },
+    {
+      "id": "edge-5",
+      "kind": "edge",
+      "label": "single pair",
+      "args": [
+        [
+          5,
+          5
+        ]
+      ],
+      "expected": 5
     }
   ],
   "id": "dp-1d/02-min-cost-climbing-stairs",
