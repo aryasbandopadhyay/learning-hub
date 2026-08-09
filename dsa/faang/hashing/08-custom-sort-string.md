@@ -9,7 +9,15 @@ Given a string `order` containing distinct lowercase letters and a string `s`, r
 
 Return the reordered string.
 
-Constraints: `1 <= len(order) <= 26`, `1 <= len(s) <= 10^5`, and both strings contain lowercase English letters.
+**Input**
+- `order`: a `str`; the custom alphabet order.
+- `s`: a `str`; the input string.
+
+**Output**
+- A `str`. Return the reordered string.
+
+## Constraints
+- `1 <= len(order) <= 26`, `1 <= len(s) <= 10^5`, and both strings contain lowercase English letters.
 
 ## Examples
 ```text

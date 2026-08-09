@@ -7,7 +7,16 @@
 ## Problem
 You are given two arrays `nums1` and `nums2` of equal length and an integer `k`. Choose exactly `k` indices. The score is the sum of chosen `nums1` values multiplied by the minimum chosen `nums2` value. Return the maximum possible score.
 
-Constraints: `1 <= k <= len(nums1) <= 10^5`, `0 <= nums1[i], nums2[i] <= 10^5`.
+**Input**
+- `nums1`: a `list[int]`; the first integer array.
+- `nums2`: a `list[int]`; the second integer array.
+- `k`: a `int`; the integer parameter described above.
+
+**Output**
+- A `int`. Return the maximum possible score.
+
+## Constraints
+- `1 <= k <= len(nums1) <= 10^5`, `0 <= nums1[i], nums2[i] <= 10^5`.
 
 ## Examples
 ```text

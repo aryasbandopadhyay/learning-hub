@@ -7,7 +7,18 @@
 ## Problem
 Given two people's available time slots `slots1` and `slots2`, where each slot is `[start, end]`, and a required `duration`, return the earliest time interval `[start, start + duration]` that works for both people. If no such interval exists, return an empty list.
 
-Constraints: `1 <= len(slots1), len(slots2) <= 10^4`, `0 <= start < end <= 10^9`, `1 <= duration <= 10^6`.
+Implement `Solution.minAvailableDuration` with the parameters below and return the requested value.
+
+**Input**
+- `slots1`: a `list[list[int]]`; the first person's available intervals.
+- `slots2`: a `list[list[int]]`; the second person's available intervals.
+- `duration`: a `int`; the required meeting duration.
+
+**Output**
+- The earliest valid interval `[start, start + duration]`, or an empty list if no such overlap exists.
+
+## Constraints
+- `1 <= len(slots1), len(slots2) <= 10^4`, `0 <= start < end <= 10^9`, `1 <= duration <= 10^6`
 
 ## Examples
 ```text

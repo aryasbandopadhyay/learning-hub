@@ -7,13 +7,21 @@
 ## Problem
 Each flower is represented by `[start, end]` and is blooming on every integer time from `start` through `end`, inclusive. For each arrival time in `people`, return how many flowers are in bloom at that time.
 
-Constraints: `1 <= len(flowers), len(people) <= 10^5`, `1 <= start <= end <= 10^9`, and `1 <= people[i] <= 10^9`.
+**Input**
+- `flowers`: a `list[list[int]]`; flower blooming intervals.
+- `people`: a `list[int]`; query arrival times.
+
+**Output**
+- A `list[int]`. Return how many flowers are in bloom at that time. This judge compares the sequence exactly: `answer[i]` must answer `people[i]`, preserving the original `people` order.
+
+## Constraints
+- `1 <= len(flowers), len(people) <= 10^5`, `1 <= start <= end <= 10^9`, and `1 <= people[i] <= 10^9`.
 
 ## Examples
 ```text
 Input: flowers = [[1,6],[3,7],[9,12],[4,13]], people = [2,3,7,11]
 Output: [1,2,2,2]
-Explanation: Count intervals with start <= person <= end for each arrival.
+Explanation: Count intervals with start <= person <= end for each arrival. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-Given a list of integers `data`, where each integer represents one byte, return whether it is a valid UTF-8 encoding. A character may be 1 to 4 bytes long. Continuation bytes must have leading bits `10`, and leading bytes determine the number of required continuation bytes. Constraints: `1 <= len(data) <= 2 * 10^4` and `0 <= data[i] <= 255`.
+Given a list of integers `data`, where each integer represents one byte, return whether it is a valid UTF-8 encoding. A character may be 1 to 4 bytes long. Continuation bytes must have leading bits `10`, and leading bytes determine the number of required continuation bytes.
+
+Implement `Solution.validUtf8` with the parameters below and return the requested value.
+
+**Input**
+- `data`: a `list[int]`; the byte values to validate.
+
+**Output**
+- `True` if the full byte sequence is valid UTF-8; otherwise `False`.
+
+## Constraints
+- `1 <= len(data) <= 2 * 10^4` and `0 <= data[i] <= 255`
 
 ## Examples
 ```text

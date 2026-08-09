@@ -5,7 +5,19 @@
 - **Asked at:** Google
 
 ## Problem
-Given an integer `a` and a non-empty list of decimal digits `b`, return `a^B mod 1337`, where `B` is the integer represented by `b`. Constraints: `1 <= a <= 2^31 - 1`, `1 <= len(b) <= 2000`, and each digit is between `0` and `9` with no leading zero unless `B` is zero.
+Given an integer `a` and a non-empty list of decimal digits `b`, return `a^B mod 1337`, where `B` is the integer represented by `b`.
+
+Implement `Solution.superPow` with the parameters below and return the requested value.
+
+**Input**
+- `a`: a `int`; the base integer.
+- `b`: a `list[int]`; the exponent represented as decimal digits.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= a <= 2^31 - 1`, `1 <= len(b) <= 2000`, and each digit is between `0` and `9` with no leading zero unless `B` is zero
 
 ## Examples
 ```text

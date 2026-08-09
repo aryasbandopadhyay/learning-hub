@@ -7,6 +7,19 @@
 ## Problem
 Given a balanced parentheses string `s`, return its score. `()` scores 1, concatenation adds scores, and wrapping doubles the inner score.
 
+Implement `Solution.scoreOfParentheses` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- 2 <= s.length <= 50
+- `s` is a balanced parentheses string
+- `s` contains only `(` and `)`
+
 ## Examples
 ```text
 Input: s = "(()(()))"

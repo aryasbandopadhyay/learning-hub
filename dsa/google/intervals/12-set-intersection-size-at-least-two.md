@@ -7,7 +7,16 @@
 ## Problem
 Given intervals `intervals`, choose the smallest possible set of integers such that every interval contains at least two chosen integers. Return the size of that set.
 
-Constraints: `1 <= len(intervals) <= 3000`, `0 <= start < end <= 10^8`.
+Implement `Solution.intersectionSizeTwo` with the parameters below and return the requested value.
+
+**Input**
+- `intervals`: a `list[list[int]]`; the intervals described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(intervals) <= 3000`, `0 <= start < end <= 10^8`
 
 ## Examples
 ```text

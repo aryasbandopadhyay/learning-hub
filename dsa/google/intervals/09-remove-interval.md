@@ -7,13 +7,23 @@
 ## Problem
 You are given a sorted list of non-overlapping intervals `intervals` and one interval `toBeRemoved`. Remove the half-open range `toBeRemoved` from every interval and return the remaining intervals in sorted order.
 
-Constraints: `0 <= len(intervals) <= 10^4`, `intervals[i] = [start, end]`, intervals are sorted and non-overlapping, and `0 <= start < end <= 10^9`.
+Implement `Solution.removeInterval` with the parameters below and return the requested value.
+
+**Input**
+- `intervals`: a `list[list[int]]`; the intervals described above.
+- `toBeRemoved`: a `list[int]`; the interval to remove.
+
+**Output**
+- The remaining intervals after removal, sorted by start time in their natural left-to-right order.
+
+## Constraints
+- `0 <= len(intervals) <= 10^4`, `intervals[i] = [start, end]`, intervals are sorted and non-overlapping, and `0 <= start < end <= 10^9`
 
 ## Examples
 ```text
 Input: intervals = [[0,2],[3,4],[5,7]], toBeRemoved = [1,6]
 Output: [[0, 1], [6, 7]]
-Explanation: The removal cuts the tail of [0,2], removes [3,4], and cuts the head of [5,7].
+Explanation: The removal cuts the tail of [0,2], removes [3,4], and cuts the head of [5,7]. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

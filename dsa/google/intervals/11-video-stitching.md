@@ -7,7 +7,17 @@
 ## Problem
 You are given video clips `clips`, where `clips[i] = [start, end]`, and a target duration `time`. Return the minimum number of clips needed to cover the entire interval `[0, time]`. If coverage is impossible, return `-1`.
 
-Constraints: `1 <= len(clips) <= 10^4`, `0 <= start <= end <= 10^5`, `1 <= time <= 10^5`.
+Implement `Solution.videoStitching` with the parameters below and return the requested value.
+
+**Input**
+- `clips`: a `list[list[int]]`; video clips as `[start, end]` intervals.
+- `time`: a `int`; the target video duration.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(clips) <= 10^4`, `0 <= start <= end <= 10^5`, `1 <= time <= 10^5`
 
 ## Examples
 ```text

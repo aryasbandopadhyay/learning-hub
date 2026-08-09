@@ -7,13 +7,21 @@
 ## Problem
 You are given `n` functions labeled `0` to `n - 1` and a chronologically sorted list of logs. Each log is formatted as `"id:start:timestamp"` or `"id:end:timestamp"`. A function's exclusive time is the total time it runs excluding time spent in child calls. Return a list where index `i` is function `i`'s exclusive time.
 
-Constraints: `1 <= n <= 100`, `1 <= len(logs) <= 500`, timestamps are nondecreasing, and every start has a matching end.
+**Input**
+- `n`: a `int`; the size/count parameter described above.
+- `logs`: a `list[str]`; the chronological logs.
+
+**Output**
+- A `list[int]`. Return a list where index `i` is function `i`'s exclusive time. This judge compares the sequence exactly: `answer[i]` must be the exclusive time for function `i`, in increasing function id order.
+
+## Constraints
+- `1 <= n <= 100`, `1 <= len(logs) <= 500`, timestamps are nondecreasing, and every start has a matching end.
 
 ## Examples
 ```text
 Input: n = 2, logs = ["0:start:0","1:start:2","1:end:5","0:end:6"]
 Output: [3, 4]
-Explanation: Function 0 runs at times 0,1,6; function 1 runs at times 2,3,4,5.
+Explanation: Function 0 runs at times 0,1,6; function 1 runs at times 2,3,4,5. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

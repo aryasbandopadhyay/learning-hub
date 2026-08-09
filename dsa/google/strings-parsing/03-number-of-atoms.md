@@ -7,6 +7,20 @@
 ## Problem
 Given a chemical `formula`, return atom counts in canonical order: atom names sorted lexicographically, followed by their count only when greater than one. Formulas contain element names, parentheses, and positive multipliers.
 
+Implement `Solution.countOfAtoms` with the parameters below and return the requested value.
+
+**Input**
+- `formula`: a `str`; the chemical formula string.
+
+**Output**
+- A `str` value representing the result described above.
+
+## Constraints
+- 1 <= formula.length <= 1000
+- `formula` is a valid chemical formula
+- Atom names start with an uppercase letter and may be followed by lowercase letters
+- Counts are positive integers; an omitted count means `1`
+
 ## Examples
 ```text
 Input: formula = "K4(ON(SO3)2)2"

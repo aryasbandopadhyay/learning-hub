@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-There are people in a queue with distinct `heights`. Person `i` can see person `j > i` if every person between them is shorter than both `heights[i]` and `heights[j]`. Return how many people each person can see to their right. Constraints: `1 <= len(heights) <= 10^5`, `1 <= heights[i] <= 10^5`.
+There are people in a queue with distinct `heights`. Person `i` can see person `j > i` if every person between them is shorter than both `heights[i]` and `heights[j]`. Return how many people each person can see to their right.
+
+Implement `Solution.canSeePersonsCount` with the parameters below and return the requested value.
+
+**Input**
+- `heights`: a `list[int]`; the height values described above.
+
+**Output**
+- A `list[int]` value representing the result described above. **This judge compares exactly**, so preserve the order required by the statement.
+
+## Constraints
+- `1 <= len(heights) <= 10^5`, `1 <= heights[i] <= 10^5`
 
 ## Examples
 ```text
 Input: heights = [10,6,8,5,11,9]
 Output: [3,1,2,1,1,0]
-Explanation: The first person sees heights 6, 8, and 11; height 11 blocks everyone after it.
+Explanation: The first person sees heights 6, 8, and 11; height 11 blocks everyone after it. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

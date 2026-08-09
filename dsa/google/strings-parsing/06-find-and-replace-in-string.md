@@ -7,6 +7,24 @@
 ## Problem
 Given `s` and parallel arrays `indices`, `sources`, and `targets`, perform all matching replacements simultaneously against the original string. Return the final string.
 
+Implement `Solution.findReplaceString` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+- `indices`: a `list[int]`; replacement starting indices.
+- `sources`: a `list[str]`; source strings to match.
+- `targets`: a `list[str]`; replacement strings to insert.
+
+**Output**
+- The final string after applying every matching replacement simultaneously.
+
+## Constraints
+- 1 <= s.length <= 1000
+- 0 <= indices.length == sources.length == targets.length <= 100
+- 0 <= indices[i] < s.length
+- `sources[i]` and `targets[i]` are non-empty lowercase strings
+- All replacement checks are made against the original `s` simultaneously
+
 ## Examples
 ```text
 Input: s = "abcd", indices = [0,2], sources = ["a","cd"], targets = ["eee","ffff"]

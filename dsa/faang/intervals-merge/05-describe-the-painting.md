@@ -7,13 +7,20 @@
 ## Problem
 You are given painting `segments`, where each segment is `[start, end, color]` and paints every point in the half-open interval `[start, end)`. Return a list of non-overlapping segments `[start, end, sumColor]` describing all painted portions after mixing overlapping colors.
 
-Constraints: `1 <= len(segments) <= 2 * 10^4`, `1 <= start < end <= 10^5`, and `1 <= color <= 10^9`.
+**Input**
+- `segments`: a `list[list[int]]`; painted half-open segments.
+
+**Output**
+- A `list[list[int]]`. Return a list of non-overlapping segments `[start, end, sumColor]` describing all painted portions after mixing overlapping colors. This judge compares the sequence exactly: return non-overlapping painted segments sorted by increasing start coordinate and omit unpainted gaps.
+
+## Constraints
+- `1 <= len(segments) <= 2 * 10^4`, `1 <= start < end <= 10^5`, and `1 <= color <= 10^9`.
 
 ## Examples
 ```text
 Input: segments = [[1,4,5],[4,7,7],[1,7,9]]
 Output: [[1,4,14],[4,7,16]]
-Explanation: Color 9 overlaps with color 5 on [1,4) and with color 7 on [4,7).
+Explanation: Color 9 overlaps with color 5 on [1,4) and with color 7 on [4,7). The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given a list `nums` representing stream insertions and an integer `k`, return a list where each position contains the kth largest value after that insertion. If fewer than `k` values have been seen, return `-1` at that position. Constraints: `1 <= len(nums) <= 100000`, `1 <= k <= len(nums)`.
+Given a list `nums` representing stream insertions and an integer `k`, return a list where each position contains the kth largest value after that insertion. If fewer than `k` values have been seen, return `-1` at that position.
+
+Implement `Solution.kthLargestAfterEachInsertion` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+- `k`: a `int`; the required count, window limit, or operation budget described above.
+
+**Output**
+- A list in insertion order where each value is the current kth largest value, or `-1` before at least `k` values have been seen.
+
+## Constraints
+- `1 <= len(nums) <= 100000`, `1 <= k <= len(nums)`
 
 ## Examples
 ```text
 Input: nums = [4,5,8,2,10,9], k = 3
 Output: [-1,-1,4,4,5,8]
-Explanation: After each prefix of length at least 3, report the third largest prefix value.
+Explanation: After each prefix of length at least 3, report the third largest prefix value. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

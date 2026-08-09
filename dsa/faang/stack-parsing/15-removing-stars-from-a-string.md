@@ -7,6 +7,17 @@
 ## Problem
 Given a string `s` containing lowercase letters and stars, repeatedly choose a star, remove the closest non-star character to its left, and remove the star itself. The input is valid, so every star has a character to remove. Return the final string.
 
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `str`. Return the final string.
+
+## Constraints
+- `1 <= len(s) <= 10^5`.
+- `s` contains lowercase English letters and `*`.
+- every `*` has a non-star character to its left when it is processed.
+
 ## Examples
 ```text
 Input: s = "leet**cod*e"

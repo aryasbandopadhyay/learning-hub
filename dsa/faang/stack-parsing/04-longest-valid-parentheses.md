@@ -7,7 +7,14 @@
 ## Problem
 Given a string `s` containing only `'('` and `')'`, return the length of the longest contiguous substring that is a valid parentheses string.
 
-Constraints: `0 <= len(s) <= 30_000`.
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `int`. Return the length of the longest contiguous substring that is a valid parentheses string.
+
+## Constraints
+- `0 <= len(s) <= 30_000`.
 
 ## Examples
 ```text

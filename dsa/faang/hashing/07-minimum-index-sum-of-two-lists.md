@@ -7,13 +7,23 @@
 ## Problem
 Given two lists of favorite restaurants, return all common restaurant names with the minimum possible sum of their indices in the two lists. Return the names sorted lexicographically for deterministic output.
 
-Constraints: `1 <= len(list1), len(list2) <= 1000`; names are non-empty strings; names are unique within each list.
+**Input**
+- `list1`: a `list[str]`; the first preference list.
+- `list2`: a `list[str]`; the second preference list.
+
+**Output**
+- A `list[str]`. Return all common restaurant names with the minimum possible sum of their indices in the two lists. Return the names sorted lexicographically for deterministic output. This judge compares the sequence exactly: return the restaurant names sorted lexicographically.
+
+## Constraints
+- `1 <= len(list1), len(list2) <= 1000`.
+- names are non-empty strings.
+- names are unique within each list.
 
 ## Examples
 ```text
 Input: list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"], list2 = ["KFC", "Shogun", "Burger King"]
 Output: ["Shogun"]
-Explanation: Shogun has index sum 0 + 1 = 1, which is minimal.
+Explanation: Shogun has index sum 0 + 1 = 1, which is minimal. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

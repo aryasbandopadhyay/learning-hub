@@ -7,13 +7,22 @@
 ## Problem
 Given a list `nums` representing numbers received from a data stream in order, return the final set of disjoint sorted intervals that summarize all distinct values seen. Consecutive integers belong to the same interval.
 
-Constraints: `0 <= len(nums) <= 10^4`, `0 <= nums[i] <= 10^9`.
+Implement `Solution.summaryRanges` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+
+**Output**
+- The final disjoint intervals sorted by increasing start value.
+
+## Constraints
+- `0 <= len(nums) <= 10^4`, `0 <= nums[i] <= 10^9`
 
 ## Examples
 ```text
 Input: nums = [1,3,7,2,6]
 Output: [[1, 3], [6, 7]]
-Explanation: Values 1, 2, 3 merge into [1,3], and 6, 7 merge into [6,7].
+Explanation: Values 1, 2, 3 merge into [1,3], and 6, 7 merge into [6,7]. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

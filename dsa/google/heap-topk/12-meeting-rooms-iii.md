@@ -5,7 +5,19 @@
 - **Asked at:** Google
 
 ## Problem
-There are `n` rooms numbered `0` to `n - 1` and a list of meetings `[start, end]`. Meetings are processed by increasing start time. If rooms are free, use the smallest-numbered free room; otherwise delay the meeting until the earliest room becomes free, preserving its duration. Return the room that hosted the most meetings, breaking ties by smaller room number. Constraints: `1 <= n <= 100`, `1 <= len(meetings) <= 100000`.
+There are `n` rooms numbered `0` to `n - 1` and a list of meetings `[start, end]`. Meetings are processed by increasing start time. If rooms are free, use the smallest-numbered free room; otherwise delay the meeting until the earliest room becomes free, preserving its duration. Return the room that hosted the most meetings, breaking ties by smaller room number.
+
+Implement `Solution.mostBooked` with the parameters below and return the requested value.
+
+**Input**
+- `n`: a `int`; the size/count parameter described above.
+- `meetings`: a `list[list[int]]`; meeting intervals `[start, end]`.
+
+**Output**
+- The room number that hosts the most meetings; if several rooms tie, return the smallest room number.
+
+## Constraints
+- `1 <= n <= 100`, `1 <= len(meetings) <= 100000`
 
 ## Examples
 ```text

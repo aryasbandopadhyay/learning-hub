@@ -5,7 +5,20 @@
 - **Asked at:** Google
 
 ## Problem
-A car starts at position `0` with `startFuel` liters and needs to reach `target`. Each station is `[position, fuel]`, sorted by position, and refueling takes all fuel from a station. Return the minimum number of stops needed, or `-1` if impossible. Constraints: `1 <= target <= 10^9`, `0 <= len(stations) <= 500`.
+A car starts at position `0` with `startFuel` liters and needs to reach `target`. Each station is `[position, fuel]`, sorted by position, and refueling takes all fuel from a station. Return the minimum number of stops needed, or `-1` if impossible.
+
+Implement `Solution.minRefuelStops` with the parameters below and return the requested value.
+
+**Input**
+- `target`: a `int`; the destination position.
+- `startFuel`: a `int`; the fuel available at position `0`.
+- `stations`: a `list[list[int]]`; fuel stations as `[position, fuel]` pairs sorted by position.
+
+**Output**
+- The minimum number of refueling stops needed to reach `target`, or `-1` if the trip is impossible.
+
+## Constraints
+- `1 <= target <= 10^9`, `0 <= len(stations) <= 500`
 
 ## Examples
 ```text

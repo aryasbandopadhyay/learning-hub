@@ -7,7 +7,15 @@
 ## Problem
 You are given non-overlapping white tile intervals `tiles`, where `[start, end]` means every integer tile from `start` through `end` is white. A carpet of length `carpetLen` covers a consecutive range of exactly `carpetLen` integer positions. Return the maximum number of white tiles the carpet can cover.
 
-Constraints: `1 <= len(tiles) <= 5 * 10^4`, `1 <= start <= end <= 10^9`, `1 <= carpetLen <= 10^9`, and tile intervals are non-overlapping.
+**Input**
+- `tiles`: a `list[list[int]]`; non-overlapping white tile intervals.
+- `carpetLen`: a `int`; the carpet length.
+
+**Output**
+- A `int`. Return the maximum number of white tiles the carpet can cover.
+
+## Constraints
+- `1 <= len(tiles) <= 5 * 10^4`, `1 <= start <= end <= 10^9`, `1 <= carpetLen <= 10^9`, and tile intervals are non-overlapping.
 
 ## Examples
 ```text

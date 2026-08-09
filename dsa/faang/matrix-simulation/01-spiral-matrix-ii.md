@@ -7,13 +7,20 @@
 ## Problem
 Given an integer `n`, return an `n x n` matrix filled with values from `1` to `n^2` in clockwise spiral order.
 
-Constraints: `1 <= n <= 50`.
+**Input**
+- `n`: a `int`; the size/count parameter described above.
+
+**Output**
+- A `list[list[int]]`. Return an `n x n` matrix filled with values from `1` to `n^2` in clockwise spiral order. This judge compares the sequence exactly: return the full `n x n` matrix with rows in top-to-bottom order and columns left-to-right.
+
+## Constraints
+- `1 <= n <= 50`.
 
 ## Examples
 ```text
 Input: n = 3
 Output: [[1,2,3],[8,9,4],[7,6,5]]
-Explanation: The numbers are written while walking clockwise around shrinking boundaries.
+Explanation: The numbers are written while walking clockwise around shrinking boundaries. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

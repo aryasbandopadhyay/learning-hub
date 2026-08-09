@@ -5,13 +5,24 @@
 - **Asked at:** Google
 
 ## Problem
-Given a fixed stream represented by `nums`, return a list where the `i`th value is the median after reading `nums[0:i+1]`. For an even count, the median is the average of the two middle values. Constraints: `1 <= len(nums) <= 100000`.
+Given a fixed stream represented by `nums`, return a list where the `i`th value is the median after reading `nums[0:i+1]`. For an even count, the median is the average of the two middle values.
+
+Implement `Solution.runningMedian` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+
+**Output**
+- A list of medians as floats, one after each insertion, in the same order as the stream values are read.
+
+## Constraints
+- `1 <= len(nums) <= 100000`
 
 ## Examples
 ```text
 Input: nums = [5,15,1,3]
 Output: [5.0,10.0,5.0,4.0]
-Explanation: The sorted prefixes are [5], [5,15], [1,5,15], and [1,3,5,15].
+Explanation: The sorted prefixes are [5], [5,15], [1,5,15], and [1,3,5,15]. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

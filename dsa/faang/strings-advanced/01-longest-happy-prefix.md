@@ -7,7 +7,15 @@
 ## Problem
 Given a string `s`, return the longest non-empty prefix that is also a suffix, excluding the entire string. If none exists, return `""`.
 
-Constraints: `1 <= len(s) <= 100000`; `s` contains lowercase English letters.
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `str`. Return the longest non-empty prefix that is also a suffix, excluding the entire string. return `""`.
+
+## Constraints
+- `1 <= len(s) <= 100000`.
+- `s` contains lowercase English letters.
 
 ## Examples
 ```text

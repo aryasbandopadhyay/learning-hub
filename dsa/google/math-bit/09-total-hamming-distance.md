@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-Given a list of integers `nums`, return the sum of Hamming distances between every pair of distinct elements. The Hamming distance between two integers is the number of bit positions where they differ. Constraints: `1 <= len(nums) <= 10^4` and `0 <= nums[i] <= 10^9`.
+Given a list of integers `nums`, return the sum of Hamming distances between every pair of distinct elements. The Hamming distance between two integers is the number of bit positions where they differ.
+
+Implement `Solution.totalHammingDistance` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(nums) <= 10^4` and `0 <= nums[i] <= 10^9`
 
 ## Examples
 ```text

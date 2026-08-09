@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given daily stock `prices`, return an array where `answer[i]` is the number of consecutive days ending at `i` whose price is less than or equal to `prices[i]`. This is the classic stock-span problem expressed as an array-in/array-out function, not a class API. Constraints: `1 <= len(prices) <= 10^5`, `1 <= prices[i] <= 10^5`.
+Given daily stock `prices`, return an array where `answer[i]` is the number of consecutive days ending at `i` whose price is less than or equal to `prices[i]`. This is the classic stock-span problem expressed as an array-in/array-out function, not a class API.
+
+Implement `Solution.calculateSpan` with the parameters below and return the requested value.
+
+**Input**
+- `prices`: a `list[int]`; prices in input order.
+
+**Output**
+- A `list[int]` value representing the result described above. **This judge compares exactly**, so preserve the order required by the statement.
+
+## Constraints
+- `1 <= len(prices) <= 10^5`, `1 <= prices[i] <= 10^5`
 
 ## Examples
 ```text
 Input: prices = [100,80,60,70,60,75,85]
 Output: [1,1,1,2,1,4,6]
-Explanation: At price 75, the span covers 75, 60, 70, and 60.
+Explanation: At price 75, the span covers 75, 60, 70, and 60. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

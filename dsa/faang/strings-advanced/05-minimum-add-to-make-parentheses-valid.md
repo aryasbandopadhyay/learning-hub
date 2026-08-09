@@ -7,7 +7,14 @@
 ## Problem
 Given a string `s` containing only `(` and `)`, return the minimum number of parentheses that must be added to make it valid.
 
-Constraints: `0 <= len(s) <= 100000`.
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `int`. Return the minimum number of parentheses that must be added to make it valid.
+
+## Constraints
+- `0 <= len(s) <= 100000`.
 
 ## Examples
 ```text

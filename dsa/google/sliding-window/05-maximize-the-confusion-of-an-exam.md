@@ -7,7 +7,18 @@
 ## Problem
 Given a string `answerKey` containing only `'T'` and `'F'`, and an integer `k`, change at most `k` characters. Return the maximum length of a contiguous segment containing all the same character after changes.
 
-Constraints: `1 <= len(answerKey) <= 100000`; `0 <= k <= len(answerKey)`.
+Implement `Solution.maxConsecutiveAnswers` with the parameters below and return the requested value.
+
+**Input**
+- `answerKey`: a `str`; the string of exam answers.
+- `k`: a `int`; the required count, window limit, or operation budget described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(answerKey) <= 100000`
+- `0 <= k <= len(answerKey)`
 
 ## Examples
 ```text

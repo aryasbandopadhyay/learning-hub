@@ -7,6 +7,16 @@
 ## Problem
 Given an absolute Unix-style path `path`, return its simplified canonical path. A single dot means the current directory, two dots mean the parent directory, and multiple consecutive slashes are treated as one slash. The result must start with `/` and must not end with `/` unless it is the root.
 
+**Input**
+- `path`: a `str`; the absolute Unix-style path.
+
+**Output**
+- A `str`. Return its simplified canonical path.
+
+## Constraints
+- `1 <= len(path) <= 3000`.
+- `path` is a valid absolute Unix-style path containing letters, digits, underscores, dots, and slashes.
+
 ## Examples
 ```text
 Input: path = "/a/./b/../../c/"

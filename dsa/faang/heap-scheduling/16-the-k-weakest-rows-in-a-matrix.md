@@ -7,7 +7,15 @@
 ## Problem
 You are given a binary matrix `mat` where each row has all `1`s before any `0`s. A row's strength is the number of soldiers (`1`s) in it. Row `i` is weaker than row `j` if it has fewer soldiers, or the same number of soldiers and `i < j`. Return the indices of the `k` weakest rows.
 
-Constraints: `1 <= len(mat), len(mat[0]) <= 100`, `1 <= k <= len(mat)`, and each row is sorted as ones followed by zeros.
+**Input**
+- `mat`: a `list[list[int]]`; the input matrix.
+- `k`: a `int`; the integer parameter described above.
+
+**Output**
+- A `list[int]`. Return the indices of the `k` weakest rows. The judge normalizes sorted outputs, but the clearest answer is the natural problem order described above.
+
+## Constraints
+- `1 <= len(mat), len(mat[0]) <= 100`, `1 <= k <= len(mat)`, and each row is sorted as ones followed by zeros.
 
 ## Examples
 ```text

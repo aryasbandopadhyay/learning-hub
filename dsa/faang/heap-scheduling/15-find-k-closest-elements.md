@@ -7,13 +7,22 @@
 ## Problem
 You are given a sorted integer array `arr`, an integer `k`, and an integer `x`. Return the `k` integers closest to `x`, sorted in ascending order. If two numbers are equally close, the smaller number is considered closer.
 
-Constraints: `1 <= k <= len(arr) <= 10^4`, `arr` is sorted in ascending order, and `-10^4 <= arr[i], x <= 10^4`.
+**Input**
+- `arr`: a `list[int]`; the sorted integer array.
+- `k`: a `int`; the integer parameter described above.
+- `x`: a `int`; the target value.
+
+**Output**
+- A `list[int]`. Return the `k` integers closest to `x`, sorted in ascending order. This judge compares the sequence exactly: return the chosen values sorted in ascending numeric order.
+
+## Constraints
+- `1 <= k <= len(arr) <= 10^4`, `arr` is sorted in ascending order, and `-10^4 <= arr[i], x <= 10^4`.
 
 ## Examples
 ```text
 Input: arr = [1,2,3,4,5], k = 4, x = 3
 Output: [1,2,3,4]
-Explanation: The four closest values to 3 are 1, 2, 3, and 4.
+Explanation: The four closest values to 3 are 1, 2, 3, and 4. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

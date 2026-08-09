@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-Given a non-negative integer `n`, return the minimum number of one-bit operations needed to transform it to `0`. In one operation, you may flip the lowest bit, or flip bit `i` if bit `i-1` is `1` and all lower bits are `0`. Constraints: `0 <= n <= 10^9`.
+Given a non-negative integer `n`, return the minimum number of one-bit operations needed to transform it to `0`. In one operation, you may flip the lowest bit, or flip bit `i` if bit `i-1` is `1` and all lower bits are `0`.
+
+Implement `Solution.minimumOneBitOperations` with the parameters below and return the requested value.
+
+**Input**
+- `n`: a `int`; the size/count parameter described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `0 <= n <= 10^9`
 
 ## Examples
 ```text

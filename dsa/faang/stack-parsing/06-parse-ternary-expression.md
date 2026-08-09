@@ -7,7 +7,15 @@
 ## Problem
 Given a valid nested ternary expression made of digits, `T`, `F`, `?`, and `:`, evaluate it and return the resulting single-character string. Ternary operators are right-associative, so `T?1:2` returns `"1"` and `F?1:T?4:5` returns `"4"`.
 
-Constraints: `1 <= len(expression) <= 10^4`; operands are single characters from `T`, `F`, or digits.
+**Input**
+- `expression`: a `str`; the ternary expression.
+
+**Output**
+- A `str`. Return the resulting single-character string. returns `"1"` and `F?1:T?4:5` returns `"4"`.
+
+## Constraints
+- `1 <= len(expression) <= 10^4`.
+- operands are single characters from `T`, `F`, or digits.
 
 ## Examples
 ```text

@@ -7,6 +7,16 @@
 ## Problem
 Given a non-empty string `s`, return `True` if it can be constructed by repeating one of its proper substrings one or more times. Otherwise, return `False`. The string length is at most `10^4`.
 
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `bool`. Return `True` if it can be constructed by repeating one of its proper substrings one or more times. return `False`.
+
+## Constraints
+- `1 <= len(s) <= 10^4`.
+- `s` contains lowercase English letters.
+
 ## Examples
 ```text
 Input: s = "abab"

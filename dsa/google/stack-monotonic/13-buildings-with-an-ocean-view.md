@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Buildings stand in a row, and the ocean is to the right. A building has an ocean view if every building to its right is shorter. Return the indices of all buildings with an ocean view in increasing order. Constraints: `1 <= len(heights) <= 10^5`, `1 <= heights[i] <= 10^9`.
+Buildings stand in a row, and the ocean is to the right. A building has an ocean view if every building to its right is shorter. Return the indices of all buildings with an ocean view in increasing order.
+
+Implement `Solution.findBuildings` with the parameters below and return the requested value.
+
+**Input**
+- `heights`: a `list[int]`; the height values described above.
+
+**Output**
+- A `list[int]` value representing the result described above. **This judge compares exactly**, so preserve the order required by the statement.
+
+## Constraints
+- `1 <= len(heights) <= 10^5`, `1 <= heights[i] <= 10^9`
 
 ## Examples
 ```text
 Input: heights = [4,2,3,1]
 Output: [0,2,3]
-Explanation: Buildings 0, 2, and 3 are taller than every building to their right.
+Explanation: Buildings 0, 2, and 3 are taller than every building to their right. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

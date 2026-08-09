@@ -7,7 +7,14 @@
 ## Problem
 You are given `tasks`, where `tasks[i] = [enqueueTime, processingTime]` describes the time task `i` becomes available and how long it takes a single-threaded CPU to finish it. The CPU is idle initially. Whenever the CPU is idle, it chooses the available task with the shortest processing time; if there is a tie, it chooses the smaller original index. Return the order of task indices processed by the CPU.
 
-Constraints: `1 <= len(tasks) <= 10^5`, `1 <= enqueueTime, processingTime <= 10^9`.
+**Input**
+- `tasks`: a `list[list[int]]`; the task data, as described above.
+
+**Output**
+- A `list[int]`. Return the order of task indices processed by the CPU. The judge normalizes sorted outputs, but the clearest answer is the natural problem order described above.
+
+## Constraints
+- `1 <= len(tasks) <= 10^5`, `1 <= enqueueTime, processingTime <= 10^9`.
 
 ## Examples
 ```text

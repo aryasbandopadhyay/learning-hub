@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-For each item price `prices[i]`, subtract the price of the first item to its right with price less than or equal to `prices[i]`. If no such item exists, keep the original price. Return the final prices. Constraints: `1 <= len(prices) <= 500`, `1 <= prices[i] <= 1000`.
+For each item price `prices[i]`, subtract the price of the first item to its right with price less than or equal to `prices[i]`. If no such item exists, keep the original price. Return the final prices.
+
+Implement `Solution.finalPrices` with the parameters below and return the requested value.
+
+**Input**
+- `prices`: a `list[int]`; prices in input order.
+
+**Output**
+- A `list[int]` value representing the result described above. **This judge compares exactly**, so preserve the order required by the statement.
+
+## Constraints
+- `1 <= len(prices) <= 500`, `1 <= prices[i] <= 1000`
 
 ## Examples
 ```text
 Input: prices = [8,4,6,2,3]
 Output: [4,2,4,2,3]
-Explanation: Prices 8, 4, and 6 receive discounts 4, 2, and 2 respectively.
+Explanation: Prices 8, 4, and 6 receive discounts 4, 2, and 2 respectively. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

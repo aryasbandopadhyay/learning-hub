@@ -7,7 +7,17 @@
 ## Problem
 Given four integer arrays `nums1`, `nums2`, `nums3`, and `nums4` of equal length, return the number of tuples `(i, j, k, l)` such that `nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0`.
 
-Constraints: `1 <= len(nums1) <= 200`, all four arrays have the same length, and values fit in signed 32-bit integers.
+**Input**
+- `nums1`: a `list[int]`; the first integer array.
+- `nums2`: a `list[int]`; the second integer array.
+- `nums3`: a `list[int]`; the third integer array.
+- `nums4`: a `list[int]`; the fourth integer array.
+
+**Output**
+- A `int`. Return the number of tuples `(i, j, k, l)` such that `nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0`.
+
+## Constraints
+- `1 <= len(nums1) <= 200`, all four arrays have the same length, and values fit in signed 32-bit integers.
 
 ## Examples
 ```text

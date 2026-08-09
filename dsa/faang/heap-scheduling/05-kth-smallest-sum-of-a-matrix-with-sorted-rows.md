@@ -9,7 +9,15 @@ You are given a matrix `mat` whose rows are sorted in nondecreasing order, and a
 
 Return the `k`th smallest possible sum.
 
-Constraints: `1 <= len(mat), len(mat[i]) <= 40`, `1 <= k <= min(200, product of row lengths)`, `1 <= mat[i][j] <= 5000`.
+**Input**
+- `mat`: a `list[list[int]]`; the input matrix.
+- `k`: a `int`; the integer parameter described above.
+
+**Output**
+- A `int`. Return the `k`th smallest possible sum.
+
+## Constraints
+- `1 <= len(mat), len(mat[i]) <= 40`, `1 <= k <= min(200, product of row lengths)`, `1 <= mat[i][j] <= 5000`.
 
 ## Examples
 ```text

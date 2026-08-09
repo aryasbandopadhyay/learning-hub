@@ -5,7 +5,18 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-A day is tiring if `hours[i] > 8`. Return the length of the longest interval where tiring days are strictly more numerous than non-tiring days. Constraints: `1 <= len(hours) <= 10^4`, `0 <= hours[i] <= 16`.
+A day is tiring if `hours[i] > 8`. Return the length of the longest interval where tiring days are strictly more numerous than non-tiring days.
+
+Implement `Solution.longestWPI` with the parameters below and return the requested value.
+
+**Input**
+- `hours`: a `list[int]`; hours worked each day.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(hours) <= 10^4`, `0 <= hours[i] <= 16`
 
 ## Examples
 ```text

@@ -9,13 +9,21 @@ On a campus, `workers[i] = [xi, yi]` and `bikes[j] = [xj, yj]`. Assign exactly o
 
 Return `answer`, where `answer[i]` is the bike assigned to worker `i`.
 
-Constraints: `1 <= len(workers) <= len(bikes) <= 1000`, coordinates are between `0` and `1000`.
+**Input**
+- `workers`: a `list[list[int]]`; worker coordinates or strengths, as described above.
+- `bikes`: a `list[list[int]]`; bike coordinates.
+
+**Output**
+- A `list[int]`. Return `answer`, where `answer[i]` is the bike assigned to worker `i`. This judge compares the sequence exactly: `answer[i]` must be the bike assigned to worker `i`, in increasing worker index order.
+
+## Constraints
+- `1 <= len(workers) <= len(bikes) <= 1000`, coordinates are between `0` and `1000`.
 
 ## Examples
 ```text
 Input: workers = [[0,0],[2,1]], bikes = [[1,2],[3,3]]
 Output: [1,0]
-Explanation: Pair worker 0 with bike 1 at distance 6 only after worker 1 takes bike 0 at distance 2.
+Explanation: Pair worker 0 with bike 1 at distance 6 only after worker 1 takes bike 0 at distance 2. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

@@ -7,7 +7,15 @@
 ## Problem
 Given an `m x n` grid and an integer `k`, shift the grid to the right `k` times. In one shift, each cell moves to the next column, the last column moves to the first column of the next row, and the bottom-right cell moves to the top-left. Return the shifted grid.
 
-Constraints: `1 <= m, n <= 50`, `0 <= k <= 10^9`.
+**Input**
+- `grid`: a `list[list[int]]`; the input grid.
+- `k`: a `int`; the integer parameter described above.
+
+**Output**
+- A `list[list[int]]`. Return the shifted grid. This judge compares the sequence exactly: return the shifted grid with rows in top-to-bottom order and columns left-to-right.
+
+## Constraints
+- `1 <= m, n <= 50`, `0 <= k <= 10^9`.
 
 ## Examples
 ```text

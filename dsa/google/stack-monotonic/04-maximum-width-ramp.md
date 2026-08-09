@@ -5,7 +5,18 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-A ramp is a pair `(i, j)` with `i < j` and `nums[i] <= nums[j]`. Return the maximum width `j - i` among all ramps, or `0` if none exists. Constraints: `2 <= len(nums) <= 10^5`, `0 <= nums[i] <= 10^5`.
+A ramp is a pair `(i, j)` with `i < j` and `nums[i] <= nums[j]`. Return the maximum width `j - i` among all ramps, or `0` if none exists.
+
+Implement `Solution.maxWidthRamp` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `2 <= len(nums) <= 10^5`, `0 <= nums[i] <= 10^5`
 
 ## Examples
 ```text

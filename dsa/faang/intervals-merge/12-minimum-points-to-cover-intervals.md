@@ -7,13 +7,20 @@
 ## Problem
 Given inclusive intervals `intervals`, return the canonical greedy list of integer points formed by repeatedly choosing the end of the earliest-finishing uncovered interval. This list has the minimum possible number of points and covers every interval.
 
-Constraints: `1 <= len(intervals) <= 10^5`, `0 <= start <= end <= 10^9`.
+**Input**
+- `intervals`: a `list[list[int]]`; the intervals.
+
+**Output**
+- A `list[int]`. Return the canonical greedy list of integer points formed by repeatedly choosing the end of the earliest-finishing uncovered interval. This judge compares the sequence exactly: return the greedy points in the order they are chosen after sorting intervals by end coordinate.
+
+## Constraints
+- `1 <= len(intervals) <= 10^5`, `0 <= start <= end <= 10^9`.
 
 ## Examples
 ```text
 Input: intervals = [[1,3],[2,5],[3,6],[7,9]]
 Output: [3,9]
-Explanation: Point 3 covers the first three intervals, and point 9 covers [7,9].
+Explanation: Point 3 covers the first three intervals, and point 9 covers [7,9]. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

@@ -7,7 +7,14 @@
 ## Problem
 Given a string `s` containing lowercase letters and parentheses, remove the minimum number of parentheses so the result is valid. Return the canonical result obtained by discarding every unmatched `')'` during a left-to-right scan and discarding every still-unmatched `'('` at the end. Letters must stay in their original order.
 
-Constraints: `1 <= len(s) <= 10^5`.
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `str`. Return the canonical result obtained by discarding every unmatched `')'` during a left-to-right scan and discarding every still-unmatched `'('` at the end.
+
+## Constraints
+- `1 <= len(s) <= 10^5`.
 
 ## Examples
 ```text

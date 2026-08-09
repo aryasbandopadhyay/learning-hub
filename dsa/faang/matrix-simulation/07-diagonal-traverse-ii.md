@@ -7,13 +7,20 @@
 ## Problem
 Given a possibly jagged list `nums`, return all values in diagonal order: increasing `r + c`, and within each diagonal from larger row index to smaller row index.
 
-Constraints: `1 <= total number of values <= 10^5`.
+**Input**
+- `nums`: a `list[list[int]]`; the input integer list.
+
+**Output**
+- A `list[int]`. Return all values in diagonal order: increasing `r + c`, and within each diagonal from larger row index to smaller row index. This judge compares the sequence exactly: return values by increasing `row + col`; within each diagonal, use larger row index before smaller row index.
+
+## Constraints
+- `1 <= total number of values <= 10^5`.
 
 ## Examples
 ```text
 Input: nums = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [1,4,2,7,5,3,8,6,9]
-Explanation: Diagonals are grouped by r+c and read from bottom to top.
+Explanation: Diagonals are grouped by r+c and read from bottom to top. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

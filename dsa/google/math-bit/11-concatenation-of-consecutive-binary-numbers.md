@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-Given an integer `n`, concatenate the binary representations of all integers from `1` through `n`, interpret the result as a binary number, and return it modulo `1_000_000_007`. Constraints: `1 <= n <= 10^5`.
+Given an integer `n`, concatenate the binary representations of all integers from `1` through `n`, interpret the result as a binary number, and return it modulo `1_000_000_007`.
+
+Implement `Solution.concatenatedBinary` with the parameters below and return the requested value.
+
+**Input**
+- `n`: a `int`; the size/count parameter described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= n <= 10^5`
 
 ## Examples
 ```text

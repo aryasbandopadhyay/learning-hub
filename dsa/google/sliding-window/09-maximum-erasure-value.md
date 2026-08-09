@@ -7,7 +7,17 @@
 ## Problem
 Given a list of positive integers `nums`, erase exactly one contiguous subarray containing only unique elements. Return the maximum possible sum of the erased subarray.
 
-Constraints: `1 <= len(nums) <= 100000`; `1 <= nums[i] <= 10000`.
+Implement `Solution.maximumUniqueSubarray` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(nums) <= 100000`
+- `1 <= nums[i] <= 10000`
 
 ## Examples
 ```text

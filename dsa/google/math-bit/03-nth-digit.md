@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-Given an integer `n`, return the `n`th digit in the infinite sequence `1234567891011121314...` using 1-indexing. Constraints: `1 <= n <= 2^31 - 1`.
+Given an integer `n`, return the `n`th digit in the infinite sequence `1234567891011121314...` using 1-indexing.
+
+Implement `Solution.findNthDigit` with the parameters below and return the requested value.
+
+**Input**
+- `n`: a `int`; the size/count parameter described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= n <= 2^31 - 1`
 
 ## Examples
 ```text

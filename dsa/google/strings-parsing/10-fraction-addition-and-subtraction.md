@@ -7,6 +7,20 @@
 ## Problem
 Given an expression string of signed fractions added and subtracted, return the result as an irreducible fraction string `"numerator/denominator"`. Denominators are positive and there are no spaces.
 
+Implement `Solution.fractionAddition` with the parameters below and return the requested value.
+
+**Input**
+- `expression`: a `str`; the expression string described above.
+
+**Output**
+- A `str` value representing the result described above.
+
+## Constraints
+- 3 <= expression.length <= 1000
+- `expression` is a valid sum/difference of fractions
+- Each numerator and denominator has absolute value at most `10` in the input
+- Every denominator in the input is positive
+
 ## Examples
 ```text
 Input: expression = "-1/2+1/2+1/3"

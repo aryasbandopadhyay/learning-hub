@@ -7,6 +7,18 @@
 ## Problem
 Given a boolean expression with `t`, `f`, operators `!`, `&`, `|`, parentheses, and commas, return its value. `!` has one operand; `&` and `|` have one or more operands.
 
+Implement `Solution.parseBoolExpr` with the parameters below and return the requested value.
+
+**Input**
+- `expression`: a `str`; the expression string described above.
+
+**Output**
+- A `bool` value representing the result described above.
+
+## Constraints
+- 1 <= expression.length <= 2 * 10^4
+- `expression` is a valid boolean expression using `t`, `f`, `!`, `&`, `|`, parentheses, and commas
+
 ## Examples
 ```text
 Input: expression = "|(&(t,f,t),!(t))"

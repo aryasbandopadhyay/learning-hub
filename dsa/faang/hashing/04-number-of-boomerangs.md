@@ -7,7 +7,14 @@
 ## Problem
 Given `points`, where each point is `[x, y]`, return the number of boomerangs. A boomerang is an ordered tuple of distinct points `(i, j, k)` such that the distance between `i` and `j` equals the distance between `i` and `k`.
 
-Constraints: `1 <= len(points) <= 500`, coordinates are integers, and duplicate point coordinates may appear but each list entry is a distinct point.
+**Input**
+- `points`: a `list[list[int]]`; a list of coordinate pairs or intervals, as described above.
+
+**Output**
+- A `int`. Return the number of boomerangs.
+
+## Constraints
+- `1 <= len(points) <= 500`, coordinates are integers, and duplicate point coordinates may appear but each list entry is a distinct point.
 
 ## Examples
 ```text

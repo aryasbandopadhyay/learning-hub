@@ -7,13 +7,22 @@
 ## Problem
 For each string in `queries`, return whether it matches `pattern`. Lowercase letters may be inserted anywhere into `pattern`; uppercase letters must match exactly and in order.
 
-Constraints: `1 <= len(queries) <= 100`; `1 <= len(pattern), len(query) <= 100`.
+**Input**
+- `queries`: a `list[str]`; the query strings.
+- `pattern`: a `str`; the pattern to match.
+
+**Output**
+- A `list[bool]`. Return whether it matches `pattern`. This judge compares the sequence exactly: `answer[i]` must describe whether `queries[i]` matches, preserving query order.
+
+## Constraints
+- `1 <= len(queries) <= 100`.
+- `1 <= len(pattern), len(query) <= 100`.
 
 ## Examples
 ```text
 Input: queries = ["FooBar", "FooBarTest", "FootBall", "FrameBuffer", "ForceFeedBack"], pattern = "FB"
 Output: [True, False, True, True, False]
-Explanation: Extra lowercase letters are allowed, but extra uppercase letters are not.
+Explanation: Extra lowercase letters are allowed, but extra uppercase letters are not. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

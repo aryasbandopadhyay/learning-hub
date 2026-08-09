@@ -7,7 +7,15 @@
 ## Problem
 You are given an integer array `nums` and an integer `k`. In one operation, choose the largest available number `x`, add `x` to your score, remove it, and insert `ceil(x / 3)` back into the array. Return the maximum score after exactly `k` operations.
 
-Constraints: `1 <= len(nums) <= 10^5`, `1 <= nums[i] <= 10^9`, `1 <= k <= 10^5`.
+**Input**
+- `nums`: a `list[int]`; the input integer list.
+- `k`: a `int`; the integer parameter described above.
+
+**Output**
+- A `int`. Return the maximum score after exactly `k` operations.
+
+## Constraints
+- `1 <= len(nums) <= 10^5`, `1 <= nums[i] <= 10^9`, `1 <= k <= 10^5`.
 
 ## Examples
 ```text

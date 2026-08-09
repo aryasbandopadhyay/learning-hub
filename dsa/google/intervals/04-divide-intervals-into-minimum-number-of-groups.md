@@ -7,7 +7,16 @@
 ## Problem
 Given inclusive intervals `intervals`, divide them into the minimum number of groups so that no two intervals in the same group intersect. Return that minimum number.
 
-Constraints: `1 <= len(intervals) <= 10^5`, `1 <= start <= end <= 10^6`.
+Implement `Solution.minGroups` with the parameters below and return the requested value.
+
+**Input**
+- `intervals`: a `list[list[int]]`; the intervals described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(intervals) <= 10^5`, `1 <= start <= end <= 10^6`
 
 ## Examples
 ```text

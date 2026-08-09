@@ -7,13 +7,21 @@
 ## Problem
 Given an `m x n` matrix `grid` where both dimensions are even or at least `2`, rotate each rectangular layer counterclockwise by `k` positions and return the resulting matrix.
 
-Constraints: `2 <= m, n <= 50`, `m` and `n` are even, `0 <= k <= 10^9`.
+**Input**
+- `grid`: a `list[list[int]]`; the input grid.
+- `k`: a `int`; the integer parameter described above.
+
+**Output**
+- A `list[list[int]]`. Return the resulting matrix. This judge compares the sequence exactly: return the full rotated matrix with its original row and column layout.
+
+## Constraints
+- `2 <= m, n <= 50`, `m` and `n` are even, `0 <= k <= 10^9`.
 
 ## Examples
 ```text
 Input: grid = [[40,10],[30,20]], k = 1
 Output: [[10,20],[40,30]]
-Explanation: The single layer moves counterclockwise by one position.
+Explanation: The single layer moves counterclockwise by one position. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

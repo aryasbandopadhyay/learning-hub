@@ -7,7 +7,19 @@
 ## Problem
 Given two equal-length strings `s` and `t` and an integer `maxCost`, changing `s[i]` to `t[i]` costs `abs(ord(s[i]) - ord(t[i]))`. Return the maximum length of a contiguous substring of `s` that can be changed to match `t` with total cost at most `maxCost`.
 
-Constraints: `1 <= len(s) == len(t) <= 100000`; `0 <= maxCost <= 1000000`.
+Implement `Solution.equalSubstring` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+- `t`: a `str`; the target string described above.
+- `maxCost`: a `int`; the maximum total conversion cost.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(s) == len(t) <= 100000`
+- `0 <= maxCost <= 1000000`
 
 ## Examples
 ```text

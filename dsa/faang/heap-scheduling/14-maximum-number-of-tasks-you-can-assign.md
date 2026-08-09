@@ -7,7 +7,17 @@
 ## Problem
 You are given arrays `tasks` and `workers`, where `tasks[i]` is the strength required by task `i` and `workers[j]` is the strength of worker `j`. Each worker can do at most one task. You also have `pills` pills; each pill can be given to one worker to increase that worker's strength by `strength`. Return the maximum number of tasks that can be assigned.
 
-Constraints: `1 <= len(tasks), len(workers) <= 5 * 10^4`, `0 <= pills <= len(workers)`, `0 <= strength <= 10^9`, `1 <= tasks[i], workers[j] <= 10^9`.
+**Input**
+- `tasks`: a `list[int]`; the task data, as described above.
+- `workers`: a `list[int]`; worker coordinates or strengths, as described above.
+- `pills`: a `int`; the `pills` value described above.
+- `strength`: a `int`; the `strength` value described above.
+
+**Output**
+- A `int`. Return the maximum number of tasks that can be assigned.
+
+## Constraints
+- `1 <= len(tasks), len(workers) <= 5 * 10^4`, `0 <= pills <= len(workers)`, `0 <= strength <= 10^9`, `1 <= tasks[i], workers[j] <= 10^9`.
 
 ## Examples
 ```text

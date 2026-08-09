@@ -5,7 +5,18 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given an integer array `nums`, return the sum over every contiguous subarray of `(maximum value - minimum value)`. Constraints: `1 <= len(nums) <= 1000`, `-10^9 <= nums[i] <= 10^9`.
+Given an integer array `nums`, return the sum over every contiguous subarray of `(maximum value - minimum value)`.
+
+Implement `Solution.subArrayRanges` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(nums) <= 1000`, `-10^9 <= nums[i] <= 10^9`
 
 ## Examples
 ```text

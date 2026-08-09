@@ -7,7 +7,14 @@
 ## Problem
 Given an `m x n` matrix `mat`, sort every diagonal running from top-left to bottom-right in ascending order and return the transformed matrix.
 
-Constraints: `1 <= m, n <= 100`, `1 <= mat[i][j] <= 100`.
+**Input**
+- `mat`: a `list[list[int]]`; the input matrix.
+
+**Output**
+- A `list[list[int]]`. Return the transformed matrix. This judge compares the sequence exactly: return the full matrix after each top-left-to-bottom-right diagonal is sorted.
+
+## Constraints
+- `1 <= m, n <= 100`, `1 <= mat[i][j] <= 100`.
 
 ## Examples
 ```text

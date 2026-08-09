@@ -7,7 +7,16 @@
 ## Problem
 Given a string `s` and integer `k`, one operation chooses one of the first `k` characters and moves it to the end. Return the lexicographically smallest string obtainable after any number of operations.
 
-Constraints: `1 <= len(s) <= 1000`; `1 <= k <= len(s)`.
+**Input**
+- `s`: a `str`; the input string.
+- `k`: a `int`; the integer parameter described above.
+
+**Output**
+- A `str`. Return the lexicographically smallest string obtainable after any number of operations.
+
+## Constraints
+- `1 <= len(s) <= 1000`.
+- `1 <= k <= len(s)`.
 
 ## Examples
 ```text

@@ -9,7 +9,14 @@ You are given a rectangular wall represented by rows of brick widths. A vertical
 
 Return the minimum number of bricks crossed by one vertical line.
 
-Constraints: `1 <= len(wall) <= 10^4`, `1 <= len(wall[i])`, all rows have the same total width, and every brick width is positive.
+**Input**
+- `wall`: a `list[list[int]]`; a list of rows, where each row is a list of brick widths.
+
+**Output**
+- A `int`. Return the minimum number of bricks crossed by one vertical line.
+
+## Constraints
+- `1 <= len(wall) <= 10^4`, `1 <= len(wall[i])`, all rows have the same total width, and every brick width is positive.
 
 ## Examples
 ```text

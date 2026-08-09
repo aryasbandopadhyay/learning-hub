@@ -5,7 +5,19 @@
 - **Asked at:** Google
 
 ## Problem
-Given integers `numerator` and `denominator`, return their decimal representation as a string. If the fractional part repeats, enclose the repeating cycle in parentheses. Constraints: `-2^31 <= numerator <= 2^31 - 1`, `-2^31 <= denominator <= 2^31 - 1`, and `denominator != 0`.
+Given integers `numerator` and `denominator`, return their decimal representation as a string. If the fractional part repeats, enclose the repeating cycle in parentheses.
+
+Implement `Solution.fractionToDecimal` with the parameters below and return the requested value.
+
+**Input**
+- `numerator`: a `int`; the fraction numerator.
+- `denominator`: a `int`; the non-zero fraction denominator.
+
+**Output**
+- A `str` value representing the result described above.
+
+## Constraints
+- `-2^31 <= numerator <= 2^31 - 1`, `-2^31 <= denominator <= 2^31 - 1`, and `denominator != 0`
 
 ## Examples
 ```text

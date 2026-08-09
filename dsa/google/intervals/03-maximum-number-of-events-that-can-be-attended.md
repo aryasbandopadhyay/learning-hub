@@ -7,7 +7,16 @@
 ## Problem
 You are given `events`, where `events[i] = [startDay, endDay]`. You may attend at most one event on any day, and an event can be attended on any one day in its inclusive range. Return the maximum number of events you can attend.
 
-Constraints: `1 <= len(events) <= 10^5`, `1 <= startDay <= endDay <= 10^5`.
+Implement `Solution.maxEvents` with the parameters below and return the requested value.
+
+**Input**
+- `events`: a `list[list[int]]`; the input value described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(events) <= 10^5`, `1 <= startDay <= endDay <= 10^5`
 
 ## Examples
 ```text

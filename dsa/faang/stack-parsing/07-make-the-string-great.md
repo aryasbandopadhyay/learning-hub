@@ -7,7 +7,15 @@
 ## Problem
 A string is good if it contains no adjacent pair of the same letter in opposite cases, such as `"aA"` or `"Bb"`. Given a string `s`, repeatedly remove any bad adjacent pair until the string is good, and return the final string.
 
-Constraints: `1 <= len(s) <= 10^5`; `s` contains English letters.
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `str`. Return the final string.
+
+## Constraints
+- `1 <= len(s) <= 10^5`.
+- `s` contains English letters.
 
 ## Examples
 ```text

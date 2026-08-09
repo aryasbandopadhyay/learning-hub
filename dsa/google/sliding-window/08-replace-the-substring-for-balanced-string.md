@@ -7,7 +7,17 @@
 ## Problem
 A string `s` of length divisible by 4 contains only `Q`, `W`, `E`, and `R`. Return the minimum length substring that can be replaced so that each character appears exactly `len(s) / 4` times.
 
-Constraints: `4 <= len(s) <= 100000`; `len(s)` is divisible by 4.
+Implement `Solution.balancedString` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `4 <= len(s) <= 100000`
+- `len(s)` is divisible by 4
 
 ## Examples
 ```text

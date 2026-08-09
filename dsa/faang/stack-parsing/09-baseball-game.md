@@ -7,7 +7,15 @@
 ## Problem
 You are given a list of baseball scoring operations. An integer records a new score, `"+"` records the sum of the previous two valid scores, `"D"` records double the previous valid score, and `"C"` invalidates the previous valid score. Return the sum of all valid scores after processing every operation.
 
-Constraints: `1 <= len(ops) <= 10^4`; operations are valid and integer scores fit in 32-bit signed range.
+**Input**
+- `ops`: a `list[str]`; the scoring operations.
+
+**Output**
+- A `int`. Return the sum of all valid scores after processing every operation.
+
+## Constraints
+- `1 <= len(ops) <= 10^4`.
+- operations are valid and integer scores fit in 32-bit signed range.
 
 ## Examples
 ```text

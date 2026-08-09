@@ -7,7 +7,19 @@
 ## Problem
 Given an integer list `nums` and an integer `limit`, return the length of the longest contiguous subarray such that the absolute difference between any two elements is at most `limit`.
 
-Constraints: `1 <= len(nums) <= 100000`; `1 <= nums[i] <= 1000000000`; `0 <= limit <= 1000000000`.
+Implement `Solution.longestSubarray` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+- `limit`: a `int`; the allowed maximum difference.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(nums) <= 100000`
+- `1 <= nums[i] <= 1000000000`
+- `0 <= limit <= 1000000000`
 
 ## Examples
 ```text

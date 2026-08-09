@@ -9,13 +9,20 @@ Given a list of lowercase strings, group strings that belong to the same shiftin
 
 Return a canonical deterministic answer: sort every group lexicographically, then sort the list of groups lexicographically by group contents.
 
-Constraints: `1 <= len(strings) <= 2000`, `1 <= len(strings[i]) <= 50`, and all strings contain lowercase English letters.
+**Input**
+- `strings`: a `list[str]`; a list of strings to classify.
+
+**Output**
+- A `list[list[str]]`. Return a canonical deterministic answer: sort every group lexicographically, then sort the list of groups lexicographically by group contents. This judge compares the sequence exactly: sort every group lexicographically, then sort the list of groups lexicographically by group contents.
+
+## Constraints
+- `1 <= len(strings) <= 2000`, `1 <= len(strings[i]) <= 50`, and all strings contain lowercase English letters.
 
 ## Examples
 ```text
 Input: strings = ["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"]
 Output: [["a", "z"], ["abc", "bcd", "xyz"], ["acef"], ["az", "ba"]]
-Explanation: Each group shares the same cyclic difference pattern after normalizing by its first character.
+Explanation: Each group shares the same cyclic difference pattern after normalizing by its first character. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

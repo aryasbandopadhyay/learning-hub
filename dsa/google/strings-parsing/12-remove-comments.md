@@ -7,11 +7,25 @@
 ## Problem
 Given C++ source code as list `source`, remove all line comments `//...` and block comments `/*...*/`. Return the remaining non-empty lines in order. Comment markers inside comments do not nest.
 
+Implement `Solution.removeComments` with the parameters below and return the requested value.
+
+**Input**
+- `source`: a `list[str]`; source-code lines in original order.
+
+**Output**
+- The remaining non-empty source lines in their original order after comments are removed.
+
+## Constraints
+- 1 <= source.length <= 100
+- 0 <= source[i].length <= 80
+- `source[i]` contains printable ASCII characters
+- Block comments may span multiple lines; comment delimiters inside comments are ignored
+
 ## Examples
 ```text
 Input: source = ["/*Test program */", "int main()", "{ ", "// variable", "int a, b;", "a = b + c;", "}"]
 Output: ["int main()","{ ","int a, b;","a = b + c;","}"]
-Explanation: Comments are removed and empty lines are omitted.
+Explanation: Comments are removed and empty lines are omitted. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

@@ -7,7 +7,14 @@
 ## Problem
 The degree of an array is the maximum frequency of any element in it. Given a non-empty integer array `nums`, return the length of the shortest contiguous subarray that has the same degree as `nums`.
 
-Constraints: `1 <= len(nums) <= 50_000`, and values fit in signed 32-bit integers.
+**Input**
+- `nums`: a `list[int]`; the input integer list.
+
+**Output**
+- A `int`. Return the length of the shortest contiguous subarray that has the same degree as `nums`.
+
+## Constraints
+- `1 <= len(nums) <= 50_000`, and values fit in signed 32-bit integers.
 
 ## Examples
 ```text

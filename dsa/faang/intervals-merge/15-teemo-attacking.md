@@ -7,7 +7,15 @@
 ## Problem
 Teemo attacks at each time in the sorted list `timeSeries`. Each attack poisons Ashe for `duration` seconds, covering the half-open interval `[time, time + duration)`. If Ashe is already poisoned, the timer is refreshed. Return the total number of seconds Ashe is poisoned.
 
-Constraints: `0 <= len(timeSeries) <= 10^4`, `0 <= timeSeries[i] <= 10^7`, `timeSeries` is strictly increasing, and `0 <= duration <= 10^7`.
+**Input**
+- `timeSeries`: a `list[int]`; attack start times.
+- `duration`: a `int`; the poison duration.
+
+**Output**
+- A `int`. Return the total number of seconds Ashe is poisoned.
+
+## Constraints
+- `0 <= len(timeSeries) <= 10^4`, `0 <= timeSeries[i] <= 10^7`, `timeSeries` is strictly increasing, and `0 <= duration <= 10^7`.
 
 ## Examples
 ```text

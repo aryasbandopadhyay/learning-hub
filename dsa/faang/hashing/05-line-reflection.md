@@ -9,7 +9,14 @@ Given a set of 2D integer points, determine whether there exists a vertical line
 
 Return `True` if such a line exists, otherwise return `False`.
 
-Constraints: `1 <= len(points) <= 10^4`, each point is `[x, y]`, and coordinates fit in signed 32-bit integers.
+**Input**
+- `points`: a `list[list[int]]`; a list of coordinate pairs or intervals, as described above.
+
+**Output**
+- A `bool`. Return `True` if such a line exists, otherwise return `False`.
+
+## Constraints
+- `1 <= len(points) <= 10^4`, each point is `[x, y]`, and coordinates fit in signed 32-bit integers.
 
 ## Examples
 ```text

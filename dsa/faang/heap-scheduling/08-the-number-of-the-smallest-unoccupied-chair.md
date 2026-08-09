@@ -9,7 +9,15 @@ There are infinitely many chairs numbered from `0`. Friend `i` arrives at `times
 
 Return the chair number assigned to `targetFriend`.
 
-Constraints: `2 <= len(times) <= 10^4`, all arrival times are distinct.
+**Input**
+- `times`: a `list[list[int]]`; arrival and leaving times.
+- `targetFriend`: a `int`; the friend whose chair number must be returned.
+
+**Output**
+- A `int`. Return the chair number assigned to `targetFriend`.
+
+## Constraints
+- `2 <= len(times) <= 10^4`, all arrival times are distinct.
 
 ## Examples
 ```text

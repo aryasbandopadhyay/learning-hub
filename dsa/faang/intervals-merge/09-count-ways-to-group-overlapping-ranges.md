@@ -7,7 +7,14 @@
 ## Problem
 Given `ranges`, where each range is `[start, end]` and endpoints are inclusive, overlapping ranges must belong to the same group. Each connected group may be assigned to one of two buckets. Return the number of valid assignments modulo `1_000_000_007`.
 
-Constraints: `1 <= len(ranges) <= 10^5`, `0 <= start <= end <= 10^9`.
+**Input**
+- `ranges`: a `list[list[int]]`; inclusive integer ranges.
+
+**Output**
+- A `int`. Return the number of valid assignments modulo `1_000_000_007`.
+
+## Constraints
+- `1 <= len(ranges) <= 10^5`, `0 <= start <= end <= 10^9`.
 
 ## Examples
 ```text

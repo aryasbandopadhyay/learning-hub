@@ -7,7 +7,15 @@
 ## Problem
 An echo substring is a non-empty substring equal to `a + a` for some string `a`. Given `text`, return the number of distinct echo substrings.
 
-Constraints: `1 <= len(text) <= 2000`; `text` contains lowercase English letters.
+**Input**
+- `text`: a `str`; the input text.
+
+**Output**
+- A `int`. Return the number of distinct echo substrings.
+
+## Constraints
+- `1 <= len(text) <= 2000`.
+- `text` contains lowercase English letters.
 
 ## Examples
 ```text

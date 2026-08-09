@@ -7,6 +7,17 @@
 ## Problem
 Given a string `s` and an integer `numRows`, write the characters in a zigzag pattern across `numRows` rows and then read row by row. Return the converted string. Constraints include `1 <= numRows <= 1000` and `1 <= len(s) <= 1000`.
 
+**Input**
+- `s`: a `str`; the input string.
+- `numRows`: a `int`; the number of zigzag rows.
+
+**Output**
+- A `str`. Return the converted string.
+
+## Constraints
+- `1 <= len(s) <= 1000`.
+- `1 <= numRows <= 1000`.
+
 ## Examples
 ```text
 Input: s = "PAYPALISHIRING", numRows = 3

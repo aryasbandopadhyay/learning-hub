@@ -7,7 +7,17 @@
 ## Problem
 You are given `trips`, where `trips[i] = [passengers, start, end]` means that many passengers enter at location `start` and leave before location `end`. Given the vehicle `capacity`, return `True` if all trips can be completed without ever exceeding capacity, otherwise return `False`.
 
-Constraints: `1 <= len(trips) <= 10^4`, `1 <= passengers <= 10^5`, `0 <= start < end <= 10^5`, and `1 <= capacity <= 10^9`.
+Implement `Solution.carPooling` with the parameters below and return the requested value.
+
+**Input**
+- `trips`: a `list[list[int]]`; trip records described above.
+- `capacity`: a `int`; the vehicle capacity.
+
+**Output**
+- A `bool` value representing the result described above.
+
+## Constraints
+- `1 <= len(trips) <= 10^4`, `1 <= passengers <= 10^5`, `0 <= start < end <= 10^5`, and `1 <= capacity <= 10^9`
 
 ## Examples
 ```text

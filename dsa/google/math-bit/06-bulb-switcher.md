@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-There are `n` bulbs initially off. In round `i`, you toggle every `i`th bulb. After `n` rounds, return how many bulbs are on. Constraints: `0 <= n <= 10^9`.
+There are `n` bulbs initially off. In round `i`, you toggle every `i`th bulb. After `n` rounds, return how many bulbs are on.
+
+Implement `Solution.bulbSwitch` with the parameters below and return the requested value.
+
+**Input**
+- `n`: a `int`; the size/count parameter described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `0 <= n <= 10^9`
 
 ## Examples
 ```text

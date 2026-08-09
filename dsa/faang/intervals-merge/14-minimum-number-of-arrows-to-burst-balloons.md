@@ -7,7 +7,14 @@
 ## Problem
 Each balloon is represented by an inclusive horizontal interval `[start, end]`. One vertical arrow shot at coordinate `x` bursts every balloon with `start <= x <= end`. Return the minimum number of arrows needed to burst all balloons.
 
-Constraints: `0 <= len(points) <= 10^5`, `-2^31 <= start <= end <= 2^31 - 1`.
+**Input**
+- `points`: a `list[list[int]]`; a list of coordinate pairs or intervals, as described above.
+
+**Output**
+- A `int`. Return the minimum number of arrows needed to burst all balloons.
+
+## Constraints
+- `0 <= len(points) <= 10^5`, `-2^31 <= start <= end <= 2^31 - 1`.
 
 ## Examples
 ```text

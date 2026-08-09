@@ -7,7 +7,20 @@
 ## Problem
 Given `points` sorted by increasing x-coordinate, where `points[i] = [xi, yi]`, and an integer `k`, return the maximum value of `yi + yj + abs(xi - xj)` over pairs `i < j` with `xj - xi <= k`.
 
-Constraints: `2 <= len(points) <= 100000`; `-100000000 <= xi, yi <= 100000000`; x-values are strictly increasing; `1 <= k <= 200000000`.
+Implement `Solution.findMaxValueOfEquation` with the parameters below and return the requested value.
+
+**Input**
+- `points`: a `list[list[int]]`; points `[x, y]` sorted by increasing `x`.
+- `k`: a `int`; the required count, window limit, or operation budget described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `2 <= len(points) <= 100000`
+- `-100000000 <= xi, yi <= 100000000`
+- x-values are strictly increasing
+- `1 <= k <= 200000000`
 
 ## Examples
 ```text

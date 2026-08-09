@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-Given `nums`, a list of `k` sorted non-empty integer lists, return the smallest inclusive range `[left, right]` that contains at least one number from each list. If ranges have the same length, return the one with the smaller `left`. Constraints: `1 <= k <= 3500`, total elements `<= 3500`.
+Given `nums`, a list of `k` sorted non-empty integer lists, return the smallest inclusive range `[left, right]` that contains at least one number from each list. If ranges have the same length, return the one with the smaller `left`.
+
+Implement `Solution.smallestRange` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[list[int]]`; the input integer list described above.
+
+**Output**
+- A two-element list `[left, right]` for the chosen inclusive range. If multiple ranges have the same width, return the one with the smaller `left` endpoint.
+
+## Constraints
+- `1 <= k <= 3500`, total elements `<= 3500`
 
 ## Examples
 ```text

@@ -5,7 +5,20 @@
 - **Asked at:** Google
 
 ## Problem
-Given building `heights`, `bricks`, and `ladders`, return the furthest building index you can reach when moving left to right. Climbing up by `d` needs either `d` bricks or one ladder; descending or staying level costs nothing. Constraints: `1 <= len(heights) <= 100000`.
+Given building `heights`, `bricks`, and `ladders`, return the furthest building index you can reach when moving left to right. Climbing up by `d` needs either `d` bricks or one ladder; descending or staying level costs nothing.
+
+Implement `Solution.furthestBuilding` with the parameters below and return the requested value.
+
+**Input**
+- `heights`: a `list[int]`; the height values described above.
+- `bricks`: a `int`; the number of bricks available.
+- `ladders`: a `int`; the number of ladders available.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(heights) <= 100000`
 
 ## Examples
 ```text

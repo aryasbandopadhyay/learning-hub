@@ -5,7 +5,18 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-In one step, remove every `nums[i]` with `i > 0` and `nums[i - 1] > nums[i]` simultaneously. Return the number of steps needed until the array becomes non-decreasing. Constraints: `1 <= len(nums) <= 10^5`, `1 <= nums[i] <= 10^9`.
+In one step, remove every `nums[i]` with `i > 0` and `nums[i - 1] > nums[i]` simultaneously. Return the number of steps needed until the array becomes non-decreasing.
+
+Implement `Solution.totalSteps` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(nums) <= 10^5`, `1 <= nums[i] <= 10^9`
 
 ## Examples
 ```text

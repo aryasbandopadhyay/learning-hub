@@ -7,7 +7,15 @@
 ## Problem
 Given two lists of closed intervals, `firstList` and `secondList`, where each list is sorted by start time and has pairwise disjoint intervals, return their intersections. An intersection of `[a, b]` and `[c, d]` exists when `max(a, c) <= min(b, d)`.
 
-Constraints: `0 <= len(firstList), len(secondList) <= 1000`, `0 <= start <= end <= 10^9`, and intervals in each list are sorted and non-overlapping.
+**Input**
+- `firstList`: a `list[list[int]]`; the first sorted interval list.
+- `secondList`: a `list[list[int]]`; the second sorted interval list.
+
+**Output**
+- A `list[list[int]]`. Return their intersections. The judge compares the collection as a set, so equivalent ordering is accepted unless otherwise stated.
+
+## Constraints
+- `0 <= len(firstList), len(secondList) <= 1000`, `0 <= start <= end <= 10^9`, and intervals in each list are sorted and non-overlapping.
 
 ## Examples
 ```text

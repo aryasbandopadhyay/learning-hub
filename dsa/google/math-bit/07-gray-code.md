@@ -5,13 +5,24 @@
 - **Asked at:** Google
 
 ## Problem
-Given an integer `n`, return the canonical n-bit Gray code sequence of length `2^n`. The canonical sequence starts at `0`, and entry `i` is `i XOR (i >> 1)`. Constraints: `0 <= n <= 16`.
+Given an integer `n`, return the canonical n-bit Gray code sequence of length `2^n`. The canonical sequence starts at `0`, and entry `i` is `i XOR (i >> 1)`.
+
+Implement `Solution.grayCode` with the parameters below and return the requested value.
+
+**Input**
+- `n`: a `int`; the size/count parameter described above.
+
+**Output**
+- The canonical Gray-code sequence where element `i` equals `i XOR (i >> 1)`, in increasing `i` order.
+
+## Constraints
+- `0 <= n <= 16`
 
 ## Examples
 ```text
 Input: n = 3
 Output: [0, 1, 3, 2, 6, 7, 5, 4]
-Explanation: Adjacent values differ by exactly one bit, including the wraparound pair.
+Explanation: Adjacent values differ by exactly one bit, including the wraparound pair. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

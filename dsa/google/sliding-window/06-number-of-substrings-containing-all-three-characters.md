@@ -7,7 +7,16 @@
 ## Problem
 Given a string `s` consisting only of `'a'`, `'b'`, and `'c'`, return the number of substrings containing at least one occurrence of all three characters.
 
-Constraints: `3 <= len(s) <= 100000`.
+Implement `Solution.numberOfSubstrings` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `3 <= len(s) <= 100000`
 
 ## Examples
 ```text

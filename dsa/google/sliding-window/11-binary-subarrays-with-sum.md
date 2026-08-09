@@ -7,7 +7,19 @@
 ## Problem
 Given a binary list `nums` and an integer `goal`, return the number of non-empty contiguous subarrays with sum exactly equal to `goal`.
 
-Constraints: `1 <= len(nums) <= 100000`; `nums[i]` is `0` or `1`; `0 <= goal <= len(nums)`.
+Implement `Solution.numSubarraysWithSum` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+- `goal`: a `int`; the required subarray sum.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(nums) <= 100000`
+- `nums[i]` is `0` or `1`
+- `0 <= goal <= len(nums)`
 
 ## Examples
 ```text

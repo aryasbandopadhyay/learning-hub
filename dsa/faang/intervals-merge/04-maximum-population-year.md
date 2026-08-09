@@ -7,7 +7,14 @@
 ## Problem
 Given `logs`, where each log is `[birth, death]`, a person is alive during every year `birth <= year < death`. Return the earliest year with the maximum living population.
 
-Constraints: `1 <= len(logs) <= 10^5`, `1900 <= birth < death <= 2100`.
+**Input**
+- `logs`: a `list[list[int]]`; the chronological logs.
+
+**Output**
+- A `int`. Return the earliest year with the maximum living population.
+
+## Constraints
+- `1 <= len(logs) <= 10^5`, `1900 <= birth < death <= 2100`.
 
 ## Examples
 ```text

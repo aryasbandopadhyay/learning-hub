@@ -5,13 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given two sorted integer lists `nums1` and `nums2`, return the `k` pairs `[nums1[i], nums2[j]]` with the smallest sums. If sums tie, order pairs by first value, then second value, then their indices. Constraints: `1 <= len(nums1), len(nums2) <= 2000`, `1 <= k <= 10000`, and values may be negative.
+Given two sorted integer lists `nums1` and `nums2`, return the `k` pairs `[nums1[i], nums2[j]]` with the smallest sums. If sums tie, order pairs by first value, then second value, then their indices.
+
+Implement `Solution.kSmallestPairs` with the parameters below and return the requested value.
+
+**Input**
+- `nums1`: a `list[int]`; the first integer list described above.
+- `nums2`: a `list[int]`; the second integer list described above.
+- `k`: a `int`; the required count, window limit, or operation budget described above.
+
+**Output**
+- A list of pairs. **This judge compares exactly**, so return pairs in ascending order by `(sum, nums1 value, nums2 value, index in nums1, index in nums2)` and stop after `k` pairs or after all pairs are used.
+
+## Constraints
+- `1 <= len(nums1), len(nums2) <= 2000`, `1 <= k <= 10000`, and values may be negative
 
 ## Examples
 ```text
 Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3
 Output: [[1,2],[1,4],[1,6]]
-Explanation: The three smallest pair sums all use nums1[0].
+Explanation: The three smallest pair sums all use nums1[0]. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

@@ -9,13 +9,22 @@ A count-paired domain like `"9001 discuss.leetcode.com"` means the domain was vi
 
 Return the result sorted lexicographically by domain for deterministic output.
 
-Constraints: `1 <= len(cpdomains) <= 10^4`; counts are positive integers; domains contain lowercase letters and dots.
+**Input**
+- `cpdomains`: a `list[str]`; the count-paired domains.
+
+**Output**
+- A `list[str]`. Return all subdomain visit counts as strings of the form `"count domain"`. Return the result sorted lexicographically by domain for deterministic output. This judge compares the sequence exactly: return entries sorted lexicographically by domain string.
+
+## Constraints
+- `1 <= len(cpdomains) <= 10^4`.
+- counts are positive integers.
+- domains contain lowercase letters and dots.
 
 ## Examples
 ```text
 Input: cpdomains = ["9001 discuss.leetcode.com"]
 Output: ["9001 com", "9001 discuss.leetcode.com", "9001 leetcode.com"]
-Explanation: A visit to discuss.leetcode.com also visits leetcode.com and com.
+Explanation: A visit to discuss.leetcode.com also visits leetcode.com and com. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

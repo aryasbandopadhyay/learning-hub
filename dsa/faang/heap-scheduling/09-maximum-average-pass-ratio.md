@@ -9,7 +9,15 @@ Each class is `[pass, total]`. You have `extraStudents` guaranteed to pass. Assi
 
 Return the maximum average pass ratio, rounded to 5 decimal places.
 
-Constraints: `1 <= len(classes) <= 10^5`, `1 <= pass <= total <= 10^5`, `1 <= extraStudents <= 10^5`.
+**Input**
+- `classes`: a `list[list[int]]`; class pass/total pairs.
+- `extraStudents`: a `int`; the number of guaranteed-passing students to add.
+
+**Output**
+- A `float`. Return the maximum average pass ratio, rounded to 5 decimal places.
+
+## Constraints
+- `1 <= len(classes) <= 10^5`, `1 <= pass <= total <= 10^5`, `1 <= extraStudents <= 10^5`.
 
 ## Examples
 ```text

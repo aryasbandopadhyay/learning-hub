@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-An ugly number is a positive integer whose prime factors are limited to `2`, `3`, and `5`. Given `n`, return the `n`th ugly number. Constraints: `1 <= n <= 1690`.
+An ugly number is a positive integer whose prime factors are limited to `2`, `3`, and `5`. Given `n`, return the `n`th ugly number.
+
+Implement `Solution.nthUglyNumber` with the parameters below and return the requested value.
+
+**Input**
+- `n`: a `int`; the size/count parameter described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= n <= 1690`
 
 ## Examples
 ```text

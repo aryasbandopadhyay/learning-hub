@@ -7,7 +7,15 @@
 ## Problem
 Given a string `n` representing a positive integer, return the closest integer palindrome as a string, excluding `n` itself. If two palindromes are equally close, return the smaller one.
 
-Constraints: `1 <= len(n) <= 18`; `n` has no leading zeroes.
+**Input**
+- `n`: a `str`; the size/count parameter described above.
+
+**Output**
+- A `str`. Return the closest integer palindrome as a string, excluding `n` itself. return the smaller one.
+
+## Constraints
+- `1 <= len(n) <= 18`.
+- `n` has no leading zeroes.
 
 ## Examples
 ```text

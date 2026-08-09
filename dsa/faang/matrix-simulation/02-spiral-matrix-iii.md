@@ -7,13 +7,23 @@
 ## Problem
 Given grid dimensions `rows` and `cols` and a starting cell `(rStart, cStart)`, return the coordinates of all cells in the grid in the order visited by an infinite clockwise spiral walk. Coordinates outside the grid may be walked through, but only in-grid cells are returned.
 
-Constraints: `1 <= rows, cols <= 100`, `0 <= rStart < rows`, `0 <= cStart < cols`.
+**Input**
+- `rows`: a `int`; the number of grid rows.
+- `cols`: a `int`; the number of grid columns.
+- `rStart`: a `int`; the starting row.
+- `cStart`: a `int`; the starting column.
+
+**Output**
+- A `list[list[int]]`. Return the coordinates of all cells in the grid in the order visited by an infinite clockwise spiral walk. returned. This judge compares the sequence exactly: return valid grid coordinates in the exact order the spiral visits them.
+
+## Constraints
+- `1 <= rows, cols <= 100`, `0 <= rStart < rows`, `0 <= cStart < cols`.
 
 ## Examples
 ```text
 Input: rows = 1, cols = 4, rStart = 0, cStart = 0
 Output: [[0,0],[0,1],[0,2],[0,3]]
-Explanation: The spiral immediately visits the only row from left to right.
+Explanation: The spiral immediately visits the only row from left to right. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

@@ -7,11 +7,24 @@
 ## Problem
 Given an expression containing lowercase words, braces, commas, and concatenation, return all expanded strings in lexicographic order with duplicates removed. Comma means union and adjacent terms mean concatenation.
 
+Implement `Solution.braceExpansionII` with the parameters below and return the requested value.
+
+**Input**
+- `expression`: a `str`; the expression string described above.
+
+**Output**
+- All generated strings with duplicates removed, sorted in lexicographic order.
+
+## Constraints
+- 1 <= expression.length <= 60
+- `expression` contains lowercase English letters, braces, and commas
+- The expression is valid and every generated word contains only lowercase English letters
+
 ## Examples
 ```text
 Input: expression = "{a,b}{c,{d,e}}"
 Output: ["ac","ad","ae","bc","bd","be"]
-Explanation: Each option from the first brace concatenates with each option from the second part.
+Explanation: Each option from the first brace concatenates with each option from the second part. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

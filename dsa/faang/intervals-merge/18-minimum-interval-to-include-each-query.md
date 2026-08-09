@@ -7,13 +7,21 @@
 ## Problem
 For each value in `queries`, find the length of the smallest interval `[start, end]` from `intervals` such that `start <= query <= end`. The length of an interval is `end - start + 1`. Return `-1` for a query not contained in any interval, preserving the original query order.
 
-Constraints: `1 <= len(intervals), len(queries) <= 10^5`, `1 <= start <= end <= 10^7`, and `1 <= queries[i] <= 10^7`.
+**Input**
+- `intervals`: a `list[list[int]]`; the intervals.
+- `queries`: a `list[int]`; the query strings.
+
+**Output**
+- A `list[int]`. Return `-1` for a query not contained in any interval, preserving the original query order. This judge compares the sequence exactly: `answer[i]` must answer `queries[i]`, preserving the original query order.
+
+## Constraints
+- `1 <= len(intervals), len(queries) <= 10^5`, `1 <= start <= end <= 10^7`, and `1 <= queries[i] <= 10^7`.
 
 ## Examples
 ```text
 Input: intervals = [[1,4],[2,4],[3,6],[4,4]], queries = [2,3,4,5]
 Output: [3,3,1,4]
-Explanation: The best interval lengths for queries 2, 3, 4, and 5 are 3, 3, 1, and 4.
+Explanation: The best interval lengths for queries 2, 3, 4, and 5 are 3, 3, 1, and 4. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

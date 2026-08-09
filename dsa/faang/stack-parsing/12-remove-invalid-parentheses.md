@@ -7,13 +7,20 @@
 ## Problem
 Given a string `s` containing letters and parentheses, remove the minimum number of invalid parentheses so every returned string is valid. Return all possible results sorted lexicographically to make the output deterministic.
 
-Constraints: `1 <= len(s) <= 25` and `s` contains lowercase letters, `'('`, and `')'`.
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `list[str]`. returned string is valid. Return all possible results sorted lexicographically to make the output deterministic. This judge compares the sequence exactly: return all valid strings that use the minimum removals, sorted lexicographically.
+
+## Constraints
+- `1 <= len(s) <= 25` and `s` contains lowercase letters, `'('`, and `')'`.
 
 ## Examples
 ```text
 Input: s = "()())()"
 Output: ["(())()", "()()()"]
-Explanation: Removing one of the two extra closing parentheses gives two valid strings.
+Explanation: Removing one of the two extra closing parentheses gives two valid strings. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

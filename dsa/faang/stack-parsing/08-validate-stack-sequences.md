@@ -7,7 +7,16 @@
 ## Problem
 Given two integer arrays `pushed` and `popped` with distinct values, determine whether they could be the push and pop order of a single stack.
 
-Constraints: `1 <= len(pushed) == len(popped) <= 10^5`; values are distinct.
+**Input**
+- `pushed`: a `list[int]`; the pushed sequence.
+- `popped`: a `list[int]`; the popped sequence.
+
+**Output**
+- A `bool`. Return the value produced by `validateStackSequences`.
+
+## Constraints
+- `1 <= len(pushed) == len(popped) <= 10^5`.
+- values are distinct.
 
 ## Examples
 ```text

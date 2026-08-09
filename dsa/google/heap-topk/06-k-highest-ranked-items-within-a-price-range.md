@@ -5,13 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-Given a grid where `0` is a wall and positive values are item prices, return up to `k` reachable item cells from `start` whose prices are in `pricing = [low, high]`. Rank by distance from `start`, then price, then row, then column. Return coordinates as `list[list[int]]`. Constraints: `1 <= rows, cols <= 100`.
+Given a grid where `0` is a wall and positive values are item prices, return up to `k` reachable item cells from `start` whose prices are in `pricing = [low, high]`. Rank by distance from `start`, then price, then row, then column. Return coordinates as `list[list[int]]`.
+
+Implement `Solution.highestRankedKItems` with the parameters below and return the requested value.
+
+**Input**
+- `grid`: a `list[list[int]]`; the matrix/grid described above.
+- `pricing`: a `list[int]`; the inclusive price range `[low, high]`.
+- `start`: a `list[int]`; the starting cell or time described above.
+- `k`: a `int`; the required count, window limit, or operation budget described above.
+
+**Output**
+- A list of item coordinates `[row, col]`. **This judge compares exactly**, so order them by increasing distance from `start`, then price, then row, then column, and return at most `k` coordinates.
+
+## Constraints
+- `1 <= rows, cols <= 100`
 
 ## Examples
 ```text
 Input: grid = [[1,2,0,1],[1,3,0,1],[0,2,5,1]], pricing = [2,5], start = [0,0], k = 3
 Output: [[0,1],[1,1],[2,1]]
-Explanation: Reachable in-range items are ordered by distance, price, row, and column.
+Explanation: Reachable in-range items are ordered by distance, price, row, and column. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

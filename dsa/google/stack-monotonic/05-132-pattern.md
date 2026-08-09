@@ -5,7 +5,18 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given an integer array `nums`, return `True` if there exist indices `i < j < k` such that `nums[i] < nums[k] < nums[j]`; otherwise return `False`. Constraints: `1 <= len(nums) <= 2 * 10^5`, `-10^9 <= nums[i] <= 10^9`.
+Given an integer array `nums`, return `True` if there exist indices `i < j < k` such that `nums[i] < nums[k] < nums[j]`; otherwise return `False`.
+
+Implement `Solution.find132pattern` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+
+**Output**
+- A `bool` value representing the result described above.
+
+## Constraints
+- `1 <= len(nums) <= 2 * 10^5`, `-10^9 <= nums[i] <= 10^9`
 
 ## Examples
 ```text

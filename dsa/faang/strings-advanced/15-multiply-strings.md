@@ -7,6 +7,17 @@
 ## Problem
 Given two non-negative integers `num1` and `num2` represented as decimal strings, return their product as a string. The inputs contain only digits, have no leading zeros except the string `"0"`, and may be too large for fixed-width integer types.
 
+**Input**
+- `num1`: a `str`; the first decimal string.
+- `num2`: a `str`; the second decimal string.
+
+**Output**
+- A `str`. Return their product as a string.
+
+## Constraints
+- `1 <= len(num1), len(num2) <= 200`.
+- both strings contain only digits and have no leading zero unless the string is `"0"`.
+
 ## Examples
 ```text
 Input: num1 = "123", num2 = "456"

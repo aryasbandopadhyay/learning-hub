@@ -7,7 +7,15 @@
 ## Problem
 You are playing Bulls and Cows. Given two equal-length digit strings `secret` and `guess`, return a hint formatted as `"xAyB"`, where `x` is the number of bulls and `y` is the number of cows. A bull is a digit in the correct position. A cow is a correct digit in the wrong position, counted only after bull positions are removed.
 
-Constraints: `1 <= len(secret) == len(guess) <= 10^5`, and both strings contain only digits.
+**Input**
+- `secret`: a `str`; the hidden digit string.
+- `guess`: a `str`; the guessed digit string.
+
+**Output**
+- A `str`. Return a hint formatted as `"xAyB"`, where `x` is the number of bulls and `y` is the number of cows.
+
+## Constraints
+- `1 <= len(secret) == len(guess) <= 10^5`, and both strings contain only digits.
 
 ## Examples
 ```text

@@ -9,13 +9,21 @@ You are given `servers`, where `servers[i]` is the weight of server `i`, and `ta
 
 Return the list of assigned server indices.
 
-Constraints: `1 <= len(servers), len(tasks) <= 2 * 10^5`, `1 <= servers[i], tasks[j] <= 2 * 10^5`.
+**Input**
+- `servers`: a `list[int]`; server weights by server index.
+- `tasks`: a `list[int]`; the task data, as described above.
+
+**Output**
+- A `list[int]`. Return the list of assigned server indices. This judge compares the sequence exactly: `answer[j]` must be the server assigned to task `j`, in increasing task index order.
+
+## Constraints
+- `1 <= len(servers), len(tasks) <= 2 * 10^5`, `1 <= servers[i], tasks[j] <= 2 * 10^5`.
 
 ## Examples
 ```text
 Input: servers = [3,3,2], tasks = [1,2,3,2,1,2]
 Output: [2,2,0,2,1,2]
-Explanation: The lightest available server is always selected; when all are busy, time jumps to the next completion.
+Explanation: The lightest available server is always selected; when all are busy, time jumps to the next completion. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

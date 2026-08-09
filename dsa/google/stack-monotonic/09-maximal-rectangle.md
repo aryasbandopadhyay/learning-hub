@@ -5,7 +5,19 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given a binary matrix of `0`s and `1`s, return the area of the largest rectangle containing only `1`s. Constraints: `1 <= len(matrix), len(matrix[0]) <= 200`; every cell is `0` or `1`.
+Given a binary matrix of `0`s and `1`s, return the area of the largest rectangle containing only `1`s.
+
+Implement `Solution.maximalRectangle` with the parameters below and return the requested value.
+
+**Input**
+- `matrix`: a `list[list[int]]`; the binary matrix.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(matrix), len(matrix[0]) <= 200`
+- every cell is `0` or `1`
 
 ## Examples
 ```text

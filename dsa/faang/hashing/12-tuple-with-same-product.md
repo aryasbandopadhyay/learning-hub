@@ -9,7 +9,14 @@ Given an array `nums` of distinct positive integers, return the number of tuples
 
 Tuples are ordered: if two disjoint unordered pairs have the same product, they contribute 8 ordered tuples.
 
-Constraints: `1 <= len(nums) <= 1000`, all values are distinct positive integers.
+**Input**
+- `nums`: a `list[int]`; the input integer list.
+
+**Output**
+- A `int`. Return the number of tuples `(a, b, c, d)` such that `a * b == c * d` and `a`, `b`, `c`, and `d` are values from four distinct indices in `nums`.
+
+## Constraints
+- `1 <= len(nums) <= 1000`, all values are distinct positive integers.
 
 ## Examples
 ```text

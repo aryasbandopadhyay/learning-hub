@@ -7,13 +7,20 @@
 ## Problem
 Given a DNA string `s` containing only `A`, `C`, `G`, and `T`, return all length-10 substrings that appear more than once, sorted lexicographically.
 
-Constraints: `0 <= len(s) <= 100000`.
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `list[str]`. Return all length-10 substrings that appear more than once, sorted lexicographically. This judge compares the sequence exactly: return the repeated length-10 DNA substrings sorted lexicographically.
+
+## Constraints
+- `0 <= len(s) <= 100000`.
 
 ## Examples
 ```text
 Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
 Output: ["AAAAACCCCC", "CCCCCAAAAA"]
-Explanation: These two length-10 sequences occur at least twice.
+Explanation: These two length-10 sequences occur at least twice. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

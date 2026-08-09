@@ -7,6 +7,19 @@
 ## Problem
 A message string `s` contains digits and `*`, where `*` can be any digit from 1 to 9. Count decodings under `1 -> A` through `26 -> Z`, modulo `10^9 + 7`.
 
+Implement `Solution.numDecodings` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- 1 <= s.length <= 10^5
+- `s` contains digits and the character `*`
+- Return the count modulo `10^9 + 7`
+
 ## Examples
 ```text
 Input: s = "1*"

@@ -7,7 +7,15 @@
 ## Problem
 Given a string `s` and an integer `k`, repeatedly delete any group of exactly `k` adjacent equal characters. After each deletion, the remaining pieces concatenate and may form new deletable groups. Return the final string after no more deletions are possible.
 
-Constraints: `1 <= len(s) <= 10^5`, `2 <= k <= 10^4`, and `s` contains lowercase English letters.
+**Input**
+- `s`: a `str`; the input string.
+- `k`: a `int`; the integer parameter described above.
+
+**Output**
+- A `str`. Return the final string after no more deletions are possible.
+
+## Constraints
+- `1 <= len(s) <= 10^5`, `2 <= k <= 10^4`, and `s` contains lowercase English letters.
 
 ## Examples
 ```text

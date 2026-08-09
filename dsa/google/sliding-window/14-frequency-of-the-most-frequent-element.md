@@ -7,7 +7,19 @@
 ## Problem
 Given an integer array `nums` and an integer `k`, you may increment any element by `1` in one operation. Return the maximum possible frequency of any element after performing at most `k` operations.
 
-Constraints: `1 <= len(nums) <= 100000`; `1 <= nums[i] <= 100000`; `0 <= k <= 100000`.
+Implement `Solution.maxFrequency` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+- `k`: a `int`; the required count, window limit, or operation budget described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(nums) <= 100000`
+- `1 <= nums[i] <= 100000`
+- `0 <= k <= 100000`
 
 ## Examples
 ```text

@@ -7,11 +7,24 @@
 ## Problem
 Given an integer array `temperatures` of daily temperatures, return an array `answer` such that `answer[i]` is the number of days you have to wait after day `i` to get a warmer temperature. If there is no future day for which this is possible, set `answer[i] = 0`. `1 <= len(temperatures) <= 10^5`, `30 <= temperatures[i] <= 100`.
 
+Implement `Solution.dailyTemperatures` with the parameters below and return the requested value.
+
+**Input**
+- `temperatures`: a `list[int]`; daily temperatures in chronological order.
+
+**Output**
+- A `list[int]` value representing the result described above. **This judge compares exactly**, so preserve the order required by the statement.
+
+## Constraints
+- n == temperatures.length
+- 1 <= n <= 10^5
+- 30 <= temperatures[i] <= 100
+
 ## Examples
 ```text
 Input: temperatures = [73,74,75,71,69,72,76,73]
 Output: [1,1,4,2,1,1,0,0]
-Explanation: Day 0 (73) warms up the next day (74), so wait 1. Day 2 (75) waits until day 6 (76), so wait 4.
+Explanation: Day 0 (73) warms up the next day (74), so wait 1. Day 2 (75) waits until day 6 (76), so wait 4. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

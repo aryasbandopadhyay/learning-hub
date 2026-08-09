@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-For an integer `n` represented as a decimal string, return the smallest good base as a string. A base `k >= 2` is good if `n` can be written as `111...111` in base `k` with at least two ones. Constraints: `3 <= int(n) <= 10^18`.
+For an integer `n` represented as a decimal string, return the smallest good base as a string. A base `k >= 2` is good if `n` can be written as `111...111` in base `k` with at least two ones.
+
+Implement `Solution.smallestGoodBase` with the parameters below and return the requested value.
+
+**Input**
+- `n`: a `str`; the size/count parameter described above.
+
+**Output**
+- A `str` value representing the result described above.
+
+## Constraints
+- `3 <= int(n) <= 10^18`
 
 ## Examples
 ```text

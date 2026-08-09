@@ -7,7 +7,17 @@
 ## Problem
 Given a string `s`, return the length of the longest contiguous substring that contains at most two distinct characters.
 
-Constraints: `0 <= len(s) <= 100000`; `s` contains printable ASCII characters.
+Implement `Solution.lengthOfLongestSubstringTwoDistinct` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `0 <= len(s) <= 100000`
+- `s` contains printable ASCII characters
 
 ## Examples
 ```text

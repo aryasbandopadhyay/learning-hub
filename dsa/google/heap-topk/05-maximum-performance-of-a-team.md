@@ -5,7 +5,21 @@
 - **Asked at:** Google
 
 ## Problem
-There are `n` engineers with `speed[i]` and `efficiency[i]`. Choose at most `k` engineers to maximize `(sum of chosen speeds) * (minimum chosen efficiency)`, and return the value modulo `1000000007`. Constraints: `1 <= k <= n <= 100000`.
+There are `n` engineers with `speed[i]` and `efficiency[i]`. Choose at most `k` engineers to maximize `(sum of chosen speeds) * (minimum chosen efficiency)`, and return the value modulo `1000000007`.
+
+Implement `Solution.maxPerformance` with the parameters below and return the requested value.
+
+**Input**
+- `n`: a `int`; the size/count parameter described above.
+- `speed`: a `list[int]`; engineer speeds where `speed[i]` belongs to engineer `i`.
+- `efficiency`: a `list[int]`; engineer efficiencies where `efficiency[i]` belongs to engineer `i`.
+- `k`: a `int`; the required count, window limit, or operation budget described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= k <= n <= 100000`
 
 ## Examples
 ```text

@@ -7,6 +7,17 @@
 ## Problem
 Given an encoded string `s`, return its decoded string. The encoding rule is `k[encoded_string]`, where `encoded_string` inside brackets is repeated exactly `k` times. Inputs are valid, `k` is a positive integer, and the decoded output fits in memory.
 
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `str`. Return its decoded string.
+
+## Constraints
+- `1 <= len(s) <= 30`.
+- `s` is a valid encoded string containing lowercase English letters, digits, and brackets.
+- repeat counts are positive integers.
+
 ## Examples
 ```text
 Input: s = "3[a2[c]]"

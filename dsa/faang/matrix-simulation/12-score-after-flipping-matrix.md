@@ -7,7 +7,14 @@
 ## Problem
 Given a binary matrix `grid`, you may flip any row or column any number of times. A flip toggles every bit in that row or column. Treat each row as a binary number and return the maximum possible total score.
 
-Constraints: `1 <= m, n <= 20`, `grid[i][j]` is `0` or `1`.
+**Input**
+- `grid`: a `list[list[int]]`; the input grid.
+
+**Output**
+- A `int`. Return the maximum possible total score.
+
+## Constraints
+- `1 <= m, n <= 20`, `grid[i][j]` is `0` or `1`.
 
 ## Examples
 ```text

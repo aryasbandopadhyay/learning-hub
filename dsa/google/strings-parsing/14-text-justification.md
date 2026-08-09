@@ -7,13 +7,26 @@
 ## Problem
 Given an array of words and an integer `maxWidth`, format the text so each line has exactly `maxWidth` characters and is fully justified. Pack as many words as possible into each line. Extra spaces between words should be distributed as evenly as possible; if they cannot be divided evenly, the left slots receive more spaces. The last line and lines with one word are left-justified.
 
-Constraints: `1 <= len(words) <= 300`; `1 <= len(words[i]) <= 20`; `len(words[i]) <= maxWidth <= 100`; words contain only English letters and symbols without spaces.
+Implement `Solution.fullJustify` with the parameters below and return the requested value.
+
+**Input**
+- `words`: a `list[str]`; the list of candidate words.
+- `maxWidth`: a `int`; the required line width.
+
+**Output**
+- The justified lines in top-to-bottom order; every returned string must have exactly `maxWidth` characters.
+
+## Constraints
+- `1 <= len(words) <= 300`
+- `1 <= len(words[i]) <= 20`
+- `len(words[i]) <= maxWidth <= 100`
+- words contain only English letters and symbols without spaces
 
 ## Examples
 ```text
 Input: words = ["This", "is", "an", "example", "of", "text", "justification."], maxWidth = 16
 Output: ["This    is    an", "example  of text", "justification.  "]
-Explanation: Spaces are spread evenly in non-last lines, with extra spaces assigned from the left.
+Explanation: Spaces are spread evenly in non-last lines, with extra spaces assigned from the left. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

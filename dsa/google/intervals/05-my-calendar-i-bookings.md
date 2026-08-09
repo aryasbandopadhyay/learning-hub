@@ -7,7 +7,16 @@
 ## Problem
 Given `bookings`, where `bookings[i] = [start, end]` is a half-open interval `[start, end)`, process the requests in order. Accept a booking if it does not overlap any previously accepted booking; otherwise reject it. Return a list of booleans indicating whether each request was accepted.
 
-Constraints: `1 <= len(bookings) <= 10^4`, `0 <= start < end <= 10^9`.
+Implement `Solution.calendarBookings` with the parameters below and return the requested value.
+
+**Input**
+- `bookings`: a `list[list[int]]`; booking requests in processing order.
+
+**Output**
+- A boolean list in the same order as `bookings`, where each value says whether that request was accepted.
+
+## Constraints
+- `1 <= len(bookings) <= 10^4`, `0 <= start < end <= 10^9`
 
 ## Examples
 ```text

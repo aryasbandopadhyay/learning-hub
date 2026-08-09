@@ -7,6 +7,20 @@
 ## Problem
 Given strings `s1` and `s2`, return the shortest substring of `s1` containing `s2` as a subsequence. If tied, return the leftmost shortest substring; if impossible, return `""`.
 
+Implement `Solution.minWindow` with the parameters below and return the requested value.
+
+**Input**
+- `s1`: a `str`; the source string to search within.
+- `s2`: a `str`; the subsequence to match.
+
+**Output**
+- The shortest substring of `s1` containing `s2` as a subsequence; if tied, return the leftmost one; if none exists, return `""`.
+
+## Constraints
+- 1 <= s1.length <= 2 * 10^4
+- 1 <= s2.length <= 100
+- `s1` and `s2` contain lowercase English letters
+
 ## Examples
 ```text
 Input: s1 = "abcdebdde", s2 = "bde"

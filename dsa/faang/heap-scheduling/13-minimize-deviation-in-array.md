@@ -7,7 +7,14 @@
 ## Problem
 You are given an array `nums`. In one operation, you may divide an even number by `2` or multiply an odd number by `2`. The deviation is the difference between the maximum and minimum array values. Return the minimum possible deviation after any number of operations.
 
-Constraints: `2 <= len(nums) <= 10^5`, `1 <= nums[i] <= 10^9`.
+**Input**
+- `nums`: a `list[int]`; the input integer list.
+
+**Output**
+- A `int`. Return the minimum possible deviation after any number of operations.
+
+## Constraints
+- `2 <= len(nums) <= 10^5`, `1 <= nums[i] <= 10^9`.
 
 ## Examples
 ```text

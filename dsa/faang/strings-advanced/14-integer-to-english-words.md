@@ -7,6 +7,15 @@
 ## Problem
 Convert a non-negative integer `num` to its English words representation. The input is in the range `0 <= num <= 2^31 - 1`, and the output must not contain extra spaces.
 
+**Input**
+- `num`: a `int`; the non-negative integer.
+
+**Output**
+- A `str`. Return the value produced by `numberToWords`.
+
+## Constraints
+- `0 <= num <= 2^31 - 1`.
+
 ## Examples
 ```text
 Input: num = 12345

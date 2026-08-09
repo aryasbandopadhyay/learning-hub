@@ -7,13 +7,22 @@
 ## Problem
 You are given `paint`, where `paint[i] = [start, end]` means that on day `i` you paint the half-open interval `[start, end)`. Return a list where each element is the amount of new, previously unpainted area painted on that day.
 
-Constraints: `1 <= len(paint) <= 10^5`, `0 <= start < end <= 10^5`.
+Implement `Solution.amountPainted` with the parameters below and return the requested value.
+
+**Input**
+- `paint`: a `list[list[int]]`; daily paint intervals in day order.
+
+**Output**
+- A list in day order where each value is the amount of previously unpainted area painted that day.
+
+## Constraints
+- `1 <= len(paint) <= 10^5`, `0 <= start < end <= 10^5`
 
 ## Examples
 ```text
 Input: paint = [[1,4],[4,7],[2,5]]
 Output: [3, 3, 0]
-Explanation: The first two days paint [1,4) and [4,7); the third day is already covered on [2,5).
+Explanation: The first two days paint [1,4) and [4,7); the third day is already covered on [2,5). The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

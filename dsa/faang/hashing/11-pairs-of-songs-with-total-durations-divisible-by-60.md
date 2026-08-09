@@ -7,7 +7,14 @@
 ## Problem
 Given a list `time` where `time[i]` is the duration of the `i`-th song in seconds, return the number of pairs `(i, j)` with `i < j` such that `(time[i] + time[j])` is divisible by 60.
 
-Constraints: `1 <= len(time) <= 60_000`, and `1 <= time[i] <= 500`.
+**Input**
+- `time`: a `list[int]`; the song durations.
+
+**Output**
+- A `int`. Return the number of pairs `(i, j)` with `i < j` such that `(time[i] + time[j])` is divisible by 60.
+
+## Constraints
+- `1 <= len(time) <= 60_000`, and `1 <= time[i] <= 500`.
 
 ## Examples
 ```text

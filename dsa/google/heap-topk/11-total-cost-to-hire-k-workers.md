@@ -5,7 +5,20 @@
 - **Asked at:** Google
 
 ## Problem
-Given `costs`, hire exactly `k` workers. In each hiring session, you may choose from the first `candidates` remaining workers and the last `candidates` remaining workers; hire the worker with the lower cost, breaking ties by smaller original index. Return the total cost. Constraints: `1 <= k <= len(costs) <= 100000`.
+Given `costs`, hire exactly `k` workers. In each hiring session, you may choose from the first `candidates` remaining workers and the last `candidates` remaining workers; hire the worker with the lower cost, breaking ties by smaller original index. Return the total cost.
+
+Implement `Solution.totalCost` with the parameters below and return the requested value.
+
+**Input**
+- `costs`: a `list[int]`; worker costs where `costs[i]` is worker `i`'s cost.
+- `k`: a `int`; the required count, window limit, or operation budget described above.
+- `candidates`: a `int`; the number of candidates considered from each side.
+
+**Output**
+- The minimum total cost to hire exactly `k` workers under the session rules.
+
+## Constraints
+- `1 <= k <= len(costs) <= 100000`
 
 ## Examples
 ```text

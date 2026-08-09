@@ -7,13 +7,20 @@
 ## Problem
 Given a list of buildings where each building is `[left, right, height]`, return the skyline formed by these buildings as a list of key points `[x, height]`. The skyline height changes only at key points, adjacent points must not have the same height, and the final point must have height `0`.
 
-Constraints: `0 <= len(buildings) <= 2000`, `0 <= left < right <= 10^9`, and `1 <= height <= 10^9`.
+**Input**
+- `buildings`: a `list[list[int]]`; building triples `[left, right, height]`.
+
+**Output**
+- A `list[list[int]]`. Return the skyline formed by these buildings as a list of key points `[x, height]`. This judge compares the sequence exactly: return key points sorted by increasing `x`; do not include consecutive points with the same height.
+
+## Constraints
+- `0 <= len(buildings) <= 2000`, `0 <= left < right <= 10^9`, and `1 <= height <= 10^9`.
 
 ## Examples
 ```text
 Input: buildings = [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]
 Output: [[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]
-Explanation: The maximum active building height changes at each returned x-coordinate.
+Explanation: The maximum active building height changes at each returned x-coordinate. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

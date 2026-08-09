@@ -7,6 +7,21 @@
 ## Problem
 Given target string `s` and list `words`, return how many words can become `s` by stretching groups of equal characters. A group may be stretched only if the corresponding group in `s` has length at least three.
 
+Implement `Solution.expressiveWords` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+- `words`: a `list[str]`; the list of candidate words.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- 1 <= s.length <= 100
+- 1 <= words.length <= 100
+- 1 <= words[i].length <= 100
+- `s` and every `words[i]` contain lowercase English letters
+
 ## Examples
 ```text
 Input: s = "heeellooo", words = ["hello","hi","helo"]

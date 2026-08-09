@@ -7,7 +7,15 @@
 ## Problem
 Given a string `s`, remove duplicate letters so every distinct letter appears exactly once. Return the lexicographically smallest valid subsequence.
 
-Constraints: `1 <= len(s) <= 100000`; `s` contains lowercase English letters.
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `str`. Return the lexicographically smallest valid subsequence.
+
+## Constraints
+- `1 <= len(s) <= 100000`.
+- `s` contains lowercase English letters.
 
 ## Examples
 ```text

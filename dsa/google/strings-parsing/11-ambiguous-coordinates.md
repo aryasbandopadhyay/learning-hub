@@ -7,11 +7,23 @@
 ## Problem
 A coordinate string had commas, spaces, and decimal points removed. Given the parenthesized digit string `s`, return every possible original coordinate in lexicographic order. Numbers cannot have extra leading zeroes, and decimals cannot have trailing zeroes.
 
+Implement `Solution.ambiguousCoordinates` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+
+**Output**
+- All valid coordinate strings in lexicographic order.
+
+## Constraints
+- 4 <= s.length <= 12
+- `s` starts with `(`, ends with `)`, and contains only digits inside the parentheses
+
 ## Examples
 ```text
 Input: s = "(123)"
 Output: ["(1, 2.3)","(1, 23)","(1.2, 3)","(12, 3)"]
-Explanation: All valid comma splits and decimal placements are returned sorted.
+Explanation: All valid comma splits and decimal placements are returned sorted. The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

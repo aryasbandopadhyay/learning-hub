@@ -7,7 +7,21 @@
 ## Problem
 A bookstore owner has `customers[i]` customers in minute `i`. If `grumpy[i] == 0`, those customers are satisfied; if `grumpy[i] == 1`, they are not satisfied unless the owner uses a secret technique for one contiguous block of `minutes` minutes. Return the maximum number of satisfied customers possible.
 
-Constraints: `1 <= len(customers) == len(grumpy) <= 20000`; `0 <= customers[i] <= 1000`; `grumpy[i]` is `0` or `1`; `1 <= minutes <= len(customers)`.
+Implement `Solution.maxSatisfied` with the parameters below and return the requested value.
+
+**Input**
+- `customers`: a `list[int]`; customers arriving at each minute.
+- `grumpy`: a `list[int]`; whether the owner is grumpy at each minute.
+- `minutes`: a `int`; the length of the secret-technique window.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(customers) == len(grumpy) <= 20000`
+- `0 <= customers[i] <= 1000`
+- `grumpy[i]` is `0` or `1`
+- `1 <= minutes <= len(customers)`
 
 ## Examples
 ```text

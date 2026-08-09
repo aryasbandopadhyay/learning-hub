@@ -7,13 +7,21 @@
 ## Problem
 Given a matrix `mat` and an integer `k`, return a matrix `answer` where `answer[i][j]` is the sum of all `mat[r][c]` such that `|r-i| <= k` and `|c-j| <= k`.
 
-Constraints: `1 <= m, n <= 100`, `0 <= k <= 100`, values fit in a signed 32-bit integer.
+**Input**
+- `mat`: a `list[list[int]]`; the input matrix.
+- `k`: a `int`; the integer parameter described above.
+
+**Output**
+- A `list[list[int]]`. Return a matrix `answer` where `answer[i][j]` is the sum of all `mat[r][c]` such that `|r-i| <= k` and `|c-j| <= k`. This judge compares the sequence exactly: return `answer[i][j]` at the same row and column as `mat[i][j]`.
+
+## Constraints
+- `1 <= m, n <= 100`, `0 <= k <= 100`, values fit in a signed 32-bit integer.
 
 ## Examples
 ```text
 Input: mat = [[1,2,3],[4,5,6],[7,8,9]], k = 1
 Output: [[12,21,16],[27,45,33],[24,39,28]]
-Explanation: The center cell includes the whole matrix; corners include their clipped 2x2 blocks.
+Explanation: The center cell includes the whole matrix; corners include their clipped 2x2 blocks. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

@@ -5,7 +5,18 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given an array `arr` of positive leaf values, build a binary tree whose in-order leaves are exactly `arr`. Each non-leaf node has value equal to the product of the largest leaf in its left and right subtrees. Return the minimum possible sum of non-leaf node values. Constraints: `2 <= len(arr) <= 40`, `1 <= arr[i] <= 15`.
+Given an array `arr` of positive leaf values, build a binary tree whose in-order leaves are exactly `arr`. Each non-leaf node has value equal to the product of the largest leaf in its left and right subtrees. Return the minimum possible sum of non-leaf node values.
+
+Implement `Solution.mctFromLeafValues` with the parameters below and return the requested value.
+
+**Input**
+- `arr`: a `list[int]`; leaf values in inorder order.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `2 <= len(arr) <= 40`, `1 <= arr[i] <= 15`
 
 ## Examples
 ```text

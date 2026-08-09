@@ -7,13 +7,22 @@
 ## Problem
 Given half-open booking requests `bookings`, process them in order. Accept a request if adding it would not make any time point covered by three accepted bookings; otherwise reject it. Return a list of booleans showing which requests are accepted.
 
-Constraints: `1 <= len(bookings) <= 10^4`, `0 <= start < end <= 10^9`.
+Implement `Solution.calendarTwoBookings` with the parameters below and return the requested value.
+
+**Input**
+- `bookings`: a `list[list[int]]`; booking requests in processing order.
+
+**Output**
+- A boolean list in the same order as `bookings`, where each value says whether that request was accepted.
+
+## Constraints
+- `1 <= len(bookings) <= 10^4`, `0 <= start < end <= 10^9`
 
 ## Examples
 ```text
 Input: bookings = [[10,20],[50,60],[10,40],[5,15],[5,10],[25,55]]
 Output: [True, True, True, False, True, True]
-Explanation: [5,15) is rejected because it would triple-book [10,15).
+Explanation: [5,15) is rejected because it would triple-book [10,15). The result is shown in the required order.
 ```
 
 ## Understanding & Intuition

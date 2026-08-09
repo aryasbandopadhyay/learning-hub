@@ -7,7 +7,15 @@
 ## Problem
 Given a string `s`, add characters only to the front to make a palindrome. Return the shortest palindrome obtainable.
 
-Constraints: `0 <= len(s) <= 100000`; `s` contains lowercase English letters.
+**Input**
+- `s`: a `str`; the input string.
+
+**Output**
+- A `str`. Return the shortest palindrome obtainable.
+
+## Constraints
+- `0 <= len(s) <= 100000`.
+- `s` contains lowercase English letters.
 
 ## Examples
 ```text

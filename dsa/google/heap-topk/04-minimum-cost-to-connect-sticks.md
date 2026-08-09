@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-Given a list `sticks`, repeatedly connect any two sticks with cost equal to their sum; the new stick has that summed length. Return the minimum total cost to connect all sticks into one stick. Constraints: `1 <= len(sticks) <= 10000`, `1 <= sticks[i] <= 100000`.
+Given a list `sticks`, repeatedly connect any two sticks with cost equal to their sum; the new stick has that summed length. Return the minimum total cost to connect all sticks into one stick.
+
+Implement `Solution.connectSticks` with the parameters below and return the requested value.
+
+**Input**
+- `sticks`: a `list[int]`; the stick lengths.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(sticks) <= 10000`, `1 <= sticks[i] <= 100000`
 
 ## Examples
 ```text

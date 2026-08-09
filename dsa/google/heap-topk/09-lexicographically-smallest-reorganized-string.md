@@ -5,7 +5,18 @@
 - **Asked at:** Google
 
 ## Problem
-Given a lowercase string `s`, rearrange its characters so no two adjacent characters are equal. Return the lexicographically smallest valid rearrangement, or `""` if none exists. Constraints: `1 <= len(s) <= 500`.
+Given a lowercase string `s`, rearrange its characters so no two adjacent characters are equal. Return the lexicographically smallest valid rearrangement, or `""` if none exists.
+
+Implement `Solution.reorganizeStringSmallest` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+
+**Output**
+- A `str` value representing the result described above.
+
+## Constraints
+- `1 <= len(s) <= 500`
 
 ## Examples
 ```text

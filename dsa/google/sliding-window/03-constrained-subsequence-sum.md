@@ -7,7 +7,19 @@
 ## Problem
 Given an integer list `nums` and an integer `k`, choose a non-empty subsequence such that adjacent chosen indices differ by at most `k`. Return the maximum possible sum.
 
-Constraints: `1 <= len(nums) <= 100000`; `-10000 <= nums[i] <= 10000`; `1 <= k <= len(nums)`.
+Implement `Solution.constrainedSubsetSum` with the parameters below and return the requested value.
+
+**Input**
+- `nums`: a `list[int]`; the input integer list described above.
+- `k`: a `int`; the required count, window limit, or operation budget described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(nums) <= 100000`
+- `-10000 <= nums[i] <= 10000`
+- `1 <= k <= len(nums)`
 
 ## Examples
 ```text

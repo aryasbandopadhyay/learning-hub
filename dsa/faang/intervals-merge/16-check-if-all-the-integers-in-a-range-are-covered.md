@@ -7,7 +7,16 @@
 ## Problem
 Given inclusive integer ranges `ranges` and two integers `left` and `right`, return `True` if every integer from `left` through `right` is covered by at least one range. Otherwise, return `False`.
 
-Constraints: `1 <= len(ranges) <= 50`, `1 <= start <= end <= 50`, and `1 <= left <= right <= 50`.
+**Input**
+- `ranges`: a `list[list[int]]`; inclusive integer ranges.
+- `left`: a `int`; the left end of the target range.
+- `right`: a `int`; the right end of the target range.
+
+**Output**
+- A `bool`. Return `True` if every integer from `left` through `right` is covered by at least one range. return `False`.
+
+## Constraints
+- `1 <= len(ranges) <= 50`, `1 <= start <= end <= 50`, and `1 <= left <= right <= 50`.
 
 ## Examples
 ```text

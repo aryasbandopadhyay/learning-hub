@@ -5,7 +5,19 @@
 - **Asked at:** Google
 
 ## Problem
-Given two 32-bit signed integers `dividend` and `divisor`, return the quotient after dividing `dividend` by `divisor` truncated toward zero. Do not use multiplication, division, or modulo in the optimal approach. Clamp overflow to `[-2^31, 2^31 - 1]`. Constraints: `-2^31 <= dividend <= 2^31 - 1`, `-2^31 <= divisor <= 2^31 - 1`, and `divisor != 0`.
+Given two 32-bit signed integers `dividend` and `divisor`, return the quotient after dividing `dividend` by `divisor` truncated toward zero. Do not use multiplication, division, or modulo in the optimal approach. Clamp overflow to `[-2^31, 2^31 - 1]`.
+
+Implement `Solution.divide` with the parameters below and return the requested value.
+
+**Input**
+- `dividend`: a `int`; the integer being divided.
+- `divisor`: a `int`; the non-zero integer divisor.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `-2^31 <= dividend <= 2^31 - 1`, `-2^31 <= divisor <= 2^31 - 1`, and `divisor != 0`
 
 ## Examples
 ```text

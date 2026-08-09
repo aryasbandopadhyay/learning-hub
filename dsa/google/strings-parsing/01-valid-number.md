@@ -7,6 +7,18 @@
 ## Problem
 Given string `s`, return whether it is a valid decimal number. A number may contain one sign, one decimal point, and one exponent introduced by `e` or `E`; the exponent must be an integer. No spaces or special values are allowed.
 
+Implement `Solution.validNumber` with the parameters below and return the requested value.
+
+**Input**
+- `s`: a `str`; the input string described above.
+
+**Output**
+- A `bool` value representing the result described above.
+
+## Constraints
+- 1 <= s.length <= 20
+- `s` consists of English letters, digits, plus/minus signs, decimal points, and spaces
+
 ## Examples
 ```text
 Input: s = "-123.45e+6"

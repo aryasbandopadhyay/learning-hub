@@ -7,13 +7,21 @@
 ## Problem
 Given matrices `mat1` of size `m x k` and `mat2` of size `k x n`, return their matrix product as an `m x n` matrix. Many entries may be zero.
 
-Constraints: `1 <= m,k,n <= 100`, values fit in signed 32-bit integers.
+**Input**
+- `mat1`: a `list[list[int]]`; the `mat1` value described above.
+- `mat2`: a `list[list[int]]`; the `mat2` value described above.
+
+**Output**
+- A `list[list[int]]`. Return their matrix product as an `m x n` matrix. This judge compares the sequence exactly: return the product matrix with rows and columns in standard matrix order.
+
+## Constraints
+- `1 <= m,k,n <= 100`, values fit in signed 32-bit integers.
 
 ## Examples
 ```text
 Input: mat1 = [[1,0,0],[-1,0,3]], mat2 = [[7,0,0],[0,0,0],[0,0,1]]
 Output: [[7,0,0],[-7,0,3]]
-Explanation: Zero entries do not affect the dot products.
+Explanation: Zero entries do not affect the dot products. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

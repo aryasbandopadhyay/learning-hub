@@ -5,13 +5,22 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-Given an `m x n` board of `0`s and `1`s representing Conway's Game of Life, update the board to its next state using the standard rules: live cells with fewer than two or more than three live neighbors die, live cells with two or three live neighbors survive, and dead cells with exactly three live neighbors become live. Modify `board` in place and return it. Constraints: `1 <= m, n <= 25`, `board[i][j]` is `0` or `1`.
+Given an `m x n` board of `0`s and `1`s representing Conway's Game of Life, update the board to its next state using the standard rules: live cells with fewer than two or more than three live neighbors die, live cells with two or three live neighbors survive, and dead cells with exactly three live neighbors become live. Modify `board` in place and return it.
+
+**Input**
+- `board`: a `list[list[int]]`; the Game of Life board.
+
+**Output**
+- A `list[list[int]]`. Return it. This judge compares the sequence exactly: return the board after one simultaneous update, preserving its row and column layout.
+
+## Constraints
+- `1 <= m, n <= 25`, `board[i][j]` is `0` or `1`.
 
 ## Examples
 ```text
 Input: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
 Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
-Explanation: Applying all live/dead updates simultaneously produces the returned board.
+Explanation: Applying all live/dead updates simultaneously produces the returned board. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition

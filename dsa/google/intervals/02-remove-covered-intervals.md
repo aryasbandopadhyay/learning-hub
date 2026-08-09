@@ -7,7 +7,16 @@
 ## Problem
 Given intervals `intervals`, remove every interval `[a, b]` that is covered by another interval `[c, d]`, meaning `c <= a` and `b <= d`. Return the number of intervals remaining.
 
-Constraints: `1 <= len(intervals) <= 10^4`, `0 <= start < end <= 10^5`.
+Implement `Solution.removeCoveredIntervals` with the parameters below and return the requested value.
+
+**Input**
+- `intervals`: a `list[list[int]]`; the intervals described above.
+
+**Output**
+- A `int` value representing the result described above.
+
+## Constraints
+- `1 <= len(intervals) <= 10^4`, `0 <= start < end <= 10^5`
 
 ## Examples
 ```text

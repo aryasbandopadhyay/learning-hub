@@ -7,13 +7,21 @@
 ## Problem
 Given nonnegative integer arrays `rowSum` and `colSum` with equal total sum, construct and return a nonnegative matrix whose row sums and column sums match them. To make the answer deterministic, return the canonical greedy matrix that fills cells from top-left to bottom-right with `min(remaining row, remaining column)`.
 
-Constraints: `1 <= len(rowSum), len(colSum) <= 500`, sums fit in a signed 32-bit integer.
+**Input**
+- `rowSum`: a `list[int]`; required row sums.
+- `colSum`: a `list[int]`; required column sums.
+
+**Output**
+- A `list[list[int]]`. Return a nonnegative matrix whose row sums and column sums match them. return the canonical greedy matrix that fills cells from top-left to bottom-right with `min(remaining row, remaining column)`. This judge compares the sequence exactly: return the canonical greedy matrix filled from top-left toward bottom-right.
+
+## Constraints
+- `1 <= len(rowSum), len(colSum) <= 500`, sums fit in a signed 32-bit integer.
 
 ## Examples
 ```text
 Input: rowSum = [3,8], colSum = [4,7]
 Output: [[3,0],[1,7]]
-Explanation: Greedy top-left filling first places 3, then 1, then 7.
+Explanation: Greedy top-left filling first places 3, then 1, then 7. The output is written in the required deterministic order.
 ```
 
 ## Understanding & Intuition
