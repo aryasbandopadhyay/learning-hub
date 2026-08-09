@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Microsoft, Meta, Google
 
 ## Problem
-Given the head of a singly linked list, reverse the list and return the new head. The list has `0 <= n <= 5000` nodes and node values fit in a signed integer.
+Given the `head` of a singly linked list, reverse the list and return the new head. Examples show lists as arrays of node values, but the function receives a `ListNode`.
+
+**Input**
+- `head`: head node of a singly linked list.
+
+**Output**
+- The head of the reversed list. This judge compares exactly by traversal order, so values must appear in reverse input order.
+
+## Constraints
+- `0 <= number of nodes <= 5000`
+- `-5000 <= Node.val <= 5000`
+- The list is singly linked and acyclic.
 
 ## Examples
 ```text
 Input: head = [1,2,3,4,5]
 Output: [5,4,3,2,1]
-Explanation: Every next pointer is reversed.
+Explanation: Reversing all links makes `5` the head, followed by `4`, `3`, `2`, and `1`.
 ```
 
 ## Understanding & Intuition

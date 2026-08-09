@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Adobe, Meta
 
 ## Problem
-Given the head of a linked list and an integer `n`, remove the nth node from the end of the list and return the new head. The list has `1 <= length <= 30`, and `1 <= n <= length`.
+Given a list head and integer `n`, remove the `n`th node from the end and return the modified head. The last node is position `1` from the end.
+
+**Input**
+- `head`: head of a singly linked list.
+- `n`: one-based position from the end to remove.
+
+**Output**
+- The head after removal. This judge compares exactly by traversal order.
+
+## Constraints
+- `1 <= number of nodes <= 30`
+- `0 <= Node.val <= 100`
+- `1 <= n <= number of nodes`
 
 ## Examples
 ```text
 Input: head = [1,2,3,4,5], n = 2
 Output: [1,2,3,5]
-Explanation: The second node from the end is 4.
+Explanation: The second node from the end is `4`; removing it leaves `1 -> 2 -> 3 -> 5`.
 ```
 
 ## Understanding & Intuition

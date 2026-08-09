@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft, Apple
 
 ## Problem
-Design a data structure that supports `addNum(num)` and `findMedian()`, returning the median of all numbers added so far. If the count is even, return the average of the two middle values. Constraints: up to `5 * 10^4` operations, `-10^5 <= num <= 10^5`.
+Design `MedianFinder` for a stream of numbers. `addNum(num)` inserts a value. `findMedian()` returns the middle value after sorting all inserted numbers, or the average of the two middle values when the count is even.
+
+**Input**
+- A sequence of `MedianFinder()`, `addNum(num)`, and `findMedian()` operations.
+
+**Output**
+- Results in order: constructor and `addNum` return `null`; `findMedian` returns a float. This judge compares exactly.
+
+## Constraints
+- `-10^5 <= num <= 10^5`
+- At most `5 * 10^4` operations are performed.
+- `findMedian` is called only after at least one number has been added.
 
 ## Examples
 ```text
 Input: ["MedianFinder","addNum","addNum","findMedian","addNum","findMedian"], [[],[1],[2],[],[3],[]]
 Output: [null,null,null,1.5,null,2.0]
-Explanation: Median of [1,2] is 1.5; median of [1,2,3] is 2.
+Explanation: With `1` and `2`, the median is `1.5`; after adding `3`, the middle value is `2.0`.
 ```
 
 ## Understanding & Intuition

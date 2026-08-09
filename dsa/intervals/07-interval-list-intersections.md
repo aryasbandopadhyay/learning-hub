@@ -5,13 +5,26 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Given two lists of pairwise disjoint intervals sorted by start time, return their intersections. Constraints: `0 <= len(firstList), len(secondList) <= 10^4`.
+Given two sorted lists of pairwise disjoint closed intervals, return every intersection between one interval from each list. A shared endpoint counts as an interval such as `[5,5]`.
+
+**Input**
+- `firstList`: sorted non-overlapping intervals.
+- `secondList`: sorted non-overlapping intervals.
+
+**Output**
+- All intersections from left to right. This judge compares exactly, so return intersections in ascending order as encountered.
+
+## Constraints
+- `0 <= firstList.length, secondList.length <= 1000`
+- `firstList[i].length == secondList[j].length == 2`
+- `0 <= start <= end <= 10^9`
+- Each input list is sorted and non-overlapping.
 
 ## Examples
 ```text
 Input: firstList = [[0,2],[5,10],[13,23],[24,25]], secondList = [[1,5],[8,12],[15,24],[25,26]]
 Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
-Explanation: Each output interval is the overlap between one interval from each list.
+Explanation: Each output is the overlap of one interval from each list; shared endpoints like `5` and `25` are included.
 ```
 
 ## Understanding & Intuition

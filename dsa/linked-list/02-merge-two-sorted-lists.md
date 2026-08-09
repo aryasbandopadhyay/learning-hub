@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Apple, Bloomberg
 
 ## Problem
-Given the heads of two sorted linked lists, merge them into one sorted linked list and return its head. The total number of nodes is at most `10000`, and values are sorted in nondecreasing order.
+Given heads `list1` and `list2` of two sorted singly linked lists, merge them into one sorted linked list and return its head. Both inputs are sorted in non-decreasing order.
+
+**Input**
+- `list1`: head of the first sorted list.
+- `list2`: head of the second sorted list.
+
+**Output**
+- The head of a sorted merged list. This judge compares exactly by traversal order.
+
+## Constraints
+- `0 <= length of list1, length of list2 <= 50`
+- `-100 <= Node.val <= 100`
+- Both input lists are sorted in non-decreasing order.
 
 ## Examples
 ```text
 Input: list1 = [1,2,4], list2 = [1,3,4]
 Output: [1,1,2,3,4,4]
-Explanation: Nodes are selected in increasing order from both lists.
+Explanation: Taking the smaller current node from either list produces `1, 1, 2, 3, 4, 4`.
 ```
 
 ## Understanding & Intuition

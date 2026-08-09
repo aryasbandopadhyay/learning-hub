@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Bloomberg, Meta
 
 ## Problem
-Given the head of a linked list, rotate the list to the right by `k` places and return the new head. The list has `0 <= n <= 500`, and `0 <= k <= 2 * 10^9`.
+Given a linked-list head and non-negative integer `k`, rotate the list right by `k` positions. One right rotation moves the last node to the front; rotations wrap around the list length.
+
+**Input**
+- `head`: head of a singly linked list.
+- `k`: number of right rotations.
+
+**Output**
+- The rotated list head. This judge compares exactly by traversal order.
+
+## Constraints
+- `0 <= number of nodes <= 500`
+- `-100 <= Node.val <= 100`
+- `0 <= k <= 2 * 10^9`
 
 ## Examples
 ```text
 Input: head = [1,2,3,4,5], k = 2
 Output: [4,5,1,2,3]
-Explanation: Two right rotations move 4 and 5 to the front.
+Explanation: Two right rotations move `5` and then `4` to the front, producing `4 -> 5 -> 1 -> 2 -> 3`.
 ```
 
 ## Understanding & Intuition

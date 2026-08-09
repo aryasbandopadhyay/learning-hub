@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given a list of non-overlapping intervals sorted by start time and a new interval, insert the new interval so the final list is still sorted and non-overlapping. Return the merged intervals. Constraints: `0 <= len(intervals) <= 10^4`, each interval has `start <= end`, and interval values fit in standard integers.
+Given sorted, non-overlapping closed intervals and a new interval, insert the new interval and merge any overlaps. Intervals are `[start, end]` and include both endpoints.
+
+**Input**
+- `intervals`: sorted non-overlapping intervals.
+- `newInterval`: interval to insert.
+
+**Output**
+- The resulting non-overlapping intervals sorted by start time. This judge compares exactly, so return ascending start order.
+
+## Constraints
+- `0 <= intervals.length <= 10^4`
+- `intervals[i].length == 2`
+- `newInterval.length == 2`
+- `0 <= start <= end <= 10^5`
+- `intervals` is sorted by start and non-overlapping.
 
 ## Examples
 ```text
 Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
 Output: [[1,5],[6,9]]
-Explanation: [1,3] overlaps [2,5], so they merge into [1,5].
+Explanation: `[2,5]` overlaps `[1,3]`, so they merge into `[1,5]`; `[6,9]` stays separate.
 ```
 
 ## Understanding & Intuition

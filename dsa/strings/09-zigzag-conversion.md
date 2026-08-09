@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, PayPal, Microsoft, Google
 
 ## Problem
-Write the characters of `s` in a zigzag pattern on `numRows` rows, then read row by row. Return the resulting string. Constraints: `1 <= len(s) <= 1000`; `1 <= numRows <= 1000`.
+Write `s` in a zigzag over `numRows` rows by moving down to the last row, then diagonally up to the first row, and repeating. Return the characters read row by row.
+
+**Input**
+- `s`: the string to convert.
+- `numRows`: number of zigzag rows.
+
+**Output**
+- The row-by-row reading of the zigzag. This judge compares exactly.
+
+## Constraints
+- `1 <= s.length <= 1000`
+- `1 <= numRows <= 1000`
+- `s` contains printable characters.
 
 ## Examples
 ```text
 Input: s = "PAYPALISHIRING", numRows = 3
 Output: "PAHNAPLSIIGYIR"
-Explanation: Reading the 3-row zigzag row by row gives the output.
+Explanation: With three rows, the row strings are `PAHN`, `APLSIIG`, and `YIR`, which concatenate to the output.
 ```
 
 ## Understanding & Intuition

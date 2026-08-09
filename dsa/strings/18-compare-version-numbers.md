@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Google, Apple
 
 ## Problem
-Given two version strings `version1` and `version2`, compare them. Revisions are separated by dots, leading zeros are ignored, and missing revisions are treated as `0`. Return `1` if `version1 > version2`, `-1` if `version1 < version2`, otherwise `0`. Constraints: `1 <= len(version1), len(version2) <= 500`.
+Compare version strings `version1` and `version2`. Split each version by dots, compare corresponding revisions as integers, ignore leading zeroes, and treat missing revisions as `0`.
+
+**Input**
+- `version1`: first version string.
+- `version2`: second version string.
+
+**Output**
+- `1` if `version1` is greater, `-1` if `version2` is greater, or `0` if they are equal.
+
+## Constraints
+- `1 <= version1.length, version2.length <= 500`
+- Versions contain digits and dots with non-empty revisions.
+- Each revision fits in a 32-bit integer.
 
 ## Examples
 ```text
 Input: version1 = "1.01", version2 = "1.001"
 Output: 0
-Explanation: Both second revisions equal 1 after ignoring leading zeros.
+Explanation: `01` and `001` both have numeric value `1`, so the two versions are equal.
 ```
 
 ## Understanding & Intuition

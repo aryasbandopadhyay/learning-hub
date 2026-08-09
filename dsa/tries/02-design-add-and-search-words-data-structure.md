@@ -5,14 +5,26 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Design a data structure with `addWord(word)` and `search(word)`, where `search` may contain `.` matching any one lowercase English letter. Words contain lowercase letters and searches can be called many times.
+Design a word dictionary. `addWord(word)` stores a lowercase word. `search(word)` returns whether a stored word matches the whole pattern, where `.` matches any single lowercase letter.
+
+**Input**
+- A sequence of `WordDictionary()`, `addWord(word)`, and `search(pattern)` operations.
+
+**Output**
+- Operation results in order: constructor and `addWord` return `null`, and `search` returns booleans. This judge compares exactly one result per operation.
+
+## Constraints
+- `1 <= word.length <= 25`
+- Added words contain lowercase English letters.
+- Search patterns contain lowercase English letters and `.`.
+- At most `10^4` operations are performed.
 
 ## Examples
 ```text
 Input: ["WordDictionary","addWord","addWord","addWord","search","search","search","search"]
        [[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]
 Output: [null,null,null,null,false,true,true,true]
-Explanation: "." branches to any character at that position.
+Explanation: `pad` is absent, while `.ad` can match `bad`, `dad`, or `mad`, and `b..` matches `bad`.
 ```
 
 ## Understanding & Intuition

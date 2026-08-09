@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Meta, Google, Microsoft
 
 ## Problem
-Given two strings `s` and `t`, return `True` if `t` is an anagram of `s`, meaning both strings contain exactly the same characters with the same frequencies. Constraints: `1 <= len(s), len(t) <= 5 * 10^4`; inputs contain lowercase English letters.
+Given two strings `s` and `t`, return whether they are anagrams: each character must appear the same number of times in both strings.
+
+**Input**
+- `s`: the first lowercase English string.
+- `t`: the second lowercase English string.
+
+**Output**
+- A boolean: `True` if the two strings have identical character counts, otherwise `False`.
+
+## Constraints
+- `1 <= s.length, t.length <= 5 * 10^4`
+- `s` and `t` contain lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "anagram", t = "nagaram"
 Output: true
-Explanation: Both strings contain the same letters with the same counts.
+Explanation: Both strings contain the same letters with the same frequencies, only in a different order.
 ```
 
 ## Understanding & Intuition

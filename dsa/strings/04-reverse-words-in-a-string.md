@@ -5,13 +5,24 @@
 - **Asked at:** Meta, Amazon, Microsoft, Google
 
 ## Problem
-Given a string `s`, reverse the order of its words. Words are separated by one or more spaces; the output should contain single spaces between words and no leading or trailing spaces. Constraints: `1 <= len(s) <= 10^4`.
+Given a string `s` containing words separated by spaces, return the words in reverse order. A word is a maximal sequence of non-space characters. The result must use one space between words and no leading or trailing spaces.
+
+**Input**
+- `s`: a string with at least one word and possibly extra spaces.
+
+**Output**
+- A string containing the same words in reverse order with single-space separation. This judge compares exactly, so spacing must match.
+
+## Constraints
+- `1 <= s.length <= 10^4`
+- `s` contains printable characters and spaces.
+- `s` contains at least one non-space character.
 
 ## Examples
 ```text
 Input: s = "  hello world  "
 Output: "world hello"
-Explanation: Extra spaces are removed and word order is reversed.
+Explanation: The words are `hello` and `world`; reversing them and trimming extra spaces gives `world hello`.
 ```
 
 ## Understanding & Intuition

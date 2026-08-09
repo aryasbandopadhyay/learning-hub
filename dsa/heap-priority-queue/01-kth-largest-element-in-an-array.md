@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an integer array `nums` and an integer `k`, return the `k`th largest element in the array. It is the kth largest in sorted order, not the kth distinct element. Constraints: `1 <= k <= len(nums) <= 10^5`, `-10^4 <= nums[i] <= 10^4`.
+Given an integer array `nums` and integer `k`, return the `k`th largest element when values are sorted descending with duplicates kept. It is not the `k`th distinct value.
+
+**Input**
+- `nums`: list of integers.
+- `k`: one-based descending rank.
+
+**Output**
+- The value of the `k`th largest element.
+
+## Constraints
+- `1 <= k <= nums.length <= 10^5`
+- `-10^4 <= nums[i] <= 10^4`
 
 ## Examples
 ```text
 Input: nums = [3,2,1,5,6,4], k = 2
 Output: 5
-Explanation: Sorted descending is [6,5,4,3,2,1], so the 2nd largest is 5.
+Explanation: In descending order the values are `6, 5, 4, 3, 2, 1`, so the second largest is `5`.
 ```
 
 ## Understanding & Intuition

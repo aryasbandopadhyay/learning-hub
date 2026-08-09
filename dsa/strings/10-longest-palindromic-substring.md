@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Meta, Google, Microsoft
 
 ## Problem
-Given a string `s`, return the longest palindromic substring in `s`. If multiple answers have the same length, any one may be returned. Constraints: `1 <= len(s) <= 1000`; `s` contains digits and English letters.
+Given a string `s`, return its longest contiguous palindromic substring. If multiple longest palindromes exist, return the leftmost one expected by this judge.
+
+**Input**
+- `s`: the input string.
+
+**Output**
+- The longest palindromic substring. This judge compares exactly; ties should return the earliest longest palindrome.
+
+## Constraints
+- `1 <= s.length <= 1000`
+- `s` contains digits and English letters.
 
 ## Examples
 ```text
 Input: s = "babad"
 Output: "bab"
-Explanation: "aba" is also a valid answer.
+Explanation: `bab` is a length-three palindrome; `aba` is another, but this judge expects the leftmost longest one.
 ```
 
 ## Understanding & Intuition

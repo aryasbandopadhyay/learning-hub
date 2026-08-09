@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Meta, Bloomberg
 
 ## Problem
-Design a class that is initialized with an integer `k` and an integer stream `nums`. Implement `add(val)` to add `val` to the stream and return the kth largest element among all values seen so far. Constraints: `1 <= k <= 10^4`, up to `10^4` calls, values fit in signed integer range.
+Design `KthLargest`. The constructor receives `k` and initial values `nums`. Each `add(val)` inserts a value into the stream and returns the current `k`th largest among all values seen so far.
+
+**Input**
+- A sequence of `KthLargest(k, nums)` and `add(val)` operations.
+
+**Output**
+- Results in order: constructor returns `null`, each `add` returns the current `k`th largest value. This judge compares exactly one result per operation.
+
+## Constraints
+- `1 <= k <= 10^4`
+- `0 <= nums.length <= 10^4`
+- `-10^4 <= nums[i], val <= 10^4`
+- At most `10^4` calls are made to `add`.
+- There are at least `k` stream values whenever an `add` result is requested.
 
 ## Examples
 ```text
 Input: ["KthLargest","add","add","add","add","add"], [[3,[4,5,8,2]],[3],[5],[10],[9],[4]]
 Output: [null,4,5,5,8,8]
-Explanation: The 3rd largest value after each insertion is returned.
+Explanation: After each insertion, the third largest becomes `4`, then `5`, stays `5`, becomes `8`, and stays `8`.
 ```
 
 ## Understanding & Intuition

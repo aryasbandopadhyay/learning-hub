@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Meta, Microsoft, Google
 
 ## Problem
-Design an LRU Cache with `get(key)` and `put(key, value)` in average O(1) time. When capacity is exceeded, evict the least recently used key. Capacity is positive, and up to `2 * 10^5` operations may be called.
+Design `LRUCache` with fixed capacity. `get(key)` returns the value and marks the key recently used, or `-1` if absent. `put(key, value)` inserts or updates and evicts the least recently used key if capacity is exceeded.
+
+**Input**
+- A sequence of `LRUCache(capacity)`, `put(key, value)`, and `get(key)` operations.
+
+**Output**
+- Operation results in order: constructor and `put` return `null`, and `get` returns a value or `-1`. This judge compares exactly one result per operation.
+
+## Constraints
+- `1 <= capacity <= 3000`
+- `0 <= key <= 10^4`
+- `0 <= value <= 10^5`
+- At most `2 * 10^5` calls are made.
+- `get` and `put` should be `O(1)` average time.
 
 ## Examples
 ```text
 Input: ["LRUCache","put","put","get","put","get","put","get","get","get"], [[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
 Output: [null,null,null,1,null,-1,null,-1,3,4]
-Explanation: Keys 2 and then 1 are evicted as they become least recently used.
+Explanation: Accessing key `1` makes it recent, so key `2` is evicted next; later inserting key `4` evicts key `1`.
 ```
 
 ## Understanding & Intuition

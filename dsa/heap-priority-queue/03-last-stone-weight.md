@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Apple, Bloomberg
 
 ## Problem
-You are given stones with positive integer weights. Each turn, choose the two heaviest stones `x <= y`; if equal, both are destroyed, otherwise `y - x` is inserted back. Return the final stone weight, or `0` if no stones remain. Constraints: `1 <= len(stones) <= 30`, `1 <= stones[i] <= 1000`.
+Given stone weights, repeatedly smash the two heaviest stones. If their weights are equal, both are destroyed; otherwise the heavier stone remains with weight equal to the difference. Return the last weight or `0` if none remain.
+
+**Input**
+- `stones`: positive stone weights.
+
+**Output**
+- The final stone weight, or `0` if all stones are destroyed.
+
+## Constraints
+- `1 <= stones.length <= 30`
+- `1 <= stones[i] <= 1000`
 
 ## Examples
 ```text
 Input: stones = [2,7,4,1,8,1]
 Output: 1
-Explanation: Smash 8 and 7 -> 1, then eventually one stone of weight 1 remains.
+Explanation: Smashing the heaviest stones in order eventually leaves a single stone of weight `1`.
 ```
 
 ## Understanding & Intuition

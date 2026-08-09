@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Microsoft, Google, Adobe
 
 ## Problem
-Given the head of a linked list, swap every two adjacent nodes and return the new head. You must swap nodes, not just values. The list length can be from `0` to `100`.
+Given a linked-list head, swap every two adjacent nodes and return the new head. Change links, not node values. A final unpaired node remains unchanged.
+
+**Input**
+- `head`: head of a singly linked list.
+
+**Output**
+- The head after pairwise swaps. This judge compares exactly by traversal order.
+
+## Constraints
+- `0 <= number of nodes <= 100`
+- `0 <= Node.val <= 100`
 
 ## Examples
 ```text
 Input: head = [1,2,3,4]
 Output: [2,1,4,3]
-Explanation: Adjacent pairs (1,2) and (3,4) are swapped.
+Explanation: The pairs `(1,2)` and `(3,4)` swap independently to form `2, 1, 4, 3`.
 ```
 
 ## Understanding & Intuition

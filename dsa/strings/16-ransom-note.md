@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given strings `ransomNote` and `magazine`, return `True` if `ransomNote` can be constructed using letters from `magazine`. Each magazine letter may be used at most once. Constraints: `1 <= len(ransomNote), len(magazine) <= 10^5`; strings contain lowercase English letters.
+Given `ransomNote` and `magazine`, return whether the note can be built using letters from the magazine. Each magazine character may be used at most once.
+
+**Input**
+- `ransomNote`: the target text.
+- `magazine`: available characters.
+
+**Output**
+- A boolean: `True` if all note characters are available with enough frequency, otherwise `False`.
+
+## Constraints
+- `1 <= ransomNote.length, magazine.length <= 10^5`
+- Both strings contain lowercase English letters.
 
 ## Examples
 ```text
 Input: ransomNote = "aa", magazine = "aab"
 Output: true
-Explanation: The magazine has two 'a' characters available.
+Explanation: The magazine contains two `a` characters, enough to form `aa`.
 ```
 
 ## Understanding & Intuition

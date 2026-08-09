@@ -5,14 +5,30 @@
 - **Asked at:** Google, Amazon, Microsoft, Apple
 
 ## Problem
-Given an `m x n` board of lowercase letters and a list of unique lowercase words, return all words that can be formed by adjacent horizontal/vertical cells without reusing a cell in the same word. Typical constraints allow up to `12 x 12` boards and thousands of words.
+Given an `m x n` board of lowercase letters and a list `words`, return every word that can be formed by walking horizontally or vertically adjacent cells. A cell may not be reused within one word, and each found word is returned at most once.
+
+**Input**
+- `board`: a 2-D grid of lowercase characters.
+- `words`: target words to search for.
+
+**Output**
+- A list of all target words present on the board. The judge accepts any order for this problem.
+
+## Constraints
+- `m == board.length`
+- `n == board[r].length`
+- `1 <= m, n <= 12`
+- `1 <= words.length <= 3 * 10^4`
+- `1 <= words[i].length <= 10`
+- Board cells and words contain lowercase English letters.
+- All words are unique.
 
 ## Examples
 ```text
 Input: board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]],
        words = ["oath","pea","eat","rain"]
 Output: ["eat","oath"]
-Explanation: "oath" and "eat" can be traced by adjacent cells.
+Explanation: `oath` and `eat` can be traced through adjacent cells without reusing a cell; `pea` and `rain` cannot.
 ```
 
 ## Understanding & Intuition

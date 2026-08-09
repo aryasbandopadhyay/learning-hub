@@ -5,13 +5,23 @@
 - **Asked at:** Meta, Amazon, Google, Microsoft
 
 ## Problem
-Given a string `s`, return `True` if it is a palindrome after converting uppercase letters to lowercase and removing all non-alphanumeric characters. Constraints: `1 <= len(s) <= 2 * 10^5`; `s` contains printable ASCII characters.
+Given a string `s`, return whether it is a palindrome after keeping only alphanumeric characters and comparing letters case-insensitively. Spaces, punctuation, and symbols are ignored; an empty normalized string is valid.
+
+**Input**
+- `s`: a string containing printable characters.
+
+**Output**
+- A boolean: `True` if the normalized string reads the same forward and backward, otherwise `False`.
+
+## Constraints
+- `1 <= s.length <= 2 * 10^5`
+- `s` may contain letters, digits, spaces, punctuation, and symbols.
 
 ## Examples
 ```text
 Input: s = "A man, a plan, a canal: Panama"
 Output: true
-Explanation: After filtering, "amanaplanacanalpanama" reads the same forward and backward.
+Explanation: The normalized text is `amanaplanacanalpanama`, which is identical in both directions.
 ```
 
 ## Understanding & Intuition

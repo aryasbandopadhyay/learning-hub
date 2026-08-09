@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a string `s`, rearrange its characters so no two adjacent characters are the same. Return any valid rearrangement, or `""` if impossible. Constraints: `1 <= len(s) <= 500`, `s` contains lowercase English letters.
+Given a string `s`, rearrange its characters so no two adjacent characters are equal. Return any valid rearrangement, or `""` if no such rearrangement exists.
+
+**Input**
+- `s`: lowercase string to reorganize.
+
+**Output**
+- Any string using exactly the characters of `s` with no equal adjacent characters, or `""` if impossible. The judge accepts any valid arrangement.
+
+## Constraints
+- `1 <= s.length <= 500`
+- `s` contains lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "aab"
 Output: "aba"
-Explanation: No adjacent characters are equal.
+Explanation: `aba` uses the same letters as `aab` and separates the two `a` characters.
 ```
 
 ## Understanding & Intuition

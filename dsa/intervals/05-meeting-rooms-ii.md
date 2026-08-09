@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Meta, Bloomberg
 
 ## Problem
-Given meeting intervals, return the minimum number of conference rooms required so all meetings can happen. Constraints: `0 <= len(intervals) <= 10^4`, each interval has `start < end`.
+Given meeting intervals, return the minimum number of rooms required. A room is reusable when a previous meeting has ended at or before the next meeting's start.
+
+**Input**
+- `intervals`: meeting intervals `[start, end]`.
+
+**Output**
+- The minimum number of rooms needed to schedule all meetings.
+
+## Constraints
+- `0 <= intervals.length <= 10^4`
+- `intervals[i].length == 2`
+- `0 <= start < end <= 10^6`
 
 ## Examples
 ```text
 Input: intervals = [[0,30],[5,10],[15,20]]
 Output: 2
-Explanation: The first meeting needs one room, and the overlapping short meetings need one more.
+Explanation: `[0,30]` occupies one room while `[5,10]` needs another; `[15,20]` can reuse the second room.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-You are given `tasks`, where `tasks[i] = [enqueueTime, processingTime]`. A single-threaded CPU chooses among available tasks the one with the shortest processing time, breaking ties by original index. Return the order of processed task indices. Constraints: `1 <= len(tasks) <= 10^5`, `1 <= enqueueTime, processingTime <= 10^9`.
+Given tasks for a single-threaded CPU, return the original indices in processing order. Task `i` is `[enqueueTime, processingTime]`. When idle, the CPU chooses among available tasks the smallest processing time, breaking ties by smallest original index; a chosen task runs to completion.
+
+**Input**
+- `tasks`: list where `tasks[i] = [enqueueTime, processingTime]`.
+
+**Output**
+- Original indices in exact processing order. This judge compares exactly, so use processing time then index as tie-breakers and preserve the scheduling rules.
+
+## Constraints
+- `1 <= tasks.length <= 10^5`
+- `tasks[i].length == 2`
+- `1 <= enqueueTime, processingTime <= 10^9`
 
 ## Examples
 ```text
 Input: tasks = [[1,2],[2,4],[3,2],[4,1]]
 Output: [0,2,3,1]
-Explanation: The CPU runs task 0, then shortest available task 2, then 3, then 1.
+Explanation: Task `0` runs first; among available tasks, `2` is shorter than `1`, then `3` is shortest, and `1` runs last.
 ```
 
 ## Understanding & Intuition

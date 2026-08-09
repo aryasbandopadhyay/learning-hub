@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Microsoft, Google, Adobe
 
 ## Problem
-Given the head of a singly linked list, return the middle node. If there are two middle nodes, return the second middle. The list has `1 <= n <= 100`.
+Given a non-empty linked list, return its middle node. If the list has two middle nodes, return the second one. The judge checks the returned node by its remaining suffix.
+
+**Input**
+- `head`: head of a non-empty singly linked list.
+
+**Output**
+- The middle node. This judge compares exactly by traversing from the returned node to the end.
+
+## Constraints
+- `1 <= number of nodes <= 100`
+- `1 <= Node.val <= 100`
 
 ## Examples
 ```text
 Input: head = [1,2,3,4,5]
 Output: [3,4,5]
-Explanation: Node 3 is the middle node.
+Explanation: A five-node list has the third node as its only middle, giving the suffix `[3,4,5]`.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a list of words and integer `k`, return the `k` most frequent words. Sort by frequency descending, and for equal frequency sort lexicographically ascending. Constraints: `1 <= len(words) <= 500`, `1 <= k <= unique words`, words contain lowercase letters.
+Given words and integer `k`, return the `k` most frequent words. Sort by decreasing frequency; break equal-frequency ties by lexicographically smaller word first.
+
+**Input**
+- `words`: lowercase words.
+- `k`: number of words to return.
+
+**Output**
+- The top `k` words ordered by frequency descending, then lexicographic ascending. This judge compares exactly.
+
+## Constraints
+- `1 <= words.length <= 500`
+- `1 <= words[i].length <= 10`
+- `words[i]` contains lowercase English letters.
+- `1 <= k <= number of unique words`
 
 ## Examples
 ```text
 Input: words = ["i","love","leetcode","i","love","coding"], k = 2
 Output: ["i","love"]
-Explanation: "i" and "love" both appear twice; "i" is lexicographically smaller.
+Explanation: `i` and `love` appear twice and are the two most frequent words; lexicographic order puts `i` first.
 ```
 
 ## Understanding & Intuition

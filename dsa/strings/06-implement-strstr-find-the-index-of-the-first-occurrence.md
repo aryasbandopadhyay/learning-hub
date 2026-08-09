@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Microsoft, Apple
 
 ## Problem
-Given strings `haystack` and `needle`, return the index of the first occurrence of `needle` in `haystack`, or `-1` if `needle` is not part of `haystack`. Constraints: `1 <= len(haystack), len(needle) <= 10^4`; both contain lowercase English letters.
+Given strings `haystack` and `needle`, return the zero-based index of the first place `needle` appears as a contiguous substring of `haystack`, or `-1` if it never appears.
+
+**Input**
+- `haystack`: the string to search.
+- `needle`: the non-empty pattern to find.
+
+**Output**
+- The smallest starting index of `needle` in `haystack`, or `-1`. This judge compares exactly.
+
+## Constraints
+- `1 <= haystack.length, needle.length <= 10^4`
+- `haystack` and `needle` contain lowercase English letters.
 
 ## Examples
 ```text
 Input: haystack = "sadbutsad", needle = "sad"
 Output: 0
-Explanation: "sad" first appears starting at index 0.
+Explanation: `sad` occurs starting at index `0`, which is the first possible occurrence.
 ```
 
 ## Understanding & Intuition

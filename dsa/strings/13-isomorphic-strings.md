@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, LinkedIn, Microsoft
 
 ## Problem
-Given two strings `s` and `t`, return `True` if characters in `s` can be replaced to get `t`. Each occurrence of a character must map to the same character, and no two characters may map to the same character. Constraints: `1 <= len(s), len(t) <= 5 * 10^4`; strings contain ASCII characters.
+Given equal-length strings `s` and `t`, return whether a one-to-one character mapping can transform `s` into `t`. Each character in `s` maps to one fixed character, and no two source characters may map to the same target character.
+
+**Input**
+- `s`: source string.
+- `t`: target string.
+
+**Output**
+- A boolean: `True` if such a bijective mapping exists, otherwise `False`.
+
+## Constraints
+- `1 <= s.length, t.length <= 5 * 10^4`
+- `s.length == t.length`
+- `s` and `t` contain valid ASCII characters.
 
 ## Examples
 ```text
 Input: s = "egg", t = "add"
 Output: true
-Explanation: 'e' maps to 'a' and 'g' maps to 'd'.
+Explanation: `e` maps to `a` and both `g` characters map to `d`, with no conflicting mapping.
 ```
 
 ## Understanding & Intuition

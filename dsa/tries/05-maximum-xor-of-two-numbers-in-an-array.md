@@ -5,13 +5,23 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given an integer array `nums`, return the maximum value of `nums[i] XOR nums[j]` for any two numbers. Numbers are non-negative and usually fit within 31 bits.
+Given a list of non-negative integers `nums`, find the maximum possible value of `nums[i] XOR nums[j]` over all pairs of indices.
+
+**Input**
+- `nums`: a list of non-negative integers.
+
+**Output**
+- The maximum bitwise XOR value obtainable from two array elements.
+
+## Constraints
+- `1 <= nums.length <= 2 * 10^5`
+- `0 <= nums[i] <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: nums = [3,10,5,25,2,8]
 Output: 28
-Explanation: 5 XOR 25 = 28, which is maximum.
+Explanation: The pair `5` and `25` gives `5 XOR 25 = 28`, larger than any other pair.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,22 @@
 - **Asked at:** Meta, Amazon, Microsoft, Google
 
 ## Problem
-Convert a non-negative integer `num` to its English words representation. Constraints: `0 <= num <= 2^31 - 1`.
+Convert the non-negative integer `num` to English words using `Billion`, `Million`, and `Thousand` scale names. Do not include `and`; separate words with single spaces. Return `Zero` for `0`.
+
+**Input**
+- `num`: a non-negative integer.
+
+**Output**
+- The English words representation. This judge compares exactly, including capitalization and spaces.
+
+## Constraints
+- `0 <= num <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: num = 12345
 Output: "Twelve Thousand Three Hundred Forty Five"
-Explanation: Split into thousands groups: 12 thousand and 345.
+Explanation: `12345` is `12` thousand plus `345`, producing `Twelve Thousand Three Hundred Forty Five`.
 ```
 
 ## Understanding & Intuition

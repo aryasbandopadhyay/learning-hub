@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Given meeting time intervals, determine if a person can attend all meetings. Intervals overlap if one meeting starts before another ends. Constraints: `0 <= len(intervals) <= 10^4`, each interval has `start < end`.
+Given meeting intervals, return whether one person can attend all meetings. Meetings conflict when their time ranges overlap; one meeting ending exactly when another starts is allowed.
+
+**Input**
+- `intervals`: meeting intervals `[start, end]`.
+
+**Output**
+- A boolean: `True` if no meetings conflict, otherwise `False`.
+
+## Constraints
+- `0 <= intervals.length <= 10^4`
+- `intervals[i].length == 2`
+- `0 <= start < end <= 10^6`
 
 ## Examples
 ```text
 Input: intervals = [[0,30],[5,10],[15,20]]
 Output: false
-Explanation: [0,30] overlaps both other meetings.
+Explanation: The meeting `[0,30]` overlaps the later meetings, so one person cannot attend all of them.
 ```
 
 ## Understanding & Intuition

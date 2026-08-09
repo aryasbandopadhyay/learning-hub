@@ -5,14 +5,26 @@
 - **Asked at:** Google, Amazon, Microsoft, Uber
 
 ## Problem
-Design a map that supports `insert(key, val)` and `sum(prefix)`, returning the sum of all values whose keys start with `prefix`. Inserting an existing key replaces its old value.
+Design `MapSum`. `insert(key, val)` sets a string key to a value, replacing any previous value for that key. `sum(prefix)` returns the total value of all stored keys beginning with `prefix`.
+
+**Input**
+- A sequence of `MapSum()`, `insert(key, val)`, and `sum(prefix)` operations.
+
+**Output**
+- Operation results in order: constructor and `insert` return `null`, and `sum` returns integers. This judge compares exactly one result per operation.
+
+## Constraints
+- `1 <= key.length, prefix.length <= 50`
+- `key` and `prefix` contain lowercase English letters.
+- `1 <= val <= 1000`
+- At most `50` operations are performed.
 
 ## Examples
 ```text
 Input: ["MapSum","insert","sum","insert","sum"]
        [[],["apple",3],["ap"],["app",2],["ap"]]
 Output: [null,null,3,null,5]
-Explanation: "apple" contributes 3 and "app" contributes 2 to prefix "ap".
+Explanation: After `apple = 3`, prefix `ap` sums to `3`; adding `app = 2` makes the same prefix sum `5`.
 ```
 
 ## Understanding & Intuition

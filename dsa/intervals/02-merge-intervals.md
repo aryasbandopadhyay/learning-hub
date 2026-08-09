@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Microsoft, Bloomberg
 
 ## Problem
-Given an array of intervals, merge all overlapping intervals and return an array of non-overlapping intervals covering the same ranges. Constraints: `1 <= len(intervals) <= 10^4`, each interval has `start <= end`.
+Given closed intervals, merge every set of overlapping intervals so the output covers the same points without overlaps. Intervals that share a point overlap.
+
+**Input**
+- `intervals`: a list of `[start, end]` intervals.
+
+**Output**
+- Merged intervals sorted by start time. This judge compares exactly, so return ascending start order.
+
+## Constraints
+- `1 <= intervals.length <= 10^4`
+- `intervals[i].length == 2`
+- `0 <= start <= end <= 10^4`
 
 ## Examples
 ```text
 Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
 Output: [[1,6],[8,10],[15,18]]
-Explanation: [1,3] and [2,6] overlap.
+Explanation: `[1,3]` and `[2,6]` overlap and merge into `[1,6]`; the other ranges remain unchanged.
 ```
 
 ## Understanding & Intuition

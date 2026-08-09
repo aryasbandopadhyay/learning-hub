@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Meta, Microsoft, Google
 
 ## Problem
-Given the head of a singly linked list, return whether its values form a palindrome. The list has `1 <= n <= 10^5` nodes.
+Given a linked-list head, return whether its node values form a palindrome. The values must read the same from head to tail and tail to head.
+
+**Input**
+- `head`: head of a singly linked list.
+
+**Output**
+- A boolean: `True` if the value sequence is a palindrome, otherwise `False`.
+
+## Constraints
+- `1 <= number of nodes <= 10^5`
+- `0 <= Node.val <= 9`
 
 ## Examples
 ```text
 Input: head = [1,2,2,1]
 Output: true
-Explanation: The values read the same forward and backward.
+Explanation: The sequence `1, 2, 2, 1` is symmetric, so it is a palindrome.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Apple, Meta
 
 ## Problem
-Given the head of a linked list and a value `x`, partition the list so nodes with values less than `x` come before nodes greater than or equal to `x`. Preserve the original relative order in each partition.
+Given a linked-list head and value `x`, partition nodes so all values less than `x` come before all values greater than or equal to `x`. Preserve original relative order within both partitions.
+
+**Input**
+- `head`: head of a singly linked list.
+- `x`: pivot value.
+
+**Output**
+- The partitioned list head. This judge compares exactly: all `< x` nodes in original order, then all `>= x` nodes in original order.
+
+## Constraints
+- `0 <= number of nodes <= 200`
+- `-100 <= Node.val <= 100`
+- `-200 <= x <= 200`
 
 ## Examples
 ```text
 Input: head = [1,4,3,2,5,2], x = 3
 Output: [1,2,2,4,3,5]
-Explanation: Nodes less than 3 are moved before the rest while keeping stable order.
+Explanation: Values less than `3` are `1, 2, 2`; the remaining values `4, 3, 5` follow in original order.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft, Apple
 
 ## Problem
-Given points `points[i] = [xi, yi]` and integer `k`, return any `k` points closest to the origin `(0, 0)` by Euclidean distance. You may return the answer in any order. Constraints: `1 <= k <= len(points) <= 10^4`, `-10^4 <= xi, yi <= 10^4`.
+Given points in the plane, return the `k` points closest to `(0,0)`. Compare distance by squared Euclidean distance `x^2 + y^2`. If points tie at the boundary, any valid set is acceptable.
+
+**Input**
+- `points`: list of `[x, y]` coordinates.
+- `k`: number of points to return.
+
+**Output**
+- Any list containing exactly the `k` closest points. The judge accepts any order for this problem.
+
+## Constraints
+- `1 <= k <= points.length <= 10^4`
+- `points[i].length == 2`
+- `-10^4 <= x, y <= 10^4`
 
 ## Examples
 ```text
 Input: points = [[1,3],[-2,2]], k = 1
 Output: [[-2,2]]
-Explanation: Distance squared 8 is smaller than 10.
+Explanation: `[-2,2]` has squared distance `8`, which is smaller than `[1,3]` with squared distance `10`.
 ```
 
 ## Understanding & Intuition

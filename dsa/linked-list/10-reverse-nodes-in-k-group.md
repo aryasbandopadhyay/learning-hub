@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Google, Bloomberg
 
 ## Problem
-Given the head of a linked list, reverse nodes in groups of size `k` and return the modified list. If the final group has fewer than `k` nodes, leave it unchanged. Node values must not be changed; `1 <= k <= length <= 5000`.
+Given a linked-list head and integer `k`, reverse nodes in consecutive groups of exactly `k`. Leave a final group with fewer than `k` nodes unchanged, and rearrange links rather than values.
+
+**Input**
+- `head`: head of a singly linked list.
+- `k`: group size.
+
+**Output**
+- The head after group reversals. This judge compares exactly by traversal order.
+
+## Constraints
+- `1 <= number of nodes <= 5000`
+- `0 <= Node.val <= 1000`
+- `1 <= k <= number of nodes`
 
 ## Examples
 ```text
 Input: head = [1,2,3,4,5], k = 2
 Output: [2,1,4,3,5]
-Explanation: Each full pair is reversed, and the last single node remains unchanged.
+Explanation: Pairs `(1,2)` and `(3,4)` are reversed; the leftover node `5` remains in place.
 ```
 
 ## Understanding & Intuition

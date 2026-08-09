@@ -5,13 +5,23 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Given a string `s`, return `True` if it can be constructed by taking a non-empty substring and repeating it at least twice. Constraints: `1 <= len(s) <= 10^4`; `s` contains lowercase English letters.
+Given a string `s`, return whether it can be formed by repeating a proper substring two or more times. The repeated unit must be shorter than `s` and concatenate exactly to `s`.
+
+**Input**
+- `s`: a non-empty lowercase string.
+
+**Output**
+- A boolean: `True` if such a repeated substring exists, otherwise `False`.
+
+## Constraints
+- `1 <= s.length <= 10^4`
+- `s` contains lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "abab"
 Output: true
-Explanation: "ab" repeated twice forms "abab".
+Explanation: `ab` repeated twice forms `abab`, so the answer is true.
 ```
 
 ## Understanding & Intuition

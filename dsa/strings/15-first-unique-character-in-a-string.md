@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Bloomberg, Microsoft, Google
 
 ## Problem
-Given a string `s`, return the index of the first non-repeating character. If no such character exists, return `-1`. Constraints: `1 <= len(s) <= 10^5`; `s` contains lowercase English letters.
+Given a string `s`, return the index of the first character whose frequency in the whole string is exactly one. Return `-1` if no such character exists.
+
+**Input**
+- `s`: a lowercase English string.
+
+**Output**
+- The smallest index containing a unique character, or `-1`.
+
+## Constraints
+- `1 <= s.length <= 10^5`
+- `s` contains lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "leetcode"
 Output: 0
-Explanation: 'l' appears once and is the first unique character.
+Explanation: `l` appears once and is at index `0`, so it is the first unique character.
 ```
 
 ## Understanding & Intuition

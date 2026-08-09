@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given product names and a `searchWord`, return after each typed character up to three lexicographically smallest products that start with the current prefix. Product names and `searchWord` contain lowercase English letters.
+Given product names and a `searchWord`, return suggestions after each typed character. For each prefix of `searchWord`, include up to three products starting with that prefix in lexicographic order.
+
+**Input**
+- `products`: product names.
+- `searchWord`: word typed from left to right.
+
+**Output**
+- A list of suggestion lists, one per prefix. This judge compares exactly: process prefixes in order, and sort each inner list lexicographically with at most three products.
+
+## Constraints
+- `1 <= products.length <= 1000`
+- `1 <= products[i].length <= 3000`
+- `1 <= searchWord.length <= 1000`
+- Names and `searchWord` contain lowercase English letters.
+- Total product-name length is at most `2 * 10^4`.
 
 ## Examples
 ```text
 Input: products = ["mobile","mouse","moneypot","monitor","mousepad"], searchWord = "mouse"
 Output: [["mobile","moneypot","monitor"],["mobile","moneypot","monitor"],["mouse","mousepad"],["mouse","mousepad"],["mouse","mousepad"]]
-Explanation: Suggestions are recomputed for prefixes "m", "mo", "mou", "mous", and "mouse".
+Explanation: Prefixes `m` and `mo` have three lexicographic suggestions; later prefixes narrow the matches to `mouse` and `mousepad`.
 ```
 
 ## Understanding & Intuition

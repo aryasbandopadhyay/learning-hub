@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given CPU tasks represented by capital letters and a cooldown `n`, return the least number of intervals needed to execute all tasks so that identical tasks are separated by at least `n` intervals. The CPU may be idle. Constraints: `1 <= len(tasks) <= 10^4`, `0 <= n <= 100`.
+Given CPU tasks as capital letters and cooldown `n`, return the minimum time units needed to finish all tasks. Each unit either runs one task or idles; identical task letters must be separated by at least `n` units.
+
+**Input**
+- `tasks`: task identifiers.
+- `n`: cooldown between equal tasks.
+
+**Output**
+- The minimum total number of time units, including idle time.
+
+## Constraints
+- `1 <= tasks.length <= 10^4`
+- `tasks[i]` is an uppercase English letter.
+- `0 <= n <= 100`
 
 ## Examples
 ```text
 Input: tasks = ["A","A","A","B","B","B"], n = 2
 Output: 8
-Explanation: A -> B -> idle -> A -> B -> idle -> A -> B.
+Explanation: One optimal schedule is `A B idle A B idle A B`, taking `8` time units.
 ```
 
 ## Understanding & Intuition

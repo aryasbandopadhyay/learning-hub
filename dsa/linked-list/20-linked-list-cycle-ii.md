@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Google, Meta
 
 ## Problem
-Given the head of a linked list, return the node where a cycle begins, or `None` if there is no cycle. A cycle is formed by a tail node pointing to an earlier node, and the list may contain up to `10^4` nodes.
+Given the head of a singly linked list, return the node where a cycle begins, or `None` if no cycle exists. Examples may show `pos`, the index where the tail connects, but `pos` is not passed; return the actual entry node.
+
+**Input**
+- `head`: head of a possibly cyclic singly linked list.
+
+**Output**
+- The cycle-entry node, or `None` if there is no cycle. This judge compares exactly by node identity.
+
+## Constraints
+- `0 <= number of nodes <= 10^4`
+- `-10^5 <= Node.val <= 10^5`
+- `pos == -1` means no cycle; otherwise `0 <= pos < number of nodes`.
+- Do not modify the list.
 
 ## Examples
 ```text
 Input: head = [3,2,0,-4], pos = 1
 Output: tail connects to node index 1
-Explanation: The cycle starts at the node with value 2.
+Explanation: The tail links back to index `1` (value `2`), so that node is the cycle entry.
 ```
 
 ## Understanding & Intuition

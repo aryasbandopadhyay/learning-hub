@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Twitter
 
 ## Problem
-Design a simplified Twitter with `postTweet(userId, tweetId)`, `getNewsFeed(userId)`, `follow(followerId, followeeId)`, and `unfollow(followerId, followeeId)`. `getNewsFeed` returns up to 10 most recent tweet IDs posted by the user or users they follow. Constraints: at most `3 * 10^4` operations.
+Design a simplified Twitter. `postTweet` creates a tweet, `getNewsFeed` returns up to 10 most recent tweet IDs from the user and followed users, `follow` adds a follow relation, and `unfollow` removes it.
+
+**Input**
+- A sequence of `Twitter()`, `postTweet`, `getNewsFeed`, `follow`, and `unfollow` operations.
+
+**Output**
+- Results in order: non-query operations return `null`; `getNewsFeed` returns tweet IDs from most recent to least recent. This judge compares exactly, so feed order must be newest first.
+
+## Constraints
+- `1 <= userId, followerId, followeeId <= 500`
+- `0 <= tweetId <= 10^4`
+- At most `3 * 10^4` operations are performed.
+- Unfollowing a non-followed user has no effect.
 
 ## Examples
 ```text
 Input: ["Twitter","postTweet","getNewsFeed","follow","postTweet","getNewsFeed","unfollow","getNewsFeed"], [[],[1,5],[1],[1,2],[2,6],[1],[1,2],[1]]
 Output: [null,null,[5],null,null,[6,5],null,[5]]
-Explanation: User 1 sees their own tweets and followed user 2's tweets until unfollowing.
+Explanation: User `1` first sees tweet `5`; after following user `2`, newer tweet `6` appears before `5`; after unfollowing, only `5` remains.
 ```
 
 ## Understanding & Intuition

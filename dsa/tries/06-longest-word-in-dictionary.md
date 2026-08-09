@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Microsoft, Bloomberg
 
 ## Problem
-Given a list of lowercase words, return the longest word that can be built one character at a time by other words in the list. If there is a tie, return the lexicographically smallest answer.
+Given `words`, return the longest word that can be built one character at a time by other words in the list. Every prefix of the returned word must also be present. If tied, return the lexicographically smallest word.
+
+**Input**
+- `words`: unique lowercase words.
+
+**Output**
+- The longest buildable word. This judge compares exactly; break ties lexicographically ascending.
+
+## Constraints
+- `1 <= words.length <= 1000`
+- `1 <= words[i].length <= 30`
+- `words[i]` contains lowercase English letters.
+- All words are unique.
 
 ## Examples
 ```text
 Input: words = ["w","wo","wor","worl","world"]
 Output: "world"
-Explanation: Every prefix of "world" is present as a word.
+Explanation: `world` is buildable because `w`, `wo`, `wor`, and `worl` all exist.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,24 @@
 - **Asked at:** Meta, Amazon, Microsoft, Google
 
 ## Problem
-Given the head of a singly linked list `L0 -> L1 -> ... -> Ln`, reorder it in-place to `L0 -> Ln -> L1 -> Ln-1 -> ...`. Do not change node values; the list length is up to `50000`.
+Given `L0 -> L1 -> ... -> Ln`, reorder the same nodes as `L0 -> Ln -> L1 -> Ln-1 -> L2 -> ...`. Rearrange links; do not create a new value sequence only.
+
+**Input**
+- `head`: head of a singly linked list.
+
+**Output**
+- The reordered list. This judge compares exactly by traversing `head` after the call, so the required order alternates front, back, front, back.
+
+## Constraints
+- `1 <= number of nodes <= 5 * 10^4`
+- `1 <= Node.val <= 1000`
+- The list is singly linked and acyclic.
 
 ## Examples
 ```text
 Input: head = [1,2,3,4]
 Output: [1,4,2,3]
-Explanation: The last node is interleaved after the first node.
+Explanation: Keep `1`, then take the tail `4`, then `2`, then `3`, yielding the required alternating order.
 ```
 
 ## Understanding & Intuition

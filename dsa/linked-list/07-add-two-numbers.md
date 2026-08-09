@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Apple, Meta
 
 ## Problem
-Given two non-empty linked lists representing nonnegative integers in reverse digit order, add the numbers and return the sum as a linked list in reverse digit order. Each node contains one digit, and there are no leading zeroes except the number zero itself.
+Given two non-empty linked lists `l1` and `l2` representing non-negative integers in reverse digit order, return the sum as a linked list in the same reverse order. Each node stores one digit.
+
+**Input**
+- `l1`: first number, least significant digit first.
+- `l2`: second number, least significant digit first.
+
+**Output**
+- The head of the sum list. This judge compares exactly by traversal order.
+
+## Constraints
+- `1 <= length of l1, length of l2 <= 100`
+- `0 <= Node.val <= 9`
+- Numbers have no leading zeroes except `0` itself.
 
 ## Examples
 ```text
 Input: l1 = [2,4,3], l2 = [5,6,4]
 Output: [7,0,8]
-Explanation: 342 + 465 = 807.
+Explanation: The lists represent `342` and `465`; their sum is `807`, stored as `7 -> 0 -> 8`.
 ```
 
 ## Understanding & Intuition

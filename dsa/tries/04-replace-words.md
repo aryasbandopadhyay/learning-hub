@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Microsoft, Apple
 
 ## Problem
-Given a dictionary of root words and a sentence, replace every word in the sentence with the shortest root that is a prefix of that word. If no root matches, keep the word unchanged. Words are lowercase English strings separated by single spaces.
+Given a list of root words and a sentence, replace each sentence word with the shortest root that is a prefix of it. If no root matches, keep the original word. Preserve word order.
+
+**Input**
+- `dictionary`: lowercase root words.
+- `sentence`: lowercase words separated by single spaces.
+
+**Output**
+- The transformed sentence with single spaces. This judge compares exactly, so output words must remain in order.
+
+## Constraints
+- `1 <= dictionary.length <= 1000`
+- `1 <= dictionary[i].length <= 100`
+- `1 <= sentence.length <= 10^6`
+- Roots and sentence words contain lowercase English letters.
 
 ## Examples
 ```text
 Input: dictionary = ["cat","bat","rat"], sentence = "the cattle was rattled by the battery"
 Output: "the cat was rat by the bat"
-Explanation: "cattle", "rattled", and "battery" use their shortest matching roots.
+Explanation: `cattle`, `rattled`, and `battery` are replaced by shortest roots `cat`, `rat`, and `bat`.
 ```
 
 ## Understanding & Intuition

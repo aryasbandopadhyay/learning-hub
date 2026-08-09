@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Meta, Apple
 
 ## Problem
-Given intervals and queries, for each query return the size of the smallest interval `[left, right]` containing it, or `-1` if none exists. Interval size is `right - left + 1`. Constraints: `1 <= len(intervals), len(queries) <= 10^5`.
+Given closed intervals and query points, answer each query with the length of the smallest interval containing it. Interval length is `right - left + 1`; if none contains the query, answer `-1`.
+
+**Input**
+- `intervals`: closed intervals `[left, right]`.
+- `queries`: points to answer.
+
+**Output**
+- Answers in the original order of `queries`. This judge compares exactly, so do not reorder final answers.
+
+## Constraints
+- `1 <= intervals.length <= 10^5`
+- `1 <= queries.length <= 10^5`
+- `intervals[i].length == 2`
+- `1 <= left <= right <= 10^7`
+- `1 <= queries[i] <= 10^7`
 
 ## Examples
 ```text
 Input: intervals = [[1,4],[2,4],[3,6],[4,4]], queries = [2,3,4,5]
 Output: [3,3,1,4]
-Explanation: Query 4 is contained by [4,4], whose size is 1.
+Explanation: Queries `2` and `3` have best length `3`, query `4` uses `[4,4]` of length `1`, and query `5` uses length `4`.
 ```
 
 ## Understanding & Intuition

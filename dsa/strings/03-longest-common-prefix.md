@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Microsoft, Apple
 
 ## Problem
-Given an array of strings `strs`, return the longest string that is a prefix of every string in the array. Return `""` if no common prefix exists. Constraints: `1 <= len(strs) <= 200`; `0 <= len(strs[i]) <= 200`.
+Given a non-empty list of strings `strs`, return the longest prefix shared by every string. A prefix begins at index `0`; return `""` if no non-empty prefix is common.
+
+**Input**
+- `strs`: a list of strings.
+
+**Output**
+- The longest common prefix. This judge compares exactly, so return the prefix characters in left-to-right order.
+
+## Constraints
+- `1 <= strs.length <= 200`
+- `0 <= strs[i].length <= 200`
+- `strs[i]` contains lowercase English letters.
 
 ## Examples
 ```text
 Input: strs = ["flower","flow","flight"]
 Output: "fl"
-Explanation: Every word starts with "fl", and the next character differs.
+Explanation: All words start with `fl`; the next character differs, so `fl` is the longest shared prefix.
 ```
 
 ## Understanding & Intuition

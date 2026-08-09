@@ -5,13 +5,23 @@
 - **Asked at:** Meta, Amazon, Google, Microsoft
 
 ## Problem
-The count-and-say sequence starts with `"1"`. To generate the next term, read the previous term as groups of identical adjacent digits and say each group as `<count><digit>`. Given `n`, return the `n`th term. Constraints: `1 <= n <= 30`.
+Return the `n`th term of the count-and-say sequence. The sequence starts with `"1"`; each next term describes consecutive groups in the previous term as `<count><digit>`.
+
+**Input**
+- `n`: the one-based term index.
+
+**Output**
+- The `n`th sequence term as a string. This judge compares exactly, so return the generated digits in order.
+
+## Constraints
+- `1 <= n <= 30`
+- Generated terms contain only digit characters.
 
 ## Examples
 ```text
 Input: n = 4
 Output: "1211"
-Explanation: 1 -> 11 -> 21 -> 1211.
+Explanation: The first four terms are `1`, `11`, `21`, and `1211`, so term four is `1211`.
 ```
 
 ## Understanding & Intuition

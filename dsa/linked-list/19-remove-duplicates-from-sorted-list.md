@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Microsoft, Bloomberg, Apple
 
 ## Problem
-Given the head of a sorted linked list, delete duplicate values so each value appears only once and return the sorted list. The list length is up to `300`, and values are in nondecreasing order.
+Given the head of a sorted linked list, delete duplicate values so each value appears once and return the head. Keep the first node for each value.
+
+**Input**
+- `head`: head of a sorted singly linked list.
+
+**Output**
+- The de-duplicated sorted list. This judge compares exactly by traversal order.
+
+## Constraints
+- `0 <= number of nodes <= 300`
+- `-100 <= Node.val <= 100`
+- The list is sorted in non-decreasing order.
 
 ## Examples
 ```text
 Input: head = [1,1,2,3,3]
 Output: [1,2,3]
-Explanation: Consecutive duplicate values are collapsed to one node each.
+Explanation: Adjacent duplicates `1` and `3` are collapsed, leaving `1 -> 2 -> 3`.
 ```
 
 ## Understanding & Intuition

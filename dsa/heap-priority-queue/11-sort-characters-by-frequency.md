@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Bloomberg
 
 ## Problem
-Given a string `s`, sort it in decreasing order based on character frequency and return the resulting string. If multiple answers are possible for equal frequencies, return any of them. Constraints: `1 <= len(s) <= 5 * 10^5`, characters are ASCII.
+Given a string `s`, rearrange its characters by non-increasing frequency. Characters that occur more often must appear before less frequent characters; ties may be in any order.
+
+**Input**
+- `s`: the string to sort by character frequency.
+
+**Output**
+- A string containing exactly the characters of `s`, grouped by character and ordered by descending frequency. The judge accepts any valid tie order.
+
+## Constraints
+- `1 <= s.length <= 5 * 10^5`
+- `s` contains uppercase letters, lowercase letters, and digits.
 
 ## Examples
 ```text
 Input: s = "tree"
 Output: "eert"
-Explanation: "e" appears twice, while "t" and "r" appear once.
+Explanation: `e` appears twice, while `t` and `r` appear once, so both `e` characters come first.
 ```
 
 ## Understanding & Intuition

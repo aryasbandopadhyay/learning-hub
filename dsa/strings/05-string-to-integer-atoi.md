@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Microsoft, Meta, Google
 
 ## Problem
-Implement `myAtoi(s)`, which converts a string to a signed 32-bit integer. Ignore leading spaces, read an optional `+` or `-`, then read consecutive digits until a non-digit; if no digits are read return `0`. Clamp values below `-2^31` to `-2^31` and above `2^31 - 1` to `2^31 - 1`. Constraints: `0 <= len(s) <= 200`.
+Convert string `s` to a 32-bit signed integer. Skip leading spaces, read one optional sign, then read consecutive digits until the first non-digit. If no digits are read, return `0`; clamp overflow to `[-2^31, 2^31 - 1]`.
+
+**Input**
+- `s`: the string to parse.
+
+**Output**
+- The parsed and clamped integer.
+
+## Constraints
+- `0 <= s.length <= 200`
+- `s` may contain letters, digits, spaces, signs, and punctuation.
+- Return values are in `[-2^31, 2^31 - 1]`.
 
 ## Examples
 ```text
 Input: s = "   -42"
 Output: -42
-Explanation: Leading spaces are skipped, '-' sets the sign, and digits form 42.
+Explanation: Leading spaces are ignored, the minus sign is applied, and the digits `42` produce `-42`.
 ```
 
 ## Understanding & Intuition

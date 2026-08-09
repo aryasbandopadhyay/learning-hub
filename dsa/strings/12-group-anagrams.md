@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Meta, Google, Microsoft
 
 ## Problem
-Given an array of strings `strs`, group the anagrams together and return the groups in any order. Constraints: `1 <= len(strs) <= 10^4`; `0 <= len(strs[i]) <= 100`; strings contain lowercase English letters.
+Given a list of strings `strs`, group strings that are anagrams of each other. Two strings are in the same group when their lowercase letter counts are identical.
+
+**Input**
+- `strs`: a list of lowercase English strings.
+
+**Output**
+- A list of anagram groups. This judge compares exactly: groups appear when their first member is first seen in `strs`, and words inside each group keep input order.
+
+## Constraints
+- `1 <= strs.length <= 10^4`
+- `0 <= strs[i].length <= 100`
+- `strs[i]` contains lowercase English letters.
 
 ## Examples
 ```text
 Input: strs = ["eat","tea","tan","ate","nat","bat"]
 Output: [["eat","tea","ate"],["tan","nat"],["bat"]]
-Explanation: Words with the same letter counts are grouped together.
+Explanation: `eat`, `tea`, and `ate` share one signature; `tan` and `nat` share another; `bat` stands alone.
 ```
 
 ## Understanding & Intuition

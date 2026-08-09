@@ -5,13 +5,26 @@
 - **Asked at:** Google, Meta, Amazon, Microsoft
 
 ## Problem
-Given an array of words and an integer `maxWidth`, format the text so each line has exactly `maxWidth` characters and is fully justified. Pack as many words as possible on each line. For non-last lines, distribute spaces as evenly as possible; left slots get extra spaces. The last line is left-justified. Constraints: `1 <= len(words) <= 300`; `1 <= len(words[i]) <= 20`; `1 <= maxWidth <= 100`.
+Given words and a width `maxWidth`, format text so each output line has exactly `maxWidth` characters. Pack words greedily. Non-final lines distribute spaces as evenly as possible, with earlier gaps receiving extra spaces; the last line and one-word lines are left-justified.
+
+**Input**
+- `words`: words in reading order.
+- `maxWidth`: required line width.
+
+**Output**
+- A list of justified lines in order. This judge compares exactly, so every space and trailing pad character must be correct.
+
+## Constraints
+- `1 <= words.length <= 300`
+- `1 <= words[i].length <= 20`
+- `1 <= maxWidth <= 100`
+- `words[i].length <= maxWidth`
 
 ## Examples
 ```text
 Input: words = ["This","is","an","example","of","text","justification."], maxWidth = 16
 Output: ["This    is    an","example  of text","justification.  "]
-Explanation: Each line has width 16 and spaces are distributed by the rules.
+Explanation: The first line spreads eight spaces across two gaps, while the final line is left-justified and padded.
 ```
 
 ## Understanding & Intuition

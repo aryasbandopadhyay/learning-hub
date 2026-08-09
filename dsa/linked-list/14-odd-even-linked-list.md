@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Microsoft, Bloomberg, Meta
 
 ## Problem
-Given the head of a linked list, group all nodes at odd indices followed by nodes at even indices and return the reordered list. Indices are 1-based, node values are not parity-checked, and the relative order inside each group must remain unchanged.
+Given a linked-list head, group nodes at odd one-based positions first, followed by nodes at even positions. Preserve relative order inside each group.
+
+**Input**
+- `head`: head of a singly linked list.
+
+**Output**
+- The reordered head. This judge compares exactly: odd-indexed nodes in order, then even-indexed nodes in order.
+
+## Constraints
+- `0 <= number of nodes <= 10^4`
+- `-10^6 <= Node.val <= 10^6`
 
 ## Examples
 ```text
 Input: head = [1,2,3,4,5]
 Output: [1,3,5,2,4]
-Explanation: Odd-position nodes come before even-position nodes.
+Explanation: Odd positions are `1, 3, 5`; even positions are `2, 4`; concatenating them gives the output.
 ```
 
 ## Understanding & Intuition

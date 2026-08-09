@@ -5,14 +5,25 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Design a trie supporting `insert(word)`, `search(word)`, and `startsWith(prefix)` for lowercase English strings. Each operation should handle words/prefixes of length up to about `2000`, with many operations over the same data structure.
+Design a `Trie` for lowercase words. `insert(word)` stores a complete word, `search(word)` returns whether that complete word was inserted, and `startsWith(prefix)` returns whether any inserted word has the prefix.
+
+**Input**
+- A sequence of `Trie()`, `insert(word)`, `search(word)`, and `startsWith(prefix)` operations.
+
+**Output**
+- Operation results in order: constructor and `insert` return `null`, queries return booleans. This judge compares exactly one result per operation.
+
+## Constraints
+- `1 <= word.length, prefix.length <= 2000`
+- `word` and `prefix` contain lowercase English letters.
+- At most `3 * 10^4` operations are performed.
 
 ## Examples
 ```text
 Input: ["Trie","insert","search","search","startsWith","insert","search"]
        [[],["apple"],["apple"],["app"],["app"],["app"],["app"]]
 Output: [null,null,true,false,true,null,true]
-Explanation: Insert "apple"; "app" is only a prefix until it is inserted.
+Explanation: After inserting `apple`, `apple` is a word. `app` is only a prefix until it is inserted later.
 ```
 
 ## Understanding & Intuition

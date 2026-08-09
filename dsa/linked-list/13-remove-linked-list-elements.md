@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Apple, Adobe
 
 ## Problem
-Given the head of a linked list and an integer `val`, remove all nodes whose value equals `val` and return the new head. The list has up to `10^4` nodes.
+Given a linked-list head and integer `val`, remove every node whose value equals `val` and return the head of the remaining list. Preserve the order of all other nodes.
+
+**Input**
+- `head`: head of a singly linked list.
+- `val`: value to remove.
+
+**Output**
+- The filtered list head. This judge compares exactly by traversal order.
+
+## Constraints
+- `0 <= number of nodes <= 10^4`
+- `1 <= Node.val <= 50`
+- `0 <= val <= 50`
 
 ## Examples
 ```text
 Input: head = [1,2,6,3,4,5,6], val = 6
 Output: [1,2,3,4,5]
-Explanation: Both nodes with value 6 are removed.
+Explanation: Both nodes with value `6` are removed, and all other values keep their original order.
 ```
 
 ## Understanding & Intuition

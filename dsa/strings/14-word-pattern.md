@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Uber, Google, Microsoft
 
 ## Problem
-Given a pattern string and a space-separated string `s`, return `True` if `s` follows the same pattern. Each pattern character must map to exactly one word, and each word must map to exactly one pattern character. Constraints: `1 <= len(pattern) <= 300`; `s` contains lowercase words separated by single spaces.
+Given a pattern and a space-separated string `s`, decide whether the words follow the pattern. Each pattern character must map to one word, and each word must map back to one character.
+
+**Input**
+- `pattern`: lowercase pattern characters.
+- `s`: words separated by spaces.
+
+**Output**
+- A boolean: `True` if a bijection exists between pattern characters and words, otherwise `False`.
+
+## Constraints
+- `1 <= pattern.length <= 300`
+- `1 <= s.length <= 3000`
+- `pattern` and words in `s` contain lowercase English letters.
 
 ## Examples
 ```text
 Input: pattern = "abba", s = "dog cat cat dog"
 Output: true
-Explanation: 'a' maps to "dog" and 'b' maps to "cat".
+Explanation: The consistent mapping is `a -> dog` and `b -> cat` for all four positions.
 ```
 
 ## Understanding & Intuition
