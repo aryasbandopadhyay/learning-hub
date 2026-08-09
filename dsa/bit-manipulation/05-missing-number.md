@@ -5,13 +5,33 @@
 - **Asked at:** Amazon, Microsoft, Google, Meta
 
 ## Problem
-Given an array `nums` containing `n` distinct numbers in the range `[0, n]`, return the only number in the range that is missing from the array. Constraints: `1 <= n <= 10^4`, `0 <= nums[i] <= n`, and all numbers are unique.
+You are given a list `nums` containing `n` distinct numbers chosen from the range `0` through `n`. Exactly one number from that range is missing.
+
+Find and return the missing number.
+
+**Input**
+- `nums`: a list of `n` distinct integers from the inclusive range `[0, n]`.
+
+**Output**
+- The single integer in `[0, n]` that does not appear in `nums`.
+
+## Constraints
+- `n == nums.length`
+- `1 <= n <= 10^4`
+- `0 <= nums[i] <= n`
+- All values in `nums` are distinct.
 
 ## Examples
 ```text
 Input: nums = [3,0,1]
 Output: 2
-Explanation: The values should be 0, 1, 2, 3, and 2 is missing.
+Explanation: Since the list has length `3`, the complete range should be `{0,1,2,3}`. The values `3`, `0`, and `1` are present, so `2` is missing.
+```
+
+```text
+Input: nums = [1]
+Output: 0
+Explanation: The range is `{0,1}`, and `0` is the absent value.
 ```
 
 ## Understanding & Intuition

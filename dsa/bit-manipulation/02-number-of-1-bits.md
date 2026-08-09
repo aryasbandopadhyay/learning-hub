@@ -5,13 +5,30 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given a positive integer `n`, return the number of set bits in its binary representation. Treat `n` as an unsigned 32-bit integer. Constraints: `0 <= n <= 2^32 - 1`.
+Given a non-negative integer `n`, count how many `1` bits appear in its binary representation.
+
+This count is also called the Hamming weight of `n`.
+
+**Input**
+- `n`: a non-negative integer interpreted as a 32-bit unsigned value.
+
+**Output**
+- The exact number of bit positions whose value is `1`.
+
+## Constraints
+- `0 <= n <= 2^32 - 1`
 
 ## Examples
 ```text
 Input: n = 11
 Output: 3
-Explanation: Binary 1011 has three 1 bits.
+Explanation: The binary representation of `11` is `1011`, which has ones in three positions.
+```
+
+```text
+Input: n = 0
+Output: 0
+Explanation: Zero has no set bits.
 ```
 
 ## Understanding & Intuition

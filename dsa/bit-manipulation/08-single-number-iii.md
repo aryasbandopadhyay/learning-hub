@@ -5,13 +5,31 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given an integer array `nums` where exactly two elements appear once and all other elements appear exactly twice, return the two single elements in any order. Constraints: `2 <= len(nums) <= 3 * 10^4`, `-2^31 <= nums[i] <= 2^31 - 1`.
+Given an integer list `nums`, exactly two values appear once and every other value appears exactly twice. Return the two single values.
+
+**Input**
+- `nums`: a list of integers containing pairs plus two unpaired values.
+
+**Output**
+- A two-element list containing the two values that appear exactly once. This judge compares exactly: return first the single value whose bit is set at the lowest set bit of the XOR of the two singles, then the other single value.
+
+## Constraints
+- `2 <= nums.length <= 3 * 10^4`
+- `nums.length` is even.
+- `-2^31 <= nums[i] <= 2^31 - 1`
+- Exactly two values appear once; every other value appears exactly twice.
 
 ## Examples
 ```text
 Input: nums = [1,2,1,3,2,5]
 Output: [3,5]
-Explanation: 3 and 5 appear once; all other values appear twice.
+Explanation: The paired values `1` and `2` cancel out. The two singles are `3` and `5`; the required ordering puts `3` first because it has the lowest differing set bit between the two singles.
+```
+
+```text
+Input: nums = [4,4,7,9]
+Output: [7,9]
+Explanation: `4` appears twice, leaving `7` and `9`; `7` is returned first by the required bit-partition ordering.
 ```
 
 ## Understanding & Intuition

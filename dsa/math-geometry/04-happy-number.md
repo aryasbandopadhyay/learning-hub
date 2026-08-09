@@ -5,13 +5,30 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-Given a positive integer `n`, repeatedly replace it by the sum of squares of its digits. Return `True` if the process reaches `1`; otherwise it cycles and return `False`. Constraints: `1 <= n <= 2^31 - 1`.
+A positive integer is called **happy** if repeatedly replacing it by the sum of the squares of its decimal digits eventually reaches `1`.
+
+Given an integer `n`, determine whether it is happy. If the process enters a cycle that does not contain `1`, then `n` is not happy.
+
+**Input**
+- `n`: a positive integer.
+
+**Output**
+- `True` if the digit-square process reaches `1`; otherwise `False`.
+
+## Constraints
+- `1 <= n <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: n = 19
 Output: True
-Explanation: 1²+9²=82, 8²+2²=68, 6²+8²=100, 1²=1.
+Explanation: Starting from `19`: `1^2 + 9^2 = 82`, then `8^2 + 2^2 = 68`, then `6^2 + 8^2 = 100`, then `1^2 + 0^2 + 0^2 = 1`, so the process reaches `1`.
+```
+
+```text
+Input: n = 2
+Output: False
+Explanation: The sequence eventually repeats without reaching `1`, so `2` is not happy.
 ```
 
 ## Understanding & Intuition

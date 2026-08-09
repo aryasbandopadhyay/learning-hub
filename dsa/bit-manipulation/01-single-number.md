@@ -5,13 +5,31 @@
 - **Asked at:** Amazon, Google, Microsoft, Apple
 
 ## Problem
-Given a non-empty integer array `nums`, every element appears exactly twice except for one element that appears once. Return the single element. Constraints: `1 <= len(nums) <= 3 * 10^4`, `-3 * 10^4 <= nums[i] <= 3 * 10^4`, and exactly one value appears once.
+Given a non-empty integer list `nums`, every value appears exactly twice except for one value that appears exactly once. Find that single value.
+
+**Input**
+- `nums`: a list of integers containing pairs plus one unpaired value.
+
+**Output**
+- The integer that appears exactly once.
+
+## Constraints
+- `1 <= nums.length <= 3 * 10^4`
+- `nums.length` is odd.
+- `-3 * 10^4 <= nums[i] <= 3 * 10^4`
+- Exactly one value appears once; every other value appears exactly twice.
 
 ## Examples
 ```text
 Input: nums = [4,1,2,1,2]
 Output: 4
-Explanation: Every value appears twice except 4.
+Explanation: The values `1` and `2` each occur twice and cancel as pairs. The only value with one occurrence is `4`.
+```
+
+```text
+Input: nums = [1]
+Output: 1
+Explanation: With only one element, that element is the single number.
 ```
 
 ## Understanding & Intuition

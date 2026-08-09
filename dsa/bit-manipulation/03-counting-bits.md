@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given an integer `n`, return an array `ans` of length `n + 1` where `ans[i]` is the number of `1` bits in the binary representation of `i`. Constraints: `0 <= n <= 10^5`.
+Given an integer `n`, compute the number of `1` bits in every integer from `0` through `n`.
+
+**Input**
+- `n`: a non-negative integer upper bound.
+
+**Output**
+- A list `ans` of length `n + 1`, where `ans[i]` is the number of `1` bits in the binary representation of `i`. This judge compares exactly, so entries must be returned in increasing integer order from index `0` to index `n`.
+
+## Constraints
+- `0 <= n <= 10^5`
 
 ## Examples
 ```text
 Input: n = 5
 Output: [0,1,1,2,1,2]
-Explanation: 0, 1, 10, 11, 100, 101 have bit counts 0, 1, 1, 2, 1, 2.
+Explanation: The numbers `0` through `5` are `0`, `1`, `10`, `11`, `100`, and `101` in binary, with set-bit counts `0,1,1,2,1,2` in that exact index order.
+```
+
+```text
+Input: n = 0
+Output: [0]
+Explanation: The only required value is the bit count of `0`.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,33 @@
 - **Asked at:** Amazon, Microsoft, Google, Meta
 
 ## Problem
-Given an `m x n` matrix, return all elements in spiral order. Constraints: `1 <= m, n <= 10`, values fit in a signed integer.
+Given an `m x n` matrix, return all of its elements in **clockwise spiral order**.
+
+Start at the top-left corner. Traverse the current top row left to right, the current right column top to bottom, the current bottom row right to left, and the current left column bottom to top. After each outer layer is completed, move inward and repeat until every element has been visited exactly once.
+
+**Input**
+- `matrix`: a 2-D list of integers with `m` rows and `n` columns.
+
+**Output**
+- A list containing every matrix value in the exact clockwise spiral traversal order.
+
+## Constraints
+- `m == matrix.length`
+- `n == matrix[i].length`
+- `1 <= m, n <= 10`
+- `-100 <= matrix[i][j] <= 100`
 
 ## Examples
 ```text
 Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [1,2,3,6,9,8,7,4,5]
-Explanation: Traverse right, down, left, up, then shrink inward.
+Explanation: Visit the outer layer as `1,2,3,6,9,8,7,4`, then move into the remaining center cell `5`. Concatenating those visits gives the required order.
+```
+
+```text
+Input: matrix = [[1,2,3],[4,5,6]]
+Output: [1,2,3,6,5,4]
+Explanation: Traverse the top row `1,2,3`, then the right edge `6`, then the bottom row in reverse as `5,4`.
 ```
 
 ## Understanding & Intuition

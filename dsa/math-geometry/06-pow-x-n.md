@@ -5,13 +5,35 @@
 - **Asked at:** Meta, Google, Amazon, Microsoft
 
 ## Problem
-Implement `pow(x, n)`, returning `x` raised to integer power `n`. Constraints: `-100 < x < 100`, `-2^31 <= n <= 2^31 - 1`, result fits in a double.
+Implement exponentiation for a floating-point base `x` raised to an integer exponent `n`.
+
+Return the mathematical value `x^n`. If `n` is negative, the result is the reciprocal of `x^abs(n)`. If `n` is zero, the result is `1.0`.
+
+**Input**
+- `x`: the floating-point base.
+- `n`: the integer exponent, which may be negative, zero, or positive.
+
+**Output**
+- The floating-point value of `x` raised to `n`.
+
+## Constraints
+- `-100.0 < x < 100.0`
+- `-2^31 <= n <= 2^31 - 1`
+- `n` is an integer.
+- Either `x` is not `0`, or `n` is positive.
+- The answer is expected to fit in a normal floating-point range.
 
 ## Examples
 ```text
 Input: x = 2.0, n = 10
 Output: 1024.0
-Explanation: 2 multiplied by itself 10 times is 1024.
+Explanation: Since `n` is positive, multiply ten copies of `2.0`: `2^10 = 1024`, so the returned value is `1024.0`.
+```
+
+```text
+Input: x = 2.0, n = -2
+Output: 0.25
+Explanation: A negative exponent takes the reciprocal: `2^-2 = 1 / 4 = 0.25`.
 ```
 
 ## Understanding & Intuition

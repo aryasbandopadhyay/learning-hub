@@ -5,13 +5,33 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an array of `k` sorted linked-list heads, merge all lists into one sorted linked list and return its head. The total number of nodes is `N`, and `0 <= k <= 10^4`.
+Given an array of `k` linked-list heads, merge all nodes into one sorted linked list.
+
+Each input linked list is sorted in non-decreasing order. The returned list must contain every input node value exactly once in non-decreasing order.
+
+**Input**
+- `lists`: a list of linked-list heads. Each list may be empty and is sorted when non-empty.
+
+**Output**
+- The head of a merged linked list sorted in non-decreasing order.
+
+## Constraints
+- `0 <= k <= 10^4`
+- `0 <= total number of nodes <= 10^4`
+- `-10^4 <= Node.val <= 10^4`
+- Each input linked list is sorted in non-decreasing order.
 
 ## Examples
 ```text
 Input: lists = [[1,4,5],[1,3,4],[2,6]]
 Output: [1,1,2,3,4,4,5,6]
-Explanation: All nodes from the sorted lists are merged into one sorted order.
+Explanation: Taking the smallest available value from the list heads and continuing through all nodes yields `1,1,2,3,4,4,5,6`.
+```
+
+```text
+Input: lists = []
+Output: []
+Explanation: No input lists means the merged list is empty.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,34 @@
 - **Asked at:** Amazon, Microsoft, Bloomberg, Adobe
 
 ## Problem
-Given the heads of two singly linked lists, return the node where they intersect, or `None` if they do not intersect. Intersection is by node reference, not by value, and the lists must remain unchanged.
+Given the heads of two singly linked lists, return the node where the two lists intersect.
+
+Intersection is based on **node identity**, not node value. Once two lists share a node, every node after it is also shared. If the lists do not intersect, return `None`. The original lists must not be modified.
+
+**Input**
+- `headA`: the head of the first linked list.
+- `headB`: the head of the second linked list.
+
+**Output**
+- The shared node object where the lists first intersect, or `None` if there is no intersection.
+
+## Constraints
+- `0 <= length of listA, length of listB <= 3 * 10^4`
+- `1 <= Node.val <= 10^5`
+- The linked lists contain no cycles.
+- The lists must retain their original structure after the function returns.
 
 ## Examples
 ```text
 Input: listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], intersectVal = 8
 Output: Intersected at '8'
-Explanation: Both lists share the same node object with value 8.
+Explanation: Although both lists have earlier nodes with different identities, they eventually point to the exact same node whose value is `8`. That shared node is the intersection to return.
+```
+
+```text
+Input: listA = [1,9,1,2,4], listB = [3,2,4], intersectVal = 2
+Output: Intersected at '2'
+Explanation: The lists first share the node with value `2`, so that node is returned.
 ```
 
 ## Understanding & Intuition

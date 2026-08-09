@@ -5,13 +5,36 @@
 - **Asked at:** Google, Amazon, Meta, Uber
 
 ## Problem
-Given equations a/b=value, answer division queries or -1.0 if unknown. Constraints: equations, queries <= 20.
+You are given equations of the form `A / B = value`. Use them to answer division queries.
+
+Each variable is a string. Equations can be combined transitively: if `a / b = 2` and `b / c = 3`, then `a / c = 6`. For a query involving an unknown variable or a disconnected component, return `-1.0`.
+
+**Input**
+- `equations`: a list of `[numerator, denominator]` variable pairs.
+- `values`: a list where `values[i]` is the quotient for `equations[i]`.
+- `queries`: a list of `[numerator, denominator]` pairs to evaluate.
+
+**Output**
+- A list of floating-point answers in the exact same order as `queries`.
+
+## Constraints
+- `1 <= equations.length <= 20`
+- `equations.length == values.length`
+- `1 <= queries.length <= 20`
+- Variable names contain lowercase letters and digits and have length at least `1`.
+- `0.0 < values[i] <= 20.0`
 
 ## Examples
 ```text
 Input: equations = [["a","b"],["b","c"]], values = [2.0,3.0], queries = [["a","c"],["c","a"],["x","x"]]
 Output: [6.0,0.1666666667,-1.0]
-Explanation: a/c = a/b * b/c.
+Explanation: `a/c` is found by multiplying `a/b` and `b/c`, giving `6.0`. The reverse query `c/a` is its reciprocal, and `x/x` is unknown because `x` never appears in the equations.
+```
+
+```text
+Input: equations = [["a","b"]], values = [2.0], queries = [["b","a"],["a","e"]]
+Output: [0.5,-1.0]
+Explanation: `b/a` is the reciprocal of `a/b`, while `e` is unknown.
 ```
 
 ## Understanding & Intuition

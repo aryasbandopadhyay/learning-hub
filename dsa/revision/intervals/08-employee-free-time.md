@@ -5,13 +5,33 @@
 - **Asked at:** Google, Amazon, Meta, Airbnb
 
 ## Problem
-Given each employee's sorted, non-overlapping work schedule, return finite intervals when all employees are free. In LeetCode, intervals are `Interval` objects with `start` and `end` fields. Constraints: total number of intervals is up to `10^4`.
+Each employee has a sorted list of non-overlapping busy intervals. Find the finite time intervals when **all** employees are free.
+
+Intervals are open for free-time purposes between busy blocks: if one busy interval ends at `3` and the next global busy interval starts at `4`, then `[3,4]` is common free time. Do not include intervals before the first busy interval or after the last busy interval.
+
+**Input**
+- `schedule`: a list where `schedule[i]` is employee `i`'s sorted busy intervals `[start, end]`.
+
+**Output**
+- A list of common free intervals `[start, end]` sorted by increasing start time.
+
+## Constraints
+- `1 <= schedule.length <= 50`
+- `1 <= schedule[i].length <= 50`
+- `0 <= start < end <= 10^8`
+- Each employee's intervals are sorted and non-overlapping.
 
 ## Examples
 ```text
 Input: schedule = [[[1,2],[5,6]],[[1,3]],[[4,10]]]
 Output: [[3,4]]
-Explanation: All employees are free only between time 3 and time 4.
+Explanation: The union of all busy time covers `[1,3]` and `[4,10]`. The only finite gap between those merged busy intervals is `[3,4]`, so that is when everyone is free.
+```
+
+```text
+Input: schedule = [[[1,3]],[[2,4]]]
+Output: []
+Explanation: The combined busy time is continuous from `1` to `4`, so there is no finite common free interval.
 ```
 
 ## Understanding & Intuition

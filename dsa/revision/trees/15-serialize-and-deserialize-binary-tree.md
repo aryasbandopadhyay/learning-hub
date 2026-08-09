@@ -5,13 +5,33 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Serialize and Deserialize Binary Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Design methods to serialize and deserialize a binary tree.
+
+`serialize(root)` should convert the tree into a string representation. `deserialize(data)` should rebuild and return a binary tree with the same structure and node values. The exact internal string format is up to you as long as your two methods are compatible and can represent null children unambiguously.
+
+**Input**
+- `root`: the root of a binary tree for `serialize`.
+- `data`: a string previously produced by `serialize`, for `deserialize`.
+
+**Output**
+- `serialize` returns a string. `deserialize` returns the root of a tree that serializes to the same structure and values as the original tree.
+
+## Constraints
+- `0 <= number of nodes <= 10^4`
+- `-1000 <= Node.val <= 1000`
+- The tree may be empty, balanced, skewed, or contain duplicate values.
 
 ## Examples
 ```text
 Input: root = [1,2,3,None,None,4,5]
 Output: [1,2,3,None,None,4,5]
-Explanation: Deserializing the serialized string rebuilds the same tree.
+Explanation: The serialized data must include enough null-child information to distinguish this shape from other trees. Deserializing that data reconstructs the same level-order structure and values.
+```
+
+```text
+Input: root = []
+Output: []
+Explanation: An empty tree can be serialized with an empty/null marker and deserialized back to no root node.
 ```
 
 ## Understanding & Intuition

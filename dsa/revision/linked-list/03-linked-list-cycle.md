@@ -5,13 +5,32 @@
 - **Asked at:** Amazon, Microsoft, Bloomberg, Google
 
 ## Problem
-Given the head of a linked list, determine whether the list contains a cycle. A cycle exists if following `next` pointers can revisit a node; the list may contain up to `10000` nodes.
+Given the head of a singly linked list, determine whether the list contains a cycle.
+
+A cycle exists if following `next` pointers can eventually return to a node that was already visited. In examples, `pos` describes the index where the tail connects back; `pos = -1` means the tail points to `None`. The `pos` value is not passed to the function.
+
+**Input**
+- `head`: the head node of a singly linked list, or `None`.
+
+**Output**
+- `true` if the linked list has a cycle; otherwise `false`.
+
+## Constraints
+- `0 <= number of nodes <= 10^4`
+- `-10^5 <= Node.val <= 10^5`
+- `pos == -1` or `0 <= pos < number of nodes` in serialized examples.
 
 ## Examples
 ```text
 Input: head = [3,2,0,-4], pos = 1
 Output: true
-Explanation: The tail connects back to the node with value 2.
+Explanation: The tail node points back to the node at index `1` (value `2`), so following `next` pointers loops forever instead of reaching `None`.
+```
+
+```text
+Input: head = [1], pos = -1
+Output: false
+Explanation: The only node points to `None`, so there is no cycle.
 ```
 
 ## Understanding & Intuition

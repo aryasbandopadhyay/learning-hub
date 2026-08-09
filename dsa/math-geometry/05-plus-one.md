@@ -5,13 +5,32 @@
 - **Asked at:** Google, Amazon, Microsoft, Apple
 
 ## Problem
-Given an array of decimal digits representing a non-negative integer without leading zeros, return the digits after adding one. Constraints: `1 <= digits.length <= 100`.
+You are given a non-empty list `digits` representing a non-negative integer. Each element is one decimal digit, and the most significant digit appears first.
+
+Add one to the represented integer and return the resulting digits in the same most-significant to least-significant order. The input has no leading zeroes unless the number itself is `0`.
+
+**Input**
+- `digits`: a list of decimal digits representing one integer.
+
+**Output**
+- A list of digits for the value `digits + 1`, in exact left-to-right number order.
+
+## Constraints
+- `1 <= digits.length <= 100`
+- `0 <= digits[i] <= 9`
+- `digits` does not contain leading zeroes unless it is exactly `[0]`.
 
 ## Examples
 ```text
 Input: digits = [9,9]
 Output: [1,0,0]
-Explanation: 99 + 1 = 100.
+Explanation: The number is `99`. Adding one creates a carry through both digits and adds a new leading `1`, so the result is `[1,0,0]`.
+```
+
+```text
+Input: digits = [1,2,3]
+Output: [1,2,4]
+Explanation: The represented number is `123`, and `123 + 1 = 124`.
 ```
 
 ## Understanding & Intuition

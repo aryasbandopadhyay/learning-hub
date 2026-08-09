@@ -5,13 +5,36 @@
 - **Asked at:** Google, Meta, Amazon
 
 ## Problem
-Design a data structure with `add(point)` and `count(point)` for axis-aligned squares. Points are integer coordinates in `[0, 1000]`; duplicate points count as multiple choices.
+Design a data structure that stores points on a 2-D integer grid and answers square-count queries.
+
+`add(point)` inserts one occurrence of `point = [x, y]`. Duplicate points are allowed and each occurrence counts separately. `count(point)` returns how many ways the query point can be combined with three previously added points to form an **axis-aligned square** with positive side length. The query point does not need to have been added before.
+
+**Input**
+- A sequence of operations on `DetectSquares`:
+  - `DetectSquares()`: create an empty structure.
+  - `add(point)`: add one occurrence of `[x, y]`.
+  - `count(point)`: count axis-aligned squares using `[x, y]` as one corner.
+
+**Output**
+- For each `count` operation, return the number of valid squares for that query. Constructor and `add` operations return no value.
+
+## Constraints
+- `point.length == 2`
+- `0 <= x, y <= 1000`
+- At most `3000` calls are made in total to `add` and `count`.
+- Duplicate added points are valid and multiply the number of square choices.
 
 ## Examples
 ```text
 Input: add([3,10]), add([11,2]), add([3,2]), count([11,10])
 Output: 1
-Explanation: These four points form one axis-aligned square.
+Explanation: The query point `[11,10]` and the added points `[3,10]`, `[11,2]`, and `[3,2]` are the four corners of one axis-aligned square of side length `8`.
+```
+
+```text
+Input: add([0,0]), count([1,1])
+Output: 0
+Explanation: Only one point has been added, so there are not enough corners to form a square.
 ```
 
 ## Understanding & Intuition

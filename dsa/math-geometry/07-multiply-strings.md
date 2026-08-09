@@ -5,13 +5,33 @@
 - **Asked at:** Google, Meta, Amazon, Microsoft
 
 ## Problem
-Given two non-negative integers `num1` and `num2` as strings, return their product as a string without using built-in big integer conversion. Constraints: `1 <= len(num1), len(num2) <= 200`.
+Given two non-negative integers `num1` and `num2` written as decimal strings, return their product as a decimal string.
+
+The inputs can be too large to fit in standard integer types, so the multiplication should be treated as string/digit arithmetic. Do not include leading zeroes in the answer unless the product is exactly zero.
+
+**Input**
+- `num1`: a string of decimal digits representing a non-negative integer.
+- `num2`: a string of decimal digits representing a non-negative integer.
+
+**Output**
+- The exact product `num1 * num2` as a decimal string.
+
+## Constraints
+- `1 <= num1.length, num2.length <= 200`
+- `num1` and `num2` contain only digits `0` through `9`.
+- Neither input has leading zeroes unless it is exactly `"0"`.
 
 ## Examples
 ```text
 Input: num1 = "123", num2 = "456"
 Output: "56088"
-Explanation: 123 * 456 = 56088.
+Explanation: Multiplying by place value gives `123 * 456 = 56088`, and the product is returned as the string `"56088"`.
+```
+
+```text
+Input: num1 = "0", num2 = "123"
+Output: "0"
+Explanation: Any number multiplied by zero has product zero.
 ```
 
 ## Understanding & Intuition

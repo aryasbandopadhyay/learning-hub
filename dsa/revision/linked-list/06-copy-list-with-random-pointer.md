@@ -5,13 +5,32 @@
 - **Asked at:** Amazon, Microsoft, Meta, Bloomberg
 
 ## Problem
-Given a linked list where each node has `next` and `random` pointers, return a deep copy of the list. The list has `0 <= n <= 1000` nodes, and each random pointer is either null or points to a node in the list.
+Given the head of a linked list where each node has both `next` and `random` pointers, return a deep copy of the list.
+
+The copied list must contain new nodes with the same values. For every original node, its copied node's `next` and `random` pointers must point to the copied versions of the corresponding original targets. A `random` pointer may be `None` or may point to any node in the list.
+
+**Input**
+- `head`: the head of a linked list with `val`, `next`, and `random` fields. Serialized examples use `[value, randomIndex]` for each node.
+
+**Output**
+- The head of a deep-copied linked list with the same values and pointer structure.
+
+## Constraints
+- `0 <= number of nodes <= 1000`
+- `-10^4 <= Node.val <= 10^4`
+- Each `random` pointer is `None` or points to a node in the same list.
 
 ## Examples
 ```text
 Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
 Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
-Explanation: The copied nodes have the same values and random relationships, but are distinct objects.
+Explanation: The copied list serializes the same way because each copied node has the same value and matching random target index. The nodes themselves must be distinct from the original nodes.
+```
+
+```text
+Input: head = []
+Output: []
+Explanation: An empty list copies to an empty list.
 ```
 
 ## Understanding & Intuition

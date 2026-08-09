@@ -5,13 +5,30 @@
 - **Asked at:** Microsoft, Amazon, Google
 
 ## Problem
-Given a positive integer `columnNumber`, return its Excel column title. Constraints: `1 <= columnNumber <= 2^31 - 1`.
+Convert a positive integer into its Excel column title.
+
+Excel titles use letters `A` through `Z` in a 1-indexed base-26 system: `1 -> A`, `2 -> B`, ..., `26 -> Z`, `27 -> AA`, and so on. Return the exact title for the given column number.
+
+**Input**
+- `columnNumber`: a positive integer.
+
+**Output**
+- The Excel column title string for `columnNumber`.
+
+## Constraints
+- `1 <= columnNumber <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: columnNumber = 28
 Output: "AB"
-Explanation: 28 maps to A then B in Excel's 1-indexed base-26 system.
+Explanation: `28` is one full block of `26` plus `2`, which maps to `A` followed by `B`, giving `"AB"`.
+```
+
+```text
+Input: columnNumber = 1
+Output: "A"
+Explanation: Column `1` maps directly to the title `A`.
 ```
 
 ## Understanding & Intuition

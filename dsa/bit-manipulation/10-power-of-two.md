@@ -5,13 +5,30 @@
 - **Asked at:** Google, Amazon, Microsoft, Apple
 
 ## Problem
-Given an integer `n`, return `True` if it is a power of two; otherwise return `False`. An integer is a power of two if there exists an integer `x` such that `n == 2^x`. Constraints: `-2^31 <= n <= 2^31 - 1`.
+Given an integer `n`, determine whether it is an exact power of two.
+
+A number is a power of two if there exists an integer `k >= 0` such that `n == 2^k`.
+
+**Input**
+- `n`: an integer.
+
+**Output**
+- `True` if `n` is a power of two; otherwise `False`.
+
+## Constraints
+- `-2^31 <= n <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: n = 16
 Output: True
-Explanation: 16 equals 2^4.
+Explanation: `16` equals `2^4`, so it is a power of two.
+```
+
+```text
+Input: n = 1
+Output: True
+Explanation: `1` is `2^0`, so it counts as a power of two.
 ```
 
 ## Understanding & Intuition

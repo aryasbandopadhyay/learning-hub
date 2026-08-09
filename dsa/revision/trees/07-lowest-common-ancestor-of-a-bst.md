@@ -5,13 +5,35 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Lowest Common Ancestor of a BST**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Given the root of a binary search tree and two nodes `p` and `q` in that tree, return their lowest common ancestor.
+
+In a binary search tree, all values in a node's left subtree are smaller than the node's value, and all values in its right subtree are larger. The lowest common ancestor is the deepest node that has both `p` and `q` as descendants; a node can be a descendant of itself.
+
+**Input**
+- `root`: the root of a binary search tree.
+- `p`: one node in the tree.
+- `q`: another node in the tree.
+
+**Output**
+- The tree node that is the lowest common ancestor of `p` and `q`.
+
+## Constraints
+- `2 <= number of nodes <= 10^5`
+- `-10^9 <= Node.val <= 10^9`
+- All node values are unique.
+- `p` and `q` are distinct nodes that both exist in the tree.
 
 ## Examples
 ```text
 Input: root = [6,2,8,0,4,7,9,None,None,3,5], p = 2, q = 8
 Output: 6
-Explanation: The split point between p and q is 6.
+Explanation: Node `2` lies in the left subtree of `6`, and node `8` lies in the right subtree of `6`. The split happens at `6`, so `6` is their lowest common ancestor.
+```
+
+```text
+Input: root = [6,2,8,0,4,7,9,None,None,3,5], p = 2, q = 4
+Output: 2
+Explanation: A node can be an ancestor of itself, and `2` is above `4`.
 ```
 
 ## Understanding & Intuition

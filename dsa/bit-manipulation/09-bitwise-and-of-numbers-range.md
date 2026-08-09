@@ -5,13 +5,29 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given two integers `left` and `right`, return the bitwise AND of all numbers in the inclusive range `[left, right]`. Constraints: `0 <= left <= right <= 2^31 - 1`.
+Given two integers `left` and `right`, compute the bitwise AND of every integer in the inclusive range `[left, right]`.
+
+**Input**
+- `left`: the start of the range.
+- `right`: the end of the range, with `left <= right`.
+
+**Output**
+- The exact value of `left & (left + 1) & ... & right`.
+
+## Constraints
+- `0 <= left <= right <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: left = 5, right = 7
 Output: 4
-Explanation: 5 & 6 & 7 = 4.
+Explanation: The inclusive range is `5, 6, 7`. In binary, their common prefix leaves only `100`, so `5 & 6 & 7 = 4`.
+```
+
+```text
+Input: left = 4, right = 4
+Output: 4
+Explanation: A range with one number has AND equal to that number.
 ```
 
 ## Understanding & Intuition

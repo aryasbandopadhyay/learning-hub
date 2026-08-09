@@ -5,13 +5,33 @@
 - **Asked at:** Amazon, Microsoft, Meta, Google
 
 ## Problem
-Given an `m x n` integer matrix, if an element is `0`, set its entire row and column to `0` in-place. Constraints: `1 <= m, n <= 200`.
+Given an `m x n` integer matrix, if any cell is `0`, set **every cell in that row and every cell in that column** to `0`.
+
+All zeroing decisions are based on the matrix's original contents. A zero created while processing should not cause additional rows or columns to be cleared. Update the given `matrix` in-place.
+
+**Input**
+- `matrix`: a 2-D list of integers with `m` rows and `n` columns.
+
+**Output**
+- Modify `matrix` in-place. The judge checks the final matrix exactly, row by row.
+
+## Constraints
+- `m == matrix.length`
+- `n == matrix[i].length`
+- `1 <= m, n <= 200`
+- `-2^31 <= matrix[i][j] <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
 Output: [[1,0,1],[0,0,0],[1,0,1]]
-Explanation: The zero at row 1, column 1 clears that row and column.
+Explanation: The original zero is at `(1, 1)`, so row `1` and column `1` are cleared. Other cells that were not in that row or column keep their original value.
+```
+
+```text
+Input: matrix = [[1,2],[3,4]]
+Output: [[1,2],[3,4]]
+Explanation: There are no original zeroes, so the matrix remains unchanged.
 ```
 
 ## Understanding & Intuition

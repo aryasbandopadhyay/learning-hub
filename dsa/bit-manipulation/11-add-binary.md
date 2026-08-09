@@ -5,13 +5,33 @@
 - **Asked at:** Facebook, Amazon, Google, Microsoft
 
 ## Problem
-Given two binary strings `a` and `b`, return their sum as a binary string. Constraints: `1 <= len(a), len(b) <= 10^4`, and each string contains only `'0'` or `'1'`.
+Given two binary strings `a` and `b`, return their sum as a binary string.
+
+Each input contains only `0` and `1` characters and represents a non-negative integer without leading zeroes except for the value `0`.
+
+**Input**
+- `a`: a binary string.
+- `b`: a binary string.
+
+**Output**
+- The exact binary representation of the sum of `a` and `b`, with no unnecessary leading zeroes.
+
+## Constraints
+- `1 <= a.length, b.length <= 10^4`
+- `a` and `b` contain only characters `0` and `1`.
+- Each input has no leading zeroes unless it is exactly `0`.
 
 ## Examples
 ```text
 Input: a = "1010", b = "1011"
 Output: "10101"
-Explanation: 10 + 11 = 21, whose binary representation is 10101.
+Explanation: `1010` is decimal `10` and `1011` is decimal `11`; their sum is `21`, whose binary form is `10101`.
+```
+
+```text
+Input: a = "1", b = "1"
+Output: "10"
+Explanation: Binary `1 + 1` produces `10` because of the carry.
 ```
 
 ## Understanding & Intuition

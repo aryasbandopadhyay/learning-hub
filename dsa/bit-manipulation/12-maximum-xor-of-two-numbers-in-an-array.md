@@ -5,13 +5,31 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given an integer array `nums`, return the maximum value of `nums[i] XOR nums[j]` for `0 <= i <= j < len(nums)`. Constraints: `1 <= len(nums) <= 2 * 10^5`, `0 <= nums[i] <= 2^31 - 1`.
+Given a list of non-negative integers `nums`, choose two numbers from the list and maximize their bitwise XOR value.
+
+The two chosen positions may be the same only when there is a single element, in which case the best possible XOR is `0`.
+
+**Input**
+- `nums`: a list of non-negative integers.
+
+**Output**
+- The maximum value of `nums[i] XOR nums[j]` over valid choices of indices.
+
+## Constraints
+- `1 <= nums.length <= 2 * 10^5`
+- `0 <= nums[i] <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: nums = [3,10,5,25,2,8]
 Output: 28
-Explanation: 5 XOR 25 = 28, which is the maximum possible XOR.
+Explanation: Among all pairs, `5 XOR 25 = 28`, and no other pair in the list produces a larger XOR value.
+```
+
+```text
+Input: nums = [5]
+Output: 0
+Explanation: With one number, the only possible XOR is the number with itself, which is `0`.
 ```
 
 ## Understanding & Intuition

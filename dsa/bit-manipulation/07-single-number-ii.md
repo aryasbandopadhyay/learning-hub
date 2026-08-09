@@ -5,13 +5,31 @@
 - **Asked at:** Google, Amazon, Microsoft, Apple
 
 ## Problem
-Given an integer array `nums` where every element appears exactly three times except for one element that appears exactly once, return the single element. Constraints: `1 <= len(nums) <= 3 * 10^4`, `-2^31 <= nums[i] <= 2^31 - 1`.
+Given an integer list `nums`, every value appears exactly three times except for one value that appears exactly once. Find the single value.
+
+**Input**
+- `nums`: a non-empty list of integers containing triples plus one unpaired value.
+
+**Output**
+- The integer that appears exactly once.
+
+## Constraints
+- `1 <= nums.length <= 3 * 10^4`
+- `nums.length % 3 == 1`
+- `-2^31 <= nums[i] <= 2^31 - 1`
+- Exactly one value appears once; every other value appears exactly three times.
 
 ## Examples
 ```text
 Input: nums = [2,2,3,2]
 Output: 3
-Explanation: 2 appears three times, while 3 appears once.
+Explanation: The value `2` appears three times, so it is part of the repeated group. The only value appearing once is `3`.
+```
+
+```text
+Input: nums = [5]
+Output: 5
+Explanation: With one element, that element is the single value.
 ```
 
 ## Understanding & Intuition

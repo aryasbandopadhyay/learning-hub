@@ -5,13 +5,32 @@
 - **Asked at:** Amazon, Google, Microsoft, Apple
 
 ## Problem
-Given an `n x n` matrix, rotate it 90 degrees clockwise in-place. Constraints: `1 <= n <= 20`, values fit in a signed integer.
+You are given an `n x n` matrix of integers that represents an image. Rotate the image by **90 degrees clockwise**.
+
+The rotation must be done **in-place**: update the original `matrix` object instead of creating and returning a separate matrix. After rotation, the first row should contain the original first column from bottom to top, the second row the original second column from bottom to top, and so on.
+
+**Input**
+- `matrix`: a square 2-D list of integers with `n` rows and `n` columns.
+
+**Output**
+- Modify `matrix` in-place. The judge checks the final matrix exactly, in normal row order from top to bottom and left to right.
+
+## Constraints
+- `n == matrix.length == matrix[i].length`
+- `1 <= n <= 20`
+- `-1000 <= matrix[i][j] <= 1000`
 
 ## Examples
 ```text
 Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [[7,4,1],[8,5,2],[9,6,3]]
-Explanation: Rows become columns from bottom to top.
+Explanation: The first column `[1,4,7]` becomes the first row in reverse order `[7,4,1]`; applying the same rule to every column produces the 90-degree clockwise rotation.
+```
+
+```text
+Input: matrix = [[1]]
+Output: [[1]]
+Explanation: A one-cell image is unchanged after any rotation.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,30 @@
 - **Asked at:** Bloomberg, Amazon, Apple, Google
 
 ## Problem
-Given a signed 32-bit integer `x`, return its digits reversed. If reversing causes overflow outside `[-2^31, 2^31 - 1]`, return `0`.
+Given a signed 32-bit integer `x`, reverse the order of its decimal digits while preserving its sign.
+
+If the reversed value falls outside the signed 32-bit range, return `0` instead of the reversed number.
+
+**Input**
+- `x`: a signed integer.
+
+**Output**
+- The digit-reversed integer if it is within `[-2^31, 2^31 - 1]`; otherwise `0`.
+
+## Constraints
+- `-2^31 <= x <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: x = -123
 Output: -321
-Explanation: Reverse the digits and preserve the sign.
+Explanation: Ignore the sign while reversing the digits `123` into `321`, then restore the negative sign to get `-321`.
+```
+
+```text
+Input: x = 1534236469
+Output: 0
+Explanation: Reversing the digits would exceed the signed 32-bit maximum, so the answer is `0`.
 ```
 
 ## Understanding & Intuition

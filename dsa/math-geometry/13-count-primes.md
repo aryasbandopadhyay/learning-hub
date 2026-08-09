@@ -5,13 +5,30 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given an integer `n`, return the number of prime numbers strictly less than `n`. Constraints: `0 <= n <= 5 * 10^6`.
+Given an integer `n`, count how many prime numbers are **strictly less than** `n`.
+
+A prime number is an integer greater than `1` that has no positive divisors other than `1` and itself. Do not include `n` in the count.
+
+**Input**
+- `n`: an integer upper bound.
+
+**Output**
+- The exact number of primes `p` such that `2 <= p < n`.
+
+## Constraints
+- `0 <= n <= 5 * 10^6`
 
 ## Examples
 ```text
 Input: n = 10
 Output: 4
-Explanation: The primes less than 10 are 2, 3, 5, and 7.
+Explanation: The primes below `10` are `2`, `3`, `5`, and `7`, so there are four of them.
+```
+
+```text
+Input: n = 0
+Output: 0
+Explanation: There are no positive primes below `0`.
 ```
 
 ## Understanding & Intuition

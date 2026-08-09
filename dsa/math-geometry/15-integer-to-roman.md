@@ -5,13 +5,30 @@
 - **Asked at:** Amazon, Microsoft, Google, Bloomberg
 
 ## Problem
-Given an integer `num`, convert it to a Roman numeral. Constraints: `1 <= num <= 3999`.
+Given an integer `num`, convert it to its standard Roman numeral representation.
+
+Use the usual symbols `I`, `V`, `X`, `L`, `C`, `D`, and `M`, including subtractive forms such as `IV`, `IX`, `XL`, `XC`, `CD`, and `CM`. The output should be the canonical shortest Roman numeral for the number.
+
+**Input**
+- `num`: an integer between `1` and `3999`.
+
+**Output**
+- The exact canonical Roman numeral string for `num`.
+
+## Constraints
+- `1 <= num <= 3999`
 
 ## Examples
 ```text
 Input: num = 1994
 Output: "MCMXCIV"
-Explanation: 1000 + 900 + 90 + 4 becomes M + CM + XC + IV.
+Explanation: Break `1994` into `1000 + 900 + 90 + 4`, which map to `M`, `CM`, `XC`, and `IV`, producing `"MCMXCIV"`.
+```
+
+```text
+Input: num = 3
+Output: "III"
+Explanation: The number `3` is represented by three `I` symbols.
 ```
 
 ## Understanding & Intuition

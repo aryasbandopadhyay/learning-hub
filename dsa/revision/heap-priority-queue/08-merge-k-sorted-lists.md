@@ -5,13 +5,33 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft, Apple
 
 ## Problem
-Given an array of `k` linked-list heads, each list sorted in ascending order, merge all lists into one sorted linked list and return its head. Constraints: `0 <= k <= 10^4`, total nodes `<= 10^4`, node values fit in signed integer range.
+Given an array of `k` linked-list heads, merge all nodes into one sorted linked list.
+
+Each input linked list is sorted in non-decreasing order. Reuse or create nodes as needed, but the returned list must contain exactly all values from all input lists in sorted order.
+
+**Input**
+- `lists`: a list of linked-list heads. Each linked list is sorted in non-decreasing order and may be empty.
+
+**Output**
+- The head of one linked list containing all input values in non-decreasing order.
+
+## Constraints
+- `0 <= k <= 10^4`
+- `0 <= total number of nodes <= 10^4`
+- `-10^4 <= Node.val <= 10^4`
+- Each input linked list is sorted in non-decreasing order.
 
 ## Examples
 ```text
 Input: lists = [[1,4,5],[1,3,4],[2,6]]
 Output: [1,1,2,3,4,4,5,6]
-Explanation: All nodes are merged into one sorted linked list.
+Explanation: Repeatedly taking the smallest available head across the three lists produces the sorted sequence `1,1,2,3,4,4,5,6`.
+```
+
+```text
+Input: lists = []
+Output: []
+Explanation: With no lists, there are no nodes to merge.
 ```
 
 ## Understanding & Intuition

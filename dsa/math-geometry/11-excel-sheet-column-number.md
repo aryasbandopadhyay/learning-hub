@@ -5,13 +5,32 @@
 - **Asked at:** Microsoft, Amazon, Google
 
 ## Problem
-Given an Excel column title like `"AB"`, return its corresponding 1-indexed column number. Constraints: `1 <= columnTitle.length <= 7`, uppercase English letters only.
+Excel column titles work like a 1-indexed base-26 number system: `A` represents `1`, `B` represents `2`, ..., `Z` represents `26`, `AA` represents `27`, and so on.
+
+Given a column title, convert it to its corresponding positive integer.
+
+**Input**
+- `columnTitle`: a non-empty string of uppercase English letters.
+
+**Output**
+- The exact 1-indexed column number represented by `columnTitle`.
+
+## Constraints
+- `1 <= columnTitle.length <= 7`
+- `columnTitle` contains only uppercase English letters `A` through `Z`.
+- The resulting number is in the range `[1, 2^31 - 1]`.
 
 ## Examples
 ```text
 Input: columnTitle = "AB"
 Output: 28
-Explanation: A is 1, so AB is 1*26 + 2.
+Explanation: `A` contributes `1 * 26` in the first position and `B` contributes `2`, so `AB = 26 + 2 = 28`.
+```
+
+```text
+Input: columnTitle = "A"
+Output: 1
+Explanation: The first Excel column is numbered `1`.
 ```
 
 ## Understanding & Intuition

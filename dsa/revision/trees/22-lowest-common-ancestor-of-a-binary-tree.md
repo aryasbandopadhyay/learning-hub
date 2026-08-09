@@ -5,13 +5,35 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Lowest Common Ancestor of a Binary Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Given the root of a binary tree and two nodes `p` and `q` in that tree, return their lowest common ancestor.
+
+Unlike a binary search tree, this tree has no ordering rule. The lowest common ancestor is the deepest node that has both `p` and `q` as descendants; a node is allowed to be a descendant of itself.
+
+**Input**
+- `root`: the root of a binary tree.
+- `p`: one node in the tree.
+- `q`: another node in the tree.
+
+**Output**
+- The tree node that is the lowest common ancestor of `p` and `q`.
+
+## Constraints
+- `2 <= number of nodes <= 10^5`
+- `-10^9 <= Node.val <= 10^9`
+- All node values are unique.
+- `p` and `q` are distinct nodes that both exist in the tree.
 
 ## Examples
 ```text
 Input: root = [3,5,1,6,2,0,8,None,None,7,4], p = 5, q = 1
 Output: 3
-Explanation: 3 is the lowest node with both targets below it.
+Explanation: Node `5` is in the left subtree of `3`, and node `1` is in the right subtree of `3`. No lower node contains both targets, so `3` is the lowest common ancestor.
+```
+
+```text
+Input: root = [3,5,1,6,2,0,8,None,None,7,4], p = 5, q = 4
+Output: 5
+Explanation: A node can be an ancestor of itself, and `5` contains node `4` in its subtree.
 ```
 
 ## Understanding & Intuition

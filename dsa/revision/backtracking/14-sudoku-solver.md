@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Write a program to solve a 9 x 9 Sudoku puzzle by filling empty cells marked `"."`. Each row, column, and 3 x 3 box must contain digits `"1"` through `"9"` without repetition. The input board has exactly one solution and must be modified in-place.
+Solve a partially filled `9 x 9` Sudoku board by filling every empty cell.
+
+Empty cells are marked with `.`. A completed board is valid when every row, every column, and each of the nine `3 x 3` sub-boxes contains the digits `1` through `9` exactly once. The given puzzle is guaranteed to have exactly one solution, and the board must be modified in-place.
+
+**Input**
+- `board`: a `9 x 9` list of strings, where each entry is `.` or a digit from `1` to `9`.
+
+**Output**
+- Modify `board` in-place to the unique solved board. The judge checks the final board exactly in row-major order.
+
+## Constraints
+- `board.length == 9`
+- `board[i].length == 9`
+- `board[i][j]` is `.` or one of `1` through `9`.
+- The initial filled cells do not violate Sudoku rules.
+- The puzzle has exactly one valid solution.
 
 ## Examples
 ```text
 Input: board = [["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],[".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],[".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]]
 Output: [["5","3","4","6","7","8","9","1","2"],["6","7","2","1","9","5","3","4","8"],["1","9","8","3","4","2","5","6","7"],["8","5","9","7","6","1","4","2","3"],["4","2","6","8","5","3","7","9","1"],["7","1","3","9","2","4","8","5","6"],["9","6","1","5","3","7","2","8","4"],["2","8","7","4","1","9","6","3","5"],["3","4","5","2","8","6","1","7","9"]]
-Explanation: The board is filled so every row, column, and box is valid.
+Explanation: Filling the blanks with the shown digits makes every row, column, and `3 x 3` box contain each digit from `1` through `9` exactly once, so this is the unique solved board.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,31 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given two integers `a` and `b`, return their sum without using the `+` or `-` operators in the core addition logic. Constraints: `-1000 <= a, b <= 1000`.
+Given two integers `a` and `b`, return their sum without using the `+` or `-` arithmetic operators in the core addition logic.
+
+Bitwise XOR can represent addition without carries, and bitwise AND shifted left can represent the carry bits that still need to be added.
+
+**Input**
+- `a`: an integer.
+- `b`: an integer.
+
+**Output**
+- The exact integer sum `a + b`.
+
+## Constraints
+- `-1000 <= a, b <= 1000`
 
 ## Examples
 ```text
 Input: a = 2, b = 3
 Output: 5
-Explanation: Bitwise XOR adds without carries, and AND/shift carries them.
+Explanation: Adding `2` and `3` gives `5`. In bit terms, XOR handles the non-carry bits and shifted AND carries are folded in until no carry remains.
+```
+
+```text
+Input: a = 0, b = 5
+Output: 5
+Explanation: Adding zero leaves the other operand unchanged.
 ```
 
 ## Understanding & Intuition

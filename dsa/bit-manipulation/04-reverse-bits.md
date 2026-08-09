@@ -5,13 +5,31 @@
 - **Asked at:** Apple, Amazon, Google, Microsoft
 
 ## Problem
-Reverse the bits of a given unsigned 32-bit integer `n` and return the resulting unsigned integer. Constraints: `0 <= n <= 2^32 - 1`.
+Given a 32-bit unsigned integer `n`, reverse all 32 bit positions and return the resulting unsigned integer value.
+
+Leading zero bits are part of the 32-bit representation and become trailing zero bits after the reversal.
+
+**Input**
+- `n`: an integer in the unsigned 32-bit range.
+
+**Output**
+- The integer represented by the exact 32-bit reversal of `n`.
+
+## Constraints
+- `0 <= n <= 2^32 - 1`
+- Treat `n` as exactly 32 bits, including leading zeroes.
 
 ## Examples
 ```text
 Input: n = 43261596
 Output: 964176192
-Explanation: 00000010100101000001111010011100 reverses to 00111001011110000010100101000000.
+Explanation: The 32-bit form of `43261596` is `00000010100101000001111010011100`; reversing all 32 positions gives `00111001011110000010100101000000`, which is `964176192`.
+```
+
+```text
+Input: n = 0
+Output: 0
+Explanation: Reversing thirty-two zero bits still gives zero.
 ```
 
 ## Understanding & Intuition

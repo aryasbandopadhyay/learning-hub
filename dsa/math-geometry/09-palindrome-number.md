@@ -5,13 +5,30 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-Given an integer `x`, return whether it reads the same forward and backward. Constraints: `-2^31 <= x <= 2^31 - 1`.
+Given an integer `x`, determine whether its decimal representation is a palindrome.
+
+A palindrome reads the same from left to right and from right to left. A leading minus sign is part of the written representation, so negative numbers are not palindromes.
+
+**Input**
+- `x`: an integer.
+
+**Output**
+- `True` if `x` is a decimal palindrome; otherwise `False`.
+
+## Constraints
+- `-2^31 <= x <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: x = 121
 Output: True
-Explanation: 121 reads the same from both directions.
+Explanation: The digits of `121` are the same in both directions: `1, 2, 1`.
+```
+
+```text
+Input: x = -121
+Output: False
+Explanation: Reading from the right gives `121-`, which is not the same as `-121`.
 ```
 
 ## Understanding & Intuition

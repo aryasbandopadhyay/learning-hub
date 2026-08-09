@@ -5,13 +5,32 @@
 - **Asked at:** Amazon, Microsoft, Google, Bloomberg
 
 ## Problem
-Given a valid Roman numeral string `s`, convert it to an integer. Constraints: `1 <= s.length <= 15`, value is in `[1, 3999]`.
+Given a valid Roman numeral string `s`, convert it to the integer it represents.
+
+Roman numerals use symbols `I=1`, `V=5`, `X=10`, `L=50`, `C=100`, `D=500`, and `M=1000`. A smaller symbol before a larger one is subtractive for the standard pairs `IV`, `IX`, `XL`, `XC`, `CD`, and `CM`; otherwise symbols are added from left to right.
+
+**Input**
+- `s`: a valid Roman numeral string.
+
+**Output**
+- The exact integer value represented by `s`.
+
+## Constraints
+- `1 <= s.length <= 15`
+- `s` contains only `I`, `V`, `X`, `L`, `C`, `D`, and `M`.
+- `s` is a valid Roman numeral in the range `1` through `3999`.
 
 ## Examples
 ```text
 Input: s = "MCMXCIV"
 Output: 1994
-Explanation: M=1000, CM=900, XC=90, IV=4.
+Explanation: Split `MCMXCIV` into `M + CM + XC + IV`: `1000 + 900 + 90 + 4 = 1994`.
+```
+
+```text
+Input: s = "III"
+Output: 3
+Explanation: Three `I` symbols add up to `3`.
 ```
 
 ## Understanding & Intuition
