@@ -5,13 +5,25 @@
 - **Asked at:** Facebook, Google, Amazon, Microsoft
 
 ## Problem
-Given an integer array `nums`, return the index of any peak element. A peak is strictly greater than its neighbors, and out-of-bounds neighbors are treated as negative infinity. Constraints: `1 <= nums.length <= 1000`, `-2^31 <= nums[i] <= 2^31 - 1`, `nums[i] != nums[i+1]`.
+A peak element is an element strictly greater than its immediate neighbors. Values outside the array
+are treated as negative infinity. Given `nums`, return the index of any peak element.
+
+**Input**
+- `nums`: a list of integers where adjacent values are different.
+
+**Output**
+- An integer: the index of a peak element. If multiple peaks exist, any peak index is acceptable.
+
+## Constraints
+- 1 <= nums.length <= 1000
+- -2^31 <= nums[i] <= 2^31 - 1
+- nums[i] != nums[i + 1] for all valid `i`.
 
 ## Examples
 ```text
 Input: nums = [1,2,3,1]
 Output: 2
-Explanation: 3 is greater than both neighbors.
+Explanation: `3` at index `2` is greater than both neighbors `2` and `1`, so index `2` is a peak.
 ```
 
 ## Understanding & Intuition

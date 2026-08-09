@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Microsoft, Apple
 
 ## Problem
-Given integer `n`, return the least number of perfect square numbers whose sum is `n`. Constraints: `1 <= n <= 10^4`.
+Given an integer `n`, return the minimum number of perfect square numbers whose sum is exactly `n`.
+A perfect square is an integer such as `1`, `4`, `9`, or `16`.
+
+**Input**
+- `n`: the target positive integer.
+
+**Output**
+- An integer: the fewest perfect squares needed to sum to `n`.
+
+## Constraints
+- 1 <= n <= 10^4
 
 ## Examples
 ```text
 Input: n = 12
 Output: 3
-Explanation: 12 = 4 + 4 + 4.
+Explanation: `12` can be written as `4 + 4 + 4`, using `3` perfect squares. It cannot be written using only one or two perfect squares.
 ```
 
 ## Understanding & Intuition

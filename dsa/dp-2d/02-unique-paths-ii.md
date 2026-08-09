@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Microsoft, Bloomberg
 
 ## Problem
-Given an `m x n` grid where `1` means obstacle and `0` means free, count paths from top-left to bottom-right moving only right or down. Constraints: `1 <= m, n <= 100`.
+A robot starts at the top-left cell of a grid and wants to reach the bottom-right cell. It may move
+only down or right. `obstacleGrid[r][c]` is `1` if the cell is blocked and `0` if it is open.
+
+Return the number of valid paths that never step on an obstacle.
+
+**Input**
+- `obstacleGrid`: an `m x n` grid of `0`s and `1`s.
+
+**Output**
+- An integer: the number of valid paths from the top-left to the bottom-right cell.
+
+## Constraints
+- m == obstacleGrid.length
+- n == obstacleGrid[r].length
+- 1 <= m, n <= 100
+- obstacleGrid[r][c] is either `0` or `1`.
 
 ## Examples
 ```text
 Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
 Output: 2
-Explanation: The middle obstacle blocks all but two paths.
+Explanation: The center cell is blocked, so only the route around the top/right edge and the route around the left/bottom edge remain valid.
 ```
 
 ## Understanding & Intuition

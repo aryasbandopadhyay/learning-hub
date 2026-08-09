@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given a string `s`, return the longest palindromic substring. Constraints: `1 <= s.length <= 1000`, `s` contains only digits and English letters.
+Given a string `s`, find a longest contiguous substring of `s` that reads the same forward and
+backward.
+
+If multiple longest palindromic substrings exist, returning any one of them is acceptable.
+
+**Input**
+- `s`: a non-empty string.
+
+**Output**
+- A string: one longest palindromic substring of `s`.
+
+## Constraints
+- 1 <= s.length <= 1000
+- `s` consists of digits and English letters.
 
 ## Examples
 ```text
 Input: s = "babad"
 Output: "bab"
-Explanation: "aba" is also valid.
+Explanation: Both `"bab"` and `"aba"` are length-3 palindromic substrings. The shown output is one valid longest answer.
 ```
 
 ## Understanding & Intuition

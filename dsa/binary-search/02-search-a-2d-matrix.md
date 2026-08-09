@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Microsoft, Apple
 
 ## Problem
-Given an `m x n` matrix where each row is sorted and the first integer of each row is greater than the last integer of the previous row, return whether `target` exists. Constraints: `1 <= m, n <= 100`, `-10^4 <= matrix[i][j], target <= 10^4`.
+Given an `m x n` matrix and a target, determine whether the target appears in the matrix. Each row is
+sorted in ascending order, and the first integer of each row is greater than the last integer of the
+previous row.
+
+**Input**
+- `matrix`: an `m x n` matrix of integers with the described ordering.
+- `target`: the value to search for.
+
+**Output**
+- A boolean: `true` if `target` is present, otherwise `false`.
+
+## Constraints
+- m == matrix.length
+- n == matrix[r].length
+- 1 <= m, n <= 100
+- -10^4 <= matrix[r][c], target <= 10^4
 
 ## Examples
 ```text
 Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
 Output: true
-Explanation: 3 is present in the first row.
+Explanation: `3` is present in the first row, so the result is `true`.
 ```
 
 ## Understanding & Intuition

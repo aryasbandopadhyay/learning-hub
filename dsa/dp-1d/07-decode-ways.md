@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-A message containing digits maps `1 -> A` through `26 -> Z`. Given `s`, return the number of ways to decode it. Constraints: `1 <= s.length <= 100`, `s` contains only digits.
+A message is encoded by mapping `A` to `1`, `B` to `2`, ..., and `Z` to `26`. Given a digit string
+`s`, count how many ways it can be decoded into letters. A code cannot contain leading zeroes, so
+`"06"` is invalid.
+
+**Input**
+- `s`: a string of digits.
+
+**Output**
+- An integer: the number of valid decodings.
+
+## Constraints
+- 1 <= s.length <= 100
+- `s` contains only digits.
 
 ## Examples
 ```text
 Input: s = "226"
 Output: 3
-Explanation: It can decode as "BZ", "VF", or "BBF".
+Explanation: `"226"` can be decoded as `2|2|6` (`BBF`), `22|6` (`VF`), or `2|26` (`BZ`), so there are `3` ways.
 ```
 
 ## Understanding & Intuition

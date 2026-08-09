@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Microsoft, Facebook
 
 ## Problem
-Given positive integers `nums`, return whether they can be partitioned into two subsets with equal sum. Constraints: `1 <= nums.length <= 200`, `1 <= nums[i] <= 100`.
+Given a list of positive integers `nums`, determine whether it can be split into two subsets whose
+sums are equal. Every element must belong to exactly one of the two subsets.
+
+**Input**
+- `nums`: a list of positive integers.
+
+**Output**
+- A boolean: `True` if an equal-sum partition exists, otherwise `False`.
+
+## Constraints
+- 1 <= nums.length <= 200
+- 1 <= nums[i] <= 100
 
 ## Examples
 ```text
 Input: nums = [1,5,11,5]
 Output: True
-Explanation: The array can be partitioned as [1,5,5] and [11].
+Explanation: The total sum is `22`, so each subset must sum to `11`. The subset `[11]` and the subset `[1,5,5]` both sum to `11`.
 ```
 
 ## Understanding & Intuition

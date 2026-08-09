@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Microsoft, Apple
 
 ## Problem
-Given an `m x n` grid of non-negative integers, find the minimum path sum from top-left to bottom-right moving only right or down. Constraints: `1 <= m, n <= 200`, `0 <= grid[i][j] <= 200`.
+Given an `m x n` grid of non-negative integers, find a path from the top-left cell to the
+bottom-right cell with the minimum possible sum of visited cell values. You may move only down or
+right.
+
+**Input**
+- `grid`: an `m x n` matrix of non-negative integers.
+
+**Output**
+- An integer: the minimum path sum.
+
+## Constraints
+- m == grid.length
+- n == grid[r].length
+- 1 <= m, n <= 200
+- 0 <= grid[r][c] <= 200
 
 ## Examples
 ```text
 Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
 Output: 7
-Explanation: The path 1 -> 3 -> 1 -> 1 -> 1 has minimum sum 7.
+Explanation: The minimum-sum route is `1 -> 3 -> 1 -> 1 -> 1`, for a total of `7`.
 ```
 
 ## Understanding & Intuition

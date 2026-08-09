@@ -5,13 +5,29 @@
 - **Asked at:** Google, Facebook, Amazon, LinkedIn
 
 ## Problem
-Given a sorted integer array `arr`, integers `k` and `x`, return the `k` closest integers to `x` in ascending order. A smaller value wins ties. Constraints: `1 <= k <= arr.length <= 10^4`, `-10^4 <= arr[i], x <= 10^4`.
+Given a sorted integer array `arr`, an integer `k`, and a value `x`, return the `k` elements closest
+to `x`. An element `a` is closer than `b` if `|a - x| < |b - x|`, or if the distances are equal and
+`a < b`.
+
+**Input**
+- `arr`: a list of integers sorted in ascending order.
+- `k`: the number of elements to return.
+- `x`: the reference value.
+
+**Output**
+- A list of the `k` closest elements sorted in ascending order.
+
+## Constraints
+- 1 <= k <= arr.length
+- 1 <= arr.length <= 10^4
+- -10^4 <= arr[i], x <= 10^4
+- `arr` is sorted in ascending order.
 
 ## Examples
 ```text
 Input: arr = [1,2,3,4,5], k = 4, x = 3
 Output: [1,2,3,4]
-Explanation: The four closest values to 3 are 1, 2, 3, and 4.
+Explanation: The four closest values to `3` are `1`, `2`, `3`, and `4`; the result is returned in ascending order.
 ```
 
 ## Understanding & Intuition

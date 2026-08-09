@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft, Adobe
 
 ## Problem
-Given a sorted array of distinct integers and a target, return the index if found. Otherwise return the index where it would be inserted in order. Constraints: `1 <= nums.length <= 10^4`, `-10^4 <= nums[i], target <= 10^4`.
+Given a sorted array of distinct integers and a target value, return the index if the target is
+found. If it is not found, return the index where it should be inserted so the array remains sorted.
+
+**Input**
+- `nums`: a strictly increasing list of integers.
+- `target`: the value to find or insert.
+
+**Output**
+- An integer: the existing index of `target`, or its insertion index.
+
+## Constraints
+- 1 <= nums.length <= 10^4
+- -10^4 <= nums[i], target <= 10^4
+- All values in `nums` are unique.
+- `nums` is sorted in ascending order.
 
 ## Examples
 ```text
 Input: nums = [1,3,5,6], target = 5
 Output: 2
-Explanation: 5 already exists at index 2.
+Explanation: `5` is already present at index `2`, so no insertion is needed.
 ```
 
 ## Understanding & Intuition

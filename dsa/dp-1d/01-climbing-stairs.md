@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-You are climbing `n` stairs. Each move climbs either 1 or 2 steps. Return the number of distinct ways to reach the top. Constraints: `1 <= n <= 45`.
+You are climbing a staircase with exactly `n` steps. On each move, you may climb either 1 step or 2
+steps. Count how many distinct sequences of moves reach exactly the top step.
+
+**Input**
+- `n`: the number of steps in the staircase.
+
+**Output**
+- An integer: the number of distinct valid step sequences.
+
+## Constraints
+- 1 <= n <= 45
 
 ## Examples
 ```text
 Input: n = 3
 Output: 3
-Explanation: The ways are 1+1+1, 1+2, and 2+1.
+Explanation: There are three valid move sequences: `1+1+1`, `1+2`, and `2+1`.
 ```
 
 ## Understanding & Intuition

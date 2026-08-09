@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given `nums`, where `nums[i]` is money in house `i`, return the maximum amount you can rob without robbing adjacent houses. Constraints: `1 <= nums.length <= 100`, `0 <= nums[i] <= 400`.
+You are given a row of houses, where `nums[i]` is the amount of money in the `i`th house. Adjacent
+houses have a connected security system, so robbing two neighboring houses is not allowed.
+
+Return the maximum amount of money you can rob without robbing adjacent houses.
+
+**Input**
+- `nums`: a list of non-negative integers representing money in each house.
+
+**Output**
+- An integer: the maximum obtainable amount.
+
+## Constraints
+- n == nums.length
+- 1 <= n <= 100
+- 0 <= nums[i] <= 400
 
 ## Examples
 ```text
 Input: nums = [1,2,3,1]
 Output: 4
-Explanation: Rob houses 0 and 2 for 1 + 3 = 4.
+Explanation: Rob houses with values `1` and `3` for a total of `4`; any choice that includes adjacent houses is invalid.
 ```
 
 ## Understanding & Intuition

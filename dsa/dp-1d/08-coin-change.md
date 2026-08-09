@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Microsoft, Uber
 
 ## Problem
-Given coin denominations `coins` and an integer `amount`, return the fewest coins needed to make that amount, or `-1` if impossible. Constraints: `1 <= coins.length <= 12`, `1 <= coins[i] <= 2^31 - 1`, `0 <= amount <= 10^4`.
+You are given coin denominations in `coins` and a total `amount`. You may use each denomination any
+number of times. Return the fewest number of coins needed to make exactly `amount`, or `-1` if it is
+not possible.
+
+**Input**
+- `coins`: a list of distinct positive coin denominations.
+- `amount`: the target amount.
+
+**Output**
+- An integer: the minimum number of coins, or `-1` when no combination sums to `amount`.
+
+## Constraints
+- 1 <= coins.length <= 12
+- 1 <= coins[i] <= 2^31 - 1
+- 0 <= amount <= 10^4
 
 ## Examples
 ```text
 Input: coins = [1,2,5], amount = 11
 Output: 3
-Explanation: 11 = 5 + 5 + 1.
+Explanation: `11` can be made with `5 + 5 + 1`, using `3` coins. No combination uses fewer coins.
 ```
 
 ## Understanding & Intuition

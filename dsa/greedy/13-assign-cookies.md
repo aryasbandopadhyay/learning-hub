@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-Given children greed factors `g` and cookie sizes `s`, assign at most one cookie to each child. A child is content if assigned a cookie with size at least their greed. Return the maximum number of content children. Constraints: `1 <= len(g), len(s) <= 3 * 10^4`, `1 <= g[i], s[j] <= 2^31 - 1`.
+Each child `i` has greed factor `g[i]`, and each cookie `j` has size `s[j]`. A child is content if
+assigned one cookie with size at least their greed factor. Each cookie can be assigned to at most one
+child.
+
+Return the maximum number of content children.
+
+**Input**
+- `g`: greed factors of the children.
+- `s`: sizes of the cookies.
+
+**Output**
+- An integer: the largest number of children that can be content.
+
+## Constraints
+- 1 <= g.length, s.length <= 3 * 10^4
+- 1 <= g[i], s[j] <= 2^31 - 1
 
 ## Examples
 ```text
 Input: g = [1,2,3], s = [1,1]
 Output: 1
-Explanation: Only one child with greed 1 can be satisfied.
+Explanation: Only one cookie has size `1`, so only the child with greed `1` can be satisfied.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Microsoft, Adobe
 
 ## Problem
-Given a sorted array where every element appears exactly twice except one element that appears once, return the single element. Constraints: `1 <= nums.length <= 10^5`, `0 <= nums[i] <= 10^5`, and the solution must run in `O(log n)` time and `O(1)` space.
+In a sorted array, every element appears exactly twice except for one element that appears once.
+Return the single non-duplicate element.
+
+**Input**
+- `nums`: a sorted list of integers with exactly one value appearing once and all others twice.
+
+**Output**
+- An integer: the value that appears once.
+
+## Constraints
+- 1 <= nums.length <= 10^5
+- nums.length is odd.
+- 0 <= nums[i] <= 10^5
+- `nums` is sorted in non-decreasing order.
 
 ## Examples
 ```text
 Input: nums = [1,1,2,3,3,4,4,8,8]
 Output: 2
-Explanation: 2 is the only value that appears once.
+Explanation: Every value except `2` appears twice, so the single element is `2`.
 ```
 
 ## Understanding & Intuition

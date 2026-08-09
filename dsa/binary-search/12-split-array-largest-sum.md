@@ -5,13 +5,28 @@
 - **Asked at:** Google, Facebook, Amazon, Microsoft
 
 ## Problem
-Given a non-negative integer array `nums` and integer `k`, split `nums` into `k` non-empty continuous subarrays to minimize the largest subarray sum. Return that minimized largest sum. Constraints: `1 <= nums.length <= 1000`, `0 <= nums[i] <= 10^6`, `1 <= k <= min(50, nums.length)`.
+Split `nums` into exactly `k` non-empty contiguous subarrays. The score of a split is the largest
+subarray sum among those parts.
+
+Return the minimum possible score over all valid splits.
+
+**Input**
+- `nums`: a list of non-negative integers.
+- `k`: the number of subarrays to create.
+
+**Output**
+- An integer: the minimized largest subarray sum.
+
+## Constraints
+- 1 <= nums.length <= 1000
+- 0 <= nums[i] <= 10^6
+- 1 <= k <= nums.length
 
 ## Examples
 ```text
 Input: nums = [7,2,5,10,8], k = 2
 Output: 18
-Explanation: Splitting as [7,2,5] and [10,8] minimizes the largest sum to 18.
+Explanation: Splitting as `[7,2,5]` and `[10,8]` gives largest sum `18`, and no split into two parts can make the largest sum smaller.
 ```
 
 ## Understanding & Intuition

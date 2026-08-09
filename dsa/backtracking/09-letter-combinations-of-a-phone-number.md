@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Apple
 
 ## Problem
-Given a string `digits` containing digits from `2` to `9`, return all possible letter combinations the number could represent on a phone keypad. `0 <= len(digits) <= 4`. Return an empty list for an empty input.
+Given a string of digits from `2` to `9`, return all possible letter strings represented by those
+digits on a telephone keypad. The digit-to-letter mapping is the standard phone mapping: `2 -> abc`,
+`3 -> def`, `4 -> ghi`, `5 -> jkl`, `6 -> mno`, `7 -> pqrs`, `8 -> tuv`, `9 -> wxyz`.
+
+**Input**
+- `digits`: a string containing digits `2` through `9`.
+
+**Output**
+- A list of combinations. **This judge compares exactly**, so return them in keypad order: process
+  digits left to right and letters in the order shown for each digit. If `digits` is empty, return an
+  empty list.
+
+## Constraints
+- 0 <= digits.length <= 4
+- digits[i] is a digit from `2` to `9`.
 
 ## Examples
 ```text
 Input: digits = "23"
 Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
-Explanation: 2 maps to abc and 3 maps to def.
+Explanation: Digit `2` contributes `a,b,c` and digit `3` contributes `d,e,f`; combining them in keypad order gives the nine shown strings.
 ```
 
 ## Understanding & Intuition

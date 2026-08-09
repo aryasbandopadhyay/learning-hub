@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given an `m x n` integer matrix, return the length of the longest path where adjacent cells move up, down, left, or right and values strictly increase. Constraints: `1 <= m, n <= 200`, `0 <= matrix[i][j] <= 2^31 - 1`.
+Given an `m x n` integer matrix, find the length of the longest path such that each next cell has a
+strictly larger value than the current cell. From a cell, you may move up, down, left, or right; you
+may not move diagonally or leave the grid.
+
+**Input**
+- `matrix`: an `m x n` matrix of integers.
+
+**Output**
+- An integer: the number of cells in the longest strictly increasing path.
+
+## Constraints
+- m == matrix.length
+- n == matrix[r].length
+- 1 <= m, n <= 200
+- 0 <= matrix[r][c] <= 2^31 - 1
 
 ## Examples
 ```text
 Input: matrix = [[9,9,4],[6,6,8],[2,1,1]]
 Output: 4
-Explanation: One longest path is 1 -> 2 -> 6 -> 9.
+Explanation: One longest path is `1 -> 2 -> 6 -> 9`, which has length `4`.
 ```
 
 ## Understanding & Intuition

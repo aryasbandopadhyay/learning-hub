@@ -5,13 +5,29 @@
 - **Asked at:** Amazon, Google, Microsoft, Airbnb
 
 ## Problem
-Given distinct positive integers `nums` and target `target`, return the number of possible ordered combinations that add up to `target`. Constraints: `1 <= nums.length <= 200`, `1 <= nums[i] <= 1000`, `1 <= target <= 1000`.
+Given a list of distinct positive integers `nums` and a target integer `target`, count the number of
+ordered sequences of elements from `nums` that sum to `target`. Each number may be used any number of
+times, and different orders count as different sequences.
+
+**Input**
+- `nums`: a list of distinct positive integers.
+- `target`: the desired sum.
+
+**Output**
+- An integer: the number of ordered sequences that sum to `target`.
+
+## Constraints
+- 1 <= nums.length <= 200
+- 1 <= nums[i] <= 1000
+- All values in `nums` are unique.
+- 1 <= target <= 1000
+- The answer fits in a 32-bit signed integer.
 
 ## Examples
 ```text
 Input: nums = [1,2,3], target = 4
 Output: 7
-Explanation: The ordered combinations are (1,1,1,1), (1,1,2), (1,2,1), (1,3), (2,1,1), (2,2), and (3,1).
+Explanation: The seven ordered sequences are `(1,1,1,1)`, `(1,1,2)`, `(1,2,1)`, `(2,1,1)`, `(2,2)`, `(1,3)`, and `(3,1)`.
 ```
 
 ## Understanding & Intuition

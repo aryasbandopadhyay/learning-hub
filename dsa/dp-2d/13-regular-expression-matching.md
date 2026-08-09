@@ -5,13 +5,31 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given string `s` and pattern `p`, implement regex matching where `.` matches any single character and `*` matches zero or more of the preceding element. The match must cover the entire string. Constraints: `1 <= len(s), len(p) <= 20`.
+Given a string `s` and a pattern `p`, determine whether the entire string matches the pattern. The
+pattern supports two special symbols: `.` matches any single character, and `*` means zero or more
+occurrences of the immediately preceding element.
+
+The match must cover all of `s`, not just a substring.
+
+**Input**
+- `s`: the input string.
+- `p`: the pattern.
+
+**Output**
+- A boolean: `true` if `p` matches all of `s`, otherwise `false`.
+
+## Constraints
+- 1 <= s.length <= 20
+- 1 <= p.length <= 20
+- `s` contains only lowercase English letters.
+- `p` contains lowercase English letters, `.` and `*`.
+- Every `*` has a valid preceding element.
 
 ## Examples
 ```text
 Input: s = "aab", p = "c*a*b"
 Output: true
-Explanation: c* uses zero c's, a* uses two a's, then b matches b.
+Explanation: `c*` matches zero `c` characters, `a*` matches both `a` characters, and `b` matches the final `b`, so the whole string matches.
 ```
 
 ## Understanding & Intuition

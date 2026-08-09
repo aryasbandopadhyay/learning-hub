@@ -5,13 +5,25 @@
 - **Asked at:** Google, Meta, Amazon, Microsoft
 
 ## Problem
-Given `n` pairs of parentheses, generate all combinations of well-formed parentheses. `1 <= n <= 8`. The answer may be returned in any order.
+Given `n`, generate every string containing exactly `n` pairs of parentheses that is well-formed. A
+well-formed string never has more closing parentheses than opening parentheses in any prefix, and has
+the same total number of opening and closing parentheses.
+
+**Input**
+- `n`: the number of parenthesis pairs.
+
+**Output**
+- A list of strings. **This judge compares exactly**, so return them in DFS order that tries `(`
+  before `)` whenever both choices are valid.
+
+## Constraints
+- 1 <= n <= 8
 
 ## Examples
 ```text
 Input: n = 3
 Output: ["((()))","(()())","(())()","()(())","()()()"]
-Explanation: These are all valid strings using three opening and three closing parentheses.
+Explanation: For three pairs, the five Catalan-valid strings are listed in the order produced by trying opening parentheses before closing ones.
 ```
 
 ## Understanding & Intuition

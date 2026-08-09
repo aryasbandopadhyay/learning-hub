@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Meta, Microsoft, Bloomberg
 
 ## Problem
-Given an integer array `nums` that may contain duplicates, return all possible unique subsets. `1 <= len(nums) <= 10`. The answer may be returned in any order.
+Given an integer array `nums` that may contain duplicates, return all possible unique subsets. The
+output must not contain duplicate subsets.
+
+**Input**
+- `nums`: a list of integers, possibly with repeated values.
+
+**Output**
+- A list of unique subsets. The judge accepts subsets in any order, but each subset should be in
+  non-decreasing order when the input is sorted first.
+
+## Constraints
+- 1 <= nums.length <= 10
+- -10 <= nums[i] <= 10
 
 ## Examples
 ```text
 Input: nums = [1,2,2]
 Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
-Explanation: The two 2s should not create duplicate subset rows.
+Explanation: The two `2`s create the additional subsets `[2,2]` and `[1,2,2]`, but duplicate copies of `[2]` or `[1,2]` are omitted.
 ```
 
 ## Understanding & Intuition

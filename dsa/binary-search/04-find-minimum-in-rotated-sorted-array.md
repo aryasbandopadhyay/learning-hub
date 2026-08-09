@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Microsoft, Google, Bloomberg
 
 ## Problem
-Given a sorted array of unique integers rotated between `1` and `n` times, return the minimum element. Constraints: `1 <= nums.length <= 5000`, `-5000 <= nums[i] <= 5000`, all values are unique.
+A strictly increasing array was rotated between `1` and `n` times. Given the resulting array `nums`,
+return its minimum element. The array contains no duplicates.
+
+**Input**
+- `nums`: a rotated sorted list of distinct integers.
+
+**Output**
+- An integer: the smallest value in `nums`.
+
+## Constraints
+- 1 <= nums.length <= 5000
+- -5000 <= nums[i] <= 5000
+- All values in `nums` are unique.
+- `nums` is a rotation of a strictly increasing array.
 
 ## Examples
 ```text
 Input: nums = [3,4,5,1,2]
 Output: 1
-Explanation: The sorted array was rotated so the minimum moved to index 3.
+Explanation: The sorted order would be `[1,2,3,4,5]`, so the minimum in the rotated array is `1`.
 ```
 
 ## Understanding & Intuition

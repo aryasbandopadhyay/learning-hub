@@ -5,13 +5,27 @@
 - **Asked at:** Meta, Amazon, Google, Microsoft
 
 ## Problem
-Given `nums`, assign either `+` or `-` before every number so the expression equals `target`. Return the number of possible assignments. Constraints: `1 <= nums.length <= 20`, `0 <= nums[i] <= 1000`.
+Given integers `nums` and a target value, place either a `+` or `-` sign before every number. Count
+how many sign assignments make the resulting expression equal `target`.
+
+**Input**
+- `nums`: a list of non-negative integers.
+- `target`: the desired expression value.
+
+**Output**
+- An integer: the number of valid sign assignments.
+
+## Constraints
+- 1 <= nums.length <= 20
+- 0 <= nums[i] <= 1000
+- 0 <= sum(nums) <= 1000
+- -1000 <= target <= 1000
 
 ## Examples
 ```text
 Input: nums = [1,1,1,1,1], target = 3
 Output: 5
-Explanation: There are five ways to make sum 3.
+Explanation: There are five ways to make `3`, each using one of the five `1`s as the negative term and the rest as positive terms.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,29 @@
 - **Asked at:** Meta, Amazon, Google, Microsoft
 
 ## Problem
-Given a list of CPU tasks represented by capital letters and a non-negative cooldown `n`, return the least number of time intervals needed to finish all tasks. The same task type must be separated by at least `n` intervals. Constraints: `1 <= len(tasks) <= 10^4`, `0 <= n <= 100`.
+Given a list of CPU tasks represented by capital letters and a cooldown `n`, schedule all tasks so
+that identical tasks are separated by at least `n` intervals. Each interval may run one task or stay
+idle.
+
+Return the minimum number of intervals needed to finish all tasks.
+
+**Input**
+- `tasks`: a list of task labels.
+- `n`: the required cooldown between equal labels.
+
+**Output**
+- An integer: the minimum schedule length.
+
+## Constraints
+- 1 <= tasks.length <= 10^4
+- tasks[i] is an uppercase English letter.
+- 0 <= n <= 100
 
 ## Examples
 ```text
 Input: tasks = ["A","A","A","B","B","B"], n = 2
 Output: 8
-Explanation: One optimal schedule is A -> B -> idle -> A -> B -> idle -> A -> B.
+Explanation: One optimal schedule is `A, B, idle, A, B, idle, A, B`, which uses `8` intervals.
 ```
 
 ## Understanding & Intuition

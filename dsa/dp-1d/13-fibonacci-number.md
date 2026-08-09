@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Microsoft, Apple
 
 ## Problem
-Return the `n`th Fibonacci number, where `F(0)=0`, `F(1)=1`, and `F(n)=F(n-1)+F(n-2)`. Constraints: `0 <= n <= 30`.
+The Fibonacci sequence is defined by `F(0) = 0`, `F(1) = 1`, and `F(n) = F(n - 1) + F(n - 2)` for
+`n > 1`. Given `n`, return `F(n)`.
+
+**Input**
+- `n`: the Fibonacci index.
+
+**Output**
+- An integer: the `n`th Fibonacci number.
+
+## Constraints
+- 0 <= n <= 30
 
 ## Examples
 ```text
 Input: n = 4
 Output: 3
-Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
+Explanation: `F(2) = 1`, `F(3) = 2`, and `F(4) = 3`, so the answer is `3`.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Microsoft, Bloomberg
 
 ## Problem
-Houses are arranged in a circle, so the first and last houses are adjacent. Return the maximum amount you can rob without robbing adjacent houses. Constraints: `1 <= nums.length <= 100`, `0 <= nums[i] <= 1000`.
+The houses are arranged in a circle, so the first and last houses are also adjacent. `nums[i]` is the
+amount of money in the `i`th house. You may not rob two adjacent houses.
+
+Return the maximum amount of money you can rob without triggering the alarm.
+
+**Input**
+- `nums`: a list of non-negative integers representing circularly arranged houses.
+
+**Output**
+- An integer: the maximum obtainable amount.
+
+## Constraints
+- n == nums.length
+- 1 <= n <= 100
+- 0 <= nums[i] <= 1000
 
 ## Examples
 ```text
 Input: nums = [2,3,2]
 Output: 3
-Explanation: Rob only the middle house.
+Explanation: The best choice is the middle house with value `3`. The two houses with value `2` cannot both be robbed because they are adjacent in the circle.
 ```
 
 ## Understanding & Intuition

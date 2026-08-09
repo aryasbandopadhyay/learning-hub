@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Microsoft, Apple
 
 ## Problem
-Given an array `nums` of distinct integers, return all possible permutations. `1 <= len(nums) <= 6`. The answer may be returned in any order.
+Given an array `nums` of distinct integers, return all possible permutations that use every element
+exactly once.
+
+**Input**
+- `nums`: a list of distinct integers.
+
+**Output**
+- A list of permutations. The judge accepts the permutations in any order.
+
+## Constraints
+- 1 <= nums.length <= 6
+- -10 <= nums[i] <= 10
+- All values in `nums` are unique.
 
 ## Examples
 ```text
 Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
-Explanation: Every ordering of the three distinct numbers is included.
+Explanation: There are `3! = 6` ways to arrange the three distinct numbers, and all six permutations are shown.
 ```
 
 ## Understanding & Intuition

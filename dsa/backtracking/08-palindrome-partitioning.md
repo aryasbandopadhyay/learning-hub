@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Bloomberg
 
 ## Problem
-Given a string `s`, partition it so every substring in the partition is a palindrome. Return all possible palindrome partitions. `1 <= len(s) <= 16`.
+Given a string `s`, split it into one or more substrings so that every substring is a palindrome.
+Return all possible palindrome partitions.
+
+**Input**
+- `s`: the string to partition.
+
+**Output**
+- A list of partitions. **This judge compares exactly**, so return partitions in left-to-right DFS
+  order: at each position, try shorter palindromic prefixes before longer ones.
+
+## Constraints
+- 1 <= s.length <= 16
+- `s` consists of lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "aab"
 Output: [["a","a","b"],["aa","b"]]
-Explanation: Both partitions split the string into palindromic pieces.
+Explanation: The valid partitions are three single letters and the partition that groups the first two letters as `"aa"`; every piece is a palindrome.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Adobe, Apple
 
 ## Problem
-Given `cost`, where `cost[i]` is the cost of stepping on stair `i`, you may start at index `0` or `1` and climb 1 or 2 steps. Return the minimum cost to reach beyond the last stair. Constraints: `2 <= cost.length <= 1000`, `0 <= cost[i] <= 999`.
+A staircase has `n` steps indexed from `0` to `n - 1`. `cost[i]` is the cost paid when you step on
+step `i`. After paying for a step, you may climb either 1 or 2 steps. You may start on step `0` or
+step `1`, and the top is just after step `n - 1`.
+
+Return the minimum total cost needed to reach the top.
+
+**Input**
+- `cost`: a list of non-negative integers where `cost[i]` is the cost of step `i`.
+
+**Output**
+- An integer: the minimum cost to reach the top.
+
+## Constraints
+- n == cost.length
+- 2 <= n <= 1000
+- 0 <= cost[i] <= 999
 
 ## Examples
 ```text
 Input: cost = [10,15,20]
 Output: 15
-Explanation: Start at stair 1, pay 15, then climb to the top.
+Explanation: Starting at step 1 costs `15`, then you can climb two steps directly to the top. Starting through step 0 and step 2 costs `10 + 20 = 30`, so the minimum is `15`.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given `nums`, burst balloons to maximize coins. Bursting balloon `i` earns `nums[left] * nums[i] * nums[right]`, where `left` and `right` are adjacent unburst balloons; virtual balloons with value `1` surround the array. Constraints: `1 <= nums.length <= 300`, `0 <= nums[i] <= 100`.
+You have balloons labeled by `nums`. When you burst balloon `i`, you gain
+`nums[left] * nums[i] * nums[right]` coins, where `left` and `right` are the nearest still-unburst
+balloons on each side. If there is no balloon on a side, use value `1` for that side.
+
+Return the maximum coins obtainable by choosing the burst order optimally.
+
+**Input**
+- `nums`: a list of balloon values.
+
+**Output**
+- An integer: the maximum number of coins.
+
+## Constraints
+- 1 <= nums.length <= 300
+- 0 <= nums[i] <= 100
 
 ## Examples
 ```text
 Input: nums = [3,1,5,8]
 Output: 167
-Explanation: One optimal order yields 167 coins.
+Explanation: One optimal order bursts `1`, then `5`, then `3`, then `8`, earning `3*1*5 + 3*5*8 + 1*3*8 + 1*8*1 = 167`.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,27 @@
 - **Asked at:** Facebook, Amazon, Microsoft, Google
 
 ## Problem
-Given a rotated sorted array of distinct integers and a target, return the target index or `-1` if absent. Constraints: `1 <= nums.length <= 5000`, `-10^4 <= nums[i], target <= 10^4`, all values are unique.
+A strictly increasing array was rotated at an unknown pivot. Given the rotated array `nums` and a
+`target`, return the target's index, or `-1` if it is not present. The array contains no duplicates.
+
+**Input**
+- `nums`: a rotated sorted list of distinct integers.
+- `target`: the value to search for.
+
+**Output**
+- An integer: the index of `target`, or `-1` if absent.
+
+## Constraints
+- 1 <= nums.length <= 5000
+- -10^4 <= nums[i], target <= 10^4
+- All values in `nums` are unique.
+- `nums` is a rotation of a strictly increasing array.
 
 ## Examples
 ```text
 Input: nums = [4,5,6,7,0,1,2], target = 0
 Output: 4
-Explanation: 0 appears at index 4 after rotation.
+Explanation: `0` appears at index `4` after the rotation.
 ```
 
 ## Understanding & Intuition

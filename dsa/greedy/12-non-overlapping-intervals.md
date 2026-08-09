@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given intervals `intervals`, return the minimum number of intervals to remove so the rest are non-overlapping. Intervals that touch at an endpoint do not overlap. Constraints: `1 <= len(intervals) <= 10^5`, `-5 * 10^4 <= start < end <= 5 * 10^4`.
+Given a list of intervals, remove the fewest intervals so that the remaining intervals do not
+overlap. Intervals that only touch at an endpoint, such as `[1,2]` and `[2,3]`, do not overlap.
+
+**Input**
+- `intervals`: a list of intervals `[start, end]`.
+
+**Output**
+- An integer: the minimum number of intervals to remove.
+
+## Constraints
+- 1 <= intervals.length <= 10^5
+- intervals[i].length == 2
+- -5 * 10^4 <= start < end <= 5 * 10^4
 
 ## Examples
 ```text
 Input: intervals = [[1,2],[2,3],[3,4],[1,3]]
 Output: 1
-Explanation: Remove [1,3] to make the remaining intervals non-overlapping.
+Explanation: Removing `[1,3]` leaves `[1,2]`, `[2,3]`, and `[3,4]`, which do not overlap.
 ```
 
 ## Understanding & Intuition

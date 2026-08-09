@@ -5,13 +5,31 @@
 - **Asked at:** Amazon, Google, Microsoft, Adobe
 
 ## Problem
-Given item weights `wt`, values `val`, item count `n`, and capacity `W`, return the maximum value using each item at most once without exceeding capacity. Constraints: `1 <= n <= 1000`, `0 <= W <= 10^4`, positive weights and values.
+You are given `n` items. Item `i` has weight `wt[i]` and value `val[i]`. A knapsack can carry at
+most total weight `W`. Each item can be chosen at most once.
+
+Return the maximum total value that can fit in the knapsack.
+
+**Input**
+- `W`: the knapsack capacity.
+- `wt`: a list of item weights.
+- `val`: a list of item values aligned with `wt`.
+- `n`: the number of available items to consider.
+
+**Output**
+- An integer: the maximum total value with total weight at most `W`.
+
+## Constraints
+- n == wt.length == val.length
+- 1 <= n <= 1000
+- 1 <= W <= 1000
+- 1 <= wt[i], val[i] <= 1000
 
 ## Examples
 ```text
 Input: W = 4, wt = [4,5,1], val = [1,2,3], n = 3
 Output: 3
-Explanation: Taking the weight-1 item gives the highest feasible value.
+Explanation: The item with weight `1` and value `3` fits by itself and gives the best value under capacity `4`.
 ```
 
 ## Understanding & Intuition

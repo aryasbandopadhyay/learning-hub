@@ -5,13 +5,28 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given strings `s1`, `s2`, and `s3`, return whether `s3` is formed by interleaving `s1` and `s2` while preserving the character order of each. Constraints: `0 <= len(s1), len(s2) <= 100`, `len(s3) <= 200`.
+Given strings `s1`, `s2`, and `s3`, determine whether `s3` can be formed by interleaving `s1` and
+`s2`. An interleaving uses every character from both strings exactly once while preserving the
+relative order of characters from each original string.
+
+**Input**
+- `s1`: the first source string.
+- `s2`: the second source string.
+- `s3`: the candidate interleaving.
+
+**Output**
+- A boolean: `true` if `s3` is a valid interleaving, otherwise `false`.
+
+## Constraints
+- 0 <= s1.length, s2.length <= 100
+- 0 <= s3.length <= 200
+- `s1`, `s2`, and `s3` consist of lowercase English letters.
 
 ## Examples
 ```text
 Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
 Output: true
-Explanation: Characters can be taken from s1 and s2 in order to form s3.
+Explanation: `s3` can be built by taking characters from `s1` and `s2` while preserving the order inside each source string.
 ```
 
 ## Understanding & Intuition

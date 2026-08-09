@@ -5,13 +5,29 @@
 - **Asked at:** Google, Amazon, Microsoft, DoorDash
 
 ## Problem
-Koko has piles of bananas and eats at speed `k` bananas per hour from one pile at a time. Return the minimum integer `k` such that all piles can be eaten within `h` hours. Constraints: `1 <= piles.length <= 10^4`, `1 <= piles[i] <= 10^9`, `piles.length <= h <= 10^9`.
+Koko has several piles of bananas and `h` hours before the guards return. She chooses one integer
+eating speed `k` bananas per hour. Each hour, she chooses one pile and eats up to `k` bananas from it;
+if the pile has fewer than `k`, she finishes it and does not start another pile that hour.
+
+Return the minimum integer `k` that lets her eat all bananas within `h` hours.
+
+**Input**
+- `piles`: a list where `piles[i]` is the size of the `i`th pile.
+- `h`: the number of available hours.
+
+**Output**
+- An integer: the minimum feasible eating speed.
+
+## Constraints
+- 1 <= piles.length <= 10^4
+- piles.length <= h <= 10^9
+- 1 <= piles[i] <= 10^9
 
 ## Examples
 ```text
 Input: piles = [3,6,7,11], h = 8
 Output: 4
-Explanation: At speed 4, the piles take 1 + 2 + 2 + 3 = 8 hours.
+Explanation: At speed `4`, the piles take `1 + 2 + 2 + 3 = 8` hours. Any smaller speed takes more than `8` hours.
 ```
 
 ## Understanding & Intuition

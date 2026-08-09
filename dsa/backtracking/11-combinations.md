@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Microsoft, Adobe
 
 ## Problem
-Given two integers `n` and `k`, return all possible combinations of `k` numbers chosen from the range `1` to `n`. `1 <= k <= n <= 20`. The answer may be returned in any order.
+Given integers `n` and `k`, return all combinations of `k` distinct numbers chosen from the range
+`1` through `n`.
+
+**Input**
+- `n`: the largest available number.
+- `k`: the number of values in each combination.
+
+**Output**
+- A list of combinations. The judge accepts the combinations in any order, but the conventional
+  output lists numbers inside each combination in increasing order.
+
+## Constraints
+- 1 <= n <= 20
+- 1 <= k <= n
 
 ## Examples
 ```text
 Input: n = 4, k = 2
 Output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
-Explanation: These are all pairs chosen from 1 through 4.
+Explanation: All six ways to choose two numbers from `1,2,3,4` are shown, with each pair in increasing order.
 ```
 
 ## Understanding & Intuition

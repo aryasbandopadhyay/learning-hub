@@ -5,13 +5,26 @@
 - **Asked at:** Google, Amazon, Meta, Apple
 
 ## Problem
-Given an integer array `hand` and an integer `groupSize`, return `True` if the cards can be rearranged into groups of `groupSize` consecutive cards. Constraints: `1 <= len(hand) <= 10^4`, `0 <= hand[i] <= 10^9`, `1 <= groupSize <= len(hand)`.
+Given a hand of cards and a `groupSize`, determine whether the cards can be rearranged into groups
+where each group has exactly `groupSize` cards with consecutive values. Every card must be used once.
+
+**Input**
+- `hand`: a list of integer card values.
+- `groupSize`: the required size of each consecutive group.
+
+**Output**
+- A boolean: `True` if such a grouping is possible, otherwise `False`.
+
+## Constraints
+- 1 <= hand.length <= 10^4
+- 0 <= hand[i] <= 10^9
+- 1 <= groupSize <= hand.length
 
 ## Examples
 ```text
 Input: hand = [1,2,3,6,2,3,4,7,8], groupSize = 3
 Output: True
-Explanation: The hand can be rearranged as [1,2,3], [2,3,4], and [6,7,8].
+Explanation: The cards can be grouped as `[1,2,3]`, `[2,3,4]`, and `[6,7,8]`, so every card belongs to a consecutive group of size `3`.
 ```
 
 ## Understanding & Intuition

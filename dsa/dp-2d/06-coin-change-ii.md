@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Microsoft, Bloomberg
 
 ## Problem
-Given an integer `amount` and distinct coin denominations, return the number of combinations that make up that amount. Coin order does not matter and each coin may be used unlimited times. Constraints: `0 <= amount <= 5000`, `1 <= coins.length <= 300`.
+Given coin denominations and an `amount`, count how many different combinations of coins sum to
+exactly `amount`. You may use each denomination any number of times. Combinations are counted by the
+multiset of coins, not by order.
+
+**Input**
+- `amount`: the target amount.
+- `coins`: a list of distinct positive coin denominations.
+
+**Output**
+- An integer: the number of combinations that sum to `amount`.
+
+## Constraints
+- 1 <= coins.length <= 300
+- 1 <= coins[i] <= 5000
+- All values in `coins` are unique.
+- 0 <= amount <= 5000
 
 ## Examples
 ```text
 Input: amount = 5, coins = [1,2,5]
 Output: 4
-Explanation: The combinations are 5, 2+2+1, 2+1+1+1, and five 1s.
+Explanation: The four combinations are `5`, `2+2+1`, `2+1+1+1`, and five `1` coins.
 ```
 
 ## Understanding & Intuition

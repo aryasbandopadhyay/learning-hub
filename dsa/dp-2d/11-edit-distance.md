@@ -5,13 +5,26 @@
 - **Asked at:** Google, Amazon, Microsoft, Apple
 
 ## Problem
-Given two strings, return the minimum number of insertions, deletions, and replacements needed to convert `word1` into `word2`. Constraints: `0 <= len(word1), len(word2) <= 500`.
+Given two strings `word1` and `word2`, compute the minimum number of operations needed to transform
+`word1` into `word2`. In one operation you may insert one character, delete one character, or replace
+one character.
+
+**Input**
+- `word1`: the starting string.
+- `word2`: the target string.
+
+**Output**
+- An integer: the minimum edit distance.
+
+## Constraints
+- 0 <= word1.length, word2.length <= 500
+- `word1` and `word2` consist of lowercase English letters.
 
 ## Examples
 ```text
 Input: word1 = "horse", word2 = "ros"
 Output: 3
-Explanation: horse -> rorse -> rose -> ros.
+Explanation: One optimal sequence is replace `h` with `r`, delete the second `r`, and delete `e`, producing `"ros"` in `3` operations.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given a string `s`, return the number of palindromic substrings in it. Constraints: `1 <= s.length <= 1000`, `s` contains lowercase English letters.
+Given a string `s`, count all contiguous substrings that are palindromes. Substrings with different
+start or end positions count separately, even if they contain the same characters.
+
+**Input**
+- `s`: a string.
+
+**Output**
+- An integer: the number of palindromic substrings in `s`.
+
+## Constraints
+- 1 <= s.length <= 1000
+- `s` consists of lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "aaa"
 Output: 6
-Explanation: "a", "a", "a", "aa", "aa", and "aaa".
+Explanation: The palindromic substrings are three single letters, two occurrences of `"aa"`, and one `"aaa"`, for a total of `6`.
 ```
 
 ## Understanding & Intuition

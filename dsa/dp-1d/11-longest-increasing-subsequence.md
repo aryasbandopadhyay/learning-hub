@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given integer array `nums`, return the length of the longest strictly increasing subsequence. Constraints: `1 <= nums.length <= 2500`, `-10^4 <= nums[i] <= 10^4`.
+Given an integer array `nums`, find the length of the longest subsequence whose values are strictly
+increasing. A subsequence keeps the original relative order but may skip elements.
+
+**Input**
+- `nums`: a list of integers.
+
+**Output**
+- An integer: the maximum length of a strictly increasing subsequence.
+
+## Constraints
+- 1 <= nums.length <= 2500
+- -10^4 <= nums[i] <= 10^4
 
 ## Examples
 ```text
 Input: nums = [10,9,2,5,3,7,101,18]
 Output: 4
-Explanation: One LIS is [2,3,7,101].
+Explanation: One longest increasing subsequence is `[2,3,7,101]`, which has length `4`.
 ```
 
 ## Understanding & Intuition

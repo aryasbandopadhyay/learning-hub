@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given daily stock prices, maximize profit with as many transactions as desired, but after selling you must wait one day before buying again. Constraints: `1 <= prices.length <= 5000`, `0 <= prices[i] <= 1000`.
+You are given daily stock prices. You may complete as many buy/sell transactions as you like, but you
+may hold at most one share at a time. After selling a share, you must wait one full day before buying
+again.
+
+Return the maximum profit possible.
+
+**Input**
+- `prices`: a list where `prices[i]` is the stock price on day `i`.
+
+**Output**
+- An integer: the maximum profit.
+
+## Constraints
+- 1 <= prices.length <= 5000
+- 0 <= prices[i] <= 1000
 
 ## Examples
 ```text
 Input: prices = [1,2,3,0,2]
 Output: 3
-Explanation: Buy day 0, sell day 1, cooldown day 2, buy day 3, sell day 4.
+Explanation: Buy on day 0 and sell on day 1 for profit `1`, cooldown on day 2, then buy on day 3 and sell on day 4 for profit `2`, totaling `3`.
 ```
 
 ## Understanding & Intuition

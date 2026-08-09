@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Place `n` queens on an `n x n` chessboard so no two queens attack each other. Return all distinct board configurations, where `Q` is a queen and `.` is empty. `1 <= n <= 9`.
+Place `n` queens on an `n x n` chessboard so that no two queens attack each other. Queens attack
+along rows, columns, and both diagonals. Return every distinct board configuration.
+
+Represent each board as a list of `n` strings of length `n`, where `Q` marks a queen and `.` marks an
+empty square.
+
+**Input**
+- `n`: the board size and number of queens.
+
+**Output**
+- A list of boards. **This judge compares exactly**, so return solutions by scanning rows from top
+  to bottom and trying columns from left to right during backtracking.
+
+## Constraints
+- 1 <= n <= 9
 
 ## Examples
 ```text
 Input: n = 4
 Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
-Explanation: There are two safe configurations for four queens.
+Explanation: For `n = 4`, exactly two placements avoid shared rows, columns, and diagonals; both board encodings are shown in the required order.
 ```
 
 ## Understanding & Intuition

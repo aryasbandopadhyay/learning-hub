@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given an integer array `nums`, where `nums[i]` is the maximum jump length from index `i`, return `True` if you can reach the last index. Constraints: `1 <= len(nums) <= 10^4`, `0 <= nums[i] <= 10^5`.
+You are given an array `nums` where `nums[i]` is the maximum jump length from index `i`. Starting at
+index `0`, determine whether you can reach the last index.
+
+**Input**
+- `nums`: a list of non-negative integers.
+
+**Output**
+- A boolean: `True` if the last index is reachable, otherwise `False`.
+
+## Constraints
+- 1 <= nums.length <= 10^4
+- 0 <= nums[i] <= 10^5
 
 ## Examples
 ```text
 Input: nums = [2,3,1,1,4]
 Output: True
-Explanation: Jump 1 step to index 1, then 3 steps to the last index.
+Explanation: Jump from index `0` to index `1`, then from index `1` to the last index.
 ```
 
 ## Understanding & Intuition

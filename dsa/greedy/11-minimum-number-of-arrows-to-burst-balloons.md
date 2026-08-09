@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Microsoft, Bloomberg
 
 ## Problem
-Given intervals `points`, where `points[i] = [start, end]` is the horizontal diameter of a balloon, one vertical arrow at coordinate `x` bursts every balloon with `start <= x <= end`. Return the minimum number of arrows needed. Constraints: `1 <= len(points) <= 10^5`, `-2^31 <= start < end <= 2^31 - 1`.
+Each balloon is represented by an interval `[xstart, xend]` on the x-axis. An arrow shot vertically
+at position `x` bursts every balloon whose interval contains `x`.
+
+Return the minimum number of arrows needed to burst all balloons.
+
+**Input**
+- `points`: a list of balloon intervals `[xstart, xend]`.
+
+**Output**
+- An integer: the minimum number of arrows.
+
+## Constraints
+- 1 <= points.length <= 10^5
+- points[i].length == 2
+- -2^31 <= xstart < xend <= 2^31 - 1
 
 ## Examples
 ```text
 Input: points = [[10,16],[2,8],[1,6],[7,12]]
 Output: 2
-Explanation: Shoot one arrow at x = 6 and another at x = 12.
+Explanation: One arrow shot at `x = 6` bursts `[2,8]` and `[1,6]`; another shot at `x = 11` bursts `[10,16]` and `[7,12]`.
 ```
 
 ## Understanding & Intuition

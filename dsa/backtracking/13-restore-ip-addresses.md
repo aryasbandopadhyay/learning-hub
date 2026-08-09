@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a string `s` containing only digits, return all possible valid IP addresses by inserting three dots. A valid IP address has exactly four integers from `0` to `255`, and no segment may have leading zeros unless it is exactly `"0"`. `1 <= len(s) <= 20`.
+Given a string `s` containing only digits, return all possible valid IPv4 addresses that can be made
+by inserting three dots into `s`. A valid IPv4 address has exactly four decimal parts, each between
+`0` and `255`, and no part may have leading zeroes unless the part is exactly `0`.
+
+**Input**
+- `s`: a string of digits.
+
+**Output**
+- A list of IPv4 address strings. **This judge compares exactly**, so return addresses in
+  left-to-right DFS order, trying shorter valid parts before longer ones.
+
+## Constraints
+- 1 <= s.length <= 20
+- `s` contains only digits.
 
 ## Examples
 ```text
 Input: s = "25525511135"
 Output: ["255.255.11.135","255.255.111.35"]
-Explanation: These are the valid four-segment splits.
+Explanation: The only valid placements produce `255.255.11.135` and `255.255.111.35`; other dot placements either leave the wrong number of digits, exceed `255`, or create invalid leading zeroes.
 ```
 
 ## Understanding & Intuition

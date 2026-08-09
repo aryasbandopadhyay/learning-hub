@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given an `m x n` grid, count how many ways a robot can move from the top-left to the bottom-right using only right or down moves. Constraints: `1 <= m, n <= 100`; answer fits in a 32-bit signed integer.
+A robot starts in the top-left corner of an `m x n` grid and wants to reach the bottom-right corner.
+On each move it may go only down or right.
+
+Return the number of distinct paths from start to finish.
+
+**Input**
+- `m`: the number of grid rows.
+- `n`: the number of grid columns.
+
+**Output**
+- An integer: the number of valid down/right paths.
+
+## Constraints
+- 1 <= m, n <= 100
+- The answer is at most `2 * 10^9`.
 
 ## Examples
 ```text
 Input: m = 3, n = 7
 Output: 28
-Explanation: There are 28 right/down paths.
+Explanation: From the top-left to the bottom-right of a `3 x 7` grid, every path consists of 2 down moves and 6 right moves, which can be arranged in `28` ways.
 ```
 
 ## Understanding & Intuition

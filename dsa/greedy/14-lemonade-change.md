@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Apple
 
 ## Problem
-Each lemonade costs `$5`. Customers pay in order with bills of `$5`, `$10`, or `$20`. Return `True` if you can provide correct change to every customer, starting with no cash. Constraints: `1 <= len(bills) <= 10^5`, `bills[i]` is `5`, `10`, or `20`.
+At a lemonade stand, each lemonade costs `$5`. Customers pay one at a time using bills in the order
+shown, and each bill is either `$5`, `$10`, or `$20`. You start with no change.
+
+Return whether you can provide correct change to every customer.
+
+**Input**
+- `bills`: the sequence of customer bills.
+
+**Output**
+- A boolean: `True` if every customer can receive correct change, otherwise `False`.
+
+## Constraints
+- 1 <= bills.length <= 10^5
+- bills[i] is `5`, `10`, or `20`.
 
 ## Examples
 ```text
 Input: bills = [5,5,5,10,20]
 Output: True
-Explanation: Use one $10 and one $5 as change for the $20 bill.
+Explanation: The first three customers pay with `$5`, giving enough change for the `$10` customer and then `$15` change for the `$20` customer.
 ```
 
 ## Understanding & Intuition

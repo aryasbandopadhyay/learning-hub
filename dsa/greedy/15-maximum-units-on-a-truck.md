@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Microsoft, Google
 
 ## Problem
-Given `boxTypes`, where `boxTypes[i] = [numberOfBoxes, unitsPerBox]`, and an integer `truckSize`, choose at most `truckSize` boxes to maximize total units on the truck. Constraints: `1 <= len(boxTypes) <= 1000`, `1 <= numberOfBoxes, unitsPerBox <= 1000`, `1 <= truckSize <= 10^6`.
+Each `boxTypes[i] = [numberOfBoxes, unitsPerBox]` describes boxes of one type. You may load at most
+`truckSize` boxes total. Return the maximum number of units that can be loaded onto the truck.
+
+**Input**
+- `boxTypes`: a list of `[numberOfBoxes, unitsPerBox]` pairs.
+- `truckSize`: the maximum number of boxes the truck can carry.
+
+**Output**
+- An integer: the maximum total units loadable.
+
+## Constraints
+- 1 <= boxTypes.length <= 1000
+- 1 <= numberOfBoxes, unitsPerBox <= 1000
+- 1 <= truckSize <= 10^6
 
 ## Examples
 ```text
 Input: boxTypes = [[1,3],[2,2],[3,1]], truckSize = 4
 Output: 8
-Explanation: Take 1 box with 3 units and 2 boxes with 2 units, then 1 box with 1 unit.
+Explanation: Load the one box with `3` units and two boxes with `2` units each, then one box with `1` unit, for `8` total units.
 ```
 
 ## Understanding & Intuition

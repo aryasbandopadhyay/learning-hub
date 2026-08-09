@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft, Bloomberg
 
 ## Problem
-Given strings `s` and `t`, return the number of distinct subsequences of `s` equal to `t`. Constraints: `1 <= len(s), len(t) <= 1000`; answer fits in a 32-bit signed integer.
+Given strings `s` and `t`, count how many distinct subsequences of `s` are equal to `t`. A
+subsequence is formed by deleting zero or more characters without changing the order of the remaining
+characters.
+
+**Input**
+- `s`: the source string.
+- `t`: the target string.
+
+**Output**
+- An integer: the number of subsequences of `s` equal to `t`.
+
+## Constraints
+- 1 <= s.length, t.length <= 1000
+- `s` and `t` consist of English letters.
+- The answer fits in a 32-bit signed integer.
 
 ## Examples
 ```text
 Input: s = "rabbbit", t = "rabbit"
 Output: 3
-Explanation: There are three ways to delete one of the three 'b' characters.
+Explanation: There are three ways to delete one of the three `b` characters from `"rabbbit"` so that the remaining string is `"rabbit"`.
 ```
 
 ## Understanding & Intuition

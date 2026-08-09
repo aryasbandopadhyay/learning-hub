@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Adobe, Microsoft, Meta
 
 ## Problem
-Given integers `candidates` that may contain duplicates and an integer `target`, return all unique combinations where each number may be used at most once and the sum is `target`. `1 <= len(candidates) <= 100`, `1 <= target <= 30`.
+Given a list `candidates` that may contain duplicates and a target, return all unique combinations
+whose sum is exactly `target`. Each candidate position may be used at most once. The output must not
+contain duplicate combinations.
+
+**Input**
+- `candidates`: a list of positive integers, possibly with repeated values.
+- `target`: the desired sum.
+
+**Output**
+- A list of combinations. **This judge compares exactly**, so return combinations in lexicographic
+  order after sorting the candidates; each individual combination must be non-decreasing.
+
+## Constraints
+- 1 <= candidates.length <= 100
+- 1 <= candidates[i] <= 50
+- 1 <= target <= 30
 
 ## Examples
 ```text
 Input: candidates = [10,1,2,7,6,1,5], target = 8
 Output: [[1,1,6],[1,2,5],[1,7],[2,6]]
-Explanation: Duplicate candidate values must not create duplicate combinations.
+Explanation: After using each input element at most once and removing duplicates, the valid sums are `[1,1,6]`, `[1,2,5]`, `[1,7]`, and `[2,6]`.
 ```
 
 ## Understanding & Intuition

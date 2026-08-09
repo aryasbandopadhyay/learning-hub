@@ -5,13 +5,30 @@
 - **Asked at:** Amazon, Google, Microsoft, Bloomberg
 
 ## Problem
-There are `n` gas stations in a circle. `gas[i]` is fuel available at station `i`, and `cost[i]` is fuel needed to drive to station `i + 1`. Return the starting station index if you can complete the circuit once, otherwise return `-1`. Constraints: `1 <= n <= 10^5`, `0 <= gas[i], cost[i] <= 10^4`.
+There are `n` gas stations in a circle. At station `i`, you can add `gas[i]` units of fuel, and it
+costs `cost[i]` units of fuel to drive from station `i` to station `(i + 1) mod n`. Start with an
+empty tank.
+
+Return the starting station index if you can travel around the circuit exactly once, or `-1` if it is
+impossible. If a solution exists, it is unique.
+
+**Input**
+- `gas`: fuel available at each station.
+- `cost`: fuel needed to reach the next station.
+
+**Output**
+- An integer: the valid starting index, or `-1` if none exists.
+
+## Constraints
+- n == gas.length == cost.length
+- 1 <= n <= 10^5
+- 0 <= gas[i], cost[i] <= 10^4
 
 ## Examples
 ```text
 Input: gas = [1,2,3,4,5], cost = [3,4,5,1,2]
 Output: 3
-Explanation: Starting at index 3 gives enough total tank balance to complete the circle.
+Explanation: Starting at index `3`, the tank never drops below zero while visiting stations `3,4,0,1,2` and returning to `3`.
 ```
 
 ## Understanding & Intuition

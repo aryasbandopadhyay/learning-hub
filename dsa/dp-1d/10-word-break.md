@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given a string `s` and dictionary `wordDict`, return whether `s` can be segmented into a space-separated sequence of dictionary words. Words may be reused. Constraints: `1 <= s.length <= 300`, `1 <= wordDict.length <= 1000`.
+Given a string `s` and a dictionary `wordDict`, determine whether `s` can be segmented into one or
+more dictionary words. Words may be reused any number of times.
+
+**Input**
+- `s`: the string to segment.
+- `wordDict`: a list of available words.
+
+**Output**
+- A boolean: `True` if `s` can be fully segmented into dictionary words, otherwise `False`.
+
+## Constraints
+- 1 <= s.length <= 300
+- 1 <= wordDict.length <= 1000
+- 1 <= wordDict[i].length <= 20
+- `s` and `wordDict[i]` consist of lowercase English letters.
+- All strings in `wordDict` are unique.
 
 ## Examples
 ```text
 Input: s = "leetcode", wordDict = ["leet","code"]
 Output: True
-Explanation: "leetcode" can be split as "leet code".
+Explanation: `"leetcode"` splits into `"leet" + "code"`, and both pieces are in the dictionary.
 ```
 
 ## Understanding & Intuition

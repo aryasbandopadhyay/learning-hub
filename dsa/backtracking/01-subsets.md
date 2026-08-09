@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an integer array `nums` with distinct elements, return all possible subsets (the power set). `1 <= len(nums) <= 10`; values are distinct. The answer may be returned in any order.
+Given an integer array `nums` with distinct values, return every possible subset of its elements. A
+subset may contain any number of elements, including zero. Do not include duplicate subsets.
+
+**Input**
+- `nums`: a list of distinct integers.
+
+**Output**
+- A list of subsets. The judge accepts the subsets in any order, but each subset should preserve the
+  relative order chosen from `nums`.
+
+## Constraints
+- 1 <= nums.length <= 10
+- -10 <= nums[i] <= 10
+- All values in `nums` are unique.
 
 ## Examples
 ```text
 Input: nums = [1,2,3]
 Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
-Explanation: Every element is either chosen or skipped.
+Explanation: The output lists all `2^3 = 8` subsets: the empty subset, each single element, each pair, and the full set.
 ```
 
 ## Understanding & Intuition

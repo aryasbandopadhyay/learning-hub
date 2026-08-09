@@ -5,13 +5,35 @@
 - **Asked at:** Google, Amazon, Meta, Uber
 
 ## Problem
-Design `TimeMap` with `set(key, value, timestamp)` and `get(key, timestamp)`. `get` returns the value with the largest timestamp less than or equal to `timestamp`, or `""` if none exists. Timestamps for each key are strictly increasing. Constraints: up to `2 * 10^5` calls, keys and values are strings, `1 <= timestamp <= 10^7`.
+Design a time-based key-value store. It supports storing multiple values for the same key at
+different timestamps and retrieving the value associated with the greatest timestamp not exceeding a
+query timestamp.
+
+Implement the `TimeMap` class with:
+- `TimeMap()`: initializes the object.
+- `set(key, value, timestamp)`: stores `value` for `key` at `timestamp`.
+- `get(key, timestamp)`: returns the value set for `key` with the largest timestamp `<= timestamp`,
+  or the empty string if no such timestamp exists.
+
+**Input**
+- A sequence of constructor, `set`, and `get` operations with their arguments.
+
+**Output**
+- For each operation in order, output `null` for `TimeMap()` and `set`, and the returned string for
+  each `get`. **This judge compares exactly**, so outputs must follow the operation order.
+
+## Constraints
+- 1 <= key.length, value.length <= 100
+- `key` and `value` consist of lowercase English letters and digits.
+- 1 <= timestamp <= 10^7
+- Timestamps passed to `set` for the same key are strictly increasing.
+- At most `2 * 10^5` calls are made to `set` and `get`.
 
 ## Examples
 ```text
 Input: set("foo","bar",1), get("foo",1), get("foo",3)
 Output: null, "bar", "bar"
-Explanation: The value at timestamp 1 is still valid at timestamp 3.
+Explanation: After setting `foo` to `bar` at timestamp `1`, both queries at timestamps `1` and `3` return the latest value whose timestamp is at most the query time: `bar`.
 ```
 
 ## Understanding & Intuition

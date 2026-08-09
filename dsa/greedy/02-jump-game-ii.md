@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Microsoft, Apple
 
 ## Problem
-Given an integer array `nums`, where `nums[i]` is the maximum jump length from index `i`, return the minimum number of jumps needed to reach the last index. You may assume the last index is reachable. Constraints: `1 <= len(nums) <= 10^4`, `0 <= nums[i] <= 1000`.
+You are given an array `nums` where `nums[i]` is the maximum jump length from index `i`. Starting at
+index `0`, return the minimum number of jumps needed to reach the last index. The test cases are
+constructed so the last index is reachable.
+
+**Input**
+- `nums`: a list of non-negative integers.
+
+**Output**
+- An integer: the minimum number of jumps to reach the final index.
+
+## Constraints
+- 1 <= nums.length <= 10^4
+- 0 <= nums[i] <= 1000
+- The last index is reachable from index `0`.
 
 ## Examples
 ```text
 Input: nums = [2,3,1,1,4]
 Output: 2
-Explanation: Jump from index 0 to 1, then from index 1 to the last index.
+Explanation: Jump from index `0` to index `1`, then from index `1` to index `4`, using `2` jumps.
 ```
 
 ## Understanding & Intuition

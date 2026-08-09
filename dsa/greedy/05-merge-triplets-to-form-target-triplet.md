@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta
 
 ## Problem
-Given `triplets`, where each triplet has three integers, and a `target` triplet, you may merge two triplets by taking the coordinate-wise maximum. Return `True` if some sequence of merges can form exactly `target`. Constraints: `1 <= len(triplets) <= 10^5`, `1 <= triplets[i][j], target[j] <= 1000`.
+You are given triplets of non-negative integers and a target triplet. You may choose any subset of
+triplets and merge them by taking the coordinate-wise maximum. Determine whether some subset can merge
+exactly into `target`.
+
+**Input**
+- `triplets`: a list of three-element integer lists.
+- `target`: the desired three-element list.
+
+**Output**
+- A boolean: `True` if the target triplet can be formed, otherwise `False`.
+
+## Constraints
+- 1 <= triplets.length <= 10^5
+- triplets[i].length == target.length == 3
+- 1 <= triplets[i][j], target[j] <= 1000
 
 ## Examples
 ```text
 Input: triplets = [[2,5,3],[1,8,4],[1,7,5]], target = [2,7,5]
 Output: True
-Explanation: Use [2,5,3] for the first coordinate and [1,7,5] for the second and third.
+Explanation: Ignore triplets with a coordinate above the target. The first and third triplets can provide the needed `2`, `7`, and `5` without exceeding the target.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given an integer `n`, count the number of beautiful arrangements of numbers `1` through `n`. An arrangement is beautiful if for every position `i` (1-indexed), either `perm[i]` is divisible by `i` or `i` is divisible by `perm[i]`. `1 <= n <= 15`.
+For a given `n`, count the permutations of numbers `1` through `n` that form a beautiful
+arrangement. A permutation is beautiful if, for every 1-indexed position `i`, either
+`perm[i]` is divisible by `i` or `i` is divisible by `perm[i]`.
+
+**Input**
+- `n`: the size of the permutation.
+
+**Output**
+- An integer: the number of beautiful arrangements.
+
+## Constraints
+- 1 <= n <= 15
 
 ## Examples
 ```text
 Input: n = 2
 Output: 2
-Explanation: [1,2] and [2,1] both satisfy the divisibility condition.
+Explanation: For `n = 2`, both `[1,2]` and `[2,1]` satisfy the divisibility rule at every position.
 ```
 
 ## Understanding & Intuition

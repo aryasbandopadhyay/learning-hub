@@ -5,13 +5,23 @@
 - **Asked at:** Apple, Amazon, Microsoft, Bloomberg
 
 ## Problem
-Given a non-negative integer `x`, return the integer square root of `x`, rounded down. Do not use built-in exponent functions. Constraints: `0 <= x <= 2^31 - 1`.
+Given a non-negative integer `x`, return the integer square root of `x`: the greatest integer `r`
+such that `r * r <= x`. Do not return any fractional part.
+
+**Input**
+- `x`: a non-negative integer.
+
+**Output**
+- An integer: `floor(sqrt(x))`.
+
+## Constraints
+- 0 <= x <= 2^31 - 1
 
 ## Examples
 ```text
 Input: x = 8
 Output: 2
-Explanation: The square root is 2.828..., so it rounds down to 2.
+Explanation: `sqrt(8)` is between `2` and `3`, so the integer square root is `2`.
 ```
 
 ## Understanding & Intuition

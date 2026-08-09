@@ -5,13 +5,30 @@
 - **Asked at:** Amazon, Google, Meta, Bloomberg
 
 ## Problem
-Given distinct positive integers `candidates` and a positive integer `target`, return all unique combinations whose sum is `target`. A candidate may be used unlimited times. `1 <= len(candidates) <= 30`, `2 <= target <= 500`.
+Given distinct positive integers `candidates` and a target, return all unique combinations whose sum
+is exactly `target`. You may use each candidate any number of times. Within a combination, numbers
+should appear in non-decreasing order.
+
+**Input**
+- `candidates`: a list of distinct positive integers.
+- `target`: the desired sum.
+
+**Output**
+- A list of combinations. **This judge compares exactly**, so return combinations in lexicographic
+  order after considering candidates in ascending order; each individual combination must be
+  non-decreasing.
+
+## Constraints
+- 1 <= candidates.length <= 30
+- 2 <= candidates[i] <= 40
+- All values in `candidates` are unique.
+- 1 <= target <= 40
 
 ## Examples
 ```text
 Input: candidates = [2,3,6,7], target = 7
 Output: [[2,2,3],[7]]
-Explanation: 2 can be reused, and 7 alone also reaches the target.
+Explanation: `2 + 2 + 3` and `7` are the only non-decreasing combinations that sum to `7`, so they are returned in that order.
 ```
 
 ## Understanding & Intuition

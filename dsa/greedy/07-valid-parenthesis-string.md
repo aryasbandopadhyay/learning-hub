@@ -5,13 +5,27 @@
 - **Asked at:** Meta, Amazon, Google, Microsoft
 
 ## Problem
-Given a string `s` containing only `'('`, `')'`, and `'*'`, return `True` if `s` can be valid after treating each `'*'` as `'('`, `')'`, or an empty string. Constraints: `1 <= len(s) <= 100`.
+Given a string `s` containing `(`, `)`, and `*`, determine whether it can be interpreted as a valid
+parentheses string. Each `*` may be treated as `(`, as `)`, or as an empty string.
+
+A valid parentheses string has matched parentheses and no prefix with more closing parentheses than
+opening parentheses.
+
+**Input**
+- `s`: a string containing only `(`, `)`, and `*`.
+
+**Output**
+- A boolean: `True` if some interpretation is valid, otherwise `False`.
+
+## Constraints
+- 1 <= s.length <= 100
+- s[i] is `(`, `)`, or `*`.
 
 ## Examples
 ```text
 Input: s = "(*)"
 Output: True
-Explanation: Treat '*' as an empty string to get "()".
+Explanation: Treat `*` as an empty string; the remaining `()` is valid.
 ```
 
 ## Understanding & Intuition

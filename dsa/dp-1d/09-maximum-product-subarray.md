@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Microsoft, LinkedIn
 
 ## Problem
-Given integer array `nums`, return the largest product of a non-empty contiguous subarray. Constraints: `1 <= nums.length <= 2 * 10^4`, `-10 <= nums[i] <= 10`, the answer fits in 32-bit integer.
+Given an integer array `nums`, find the contiguous non-empty subarray whose elements have the largest
+product. Return that product.
+
+**Input**
+- `nums`: a list of integers.
+
+**Output**
+- An integer: the maximum product over all non-empty contiguous subarrays.
+
+## Constraints
+- 1 <= nums.length <= 2 * 10^4
+- -10 <= nums[i] <= 10
+- The product of any prefix or suffix fits in a 32-bit signed integer.
 
 ## Examples
 ```text
 Input: nums = [2,3,-2,4]
 Output: 6
-Explanation: The subarray [2,3] has product 6.
+Explanation: The subarray `[2,3]` has product `6`. Extending it by `-2` makes the product negative, and no other subarray has a larger product.
 ```
 
 ## Understanding & Intuition

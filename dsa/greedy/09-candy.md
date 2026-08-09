@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft, Bloomberg
 
 ## Problem
-There are `n` children standing in a line, each with a rating. Give each child at least one candy, and children with a higher rating than an adjacent child must get more candies than that neighbor. Return the minimum candies needed. Constraints: `1 <= len(ratings) <= 2 * 10^4`, `0 <= ratings[i] <= 2 * 10^4`.
+There are `n` children standing in a line, and `ratings[i]` is the rating of child `i`. Give each
+child at least one candy. Any child with a higher rating than an immediate neighbor must receive more
+candies than that neighbor.
+
+Return the minimum total number of candies needed.
+
+**Input**
+- `ratings`: a list of child ratings in line order.
+
+**Output**
+- An integer: the minimum total candy count.
+
+## Constraints
+- 1 <= ratings.length <= 2 * 10^4
+- 0 <= ratings[i] <= 2 * 10^4
 
 ## Examples
 ```text
 Input: ratings = [1,0,2]
 Output: 5
-Explanation: Give candies [2,1,2].
+Explanation: A minimum valid distribution is `[2,1,2]`, totaling `5` candies.
 ```
 
 ## Understanding & Intuition

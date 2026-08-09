@@ -5,13 +5,29 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an `m x n` grid of characters `board` and a string `word`, return `True` if `word` exists in the grid. Adjacent letters are horizontally or vertically neighboring, and the same cell may not be used more than once. `1 <= m,n <= 6`, `1 <= len(word) <= 15`.
+Given a 2-D board of characters and a word, determine whether the word can be formed by a path of
+adjacent cells. Consecutive letters must be horizontally or vertically adjacent, and the same board
+cell may not be used more than once in a single path.
+
+**Input**
+- `board`: an `m x n` grid of characters.
+- `word`: the string to search for.
+
+**Output**
+- A boolean: `true` if such a path spells `word`, otherwise `false`.
+
+## Constraints
+- m == board.length
+- n == board[r].length
+- 1 <= m, n <= 6
+- 1 <= word.length <= 15
+- `board` and `word` consist of uppercase and lowercase English letters.
 
 ## Examples
 ```text
 Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
 Output: true
-Explanation: The path A -> B -> C -> C -> E -> D forms the word.
+Explanation: The path `A -> B -> C -> C -> E -> D` can be traced through adjacent cells without reusing a cell, so the word exists.
 ```
 
 ## Understanding & Intuition

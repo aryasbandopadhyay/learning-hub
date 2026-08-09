@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given an `m x n` binary matrix of characters `'0'` and `'1'`, return the area of the largest square containing only `1`s. Constraints: `1 <= m, n <= 300`.
+Given a binary matrix of characters `'0'` and `'1'`, find the largest square containing only `'1'`
+cells. Return the area of that square.
+
+**Input**
+- `matrix`: an `m x n` matrix whose entries are strings `'0'` or `'1'`.
+
+**Output**
+- An integer: the area of the largest all-`'1'` square.
+
+## Constraints
+- m == matrix.length
+- n == matrix[r].length
+- 1 <= m, n <= 300
+- matrix[r][c] is either `"0"` or `"1"`.
 
 ## Examples
 ```text
 Input: matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
 Output: 4
-Explanation: The largest all-1 square has side length 2.
+Explanation: The largest square of `1`s has side length `2`, so its area is `2 * 2 = 4`.
 ```
 
 ## Understanding & Intuition

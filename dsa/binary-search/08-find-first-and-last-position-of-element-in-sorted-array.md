@@ -5,13 +5,26 @@
 - **Asked at:** Facebook, Amazon, Google, Microsoft
 
 ## Problem
-Given a sorted integer array `nums` and a target, return the starting and ending position of target. If the target is absent, return `[-1, -1]`. Constraints: `0 <= nums.length <= 10^5`, `-10^9 <= nums[i], target <= 10^9`.
+Given a non-decreasing integer array `nums` and a `target`, return the starting and ending index of
+the target's contiguous occurrence range. If the target does not appear, return `[-1, -1]`.
+
+**Input**
+- `nums`: a list of integers sorted in non-decreasing order.
+- `target`: the value whose range is requested.
+
+**Output**
+- A two-element list `[firstIndex, lastIndex]`.
+
+## Constraints
+- 0 <= nums.length <= 10^5
+- -10^9 <= nums[i], target <= 10^9
+- `nums` is sorted in non-decreasing order.
 
 ## Examples
 ```text
 Input: nums = [5,7,7,8,8,10], target = 8
 Output: [3,4]
-Explanation: The value 8 appears from index 3 through index 4.
+Explanation: `8` appears at indices `3` and `4`, so the first and last positions are `[3,4]`.
 ```
 
 ## Understanding & Intuition

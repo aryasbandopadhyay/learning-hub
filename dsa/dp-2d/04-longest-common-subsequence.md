@@ -5,13 +5,26 @@
 - **Asked at:** Google, Amazon, Microsoft, Meta
 
 ## Problem
-Given strings `text1` and `text2`, return the length of their longest common subsequence. A subsequence preserves relative order but may delete characters. Constraints: `1 <= len(text1), len(text2) <= 1000`.
+Given two strings `text1` and `text2`, return the length of their longest common subsequence. A
+subsequence keeps characters in their original order but may delete characters. The characters do not
+need to be contiguous.
+
+**Input**
+- `text1`: the first string.
+- `text2`: the second string.
+
+**Output**
+- An integer: the length of the longest common subsequence.
+
+## Constraints
+- 1 <= text1.length, text2.length <= 1000
+- `text1` and `text2` consist of lowercase English letters.
 
 ## Examples
 ```text
 Input: text1 = "abcde", text2 = "ace"
 Output: 3
-Explanation: "ace" is a common subsequence.
+Explanation: `"ace"` appears in both strings in order, and no longer common subsequence exists.
 ```
 
 ## Understanding & Intuition

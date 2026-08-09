@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Bloomberg, Microsoft
 
 ## Problem
-Given package weights in order and an integer `days`, return the least ship capacity needed to ship all packages within `days`. Packages must be shipped in the given order. Constraints: `1 <= days <= weights.length <= 5 * 10^4`, `1 <= weights[i] <= 500`.
+Packages must be shipped in the given order over exactly `days` days or fewer. A ship with capacity
+`cap` can carry consecutive packages each day until adding the next package would exceed `cap`.
+
+Return the minimum ship capacity that can deliver all packages within `days` days.
+
+**Input**
+- `weights`: a list where `weights[i]` is the weight of the `i`th package in order.
+- `days`: the delivery deadline in days.
+
+**Output**
+- An integer: the minimum feasible capacity.
+
+## Constraints
+- 1 <= days <= weights.length <= 5 * 10^4
+- 1 <= weights[i] <= 500
 
 ## Examples
 ```text
 Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5
 Output: 15
-Explanation: Capacity 15 can ship as [1,2,3,4,5], [6,7], [8], [9], [10].
+Explanation: Capacity `15` can ship the packages in five days as `[1,2,3,4,5]`, `[6,7]`, `[8]`, `[9]`, `[10]`; any smaller capacity needs more days.
 ```
 
 ## Understanding & Intuition

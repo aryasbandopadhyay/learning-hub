@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given a collection of numbers `nums` that may contain duplicates, return all unique permutations. `1 <= len(nums) <= 8`. The answer may be returned in any order.
+Given an integer array `nums` that may contain duplicates, return all unique permutations that use
+every input element exactly once.
+
+**Input**
+- `nums`: a list of integers, possibly with repeated values.
+
+**Output**
+- A list of unique permutations. **This judge compares exactly**, so return them in lexicographic
+  order after sorting `nums`.
+
+## Constraints
+- 1 <= nums.length <= 8
+- -10 <= nums[i] <= 10
 
 ## Examples
 ```text
 Input: nums = [1,1,2]
 Output: [[1,1,2],[1,2,1],[2,1,1]]
-Explanation: Duplicate 1s should not produce duplicate permutations.
+Explanation: The two `1`s are indistinguishable, so only three unique permutations exist: `[1,1,2]`, `[1,2,1]`, and `[2,1,1]`.
 ```
 
 ## Understanding & Intuition

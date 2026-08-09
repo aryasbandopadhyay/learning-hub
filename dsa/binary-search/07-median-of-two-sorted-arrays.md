@@ -5,13 +5,27 @@
 - **Asked at:** Google, Apple, Microsoft, Meta
 
 ## Problem
-Given two sorted arrays `nums1` and `nums2`, return the median of the combined sorted values in `O(log(m+n))` time. Constraints: `0 <= m, n <= 1000`, `1 <= m + n <= 2000`, `-10^6 <= nums1[i], nums2[i] <= 10^6`.
+Given two sorted arrays `nums1` and `nums2`, return the median of all values from both arrays
+combined. The merged length may be odd or even, but you do not need to actually merge the arrays.
+
+**Input**
+- `nums1`: the first sorted integer list.
+- `nums2`: the second sorted integer list.
+
+**Output**
+- A floating-point number: the median of the combined multiset of values.
+
+## Constraints
+- 0 <= nums1.length, nums2.length <= 1000
+- 1 <= nums1.length + nums2.length <= 2000
+- -10^6 <= nums1[i], nums2[i] <= 10^6
+- Both arrays are sorted in ascending order.
 
 ## Examples
 ```text
 Input: nums1 = [1,3], nums2 = [2]
 Output: 2.0
-Explanation: The merged array is [1,2,3], so the median is 2.
+Explanation: The combined sorted values are `[1,2,3]`, whose middle value is `2.0`.
 ```
 
 ## Understanding & Intuition
