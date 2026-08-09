@@ -55,8 +55,42 @@ const LANG = {
   css: "css", txt: "plaintext",
 };
 
+/* Transient upstream statuses returned by the Azure Container Apps ingress while the
+   app replica is cold-starting (scale-from-zero). We retry these with backoff so a
+   wake-up never surfaces as a user-facing error. */
+const RETRYABLE_STATUS = new Set([502, 503, 504]);
+/* Cumulative wait ~18.3s across 5 retries — comfortably covers the ~15s Spring Boot boot. */
+const RETRY_DELAYS_MS = [800, 1500, 3000, 5000, 8000];
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/* fetch() wrapper that retries only transient cold-start failures (502/503/504 and
+   network-level errors). Real errors (4xx, other 5xx) are returned/thrown immediately. */
+async function fetchWithRetry(url, options) {
+  let lastErr;
+  for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt++) {
+    try {
+      const res = await fetch(url, options);
+      if (RETRYABLE_STATUS.has(res.status) && attempt < RETRY_DELAYS_MS.length) {
+        await sleep(RETRY_DELAYS_MS[attempt]);
+        continue;
+      }
+      return res;
+    } catch (err) {
+      // Network failure (connection refused/reset during cold start) — retry.
+      lastErr = err;
+      if (attempt < RETRY_DELAYS_MS.length) {
+        await sleep(RETRY_DELAYS_MS[attempt]);
+        continue;
+      }
+      throw err;
+    }
+  }
+  throw lastErr || new Error("Request failed");
+}
+
 async function getJSON(url) {
-  const res = await fetch(url);
+  const res = await fetchWithRetry(url);
   if (!res.ok) {
     const msg = await res.text().catch(() => res.statusText);
     throw new Error(`${res.status}: ${msg}`);
@@ -781,13 +815,20 @@ function wireDivider(divider, problemCol, solveCol, layout) {
 async function runJudge(path, code, mode, panel) {
   const out = panel.querySelector(".judge-results");
   out.innerHTML = `<p class="hint">${mode === "complexity" ? "Measuring…" : "Running…"}</p>`;
+  // If the container is scaled to zero, the first request wakes it (~15s). Surface a
+  // friendly hint after a short delay so the wait doesn't look frozen.
+  const wakeHint = setTimeout(() => {
+    out.innerHTML = `<p class="hint">Waking the judge up — the first run after idle can take ~15s…</p>`;
+  }, 2500);
   let res;
   try {
     res = await postJSON("/api/judge/run", { path, code, mode });
   } catch (e) {
+    clearTimeout(wakeHint);
     out.innerHTML = `<p class="error">Judge error: ${escapeHtml(e.message)}</p>`;
     return;
   }
+  clearTimeout(wakeHint);
   out.innerHTML = mode === "complexity" ? renderComplexity(res) : renderRun(res);
 
   // Auto-mark the problem complete the first time every test passes.
@@ -885,7 +926,7 @@ function toggleCompare(panel, meta) {
 }
 
 async function postJSON(url, payload) {
-  const res = await fetch(url, {
+  const res = await fetchWithRetry(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
