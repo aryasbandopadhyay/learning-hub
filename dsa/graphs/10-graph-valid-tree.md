@@ -5,13 +5,28 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Given n nodes and undirected edges, determine whether they form a tree. Constraints: 1 <= n <= 2000.
+You are given `n` nodes labeled `0` through `n - 1` and undirected edges.
+
+Return whether the edges form one valid tree. A tree is connected and acyclic, so every node is reachable and no cycle exists.
+
+**Input**
+- `n`: the number of nodes.
+- `edges`: undirected edges `[u, v]`.
+
+**Output**
+- `True` if the graph is a valid tree; otherwise `False`.
+
+## Constraints
+- `1 <= n <= 2000`
+- `0 <= edges.length <= 5000`
+- `edges[i].length == 2`
+- `0 <= u, v < n`.
 
 ## Examples
 ```text
 Input: n = 5, edges = [[0,1],[0,2],[0,3],[1,4]]
 Output: True
-Explanation: The graph is connected and acyclic.
+Explanation: All five nodes are connected, and the four edges do not create a cycle. A connected graph with `n - 1` acyclic edges is a tree.
 ```
 
 ## Understanding & Intuition

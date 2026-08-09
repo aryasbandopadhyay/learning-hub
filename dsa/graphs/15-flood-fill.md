@@ -5,13 +5,31 @@
 - **Asked at:** Amazon, Google, Apple, Microsoft
 
 ## Problem
-Recolor the component containing (sr, sc) with the same original color. Constraints: 1 <= m,n <= 50.
+You are given an image as an `m x n` grid of color values. Starting at `(sr, sc)`, recolor that pixel and every 4-directionally connected pixel with the same original color to `color`.
+
+Return the modified image.
+
+**Input**
+- `image`: a 2-D list of integer colors.
+- `sr`: starting row.
+- `sc`: starting column.
+- `color`: replacement color.
+
+**Output**
+- The recolored image. **This judge compares exactly**, so every cell must match.
+
+## Constraints
+- `m == image.length`
+- `n == image[r].length`
+- `1 <= m, n <= 50`
+- `0 <= image[r][c], color < 2^16`
+- `0 <= sr < m`, `0 <= sc < n`.
 
 ## Examples
 ```text
 Input: image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, color = 2
 Output: [[2,2,2],[2,2,0],[2,0,1]]
-Explanation: Connected 1s from the start are recolored.
+Explanation: The starting pixel has color 1. All connected 1-valued pixels are changed to 2, while disconnected or differently colored pixels remain unchanged.
 ```
 
 ## Understanding & Intuition

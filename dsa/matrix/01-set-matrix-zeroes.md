@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Microsoft, Google, Meta
 
 ## Problem
-Given an `m x n` integer matrix, if an element is `0`, set its entire row and column to `0` in-place. Constraints: `1 <= m,n <= 200`, values fit in signed 32-bit integers.
+Given an `m x n` matrix, if any original cell is `0`, set its entire row and column to `0`.
+
+The changes are based on the original matrix, not zeros created during the process. Modify `matrix` in place and return the final matrix for the judge.
+
+**Input**
+- `matrix`: a 2-D list of integers.
+
+**Output**
+- The final matrix. **This judge compares exactly**, so every cell must match.
+
+## Constraints
+- `m == matrix.length`
+- `n == matrix[r].length`
+- `1 <= m, n <= 200`
+- `-2^31 <= matrix[r][c] <= 2^31 - 1`.
 
 ## Examples
 ```text
 Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
 Output: [[1,0,1],[0,0,0],[1,0,1]]
-Explanation: The zero at row 1, column 1 clears its row and column.
+Explanation: The original zero is at row 1, column 1. That row and column become zero, while other cells remain unchanged.
 ```
 
 ## Understanding & Intuition

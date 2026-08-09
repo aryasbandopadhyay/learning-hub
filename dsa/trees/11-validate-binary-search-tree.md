@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Validate Binary Search Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, return whether it is a valid BST. All values in a node's left subtree must be strictly smaller, and all values in its right subtree strictly larger.
+
+**Input**
+- `root`: the root of a binary tree.
+
+**Output**
+- `True` if strict BST ordering holds everywhere; otherwise `False`.
+
+## Constraints
+- `1 <= number of nodes <= 10^4`
+- `-2^31 <= Node.val <= 2^31 - 1`.
 
 ## Examples
 ```text
 Input: root = [2,1,3]
 Output: True
-Explanation: Every node respects the strict BST range.
+Explanation: The left child 1 is less than 2 and the right child 3 is greater than 2, so all BST ranges are valid.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Microsoft, Google, Apple
 
 ## Problem
-Given `points[i] = [xi, yi]`, connect all points with minimum total cost, where the cost between two points is Manhattan distance. Return the MST cost. Constraints: `1 <= points.length <= 1000`.
+You are given points in the plane. The cost to connect two points is their Manhattan distance `|xi - xj| + |yi - yj|`.
+
+Return the minimum total cost to connect all points so every point can reach every other point through chosen connections.
+
+**Input**
+- `points`: coordinate pairs `[x, y]`.
+
+**Output**
+- An integer: the total weight of a minimum spanning tree.
+
+## Constraints
+- `1 <= points.length <= 1000`
+- `points[i].length == 2`
+- `-10^6 <= x, y <= 10^6`
+- All points are distinct.
 
 ## Examples
 ```text
 Input: points = [[0,0],[2,2],[3,10],[5,2],[7,0]]
 Output: 20
-Explanation: A minimum spanning tree connects all points with total cost 20.
+Explanation: A minimum spanning tree connects the five points with total Manhattan cost 20. Any lower cost would leave some point disconnected.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Fill INF land cells with distance to nearest treasure 0, avoiding water -1. Constraints: up to 250 x 250.
+You are given a grid where `-1` is an obstacle, `0` is a treasure, and `2147483647` is empty land.
+
+For each land cell, write the shortest 4-directional distance to a treasure. Obstacles cannot be crossed, and unreachable land remains `2147483647`. Modify `grid` in place and return the updated grid for the judge.
+
+**Input**
+- `grid`: an `m x n` integer grid containing `-1`, `0`, or `2147483647`.
+
+**Output**
+- The final distance grid. **This judge compares exactly**, so every cell must match.
+
+## Constraints
+- `m == grid.length`
+- `n == grid[r].length`
+- `1 <= m, n <= 250`
+- `grid[r][c]` is one of `-1`, `0`, or `2147483647`.
 
 ## Examples
 ```text
 Input: grid = [[2147483647,-1,0],[2147483647,2147483647,2147483647]]
 Output: [[4,-1,0],[3,2,1]]
-Explanation: Each land cell receives nearest treasure distance.
+Explanation: The treasure at the top-right is the only source. Distances spread around the obstacle one step at a time, producing the shown shortest-path values.
 ```
 
 ## Understanding & Intuition

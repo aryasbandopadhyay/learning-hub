@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Given an `m x n` grid where each cell has a direction `1=right`, `2=left`, `3=down`, `4=up`, you may change a cell's direction at cost `1`. Return the minimum cost to make at least one valid path from `(0,0)` to `(m-1,n-1)`. Constraints: `1 <= m, n <= 100`.
+You are given an `m x n` grid of arrows: `1` right, `2` left, `3` down, and `4` up.
+
+Starting at the top-left, following arrows should lead to the bottom-right. You may change any cell's arrow for cost `1`. Return the minimum cost to make at least one valid path.
+
+**Input**
+- `grid`: a 2-D list of direction values from `1` to `4`.
+
+**Output**
+- An integer: the minimum number of arrow changes required.
+
+## Constraints
+- `m == grid.length`
+- `n == grid[r].length`
+- `1 <= m, n <= 100`
+- `grid[r][c]` is one of `1`, `2`, `3`, or `4`.
 
 ## Examples
 ```text
 Input: grid = [[1,1,1,1],[2,2,2,2],[1,1,1,1],[2,2,2,2]]
 Output: 3
-Explanation: Changing three arrows creates a route from the top-left to the bottom-right.
+Explanation: Changing three arrows creates a continuous route from the top-left to the bottom-right. Fewer changes cannot connect a valid directed path.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,29 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Find the person trusted by everyone else and trusting nobody, or -1. People are labeled 1..n.
+In a town of `n` people labeled `1` through `n`, the judge trusts nobody and every other person trusts the judge.
+
+Given trust pairs `[a, b]`, return the judge's label, or `-1` if no valid judge exists.
+
+**Input**
+- `n`: the number of people.
+- `trust`: directed pairs `[a, b]` meaning `a` trusts `b`.
+
+**Output**
+- The judge's label, or `-1` if none exists.
+
+## Constraints
+- `1 <= n <= 1000`
+- `0 <= trust.length <= 10000`
+- `trust[i].length == 2`
+- `1 <= a, b <= n`
+- `a != b`; trust pairs are unique.
 
 ## Examples
 ```text
 Input: n = 3, trust = [[1,3],[2,3]]
 Output: 3
-Explanation: Everyone except 3 trusts 3; 3 trusts nobody.
+Explanation: Persons 1 and 2 both trust person 3, and person 3 trusts nobody. Therefore 3 is the judge.
 ```
 
 ## Understanding & Intuition

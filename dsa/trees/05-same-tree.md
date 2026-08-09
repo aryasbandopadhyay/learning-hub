@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Same Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given roots `p` and `q`, return whether the two binary trees are identical in both structure and node values.
+
+**Input**
+- `p`: root of the first tree, or `None`.
+- `q`: root of the second tree, or `None`.
+
+**Output**
+- `True` if both trees match exactly; otherwise `False`.
+
+## Constraints
+- `0 <= number of nodes in each tree <= 100`
+- `-10^4 <= Node.val <= 10^4`.
 
 ## Examples
 ```text
 Input: p = [1,2,3], q = [1,2,3]
 Output: True
-Explanation: Both structure and values match.
+Explanation: Both trees have root 1, left child 2, and right child 3. Every corresponding position and value matches.
 ```
 
 ## Understanding & Intuition

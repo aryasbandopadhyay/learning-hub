@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Given an undirected graph adjacency list, return whether it can be split into two independent sets. Constraints: n <= 100.
+You are given an undirected graph as an adjacency list, where `graph[i]` contains the neighbours of node `i`.
+
+Return whether the graph is bipartite: its nodes can be split into two groups so every edge connects nodes from different groups.
+
+**Input**
+- `graph`: an adjacency list for nodes `0` through `n - 1`.
+
+**Output**
+- `True` if a valid two-group assignment exists; otherwise `False`.
+
+## Constraints
+- `n == graph.length`
+- `1 <= n <= 100`
+- `0 <= graph[i][j] < n`
+- The graph is undirected and has no self-loops.
 
 ## Examples
 ```text
 Input: graph = [[1,3],[0,2],[1,3],[0,2]]
 Output: True
-Explanation: Alternating colors work.
+Explanation: Nodes 0 and 2 can be in one group, while 1 and 3 are in the other. Every edge crosses between groups, so the graph is bipartite.
 ```
 
 ## Understanding & Intuition

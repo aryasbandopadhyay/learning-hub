@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a snakes-and-ladders board, return the fewest dice moves to reach square n^2 or -1. Constraints: 2 <= n <= 20.
+You are given an `n x n` Snakes and Ladders board labeled from square `1` to `n^2` in boustrophedon order: bottom row left-to-right, next row right-to-left, and so on.
+
+Starting at square `1`, each move chooses a die roll from `1` to `6`. If the destination has a snake or ladder, you must move once to its target. Return the fewest moves to reach `n^2`, or `-1` if impossible.
+
+**Input**
+- `board`: an `n x n` grid; `-1` means no jump, otherwise the target square label.
+
+**Output**
+- An integer: the minimum number of die rolls, or `-1` if unreachable.
+
+## Constraints
+- `2 <= n <= 20`
+- `board[r][c] == -1` or `1 <= board[r][c] <= n^2`
+- Squares `1` and `n^2` do not contain a jump in the standard problem.
 
 ## Examples
 ```text
 Input: board = [[-1,-1,-1],[-1,9,8],[-1,8,9]]
 Output: 1
-Explanation: One roll can land on a jump to square 9.
+Explanation: From square 1, one die roll can land on a square that jumps to square 9, the final square. That takes exactly one move.
 ```
 
 ## Understanding & Intuition

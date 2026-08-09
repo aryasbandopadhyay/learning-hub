@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Microsoft, Google, Apple
 
 ## Problem
-Given an `m x n` matrix, return all elements in clockwise spiral order. Constraints: `1 <= m,n <= 10`, values fit in signed 32-bit integers.
+Given an `m x n` matrix, return all elements in spiral order.
+
+Start at the top-left, move right across the top row, down the right column, left across the bottom row, and up the left column. Repeat while shrinking inward until every cell is visited once.
+
+**Input**
+- `matrix`: a 2-D list of integers.
+
+**Output**
+- A list of values. **This judge compares exactly**, so values must be in spiral order.
+
+## Constraints
+- `m == matrix.length`
+- `n == matrix[r].length`
+- `1 <= m, n <= 10`
+- `-100 <= matrix[r][c] <= 100`.
 
 ## Examples
 ```text
 Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [1,2,3,6,9,8,7,4,5]
-Explanation: Traverse top row, right column, bottom row, left column, then repeat inward.
+Explanation: The outer ring is read as `1,2,3,6,9,8,7,4`, then the remaining center value `5` is appended.
 ```
 
 ## Understanding & Intuition

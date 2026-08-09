@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Maximum Depth of Binary Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, return its maximum depth: the number of nodes on the longest path from the root down to any leaf.
+
+**Input**
+- `root`: the root of a binary tree, or `None`.
+
+**Output**
+- An integer; an empty tree has depth `0`.
+
+## Constraints
+- `0 <= number of nodes <= 10^4`
+- `-100 <= Node.val <= 100`.
 
 ## Examples
 ```text
 Input: root = [3,9,20,None,None,15,7]
 Output: 3
-Explanation: The longest root-to-leaf path has 3 nodes.
+Explanation: The longest root-to-leaf path goes through node 20 to either 15 or 7. It contains 3 nodes.
 ```
 
 ## Understanding & Intuition

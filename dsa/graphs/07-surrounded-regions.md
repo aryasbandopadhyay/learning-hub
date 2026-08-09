@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Capture O regions fully surrounded by X by flipping them in-place. Border-connected O cells remain. Constraints: 1 <= m,n <= 200.
+You are given an `m x n` board containing only `"X"` and `"O"`.
+
+Capture every `"O"` region completely surrounded by `"X"` by changing those cells to `"X"`. Any `"O"` connected to a border `"O"` by horizontal or vertical moves remains unchanged. Modify `board` in place and return the final board for the judge.
+
+**Input**
+- `board`: a 2-D list of characters, each either `"X"` or `"O"`.
+
+**Output**
+- The board after surrounded regions are captured. **This judge compares exactly**, so every row and cell must match.
+
+## Constraints
+- `m == board.length`
+- `n == board[r].length`
+- `1 <= m, n <= 200`
+- `board[r][c]` is either `"X"` or `"O"`.
 
 ## Examples
 ```text
 Input: board = [["X","X","X"],["X","O","X"],["X","X","X"]]
 Output: [["X","X","X"],["X","X","X"],["X","X","X"]]
-Explanation: The only O is surrounded.
+Explanation: The only `"O"` is not on the border and has no path of `"O"` cells to a border. It is surrounded and changes to `"X"`.
 ```
 
 ## Understanding & Intuition

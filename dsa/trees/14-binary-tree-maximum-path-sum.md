@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Binary Tree Maximum Path Sum**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+A path is any non-empty sequence of connected nodes without repeating a node. It may start and end anywhere in the tree.
+
+Return the maximum sum of values over any path.
+
+**Input**
+- `root`: the root of a non-empty binary tree.
+
+**Output**
+- An integer: the largest path sum.
+
+## Constraints
+- `1 <= number of nodes <= 3 * 10^4`
+- `-1000 <= Node.val <= 1000`.
 
 ## Examples
 ```text
 Input: root = [-10,9,20,None,None,15,7]
 Output: 42
-Explanation: The best path is 15 -> 20 -> 7.
+Explanation: The best path is `15 -> 20 -> 7`, summing to 42. Including `-10` would reduce the sum.
 ```
 
 ## Understanding & Intuition

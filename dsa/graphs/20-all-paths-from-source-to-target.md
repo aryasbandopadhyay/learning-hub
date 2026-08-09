@@ -5,13 +5,28 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Given a DAG, return all paths from node 0 to node n-1. Constraints: n <= 15.
+You are given a directed acyclic graph as an adjacency list. Nodes are `0` through `n - 1`, and `graph[i]` lists outgoing neighbours from `i`.
+
+Return all paths from source node `0` to target node `n - 1`.
+
+**Input**
+- `graph`: an adjacency list for a DAG.
+
+**Output**
+- A list of paths from `0` to `n - 1`. **This judge compares exactly**, so return paths in depth-first order, following neighbours in the order they appear in `graph[node]`.
+
+## Constraints
+- `n == graph.length`
+- `2 <= n <= 15`
+- `0 <= graph[i][j] < n`
+- The graph is acyclic.
+- `graph[n - 1]` is empty.
 
 ## Examples
 ```text
 Input: graph = [[1,2],[3],[3],[]]
 Output: [[0,1,3],[0,2,3]]
-Explanation: There are two source-to-target paths.
+Explanation: Following neighbour 1 first gives `[0,1,3]`. Following neighbour 2 next gives `[0,2,3]`, and no other source-to-target paths exist.
 ```
 
 ## Understanding & Intuition

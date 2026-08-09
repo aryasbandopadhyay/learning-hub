@@ -5,13 +5,30 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an undirected graph and source/destination, return whether a path exists. Constraints: n <= 2e5.
+You are given an undirected graph with `n` nodes labeled `0` through `n - 1`, an edge list, a `source`, and a `destination`.
+
+Return whether any path exists from `source` to `destination`.
+
+**Input**
+- `n`: the number of nodes.
+- `edges`: undirected edges `[u, v]`.
+- `source`: the start node.
+- `destination`: the target node.
+
+**Output**
+- `True` if `destination` is reachable from `source`; otherwise `False`.
+
+## Constraints
+- `1 <= n <= 200000`
+- `0 <= edges.length <= 200000`
+- `edges[i].length == 2`
+- `0 <= u, v, source, destination < n`.
 
 ## Examples
 ```text
 Input: n = 3, edges = [[0,1],[1,2]], source = 0, destination = 2
 Output: True
-Explanation: 0 connects to 2 through 1.
+Explanation: Node 0 connects to node 1, and node 1 connects to node 2. Therefore a path from 0 to 2 exists.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Balanced Binary Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, return whether it is height-balanced. At every node, the left and right subtree heights must differ by no more than `1`.
+
+**Input**
+- `root`: the root of a binary tree, or `None`.
+
+**Output**
+- `True` if the tree is balanced; otherwise `False`.
+
+## Constraints
+- `0 <= number of nodes <= 5000`
+- `-10^4 <= Node.val <= 10^4`.
 
 ## Examples
 ```text
 Input: root = [3,9,20,None,None,15,7]
 Output: True
-Explanation: Each node's subtrees differ in height by at most 1.
+Explanation: The root's subtrees have heights 1 and 2, and every other node also satisfies the height-difference rule.
 ```
 
 ## Understanding & Intuition

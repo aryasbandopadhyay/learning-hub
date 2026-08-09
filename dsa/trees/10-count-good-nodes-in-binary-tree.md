@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Count Good Nodes in Binary Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+A node is good if no ancestor from the root to that node has a value greater than it. Given the root, return the number of good nodes.
+
+**Input**
+- `root`: the root of a binary tree.
+
+**Output**
+- An integer: the count of nodes whose value is at least the maximum value on their root path.
+
+## Constraints
+- `1 <= number of nodes <= 10^5`
+- `-10^4 <= Node.val <= 10^4`.
 
 ## Examples
 ```text
 Input: root = [3,1,4,3,None,1,5]
 Output: 4
-Explanation: 3, 3, 4, and 5 are never smaller than an ancestor.
+Explanation: The good nodes are the root 3, the left child 3, node 4, and node 5. The nodes with value 1 are smaller than an ancestor.
 ```
 
 ## Understanding & Intuition

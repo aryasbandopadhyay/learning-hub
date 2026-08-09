@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Binary Tree Level Order Traversal**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, return its level-order traversal: nodes grouped by depth from top to bottom, and left to right within each level.
+
+**Input**
+- `root`: the root of a binary tree, or `None`.
+
+**Output**
+- A list of levels. **This judge compares exactly**, so preserve top-to-bottom and left-to-right order.
+
+## Constraints
+- `0 <= number of nodes <= 2000`
+- `-1000 <= Node.val <= 1000`.
 
 ## Examples
 ```text
 Input: root = [3,9,20,None,None,15,7]
 Output: [[3],[9,20],[15,7]]
-Explanation: Nodes are grouped by depth.
+Explanation: The root forms the first level, its children form the second, and 20's children form the third.
 ```
 
 ## Understanding & Intuition

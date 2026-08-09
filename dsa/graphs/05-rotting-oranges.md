@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Microsoft, Uber
 
 ## Problem
-Each minute, rotten oranges rot adjacent fresh oranges. Return minutes until no fresh orange remains, or -1.
+You are given an `m x n` grid where `0` is empty, `1` is a fresh orange, and `2` is a rotten orange.
+
+Each minute, every fresh orange directly adjacent to a rotten orange becomes rotten. Return the minimum minutes until no fresh orange remains, or `-1` if some fresh orange can never rot.
+
+**Input**
+- `grid`: a 2-D list of integers with values `0`, `1`, or `2`.
+
+**Output**
+- An integer: the required minutes, or `-1` if not all fresh oranges can rot.
+
+## Constraints
+- `m == grid.length`
+- `n == grid[r].length`
+- `1 <= m, n <= 10`
+- `grid[r][c]` is `0`, `1`, or `2`.
 
 ## Examples
 ```text
 Input: grid = [[2,1,1],[1,1,0],[0,1,1]]
 Output: 4
-Explanation: Rot spreads one BFS layer per minute.
+Explanation: Rot spreads one edge per minute from the initial rotten orange. The farthest fresh orange is reached after four waves, so the answer is 4.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Given an `n x n` grid where `grid[r][c]` is the time when that square becomes passable, return the minimum time needed to travel from `(0,0)` to `(n-1,n-1)` moving 4-directionally. Constraints: `1 <= n <= 50`.
+You are given an `n x n` grid where `grid[r][c]` is the time when cell `(r, c)` becomes passable. Start at `(0,0)` and reach `(n-1,n-1)`.
+
+At time `t`, you may move in four directions only through cells with value at most `t`. Return the earliest time a path exists.
+
+**Input**
+- `grid`: an `n x n` matrix of unique elevation/time values.
+
+**Output**
+- An integer: the minimum possible maximum cell value along a start-to-finish path.
+
+## Constraints
+- `n == grid.length == grid[r].length`
+- `1 <= n <= 50`
+- `0 <= grid[r][c] < n^2`
+- Every grid value is unique.
 
 ## Examples
 ```text
 Input: grid = [[0,2],[1,3]]
 Output: 3
-Explanation: The destination has height 3, so the earliest complete path is at time 3.
+Explanation: The destination has value 3, so no path can finish before time 3. At time 3, a complete path is available.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Bloomberg, Microsoft
 
 ## Problem
-Given a binary grid, return the largest 4-directionally connected land area. Constraints: 1 <= m,n <= 50.
+You are given an `m x n` binary grid where `1` represents land and `0` represents water.
+
+The area of an island is the number of land cells in one 4-directionally connected component. Return the largest island area, or `0` if there is no land.
+
+**Input**
+- `grid`: a 2-D list of integers with values `0` or `1`.
+
+**Output**
+- An integer: the maximum number of cells in any island.
+
+## Constraints
+- `m == grid.length`
+- `n == grid[r].length`
+- `1 <= m, n <= 50`
+- `grid[r][c]` is either `0` or `1`.
 
 ## Examples
 ```text
 Input: grid = [[0,1,0],[1,1,0],[0,0,1]]
 Output: 3
-Explanation: The largest island has three cells.
+Explanation: The cells `(0,1)`, `(1,0)`, and `(1,1)` touch by edges, making an island of area 3. The remaining land cell is separate, so the maximum area is 3.
 ```
 
 ## Understanding & Intuition

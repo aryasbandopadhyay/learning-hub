@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Microsoft, Google, Meta
 
 ## Problem
-Given an `m x n` matrix where each row is sorted left-to-right and each column is sorted top-to-bottom, return whether `target` exists. Constraints: `1 <= m,n <= 300`.
+You are given an `m x n` matrix where each row is sorted left-to-right and each column is sorted top-to-bottom.
+
+Return whether `target` appears in the matrix.
+
+**Input**
+- `matrix`: a row-wise and column-wise sorted matrix.
+- `target`: the value to find.
+
+**Output**
+- `true` if `target` is present; otherwise `false`.
+
+## Constraints
+- `m == matrix.length`
+- `n == matrix[r].length`
+- `1 <= m, n <= 300`
+- `-10^9 <= matrix[r][c], target <= 10^9`.
 
 ## Examples
 ```text
 Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5
 Output: true
-Explanation: 5 is present at row 1 column 1.
+Explanation: The value 5 is present at row 1, column 1. The sorted rows and columns allow regions to be discarded while searching.
 ```
 
 ## Understanding & Intuition

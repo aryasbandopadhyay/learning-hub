@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Binary Tree Right Side View**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, return the node visible at each depth when viewing the tree from the right side.
+
+**Input**
+- `root`: the root of a binary tree, or `None`.
+
+**Output**
+- A list of values. **This judge compares exactly**, ordered from the root level down.
+
+## Constraints
+- `0 <= number of nodes <= 100`
+- `-100 <= Node.val <= 100`.
 
 ## Examples
 ```text
 Input: root = [1,2,3,None,5,None,4]
 Output: [1,3,4]
-Explanation: These are the rightmost nodes at each depth.
+Explanation: The visible nodes by depth are 1, then 3, then 4. Node 5 is not the rightmost node at its level.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Microsoft, Google, Apple
 
 ## Problem
-Given an `m x n` matrix, return all elements in diagonal order, alternating up-right and down-left. Constraints: `1 <= m,n <= 10^4`, `m*n <= 10^4`.
+Given an `m x n` matrix, return its elements in diagonal traversal order.
+
+Cells with the same `r + c` are on the same diagonal. Visit diagonals from smallest to largest `r + c`, reversing every even-numbered diagonal so movement alternates up-right and down-left.
+
+**Input**
+- `mat`: a 2-D list of integers.
+
+**Output**
+- A list of values. **This judge compares exactly**, so values must follow the standard alternating diagonal order.
+
+## Constraints
+- `m == mat.length`
+- `n == mat[r].length`
+- `1 <= m, n <= 10^4`
+- `1 <= m * n <= 10^4`
+- `-10^5 <= mat[r][c] <= 10^5`.
 
 ## Examples
 ```text
 Input: mat = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [1,2,4,7,5,3,6,8,9]
-Explanation: Diagonals with equal r+c are visited, reversing every other diagonal.
+Explanation: The diagonals are visited in increasing `r+c`, reversing alternating diagonals, which yields `[1,2,4,7,5,3,6,8,9]`.
 ```
 
 ## Understanding & Intuition

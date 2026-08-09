@@ -5,13 +5,30 @@
 - **Asked at:** Amazon, Google, Microsoft, Adobe
 
 ## Problem
-Given `n` cities, undirected weighted edges, and `distanceThreshold`, return the city with the fewest reachable neighbors within the threshold. If tied, return the greatest city number. Constraints: `2 <= n <= 100`.
+You are given an undirected weighted graph and a distance threshold.
+
+For each city, count other cities reachable by a path of total distance at most `distanceThreshold`. Return the city with the smallest count; break ties by choosing the greatest city label.
+
+**Input**
+- `n`: number of cities.
+- `edges`: undirected weighted edges `[from, to, weight]`.
+- `distanceThreshold`: maximum allowed path distance.
+
+**Output**
+- The chosen city label, with ties resolved toward the larger label.
+
+## Constraints
+- `2 <= n <= 100`
+- `1 <= edges.length <= n * (n - 1) / 2`
+- `edges[i].length == 3`
+- `0 <= from, to < n`
+- `1 <= weight, distanceThreshold <= 10000`.
 
 ## Examples
 ```text
 Input: n = 4, edges = [[0,1,3],[1,2,1],[1,3,4],[2,3,1]], distanceThreshold = 4
 Output: 3
-Explanation: Cities 0 and 3 each reach 2 neighbors, so choose the larger index 3.
+Explanation: Cities 0 and 3 each reach two neighbours within distance 4. The tie rule chooses the larger label, 3.
 ```
 
 ## Understanding & Intuition

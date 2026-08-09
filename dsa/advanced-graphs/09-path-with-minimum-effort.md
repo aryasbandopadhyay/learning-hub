@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft, Bloomberg
 
 ## Problem
-Given a grid of heights, move 4-directionally from top-left to bottom-right. A path's effort is the maximum absolute height difference between adjacent cells on that path. Return the minimum possible effort. Constraints: `1 <= rows, cols <= 100`.
+You are given an `m x n` grid of heights. A path goes from top-left to bottom-right using four-directional moves.
+
+The effort of a path is the largest absolute height difference between adjacent cells on it. Return the minimum possible effort.
+
+**Input**
+- `heights`: a 2-D list of integer heights.
+
+**Output**
+- An integer: the minimum achievable maximum adjacent difference.
+
+## Constraints
+- `m == heights.length`
+- `n == heights[r].length`
+- `1 <= m, n <= 100`
+- `1 <= heights[r][c] <= 10^6`.
 
 ## Examples
 ```text
 Input: heights = [[1,2,2],[3,8,2],[5,3,5]]
 Output: 2
-Explanation: The best path has maximum adjacent difference 2.
+Explanation: A route can avoid the large jump through height 8. Along the best route, the largest adjacent difference is 2.
 ```
 
 ## Understanding & Intuition

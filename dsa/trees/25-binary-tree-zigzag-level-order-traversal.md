@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Binary Tree Zigzag Level Order Traversal**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, return its zigzag level-order traversal: top to bottom, alternating left-to-right and right-to-left at each level.
+
+**Input**
+- `root`: the root of a binary tree, or `None`.
+
+**Output**
+- A list of levels. **This judge compares exactly**, so preserve top-to-bottom order and alternate each level's direction.
+
+## Constraints
+- `0 <= number of nodes <= 2000`
+- `-100 <= Node.val <= 100`.
 
 ## Examples
 ```text
 Input: root = [3,9,20,None,None,15,7]
 Output: [[3],[20,9],[15,7]]
-Explanation: Direction alternates after each level.
+Explanation: Level 0 is `[3]`, level 1 is reversed to `[20,9]`, and level 2 returns to left-to-right as `[15,7]`.
 ```
 
 ## Understanding & Intuition

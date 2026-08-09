@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Subtree of Another Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given `root` and `subRoot`, return whether `subRoot` appears in `root` as an identical subtree. A subtree includes a node and all its descendants.
+
+**Input**
+- `root`: the main tree root.
+- `subRoot`: the candidate subtree root.
+
+**Output**
+- `True` if an identical subtree exists; otherwise `False`.
+
+## Constraints
+- `1 <= nodes in root <= 2000`
+- `1 <= nodes in subRoot <= 1000`
+- `-10^4 <= Node.val <= 10^4`.
 
 ## Examples
 ```text
 Input: root = [3,4,5,1,2], subRoot = [4,1,2]
 Output: True
-Explanation: The subtree rooted at value 4 matches subRoot.
+Explanation: The subtree rooted at value 4 has children 1 and 2, exactly matching `subRoot`.
 ```
 
 ## Understanding & Intuition

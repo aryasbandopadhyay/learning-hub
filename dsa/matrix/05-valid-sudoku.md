@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Microsoft, Google, Meta
 
 ## Problem
-Given a partially filled `9 x 9` Sudoku board, determine if it is valid. Only filled cells `'1'` to `'9'` are checked; empty cells are `'.'`. Constraints: the board is always `9 x 9`.
+You are given a partially filled `9 x 9` Sudoku board. Digits are strings `"1"` through `"9"`, and empty cells are `"."`.
+
+Return whether the filled cells obey Sudoku rules: no repeated digit in any row, column, or `3 x 3` box. You do not need to decide whether the board is solvable.
+
+**Input**
+- `board`: a `9 x 9` grid of digit strings or `"."`.
+
+**Output**
+- `true` if the current filled cells are valid; otherwise `false`.
+
+## Constraints
+- `board.length == 9`
+- `board[r].length == 9`
+- `board[r][c]` is `"."` or one of `"1"` through `"9"`.
 
 ## Examples
 ```text
 Input: board = [["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],[".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],[".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]]
 Output: true
-Explanation: No row, column, or 3x3 box contains a duplicate filled digit.
+Explanation: Every row, column, and 3x3 box has no duplicate filled digit. Empty cells are ignored.
 ```
 
 ## Understanding & Intuition

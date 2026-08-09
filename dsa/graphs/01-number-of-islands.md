@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an m x n grid of '1' land and '0' water, count 4-directionally connected islands. Constraints: 1 <= m,n <= 300.
+You are given an `m x n` grid where each cell is either `"1"` (land) or `"0"` (water).
+
+An island is a group of land cells connected horizontally or vertically. Diagonal contact does not connect land cells. Return the number of distinct islands in the grid.
+
+**Input**
+- `grid`: a 2-D list of strings with `m` rows and `n` columns; each value is `"1"` or `"0"`.
+
+**Output**
+- An integer: the number of 4-directionally connected land components.
+
+## Constraints
+- `m == grid.length`
+- `n == grid[r].length`
+- `1 <= m, n <= 300`
+- `grid[r][c]` is either `"0"` or `"1"`.
 
 ## Examples
 ```text
 Input: grid = [["1","1","0"],["0","1","0"],["1","0","1"]]
 Output: 3
-Explanation: Three separate land components exist.
+Explanation: The top-left three land cells are connected through shared edges, forming one island. The lower-left and lower-right land cells are isolated from it and from each other, so there are 3 islands.
 ```
 
 ## Understanding & Intuition

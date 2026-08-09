@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Merge accounts sharing at least one email. Output name followed by sorted emails. Constraints: accounts <= 1000.
+Each account is `[name, email1, email2, ...]`. Accounts belong to the same person if they share at least one email; shared emails can connect more than two accounts.
+
+Merge connected accounts. Each merged account contains the name followed by all unique emails in that group.
+
+**Input**
+- `accounts`: a list of accounts.
+
+**Output**
+- A list of merged accounts. Emails inside each account must be sorted lexicographically. **This judge compares exactly**: groups are emitted in the order their representative is first encountered while scanning input accounts and emails left to right.
+
+## Constraints
+- `1 <= accounts.length <= 1000`
+- `2 <= accounts[i].length <= 10`
+- `1 <= name.length, email.length <= 30`
+- Accounts sharing an email have the same name.
 
 ## Examples
 ```text
 Input: accounts = [["John","a@mail.com","b@mail.com"],["John","b@mail.com","c@mail.com"]]
 Output: [["John","a@mail.com","b@mail.com","c@mail.com"]]
-Explanation: The accounts share b@mail.com.
+Explanation: The two John accounts share `b@mail.com`, so their emails are one connected group. The merged row keeps the name and sorted unique emails.
 ```
 
 ## Understanding & Intuition

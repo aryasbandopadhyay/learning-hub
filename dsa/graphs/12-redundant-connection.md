@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a tree plus one extra undirected edge, return the edge that creates a cycle. Constraints: n <= 1000.
+An undirected graph started as a tree on nodes `1` through `n`, then one extra edge was added. Edges are given in insertion order.
+
+Return the edge that can be removed to make the graph a tree again. If multiple edges could be removed, return the one that appears last in the list.
+
+**Input**
+- `edges`: undirected edges `[u, v]` using 1-based labels.
+
+**Output**
+- The redundant edge as `[u, v]`. **This judge compares exactly**, so keep the endpoint order from `edges`.
+
+## Constraints
+- `n == edges.length`
+- `3 <= n <= 1000`
+- `edges[i].length == 2`
+- `1 <= u < v <= n`
+- The input contains exactly one extra edge beyond a tree.
 
 ## Examples
 ```text
 Input: edges = [[1,2],[1,3],[2,3]]
 Output: [2,3]
-Explanation: Endpoints 2 and 3 were already connected.
+Explanation: After `[1,2]` and `[1,3]`, nodes 2 and 3 are already connected through 1. Adding `[2,3]` forms the cycle, so it is returned.
 ```
 
 ## Understanding & Intuition

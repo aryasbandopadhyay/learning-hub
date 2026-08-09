@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Microsoft, Google, Meta
 
 ## Problem
-Given an `m x n` board of `0` dead and `1` live cells, compute the next state in-place using Conway's Game of Life rules. Constraints: `1 <= m,n <= 25`.
+You are given a board for Conway's Game of Life, where `1` is live and `0` is dead. Each cell has up to eight neighbours.
+
+Update the board simultaneously: live cells with fewer than two or more than three live neighbours die, live cells with two or three live neighbours live, and dead cells with exactly three live neighbours become live. Modify in place and return the final board for the judge.
+
+**Input**
+- `board`: an `m x n` grid of `0`s and `1`s.
+
+**Output**
+- The next board state. **This judge compares exactly**, so every cell must match the simultaneous update.
+
+## Constraints
+- `m == board.length`
+- `n == board[r].length`
+- `1 <= m, n <= 25`
+- `board[r][c]` is `0` or `1`.
 
 ## Examples
 ```text
 Input: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
 Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
-Explanation: Each cell changes based on its eight neighbors from the original board.
+Explanation: Each cell is updated from the original neighbour counts, not from partial updates. Applying the rules simultaneously produces the shown generation.
 ```
 
 ## Understanding & Intuition

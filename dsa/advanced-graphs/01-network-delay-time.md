@@ -5,13 +5,30 @@
 - **Asked at:** Amazon, Google, Microsoft, Meta
 
 ## Problem
-Given `n` directed nodes labeled `1..n`, travel times `times[i] = [u, v, w]`, and a start node `k`, return the time needed for every node to receive the signal. If some node is unreachable, return `-1`. Constraints: `1 <= n <= 100`, `1 <= times.length <= 6000`, and edge weights are positive.
+A directed weighted edge `[u, v, w]` means a signal sent from `u` reaches `v` after `w` time units. Nodes are labeled `1` through `n`.
+
+Starting from node `k`, return how long it takes for every node to receive the signal, or `-1` if some node is unreachable.
+
+**Input**
+- `times`: directed weighted edges `[u, v, w]`.
+- `n`: the number of nodes.
+- `k`: the starting node.
+
+**Output**
+- The maximum shortest-path distance from `k`, or `-1` if a node cannot be reached.
+
+## Constraints
+- `1 <= n <= 100`
+- `0 <= times.length <= 6000`
+- `times[i].length == 3`
+- `1 <= u, v, k <= n`
+- `1 <= w <= 100`.
 
 ## Examples
 ```text
 Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
 Output: 2
-Explanation: Node 4 receives the signal after 2 time units through 2 -> 3 -> 4.
+Explanation: Nodes 1 and 3 receive the signal after 1 time unit. Node 4 is reached through 2 -> 3 -> 4 after 2 time units, the last arrival time.
 ```
 
 ## Understanding & Intuition

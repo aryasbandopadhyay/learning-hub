@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Symmetric Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, return whether it is symmetric around its center. The left and right subtrees must be mirror images with equal corresponding values.
+
+**Input**
+- `root`: the root of a binary tree, or `None`.
+
+**Output**
+- `True` if the tree is symmetric; otherwise `False`.
+
+## Constraints
+- `0 <= number of nodes <= 1000`
+- `-100 <= Node.val <= 100`.
 
 ## Examples
 ```text
 Input: root = [1,2,2,3,4,4,3]
 Output: True
-Explanation: The left and right subtrees are mirrors.
+Explanation: The two subtrees mirror each other: outer children are both 3 and inner children are both 4.
 ```
 
 ## Understanding & Intuition

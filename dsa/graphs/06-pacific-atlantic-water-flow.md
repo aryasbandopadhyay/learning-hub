@@ -5,13 +5,50 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Return cells where water can flow to both oceans. Water moves to lower/equal adjacent heights. Constraints: 1 <= m,n <= 200.
+There is an `m x n` rectangular island that borders **both** the Pacific and Atlantic oceans:
+
+- The **Pacific Ocean** touches the island's **top** and **left** edges.
+- The **Atlantic Ocean** touches the island's **bottom** and **right** edges.
+
+You are given an `m x n` integer matrix `heights` where `heights[r][c]` is the height above sea
+level of the cell at row `r`, column `c`.
+
+Rain water can flow from a cell to any of its **4 direct neighbours** (up, down, left, right) if the
+neighbour's height is **less than or equal to** the current cell's height. Water can flow off the
+island into an ocean from any cell that sits on that ocean's edge.
+
+Return **all** grid coordinates `[r, c]` from which rain water can flow to **both** the Pacific and
+the Atlantic oceans.
+
+**Input**
+- `heights`: a 2-D list of integers (`m` rows × `n` columns).
+
+**Output**
+- A list of `[row, col]` pairs. **This judge compares exactly**, so return the coordinates
+  **sorted in ascending order** — first by `row`, then by `col`. (e.g. `[0,1]` before `[0,2]` before
+  `[1,0]`).
+
+## Constraints
+- `m == heights.length`
+- `n == heights[r].length`
+- `1 <= m, n <= 200`
+- `0 <= heights[r][c] <= 10^5`
 
 ## Examples
 ```text
 Input: heights = [[1,2,2],[3,2,3],[2,4,5]]
 Output: [[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]]
-Explanation: These cells can reach both borders.
+Explanation: Take cell [2,2] (height 5, the bottom-right corner): it already sits on the Atlantic
+edge, and water can walk up/left along non-increasing heights (5 -> 3 -> 1 ...) to reach the Pacific
+(top/left) edge, so it flows to both oceans. Every listed cell can likewise reach both the top/left
+(Pacific) and bottom/right (Atlantic) borders. Corner [0,0] is Pacific-only and corner [m-1... ]
+cells that cannot climb to the top/left are excluded. The result is sorted by (row, col).
+```
+
+```text
+Input: heights = [[1]]
+Output: [[0,0]]
+Explanation: A single cell borders every edge, so it reaches both oceans.
 ```
 
 ## Understanding & Intuition

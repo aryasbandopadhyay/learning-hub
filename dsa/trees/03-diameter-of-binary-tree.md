@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Diameter of Binary Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, return the diameter length. The diameter is the number of edges on the longest path between any two nodes; it need not pass through the root.
+
+**Input**
+- `root`: the root of a binary tree.
+
+**Output**
+- An integer: the maximum number of edges on any node-to-node path.
+
+## Constraints
+- `1 <= number of nodes <= 10^4`
+- `-100 <= Node.val <= 100`.
 
 ## Examples
 ```text
 Input: root = [1,2,3,4,5]
 Output: 3
-Explanation: The path 4-2-1-3 has 3 edges.
+Explanation: The longest path is `4 -> 2 -> 1 -> 3` or `5 -> 2 -> 1 -> 3`. It has 3 edges.
 ```
 
 ## Understanding & Intuition

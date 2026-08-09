@@ -5,13 +5,29 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Return shortest transformation length from beginWord to endWord, changing one letter each step using wordList. Constraints: wordList <= 5000.
+You are given `beginWord`, `endWord`, and a dictionary `wordList`.
+
+In one transformation, change exactly one character, and the resulting word must be in `wordList`. Return the number of words in the shortest transformation sequence from `beginWord` to `endWord`, including both endpoints. Return `0` if no sequence exists.
+
+**Input**
+- `beginWord`: the starting word.
+- `endWord`: the target word.
+- `wordList`: allowed transformed words.
+
+**Output**
+- An integer: the shortest sequence length, or `0` if unreachable.
+
+## Constraints
+- `1 <= beginWord.length == endWord.length <= 10`
+- `1 <= wordList.length <= 5000`
+- All words contain lowercase English letters and have the same length.
+- `beginWord` is not necessarily in `wordList`.
 
 ## Examples
 ```text
 Input: beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log","cog"]
 Output: 5
-Explanation: hit -> hot -> dot -> dog -> cog.
+Explanation: One shortest sequence is `hit -> hot -> dot -> dog -> cog`. It contains five words, and every intermediate word is in the dictionary.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,29 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-In a DAG, return the smallest set of starting vertices from which all nodes are reachable. Constraints: n <= 1e5.
+You are given a directed acyclic graph with `n` nodes labeled `0` through `n - 1`.
+
+Return the smallest set of starting vertices from which every node is reachable. In a DAG, these are exactly the nodes with no incoming edges.
+
+**Input**
+- `n`: the number of nodes.
+- `edges`: directed edges `[from, to]`.
+
+**Output**
+- A list of starting vertices. **This judge compares exactly**, so return zero-indegree nodes in increasing numeric order.
+
+## Constraints
+- `2 <= n <= 100000`
+- `0 <= edges.length <= min(100000, n * (n - 1) / 2)`
+- `edges[i].length == 2`
+- `0 <= from, to < n`
+- The graph is a DAG.
 
 ## Examples
 ```text
 Input: n = 6, edges = [[0,1],[0,2],[2,5],[3,4],[4,2]]
 Output: [0,3]
-Explanation: Only zero-indegree nodes must be chosen.
+Explanation: Nodes 0 and 3 have no incoming edges, so they must be chosen. From them, every other node is reachable, and the sorted output is `[0,3]`.
 ```
 
 ## Understanding & Intuition

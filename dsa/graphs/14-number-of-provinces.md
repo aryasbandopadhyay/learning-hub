@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an adjacency matrix of direct city connections, return number of connected provinces. Constraints: n <= 200.
+You are given an `n x n` matrix `isConnected` where `isConnected[i][j] == 1` means cities `i` and `j` are directly connected.
+
+A province is a group of cities connected directly or indirectly, with no connection to outside cities. Return the number of provinces.
+
+**Input**
+- `isConnected`: an `n x n` symmetric adjacency matrix.
+
+**Output**
+- An integer: the number of connected city groups.
+
+## Constraints
+- `n == isConnected.length == isConnected[i].length`
+- `1 <= n <= 200`
+- `isConnected[i][j]` is `0` or `1`.
+- `isConnected[i][i] == 1` and `isConnected[i][j] == isConnected[j][i]`.
 
 ## Examples
 ```text
 Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
 Output: 2
-Explanation: Cities 0 and 1 form one province; city 2 another.
+Explanation: Cities 0 and 1 are connected, so they form one province. City 2 is separate, forming the second province.
 ```
 
 ## Understanding & Intuition

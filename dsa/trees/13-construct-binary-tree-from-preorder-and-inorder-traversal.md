@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Construct Binary Tree from Preorder and Inorder Traversal**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+You are given preorder and inorder traversals of a binary tree with unique values.
+
+Preorder gives the root before its subtrees; inorder splits values into left and right subtrees around that root. Reconstruct and return the tree.
+
+**Input**
+- `preorder`: preorder traversal.
+- `inorder`: inorder traversal of the same tree.
+
+**Output**
+- The reconstructed root. **This judge compares exactly** using level-order serialization with `None` for missing children.
+
+## Constraints
+- `1 <= preorder.length == inorder.length <= 3000`
+- `-3000 <= value <= 3000`
+- Values are unique and both traversals contain the same values.
 
 ## Examples
 ```text
 Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
 Output: [3,9,20,None,None,15,7]
-Explanation: Preorder chooses roots; inorder splits left and right subtrees.
+Explanation: Preorder starts with 3, so 3 is the root. Inorder places 9 on the left and `[15,20,7]` on the right, reconstructing the shown tree.
 ```
 
 ## Understanding & Intuition

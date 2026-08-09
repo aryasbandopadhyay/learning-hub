@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Invert Binary Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, invert it by swapping the left and right child of every node. Return the root of the inverted tree.
+
+**Input**
+- `root`: the root of a binary tree, or `None`.
+
+**Output**
+- The root of the inverted tree. **This judge compares exactly** using level-order serialization.
+
+## Constraints
+- `0 <= number of nodes <= 100`
+- `-100 <= Node.val <= 100`.
 
 ## Examples
 ```text
 Input: root = [4,2,7,1,3,6,9]
 Output: [4,7,2,9,6,3,1]
-Explanation: Every left and right child is swapped.
+Explanation: Every node swaps its left and right subtrees. The original children of 4, 2, and 7 trade sides, producing the shown tree.
 ```
 
 ## Understanding & Intuition

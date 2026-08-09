@@ -5,13 +5,28 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Given course prerequisite pairs [course, prerequisite], return whether all courses can be finished. Constraints: courses <= 2000.
+There are `numCourses` courses labeled `0` to `numCourses - 1`. Each pair `[course, prerequisite]` means `prerequisite` must be taken before `course`.
+
+Return whether it is possible to finish all courses. This is possible exactly when the prerequisite graph has no directed cycle.
+
+**Input**
+- `numCourses`: the number of courses.
+- `prerequisites`: directed pairs `[course, prerequisite]`.
+
+**Output**
+- `True` if all courses can be completed; otherwise `False`.
+
+## Constraints
+- `1 <= numCourses <= 2000`
+- `0 <= prerequisites.length <= 5000`
+- `prerequisites[i].length == 2`
+- `0 <= course, prerequisite < numCourses`.
 
 ## Examples
 ```text
 Input: numCourses = 2, prerequisites = [[1,0]]
 Output: True
-Explanation: Take 0 before 1.
+Explanation: Course 0 can be taken first. That unlocks course 1, so all courses can be completed.
 ```
 
 ## Understanding & Intuition

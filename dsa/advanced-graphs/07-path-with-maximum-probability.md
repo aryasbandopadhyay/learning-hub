@@ -5,13 +5,32 @@
 - **Asked at:** Google, Amazon, Microsoft, Uber
 
 ## Problem
-Given an undirected graph with `n` nodes, edges, and success probabilities, return the maximum probability of reaching `end_node` from `start_node`. Return `0` if impossible. Constraints: `1 <= n <= 10^4`, probabilities are between `0` and `1`.
+You are given an undirected graph with `n` nodes. For edge `edges[i]`, `succProb[i]` is the success probability of traversing that edge.
+
+Return the maximum success probability of any path from `start_node` to `end_node`, or `0` if no path exists.
+
+**Input**
+- `n`: number of nodes.
+- `edges`: undirected edges `[a, b]`.
+- `succProb`: probabilities aligned with `edges`.
+- `start_node`: start.
+- `end_node`: destination.
+
+**Output**
+- A floating-point number: the largest product of probabilities along any path.
+
+## Constraints
+- `2 <= n <= 10000`
+- `0 <= edges.length <= 20000`
+- `succProb.length == edges.length`
+- `0 <= a, b, start_node, end_node < n`
+- `0 <= succProb[i] <= 1`.
 
 ## Examples
 ```text
 Input: n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.2], start_node = 0, end_node = 2
 Output: 0.25
-Explanation: Path 0 -> 1 -> 2 has probability 0.5 * 0.5 = 0.25.
+Explanation: The direct path succeeds with probability 0.2. The path `0 -> 1 -> 2` succeeds with `0.5 * 0.5 = 0.25`, which is larger.
 ```
 
 ## Understanding & Intuition

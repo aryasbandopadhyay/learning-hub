@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Path Sum II**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree and `targetSum`, return all root-to-leaf paths whose values sum to `targetSum`.
+
+**Input**
+- `root`: the root of a binary tree, or `None`.
+- `targetSum`: the required sum.
+
+**Output**
+- A list of paths. **This judge compares exactly**, so return paths in left-to-right DFS order, with values from root to leaf.
+
+## Constraints
+- `0 <= number of nodes <= 5000`
+- `-1000 <= Node.val <= 1000`
+- `-1000 <= targetSum <= 1000`.
 
 ## Examples
 ```text
 Input: root = [5,4,8,11,None,13,4,7,2,None,None,5,1], targetSum = 22
 Output: [[5,4,11,2],[5,8,4,5]]
-Explanation: Both root-to-leaf paths sum to 22.
+Explanation: Two root-to-leaf paths sum to 22: `5 -> 4 -> 11 -> 2` and `5 -> 8 -> 4 -> 5`, returned left-to-right.
 ```
 
 ## Understanding & Intuition

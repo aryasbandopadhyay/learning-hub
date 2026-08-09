@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Given airline tickets `[from, to]`, reconstruct an itinerary starting at `"JFK"` that uses every ticket exactly once. If multiple valid itineraries exist, return the lexicographically smallest one. Constraints: `1 <= tickets.length <= 300`.
+You are given airline tickets as directed pairs `[from, to]`. Use every ticket exactly once and start the itinerary at `"JFK"`.
+
+Return the valid itinerary with the smallest lexicographic order when read as a list of airport codes.
+
+**Input**
+- `tickets`: directed flights `[from, to]`.
+
+**Output**
+- A list of airport codes. **This judge compares exactly**, so when multiple complete itineraries exist, return the lexicographically smallest one.
+
+## Constraints
+- `1 <= tickets.length <= 300`
+- `tickets[i].length == 2`
+- Airport codes are three uppercase English letters.
+- At least one itinerary uses all tickets from `"JFK"`.
 
 ## Examples
 ```text
 Input: tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
 Output: ["JFK","MUC","LHR","SFO","SJC"]
-Explanation: All tickets are used once starting from JFK.
+Explanation: Starting from `JFK`, the route `JFK -> MUC -> LHR -> SFO -> SJC` uses every ticket exactly once.
 ```
 
 ## Understanding & Intuition

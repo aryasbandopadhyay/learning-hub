@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Meta, Airbnb
 
 ## Problem
-Rooms contain keys to other rooms. Starting at room 0, return whether every room can be visited. Constraints: rooms <= 1000.
+There are `n` rooms numbered `0` through `n - 1`. `rooms[i]` lists keys found in room `i`; a key lets you enter that numbered room. You start in room `0`.
+
+Return whether every room can be visited.
+
+**Input**
+- `rooms`: a list where `rooms[i]` contains keys in room `i`.
+
+**Output**
+- `True` if all rooms are reachable from room `0`; otherwise `False`.
+
+## Constraints
+- `n == rooms.length`
+- `2 <= n <= 1000`
+- `0 <= rooms[i].length <= 1000`
+- `1 <= sum(rooms[i].length) <= 3000`
+- `0 <= rooms[i][j] < n`.
 
 ## Examples
 ```text
 Input: rooms = [[1],[2],[3],[]]
 Output: True
-Explanation: Keys unlock rooms 1, 2, and 3.
+Explanation: Room 0 gives a key to 1, room 1 gives a key to 2, and room 2 gives a key to 3. All rooms become reachable.
 ```
 
 ## Understanding & Intuition

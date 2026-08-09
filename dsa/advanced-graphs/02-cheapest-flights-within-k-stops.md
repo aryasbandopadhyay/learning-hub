@@ -5,13 +5,33 @@
 - **Asked at:** Amazon, Google, Meta, Bloomberg
 
 ## Problem
-Given `n` cities, flights `[from, to, price]`, source `src`, destination `dst`, and at most `k` stops, return the cheapest price from `src` to `dst`, or `-1` if no such route exists. Constraints: `1 <= n <= 100`, prices are positive, and at most `k + 1` edges may be used.
+There are `n` cities labeled `0` through `n - 1` and directed flights `[from, to, price]`.
+
+Return the cheapest price from `src` to `dst` using at most `k` stops. A stop is an intermediate city, so the route may use at most `k + 1` flights. Return `-1` if no such route exists.
+
+**Input**
+- `n`: number of cities.
+- `flights`: directed flights `[from, to, price]`.
+- `src`: start city.
+- `dst`: destination city.
+- `k`: maximum intermediate stops.
+
+**Output**
+- The minimum total price, or `-1` if unreachable within the stop limit.
+
+## Constraints
+- `1 <= n <= 100`
+- `0 <= flights.length <= n * (n - 1)`
+- `flights[i].length == 3`
+- `0 <= from, to, src, dst < n`
+- `1 <= price <= 10000`
+- `0 <= k < n`.
 
 ## Examples
 ```text
 Input: n = 4, flights = [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]], src = 0, dst = 3, k = 1
 Output: 700
-Explanation: The route 0 -> 1 -> 3 costs 700 and uses one stop.
+Explanation: With at most one stop, route `0 -> 1 -> 3` is allowed and costs `100 + 600 = 700`. Cheaper routes needing more stops are not allowed.
 ```
 
 ## Understanding & Intuition

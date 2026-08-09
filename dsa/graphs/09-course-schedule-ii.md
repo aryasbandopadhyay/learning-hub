@@ -5,13 +5,28 @@
 - **Asked at:** Google, Amazon, Meta, Microsoft
 
 ## Problem
-Return one valid course order, or [] if impossible. Constraints: courses <= 2000.
+There are `numCourses` courses labeled `0` to `numCourses - 1`. Each pair `[course, prerequisite]` means `prerequisite` must be taken before `course`.
+
+Return an ordering of all courses satisfying every prerequisite, or `[]` if no ordering exists.
+
+**Input**
+- `numCourses`: the number of courses.
+- `prerequisites`: directed pairs `[course, prerequisite]`.
+
+**Output**
+- A list of course labels, or `[]` for a cycle. **This judge compares exactly**: start with zero-prerequisite courses in increasing label order, then enqueue newly available courses in the order created by the input prerequisite list.
+
+## Constraints
+- `1 <= numCourses <= 2000`
+- `0 <= prerequisites.length <= 5000`
+- `prerequisites[i].length == 2`
+- `0 <= course, prerequisite < numCourses`.
 
 ## Examples
 ```text
 Input: numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
 Output: [0,1,2,3]
-Explanation: Prerequisites appear before dependent courses.
+Explanation: Course 0 is available first. Courses 1 and 2 are unlocked from the input in that order, and course 3 comes after both, giving `[0,1,2,3]`.
 ```
 
 ## Understanding & Intuition

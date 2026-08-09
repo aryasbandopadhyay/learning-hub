@@ -5,13 +5,28 @@
 - **Asked at:** Google, Amazon, Meta, LinkedIn
 
 ## Problem
-Return the number of connected components in an undirected graph with n nodes. Constraints: n <= 2000.
+You are given `n` nodes labeled `0` through `n - 1` and undirected edges.
+
+Return the number of connected components. Two nodes are in the same component if some path connects them.
+
+**Input**
+- `n`: the number of nodes.
+- `edges`: undirected edges `[u, v]`.
+
+**Output**
+- An integer: the number of connected components.
+
+## Constraints
+- `1 <= n <= 2000`
+- `0 <= edges.length <= 5000`
+- `edges[i].length == 2`
+- `0 <= u, v < n`.
 
 ## Examples
 ```text
 Input: n = 5, edges = [[0,1],[1,2],[3,4]]
 Output: 2
-Explanation: Components are {0,1,2} and {3,4}.
+Explanation: Nodes 0, 1, and 2 form one component, while nodes 3 and 4 form another. Therefore there are 2 components.
 ```
 
 ## Understanding & Intuition

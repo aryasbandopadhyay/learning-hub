@@ -5,13 +5,26 @@
 - **Asked at:** Google, Meta, Amazon, Airbnb
 
 ## Problem
-Given sorted words from an alien language, return one valid character order. If the ordering is impossible, return an empty string. Constraints: `1 <= words.length <= 100`, total characters up to about `10^4`, lowercase English letters.
+You are given words sorted according to an unknown alien alphabet. Adjacent words reveal ordering constraints between characters.
+
+Return one valid ordering containing every distinct character, or `""` if the ordering is impossible.
+
+**Input**
+- `words`: words sorted by the alien alphabet.
+
+**Output**
+- A string with each distinct character once in a valid order, or `""` if no valid order exists.
+
+## Constraints
+- `1 <= words.length <= 100`
+- `1 <= words[i].length <= 100`
+- `words[i]` contains lowercase English letters.
 
 ## Examples
 ```text
 Input: words = ["wrt","wrf","er","ett","rftt"]
 Output: "wertf"
-Explanation: Adjacent word comparisons imply w < e, e < r, r < t, and t < f.
+Explanation: Adjacent comparisons imply `w < e`, `e < r`, `r < t`, and `t < f`. The order `wertf` satisfies all constraints.
 ```
 
 ## Understanding & Intuition

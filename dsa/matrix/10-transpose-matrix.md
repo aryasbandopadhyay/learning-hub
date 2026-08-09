@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Microsoft, Google
 
 ## Problem
-Given an `m x n` matrix, return its transpose, where rows become columns. Constraints: `1 <= m,n <= 1000`, `m*n <= 10^5`.
+Given an `m x n` matrix, return its transpose. The transpose has `n` rows and `m` columns, and original value `(r, c)` moves to `(c, r)`.
+
+**Input**
+- `matrix`: a 2-D list of integers.
+
+**Output**
+- The transposed matrix. **This judge compares exactly**, so rows and columns must appear in the `(c, r)` arrangement.
+
+## Constraints
+- `m == matrix.length`
+- `n == matrix[r].length`
+- `1 <= m, n <= 1000`
+- `1 <= m * n <= 10^5`
+- `-10^9 <= matrix[r][c] <= 10^9`.
 
 ## Examples
 ```text
 Input: matrix = [[1,2,3],[4,5,6]]
 Output: [[1,4],[2,5],[3,6]]
-Explanation: Element at (r,c) moves to (c,r).
+Explanation: The output rows collect input columns: first `[1,4]`, then `[2,5]`, then `[3,6]`.
 ```
 
 ## Understanding & Intuition

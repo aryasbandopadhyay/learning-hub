@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Flatten Binary Tree to Linked List**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, flatten it in place into a linked list using the same nodes. The list follows preorder traversal using only `right` pointers, and every `left` pointer must become `None`.
+
+**Input**
+- `root`: the root of a binary tree, or `None`.
+
+**Output**
+- The flattened tree. **This judge compares exactly** using level-order serialization of the right-only chain.
+
+## Constraints
+- `0 <= number of nodes <= 2000`
+- `-100 <= Node.val <= 100`.
 
 ## Examples
 ```text
 Input: root = [1,2,5,3,4,None,6]
 Output: [1,None,2,None,3,None,4,None,5,None,6]
-Explanation: The tree is flattened in preorder using right pointers.
+Explanation: Preorder visits `1,2,3,4,5,6`. After flattening, those values appear along successive right pointers, with `None` left children.
 ```
 
 ## Understanding & Intuition

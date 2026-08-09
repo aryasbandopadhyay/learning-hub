@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Kth Smallest Element in a BST**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a BST and integer `k`, return the `k`th smallest value. The rank is 1-based.
+
+**Input**
+- `root`: root of a BST.
+- `k`: 1-based rank.
+
+**Output**
+- The value of the `k`th smallest node.
+
+## Constraints
+- `1 <= number of nodes <= 10^4`
+- `1 <= k <= number of nodes`
+- `0 <= Node.val <= 10^4`.
 
 ## Examples
 ```text
 Input: root = [3,1,4,None,2], k = 1
 Output: 1
-Explanation: Inorder order is [1,2,3,4].
+Explanation: Inorder traversal of the BST is `[1,2,3,4]`. The first value is 1.
 ```
 
 ## Understanding & Intuition

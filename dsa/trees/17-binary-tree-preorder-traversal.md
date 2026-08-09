@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Binary Tree Preorder Traversal**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+Binary trees are represented in level-order arrays, using `None` for missing children.
+
+Given the root of a binary tree, return its preorder traversal: current node, left subtree, then right subtree.
+
+**Input**
+- `root`: the root of a binary tree, or `None`.
+
+**Output**
+- A list of values. **This judge compares exactly**, in root-left-right order.
+
+## Constraints
+- `0 <= number of nodes <= 100`
+- `-100 <= Node.val <= 100`.
 
 ## Examples
 ```text
 Input: root = [1,None,2,3]
 Output: [1, 2, 3]
-Explanation: root-left-right order visits nodes this way.
+Explanation: Visit root 1 first, then the right subtree because there is no left child. Within that subtree, visit 2 before 3.
 ```
 
 ## Understanding & Intuition

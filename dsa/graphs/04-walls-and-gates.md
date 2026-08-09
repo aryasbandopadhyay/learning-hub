@@ -5,13 +5,27 @@
 - **Asked at:** Meta, Amazon, Google, DoorDash
 
 ## Problem
-Fill each INF room with distance to nearest gate 0, avoiding walls -1, in-place. Constraints: up to 250 x 250.
+You are given a grid of rooms, walls, and gates. A wall is `-1`, a gate is `0`, and an empty room is `2147483647` (infinity).
+
+Fill each empty room with the distance to its nearest gate using up, down, left, and right moves. Walls block movement. Unreachable rooms stay `2147483647`. Modify `rooms` in place and return the updated grid for the judge.
+
+**Input**
+- `rooms`: an `m x n` integer grid containing `-1`, `0`, or `2147483647`.
+
+**Output**
+- The final grid. **This judge compares exactly**, so every cell must contain its required nearest-gate distance, wall, or gate value.
+
+## Constraints
+- `m == rooms.length`
+- `n == rooms[r].length`
+- `1 <= m, n <= 250`
+- `rooms[r][c]` is one of `-1`, `0`, or `2147483647`.
 
 ## Examples
 ```text
 Input: rooms = [[2147483647,-1,0],[2147483647,2147483647,2147483647]]
 Output: [[4,-1,0],[3,2,1]]
-Explanation: Each room receives its nearest-gate distance.
+Explanation: The gate is at the top-right. Shortest paths around the wall give distances 4 and 3 in the first column, then 2 and 1 moving toward the gate on the second row.
 ```
 
 ## Understanding & Intuition

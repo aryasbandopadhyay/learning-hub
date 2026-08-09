@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given the described binary tree/BST input, solve **Convert Sorted Array to Binary Search Tree**. Constraints: number of nodes is 0 to 10^5 unless stated otherwise; node values fit in signed 32-bit integers; recursion depth may be O(n) for skewed trees.
+You are given a strictly increasing sorted array `nums`.
+
+Convert it into a height-balanced BST, where every node's left and right subtree heights differ by no more than `1`.
+
+**Input**
+- `nums`: a sorted list of distinct integers.
+
+**Output**
+- The root of any height-balanced BST containing exactly `nums`. The judge accepts any valid balanced BST.
+
+## Constraints
+- `1 <= nums.length <= 10^4`
+- `-10^4 <= nums[i] <= 10^4`
+- `nums` is strictly increasing.
 
 ## Examples
 ```text
 Input: nums = [-10,-3,0,5,9]
 Output: [0,-10,5,None,-3,None,9]
-Explanation: Choosing middle elements keeps the BST height-balanced.
+Explanation: Choosing middle elements as roots keeps subtree sizes close. The shown tree is a valid height-balanced BST containing all input values.
 ```
 
 ## Understanding & Intuition

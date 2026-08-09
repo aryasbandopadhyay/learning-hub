@@ -5,13 +5,29 @@
 - **Asked at:** Amazon, Microsoft, Google, Meta, Apple
 
 ## Problem
-Given an `m x n` board of characters and a word, return whether the word exists by moving horizontally or vertically to adjacent cells. A cell may not be reused in one path. Constraints: `1 <= m,n <= 6`, `1 <= len(word) <= 15`.
+You are given an `m x n` board of characters and a string `word`.
+
+Return whether `word` can be formed by a path of horizontally or vertically adjacent cells. A cell may be used at most once in the path.
+
+**Input**
+- `board`: a 2-D list of characters.
+- `word`: the target string.
+
+**Output**
+- `true` if such a path exists; otherwise `false`.
+
+## Constraints
+- `m == board.length`
+- `n == board[r].length`
+- `1 <= m, n <= 6`
+- `1 <= word.length <= 15`
+- `board[r][c]` and `word[i]` are English letters.
 
 ## Examples
 ```text
 Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
 Output: true
-Explanation: A path A -> B -> C -> C -> E -> D exists.
+Explanation: A valid path spells `A -> B -> C -> C -> E -> D` using adjacent cells and never reusing a cell.
 ```
 
 ## Understanding & Intuition

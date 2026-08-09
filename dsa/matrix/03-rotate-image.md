@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Microsoft, Google, Meta
 
 ## Problem
-Given an `n x n` matrix, rotate it 90 degrees clockwise in-place. Constraints: `1 <= n <= 20`, values fit in signed 32-bit integers.
+You are given an `n x n` matrix representing an image.
+
+Rotate it 90 degrees clockwise in place. The value at `(r, c)` moves to `(c, n - 1 - r)`. Return the final matrix for the judge.
+
+**Input**
+- `matrix`: a square 2-D list of integers.
+
+**Output**
+- The rotated matrix. **This judge compares exactly**, so every cell must match.
+
+## Constraints
+- `n == matrix.length == matrix[r].length`
+- `1 <= n <= 20`
+- `-1000 <= matrix[r][c] <= 1000`.
 
 ## Examples
 ```text
 Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [[7,4,1],[8,5,2],[9,6,3]]
-Explanation: Each cell moves from (r,c) to (c,n-1-r).
+Explanation: The first column `[1,4,7]` becomes the first row reversed as `[7,4,1]`. Applying that movement to every cell gives the output.
 ```
 
 ## Understanding & Intuition
