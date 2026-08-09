@@ -5,15 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given a nondecreasing integer list `nums` that was rotated at an unknown pivot and may contain duplicates, return the minimum element.
+You are given an integer array `nums` that was sorted in non-decreasing order and then rotated at an unknown pivot. Duplicate values may appear.
 
-Constraints: `1 <= len(nums) <= 5000`, `-5000 <= nums[i] <= 5000`.
+Return the minimum value in the array.
+
+**Input**
+- `nums`: a rotated non-decreasing list of integers, possibly with duplicates.
+
+**Output**
+- The smallest value in `nums`.
+
+## Constraints
+- `1 <= nums.length <= 5000`
+- `-5000 <= nums[i] <= 5000`
 
 ## Examples
 ```text
 Input: nums = [2,2,2,0,1]
 Output: 0
-Explanation: The sorted array was rotated so the minimum moved into the middle.
+Explanation: The smallest value is `0`; the other values are `1` or `2`.
 ```
 
 ## Understanding & Intuition

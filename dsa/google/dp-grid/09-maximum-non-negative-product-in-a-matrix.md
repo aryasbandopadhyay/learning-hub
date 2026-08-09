@@ -5,15 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Move from top-left to bottom-right in `grid` using only right or down. Return the maximum non-negative product along a path modulo `1_000_000_007`, or `-1` if all products are negative.
+You are given an `m x n` integer grid.
 
-Constraints: `1 <= m,n <= 15`, `-4 <= grid[i][j] <= 4`.
+Start at the top-left cell and move only right or down to the bottom-right cell. The path product is the product of all visited values. Return the maximum non-negative product modulo `10^9 + 7`; if every path product is negative, return `-1`.
+
+**Input**
+- `grid`: an `m x n` matrix of integers.
+
+**Output**
+- The largest non-negative path product modulo `10^9 + 7`, or `-1` if none exists.
+
+## Constraints
+- `1 <= m, n <= 15`
+- `-4 <= grid[r][c] <= 4`
 
 ## Examples
 ```text
 Input: grid = [[-1,-2,-3],[-2,-3,-3],[-3,-3,-2]]
 Output: -1
-Explanation: Every path product is negative.
+Explanation: Every top-left to bottom-right path has a negative product, so there is no non-negative product to return.
 ```
 
 ## Understanding & Intuition

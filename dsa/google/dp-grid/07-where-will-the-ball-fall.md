@@ -5,15 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-A grid contains diagonal boards. `1` sends a ball down-right and `-1` sends it down-left. Drop one ball from each top column and return each final column, or `-1` if it gets stuck.
+You are given a grid of diagonal boards. A `1` board sends a ball down-right, and a `-1` board sends it down-left.
 
-Constraints: `1 <= m,n <= 100`, `grid[i][j] in {-1,1}`.
+Drop one ball from the top of each column. A ball gets stuck if it hits a wall or a `V` shape made by adjacent boards. Return the exit column for each ball, or `-1` if it gets stuck.
+
+**Input**
+- `grid`: an `m x n` matrix containing only `1` and `-1`.
+
+**Output**
+- A length-`n` list aligned with starting columns. **This judge compares exactly**, so `answer[c]` is the exit for the ball dropped at column `c`, left to right.
+
+## Constraints
+- `1 <= m, n <= 100`
+- `grid[r][c]` is `1` or `-1`
 
 ## Examples
 ```text
 Input: grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]
 Output: [1,-1,-1,-1,-1]
-Explanation: Only the first ball exits, at column 1.
+Explanation: The ball from column `0` exits at column `1`. Each other starting column eventually reaches a wall or `V` trap.
 ```
 
 ## Understanding & Intuition

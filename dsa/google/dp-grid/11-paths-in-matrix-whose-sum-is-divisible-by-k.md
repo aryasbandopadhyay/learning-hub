@@ -5,15 +5,28 @@
 - **Asked at:** Google
 
 ## Problem
-Given `grid` and integer `k`, count paths from top-left to bottom-right moving only right or down whose path sum is divisible by `k`. Return the count modulo `1_000_000_007`.
+You are given an `m x n` grid of non-negative integers and an integer `k`.
 
-Constraints: `1 <= m,n <= 50`, `1 <= k <= 50`, `0 <= grid[i][j] <= 100`.
+Start at the top-left cell and move only right or down to the bottom-right cell. Count paths whose sum of visited values is divisible by `k`, and return the count modulo `10^9 + 7`.
+
+**Input**
+- `grid`: an `m x n` matrix of non-negative integers.
+- `k`: the divisor for the path sum.
+
+**Output**
+- The number of right/down paths with sum divisible by `k`, modulo `10^9 + 7`.
+
+## Constraints
+- `1 <= m, n <= 5 * 10^4`
+- `1 <= m * n <= 5 * 10^4`
+- `0 <= grid[r][c] <= 100`
+- `1 <= k <= 50`
 
 ## Examples
 ```text
 Input: grid = [[5,2,4],[3,0,5],[0,7,2]], k = 3
 Output: 2
-Explanation: Exactly two top-left to bottom-right paths have sums divisible by 3.
+Explanation: Exactly two right/down paths have sums divisible by `3`, so the answer is `2`.
 ```
 
 ## Understanding & Intuition

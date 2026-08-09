@@ -5,15 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-There are `2n` people. `costs[i] = [aCost, bCost]` gives the price to send person `i` to city A or city B. Send exactly `n` people to each city and return the minimum total cost.
+There are `2n` people. `costs[i] = [aCost, bCost]` gives the cost to send person `i` to city A or city B.
 
-Constraints: `2 <= len(costs) <= 100`, `len(costs)` is even, `1 <= costs[i][j] <= 1000`.
+Send exactly `n` people to each city while minimizing the total cost.
+
+**Input**
+- `costs`: an even-length list of `[cost_to_A, cost_to_B]` pairs.
+
+**Output**
+- The minimum total travel cost.
+
+## Constraints
+- `2 <= costs.length <= 100`
+- `costs.length` is even
+- `1 <= cost_to_A, cost_to_B <= 1000`
 
 ## Examples
 ```text
 Input: costs = [[10,20],[30,200],[400,50],[30,20]]
 Output: 110
-Explanation: Send people 0 and 1 to A, and people 2 and 3 to B.
+Explanation: Send people `0` and `1` to city A and people `2` and `3` to city B, for total `10 + 30 + 50 + 20 = 110`.
 ```
 
 ## Understanding & Intuition

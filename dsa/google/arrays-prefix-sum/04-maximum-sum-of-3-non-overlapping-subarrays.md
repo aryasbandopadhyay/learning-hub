@@ -5,13 +5,27 @@
 - **Asked at:** Google, Facebook, Amazon
 
 ## Problem
-Given an integer array `nums` and integer `k`, choose three non-overlapping subarrays of length `k` with maximum total sum. Return the starting indices of the three subarrays in lexicographically smallest order among optimal answers. `1 <= nums[i] < 2^16`, `1 <= k`, and `3 * k <= len(nums) <= 2 * 10^4`.
+You are given an integer array `nums` and an integer `k`.
+
+Select three non-overlapping contiguous subarrays, each of length exactly `k`, maximizing their combined sum. Return their starting indices. If multiple triples have the same maximum sum, return the lexicographically smallest triple.
+
+**Input**
+- `nums`: a list of integers.
+- `k`: the length of each selected subarray.
+
+**Output**
+- A list `[i, j, l]` of starting indices in increasing order. **This judge compares exactly**, so ties must use the lexicographically smallest triple.
+
+## Constraints
+- `1 <= nums.length <= 2 * 10^4`
+- `1 <= nums[i] < 2^16`
+- `1 <= k <= floor(nums.length / 3)`
 
 ## Examples
 ```text
 Input: nums = [1,2,1,2,6,7,5,1], k = 2
 Output: [0,3,5]
-Explanation: The chosen subarray sums are 3, 8, and 12 for total 23.
+Explanation: The length-2 subarrays starting at `0`, `3`, and `5` have sums `3`, `8`, and `12`, for total `23`, the largest possible.
 ```
 
 ## Understanding & Intuition

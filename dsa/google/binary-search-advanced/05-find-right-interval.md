@@ -5,15 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given intervals `intervals` where each interval has a unique start, return a list `ans` where `ans[i]` is the index of the interval with the smallest start point greater than or equal to `intervals[i][1]`. If no such interval exists, use `-1`.
+You are given a list of intervals. Each interval is `[start, end]`, and all start values are unique.
 
-Constraints: `1 <= len(intervals) <= 20000`, `len(intervals[i]) == 2`, `-10^6 <= start <= end <= 10^6`, starts are unique.
+For each interval `i`, find the interval whose start is the smallest value greater than or equal to `intervals[i][1]`. Return that interval's index, or `-1` if no such interval exists.
+
+**Input**
+- `intervals`: a list of `[start, end]` pairs with unique start values.
+
+**Output**
+- A list aligned with the input intervals. **This judge compares exactly**, so `answer[i]` must describe `intervals[i]` in original order.
+
+## Constraints
+- `1 <= intervals.length <= 2 * 10^4`
+- `-10^6 <= start <= end <= 10^6`
+- All start values are distinct.
 
 ## Examples
 ```text
 Input: intervals = [[3,4],[2,3],[1,2]]
 Output: [-1,0,1]
-Explanation: Ends 4, 3, and 2 map to starts none, interval 0, and interval 1.
+Explanation: For `[3,4]` there is no start at least `4`. For `[2,3]` the right interval is index `0`; for `[1,2]` it is index `1`.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-There are several cards in a row, each with points in `cardPoints`. In one move, take one card from either the beginning or the end. Return the maximum score obtainable after exactly `k` cards are taken. `1 <= len(cardPoints) <= 10^5`, `1 <= cardPoints[i] <= 10^4`, and `1 <= k <= len(cardPoints)`.
+You are given card points in a row and an integer `k`.
+
+On each move, take exactly one card from either the left end or the right end. After exactly `k` moves, return the maximum points you can collect.
+
+**Input**
+- `cardPoints`: a list of card values from left to right.
+- `k`: the number of cards to take.
+
+**Output**
+- The maximum score after taking exactly `k` end cards.
+
+## Constraints
+- `1 <= cardPoints.length <= 10^5`
+- `1 <= cardPoints[i] <= 10^4`
+- `1 <= k <= cardPoints.length`
 
 ## Examples
 ```text
 Input: cardPoints = [1,2,3,4,5,6,1], k = 3
 Output: 12
-Explanation: Taking the three cards from the end gives 1 + 6 + 5 = 12.
+Explanation: Taking the three cards from the right gives `5 + 6 + 1 = 12`, which is optimal.
 ```
 
 ## Understanding & Intuition

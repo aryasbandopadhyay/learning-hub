@@ -5,13 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given `forest`, where `0` is blocked, `1` is walkable, and values greater than `1` are tree heights, cut all trees in increasing height order starting from `(0,0)`. Return the minimum total steps, or `-1` if a tree is unreachable. Constraints: `1 <= rows, cols <= 50`.
+You are given a forest grid. `0` is an obstacle, `1` is walkable ground, and any value greater than `1` is a tree height.
+
+Starting at `(0,0)`, cut all trees in strictly increasing height order. You may move 4-directionally through ground or tree cells, but not obstacles. Return the minimum total steps, or `-1` if some tree cannot be reached.
+
+**Input**
+- `forest`: an `m x n` matrix of non-negative integers.
+
+**Output**
+- The minimum steps to cut all trees by ascending height, or `-1` if impossible.
+
+## Constraints
+- `1 <= m, n <= 50`
+- `0 <= forest[r][c] <= 10^9`
+- Tree heights greater than `1` are unique.
 
 ## Examples
 ```text
 Input: forest = [[1,2,3],[0,0,4],[7,6,5]]
 Output: 6
-Explanation: The increasing-height route follows the open path around the blocked cells.
+Explanation: The trees are visited in order `2,3,4,5,6,7`, and the shortest route following that order uses `6` steps.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,28 @@
 - **Asked at:** Google
 
 ## Problem
-Given a non-negative integer string `num` and an integer `k`, remove exactly `k` digits so the remaining number is as small as possible. Return the answer without leading zeroes, or `"0"` if no digit remains.
+You are given a non-negative integer `num` as a string and an integer `k`.
 
-Constraints: `1 <= len(num) <= 10^5`, `0 <= k <= len(num)`, and `num` contains only digits.
+Remove exactly `k` digits so that the remaining digits form the smallest possible non-negative integer. Return it as a string without leading zeroes, unless the value is zero.
+
+**Input**
+- `num`: a string of decimal digits.
+- `k`: the exact number of digits to remove.
+
+**Output**
+- The smallest possible remaining number as a string.
+
+## Constraints
+- `1 <= num.length <= 10^5`
+- `0 <= k <= num.length`
+- `num` contains only digits.
+- `num` has no leading zeroes unless it is `"0"`.
 
 ## Examples
 ```text
 Input: num = "1432219", k = 3
 Output: "1219"
-Explanation: Removing 4, 3, and 2 gives the smallest possible number 1219.
+Explanation: Remove digits `4`, `3`, and one `2` to leave `1219`, the smallest possible result.
 ```
 
 ## Understanding & Intuition

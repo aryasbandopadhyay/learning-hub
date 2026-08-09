@@ -5,15 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-A knight starts at the top-left of `dungeon` and moves only right or down to the bottom-right. Each cell changes health, and health must always be at least `1`. Return the minimum initial health needed.
+A knight starts in the top-left cell of `dungeon` and must reach the bottom-right cell, moving only right or down.
 
-Constraints: `1 <= m,n <= 200`, `-1000 <= dungeon[i][j] <= 1000`.
+Each cell changes the knight's health by its value. Negative values damage him and positive values heal him. Health must always remain at least `1`. Return the minimum initial health needed to guarantee that some valid path reaches the princess.
+
+**Input**
+- `dungeon`: an `m x n` grid of health gains and losses.
+
+**Output**
+- The minimum positive initial health required.
+
+## Constraints
+- `1 <= m, n <= 200`
+- `-1000 <= dungeon[r][c] <= 1000`
 
 ## Examples
 ```text
 Input: dungeon = [[-2,-3,3],[-5,-10,1],[10,30,-5]]
 Output: 7
-Explanation: Initial health 7 is just enough on an optimal route.
+Explanation: With initial health `7`, one path keeps health positive all the way to the princess. Starting with `6` would fail on every route.
 ```
 
 ## Understanding & Intuition

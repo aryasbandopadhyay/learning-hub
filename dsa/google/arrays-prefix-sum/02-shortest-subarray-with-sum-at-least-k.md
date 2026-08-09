@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given an integer array `nums` and integer `k`, return the length of the shortest non-empty contiguous subarray whose sum is at least `k`. Return `-1` if no such subarray exists. `1 <= len(nums) <= 10^5`, `-10^5 <= nums[i] <= 10^5`, and `1 <= k <= 10^9`.
+You are given an integer array `nums`, which may contain negative numbers, and an integer `k`.
+
+Return the length of the shortest non-empty contiguous subarray whose sum is at least `k`. If no subarray reaches `k`, return `-1`.
+
+**Input**
+- `nums`: a list of integers.
+- `k`: the required minimum subarray sum.
+
+**Output**
+- The minimum valid subarray length, or `-1` if none exists.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `-10^5 <= nums[i] <= 10^5`
+- `1 <= k <= 10^9`
 
 ## Examples
 ```text
 Input: nums = [2,-1,2], k = 3
 Output: 3
-Explanation: The whole array has sum 3 and is shortest.
+Explanation: The whole array sums to `3`, so length `3` works. No shorter subarray has sum at least `3`.
 ```
 
 ## Understanding & Intuition

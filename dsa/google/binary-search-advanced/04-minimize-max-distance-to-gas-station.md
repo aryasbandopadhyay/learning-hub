@@ -5,15 +5,28 @@
 - **Asked at:** Google
 
 ## Problem
-You are given sorted station positions `stations` and an integer `k`. Add exactly `k` new stations anywhere on the number line to minimize the maximum distance between adjacent stations. Return the minimized maximum distance rounded to 6 decimal places.
+You are given sorted positions of existing gas stations on a number line and an integer `k`.
 
-Constraints: `2 <= len(stations) <= 2000`, `0 <= k <= 10^6`, `0 <= stations[i] <= 10^8`, positions are strictly increasing.
+Add exactly `k` new gas stations anywhere on the line. Return the minimum possible value of the largest distance between adjacent stations after the additions.
+
+**Input**
+- `stations`: a strictly increasing list of station positions.
+- `k`: the number of new stations to add.
+
+**Output**
+- The minimized maximum adjacent-station distance. This judge compares the numeric output for its tests exactly.
+
+## Constraints
+- `10 <= stations.length <= 2000`
+- `0 <= stations[i] <= 10^8`
+- `stations` is strictly increasing
+- `1 <= k <= 10^6`
 
 ## Examples
 ```text
 Input: stations = [1,2,3,4,5,6,7,8,9,10], k = 9
 Output: 0.5
-Explanation: Placing one station in every unit gap makes each largest adjacent distance 0.5.
+Explanation: The original gaps are all `1`. Placing one new station halfway in each of nine gaps makes the largest gap `0.5`.
 ```
 
 ## Understanding & Intuition

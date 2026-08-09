@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Bloomberg
 
 ## Problem
-Given an integer array `nums` and two integers `minK` and `maxK`, return the number of subarrays whose minimum value equals `minK` and maximum value equals `maxK`. `2 <= len(nums) <= 10^5`, `1 <= nums[i], minK, maxK <= 10^6`.
+You are given an integer array `nums` and two integers `minK` and `maxK`.
+
+A fixed-bound subarray is a non-empty contiguous subarray whose minimum value is exactly `minK` and whose maximum value is exactly `maxK`. Count all fixed-bound subarrays.
+
+**Input**
+- `nums`: a list of integers.
+- `minK`: the required minimum value.
+- `maxK`: the required maximum value.
+
+**Output**
+- The number of contiguous subarrays with minimum `minK` and maximum `maxK`.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i], minK, maxK <= 10^6`
 
 ## Examples
 ```text
 Input: nums = [1,3,5,2,7,5], minK = 1, maxK = 5
 Output: 2
-Explanation: The fixed-bound subarrays are [1,3,5] and [1,3,5,2].
+Explanation: The valid subarrays are `[1,3,5]` and `[1,3,5,2]`. Any subarray containing `7` is too large.
 ```
 
 ## Understanding & Intuition

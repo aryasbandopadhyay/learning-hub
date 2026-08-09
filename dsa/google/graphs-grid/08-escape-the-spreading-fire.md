@@ -5,13 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-Given a grid where `0` is grass, `1` is fire, and `2` is wall, you start at `(0,0)` and need to reach `(m-1,n-1)`. You may wait some minutes, then each minute move one step or stay only for the initial wait; after your move, fire spreads one step. Return the maximum initial wait, `-1` if impossible, or `1000000000` if you can wait forever. Constraints: `2 <= rows, cols <= 300`.
+You are given a grid where `0` is grass, `1` is fire, and `2` is a wall. You start at the top-left cell and need to reach the bottom-right safehouse.
+
+You may wait at the start, then each minute you move 4-directionally or stay in place while fire spreads to adjacent grass cells. Walls block both movement and fire. Return the maximum initial waiting time that still allows escape, `10^9` if waiting forever is possible, or `-1` if escape is impossible even immediately.
+
+**Input**
+- `grid`: an `m x n` matrix with values `0`, `1`, and `2`.
+
+**Output**
+- The largest safe wait time, `10^9` for unbounded waiting, or `-1` if no escape route exists.
+
+## Constraints
+- `2 <= m, n <= 300`
+- `grid[r][c]` is `0`, `1`, or `2`
+- `grid[0][0] == 0`
+- `grid[m-1][n-1] == 0`
 
 ## Examples
 ```text
 Input: grid = [[0,2,0,0,0,0,0],[0,0,0,2,2,1,0],[0,2,0,0,1,2,0],[0,0,2,2,2,0,2],[0,0,0,0,0,0,0]]
 Output: 3
-Explanation: Waiting three minutes still leaves a safe route to the safehouse.
+Explanation: Waiting `3` minutes still leaves a safe route to the bottom-right cell. Waiting longer lets the fire cut off the route.
 ```
 
 ## Understanding & Intuition

@@ -5,14 +5,25 @@
 - **Asked at:** Google, Facebook, Amazon
 
 ## Problem
-Given `envelopes` where `envelopes[i] = [width, height]`, return the maximum number of envelopes that can be nested. Envelope `a` fits in `b` only if both width and height are strictly smaller.
-Constraints: `1 <= len(envelopes) <= 10^5`, `1 <= width,height <= 10^5`.
+You are given envelopes, each represented as `[width, height]`.
+
+One envelope can be placed inside another only when both its width and height are strictly smaller. Return the maximum number of envelopes that can be nested in a chain.
+
+**Input**
+- `envelopes`: a list of `[width, height]` pairs.
+
+**Output**
+- The maximum length of a strictly nesting envelope chain.
+
+## Constraints
+- `1 <= envelopes.length <= 10^5`
+- `1 <= width, height <= 10^5`
 
 ## Examples
 ```text
 Input: envelopes = [[5,4],[6,4],[6,7],[2,3]]
 Output: 3
-Explanation: One best chain is [2,3] -> [5,4] -> [6,7].
+Explanation: A maximum chain is `[2,3] -> [5,4] -> [6,7]`, so the answer is `3`.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,28 @@
 - **Asked at:** Google, LeetCode
 
 ## Problem
-There are `n` flights labeled from `1` to `n`. Each booking is given as `[first, last, seats]`, meaning `seats` seats were booked on every flight from `first` through `last`, inclusive. Return a list `answer` of length `n` where `answer[i]` is the total seats booked on flight `i + 1`.
+There are `n` flights numbered from `1` to `n`. Each booking `[first, last, seats]` adds `seats` booked seats to every flight from `first` through `last`, inclusive.
 
-Constraints: `1 <= n <= 20000`; `1 <= len(bookings) <= 20000`; `1 <= first <= last <= n`; `1 <= seats <= 10000`.
+Return the total booked seats for every flight after all bookings are applied.
+
+**Input**
+- `bookings`: a list of `[first, last, seats]` records.
+- `n`: the number of flights.
+
+**Output**
+- A length-`n` list where index `i - 1` is the total for flight `i`. **This judge compares exactly**, so return totals in flight-number order from `1` to `n`.
+
+## Constraints
+- `1 <= n <= 2 * 10^4`
+- `1 <= bookings.length <= 2 * 10^4`
+- `1 <= first <= last <= n`
+- `1 <= seats <= 10^4`
 
 ## Examples
 ```text
 Input: bookings = [[1, 2, 10], [2, 3, 20], [2, 5, 25]], n = 5
 Output: [10, 55, 45, 25, 25]
-Explanation: Flight 1 has 10 seats, flight 2 has 10 + 20 + 25, flight 3 has 20 + 25, and flights 4-5 have 25.
+Explanation: Flight totals are `10`, `10+20+25=55`, `20+25=45`, `25`, and `25`, in order from flight `1` to flight `5`.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given two equal-length integer arrays `nums1` and `nums2`, permute `nums1` to maximize the number of indices `i` with `nums1[i] > nums2[i]`. Return the canonical maximizing permutation produced by assigning, in ascending order of `nums2`, the smallest available winning value when possible, otherwise the smallest available losing value.
+You are given two integer arrays `nums1` and `nums2` of the same length.
 
-Constraints: `1 <= len(nums1) == len(nums2) <= 10^5`, `0 <= nums1[i], nums2[i] <= 10^9`.
+Permute `nums1` to maximize the number of indices `i` where the chosen value is greater than `nums2[i]`. Return the resulting permutation aligned to `nums2` indices.
+
+**Input**
+- `nums1`: a list of integers that may be reordered.
+- `nums2`: a list of integers with the same length as `nums1`.
+
+**Output**
+- A permutation of `nums1` aligned with `nums2`. **This judge compares exactly**; use the deterministic greedy order that processes `nums2` values from smallest to largest, assigns the smallest remaining `nums1` value that beats each one, and otherwise assigns the smallest remaining value.
+
+## Constraints
+- `1 <= nums1.length == nums2.length <= 10^5`
+- `0 <= nums1[i], nums2[i] <= 10^9`
 
 ## Examples
 ```text
 Input: nums1 = [12,24,8,32], nums2 = [13,25,32,11]
 Output: [24,32,8,12]
-Explanation: The result wins at indices 0, 1, and 3, which is maximum.
+Explanation: The returned permutation beats `nums2` at indices `0`, `1`, and `3`: `24 > 13`, `32 > 25`, and `12 > 11`.
 ```
 
 ## Understanding & Intuition

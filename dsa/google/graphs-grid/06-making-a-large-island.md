@@ -5,13 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given an `n x n` binary grid, you may change at most one `0` to `1`. Return the largest 4-directional island size possible. Constraints: `1 <= n <= 500`.
+You are given an `n x n` binary grid where `1` is land and `0` is water.
+
+You may change at most one water cell into land. Return the largest possible area of a 4-directionally connected island after the change. If the grid is already all land, return its full area.
+
+**Input**
+- `grid`: an `n x n` matrix containing only `0` and `1`.
+
+**Output**
+- The maximum island area obtainable after flipping at most one `0`.
+
+## Constraints
+- `1 <= n <= 500`
+- `grid[r][c]` is `0` or `1`
 
 ## Examples
 ```text
 Input: grid = [[1,0],[0,1]]
 Output: 3
-Explanation: Flipping either zero connects two one-cell islands through the flipped cell.
+Explanation: Flipping either zero connects the two existing land cells through the flipped cell, creating an island of area `3`.
 ```
 
 ## Understanding & Intuition

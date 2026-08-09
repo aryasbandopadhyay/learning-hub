@@ -5,15 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-Given positive integers `nums` and an integer `threshold`, choose a positive integer divisor. For each number, divide by the divisor and round up, then sum the results. Return the smallest divisor whose sum is at most `threshold`.
+You are given an integer array `nums` and an integer `threshold`.
 
-Constraints: `1 <= len(nums) <= 5*10^4`, `1 <= nums[i] <= 10^6`, `len(nums) <= threshold <= 10^6`.
+Choose a positive divisor. Divide each number by it, round each quotient up to the nearest integer, and sum those rounded values. Return the smallest divisor whose sum is at most `threshold`.
+
+**Input**
+- `nums`: a list of positive integers.
+- `threshold`: the maximum allowed rounded-sum value.
+
+**Output**
+- The smallest positive divisor satisfying the threshold.
+
+## Constraints
+- `1 <= nums.length <= 5 * 10^4`
+- `1 <= nums[i] <= 10^6`
+- `nums.length <= threshold <= 10^6`
 
 ## Examples
 ```text
 Input: nums = [1,2,5,9], threshold = 6
 Output: 5
-Explanation: Divisor 5 gives ceil values [1,1,1,2] with sum 5, while divisor 4 gives sum 7.
+Explanation: With divisor `5`, the rounded quotients are `1,1,1,2`, summing to `5`, which is at most `6`; smaller divisors do not work.
 ```
 
 ## Understanding & Intuition

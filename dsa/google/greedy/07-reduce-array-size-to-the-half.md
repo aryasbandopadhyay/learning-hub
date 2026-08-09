@@ -5,15 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given an integer array `arr`, choose a set of distinct integer values and remove every occurrence of those values. Return the minimum size of such a set so that at least half of the array elements are removed.
+You are given an integer array `arr`.
 
-Constraints: `1 <= len(arr) <= 10^5`, `len(arr)` is even, `1 <= arr[i] <= 10^5`.
+Choose a set of distinct values and remove every occurrence of each chosen value from the array. Return the minimum size of such a set needed so that at least half of the array elements are removed.
+
+**Input**
+- `arr`: a list of integers.
+
+**Output**
+- The minimum number of distinct values to remove.
+
+## Constraints
+- `2 <= arr.length <= 10^5`
+- `arr.length` is even
+- `1 <= arr[i] <= 10^5`
 
 ## Examples
 ```text
 Input: arr = [3,3,3,3,5,5,5,2,2,7]
 Output: 2
-Explanation: Removing values 3 and 5 removes 7 elements, at least half of the array.
+Explanation: Removing all `3`s deletes four elements, and removing all `5`s deletes three more. Seven removals are at least half of the ten-element array.
 ```
 
 ## Understanding & Intuition

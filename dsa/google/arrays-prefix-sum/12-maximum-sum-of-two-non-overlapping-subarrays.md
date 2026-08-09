@@ -5,13 +5,29 @@
 - **Asked at:** Google, Facebook, Amazon
 
 ## Problem
-Given an integer array `nums` and two integers `firstLen` and `secondLen`, return the maximum sum of two non-overlapping subarrays with lengths `firstLen` and `secondLen`. The two subarrays may appear in either order. `1 <= firstLen, secondLen`, `firstLen + secondLen <= len(nums) <= 1000`, and `0 <= nums[i] <= 1000`.
+You are given an integer array `nums` and two lengths `firstLen` and `secondLen`.
+
+Choose two non-overlapping contiguous subarrays, one of each length. They may appear in either order. Return the largest possible combined sum.
+
+**Input**
+- `nums`: a list of integers.
+- `firstLen`: the length of one chosen subarray.
+- `secondLen`: the length of the other chosen subarray.
+
+**Output**
+- The maximum sum of two non-overlapping subarrays with the required lengths.
+
+## Constraints
+- `1 <= nums.length <= 1000`
+- `0 <= nums[i] <= 1000`
+- `1 <= firstLen, secondLen <= nums.length`
+- `firstLen + secondLen <= nums.length`
 
 ## Examples
 ```text
 Input: nums = [0,6,5,2,2,5,1,9,4], firstLen = 1, secondLen = 2
 Output: 20
-Explanation: Choose [9] and [6,5] for a total of 20.
+Explanation: Choose `[9]` as the length-1 subarray and `[6,5]` as the length-2 subarray, for total `20`.
 ```
 
 ## Understanding & Intuition

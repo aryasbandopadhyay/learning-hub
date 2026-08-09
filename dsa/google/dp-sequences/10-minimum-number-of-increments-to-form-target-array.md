@@ -5,14 +5,25 @@
 - **Asked at:** Google, Amazon, Bloomberg
 
 ## Problem
-Starting from an all-zero array of the same length as `target`, one operation increments every element in any contiguous subarray by one. Return the minimum number of operations needed to form `target`.
-Constraints: `1 <= len(target) <= 10^5`, `1 <= target[i] <= 10^5`.
+You start with an array of zeros with the same length as `target`.
+
+In one operation, choose any contiguous subarray and increase every value in it by `1`. Return the minimum number of operations needed to create `target`.
+
+**Input**
+- `target`: a list of positive integers.
+
+**Output**
+- The minimum number of range-increment operations.
+
+## Constraints
+- `1 <= target.length <= 10^5`
+- `1 <= target[i] <= 10^5`
 
 ## Examples
 ```text
 Input: target = [1,2,3,2,1]
 Output: 3
-Explanation: Increment [0..4], then [1..3], then [2..2].
+Explanation: Raise the whole array once, the middle four positions once, and the center position once, forming the target in `3` operations.
 ```
 
 ## Understanding & Intuition

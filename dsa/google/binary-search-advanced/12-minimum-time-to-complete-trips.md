@@ -5,15 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given `time`, where `time[i]` is the time one bus needs to complete one trip, and an integer `totalTrips`, return the minimum time needed for all buses together to complete at least `totalTrips` trips. Each bus can run trips back-to-back independently.
+You are given `time`, where `time[i]` is how long bus `i` needs for one trip, and an integer `totalTrips`.
 
-Constraints: `1 <= len(time) <= 10^5`, `1 <= time[i] <= 10^7`, `1 <= totalTrips <= 10^14`.
+All buses can run trips independently and repeatedly. Return the minimum time by which the buses complete at least `totalTrips` trips in total.
+
+**Input**
+- `time`: a list of positive trip durations.
+- `totalTrips`: the required number of completed trips.
+
+**Output**
+- The earliest integer time when at least `totalTrips` trips are complete.
+
+## Constraints
+- `1 <= time.length <= 10^5`
+- `1 <= time[i], totalTrips <= 10^7`
 
 ## Examples
 ```text
 Input: time = [1,2,3], totalTrips = 5
 Output: 3
-Explanation: In 3 units of time, the buses complete 3 + 1 + 1 = 5 trips.
+Explanation: At time `3`, the buses complete `3 + 1 + 1 = 5` trips. At time `2`, they complete only `4`.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-You have piles of candies `candies` and `k` children. You may split piles but cannot merge pieces. Each child must receive exactly the same positive number of candies from one pile piece. Return the maximum candies each child can get, or `0` if not possible.
+You are given piles of candies and an integer `k`.
 
-Constraints: `1 <= len(candies) <= 10^5`, `1 <= candies[i] <= 10^7`, `1 <= k <= 10^12`.
+You may split piles into smaller piles, but you cannot combine piles. Give each of `k` children one pile with the same positive number of candies. Return the largest possible number of candies per child, or `0` if none can receive a candy.
+
+**Input**
+- `candies`: a list of pile sizes.
+- `k`: the number of children.
+
+**Output**
+- The maximum equal candies per child, or `0` if no positive amount works.
+
+## Constraints
+- `1 <= candies.length <= 10^5`
+- `1 <= candies[i] <= 10^7`
+- `1 <= k <= 10^12`
 
 ## Examples
 ```text
 Input: candies = [5,8,6], k = 3
 Output: 5
-Explanation: Pieces of size 5 can serve three children: one from 5, one from 8, and one from 6.
+Explanation: A size of `5` can be given to three children. Size `6` would produce only two piles, so `5` is maximum.
 ```
 
 ## Understanding & Intuition

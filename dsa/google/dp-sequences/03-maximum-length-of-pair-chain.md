@@ -5,14 +5,25 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Given pairs `pairs` where `pairs[i] = [left, right]` and `left < right`, form the longest chain such that pair `p` can be followed by pair `q` only when `p[1] < q[0]`. Return the maximum chain length.
-Constraints: `1 <= len(pairs) <= 1000`, `-1000 <= left < right <= 1000`.
+You are given pairs `[left, right]` where `left < right`.
+
+A pair can follow another pair only if the previous right endpoint is strictly less than the next left endpoint. Return the maximum number of pairs in a valid chain.
+
+**Input**
+- `pairs`: a list of `[left, right]` integer pairs.
+
+**Output**
+- The maximum valid chain length.
+
+## Constraints
+- `1 <= pairs.length <= 1000`
+- `-1000 <= left < right <= 1000`
 
 ## Examples
 ```text
 Input: pairs = [[1,2],[2,3],[3,4]]
 Output: 2
-Explanation: [1,2] -> [3,4] is valid; [1,2] -> [2,3] is not because the inequality is strict.
+Explanation: The chain `[1,2] -> [3,4]` is valid and has length `2`; `[2,3]` cannot be placed after `[1,2]`.
 ```
 
 ## Understanding & Intuition

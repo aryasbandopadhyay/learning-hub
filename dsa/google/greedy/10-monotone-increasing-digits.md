@@ -5,15 +5,24 @@
 - **Asked at:** Google
 
 ## Problem
-Given a non-negative integer `n`, return the largest integer less than or equal to `n` whose decimal digits are monotone increasing, meaning every digit is less than or equal to the digit after it.
+You are given a non-negative integer `n`.
 
-Constraints: `0 <= n <= 10^9`.
+Return the largest integer less than or equal to `n` whose decimal digits are monotone increasing, meaning each digit is less than or equal to the digit after it.
+
+**Input**
+- `n`: a non-negative integer.
+
+**Output**
+- The largest monotone-increasing integer `<= n`.
+
+## Constraints
+- `0 <= n <= 10^9`
 
 ## Examples
 ```text
 Input: n = 332
 Output: 299
-Explanation: 299 is the largest number not exceeding 332 with nondecreasing digits.
+Explanation: `332` is not monotone because `3 > 2`. The largest valid number not exceeding it is `299`.
 ```
 
 ## Understanding & Intuition

@@ -5,14 +5,25 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Given a string `s`, return the length of its longest palindromic subsequence. A subsequence may delete characters without changing the order of the remaining characters.
-Constraints: `1 <= len(s) <= 1000`, `s` contains lowercase English letters.
+You are given a string `s`.
+
+Return the length of the longest subsequence that reads the same forward and backward. A subsequence may delete characters but must preserve the order of the remaining characters.
+
+**Input**
+- `s`: a string.
+
+**Output**
+- The length of the longest palindromic subsequence.
+
+## Constraints
+- `1 <= s.length <= 1000`
+- `s` contains only lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "bbbab"
 Output: 4
-Explanation: One longest palindromic subsequence is "bbbb".
+Explanation: One longest palindromic subsequence is `bbbb`, which has length `4`.
 ```
 
 ## Understanding & Intuition

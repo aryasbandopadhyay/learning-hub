@@ -5,13 +5,27 @@
 - **Asked at:** Google, Facebook, Amazon
 
 ## Problem
-Given an array of positive integers `nums` and an integer `k`, return the number of contiguous subarrays where the product of all elements is strictly less than `k`. `1 <= len(nums) <= 3 * 10^4`, `1 <= nums[i] <= 1000`, and `0 <= k <= 10^6`.
+You are given an array `nums` of positive integers and an integer `k`.
+
+Return the number of non-empty contiguous subarrays whose product is strictly less than `k`.
+
+**Input**
+- `nums`: a list of positive integers.
+- `k`: the strict upper bound for the product.
+
+**Output**
+- The count of contiguous subarrays with product `< k`.
+
+## Constraints
+- `1 <= nums.length <= 3 * 10^4`
+- `1 <= nums[i] <= 1000`
+- `0 <= k <= 10^6`
 
 ## Examples
 ```text
 Input: nums = [10,5,2,6], k = 100
 Output: 8
-Explanation: The valid subarrays are [10], [5], [2], [6], [10,5], [5,2], [2,6], and [5,2,6].
+Explanation: The eight valid subarrays are the four singles, `[10,5]`, `[5,2]`, `[2,6]`, and `[5,2,6]`.
 ```
 
 ## Understanding & Intuition

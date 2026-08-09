@@ -5,13 +5,28 @@
 - **Asked at:** Google
 
 ## Problem
-Given a binary grid where `1` is an obstacle and `0` is free, return the minimum obstacles to remove to travel from `(0,0)` to `(m-1,n-1)` using 4-directional moves. Constraints: total cells up to `100000`.
+You are given an `m x n` grid where `0` is empty and `1` is an obstacle.
+
+Start at the top-left cell and move 4-directionally to the bottom-right cell. You may remove obstacles on your path. Return the minimum number of obstacles that must be removed.
+
+**Input**
+- `grid`: an `m x n` matrix containing only `0` and `1`.
+
+**Output**
+- The minimum obstacle removals needed to reach the bottom-right corner.
+
+## Constraints
+- `1 <= m, n <= 10^5`
+- `2 <= m * n <= 10^5`
+- `grid[r][c]` is `0` or `1`
+- `grid[0][0] == 0`
+- `grid[m-1][n-1] == 0`
 
 ## Examples
 ```text
 Input: grid = [[0,1,1],[1,1,0],[1,1,0]]
 Output: 2
-Explanation: Removing two obstacles creates a route to the lower-right corner.
+Explanation: Any route must remove at least two obstacles, and there is a route through two obstacles to the open cells near the target.
 ```
 
 ## Understanding & Intuition

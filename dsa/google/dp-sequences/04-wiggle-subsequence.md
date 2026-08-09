@@ -5,14 +5,25 @@
 - **Asked at:** Google, Facebook, Amazon
 
 ## Problem
-A wiggle sequence has consecutive differences that strictly alternate between positive and negative. Given `nums`, return the length of the longest wiggle subsequence.
-Constraints: `1 <= len(nums) <= 1000`, `0 <= nums[i] <= 1000`.
+You are given an integer array `nums`.
+
+A wiggle subsequence has consecutive differences that strictly alternate between positive and negative. Differences of zero do not count as either sign. Return the maximum possible length of a wiggle subsequence.
+
+**Input**
+- `nums`: a list of integers.
+
+**Output**
+- The length of the longest wiggle subsequence.
+
+## Constraints
+- `1 <= nums.length <= 1000`
+- `0 <= nums[i] <= 1000`
 
 ## Examples
 ```text
 Input: nums = [1,7,4,9,2,5]
 Output: 6
-Explanation: The whole array alternates up, down, up, down, up.
+Explanation: The entire sequence has alternating difference signs `+,-,+,-,+`, so all six values can be used.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given an `n x n` binary grid, return the length of the shortest clear path from `(0,0)` to `(n-1,n-1)`. Clear cells are `0`, blocked cells are `1`, and movement is allowed in 8 directions. Return `-1` if no clear path exists. Constraints: `1 <= n <= 100`.
+You are given an `n x n` binary grid.
+
+A clear path starts at `(0,0)` and ends at `(n-1,n-1)`. You may move in any of the 8 directions, and every visited cell must contain `0`. Return the length of the shortest clear path, counted by visited cells, or `-1` if no such path exists.
+
+**Input**
+- `grid`: an `n x n` matrix containing only `0` and `1`.
+
+**Output**
+- The minimum number of cells in an 8-directional clear path, or `-1` if none exists.
+
+## Constraints
+- `1 <= n <= 100`
+- `grid[r][c]` is `0` or `1`
 
 ## Examples
 ```text
 Input: grid = [[0,1],[1,0]]
 Output: 2
-Explanation: The path uses the diagonal move from start to finish.
+Explanation: The diagonal path from `(0,0)` to `(1,1)` visits two clear cells, so its length is `2`.
 ```
 
 ## Understanding & Intuition

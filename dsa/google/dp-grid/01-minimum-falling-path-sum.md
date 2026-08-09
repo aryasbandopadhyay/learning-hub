@@ -5,15 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given an `n x n` integer matrix, choose one number from each row. From row to row, the next column may be the same, one left, or one right. Return the minimum possible falling path sum.
+You are given an `n x n` integer matrix.
 
-Constraints: `1 <= n <= 100`, `-100 <= matrix[i][j] <= 100`.
+A falling path starts at any cell in the first row. From `(r, c)`, the next step goes to row `r + 1` in column `c - 1`, `c`, or `c + 1`, if that column exists. Return the minimum sum of a falling path from the first row to the last row.
+
+**Input**
+- `matrix`: an `n x n` list of integer rows.
+
+**Output**
+- The minimum falling-path sum.
+
+## Constraints
+- `1 <= n <= 100`
+- `-100 <= matrix[r][c] <= 100`
 
 ## Examples
 ```text
 Input: matrix = [[2,1,3],[6,5,4],[7,8,9]]
 Output: 13
-Explanation: The path 1 -> 5 -> 7 has sum 13.
+Explanation: The path `1 -> 5 -> 7` has sum `13`, and every other allowed top-to-bottom path is at least as large.
 ```
 
 ## Understanding & Intuition

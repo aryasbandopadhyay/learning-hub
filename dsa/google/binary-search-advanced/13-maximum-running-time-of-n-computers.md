@@ -5,15 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given `n` computers and battery capacities `batteries`, each battery can power one computer at a time and may be swapped instantly. Return the maximum number of minutes all `n` computers can run simultaneously.
+You have `n` computers and several batteries. A battery can power one computer at a time, and batteries may be swapped between computers at integer times.
 
-Constraints: `1 <= n <= len(batteries) <= 10^5`, `1 <= batteries[i] <= 10^9`.
+Return the maximum number of minutes for which all `n` computers can run simultaneously.
+
+**Input**
+- `n`: the number of computers that must run at the same time.
+- `batteries`: a list of battery capacities in minutes.
+
+**Output**
+- The maximum whole minutes that all computers can run together.
+
+## Constraints
+- `1 <= n <= batteries.length <= 10^5`
+- `1 <= batteries[i] <= 10^9`
 
 ## Examples
 ```text
 Input: n = 2, batteries = [3,3,3]
 Output: 4
-Explanation: Total usable energy for 4 minutes is min(3,4)+min(3,4)+min(3,4)=9, enough for 8 required minutes.
+Explanation: Two computers can run for `4` minutes using `8` total charge. Running for `5` minutes would require `10` total charge, but only `9` is available.
 ```
 
 ## Understanding & Intuition

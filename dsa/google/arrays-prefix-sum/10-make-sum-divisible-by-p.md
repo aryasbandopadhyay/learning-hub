@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Given an array of positive integers `nums` and positive integer `p`, remove the shortest non-empty subarray so that the sum of the remaining elements is divisible by `p`. Return the length of the shortest subarray, or `-1` if impossible. You may not remove the whole array. `1 <= len(nums) <= 10^5`, `1 <= nums[i] <= 10^9`, and `1 <= p <= 10^9`.
+You are given an integer array `nums` and a positive integer `p`.
+
+Remove one contiguous subarray, possibly empty but not the entire array, so that the sum of the remaining elements is divisible by `p`. Return the minimum removable length, or `-1` if no valid removal exists.
+
+**Input**
+- `nums`: a list of positive integers.
+- `p`: the divisor required for the remaining sum.
+
+**Output**
+- The minimum length of a removable subarray, or `-1` if impossible.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
+- `1 <= p <= 10^9`
 
 ## Examples
 ```text
 Input: nums = [3,1,4,2], p = 6
 Output: 1
-Explanation: Removing [4] leaves sum 6, which is divisible by 6.
+Explanation: The total sum is `10`, with remainder `4` modulo `6`. Removing `[4]` leaves `6`, so length `1` is enough.
 ```
 
 ## Understanding & Intuition

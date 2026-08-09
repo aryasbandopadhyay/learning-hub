@@ -5,14 +5,28 @@
 - **Asked at:** Google, Amazon, Facebook
 
 ## Problem
-Given `startTime`, `endTime`, and `profit` for jobs, choose non-overlapping jobs for maximum total profit. A job ending at time `x` is compatible with a job starting at time `x`. Return the maximum profit.
-Constraints: `1 <= len(startTime) == len(endTime) == len(profit) <= 5 * 10^4`, `1 <= startTime[i] < endTime[i] <= 10^9`.
+You are given equal-length arrays `startTime`, `endTime`, and `profit` describing jobs.
+
+Job `i` runs from `startTime[i]` to `endTime[i]` and earns `profit[i]`. Choose non-overlapping jobs to maximize profit. A job ending at time `t` may be followed by a job starting at time `t`.
+
+**Input**
+- `startTime`: a list of job start times.
+- `endTime`: a list of job end times.
+- `profit`: a list of job profits.
+
+**Output**
+- The maximum profit from a compatible job schedule.
+
+## Constraints
+- `1 <= startTime.length == endTime.length == profit.length <= 5 * 10^4`
+- `1 <= startTime[i] < endTime[i] <= 10^9`
+- `1 <= profit[i] <= 10^4`
 
 ## Examples
 ```text
 Input: startTime = [1,2,3,3], endTime = [3,4,5,6], profit = [50,10,40,70]
 Output: 120
-Explanation: Take jobs [1,3] for 50 and [3,6] for 70.
+Explanation: Take the jobs `[1,3]` for `50` and `[3,6]` for `70`; they do not overlap and total `120`.
 ```
 
 ## Understanding & Intuition

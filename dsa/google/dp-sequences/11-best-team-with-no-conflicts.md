@@ -5,14 +5,27 @@
 - **Asked at:** Google, Amazon, Facebook
 
 ## Problem
-Given equal-length arrays `scores` and `ages`, choose a team with maximum total score. A conflict exists if a younger player has a strictly higher score than an older player. Return the best possible score.
-Constraints: `1 <= len(scores) == len(ages) <= 1000`, `1 <= scores[i], ages[i] <= 10^6`.
+You are given `scores` and `ages` for the same players.
+
+Choose a team with no conflicts. A conflict exists if a younger player has a strictly higher score than an older player. Return the maximum possible team score.
+
+**Input**
+- `scores`: a list of player scores.
+- `ages`: a list of player ages; `scores[i]` and `ages[i]` describe one player.
+
+**Output**
+- The maximum total score of a conflict-free team.
+
+## Constraints
+- `1 <= scores.length == ages.length <= 1000`
+- `1 <= scores[i] <= 10^6`
+- `1 <= ages[i] <= 1000`
 
 ## Examples
 ```text
 Input: scores = [1,3,5,10,15], ages = [1,2,3,4,5]
 Output: 34
-Explanation: Scores already increase with age, so every player can be selected.
+Explanation: Scores increase with ages, so choosing every player creates no conflict and gives total `34`.
 ```
 
 ## Understanding & Intuition

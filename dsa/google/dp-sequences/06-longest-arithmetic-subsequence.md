@@ -5,14 +5,25 @@
 - **Asked at:** Google, Facebook, Amazon
 
 ## Problem
-Given an integer array `nums`, return the length of the longest arithmetic subsequence. An arithmetic subsequence has a constant difference between adjacent chosen elements.
-Constraints: `2 <= len(nums) <= 1000`, `0 <= nums[i] <= 500`.
+You are given an integer array `nums`.
+
+An arithmetic subsequence keeps the original order and has the same difference between every pair of consecutive chosen values. Return the maximum length of such a subsequence.
+
+**Input**
+- `nums`: a list of integers.
+
+**Output**
+- The length of the longest arithmetic subsequence.
+
+## Constraints
+- `2 <= nums.length <= 1000`
+- `0 <= nums[i] <= 500`
 
 ## Examples
 ```text
 Input: nums = [3,6,9,12]
 Output: 4
-Explanation: The whole array is arithmetic with difference 3.
+Explanation: All four values form an arithmetic subsequence with common difference `3`.
 ```
 
 ## Understanding & Intuition

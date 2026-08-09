@@ -5,14 +5,25 @@
 - **Asked at:** Google, Amazon, Facebook
 
 ## Problem
-Given `nums`, choosing a value `x` earns `x` points and deletes every occurrence of `x - 1` and `x + 1`. You may choose remaining values in any order. Return the maximum points.
-Constraints: `1 <= len(nums) <= 2 * 10^4`, `1 <= nums[i] <= 10^4`.
+You are given an integer array `nums`.
+
+When you choose a value `x`, you earn `x` points for one occurrence and all occurrences of `x - 1` and `x + 1` become unavailable. You may keep choosing remaining values. Return the maximum points possible.
+
+**Input**
+- `nums`: a list of positive integers.
+
+**Output**
+- The maximum total points you can earn.
+
+## Constraints
+- `1 <= nums.length <= 2 * 10^4`
+- `1 <= nums[i] <= 10^4`
 
 ## Examples
 ```text
 Input: nums = [2,2,3,3,3,4]
 Output: 9
-Explanation: Choose all 3s for 9 points and delete values 2 and 4.
+Explanation: Choosing all three `3`s earns `9` and removes the neighboring values `2` and `4`; no other choice earns more.
 ```
 
 ## Understanding & Intuition

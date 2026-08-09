@@ -5,15 +5,28 @@
 - **Asked at:** Google
 
 ## Problem
-An `n x n` grid starts with all `1`s, then cells in `mines` become `0`. Return the order of the largest axis-aligned plus sign of `1`s. Order `k` means a center plus arms of length `k-1`.
+You are given an `n x n` grid initially filled with `1`s and a list of mined cells that are changed to `0`.
 
-Constraints: `1 <= n <= 500`, `0 <= len(mines) <= n*n`.
+A plus sign of order `x` has a center `1` cell and four arms of length `x - 1` extending up, down, left, and right through only `1` cells. Return the largest possible order; return `0` if no `1` cell exists.
+
+**Input**
+- `n`: the grid size.
+- `mines`: a list of zero-valued coordinates `[row, col]`.
+
+**Output**
+- The order of the largest all-ones plus sign.
+
+## Constraints
+- `1 <= n <= 500`
+- `0 <= mines.length <= 5000`
+- `0 <= row, col < n`
+- All mined coordinates are unique.
 
 ## Examples
 ```text
 Input: n = 5, mines = [[4,2]]
 Output: 2
-Explanation: A largest valid plus has order 2.
+Explanation: With only `[4,2]` mined, a plus sign of order `2` exists, but no center can support arms of length `2` in all directions.
 ```
 
 ## Understanding & Intuition

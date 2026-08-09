@@ -5,15 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given a triangular matrix, start at the top and move to adjacent numbers on the next row. Return the minimum path sum from top to bottom.
+You are given a triangle of numbers, where row `r` contains `r + 1` values.
 
-Constraints: `1 <= len(triangle) <= 200`, `-10^4 <= triangle[i][j] <= 10^4`.
+Start at the top. From index `c` in a row, move to index `c` or `c + 1` in the next row. Return the minimum possible sum from the top to any value in the bottom row.
+
+**Input**
+- `triangle`: a list of rows forming a numeric triangle.
+
+**Output**
+- The minimum top-to-bottom path sum.
+
+## Constraints
+- `1 <= triangle.length <= 200`
+- `triangle[r].length == r + 1`
+- `-10^4 <= triangle[r][c] <= 10^4`
 
 ## Examples
 ```text
 Input: triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]
 Output: 11
-Explanation: The path 2 -> 3 -> 5 -> 1 has sum 11.
+Explanation: The path `2 -> 3 -> 5 -> 1` sums to `11`, which is the smallest valid adjacent downward path.
 ```
 
 ## Understanding & Intuition

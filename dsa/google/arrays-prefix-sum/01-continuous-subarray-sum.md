@@ -5,13 +5,27 @@
 - **Asked at:** Google, Meta, Amazon
 
 ## Problem
-Given an integer array `nums` and an integer `k`, return `True` if there is a continuous subarray of length at least two whose sum is a multiple of `k`; otherwise return `False`. `1 <= len(nums) <= 10^5`, `0 <= nums[i] <= 10^9`, and `1 <= k <= 2^31 - 1`.
+You are given an integer array `nums` and a positive integer `k`.
+
+Return `True` if `nums` contains a contiguous subarray of length at least two whose sum is a multiple of `k`; otherwise return `False`. A multiple may be `0`, `k`, `2k`, and so on.
+
+**Input**
+- `nums`: a list of integers.
+- `k`: the divisor used to test the subarray sum.
+
+**Output**
+- `True` if such a subarray exists; otherwise `False`.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `0 <= nums[i] <= 10^9`
+- `1 <= k <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: nums = [23,2,4,6,7], k = 6
 Output: True
-Explanation: The subarray [2,4] has sum 6, a multiple of 6.
+Explanation: The subarray `[2,4]` has sum `6`, which is a multiple of `6`, and its length is at least two.
 ```
 
 ## Understanding & Intuition

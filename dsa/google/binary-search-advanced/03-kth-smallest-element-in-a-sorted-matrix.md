@@ -5,15 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-Given an `n x n` matrix where each row and each column is sorted in nondecreasing order, return the `k`th smallest element in the matrix.
+You are given an `n x n` matrix where each row and each column is sorted in non-decreasing order, plus an integer `k`.
 
-Constraints: `1 <= n <= 300`, `1 <= k <= n*n`, `-10^9 <= matrix[i][j] <= 10^9`.
+Return the `k`th smallest value among all `n * n` entries. Duplicate values are counted as separate entries.
+
+**Input**
+- `matrix`: an `n x n` integer matrix sorted by rows and columns.
+- `k`: a 1-based rank.
+
+**Output**
+- The value at rank `k` when all matrix entries are sorted.
+
+## Constraints
+- `1 <= n <= 300`
+- `-10^9 <= matrix[r][c] <= 10^9`
+- `1 <= k <= n^2`
 
 ## Examples
 ```text
 Input: matrix = [[1,5,9],[10,11,13],[12,13,15]], k = 8
 Output: 13
-Explanation: The sorted order is [1,5,9,10,11,12,13,13,15], so the 8th value is 13.
+Explanation: The sorted values are `1,5,9,10,11,12,13,13,15`; the 8th value is `13`.
 ```
 
 ## Understanding & Intuition

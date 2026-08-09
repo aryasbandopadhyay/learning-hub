@@ -5,15 +5,28 @@
 - **Asked at:** Google
 
 ## Problem
-Given integer lists `spells` and `potions` and an integer `success`, a spell and potion pair is successful if their product is at least `success`. For each spell in original order, return how many potions make a successful pair.
+You are given spell strengths `spells`, potion strengths `potions`, and an integer `success`.
 
-Constraints: `1 <= len(spells), len(potions) <= 10^5`, `1 <= spells[i], potions[i] <= 10^5`, `1 <= success <= 10^10`.
+A spell and potion form a successful pair if their product is at least `success`. For every spell, count how many potions form a successful pair with it.
+
+**Input**
+- `spells`: a list of spell strengths.
+- `potions`: a list of potion strengths.
+- `success`: the minimum required product.
+
+**Output**
+- A list of counts aligned with `spells`. **This judge compares exactly**, so `answer[i]` is the count for `spells[i]` in original order.
+
+## Constraints
+- `1 <= spells.length, potions.length <= 10^5`
+- `1 <= spells[i], potions[i] <= 10^5`
+- `1 <= success <= 10^10`
 
 ## Examples
 ```text
 Input: spells = [5,1,3], potions = [1,2,3,4,5], success = 7
 Output: [4,0,3]
-Explanation: Spell 5 works with potions 2..5, spell 1 with none, and spell 3 with potions 3..5.
+Explanation: Spell `5` succeeds with four potions, spell `1` with none, and spell `3` with three potions.
 ```
 
 ## Understanding & Intuition

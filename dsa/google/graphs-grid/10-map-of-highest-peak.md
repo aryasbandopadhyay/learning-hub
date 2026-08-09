@@ -5,13 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-Given `isWater`, where `1` is water and `0` is land, assign heights so water is `0`, all heights are nonnegative, and adjacent cells differ by at most `1`. Return the canonical assignment maximizing the highest height: each cell's distance to nearest water. Constraints: total cells up to `100000`.
+You are given an `m x n` map `isWater`, where `1` marks water and `0` marks land.
+
+Assign a non-negative height to every cell so that all water cells have height `0` and adjacent cells differ by at most `1`. Return a valid height matrix whose maximum height is as large as possible.
+
+**Input**
+- `isWater`: an `m x n` matrix containing only `0` and `1`.
+
+**Output**
+- An `m x n` height matrix in the same row and column order. **This judge compares exactly**, so return the canonical maximum-height assignment where each cell height is its 4-directional distance to the nearest water cell.
+
+## Constraints
+- `1 <= m, n <= 1000`
+- `1 <= m * n <= 10^5`
+- `isWater[r][c]` is `0` or `1`
+- There is at least one water cell.
 
 ## Examples
 ```text
 Input: isWater = [[0,1],[0,0]]
 Output: [[1,0],[2,1]]
-Explanation: Heights are shortest distances from water.
+Explanation: The water cell has height `0`; adjacent land cells get height `1`, and the farthest land cell is two steps away.
 ```
 
 ## Understanding & Intuition

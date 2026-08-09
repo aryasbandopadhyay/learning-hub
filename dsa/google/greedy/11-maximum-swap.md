@@ -5,15 +5,24 @@
 - **Asked at:** Google
 
 ## Problem
-Given a non-negative integer `num`, swap at most two digits once to get the maximum possible value. Return that maximum value.
+You are given a non-negative integer `num`.
 
-Constraints: `0 <= num <= 10^8`.
+You may swap two digits at most once. Return the maximum integer obtainable after zero or one swap.
+
+**Input**
+- `num`: a non-negative integer.
+
+**Output**
+- The largest value obtainable with at most one digit swap.
+
+## Constraints
+- `0 <= num <= 10^8`
 
 ## Examples
 ```text
 Input: num = 2736
 Output: 7236
-Explanation: Swap 2 and 7 to make the largest possible number.
+Explanation: Swapping the leading `2` with `7` produces `7236`, which is the largest possible one-swap result.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,29 @@
 - **Asked at:** Google
 
 ## Problem
-Given `bloomDay`, an integer `m`, and an integer `k`, return the minimum day needed to make `m` bouquets. Each bouquet needs `k` adjacent flowers that have bloomed by that day, and each flower can be used once. Return `-1` if impossible.
+You are given `bloomDay`, where `bloomDay[i]` is the day flower `i` blooms. You need `m` bouquets, each made from exactly `k` adjacent bloomed flowers.
 
-Constraints: `1 <= len(bloomDay) <= 10^5`, `1 <= bloomDay[i] <= 10^9`, `1 <= m, k <= 10^6`.
+Return the earliest day when the bouquets can be made. Each flower can be used at most once. If there are not enough flowers, return `-1`.
+
+**Input**
+- `bloomDay`: a list of bloom days.
+- `m`: the number of bouquets required.
+- `k`: the number of adjacent flowers per bouquet.
+
+**Output**
+- The minimum feasible day, or `-1` if the bouquets cannot be made.
+
+## Constraints
+- `1 <= bloomDay.length <= 10^5`
+- `1 <= bloomDay[i] <= 10^9`
+- `1 <= m <= 10^6`
+- `1 <= k <= bloomDay.length`
 
 ## Examples
 ```text
 Input: bloomDay = [1,10,3,10,2], m = 3, k = 1
 Output: 3
-Explanation: By day 3, flowers at days 1, 3, and 2 have bloomed, making three single-flower bouquets.
+Explanation: By day `3`, flowers at positions `0`, `2`, and `4` have bloomed. Since `k = 1`, they form three bouquets; before day `3`, only two are available.
 ```
 
 ## Understanding & Intuition

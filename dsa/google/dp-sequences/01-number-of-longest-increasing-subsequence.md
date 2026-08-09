@@ -5,14 +5,25 @@
 - **Asked at:** Google, Amazon, Facebook
 
 ## Problem
-Given an integer array `nums`, return the number of longest strictly increasing subsequences. A subsequence keeps the original order but may delete elements.
-Constraints: `1 <= len(nums) <= 2000`, `-10^6 <= nums[i] <= 10^6`.
+You are given an integer array `nums`.
+
+An increasing subsequence is made by deleting zero or more elements without changing the order of the remaining elements, and each chosen value must be strictly larger than the previous chosen value. Return how many longest increasing subsequences exist.
+
+**Input**
+- `nums`: a list of integers.
+
+**Output**
+- The number of increasing subsequences whose length is maximum.
+
+## Constraints
+- `1 <= nums.length <= 2000`
+- `-10^6 <= nums[i] <= 10^6`
 
 ## Examples
 ```text
 Input: nums = [1,3,5,4,7]
 Output: 2
-Explanation: The longest length is 4: [1,3,5,7] and [1,3,4,7].
+Explanation: The longest increasing subsequences have length `4`: `[1,3,5,7]` and `[1,3,4,7]`, so there are `2`.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given a binary grid, one day changes one land cell `1` to water `0`. Return the minimum days needed until the grid is disconnected, meaning it has zero islands or more than one 4-directional island. Constraints: `1 <= rows, cols <= 30`.
+You are given an `m x n` binary grid where `1` is land and `0` is water. An island is a 4-directionally connected group of land cells.
+
+Each day, change one land cell into water. Return the minimum days needed until the grid is disconnected, meaning it has zero islands or more than one island.
+
+**Input**
+- `grid`: an `m x n` matrix containing only `0` and `1`.
+
+**Output**
+- The minimum number of land cells to remove to disconnect the island.
+
+## Constraints
+- `1 <= m, n <= 30`
+- `grid[r][c]` is `0` or `1`
 
 ## Examples
 ```text
 Input: grid = [[1,1],[1,1]]
 Output: 2
-Explanation: Removing any one land cell leaves a connected island, but two removals can disconnect it.
+Explanation: A full `2 x 2` island remains connected after any one removal, but two removals can disconnect it, so the answer is `2`.
 ```
 
 ## Understanding & Intuition

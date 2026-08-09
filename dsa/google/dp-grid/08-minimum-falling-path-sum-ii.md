@@ -5,15 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given an `n x n` grid, choose one element from each row so that adjacent rows do not choose the same column. Return the minimum possible sum.
+You are given an `n x n` integer grid.
 
-Constraints: `1 <= n <= 200`, `-99 <= grid[i][j] <= 99`.
+A falling path chooses exactly one cell from each row. Adjacent rows may not choose the same column. Return the minimum possible sum.
+
+**Input**
+- `grid`: an `n x n` list of integer rows.
+
+**Output**
+- The minimum non-zero-shift falling-path sum.
+
+## Constraints
+- `1 <= n <= 200`
+- `-99 <= grid[r][c] <= 99`
 
 ## Examples
 ```text
 Input: grid = [[1,2,3],[4,5,6],[7,8,9]]
 Output: 13
-Explanation: Choose 1, then 5, then 7.
+Explanation: Choosing `1`, then `5`, then `7` uses different columns on consecutive rows and sums to `13`.
 ```
 
 ## Understanding & Intuition

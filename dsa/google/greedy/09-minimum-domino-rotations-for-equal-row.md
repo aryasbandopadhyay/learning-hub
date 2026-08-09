@@ -5,15 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-You are given two equal-length arrays `tops` and `bottoms` representing domino halves. In one rotation, swap `tops[i]` and `bottoms[i]`. Return the minimum rotations needed so all values in `tops` are equal or all values in `bottoms` are equal, or `-1` if impossible.
+You are given two arrays `tops` and `bottoms` representing a row of dominoes. Domino `i` has value `tops[i]` on top and `bottoms[i]` on bottom.
 
-Constraints: `2 <= len(tops) == len(bottoms) <= 2 * 10^4`, `1 <= tops[i], bottoms[i] <= 6`.
+In one rotation, swap the top and bottom values of one domino. Return the minimum rotations needed so that all top values are equal or all bottom values are equal. If impossible, return `-1`.
+
+**Input**
+- `tops`: top values of the dominoes.
+- `bottoms`: bottom values of the same dominoes.
+
+**Output**
+- The minimum rotations to make one row uniform, or `-1` if no value can fill a row.
+
+## Constraints
+- `2 <= tops.length == bottoms.length <= 2 * 10^4`
+- `1 <= tops[i], bottoms[i] <= 6`
 
 ## Examples
 ```text
 Input: tops = [2,1,2,4,2,2], bottoms = [5,2,6,2,3,2]
 Output: 2
-Explanation: Rotate dominoes 1 and 3 to make every top value equal to 2.
+Explanation: Making every top value equal to `2` takes two rotations. No solution needs fewer rotations.
 ```
 
 ## Understanding & Intuition

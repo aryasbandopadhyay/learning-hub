@@ -5,14 +5,26 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Given a list of distinct positive integers `nums`, return the largest subset such that for every pair `(a, b)` in the subset, either `a % b == 0` or `b % a == 0`. If several largest subsets exist, return the lexicographically smallest subset in increasing order.
-Constraints: `1 <= len(nums) <= 1000`, `1 <= nums[i] <= 2 * 10^9`.
+You are given a list of distinct positive integers `nums`.
+
+Find a largest subset such that for every pair of values in it, one value divides the other. Return the subset values in ascending order. If several largest subsets exist, return the lexicographically smallest ascending subset.
+
+**Input**
+- `nums`: a list of distinct positive integers.
+
+**Output**
+- A largest divisible subset in ascending order. **This judge compares exactly**, so ties must return the lexicographically smallest ascending subset.
+
+## Constraints
+- `1 <= nums.length <= 1000`
+- `1 <= nums[i] <= 2 * 10^9`
+- All values in `nums` are distinct.
 
 ## Examples
 ```text
 Input: nums = [1,2,3]
 Output: [1,2]
-Explanation: [1,2] and [1,3] are both largest; [1,2] is lexicographically smaller.
+Explanation: Both `[1,2]` and `[1,3]` have maximum length `2`; `[1,2]` is lexicographically smaller, so it is required.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-In an `n x n` grid with cherries `1`, empty cells `0`, and thorns `-1`, go from `(0,0)` to `(n-1,n-1)` moving right/down and return moving left/up. Cherries are collected once. Return the maximum cherries, or `0` if no round trip exists.
+You are given an `n x n` grid where `1` is a cherry, `0` is empty, and `-1` is a thorn that cannot be entered.
 
-Constraints: `1 <= n <= 50`, `grid[i][j] in {-1,0,1}`.
+Start at `(0,0)`, move only right or down to `(n-1,n-1)`, then return to `(0,0)` moving only left or up. Cherries are removed when collected, so a cell can contribute at most once. Return the maximum cherries collectible, or `0` if no valid round trip exists.
+
+**Input**
+- `grid`: an `n x n` matrix with values `-1`, `0`, or `1`.
+
+**Output**
+- The maximum number of cherries that can be collected.
+
+## Constraints
+- `1 <= n <= 50`
+- `grid[r][c]` is `-1`, `0`, or `1`
+- `grid[0][0] != -1`
+- `grid[n-1][n-1] != -1`
 
 ## Examples
 ```text
 Input: grid = [[0,1,-1],[1,0,-1],[1,1,1]]
 Output: 5
-Explanation: The best synchronized pair of paths collects five cherries.
+Explanation: A valid out-and-back set of paths can collect the five reachable cherries while avoiding thorns; the blocked cells prevent collecting more.
 ```
 
 ## Understanding & Intuition

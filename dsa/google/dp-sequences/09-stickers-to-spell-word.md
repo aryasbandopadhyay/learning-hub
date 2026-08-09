@@ -5,14 +5,28 @@
 - **Asked at:** Google, Facebook, Amazon
 
 ## Problem
-Given sticker strings `stickers` and a `target`, each sticker may be used unlimited times and contributes its letters once per use. Return the minimum stickers needed to form `target`, or `-1` if impossible.
-Constraints: `1 <= len(stickers) <= 50`, `1 <= len(target) <= 15`, stickers and target contain lowercase English letters.
+You are given sticker strings and a target string.
+
+You may use each sticker type any number of times. From a used sticker, each character occurrence can be cut out at most once, and unused characters may be discarded. Return the fewest stickers needed to form `target`, or `-1` if it is impossible.
+
+**Input**
+- `stickers`: a list of lowercase English strings.
+- `target`: the lowercase English word to form.
+
+**Output**
+- The minimum number of stickers required, or `-1` if the target cannot be formed.
+
+## Constraints
+- `1 <= stickers.length <= 50`
+- `1 <= stickers[i].length <= 10`
+- `1 <= target.length <= 15`
+- `stickers[i]` and `target` contain lowercase English letters.
 
 ## Examples
 ```text
 Input: stickers = ["with","example","science"], target = "thehat"
 Output: 3
-Explanation: Two "with" stickers and one "example" sticker can supply the letters.
+Explanation: At least three stickers are needed to supply all letters of `thehat`, and the given stickers can do it in three.
 ```
 
 ## Understanding & Intuition

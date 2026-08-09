@@ -5,15 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Count all strictly increasing paths in `grid`. A path may start and end anywhere and moves in four directions. Return the count modulo `1_000_000_007`.
+You are given an `m x n` integer grid.
 
-Constraints: `1 <= m*n <= 100000`, `1 <= grid[i][j] <= 100000`.
+An increasing path may start at any cell and repeatedly move to a 4-directionally adjacent cell with a strictly larger value. Count all non-empty increasing paths, including single-cell paths, modulo `10^9 + 7`.
+
+**Input**
+- `grid`: an `m x n` matrix of integers.
+
+**Output**
+- The number of strictly increasing paths modulo `10^9 + 7`.
+
+## Constraints
+- `1 <= m, n <= 1000`
+- `1 <= m * n <= 10^5`
+- `1 <= grid[r][c] <= 10^5`
 
 ## Examples
 ```text
 Input: grid = [[1,1],[3,4]]
 Output: 8
-Explanation: There are four single-cell paths and four longer increasing paths.
+Explanation: The four single cells count, and the increasing multi-cell paths add four more, for a total of `8`.
 ```
 
 ## Understanding & Intuition

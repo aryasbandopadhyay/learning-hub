@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given a 2D integer matrix `matrix` and an integer `target`, return the number of non-empty submatrices that sum to `target`. `1 <= len(matrix), len(matrix[0]) <= 100`, `-1000 <= matrix[i][j] <= 1000`, and `-10^8 <= target <= 10^8`.
+You are given an `m x n` integer matrix `matrix` and an integer `target`.
+
+Count all non-empty rectangular submatrices whose elements sum exactly to `target`. A submatrix must use contiguous rows and contiguous columns.
+
+**Input**
+- `matrix`: a 2-D list of integers with `m` rows and `n` columns.
+- `target`: the required submatrix sum.
+
+**Output**
+- The number of rectangular submatrices with sum exactly `target`.
+
+## Constraints
+- `1 <= m, n <= 100`
+- `-1000 <= matrix[r][c] <= 1000`
+- `-10^8 <= target <= 10^8`
 
 ## Examples
 ```text
 Input: matrix = [[0,1,0],[1,1,1],[0,1,0]], target = 0
 Output: 4
-Explanation: The four single-cell zero submatrices sum to target.
+Explanation: There are four single-cell submatrices containing `0`; no larger rectangle in this matrix sums to `0`.
 ```
 
 ## Understanding & Intuition

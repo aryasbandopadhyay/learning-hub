@@ -5,15 +5,28 @@
 - **Asked at:** Google
 
 ## Problem
-There are `n` workers with `quality[i]` and minimum wage expectation `wage[i]`. To hire exactly `k` workers, everyone must be paid in proportion to quality at one common rate, and each worker must receive at least their wage. Return the minimum total cost rounded to five decimal places.
+You are given worker qualities and minimum wage expectations. Worker `i` has quality `quality[i]` and must be paid at least `wage[i]`.
 
-Constraints: `1 <= k <= len(quality) <= 10^4`, `1 <= quality[i], wage[i] <= 10^4`.
+Hire exactly `k` workers. All hired workers must be paid using the same wage-to-quality ratio, so each worker's pay is proportional to quality, and every hired worker must receive at least their minimum wage. Return the minimum total cost.
+
+**Input**
+- `quality`: a list of worker quality values.
+- `wage`: a list of minimum wages, aligned with `quality`.
+- `k`: the number of workers to hire.
+
+**Output**
+- The minimum total hiring cost as a floating-point number.
+
+## Constraints
+- `1 <= k <= quality.length <= 10^4`
+- `quality.length == wage.length`
+- `1 <= quality[i], wage[i] <= 10^4`
 
 ## Examples
 ```text
 Input: quality = [10,20,5], wage = [70,50,30], k = 2
 Output: 105.0
-Explanation: Hire workers 0 and 2 at rate 7.0 for total quality 15.
+Explanation: Hiring workers with qualities `10` and `5` at ratio `7` costs `70 + 35 = 105.0`, meeting both wage requirements.
 ```
 
 ## Understanding & Intuition

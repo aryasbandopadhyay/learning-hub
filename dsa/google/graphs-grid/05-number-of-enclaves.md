@@ -5,13 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given a binary grid, return the number of land cells that cannot reach outside the grid by walking 4-directionally through land. Constraints: `1 <= rows, cols <= 500`.
+You are given an `m x n` binary grid where `1` is land and `0` is sea.
+
+From a land cell, you may move 4-directionally to adjacent land. Return the number of land cells from which it is impossible to walk off the grid boundary.
+
+**Input**
+- `grid`: an `m x n` matrix containing only `0` and `1`.
+
+**Output**
+- The number of land cells not connected to any boundary land cell.
+
+## Constraints
+- `1 <= m, n <= 500`
+- `grid[r][c]` is `0` or `1`
 
 ## Examples
 ```text
 Input: grid = [[0,0,0,0],[1,0,1,0],[0,1,1,0],[0,0,0,0]]
 Output: 3
-Explanation: The three central land cells cannot reach the boundary.
+Explanation: The three interior land cells are surrounded away from the boundary and cannot leave; the boundary land cell is not counted.
 ```
 
 ## Understanding & Intuition

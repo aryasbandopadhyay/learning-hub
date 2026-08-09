@@ -5,15 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given a sorted nondecreasing list `citations`, where `citations[i]` is the citation count of the `i`th paper, return the researcher's h-index. The h-index is the maximum `h` such that at least `h` papers have at least `h` citations each.
+You are given `citations`, sorted in non-decreasing order, where each value is one paper's citation count.
 
-Constraints: `1 <= len(citations) <= 10^5`, `0 <= citations[i] <= 10^6`.
+Return the h-index: the largest integer `h` such that at least `h` papers have at least `h` citations each.
+
+**Input**
+- `citations`: a non-decreasing list of citation counts.
+
+**Output**
+- The maximum valid h-index.
+
+## Constraints
+- `1 <= citations.length <= 10^5`
+- `0 <= citations[i] <= 1000`
+- `citations` is sorted in non-decreasing order.
 
 ## Examples
 ```text
 Input: citations = [0,1,3,5,6]
 Output: 3
-Explanation: Three papers have at least 3 citations, but only two have at least 4.
+Explanation: Three papers have at least `3` citations, but only two papers have at least `4`, so the h-index is `3`.
 ```
 
 ## Understanding & Intuition

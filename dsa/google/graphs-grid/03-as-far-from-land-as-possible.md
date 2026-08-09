@@ -5,13 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given an `n x n` grid where `1` is land and `0` is water, return the maximum distance from any water cell to its nearest land cell using 4-directional moves. Return `-1` if all cells are land or all are water. Constraints: `1 <= n <= 100`.
+You are given an `n x n` grid where `1` represents land and `0` represents water.
+
+For each water cell, find its minimum 4-directional distance to any land cell. Return the largest such distance. If the grid has no land or no water, return `-1`.
+
+**Input**
+- `grid`: an `n x n` matrix containing only `0` and `1`.
+
+**Output**
+- The maximum distance from a water cell to its nearest land cell, or `-1` if there is no valid water-land pair.
+
+## Constraints
+- `1 <= n <= 100`
+- `grid[r][c]` is `0` or `1`
 
 ## Examples
 ```text
 Input: grid = [[1,0,1],[0,0,0],[1,0,1]]
 Output: 2
-Explanation: The center water cell is distance two from the nearest land.
+Explanation: The center water cell is distance `2` from the nearest corner land cell; every other water cell is closer.
 ```
 
 ## Understanding & Intuition

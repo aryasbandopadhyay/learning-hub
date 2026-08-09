@@ -5,15 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-Given an integer list `nums` sorted in nondecreasing order and then rotated at an unknown pivot, return `True` if `target` exists in `nums`, otherwise return `False`. The array may contain duplicates, so equal boundary values can hide which half is sorted.
+You are given an integer array `nums` that was sorted in non-decreasing order and then rotated at an unknown pivot. The array may contain duplicate values.
 
-Constraints: `1 <= len(nums) <= 5000`, `-10^4 <= nums[i], target <= 10^4`.
+Return `True` if `target` appears in `nums`; otherwise return `False`.
+
+**Input**
+- `nums`: a rotated non-decreasing list of integers, possibly with duplicates.
+- `target`: the value to find.
+
+**Output**
+- `True` if `target` is present; otherwise `False`.
+
+## Constraints
+- `1 <= nums.length <= 5000`
+- `-10^4 <= nums[i] <= 10^4`
+- `-10^4 <= target <= 10^4`
 
 ## Examples
 ```text
 Input: nums = [2,5,6,0,0,1,2], target = 0
 Output: True
-Explanation: The value 0 is present after the rotation pivot.
+Explanation: The value `0` appears in the rotated array, so the result is `True`.
 ```
 
 ## Understanding & Intuition

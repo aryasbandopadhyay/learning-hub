@@ -5,15 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given a binary matrix, return the number of square submatrices containing only `1`s.
+You are given a binary matrix.
 
-Constraints: `1 <= m,n <= 300`, `matrix[i][j] in {0,1}`.
+Count every square submatrix whose cells are all `1`. Squares with different sizes or positions are counted separately.
+
+**Input**
+- `matrix`: an `m x n` matrix containing only `0` and `1`.
+
+**Output**
+- The total number of all-ones square submatrices.
+
+## Constraints
+- `1 <= m, n <= 300`
+- `matrix[r][c]` is `0` or `1`
 
 ## Examples
 ```text
 Input: matrix = [[0,1,1,1],[1,1,1,1],[0,1,1,1]]
 Output: 15
-Explanation: There are ten 1x1, four 2x2, and one 3x3 all-one squares.
+Explanation: There are ten `1x1` squares, four `2x2` squares, and one `3x3` square, for a total of `15`.
 ```
 
 ## Understanding & Intuition

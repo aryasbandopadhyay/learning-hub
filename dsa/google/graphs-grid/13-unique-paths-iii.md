@@ -5,13 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given a grid where `1` is start, `2` is end, `0` is empty, and `-1` is an obstacle, return the number of 4-directional walks from start to end that visit every non-obstacle cell exactly once. Constraints: at most 20 non-obstacle cells.
+You are given a grid with one start square (`1`), one end square (`2`), empty squares (`0`), and obstacles (`-1`).
+
+Return the number of 4-directional paths that start at `1`, end at `2`, and visit every non-obstacle square exactly once.
+
+**Input**
+- `grid`: an `m x n` matrix with values `-1`, `0`, `1`, and `2`.
+
+**Output**
+- The number of valid paths that cover every walkable square exactly once.
+
+## Constraints
+- `1 <= m, n <= 20`
+- `1 <= m * n <= 20`
+- `grid` contains exactly one `1` and exactly one `2`.
 
 ## Examples
 ```text
 Input: grid = [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]
 Output: 2
-Explanation: Exactly two valid walks visit all non-obstacle cells once.
+Explanation: There are exactly two routes from start to end that visit every empty square once and avoid the obstacle.
 ```
 
 ## Understanding & Intuition

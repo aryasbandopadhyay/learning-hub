@@ -5,13 +5,26 @@
 - **Asked at:** Google
 
 ## Problem
-Given an `n x n` binary grid containing exactly two 4-directional islands, return the minimum number of `0` cells that must be flipped to connect them. Constraints: `2 <= n <= 100`.
+You are given an `n x n` binary grid containing exactly two islands. An island is a 4-directionally connected group of `1` cells.
+
+You may change water cells (`0`) into land. Return the minimum number of water cells that must be changed to connect the two islands.
+
+**Input**
+- `grid`: an `n x n` matrix containing only `0` and `1`, with exactly two islands.
+
+**Output**
+- The minimum number of water cells to flip.
+
+## Constraints
+- `2 <= n <= 100`
+- `grid[r][c]` is `0` or `1`
+- The grid contains exactly two 4-directionally connected islands.
 
 ## Examples
 ```text
 Input: grid = [[0,1],[1,0]]
 Output: 1
-Explanation: Flipping either zero connects the two islands.
+Explanation: Flipping either water cell between the two diagonal land cells creates a 4-directional bridge, so one flip is enough.
 ```
 
 ## Understanding & Intuition

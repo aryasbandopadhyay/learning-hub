@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Given a circular integer array `nums`, return the maximum possible sum of a non-empty subarray. A circular subarray may wrap from the end to the beginning, but it cannot use any element more than once. `1 <= len(nums) <= 3 * 10^4`, `-3 * 10^4 <= nums[i] <= 3 * 10^4`.
+You are given a circular integer array `nums`, where the next element after the last index is the first index.
+
+Choose a non-empty contiguous subarray. It may wrap around the end of the array, but it cannot use any element more than once. Return the maximum possible sum.
+
+**Input**
+- `nums`: a list of integers arranged in circular order.
+
+**Output**
+- The maximum sum of a non-empty circular contiguous subarray.
+
+## Constraints
+- `1 <= nums.length <= 3 * 10^4`
+- `-3 * 10^4 <= nums[i] <= 3 * 10^4`
 
 ## Examples
 ```text
 Input: nums = [5,-3,5]
 Output: 10
-Explanation: The circular subarray [5,5] wraps around and has sum 10.
+Explanation: The best subarray wraps around, taking the last `5` and the first `5` for a total of `10`.
 ```
 
 ## Understanding & Intuition

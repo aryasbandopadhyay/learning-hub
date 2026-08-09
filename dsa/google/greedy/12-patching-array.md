@@ -5,15 +5,28 @@
 - **Asked at:** Google
 
 ## Problem
-Given a sorted positive integer array `nums` and an integer `n`, add the fewest positive integers so every number in `[1, n]` can be formed as a sum of some elements from the resulting array. Return the minimum number of added integers.
+You are given a sorted positive integer array `nums` and a target `n`.
 
-Constraints: `1 <= n <= 2^31 - 1`, `0 <= len(nums) <= 1000`, `1 <= nums[i] <= n`, and `nums` is sorted ascending.
+Add as few positive integers as possible to `nums` so that every value in the range `[1, n]` can be represented as a sum of some subset of the final array. Return the minimum number of added values.
+
+**Input**
+- `nums`: a sorted list of positive integers.
+- `n`: the inclusive upper bound that must be representable.
+
+**Output**
+- The minimum number of patches to cover every sum from `1` through `n`.
+
+## Constraints
+- `1 <= nums.length <= 1000`
+- `1 <= nums[i] <= 10^4`
+- `nums` is sorted in non-decreasing order
+- `1 <= n <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: nums = [1,5,10], n = 20
 Output: 2
-Explanation: Patching 2 and 4 lets the array form every value from 1 through 20.
+Explanation: Patching with `2` and `4` lets the array cover every sum from `1` through `20`; one patch is not enough.
 ```
 
 ## Understanding & Intuition

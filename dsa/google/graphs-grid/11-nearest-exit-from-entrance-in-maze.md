@@ -5,13 +5,29 @@
 - **Asked at:** Google
 
 ## Problem
-Given a maze of `'.'` open cells and `'+'` walls plus an entrance coordinate, return the fewest 4-directional steps to an open boundary cell that is not the entrance. Return `-1` if none is reachable. Constraints: `1 <= rows, cols <= 100`.
+You are given a maze of open cells and walls. Open cells are `'.'`, walls are `'+'`, and `entrance = [row, col]` is your starting open cell.
+
+In one step, move up, down, left, or right to another open cell. An exit is an open boundary cell other than the entrance itself. Return the fewest steps to any exit, or `-1` if none is reachable.
+
+**Input**
+- `maze`: an `m x n` grid of characters `'.'` and `'+'`.
+- `entrance`: the starting coordinate `[row, col]`.
+
+**Output**
+- The minimum number of 4-directional steps to an exit, or `-1` if no exit is reachable.
+
+## Constraints
+- `1 <= m, n <= 100`
+- `maze[r][c]` is `'.'` or `'+'`
+- `0 <= entrance[0] < m`
+- `0 <= entrance[1] < n`
+- `maze[entrance[0]][entrance[1]] == '.'`
 
 ## Examples
 ```text
 Input: maze = [['+','+','.','+'],['.','.','.','+'],['+','+','+','.']], entrance = [1,2]
 Output: 1
-Explanation: The open top boundary cell is one step away.
+Explanation: From the entrance, one move reaches an open boundary cell. The starting cell itself would not count as an exit.
 ```
 
 ## Understanding & Intuition

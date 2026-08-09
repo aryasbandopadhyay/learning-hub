@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Given an array of integers `arr`, return the sum of the minimum value of every contiguous subarray, modulo `10^9 + 7`. `1 <= len(arr) <= 3 * 10^4`, `1 <= arr[i] <= 3 * 10^4`.
+You are given an integer array `arr`.
+
+For every non-empty contiguous subarray, take the minimum element of that subarray. Return the sum of all those minimums modulo `10^9 + 7`.
+
+**Input**
+- `arr`: a list of integers.
+
+**Output**
+- The sum of all subarray minimums, modulo `10^9 + 7`.
+
+## Constraints
+- `1 <= arr.length <= 3 * 10^4`
+- `1 <= arr[i] <= 3 * 10^4`
 
 ## Examples
 ```text
 Input: arr = [3,1,2,4]
 Output: 17
-Explanation: The subarray minimums are 3, 1, 1, 1, 1, 2, 2, 4, summing to 17.
+Explanation: The subarray minimums sum to `3 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 + 4 = 17`.
 ```
 
 ## Understanding & Intuition

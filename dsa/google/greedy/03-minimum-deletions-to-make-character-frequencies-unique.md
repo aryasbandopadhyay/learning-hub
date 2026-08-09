@@ -5,15 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Given a lowercase string `s`, delete the fewest characters so that no two distinct characters have the same positive frequency. Return that minimum number of deletions.
+You are given a string `s`.
 
-Constraints: `1 <= len(s) <= 10^5`, `s` contains lowercase English letters.
+Delete as few characters as possible so that no two different letters have the same positive frequency in the remaining string. Return the minimum deletions needed.
+
+**Input**
+- `s`: a lowercase English string.
+
+**Output**
+- The minimum number of deletions needed to make all remaining positive frequencies unique.
+
+## Constraints
+- `1 <= s.length <= 10^5`
+- `s` contains only lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "aaabbbcc"
 Output: 2
-Explanation: Frequencies 3, 3, and 2 can become 3, 2, and 1 with two deletions.
+Explanation: The frequencies are `3`, `3`, and `2`. Deleting two characters from one frequency-3 letter leaves frequencies `3`, `2`, and `1`.
 ```
 
 ## Understanding & Intuition

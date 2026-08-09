@@ -5,15 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-You have a garden interval `[0, n]` and `n + 1` taps. Tap `i` waters `[i - ranges[i], i + ranges[i]]` clipped to the garden. Return the minimum taps needed to water the whole garden, or `-1` if impossible.
+A one-dimensional garden covers the interval `[0, n]`. There are `n + 1` taps; tap `i` is at position `i` and waters from `i - ranges[i]` to `i + ranges[i]`, clipped to the garden.
 
-Constraints: `1 <= n <= 10^4`, `len(ranges) == n + 1`, `0 <= ranges[i] <= 100`.
+Return the minimum number of taps that must be opened to water every point in the garden. If full coverage is impossible, return `-1`.
+
+**Input**
+- `n`: the garden length.
+- `ranges`: a list of watering radii for taps `0` through `n`.
+
+**Output**
+- The minimum taps to open, or `-1` if the whole garden cannot be covered.
+
+## Constraints
+- `1 <= n <= 10^4`
+- `ranges.length == n + 1`
+- `0 <= ranges[i] <= 100`
 
 ## Examples
 ```text
 Input: n = 5, ranges = [3,4,1,1,0,0]
 Output: 1
-Explanation: Tap 1 covers every point from 0 to 5.
+Explanation: Tap `1` waters the whole interval `[0,5]`, so one tap is enough.
 ```
 
 ## Understanding & Intuition

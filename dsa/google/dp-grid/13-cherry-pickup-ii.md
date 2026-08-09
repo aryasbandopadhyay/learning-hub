@@ -5,15 +5,25 @@
 - **Asked at:** Google
 
 ## Problem
-Two robots start at the top row, columns `0` and `n-1`. Each row, both move to the next row and shift by `-1`, `0`, or `1` columns. If both visit the same cell, count it once. Return the maximum cherries collected.
+You are given an `m x n` grid of cherries and two robots.
 
-Constraints: `2 <= m,n <= 70`, `0 <= grid[i][j] <= 100`.
+Robot 1 starts at `(0,0)` and robot 2 starts at `(0,n-1)`. On each step both move to the next row, choosing column `c - 1`, `c`, or `c + 1`. If both visit the same cell, its cherries count once. Return the maximum cherries collected by the time both reach the bottom row.
+
+**Input**
+- `grid`: an `m x n` matrix of non-negative cherry counts.
+
+**Output**
+- The maximum total cherries collectible by both robots.
+
+## Constraints
+- `2 <= m, n <= 70`
+- `0 <= grid[r][c] <= 100`
 
 ## Examples
 ```text
 Input: grid = [[3,1,1],[2,5,1],[1,5,5],[2,1,1]]
 Output: 24
-Explanation: Optimal robot routes collect 24 cherries.
+Explanation: The robots can split across high-value cells in the middle rows and avoid double-counting, achieving a total of `24`.
 ```
 
 ## Understanding & Intuition

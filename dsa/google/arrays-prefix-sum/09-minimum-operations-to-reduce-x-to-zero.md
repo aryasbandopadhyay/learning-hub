@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Bloomberg
 
 ## Problem
-Given an integer array `nums` and integer `x`, each operation removes the leftmost or rightmost element and subtracts its value from `x`. Return the minimum operations needed to reduce `x` exactly to zero, or `-1` if impossible. `1 <= len(nums) <= 10^5`, `1 <= nums[i] <= 10^4`, and `1 <= x <= 10^9`.
+You are given an integer array `nums` and an integer `x`.
+
+In one operation, remove the leftmost or rightmost element and subtract its value from `x`. Return the fewest operations needed to make `x` exactly `0`, or `-1` if impossible.
+
+**Input**
+- `nums`: a list of positive integers.
+- `x`: the target amount to remove from the ends.
+
+**Output**
+- The minimum number of end removals, or `-1` if no sequence reaches exactly zero.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^4`
+- `1 <= x <= 10^9`
 
 ## Examples
 ```text
 Input: nums = [1,1,4,2,3], x = 5
 Output: 2
-Explanation: Remove 2 and 3 from the right to reduce x to zero in two operations.
+Explanation: Remove `2` and then `3` from the right side. Their sum is `5`, so `x` becomes zero in two operations.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,28 @@
 - **Asked at:** Google
 
 ## Problem
-Given basket positions `position` and an integer `m`, place `m` balls into distinct baskets to maximize the minimum distance between any two balls. Return that largest possible minimum distance.
+You are given basket positions on a line and an integer `m`.
 
-Constraints: `2 <= len(position) <= 10^5`, `2 <= m <= len(position)`, `1 <= position[i] <= 10^9`, positions are distinct.
+Place `m` balls in distinct baskets. The force of a placement is the minimum distance between any two balls. Return the largest possible force.
+
+**Input**
+- `position`: a list of distinct basket coordinates.
+- `m`: the number of balls to place.
+
+**Output**
+- The maximum possible minimum pairwise distance.
+
+## Constraints
+- `2 <= position.length <= 10^5`
+- `1 <= position[i] <= 10^9`
+- All positions are distinct.
+- `2 <= m <= position.length`
 
 ## Examples
 ```text
 Input: position = [1,2,3,4,7], m = 3
 Output: 3
-Explanation: Placing balls at 1, 4, and 7 gives minimum distance 3.
+Explanation: Placing balls at `1`, `4`, and `7` makes the closest distance `3`, and no placement can make it `4`.
 ```
 
 ## Understanding & Intuition

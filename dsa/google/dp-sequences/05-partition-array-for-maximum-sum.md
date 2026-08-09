@@ -5,14 +5,27 @@
 - **Asked at:** Google, Amazon, Bloomberg
 
 ## Problem
-Given `arr` and an integer `k`, partition the array into contiguous subarrays of length at most `k`. After partitioning, each subarray contributes its maximum value multiplied by its length. Return the largest possible total.
-Constraints: `1 <= len(arr) <= 500`, `1 <= k <= len(arr)`, `0 <= arr[i] <= 10^9`.
+You are given an integer array `arr` and an integer `k`.
+
+Partition the array into contiguous blocks, each of length at most `k`. Replace every value in a block by that block's maximum value. Return the largest possible sum of the transformed array.
+
+**Input**
+- `arr`: a list of integers.
+- `k`: the maximum block length.
+
+**Output**
+- The maximum sum after partitioning and replacement.
+
+## Constraints
+- `1 <= arr.length <= 500`
+- `0 <= arr[i] <= 10^9`
+- `1 <= k <= arr.length`
 
 ## Examples
 ```text
 Input: arr = [1,15,7,9,2,5,10], k = 3
 Output: 84
-Explanation: Partition as [1,15,7], [9], [2,5,10] for 15*3 + 9 + 10*3.
+Explanation: One optimal partition is `[1,15,7]`, `[9]`, `[2,5,10]`, which becomes `15,15,15,9,10,10,10` and sums to `84`.
 ```
 
 ## Understanding & Intuition

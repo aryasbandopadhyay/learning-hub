@@ -5,15 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-Each person is represented by `[height, k]`, where `k` is the number of people in front of them with height greater than or equal to `height`. Reconstruct and return a queue satisfying all pairs. For deterministic grading, return the standard queue obtained by processing taller people first and inserting each person at index `k`.
+You are given people described by `[h, k]`, where `h` is height and `k` is the number of people in front of this person whose height is at least `h`.
 
-Constraints: `1 <= len(people) <= 2000`, `0 <= height <= 10^6`, `0 <= k < len(people)`, and a valid queue exists.
+Reconstruct and return a queue that satisfies every person's `[h, k]` condition.
+
+**Input**
+- `people`: a list of `[height, k]` pairs.
+
+**Output**
+- The queue as a list of `[height, k]` pairs from front to back. **This judge compares exactly**, so return the canonical reconstructed order satisfying all counts.
+
+## Constraints
+- `1 <= people.length <= 2000`
+- `0 <= height <= 10^6`
+- `0 <= k < people.length`
+- The input describes at least one valid queue.
 
 ## Examples
 ```text
 Input: people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]
 Output: [[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]
-Explanation: Every person has exactly k taller-or-equal people before them.
+Explanation: In the returned queue, each person has exactly `k` people of height at least their own before them; for example, `[5,2]` has `[5,0]` and `[7,0]` before it.
 ```
 
 ## Understanding & Intuition

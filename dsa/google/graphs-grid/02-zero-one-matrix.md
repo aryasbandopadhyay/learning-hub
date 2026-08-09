@@ -5,13 +5,27 @@
 - **Asked at:** Google
 
 ## Problem
-Given a binary matrix `mat`, return a matrix whose cells contain the distance to the nearest `0` using 4-directional moves. At least one zero exists. Constraints: `1 <= rows, cols <= 200`.
+You are given an `m x n` binary matrix `mat`.
+
+For every cell, compute its distance to the nearest cell containing `0`. Distance is measured by 4-directional moves between adjacent cells.
+
+**Input**
+- `mat`: an `m x n` matrix containing only `0` and `1`.
+
+**Output**
+- An `m x n` distance matrix in the same row and column order as `mat`. **This judge compares exactly**, so preserve the input shape and ordering.
+
+## Constraints
+- `1 <= m, n <= 10^4`
+- `1 <= m * n <= 10^4`
+- `mat[r][c]` is `0` or `1`
+- There is at least one `0` in `mat`.
 
 ## Examples
 ```text
 Input: mat = [[0,0,0],[0,1,0],[1,1,1]]
 Output: [[0,0,0],[0,1,0],[1,2,1]]
-Explanation: Distances are measured to the closest zero cell.
+Explanation: Zero cells have distance `0`. The bottom-middle cell is two steps from the nearest zero, while the other bottom ones are one step away.
 ```
 
 ## Understanding & Intuition
