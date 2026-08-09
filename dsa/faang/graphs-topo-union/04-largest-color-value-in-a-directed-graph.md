@@ -5,15 +5,25 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Given `colors`, where `colors[i]` is node `i`'s lowercase color, and directed `edges`, the color value of a path is the maximum frequency of one color on that path. Return the largest color value over all paths, or `-1` if the graph has a cycle.
+Implement `largestPathValue` for **Largest Color Value in a Directed Graph**. Given `colors`, where `colors[i]` is node `i`'s lowercase color, and directed `edges`, the color value of a path is the maximum frequency of one color on that path. Return the largest color value over all paths, or `-1` if the graph has a cycle.
 
-Constraints: `1 <= len(colors) <= 100000`, `0 <= len(edges) <= 100000`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `colors`: string; node colors.
+- `edges`: list; edge list or outgoing-edge list as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(colors) <= 100000`, `0 <= len(edges) <= 100000`
 
 ## Examples
 ```text
 Input: colors = "abaca", edges = [[0,1],[0,2],[2,3],[3,4]]
 Output: 3
-Explanation: Path 0 -> 2 -> 3 -> 4 contains three 'a' nodes.
+Explanation: Path 0 -> 2 -> 3 -> 4 contains three 'a' nodes. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

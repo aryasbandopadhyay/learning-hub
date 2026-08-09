@@ -5,13 +5,28 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given strings `str1` and `str2`, return a deterministic shortest string having both as subsequences. If optimal choices tie, prefer taking the next character from `str1`. Constraints: `0 <= len(str1), len(str2) <= 200`; lowercase English letters.
+Implement `shortestCommonSupersequence` for **Shortest Common Supersequence**. Given strings `str1` and `str2`, return a deterministic shortest string having both as subsequences. If optimal choices tie, prefer taking the next character from `str1`.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+This judge compares exactly; when shortest choices tie, use the deterministic tie rule stated in the description.
+
+**Input**
+- `str1`: string; first string.
+- `str2`: string; second string.
+
+**Output**
+- A string. This judge compares exactly; when shortest choices tie, use the deterministic tie rule stated in the description.
+
+## Constraints
+- `0 <= len(str1), len(str2) <= 200`
+- lowercase English letters
 
 ## Examples
 ```text
 Input: str1 = "abac", str2 = "cab"
 Output: "cabac"
-Explanation: It is shortest, and ties are resolved by the stated rule.
+Explanation: It is shortest, and ties are resolved by the stated rule. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

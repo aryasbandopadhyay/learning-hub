@@ -5,15 +5,25 @@
 - **Asked at:** Google, Amazon, Facebook
 
 ## Problem
-Given `nums` and `target`, return the number of index triples `(i, j, k)` with `i < j < k` and sum strictly less than `target`.
+Implement `threeSumSmaller` for **3Sum Smaller**. Given `nums` and `target`, return the number of index triples `(i, j, k)` with `i < j < k` and sum strictly less than `target`.
 
-Constraints: `0 <= len(nums) <= 1000`, `-10^5 <= nums[i], target <= 10^5`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+- `target`: integer; target value or string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `0 <= len(nums) <= 1000`, `-10^5 <= nums[i], target <= 10^5`
 
 ## Examples
 ```text
 Input: nums = [-2,0,1,3], target = 2
 Output: 2
-Explanation: [-2,0,1] and [-2,0,3] are below target.
+Explanation: [-2,0,1] and [-2,0,3] are below target. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

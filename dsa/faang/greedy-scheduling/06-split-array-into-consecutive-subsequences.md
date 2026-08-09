@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, ByteDance
 
 ## Problem
-Given sorted `nums`, return `True` if it can be split into one or more consecutive subsequences, each of length at least three.
+Implement `isPossible` for **Split Array Into Consecutive Subsequences**. Given sorted `nums`, return `True` if it can be split into one or more consecutive subsequences, each of length at least three.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+
+**Output**
+- `True` or `False`.
+
+## Constraints
+- Use the standard constraints for this problem as implied by the judge manifest and examples.
 
 ## Examples
 ```text
 Input: nums = [1,2,3,3,4,5]
 Output: True
-Explanation: Split into [1,2,3] and [3,4,5].
+Explanation: Split into [1,2,3] and [3,4,5]. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

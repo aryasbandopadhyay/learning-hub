@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Bloomberg
 
 ## Problem
-Given two strings `s` and `t`, return the number of distinct subsequences of `s` equal to `t`. A subsequence deletes zero or more characters without changing the order of the remaining characters. Constraints: `1 <= len(s), len(t) <= 1000`.
+Implement `numDistinct` for **Distinct Subsequences**. Given two strings `s` and `t`, return the number of distinct subsequences of `s` equal to `t`. A subsequence deletes zero or more characters without changing the order of the remaining characters.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `s`: string; input string.
+- `t`: string; target string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(s), len(t) <= 1000`
 
 ## Examples
 ```text
 Input: s = "rabbbit", t = "rabbit"
 Output: 3
-Explanation: There are three ways to delete one of the three 'b' characters to form "rabbit".
+Explanation: There are three ways to delete one of the three 'b' characters to form "rabbit". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

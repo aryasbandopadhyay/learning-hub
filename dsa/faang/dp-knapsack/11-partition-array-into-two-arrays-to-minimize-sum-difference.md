@@ -5,13 +5,24 @@
 - **Asked at:** Google, Meta, Amazon
 
 ## Problem
-Given `2n` integers, split them into two arrays of length `n` and return the minimum absolute difference of their sums. Constraints: `1 <= n <= 15`, values may be negative.
+Implement `minimumDifference` for **Partition Array Into Two Arrays to Minimize Sum Difference**. Given `2n` integers, split them into two arrays of length `n` and return the minimum absolute difference of their sums.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= n <= 15`, values may be negative
 
 ## Examples
 ```text
 Input: nums = [3,9,7,3]
 Output: 2
-Explanation: Split as [3,9] and [7,3], with sums 12 and 10.
+Explanation: Split as [3,9] and [7,3], with sums 12 and 10. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

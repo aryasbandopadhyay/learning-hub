@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, Bloomberg
 
 ## Problem
-Given equal-length strings `s1` and `s2`, return whether `s2` is a scramble of `s1`. A scramble recursively splits a string into two non-empty parts and may swap children at any split. Constraints: `1 <= len(s1) == len(s2) <= 30`.
+Implement `isScramble` for **Scramble String**. Given equal-length strings `s1` and `s2`, return whether `s2` is a scramble of `s1`. A scramble recursively splits a string into two non-empty parts and may swap children at any split.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `s1`: string; first string.
+- `s2`: string; second string.
+
+**Output**
+- `True` or `False`.
+
+## Constraints
+- `1 <= len(s1) == len(s2) <= 30`
 
 ## Examples
 ```text
 Input: s1 = "great", s2 = "rgeat"
 Output: True
-Explanation: Split "great" into "gr" and "eat", then swap inside "gr".
+Explanation: Split "great" into "gr" and "eat", then swap inside "gr". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

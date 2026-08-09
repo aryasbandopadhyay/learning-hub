@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-There are crimes with required members `group[i]` and profit `profit[i]`. Return the number of schemes using at most `n` members and earning at least `minProfit`, modulo `1_000_000_007`. Constraints: `1 <= len(group) <= 100`, `1 <= n <= 100`.
+Implement `profitableSchemes` for **Profitable Schemes**. There are crimes with required members `group[i]` and profit `profit[i]`. Return the number of schemes using at most `n` members and earning at least `minProfit`, modulo `1_000_000_007`.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+- `minProfit`: integer; minimum required profit.
+- `group`: list; members required by crime.
+- `profit`: list; profit by crime.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(group) <= 100`, `1 <= n <= 100`
 
 ## Examples
 ```text
 Input: n = 5, minProfit = 3, group = [2,2], profit = [2,3]
 Output: 2
-Explanation: Commit the second crime alone or commit both crimes.
+Explanation: Commit the second crime alone or commit both crimes. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

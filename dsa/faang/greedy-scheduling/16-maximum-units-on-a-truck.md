@@ -5,15 +5,25 @@
 - **Asked at:** Amazon, Bloomberg, Microsoft
 
 ## Problem
-You are given `boxTypes`, where `boxTypes[i] = [numberOfBoxes, unitsPerBox]`, and an integer `truckSize` representing the maximum number of boxes the truck can carry. Return the maximum total number of units that can be put on the truck.
+Implement `maximumUnits` for **Maximum Units on a Truck**. You are given `boxTypes`, where `boxTypes[i] = [numberOfBoxes, unitsPerBox]`, and an integer `truckSize` representing the maximum number of boxes the truck can carry. Return the maximum total number of units that can be put on the truck.
 
-Constraints: `1 <= len(boxTypes) <= 1000`, `1 <= numberOfBoxes, unitsPerBox <= 1000`, and `1 <= truckSize <= 10^6`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `boxTypes`: list; box counts and units.
+- `truckSize`: integer; box capacity of truck.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(boxTypes) <= 1000`, `1 <= numberOfBoxes, unitsPerBox <= 1000`, and `1 <= truckSize <= 10^6`
 
 ## Examples
 ```text
 Input: boxTypes = [[1,3],[2,2],[3,1]], truckSize = 4
 Output: 8
-Explanation: Take 1 box with 3 units and 2 boxes with 2 units, then 1 box with 1 unit.
+Explanation: Take 1 box with 3 units and 2 boxes with 2 units, then 1 box with 1 unit. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

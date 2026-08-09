@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, ByteDance
 
 ## Problem
-Choose exactly `k` candy prices to maximize the minimum absolute difference between any two chosen prices. Return that maximum tastiness. Constraints: `2 <= k <= len(price) <= 10^5`.
+Implement `maximumTastiness` for **Maximum Tastiness of Candy Basket**. Choose exactly `k` candy prices to maximize the minimum absolute difference between any two chosen prices. Return that maximum tastiness.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `price`: list; unit prices.
+- `k`: integer; required count, rank, or operation limit as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `2 <= k <= len(price) <= 10^5`
 
 ## Examples
 ```text
 Input: price = [13, 5, 1, 8, 21, 2], k = 3
 Output: 8
-Explanation: Choose 5, 13, and 21.
+Explanation: Choose 5, 13, and 21. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,27 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given a connected weighted undirected graph with `n` nodes and `edges`, where each edge is `[u, v, weight]`, return `[critical, pseudo]`. Critical edges appear in every minimum spanning tree; pseudo-critical edges can appear in at least one. Return indices increasingly in each list.
+Implement `findCriticalAndPseudoCriticalEdges` for **Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree**. Given a connected weighted undirected graph with `n` nodes and `edges`, where each edge is `[u, v, weight]`, return `[critical, pseudo]`. Critical edges appear in every minimum spanning tree; pseudo-critical edges can appear in at least one. Return indices increasingly in each list.
 
-Constraints: `2 <= n <= 100`, `1 <= len(edges) <= 200`, the graph is connected.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+This judge compares exactly: return `[critical, pseudoCritical]`, with edge indices ascending inside each list.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+- `edges`: list; edge list or outgoing-edge list as defined above.
+
+**Output**
+- A list. This judge compares exactly: return `[critical, pseudoCritical]`, with edge indices ascending inside each list.
+
+## Constraints
+- `2 <= n <= 100`, `1 <= len(edges) <= 200`, the graph is connected
 
 ## Examples
 ```text
 Input: n = 5, edges = [[0,1,1],[1,2,1],[2,3,2],[0,3,2],[0,4,3],[3,4,3],[1,4,6]]
 Output: [[0,1],[2,3,4,5]]
-Explanation: Edges 0 and 1 are mandatory; edges 2, 3, 4, and 5 can be in some MST.
+Explanation: Edges 0 and 1 are mandatory; edges 2, 3, 4, and 5 can be in some MST. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

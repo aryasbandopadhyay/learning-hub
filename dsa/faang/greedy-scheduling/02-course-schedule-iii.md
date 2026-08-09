@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Bloomberg
 
 ## Problem
-Given `courses[i] = [duration, lastDay]`, start on day `0` and take one course at a time. A selected course must finish on or before its deadline. Return the maximum number of courses you can take.
+Implement `scheduleCourse` for **Course Schedule III**. Given `courses[i] = [duration, lastDay]`, start on day `0` and take one course at a time. A selected course must finish on or before its deadline. Return the maximum number of courses you can take.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `courses`: list; course duration/deadline pairs.
+
+**Output**
+- A single integer.
+
+## Constraints
+- Use the standard constraints for this problem as implied by the judge manifest and examples.
 
 ## Examples
 ```text
 Input: courses = [[100,200],[200,1300],[1000,1250],[2000,3200]]
 Output: 3
-Explanation: Take durations 100, 1000, and 200.
+Explanation: Take durations 100, 1000, and 200. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

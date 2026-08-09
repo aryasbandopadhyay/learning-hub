@@ -5,15 +5,27 @@
 - **Asked at:** Google, Meta, Amazon
 
 ## Problem
-Given an undirected tree with `n` nodes labeled `0..n-1` and edge list `edges`, return all roots that produce a minimum-height tree. Return the roots sorted increasingly.
+Implement `findMinHeightTrees` for **Minimum Height Trees**. Given an undirected tree with `n` nodes labeled `0..n-1` and edge list `edges`, return all roots that produce a minimum-height tree. Return the roots sorted increasingly.
 
-Constraints: `1 <= n <= 20000`, `len(edges) = n - 1` for `n > 1`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+This judge compares exactly, so return all minimum-height root labels in ascending order.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+- `edges`: list; edge list or outgoing-edge list as defined above.
+
+**Output**
+- A list. This judge compares exactly, so return all minimum-height root labels in ascending order.
+
+## Constraints
+- `1 <= n <= 20000`, `len(edges) = n - 1` for `n > 1`
 
 ## Examples
 ```text
 Input: n = 4, edges = [[1,0],[1,2],[1,3]]
 Output: [1]
-Explanation: Rooting at 1 gives height 1.
+Explanation: Rooting at 1 gives height 1. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,25 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-There are `n` computers labeled `0..n-1` and undirected cable `connections`. You may move an extra cable to connect two components. Return the minimum operations needed to connect all computers, or `-1` if impossible.
+Implement `makeConnected` for **Number of Operations to Make Network Connected**. There are `n` computers labeled `0..n-1` and undirected cable `connections`. You may move an extra cable to connect two components. Return the minimum operations needed to connect all computers, or `-1` if impossible.
 
-Constraints: `1 <= n <= 100000`, `0 <= len(connections) <= 100000`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+- `connections`: list; network cables.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= n <= 100000`, `0 <= len(connections) <= 100000`
 
 ## Examples
 ```text
 Input: n = 4, connections = [[0,1],[0,2],[1,2]]
 Output: 1
-Explanation: The extra cable inside {0,1,2} can connect computer 3.
+Explanation: The extra cable inside {0,1,2} can connect computer 3. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

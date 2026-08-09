@@ -5,15 +5,25 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-There are monsters moving toward your city. Monster `i` starts at distance `dist[i]` and moves at speed `speed[i]`. At the start of each minute, including minute `0`, you may eliminate one monster. If any monster reaches the city before you can eliminate a monster at that minute, you lose. Return the maximum number of monsters you can eliminate.
+Implement `eliminateMaximum` for **Eliminate Maximum Number of Monsters**. There are monsters moving toward your city. Monster `i` starts at distance `dist[i]` and moves at speed `speed[i]`. At the start of each minute, including minute `0`, you may eliminate one monster. If any monster reaches the city before you can eliminate a monster at that minute, you lose. Return the maximum number of monsters you can eliminate.
 
-Constraints: `1 <= len(dist) == len(speed) <= 10^5`, `1 <= dist[i], speed[i] <= 10^5`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `dist`: list; distances in order.
+- `speed`: list; monster speeds.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(dist) == len(speed) <= 10^5`, `1 <= dist[i], speed[i] <= 10^5`
 
 ## Examples
 ```text
 Input: dist = [1,3,4], speed = [1,1,1]
 Output: 3
-Explanation: The monsters arrive at minutes 1, 3, and 4, so all can be eliminated first.
+Explanation: The monsters arrive at minutes 1, 3, and 4, so all can be eliminated first. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

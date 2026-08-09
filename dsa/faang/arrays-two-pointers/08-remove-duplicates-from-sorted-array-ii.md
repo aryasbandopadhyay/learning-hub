@@ -5,15 +5,24 @@
 - **Asked at:** Facebook, Amazon, Microsoft
 
 ## Problem
-Given sorted `nums`, remove extra duplicates so every distinct value appears at most twice. Return the valid mutated prefix as a list.
+Implement `removeDuplicates` for **Remove Duplicates from Sorted Array II**. Given sorted `nums`, remove extra duplicates so every distinct value appears at most twice. Return the valid mutated prefix as a list.
 
-Constraints: `0 <= len(nums) <= 3 * 10^4`, `-10^4 <= nums[i] <= 10^4`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+
+**Output**
+- A list. Return the compacted prefix in the same nondecreasing order as the input.
+
+## Constraints
+- `0 <= len(nums) <= 3 * 10^4`, `-10^4 <= nums[i] <= 10^4`
 
 ## Examples
 ```text
 Input: nums = [0,0,1,1,1,1,2,3,3]
 Output: [0,0,1,1,2,3,3]
-Explanation: Extra copies after the second occurrence are removed.
+Explanation: Extra copies after the second occurrence are removed. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

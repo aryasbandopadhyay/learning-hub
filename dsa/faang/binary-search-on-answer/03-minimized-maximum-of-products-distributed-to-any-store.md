@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Meta, Walmart
 
 ## Problem
-Distribute product quantities across `n` stores. Each store receives at most one product type; a type may be split. Minimize the maximum products in any store. Constraints: `1 <= len(quantities) <= n <= 10^5`.
+Implement `minimizedMaximum` for **Minimized Maximum of Products Distributed to Any Store**. Distribute product quantities across `n` stores. Each store receives at most one product type; a type may be split. Minimize the maximum products in any store.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+- `quantities`: list; product quantities by type.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(quantities) <= n <= 10^5`
 
 ## Examples
 ```text
 Input: n = 6, quantities = [11, 6]
 Output: 3
-Explanation: Split 11 into 3,3,3,2 and 6 into 3,3.
+Explanation: Split 11 into 3,3,3,2 and 6 into 3,3. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

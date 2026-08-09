@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Meta
 
 ## Problem
-Given item prices, special bundle offers, and required `needs`, return the minimum cost to satisfy exactly those needs. Each offer may be used multiple times but cannot exceed any remaining need. Constraints: `1 <= len(price) <= 6`, `0 <= needs[i] <= 10`.
+Implement `shoppingOffers` for **Shopping Offers**. Given item prices, special bundle offers, and required `needs`, return the minimum cost to satisfy exactly those needs. Each offer may be used multiple times but cannot exceed any remaining need.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `price`: list; unit prices.
+- `special`: list; bundle offers.
+- `needs`: list; required item quantities.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(price) <= 6`, `0 <= needs[i] <= 10`
 
 ## Examples
 ```text
 Input: price = [2,5], special = [[3,0,5],[1,2,10]], needs = [3,2]
 Output: 14
-Explanation: Use the first offer once and buy two units of the second item.
+Explanation: Use the first offer once and buy two units of the second item. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

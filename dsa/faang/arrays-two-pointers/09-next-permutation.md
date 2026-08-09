@@ -5,15 +5,26 @@
 - **Asked at:** Google, Facebook, Amazon
 
 ## Problem
-Given `nums`, rearrange it into the lexicographically next greater permutation; if none exists, return the smallest permutation.
+Implement `nextPermutation` for **Next Permutation**. Given `nums`, rearrange it into the lexicographically next greater permutation; if none exists, return the smallest permutation.
 
-Constraints: `1 <= len(nums) <= 100`, `-100 <= nums[i] <= 100`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+Return the exact next lexicographic permutation; if none exists, return the ascending permutation.
+
+**Input**
+- `nums`: list; input integer list.
+
+**Output**
+- A list. Return the exact next lexicographic permutation; if none exists, return the ascending permutation.
+
+## Constraints
+- `1 <= len(nums) <= 100`, `-100 <= nums[i] <= 100`
 
 ## Examples
 ```text
 Input: nums = [1,2,3]
 Output: [1,3,2]
-Explanation: [1,3,2] is the next ordering.
+Explanation: [1,3,2] is the next ordering. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

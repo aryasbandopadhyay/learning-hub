@@ -5,13 +5,26 @@
 - **Asked at:** Google, Amazon, Bloomberg
 
 ## Problem
-Given binary strings `strs` and capacities `m` zeros and `n` ones, return the largest number of strings you can choose without exceeding either capacity. Constraints: `1 <= len(strs) <= 600`, `0 <= m,n <= 100`.
+Implement `findMaxForm` for **Ones and Zeroes**. Given binary strings `strs` and capacities `m` zeros and `n` ones, return the largest number of strings you can choose without exceeding either capacity.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `strs`: list; available binary strings.
+- `m`: integer; zero budget or row count as defined above.
+- `n`: integer; problem size or count as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(strs) <= 600`, `0 <= m,n <= 100`
 
 ## Examples
 ```text
 Input: strs = ["10","0001","111001","1","0"], m = 5, n = 3
 Output: 4
-Explanation: Choose "10", "0001", "1", and "0".
+Explanation: Choose "10", "0001", "1", and "0". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

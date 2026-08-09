@@ -5,15 +5,25 @@
 - **Asked at:** Amazon, Facebook, Google
 
 ## Problem
-Given a list of CPU `tasks`, where each task is a single uppercase letter, and a nonnegative cooldown `n`, return the least number of time units needed to finish all tasks. The same task letter must be separated by at least `n` time units, while different tasks may run in consecutive units. The CPU may be idle if no valid task can be scheduled.
+Implement `leastInterval` for **Task Scheduler**. Given a list of CPU `tasks`, where each task is a single uppercase letter, and a nonnegative cooldown `n`, return the least number of time units needed to finish all tasks. The same task letter must be separated by at least `n` time units, while different tasks may run in consecutive units. The CPU may be idle if no valid task can be scheduled.
 
-Constraints: `1 <= len(tasks) <= 10^4`, `0 <= n <= 100`, and every task is an uppercase English letter.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `tasks`: list; CPU tasks.
+- `n`: integer; problem size or count as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(tasks) <= 10^4`, `0 <= n <= 100`, and every task is an uppercase English letter
 
 ## Examples
 ```text
 Input: tasks = ["A","A","A","B","B","B"], n = 2
 Output: 8
-Explanation: One optimal schedule is A, B, idle, A, B, idle, A, B.
+Explanation: One optimal schedule is A, B, idle, A, B, idle, A, B. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

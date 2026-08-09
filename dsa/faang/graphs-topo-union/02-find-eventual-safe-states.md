@@ -5,15 +5,26 @@
 - **Asked at:** Google, Amazon, Bloomberg
 
 ## Problem
-Given a directed graph as `graph`, where `graph[i]` lists outgoing neighbors of node `i`, return all eventual safe nodes in increasing order. A node is safe if every path starting from it eventually reaches a terminal node.
+Implement `eventualSafeNodes` for **Find Eventual Safe States**. Given a directed graph as `graph`, where `graph[i]` lists outgoing neighbors of node `i`, return all eventual safe nodes in increasing order. A node is safe if every path starting from it eventually reaches a terminal node.
 
-Constraints: `1 <= len(graph) <= 10000`, total edges `<= 40000`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+This judge compares exactly, so return safe node indices in ascending numeric order.
+
+**Input**
+- `graph`: list; graph representation.
+
+**Output**
+- A list. This judge compares exactly, so return safe node indices in ascending numeric order.
+
+## Constraints
+- `1 <= len(graph) <= 10000`, total edges `<= 40000`
 
 ## Examples
 ```text
 Input: graph = [[1,2],[2,3],[5],[0],[5],[],[]]
 Output: [2,4,5,6]
-Explanation: Nodes 2, 4, 5, and 6 cannot reach the cycle 0 -> 1 -> 3 -> 0.
+Explanation: Nodes 2, 4, 5, and 6 cannot reach the cycle 0 -> 1 -> 3 -> 0. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

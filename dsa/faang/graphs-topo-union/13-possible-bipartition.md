@@ -5,15 +5,25 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-There are `n` people labeled `1..n` and `dislikes`, where `[a, b]` means `a` and `b` cannot be in the same group. Return `True` if everyone can be split into two groups so every dislike pair crosses groups.
+Implement `possibleBipartition` for **Possible Bipartition**. There are `n` people labeled `1..n` and `dislikes`, where `[a, b]` means `a` and `b` cannot be in the same group. Return `True` if everyone can be split into two groups so every dislike pair crosses groups.
 
-Constraints: `1 <= n <= 2000`, `0 <= len(dislikes) <= 10000`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+- `dislikes`: list; dislike pairs.
+
+**Output**
+- `True` or `False`.
+
+## Constraints
+- `1 <= n <= 2000`, `0 <= len(dislikes) <= 10000`
 
 ## Examples
 ```text
 Input: n = 4, dislikes = [[1,2],[1,3],[2,4]]
 Output: True
-Explanation: One valid split is {1,4} and {2,3}.
+Explanation: One valid split is {1,4} and {2,3}. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

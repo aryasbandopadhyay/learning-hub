@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Apple
 
 ## Problem
-Split bags at most `maxOperations` times; each split turns one positive bag into two positive bags. Minimize the maximum balls in any bag. Constraints: `1 <= len(nums) <= 10^5`, `1 <= nums[i] <= 10^9`.
+Implement `minimumSize` for **Minimum Limit of Balls in a Bag**. Split bags at most `maxOperations` times; each split turns one positive bag into two positive bags. Minimize the maximum balls in any bag.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+- `maxOperations`: integer; maximum allowed operations.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(nums) <= 10^5`, `1 <= nums[i] <= 10^9`
 
 ## Examples
 ```text
 Input: nums = [9], maxOperations = 2
 Output: 3
-Explanation: Split 9 into 6+3, then 6 into 3+3.
+Explanation: Split 9 into 6+3, then 6 into 3+3. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Rob at least `k` non-adjacent houses from `nums`. A plan capability is the maximum robbed value. Return the minimum possible capability. Constraints: `1 <= len(nums) <= 10^5`, `1 <= k <= (len(nums)+1)//2`.
+Implement `minCapability` for **House Robber IV**. Rob at least `k` non-adjacent houses from `nums`. A plan capability is the maximum robbed value. Return the minimum possible capability.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+- `k`: integer; required count, rank, or operation limit as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(nums) <= 10^5`, `1 <= k <= (len(nums)+1)//2`
 
 ## Examples
 ```text
 Input: nums = [2, 3, 5, 9], k = 2
 Output: 5
-Explanation: Rob values 2 and 5.
+Explanation: Rob values 2 and 5. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

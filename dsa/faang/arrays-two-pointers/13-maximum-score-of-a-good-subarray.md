@@ -5,15 +5,25 @@
 - **Asked at:** Google, Amazon, Facebook
 
 ## Problem
-Given `nums` and index `k`, a good subarray contains `k` and has score `min(subarray) * length`. Return the maximum score.
+Implement `maximumScore` for **Maximum Score of a Good Subarray**. Given `nums` and index `k`, a good subarray contains `k` and has score `min(subarray) * length`. Return the maximum score.
 
-Constraints: `1 <= len(nums) <= 10^5`, `0 <= k < len(nums)`, `1 <= nums[i] <= 2 * 10^4`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+- `k`: integer; required count, rank, or operation limit as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(nums) <= 10^5`, `0 <= k < len(nums)`, `1 <= nums[i] <= 2 * 10^4`
 
 ## Examples
 ```text
 Input: nums = [1,4,3,7,4,5], k = 3
 Output: 15
-Explanation: [4,3,7,4,5] has minimum 3 and length 5.
+Explanation: [4,3,7,4,5] has minimum 3 and length 5. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

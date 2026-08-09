@@ -5,13 +5,26 @@
 - **Asked at:** Google, Meta, Amazon
 
 ## Problem
-Given a string `s` and integer `k`, return whether `s` can become a palindrome after deleting at most `k` characters. Constraints: `1 <= len(s) <= 1000`, `0 <= k <= len(s)`; lowercase English letters.
+Implement `isValidPalindrome` for **Valid Palindrome III**. Given a string `s` and integer `k`, return whether `s` can become a palindrome after deleting at most `k` characters.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `s`: string; input string.
+- `k`: integer; required count, rank, or operation limit as defined above.
+
+**Output**
+- `True` or `False`.
+
+## Constraints
+- `1 <= len(s) <= 1000`, `0 <= k <= len(s)`
+- lowercase English letters
 
 ## Examples
 ```text
 Input: s = "abcdeca", k = 2
 Output: True
-Explanation: Delete 'b' and 'e' to get "acdca".
+Explanation: Delete 'b' and 'e' to get "acdca". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

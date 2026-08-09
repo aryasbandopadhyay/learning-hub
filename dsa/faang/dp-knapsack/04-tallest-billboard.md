@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given rod lengths, weld some rods into two supports of equal height. Return the maximum possible support height. Constraints: `1 <= len(rods) <= 20`, `1 <= rods[i] <= 1000`.
+Implement `tallestBillboard` for **Tallest Billboard**. Given rod lengths, weld some rods into two supports of equal height. Return the maximum possible support height.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `rods`: list; rod lengths.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(rods) <= 20`, `1 <= rods[i] <= 1000`
 
 ## Examples
 ```text
 Input: rods = [1,2,3,6]
 Output: 6
-Explanation: Use rod 6 on one side and rods 1+2+3 on the other.
+Explanation: Use rod 6 on one side and rods 1+2+3 on the other. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

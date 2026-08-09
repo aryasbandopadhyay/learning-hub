@@ -5,13 +5,25 @@
 - **Asked at:** Google, Meta, Amazon
 
 ## Problem
-Given a string `s`, return the number of different non-empty palindromic subsequences modulo `1_000_000_007`. Constraints: `1 <= len(s) <= 1000`; `s` contains only `a`, `b`, `c`, and `d`.
+Implement `countPalindromicSubsequences` for **Count Different Palindromic Subsequences**. Given a string `s`, return the number of different non-empty palindromic subsequences modulo `1_000_000_007`.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `s`: string; input string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(s) <= 1000`
+- `s` contains only `a`, `b`, `c`, and `d`
 
 ## Examples
 ```text
 Input: s = "bccb"
 Output: 6
-Explanation: The palindromes are "b", "c", "bb", "cc", "bcb", and "bccb".
+Explanation: The palindromes are "b", "c", "bb", "cc", "bcb", and "bccb". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

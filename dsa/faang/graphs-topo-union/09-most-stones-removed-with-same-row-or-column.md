@@ -5,15 +5,24 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given stone coordinates `stones`, you may remove a stone if another remaining stone shares its row or column. Return the maximum number of stones that can be removed.
+Implement `removeStones` for **Most Stones Removed with Same Row or Column**. Given stone coordinates `stones`, you may remove a stone if another remaining stone shares its row or column. Return the maximum number of stones that can be removed.
 
-Constraints: `1 <= len(stones) <= 1000`, coordinates are non-negative integers.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `stones`: list; stone weights or coordinates as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(stones) <= 1000`, coordinates are non-negative integers
 
 ## Examples
 ```text
 Input: stones = [[0,0],[0,1],[1,0],[1,2],[2,1],[2,2]]
 Output: 5
-Explanation: All stones are connected by shared rows or columns, so only one must remain.
+Explanation: All stones are connected by shared rows or columns, so only one must remain. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

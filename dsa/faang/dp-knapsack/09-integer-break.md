@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-Given integer `n`, split it into at least two positive integers and return the maximum possible product. Constraints: `2 <= n <= 58`.
+Implement `integerBreak` for **Integer Break**. Given integer `n`, split it into at least two positive integers and return the maximum possible product.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `2 <= n <= 58`
 
 ## Examples
 ```text
 Input: n = 10
 Output: 36
-Explanation: Split 10 as 3 + 3 + 4, giving product 36.
+Explanation: Split 10 as 3 + 3 + 4, giving product 36. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

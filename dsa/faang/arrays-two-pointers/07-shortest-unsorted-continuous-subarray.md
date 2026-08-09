@@ -5,15 +5,24 @@
 - **Asked at:** Amazon, Google, Facebook
 
 ## Problem
-Given `nums`, return the length of the shortest continuous subarray that can be sorted so the whole list becomes sorted. Return `0` if already sorted.
+Implement `findUnsortedSubarray` for **Shortest Unsorted Continuous Subarray**. Given `nums`, return the length of the shortest continuous subarray that can be sorted so the whole list becomes sorted. Return `0` if already sorted.
 
-Constraints: `0 <= len(nums) <= 10^4`, `-10^5 <= nums[i] <= 10^5`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `0 <= len(nums) <= 10^4`, `-10^5 <= nums[i] <= 10^5`
 
 ## Examples
 ```text
 Input: nums = [2,6,4,8,10,9,15]
 Output: 5
-Explanation: Sorting [6,4,8,10,9] fixes the array.
+Explanation: Sorting [6,4,8,10,9] fixes the array. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

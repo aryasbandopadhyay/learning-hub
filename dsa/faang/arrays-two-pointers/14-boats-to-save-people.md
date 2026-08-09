@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Facebook, Google
 
 ## Problem
-You are given an array `people` where `people[i]` is a person's weight and an integer `limit`, the maximum weight a boat can carry. Each boat carries at most two people. Return the minimum number of boats needed to carry everyone. Constraints: `1 <= len(people) <= 5 * 10^4`, `1 <= people[i] <= limit <= 3 * 10^4`.
+Implement `numRescueBoats` for **Boats To Save People**. You are given an array `people` where `people[i]` is a person's weight and an integer `limit`, the maximum weight a boat can carry. Each boat carries at most two people. Return the minimum number of boats needed to carry everyone.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `people`: list; people weights.
+- `limit`: integer; boat weight limit.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(people) <= 5 * 10^4`, `1 <= people[i] <= limit <= 3 * 10^4`
 
 ## Examples
 ```text
 Input: people = [3,2,2,1], limit = 3
 Output: 3
-Explanation: Use boats for (1,2), (2), and (3).
+Explanation: Use boats for (1,2), (2), and (3). This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

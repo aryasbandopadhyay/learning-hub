@@ -5,13 +5,26 @@
 - **Asked at:** Meta, Amazon, Google
 
 ## Problem
-Given `n` dice, each with faces `1..k`, return how many ways produce exactly `target`, modulo `1_000_000_007`. Constraints: `1 <= n,k <= 30`, `1 <= target <= 1000`.
+Implement `numRollsToTarget` for **Number of Dice Rolls With Target Sum**. Given `n` dice, each with faces `1..k`, return how many ways produce exactly `target`, modulo `1_000_000_007`.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+- `k`: integer; required count, rank, or operation limit as defined above.
+- `target`: integer; target value or string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= n,k <= 30`, `1 <= target <= 1000`
 
 ## Examples
 ```text
 Input: n = 2, k = 6, target = 7
 Output: 6
-Explanation: The pairs are (1,6), (2,5), (3,4), (4,3), (5,2), and (6,1).
+Explanation: The pairs are (1,6), (2,5), (3,4), (4,3), (5,2), and (6,1). This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

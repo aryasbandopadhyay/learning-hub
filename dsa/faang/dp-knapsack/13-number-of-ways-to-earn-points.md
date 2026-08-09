@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given exam question types `types`, where `types[i] = [count, marks]`, return the number of ways to earn exactly `target` points modulo `1_000_000_007`. You may solve at most `count` questions of each type. Constraints: `1 <= target <= 1000`, `1 <= len(types) <= 50`.
+Implement `waysToReachTarget` for **Number of Ways to Earn Points**. Given exam question types `types`, where `types[i] = [count, marks]`, return the number of ways to earn exactly `target` points modulo `1_000_000_007`. You may solve at most `count` questions of each type.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `target`: integer; target value or string.
+- `types`: list; question type data.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= target <= 1000`, `1 <= len(types) <= 50`
 
 ## Examples
 ```text
 Input: target = 6, types = [[6,1],[3,2],[2,3]]
 Output: 7
-Explanation: There are seven bounded combinations of question counts totaling 6 marks.
+Explanation: There are seven bounded combinations of question counts totaling 6 marks. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

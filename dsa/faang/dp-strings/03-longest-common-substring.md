@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Bloomberg, Microsoft
 
 ## Problem
-Given strings `text1` and `text2`, return the length of their longest common substring. A substring is contiguous in both strings. Constraints: `0 <= len(text1), len(text2) <= 1000`; lowercase English letters.
+Implement `longestCommonSubstring` for **Longest Common Substring**. Given strings `text1` and `text2`, return the length of their longest common substring. A substring is contiguous in both strings.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `text1`: string; first string.
+- `text2`: string; second string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `0 <= len(text1), len(text2) <= 1000`
+- lowercase English letters
 
 ## Examples
 ```text
 Input: text1 = "abcdxyz", text2 = "xyzabcd"
 Output: 4
-Explanation: The longest common substring is "abcd".
+Explanation: The longest common substring is "abcd". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

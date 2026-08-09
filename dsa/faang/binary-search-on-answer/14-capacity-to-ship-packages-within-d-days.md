@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-You are given package weights in order and an integer `days`. Each day, a ship loads a contiguous sequence of packages without exceeding its capacity, and packages must be shipped in the given order. Return the least ship capacity needed to ship every package within `days` days. Constraints: `1 <= days <= len(weights) <= 5 * 10^4`, `1 <= weights[i] <= 500`.
+Implement `shipWithinDays` for **Capacity To Ship Packages Within D Days**. You are given package weights in order and an integer `days`. Each day, a ship loads a contiguous sequence of packages without exceeding its capacity, and packages must be shipped in the given order. Return the least ship capacity needed to ship every package within `days` days.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `weights`: list; package weights in order.
+- `days`: integer; days value or travel days list.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= days <= len(weights) <= 5 * 10^4`, `1 <= weights[i] <= 500`
 
 ## Examples
 ```text
 Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5
 Output: 15
-Explanation: Capacity 15 can ship the packages as [1,2,3,4,5], [6,7], [8], [9], and [10].
+Explanation: Capacity 15 can ship the packages as [1,2,3,4,5], [6,7], [8], [9], and [10]. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta
 
 ## Problem
-Given a string `s`, return the minimum number of cuts needed to partition it so every substring is a palindrome. Constraints: `1 <= len(s) <= 2000`; lowercase English letters.
+Implement `minCut` for **Palindrome Partitioning II**. Given a string `s`, return the minimum number of cuts needed to partition it so every substring is a palindrome.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `s`: string; input string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(s) <= 2000`
+- lowercase English letters
 
 ## Examples
 ```text
 Input: s = "aab"
 Output: 1
-Explanation: The partition "aa" | "b" needs one cut.
+Explanation: The partition "aa" | "b" needs one cut. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

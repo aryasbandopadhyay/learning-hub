@@ -5,15 +5,25 @@
 - **Asked at:** Facebook, Amazon, Google
 
 ## Problem
-Given `arr` and `target`, return the number of index triples whose values sum to `target`, modulo `1_000_000_007`.
+Implement `threeSumMulti` for **3Sum With Multiplicity**. Given `arr` and `target`, return the number of index triples whose values sum to `target`, modulo `1_000_000_007`.
 
-Constraints: `0 <= len(arr) <= 3000`, `0 <= arr[i] <= 100`, `0 <= target <= 300`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `arr`: list; input integer list.
+- `target`: integer; target value or string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `0 <= len(arr) <= 3000`, `0 <= arr[i] <= 100`, `0 <= target <= 300`
 
 ## Examples
 ```text
 Input: arr = [1,1,2,2,3,3,4,4,5,5], target = 8
 Output: 20
-Explanation: There are 20 index triples with values summing to 8.
+Explanation: There are 20 index triples with values summing to 8. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

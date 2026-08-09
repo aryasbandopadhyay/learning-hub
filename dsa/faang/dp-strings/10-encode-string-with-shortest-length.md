@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given a non-empty string `s`, return its shortest encoding using `k[encoded_string]` for repeated substrings. If lengths tie, choose candidates in this order: original substring, repeated form, then left-to-right splits. Constraints: `1 <= len(s) <= 160`; lowercase English letters.
+Implement `encode` for **Encode String with Shortest Length**. Given a non-empty string `s`, return its shortest encoding using `k[encoded_string]` for repeated substrings. If lengths tie, choose candidates in this order: original substring, repeated form, then left-to-right splits.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+This judge compares exactly; when encodings tie in length, use the deterministic tie rule stated in the description.
+
+**Input**
+- `s`: string; input string.
+
+**Output**
+- A string. This judge compares exactly; when encodings tie in length, use the deterministic tie rule stated in the description.
+
+## Constraints
+- `1 <= len(s) <= 160`
+- lowercase English letters
 
 ## Examples
 ```text
 Input: s = "aaaabaaaab"
 Output: "2[aaaab]"
-Explanation: The string is two repetitions of "aaaab".
+Explanation: The string is two repetitions of "aaaab". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

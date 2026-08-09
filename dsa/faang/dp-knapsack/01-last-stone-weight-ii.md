@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta
 
 ## Problem
-Given stone weights, repeatedly smashing two stones is equivalent to assigning every stone to one of two piles. Return the smallest possible remaining weight. Constraints: `1 <= len(stones) <= 30`, `1 <= stones[i] <= 100`.
+Implement `lastStoneWeightII` for **Last Stone Weight II**. Given stone weights, repeatedly smashing two stones is equivalent to assigning every stone to one of two piles. Return the smallest possible remaining weight.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `stones`: list; stone weights or coordinates as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(stones) <= 30`, `1 <= stones[i] <= 100`
 
 ## Examples
 ```text
 Input: stones = [2,7,4,1,8,1]
 Output: 1
-Explanation: Split as 11 and 12, leaving difference 1.
+Explanation: Split as 11 and 12, leaving difference 1. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

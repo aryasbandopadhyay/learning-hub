@@ -5,15 +5,24 @@
 - **Asked at:** Facebook, Amazon, Google
 
 ## Problem
-Given `s`, repeatedly delete a non-empty prefix and suffix made of the same character without overlap. Return the minimum remaining length.
+Implement `minimumLength` for **Minimum Length After Deleting Similar Ends**. Given `s`, repeatedly delete a non-empty prefix and suffix made of the same character without overlap. Return the minimum remaining length.
 
-Constraints: `0 <= len(s) <= 10^5`, `s` contains lowercase English letters.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `s`: string; input string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `0 <= len(s) <= 10^5`, `s` contains lowercase English letters
 
 ## Examples
 ```text
 Input: s = "cabaabac"
 Output: 0
-Explanation: Delete c/c, then a/a, then b/b.
+Explanation: Delete c/c, then a/a, then b/b. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

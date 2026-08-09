@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Bloomberg
 
 ## Problem
-Choose a positive divisor so the sum of rounded-up divisions over `nums` is at most `threshold`. Return the smallest such divisor. Constraints: `1 <= len(nums) <= 5 * 10^4`, `len(nums) <= threshold`.
+Implement `smallestDivisor` for **Find the Smallest Divisor Given a Threshold**. Choose a positive divisor so the sum of rounded-up divisions over `nums` is at most `threshold`. Return the smallest such divisor.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+- `threshold`: integer; maximum allowed rounded sum.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(nums) <= 5 * 10^4`, `len(nums) <= threshold`
 
 ## Examples
 ```text
 Input: nums = [1, 2, 5, 9], threshold = 6
 Output: 5
-Explanation: Divisor 5 gives score 5, while divisor 4 gives score 7.
+Explanation: Divisor 5 gives score 5, while divisor 4 gives score 7. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

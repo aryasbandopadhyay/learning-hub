@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Uber
 
 ## Problem
-Given sorted travel `days` and ticket `costs` for 1-day, 7-day, and 30-day passes, return the minimum cost to cover all travel days. Constraints: `1 <= len(days) <= 365`, `1 <= days[i] <= 365`.
+Implement `mincostTickets` for **Minimum Cost For Tickets**. Given sorted travel `days` and ticket `costs` for 1-day, 7-day, and 30-day passes, return the minimum cost to cover all travel days.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `days`: list; days value or travel days list.
+- `costs`: list; cost list.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(days) <= 365`, `1 <= days[i] <= 365`
 
 ## Examples
 ```text
 Input: days = [1,4,6,7,8,20], costs = [2,7,15]
 Output: 11
-Explanation: Buy 1-day passes for days 1 and 4, a 7-day pass for 6 through 12, and a 1-day pass for 20.
+Explanation: Buy 1-day passes for days 1 and 4, a 7-day pass for 6 through 12, and a 1-day pass for 20. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

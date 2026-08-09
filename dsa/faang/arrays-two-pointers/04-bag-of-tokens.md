@@ -5,15 +5,25 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given token powers and initial `power`, play tokens face up to spend power and gain score, or face down to spend score and gain power. Return the maximum score.
+Implement `bagOfTokensScore` for **Bag of Tokens**. Given token powers and initial `power`, play tokens face up to spend power and gain score, or face down to spend score and gain power. Return the maximum score.
 
-Constraints: `0 <= len(tokens) <= 1000`, `0 <= tokens[i], power <= 10^4`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `tokens`: list; token values.
+- `power`: integer; initial power.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `0 <= len(tokens) <= 1000`, `0 <= tokens[i], power <= 10^4`
 
 ## Examples
 ```text
 Input: tokens = [100,200,300,400], power = 200
 Output: 2
-Explanation: Buy 100 and 200, sell 400, then buy 300.
+Explanation: Buy 100 and 200, sell 400, then buy 300. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

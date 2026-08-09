@@ -5,15 +5,24 @@
 - **Asked at:** Google, Facebook, Amazon
 
 ## Problem
-Given a string `dominoes` of `L`, `R`, and `.`, return the final state after falling domino forces finish propagating.
+Implement `pushDominoes` for **Push Dominoes**. Given a string `dominoes` of `L`, `R`, and `.`, return the final state after falling domino forces finish propagating.
 
-Constraints: `0 <= len(dominoes) <= 10^5`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `dominoes`: string; initial domino row.
+
+**Output**
+- A string.
+
+## Constraints
+- `0 <= len(dominoes) <= 10^5`
 
 ## Examples
 ```text
 Input: dominoes = ".L.R...LR..L.."
 Output: "LL.RR.LLRRLL.."
-Explanation: Each dot run is determined by its nearest non-dot endpoints.
+Explanation: Each dot run is determined by its nearest non-dot endpoints. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

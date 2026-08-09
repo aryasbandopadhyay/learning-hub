@@ -5,15 +5,25 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-You are given piles of stones in `piles`. In one operation, choose any pile and remove `floor(pile / 2)` stones from it, leaving `ceil(pile / 2)` stones. Perform exactly `k` operations and return the minimum possible total number of stones remaining.
+Implement `minStoneSum` for **Remove Stones to Minimize the Total**. You are given piles of stones in `piles`. In one operation, choose any pile and remove `floor(pile / 2)` stones from it, leaving `ceil(pile / 2)` stones. Perform exactly `k` operations and return the minimum possible total number of stones remaining.
 
-Constraints: `1 <= len(piles) <= 10^5`, `1 <= piles[i] <= 10^4`, and `1 <= k <= 10^5`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `piles`: list; stone piles.
+- `k`: integer; required count, rank, or operation limit as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(piles) <= 10^5`, `1 <= piles[i] <= 10^4`, and `1 <= k <= 10^5`
 
 ## Examples
 ```text
 Input: piles = [5,4,9], k = 2
 Output: 12
-Explanation: Reduce 9 to 5, then reduce 5 to 3, for a total of 3 + 4 + 5 = 12.
+Explanation: Reduce 9 to 5, then reduce 5 to 3, for a total of 3 + 4 + 5 = 12. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

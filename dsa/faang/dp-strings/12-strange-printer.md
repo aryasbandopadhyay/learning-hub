@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-A printer can print a run of one repeated character over any contiguous interval in one turn, overwriting existing characters. Given `s`, return the fewest turns to print it. Constraints: `1 <= len(s) <= 100`; lowercase English letters.
+Implement `strangePrinter` for **Strange Printer**. A printer can print a run of one repeated character over any contiguous interval in one turn, overwriting existing characters. Given `s`, return the fewest turns to print it.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `s`: string; input string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(s) <= 100`
+- lowercase English letters
 
 ## Examples
 ```text
 Input: s = "aba"
 Output: 2
-Explanation: Print "aaa", then overwrite the middle with "b".
+Explanation: Print "aaa", then overwrite the middle with "b". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

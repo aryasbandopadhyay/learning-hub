@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Goldman Sachs
 
 ## Problem
-Given `k`, initial capital `w`, and arrays `profits` and `capital`, project `i` can be done only if `w >= capital[i]`, then it adds `profits[i]` to `w`. Complete at most `k` projects and return maximum final capital.
+Implement `findMaximizedCapital` for **IPO**. Given `k`, initial capital `w`, and arrays `profits` and `capital`, project `i` can be done only if `w >= capital[i]`, then it adds `profits[i]` to `w`. Complete at most `k` projects and return maximum final capital.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `k`: integer; required count, rank, or operation limit as defined above.
+- `w`: integer; initial capital.
+- `profits`: list; project profits.
+- `capital`: list; project capital requirements.
+
+**Output**
+- A single integer.
+
+## Constraints
+- Use the standard constraints for this problem as implied by the judge manifest and examples.
 
 ## Examples
 ```text
 Input: k = 2, w = 0, profits = [1,2,3], capital = [0,1,1]
 Output: 4
-Explanation: Do project 0, then project 2.
+Explanation: Do project 0, then project 2. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

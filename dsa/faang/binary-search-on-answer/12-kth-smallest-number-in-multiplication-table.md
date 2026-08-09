@@ -5,13 +5,26 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-In an `m x n` multiplication table, return the `k`-th smallest value counting duplicates. Constraints: `1 <= m,n <= 3 * 10^4`, `1 <= k <= m*n`.
+Implement `findKthNumber` for **Kth Smallest Number in Multiplication Table**. In an `m x n` multiplication table, return the `k`-th smallest value counting duplicates.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `m`: integer; zero budget or row count as defined above.
+- `n`: integer; problem size or count as defined above.
+- `k`: integer; required count, rank, or operation limit as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= m,n <= 3 * 10^4`, `1 <= k <= m*n`
 
 ## Examples
 ```text
 Input: m = 3, n = 3, k = 5
 Output: 3
-Explanation: Sorted values are 1, 2, 2, 3, 3, 4, 6, 6, 9.
+Explanation: Sorted values are 1, 2, 2, 3, 3, 4, 6, 6, 9. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

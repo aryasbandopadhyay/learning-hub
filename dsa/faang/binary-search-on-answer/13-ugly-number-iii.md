@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-A positive integer is ugly if divisible by at least one of `a`, `b`, or `c`. Return the `n`-th ugly number. Constraints: `1 <= n,a,b,c <= 10^9`, answer `<= 2 * 10^9`.
+Implement `nthUglyNumber` for **Ugly Number III**. A positive integer is ugly if divisible by at least one of `a`, `b`, or `c`. Return the `n`-th ugly number.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+- `a`: integer; parameter defined by the problem.
+- `b`: integer; parameter defined by the problem.
+- `c`: integer; parameter defined by the problem.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= n,a,b,c <= 10^9`, answer `<= 2 * 10^9`
 
 ## Examples
 ```text
 Input: n = 5, a = 2, b = 11, c = 13
 Output: 10
-Explanation: The ugly numbers are 2, 4, 6, 8, and 10.
+Explanation: The ugly numbers are 2, 4, 6, 8, and 10. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

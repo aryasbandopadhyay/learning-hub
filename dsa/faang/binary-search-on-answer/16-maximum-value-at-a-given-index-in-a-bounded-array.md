@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-You need to build an array of length `n` of positive integers such that adjacent values differ by at most `1` and the total sum is at most `maxSum`. Return the maximum possible value at position `index`. Constraints: `1 <= n <= 10^9`, `0 <= index < n`, `n <= maxSum <= 10^9`.
+Implement `maxValue` for **Maximum Value At A Given Index In A Bounded Array**. You need to build an array of length `n` of positive integers such that adjacent values differ by at most `1` and the total sum is at most `maxSum`. Return the maximum possible value at position `index`.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+- `index`: integer; target index.
+- `maxSum`: integer; maximum allowed total sum.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= n <= 10^9`, `0 <= index < n`, `n <= maxSum <= 10^9`
 
 ## Examples
 ```text
 Input: n = 4, index = 2, maxSum = 6
 Output: 2
-Explanation: One valid optimal array is [1,2,2,1], so the value at index 2 is 2.
+Explanation: One valid optimal array is [1,2,2,1], so the value at index 2 is 2. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

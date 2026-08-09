@@ -5,13 +5,25 @@
 - **Asked at:** Google, DoorDash, Amazon
 
 ## Problem
-Take trains through `dist` in order. All but the last train round travel time up to the next integer hour. Return the minimum integer speed to arrive within `hour`, or `-1`. Constraints: `1 <= len(dist) <= 10^5`, speed answer at most `10^7`.
+Implement `minSpeedOnTime` for **Minimum Speed to Arrive on Time**. Take trains through `dist` in order. All but the last train round travel time up to the next integer hour. Return the minimum integer speed to arrive within `hour`, or `-1`.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `dist`: list; distances in order.
+- `hour`: number; maximum allowed time.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(dist) <= 10^5`, speed answer at most `10^7`
 
 ## Examples
 ```text
 Input: dist = [1, 3, 2], hour = 2.7
 Output: 3
-Explanation: Time is 1 + 1 + 2/3, which fits.
+Explanation: Time is 1 + 1 + 2/3, which fits. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

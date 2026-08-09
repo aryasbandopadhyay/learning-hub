@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, Facebook
 
 ## Problem
-Given chunk sweetness values, make `k` cuts into `k + 1` contiguous pieces, give away `k` pieces, and maximize the minimum sweetness of the piece you keep. Constraints: `1 <= len(sweetness) <= 10^5`, `0 <= k < len(sweetness)`.
+Implement `maximizeSweetness` for **Divide Chocolate**. Given chunk sweetness values, make `k` cuts into `k + 1` contiguous pieces, give away `k` pieces, and maximize the minimum sweetness of the piece you keep.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `sweetness`: list; chunk sweetness values.
+- `k`: integer; required count, rank, or operation limit as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(sweetness) <= 10^5`, `0 <= k < len(sweetness)`
 
 ## Examples
 ```text
 Input: sweetness = [1, 2, 3, 4, 5, 6, 7, 8, 9], k = 5
 Output: 6
-Explanation: Six pieces can all have sweetness at least 6.
+Explanation: Six pieces can all have sweetness at least 6. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

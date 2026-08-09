@@ -5,15 +5,24 @@
 - **Asked at:** Amazon, Google, Bloomberg
 
 ## Problem
-In the Dota2 senate, each character in `senate` is either `"R"` for Radiant or `"D"` for Dire. Senators act in order repeatedly. On a turn, an active senator bans one opposing senator's future rights. Return the party that will eventually win, either `"Radiant"` or `"Dire"`.
+Implement `predictPartyVictory` for **Dota2 Senate**. In the Dota2 senate, each character in `senate` is either `"R"` for Radiant or `"D"` for Dire. Senators act in order repeatedly. On a turn, an active senator bans one opposing senator's future rights. Return the party that will eventually win, either `"Radiant"` or `"Dire"`.
 
-Constraints: `1 <= len(senate) <= 10^4` and `senate[i]` is either `"R"` or `"D"`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `senate`: string; senate party string.
+
+**Output**
+- A string.
+
+## Constraints
+- `1 <= len(senate) <= 10^4` and `senate[i]` is either `"R"` or `"D"`
 
 ## Examples
 ```text
 Input: senate = "RDD"
 Output: "Dire"
-Explanation: The first Radiant senator bans one Dire senator, then the remaining Dire senator bans Radiant.
+Explanation: The first Radiant senator bans one Dire senator, then the remaining Dire senator bans Radiant. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

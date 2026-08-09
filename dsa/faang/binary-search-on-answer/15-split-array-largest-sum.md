@@ -5,13 +5,25 @@
 - **Asked at:** Google, Facebook, Microsoft
 
 ## Problem
-Given an integer array `nums` and an integer `k`, split `nums` into `k` non-empty contiguous subarrays. Return the minimum possible value of the largest subarray sum. Constraints: `1 <= k <= len(nums) <= 1000`, `0 <= nums[i] <= 10^6`.
+Implement `splitArray` for **Split Array Largest Sum**. Given an integer array `nums` and an integer `k`, split `nums` into `k` non-empty contiguous subarrays. Return the minimum possible value of the largest subarray sum.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+- `k`: integer; required count, rank, or operation limit as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= k <= len(nums) <= 1000`, `0 <= nums[i] <= 10^6`
 
 ## Examples
 ```text
 Input: nums = [7,2,5,10,8], k = 2
 Output: 18
-Explanation: Splitting as [7,2,5] and [10,8] makes the largest sum 18, which is minimal.
+Explanation: Splitting as [7,2,5] and [10,8] makes the largest sum 18, which is minimal. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

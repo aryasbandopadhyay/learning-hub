@@ -5,15 +5,26 @@
 - **Asked at:** Google, Meta, Amazon
 
 ## Problem
-Two sentences are similar if one can become the other by inserting an arbitrary sentence at one position. Return whether `sentence1` and `sentence2` are similar.
+Implement `areSentencesSimilar` for **Sentence Similarity III**. Two sentences are similar if one can become the other by inserting an arbitrary sentence at one position. Return whether `sentence1` and `sentence2` are similar.
 
-Constraints: `1 <= len(sentence1), len(sentence2) <= 10^5`; words are separated by single spaces.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `sentence1`: string; first sentence.
+- `sentence2`: string; second sentence.
+
+**Output**
+- `True` or `False`.
+
+## Constraints
+- `1 <= len(sentence1), len(sentence2) <= 10^5`
+- words are separated by single spaces
 
 ## Examples
 ```text
 Input: sentence1 = "My name is Haley", sentence2 = "My Haley"
 Output: True
-Explanation: Insert "name is" between "My" and "Haley".
+Explanation: Insert "name is" between "My" and "Haley". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

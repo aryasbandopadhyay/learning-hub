@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Given a string `s` and pattern `p`, return whether the whole string matches the pattern. In `p`, `?` matches one character and `*` matches any sequence, including empty. Constraints: `0 <= len(s), len(p) <= 2000`.
+Implement `isMatch` for **Wildcard Matching**. Given a string `s` and pattern `p`, return whether the whole string matches the pattern. In `p`, `?` matches one character and `*` matches any sequence, including empty.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `s`: string; input string.
+- `p`: string; pattern.
+
+**Output**
+- `True` or `False`.
+
+## Constraints
+- `0 <= len(s), len(p) <= 2000`
 
 ## Examples
 ```text
 Input: s = "adceb", p = "*a*b"
 Output: True
-Explanation: The stars can cover the empty prefix and "dce".
+Explanation: The stars can cover the empty prefix and "dce". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

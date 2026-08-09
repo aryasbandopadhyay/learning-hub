@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Google
 
 ## Problem
-Given non-negative integers `nums` and integer `target`, return how many subsets have sum exactly `target`. Different index choices count separately. Constraints: `1 <= len(nums) <= 40`, `0 <= nums[i] <= 1000`.
+Implement `countSubsets` for **Count Subsets With Sum**. Given non-negative integers `nums` and integer `target`, return how many subsets have sum exactly `target`. Different index choices count separately.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+- `target`: integer; target value or string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(nums) <= 40`, `0 <= nums[i] <= 1000`
 
 ## Examples
 ```text
 Input: nums = [2,3,5,6,8,10], target = 10
 Output: 3
-Explanation: The subsets are [10], [2,8], and [2,3,5].
+Explanation: The subsets are [10], [2,8], and [2,3,5]. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

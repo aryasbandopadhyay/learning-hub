@@ -5,15 +5,25 @@
 - **Asked at:** Amazon, Google, Meta
 
 ## Problem
-Given `n` courses labeled `1..n` and prerequisite edges `relations`, where `[a, b]` means `a` before `b`, return the minimum semesters needed when any number of currently available courses may be taken each semester. Return `-1` if all courses cannot be completed.
+Implement `minimumSemesters` for **Parallel Courses**. Given `n` courses labeled `1..n` and prerequisite edges `relations`, where `[a, b]` means `a` before `b`, return the minimum semesters needed when any number of currently available courses may be taken each semester. Return `-1` if all courses cannot be completed.
 
-Constraints: `1 <= n <= 5000`, `0 <= len(relations) <= 20000`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `n`: integer; problem size or count as defined above.
+- `relations`: list; prerequisite relations.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= n <= 5000`, `0 <= len(relations) <= 20000`
 
 ## Examples
 ```text
 Input: n = 3, relations = [[1,3],[2,3]]
 Output: 2
-Explanation: Take 1 and 2, then 3.
+Explanation: Take 1 and 2, then 3. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

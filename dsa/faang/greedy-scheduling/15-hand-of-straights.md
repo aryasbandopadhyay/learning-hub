@@ -5,15 +5,25 @@
 - **Asked at:** Google, Amazon, Facebook
 
 ## Problem
-Given a list of card values `hand` and an integer `groupSize`, return `True` if the cards can be rearranged into groups of size `groupSize` where each group contains consecutive values. Otherwise return `False`.
+Implement `isNStraightHand` for **Hand of Straights**. Given a list of card values `hand` and an integer `groupSize`, return `True` if the cards can be rearranged into groups of size `groupSize` where each group contains consecutive values. Otherwise return `False`.
 
-Constraints: `1 <= len(hand) <= 10^4`, `0 <= hand[i] <= 10^9`, and `1 <= groupSize <= len(hand)`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `hand`: list; card values.
+- `groupSize`: integer; required group size.
+
+**Output**
+- `True` or `False`.
+
+## Constraints
+- `1 <= len(hand) <= 10^4`, `0 <= hand[i] <= 10^9`, and `1 <= groupSize <= len(hand)`
 
 ## Examples
 ```text
 Input: hand = [1,2,3,6,2,3,4,7,8], groupSize = 3
 Output: True
-Explanation: The hand can be split into [1, 2, 3], [2, 3, 4], and [6, 7, 8].
+Explanation: The hand can be split into [1, 2, 3], [2, 3, 4], and [6, 7, 8]. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

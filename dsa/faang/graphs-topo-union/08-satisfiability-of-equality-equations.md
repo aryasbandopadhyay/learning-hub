@@ -5,15 +5,24 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given equations between lowercase variables, such as `"a==b"` and `"a!=b"`, return `True` if variables can be assigned values so every equation is satisfied; otherwise return `False`.
+Implement `equationsPossible` for **Satisfiability of Equality Equations**. Given equations between lowercase variables, such as `"a==b"` and `"a!=b"`, return `True` if variables can be assigned values so every equation is satisfied; otherwise return `False`.
 
-Constraints: `1 <= len(equations) <= 500`, each equation has length `4`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `equations`: list; equation strings.
+
+**Output**
+- `True` or `False`.
+
+## Constraints
+- `1 <= len(equations) <= 500`, each equation has length `4`
 
 ## Examples
 ```text
 Input: equations = ["a==b","b!=c","c==a"]
 Output: False
-Explanation: Equality makes a, b, and c identical, contradicting b != c.
+Explanation: Equality makes a, b, and c identical, contradicting b != c. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,24 @@
 - **Asked at:** Amazon, Google, Facebook
 
 ## Problem
-Given `nums`, return the number of index triples that can form a valid triangle. A triangle is valid when the sum of the two smaller sides is strictly greater than the largest side.
+Implement `triangleNumber` for **Valid Triangle Number**. Given `nums`, return the number of index triples that can form a valid triangle. A triangle is valid when the sum of the two smaller sides is strictly greater than the largest side.
 
-Constraints: `0 <= len(nums) <= 1000`, `0 <= nums[i] <= 10^6`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `0 <= len(nums) <= 1000`, `0 <= nums[i] <= 10^6`
 
 ## Examples
 ```text
 Input: nums = [2,2,3,4]
 Output: 3
-Explanation: The valid triples are (2,3,4) twice and (2,2,3) once.
+Explanation: The valid triples are (2,3,4) twice and (2,2,3) once. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

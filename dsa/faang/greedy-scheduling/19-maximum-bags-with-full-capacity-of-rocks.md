@@ -5,15 +5,26 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-You have bags with maximum `capacity`, current `rocks`, and `additionalRocks` extra rocks. Return the maximum number of bags that can be filled to capacity after distributing at most `additionalRocks` rocks.
+Implement `maximumBags` for **Maximum Bags With Full Capacity of Rocks**. You have bags with maximum `capacity`, current `rocks`, and `additionalRocks` extra rocks. Return the maximum number of bags that can be filled to capacity after distributing at most `additionalRocks` rocks.
 
-Constraints: `1 <= len(capacity) == len(rocks) <= 5 * 10^4`, `1 <= rocks[i] <= capacity[i] <= 10^9`, and `0 <= additionalRocks <= 10^9`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `capacity`: list; bag capacities.
+- `rocks`: list; current rocks.
+- `additionalRocks`: integer; extra rocks.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(capacity) == len(rocks) <= 5 * 10^4`, `1 <= rocks[i] <= capacity[i] <= 10^9`, and `0 <= additionalRocks <= 10^9`
 
 ## Examples
 ```text
 Input: capacity = [2,3,4,5], rocks = [1,2,4,4], additionalRocks = 2
 Output: 3
-Explanation: Fill the first two bags; the third bag is already full.
+Explanation: Fill the first two bags; the third bag is already full. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

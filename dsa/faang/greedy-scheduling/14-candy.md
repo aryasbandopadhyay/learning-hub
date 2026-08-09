@@ -5,15 +5,24 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-There are children standing in a line with integer `ratings`. Give each child at least one candy. Any child with a higher rating than an immediate neighbor must receive more candies than that neighbor. Return the minimum total candies needed.
+Implement `candy` for **Candy**. There are children standing in a line with integer `ratings`. Give each child at least one candy. Any child with a higher rating than an immediate neighbor must receive more candies than that neighbor. Return the minimum total candies needed.
 
-Constraints: `1 <= len(ratings) <= 2 * 10^4` and `0 <= ratings[i] <= 2 * 10^4`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `ratings`: list; child ratings.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(ratings) <= 2 * 10^4` and `0 <= ratings[i] <= 2 * 10^4`
 
 ## Examples
 ```text
 Input: ratings = [1,0,2]
 Output: 5
-Explanation: The minimum distribution is [2, 1, 2].
+Explanation: The minimum distribution is [2, 1, 2]. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

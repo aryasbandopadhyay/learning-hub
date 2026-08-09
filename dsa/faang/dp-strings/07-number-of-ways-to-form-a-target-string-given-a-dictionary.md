@@ -5,13 +5,26 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Given equal-length strings `words` and a string `target`, form `target` left to right by choosing characters from strictly increasing column indices. Return the number of ways modulo `1_000_000_007`. Constraints: `1 <= len(words), len(words[i]), len(target) <= 1000`; lowercase English letters.
+Implement `numWays` for **Number of Ways to Form a Target String Given a Dictionary**. Given equal-length strings `words` and a string `target`, form `target` left to right by choosing characters from strictly increasing column indices. Return the number of ways modulo `1_000_000_007`.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `words`: list; dictionary words.
+- `target`: string; target value or string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(words), len(words[i]), len(target) <= 1000`
+- lowercase English letters
 
 ## Examples
 ```text
 Input: words = ["acca", "bbbb", "caca"], target = "aba"
 Output: 6
-Explanation: Six word/column choices spell "aba".
+Explanation: Six word/column choices spell "aba". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

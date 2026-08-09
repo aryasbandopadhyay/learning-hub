@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Walmart Labs
 
 ## Problem
-Given bar prices `costs` and a budget `coins`, return the maximum number of ice cream bars you can buy.
+Implement `maxIceCream` for **Maximum Ice Cream Bars**. Given bar prices `costs` and a budget `coins`, return the maximum number of ice cream bars you can buy.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `costs`: list; cost list.
+- `coins`: integer; available coins.
+
+**Output**
+- A single integer.
+
+## Constraints
+- Use the standard constraints for this problem as implied by the judge manifest and examples.
 
 ## Examples
 ```text
 Input: costs = [1,3,2,4,1], coins = 7
 Output: 4
-Explanation: Buy costs 1, 1, 2, and 3.
+Explanation: Buy costs 1, 1, 2, and 3. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

@@ -5,15 +5,24 @@
 - **Asked at:** Google, Meta, Amazon
 
 ## Problem
-You are given a directed graph where each node has at most one outgoing edge. `edges[i]` is the node that `i` points to, or `-1` if it has no outgoing edge. Return the length of the longest directed cycle, or `-1` if no cycle exists.
+Implement `longestCycle` for **Longest Cycle in a Graph**. You are given a directed graph where each node has at most one outgoing edge. `edges[i]` is the node that `i` points to, or `-1` if it has no outgoing edge. Return the length of the longest directed cycle, or `-1` if no cycle exists.
 
-Constraints: `1 <= len(edges) <= 100000`, each value is `-1` or a valid node index.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `edges`: list; edge list or outgoing-edge list as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(edges) <= 100000`, each value is `-1` or a valid node index
 
 ## Examples
 ```text
 Input: edges = [3,3,4,2,3]
 Output: 3
-Explanation: The longest cycle is 2 -> 4 -> 3 -> 2.
+Explanation: The longest cycle is 2 -> 4 -> 3 -> 2. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

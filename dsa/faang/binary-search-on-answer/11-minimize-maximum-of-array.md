@@ -5,13 +5,24 @@
 - **Asked at:** Google, Amazon, Meta
 
 ## Problem
-Operation: choose `i > 0`, decrement `nums[i]`, and increment `nums[i-1]`. Return the minimum possible maximum array value. Constraints: `1 <= len(nums) <= 10^5`, `0 <= nums[i] <= 10^9`.
+Implement `minimizeArrayValue` for **Minimize Maximum of Array**. Operation: choose `i > 0`, decrement `nums[i]`, and increment `nums[i-1]`. Return the minimum possible maximum array value.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(nums) <= 10^5`, `0 <= nums[i] <= 10^9`
 
 ## Examples
 ```text
 Input: nums = [3, 7, 1, 6]
 Output: 5
-Explanation: The first two elements have average 5, so no bound below 5 is possible.
+Explanation: The first two elements have average 5, so no bound below 5 is possible. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

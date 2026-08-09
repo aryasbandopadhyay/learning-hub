@@ -5,15 +5,25 @@
 - **Asked at:** Google, Amazon, Facebook
 
 ## Problem
-Given `nums` and `k`, return the `k`-th smallest absolute difference among all index pairs.
+Implement `smallestDistancePair` for **Find K-th Smallest Pair Distance**. Given `nums` and `k`, return the `k`-th smallest absolute difference among all index pairs.
 
-Constraints: `2 <= len(nums) <= 10^4`, `1 <= k <= n*(n-1)/2`, `0 <= nums[i] <= 10^6`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+- `k`: integer; required count, rank, or operation limit as defined above.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `2 <= len(nums) <= 10^4`, `1 <= k <= n*(n-1)/2`, `0 <= nums[i] <= 10^6`
 
 ## Examples
 ```text
 Input: nums = [1,3,1], k = 1
 Output: 0
-Explanation: Pair distances are [0,2,2].
+Explanation: Pair distances are [0,2,2]. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

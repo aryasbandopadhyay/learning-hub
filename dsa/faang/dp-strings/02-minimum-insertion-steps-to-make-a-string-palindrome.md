@@ -5,13 +5,25 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Given a string `s`, return the minimum number of characters to insert anywhere so that `s` becomes a palindrome. Constraints: `1 <= len(s) <= 500`; lowercase English letters.
+Implement `minInsertions` for **Minimum Insertion Steps to Make a String Palindrome**. Given a string `s`, return the minimum number of characters to insert anywhere so that `s` becomes a palindrome.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `s`: string; input string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(s) <= 500`
+- lowercase English letters
 
 ## Examples
 ```text
 Input: s = "mbadm"
 Output: 2
-Explanation: One optimal palindrome is "mbdadbm".
+Explanation: One optimal palindrome is "mbdadbm". This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

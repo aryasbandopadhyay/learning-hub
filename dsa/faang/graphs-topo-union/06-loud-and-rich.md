@@ -5,15 +5,27 @@
 - **Asked at:** Google, Amazon, Bloomberg
 
 ## Problem
-`quiet[i]` is person `i`'s quietness and `richer[j] = [a, b]` means `a` is richer than `b`. For each person `x`, return the quietest person among everyone known to be at least as rich as `x`.
+Implement `loudAndRich` for **Loud and Rich**. `quiet[i]` is person `i`'s quietness and `richer[j] = [a, b]` means `a` is richer than `b`. For each person `x`, return the quietest person among everyone known to be at least as rich as `x`.
 
-Constraints: `1 <= len(quiet) <= 500`, `0 <= len(richer) <= 5000`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+Return `answer` ordered by person index, so `answer[i]` describes person `i`.
+
+**Input**
+- `richer`: list; richer-than relations.
+- `quiet`: list; quietness scores.
+
+**Output**
+- A list. Return `answer` ordered by person index, so `answer[i]` describes person `i`.
+
+## Constraints
+- `1 <= len(quiet) <= 500`, `0 <= len(richer) <= 5000`
 
 ## Examples
 ```text
 Input: richer = [[1,0],[2,1],[3,1]], quiet = [3,2,5,4]
 Output: [1,1,2,3]
-Explanation: Person 1 is quietest among people richer than or equal to 0 and 1.
+Explanation: Person 1 is quietest among people richer than or equal to 0 and 1. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

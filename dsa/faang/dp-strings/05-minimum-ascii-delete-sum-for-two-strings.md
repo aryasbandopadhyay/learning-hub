@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-Given strings `s1` and `s2`, return the minimum total ASCII value of deleted characters needed to make the two strings equal. Constraints: `0 <= len(s1), len(s2) <= 1000`; lowercase English letters.
+Implement `minimumDeleteSum` for **Minimum ASCII Delete Sum for Two Strings**. Given strings `s1` and `s2`, return the minimum total ASCII value of deleted characters needed to make the two strings equal.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `s1`: string; first string.
+- `s2`: string; second string.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `0 <= len(s1), len(s2) <= 1000`
+- lowercase English letters
 
 ## Examples
 ```text
 Input: s1 = "sea", s2 = "eat"
 Output: 231
-Explanation: Delete 's' and 't', costing 115 + 116.
+Explanation: Delete 's' and 't', costing 115 + 116. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,25 @@
 - **Asked at:** Google, Meta, Amazon
 
 ## Problem
-Given `nums` and `goal`, return the minimum absolute difference between `goal` and the sum of any subsequence. Constraints: `1 <= len(nums) <= 40`, values may be negative.
+Implement `minAbsDifference` for **Closest Subsequence Sum**. Given `nums` and `goal`, return the minimum absolute difference between `goal` and the sum of any subsequence.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+- `goal`: integer; target sum to approach.
+
+**Output**
+- A single integer.
+
+## Constraints
+- `1 <= len(nums) <= 40`, values may be negative
 
 ## Examples
 ```text
 Input: nums = [5,-7,3,5], goal = 6
 Output: 0
-Explanation: The subsequence [5,-7,3,5] sums to 6.
+Explanation: The subsequence [5,-7,3,5] sums to 6. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

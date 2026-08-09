@@ -5,15 +5,25 @@
 - **Asked at:** Google, Airbnb, Amazon
 
 ## Problem
-Given target permutation `nums` and partial ordering sequences `sequences`, return `True` if `nums` is the only shortest supersequence consistent with every sequence; otherwise return `False`.
+Implement `sequenceReconstruction` for **Sequence Reconstruction**. Given target permutation `nums` and partial ordering sequences `sequences`, return `True` if `nums` is the only shortest supersequence consistent with every sequence; otherwise return `False`.
 
-Constraints: `1 <= len(nums) <= 10000`, total sequence length `<= 10000`.
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+**Input**
+- `nums`: list; input integer list.
+- `sequences`: list; subsequences encoding ordering constraints.
+
+**Output**
+- `True` or `False`.
+
+## Constraints
+- `1 <= len(nums) <= 10000`, total sequence length `<= 10000`
 
 ## Examples
 ```text
 Input: nums = [1,2,3], sequences = [[1,2],[1,3],[2,3]]
 Output: True
-Explanation: The only topological order using all numbers is [1,2,3].
+Explanation: The only topological order using all numbers is [1,2,3]. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,27 @@
 - **Asked at:** Google, Amazon, Microsoft
 
 ## Problem
-Given `cost[0..8]` for digits `1..9`, return the numerically largest integer whose digit costs sum to `target`, or `"0"` if impossible. Constraints: `len(cost) == 9`, `1 <= target <= 5000`.
+Implement `largestNumber` for **Form Largest Integer With Digits That Add up to Target**. Given `cost[0..8]` for digits `1..9`, return the numerically largest integer whose digit costs sum to `target`, or `"0"` if impossible.
+
+The function should be self-contained: interpret the parameters exactly as described below and return only the requested value.
+
+This judge compares exactly; return the numerically largest string, meaning maximum length first and then larger digits earlier.
+
+**Input**
+- `cost`: list; digit costs.
+- `target`: integer; target value or string.
+
+**Output**
+- A string. This judge compares exactly; return the numerically largest string, meaning maximum length first and then larger digits earlier.
+
+## Constraints
+- `len(cost) == 9`, `1 <= target <= 5000`
 
 ## Examples
 ```text
 Input: cost = [4,3,2,5,6,7,2,5,5], target = 9
 Output: "7772"
-Explanation: Costs 2+2+2+3 = 9, and four digits beat any shorter number.
+Explanation: Costs 2+2+2+3 = 9, and four digits beat any shorter number. This is the required result for the given input under the rules above.
 ```
 
 ## Understanding & Intuition
