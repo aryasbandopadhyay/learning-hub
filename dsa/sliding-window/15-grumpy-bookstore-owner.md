@@ -5,13 +5,27 @@
 - **Asked at:** Amazon, Google, Microsoft, DoorDash
 
 ## Problem
-Given arrays `customers` and `grumpy` plus integer `minutes`, the owner can choose one contiguous `minutes`-long interval to suppress grumpiness. Return the maximum satisfied customers. Constraints: `1 <= minutes <= len(customers) <= 2 * 10^4`, `0 <= customers[i] <= 1000`, `grumpy[i]` is `0` or `1`.
+A bookstore owner has customer counts per minute and a grumpiness flag per minute. Calm minutes satisfy customers automatically. The owner can choose one contiguous block of `minutes` minutes to suppress grumpiness and maximize total satisfied customers.
+
+**Input**
+- `customers`: customers arriving each minute.
+- `grumpy`: `0` if the owner is not grumpy at that minute, `1` otherwise.
+- `minutes`: the length of the one technique window.
+
+**Output**
+- The maximum number of satisfied customers achievable.
+
+## Constraints
+- `customers.length == grumpy.length`
+- `1 <= minutes <= customers.length <= 2 * 10^4`
+- `0 <= customers[i] <= 1000`
+- `grumpy[i]` is `0` or `1`.
 
 ## Examples
 ```text
 Input: customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], minutes = 3
 Output: 16
-Explanation: Suppressing grumpiness for minutes 5 to 7 adds 1 + 7 + 5 customers to the always-satisfied base.
+Explanation: Naturally calm minutes contribute automatically; using the technique on the best length-3 grumpy window adds enough customers to reach `16` total.
 ```
 
 ## Understanding & Intuition

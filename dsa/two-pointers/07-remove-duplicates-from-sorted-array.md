@@ -5,13 +5,24 @@
 - **Asked at:** Microsoft, Amazon, Apple, Bloomberg
 
 ## Problem
-Given a sorted integer array `nums`, remove duplicates in-place so each unique element appears once. Return the number of unique elements `k`; the first `k` positions must contain them in order. Constraints: `1 <= len(nums) <= 3 * 10^4`.
+Given a non-decreasing array `nums`, remove duplicates in-place so each distinct value appears once at the front.
+
+**Input**
+- `nums`: a sorted list of integers.
+
+**Output**
+- Return `k`, the number of distinct values. The first `k` positions of `nums` must contain those values in sorted order; values after `k` are ignored.
+
+## Constraints
+- `1 <= nums.length <= 3 * 10^4`
+- `-100 <= nums[i] <= 100`
+- `nums` is sorted in non-decreasing order.
 
 ## Examples
 ```text
 Input: nums = [1,1,2]
 Output: 2
-Explanation: The first two elements become [1,2].
+Explanation: The distinct values are `1` and `2`, so `k = 2` and the front of the array should be `[1,2]`.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Sort an array containing only 0, 1, and 2 in-place in color order. Do not use library sort for the optimal solution.
+Given an array `nums` containing only `0`, `1`, and `2`, sort it in-place so equal colors are grouped in the order `0`, then `1`, then `2`.
+
+**Input**
+- `nums`: a list where `0`, `1`, and `2` represent the three colors.
+
+**Output**
+- Modify `nums` in-place and return the sorted contents. **This judge compares exactly** to ascending color order.
+
+## Constraints
+- `1 <= nums.length <= 300`
+- `nums[i]` is `0`, `1`, or `2`.
 
 ## Examples
 ```text
 Input: nums = [2,0,2,1,1,0]
 Output: [0,0,1,1,2,2]
-Explanation: Colors are ordered red, white, blue.
+Explanation: The two `0`s come first, then the two `1`s, then the two `2`s, producing `[0,0,1,1,2,2]`.
 ```
 
 ## Understanding & Intuition

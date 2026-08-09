@@ -5,13 +5,24 @@
 - **Asked at:** Google, Meta, Amazon, Microsoft
 
 ## Problem
-Given strings `s` and `t`, where `#` means backspace, return whether both strings are equal after applying all backspaces. Constraints: `1 <= len(s), len(t) <= 200`.
+Given two strings `s` and `t`, compare the texts produced after processing backspaces. A `#` deletes the character immediately before it if one exists.
+
+**Input**
+- `s`: the first typed string.
+- `t`: the second typed string.
+
+**Output**
+- `True` if both strings produce the same final text; otherwise `False`.
+
+## Constraints
+- `1 <= s.length, t.length <= 200`
+- `s` and `t` contain lowercase English letters and `#`.
 
 ## Examples
 ```text
 Input: s = "ab#c", t = "ad#c"
 Output: True
-Explanation: Both strings become "ac".
+Explanation: `ab#c` becomes `ac`, and `ad#c` also becomes `ac`, so the processed strings are equal.
 ```
 
 ## Understanding & Intuition

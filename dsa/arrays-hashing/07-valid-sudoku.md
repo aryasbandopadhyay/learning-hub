@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Apple
 
 ## Problem
-Return whether a 9x9 Sudoku board is valid: no filled digit repeats in any row, column, or 3x3 box. Dots are empty; solvability is irrelevant.
+Given a partially filled `9 x 9` Sudoku board, determine whether the filled cells obey Sudoku rules. Empty cells `.` do not need to make the puzzle solvable.
+
+**Input**
+- `board`: a `9 x 9` list of strings, each either `"1"` through `"9"` or `"."`.
+
+**Output**
+- `True` if every row, column, and `3 x 3` sub-box has no repeated digit; otherwise `False`.
+
+## Constraints
+- `board.length == 9`
+- `board[r].length == 9`
+- `board[r][c]` is `"."` or a digit from `"1"` to `"9"`.
 
 ## Examples
 ```text
 Input: board = [["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],[".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],[".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]]
 Output: True
-Explanation: No unit repeats a filled digit.
+Explanation: Every filled digit is unique within its row, column, and `3 x 3` box, so the partial board is valid.
 ```
 
 ## Understanding & Intuition

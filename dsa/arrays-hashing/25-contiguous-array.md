@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a binary array, return the maximum length of a contiguous subarray with equal numbers of 0 and 1. Constraints: `n <= 10^5`.
+Given a binary array `nums`, find the maximum length of a contiguous subarray containing the same number of `0`s and `1`s.
+
+**Input**
+- `nums`: a list containing only `0` and `1`.
+
+**Output**
+- The length of the longest balanced contiguous subarray.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `nums[i]` is `0` or `1`.
 
 ## Examples
 ```text
 Input: nums = [0,1]
 Output: 2
-Explanation: The whole array has one 0 and one 1.
+Explanation: The whole array `[0,1]` has one zero and one one, so the longest balanced length is `2`.
 ```
 
 ## Understanding & Intuition

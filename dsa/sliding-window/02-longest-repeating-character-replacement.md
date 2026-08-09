@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Bloomberg
 
 ## Problem
-Given an uppercase string `s` and integer `k`, return the length of the longest substring that can be changed into one repeated character by replacing at most `k` characters. Constraints: `1 <= len(s) <= 10^5`, `0 <= k <= len(s)`.
+Given an uppercase string `s` and an integer `k`, find the longest substring that can be made of one repeated character after changing at most `k` characters.
+
+**Input**
+- `s`: a string of uppercase English letters.
+- `k`: the maximum number of replacements allowed.
+
+**Output**
+- The maximum achievable substring length.
+
+## Constraints
+- `1 <= s.length <= 10^5`
+- `s` consists of uppercase English letters.
+- `0 <= k <= s.length`
 
 ## Examples
 ```text
 Input: s = "AABABBA", k = 1
 Output: 4
-Explanation: Replace one 'A' in "ABBA" or one 'B' in "AABA" to get length 4.
+Explanation: A length-4 window such as `ABBA` can be converted to all `B`s with one replacement, and no longer window can be fixed with only one change.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Microsoft, Google, Adobe
 
 ## Problem
-Given strings `s` and `p`, return all start indexes of `p`'s anagrams in `s` in any order. Constraints: `1 <= len(s), len(p) <= 3 * 10^4`; strings contain lowercase English letters.
+Given strings `s` and `p`, find every start index where a substring of `s` is an anagram of `p`.
+
+**Input**
+- `s`: the text string.
+- `p`: the pattern string.
+
+**Output**
+- A list of 0-based start indices in ascending order. **This judge compares exactly** to left-to-right index order.
+
+## Constraints
+- `1 <= s.length, p.length <= 3 * 10^4`
+- `s` and `p` consist of lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "cbaebabacd", p = "abc"
 Output: [0, 6]
-Explanation: "cba" and "bac" are anagrams of "abc".
+Explanation: Substrings starting at indices `0` (`cba`) and `6` (`bac`) have the same character counts as `abc`.
 ```
 
 ## Understanding & Intuition

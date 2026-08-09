@@ -5,13 +5,23 @@
 - **Asked at:** Meta, Amazon, Google, Microsoft
 
 ## Problem
-Given a string `s`, partition it into as many parts as possible so each letter appears in at most one part. Return a list of partition sizes. Constraints: `1 <= len(s) <= 500`.
+Given a lowercase string `s`, split it into as many parts as possible so each letter appears in at most one part. Return the sizes of the parts from left to right.
+
+**Input**
+- `s`: a lowercase string.
+
+**Output**
+- A list of partition lengths in left-to-right order. **This judge compares exactly** to that order.
+
+## Constraints
+- `1 <= s.length <= 500`
+- `s` consists of lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "ababcbacadefegdehijhklij"
 Output: [9,7,8]
-Explanation: The partitions are "ababcbaca", "defegde", and "hijhklij".
+Explanation: The first partition must include the last `a`, `b`, and `c`, giving length `9`; the remaining maximal partitions have lengths `7` and `8`.
 ```
 
 ## Understanding & Intuition

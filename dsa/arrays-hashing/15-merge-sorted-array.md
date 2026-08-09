@@ -5,13 +5,29 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Merge sorted `nums2` into sorted `nums1` in-place. `nums1` has `m` valid values followed by `n` spare slots.
+Given two non-decreasing integer arrays, merge them into `nums1` in non-decreasing order. `nums1` has length `m + n`: its first `m` entries are real values and its last `n` entries are placeholders.
+
+**Input**
+- `nums1`: the destination list containing `m` sorted values followed by `n` placeholders.
+- `m`: the number of valid values initially in `nums1`.
+- `nums2`: the second sorted list.
+- `n`: the number of values in `nums2`.
+
+**Output**
+- Modify `nums1` in-place so it contains all `m + n` values sorted in non-decreasing order. **This judge compares exactly** to the final `nums1` contents.
+
+## Constraints
+- `nums1.length == m + n`
+- `nums2.length == n`
+- `0 <= m, n <= 200`
+- `1 <= m + n <= 200`
+- `-10^9 <= nums1[i], nums2[j] <= 10^9`
 
 ## Examples
 ```text
 Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
 Output: [1,2,2,3,5,6]
-Explanation: The merged sorted values are written to nums1.
+Explanation: The valid values `[1,2,3]` and `[2,5,6]` merge into `[1,2,2,3,5,6]` in sorted order.
 ```
 
 ## Understanding & Intuition

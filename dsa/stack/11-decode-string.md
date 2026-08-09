@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an encoded string with the rule `k[encoded_string]`, return the decoded string. `k` is a positive integer, brackets are well formed, and decoded output length is reasonable. Constraints: `1 <= len(s) <= 30`.
+Decode an encoded string where `k[encoded_string]` means the bracketed string repeated `k` times. Nested encodings are allowed, and `k` is positive.
+
+**Input**
+- `s`: the encoded string.
+
+**Output**
+- The fully decoded string. **This judge compares exactly** to the expanded text.
+
+## Constraints
+- `1 <= s.length <= 30`
+- `s` contains lowercase English letters, digits, and brackets.
+- All encodings are valid.
+- The decoded output length is at most `10^5`.
 
 ## Examples
 ```text
 Input: s = "3[a2[c]]"
 Output: "accaccacc"
-Explanation: "a2[c]" becomes "acc", repeated three times.
+Explanation: First decode `a2[c]` as `acc`; repeating that three times produces `accaccacc`.
 ```
 
 ## Understanding & Intuition

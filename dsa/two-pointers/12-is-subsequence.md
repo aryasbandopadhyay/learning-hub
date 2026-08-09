@@ -5,13 +5,25 @@
 - **Asked at:** Google, Meta, Amazon, Bloomberg
 
 ## Problem
-Given strings `s` and `t`, return `True` if `s` is a subsequence of `t`. A subsequence preserves order but may delete characters. Constraints: `0 <= len(s) <= 100`, `0 <= len(t) <= 10^4`.
+Given strings `s` and `t`, determine whether `s` is a subsequence of `t`. A subsequence keeps characters in order while skipping any characters from `t`.
+
+**Input**
+- `s`: the candidate subsequence.
+- `t`: the source string.
+
+**Output**
+- `True` if every character of `s` can be matched in order within `t`; otherwise `False`.
+
+## Constraints
+- `0 <= s.length <= 100`
+- `0 <= t.length <= 10^4`
+- `s` and `t` consist of lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "abc", t = "ahbgdc"
 Output: True
-Explanation: The characters a, b, and c appear in order in t.
+Explanation: The characters `a`, `b`, and `c` appear in `t` in that order, so `abc` is a subsequence.
 ```
 
 ## Understanding & Intuition

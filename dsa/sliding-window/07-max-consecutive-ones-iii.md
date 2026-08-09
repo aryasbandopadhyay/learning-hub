@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given binary array `nums` and integer `k`, return the maximum number of consecutive `1`s obtainable by flipping at most `k` zeros. Constraints: `1 <= len(nums) <= 10^5`, `nums[i]` is `0` or `1`.
+Given a binary array `nums` and an integer `k`, find the longest contiguous subarray containing only `1`s after flipping at most `k` zeros to ones.
+
+**Input**
+- `nums`: a list containing only `0` and `1`.
+- `k`: the maximum number of zeros that may be flipped.
+
+**Output**
+- The maximum possible length of such a contiguous subarray.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `nums[i]` is `0` or `1`.
+- `0 <= k <= nums.length`
 
 ## Examples
 ```text
 Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
 Output: 6
-Explanation: Flip two zeros to make the subarray [1,1,1,1,1,1].
+Explanation: Flipping two zeros in the middle allows a run spanning six positions of effective `1`s, and no longer run can be formed with only two flips.
 ```
 
 ## Understanding & Intuition

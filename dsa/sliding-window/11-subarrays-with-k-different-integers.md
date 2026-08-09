@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Uber
 
 ## Problem
-Given integer array `nums` and integer `k`, return the number of contiguous subarrays containing exactly `k` distinct integers. Constraints: `1 <= len(nums) <= 2 * 10^4`, `1 <= nums[i], k <= len(nums)`.
+Given an integer array `nums` and an integer `k`, count contiguous subarrays that contain exactly `k` distinct integers.
+
+**Input**
+- `nums`: a list of integers.
+- `k`: the required number of distinct values.
+
+**Output**
+- The number of contiguous subarrays with exactly `k` distinct values.
+
+## Constraints
+- `1 <= nums.length <= 2 * 10^4`
+- `1 <= nums[i], k <= nums.length`
 
 ## Examples
 ```text
 Input: nums = [1,2,1,2,3], k = 2
 Output: 7
-Explanation: The valid subarrays are [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], and [1,2,1,2].
+Explanation: Counting all windows with exactly two distinct values across `[1,2,1,2,3]` gives `7` valid subarrays.
 ```
 
 ## Understanding & Intuition

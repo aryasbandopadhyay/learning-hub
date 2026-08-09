@@ -5,13 +5,24 @@
 - **Asked at:** Meta, Amazon, Apple, Microsoft
 
 ## Problem
-Given a non-decreasing integer array `nums`, return an array of the squares of each number, also sorted in non-decreasing order. Constraints: `1 <= len(nums) <= 10^4`.
+Given a non-decreasing integer array `nums`, return the squares of each number in non-decreasing order.
+
+**Input**
+- `nums`: a sorted list of integers.
+
+**Output**
+- A sorted list of squared values in non-decreasing order.
+
+## Constraints
+- `1 <= nums.length <= 10^4`
+- `-10^4 <= nums[i] <= 10^4`
+- `nums` is sorted in non-decreasing order.
 
 ## Examples
 ```text
 Input: nums = [-4,-1,0,3,10]
 Output: [0,1,9,16,100]
-Explanation: Squaring gives [16,1,0,9,100], then sorting gives the output.
+Explanation: Squaring gives `[16,1,0,9,100]`; sorting those squares yields `[0,1,9,16,100]`.
 ```
 
 ## Understanding & Intuition

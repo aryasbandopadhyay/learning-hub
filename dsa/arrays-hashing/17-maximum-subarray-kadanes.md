@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Return the maximum sum of a non-empty contiguous subarray. Values may be negative; `n <= 10^5`.
+Given an integer array `nums`, find the maximum possible sum of a non-empty contiguous subarray.
+
+**Input**
+- `nums`: a non-empty list of integers.
+
+**Output**
+- The largest sum over all contiguous non-empty subarrays.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `-10^4 <= nums[i] <= 10^4`
 
 ## Examples
 ```text
 Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
 Output: 6
-Explanation: [4,-1,2,1] sums to 6.
+Explanation: The best subarray is `[4,-1,2,1]`, whose sum is `6`; every other contiguous choice has sum at most `6`.
 ```
 
 ## Understanding & Intuition

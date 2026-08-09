@@ -5,13 +5,29 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Implement a first-in-first-out queue using only standard stack operations. Support `push`, `pop`, `peek`, and `empty`. Constraints: at most `100` calls, `1 <= x <= 9`, and `pop`/`peek` are valid when called.
+Design a first-in, first-out queue using only stack operations. Implement `push`, `pop`, `peek`, and `empty` with queue semantics.
+
+**Input**
+- `MyQueue()`: initializes an empty queue.
+- `push(x)`: adds integer `x` to the back.
+- `pop()`: removes and returns the front element.
+- `peek()`: returns the front element without removing it.
+- `empty()`: returns whether the queue has no elements.
+
+**Output**
+- Constructor and `push` return `null`; `pop` and `peek` return integers; `empty` returns a boolean. **This judge compares exactly** to the operation output sequence.
+
+## Constraints
+- `1 <= x <= 9`
+- At most `100` operations are performed.
+- `pop` and `peek` are called only when the queue is non-empty.
+- Use only standard stack operations such as push, pop, peek/top, size, and empty.
 
 ## Examples
 ```text
 Input: ["MyQueue","push","push","peek","pop","empty"], [[],[1],[2],[],[],[]]
 Output: [null,null,null,1,1,false]
-Explanation: The first pushed value, 1, is returned before 2.
+Explanation: Values `1` and `2` are pushed in order; `peek` and then `pop` both observe front value `1`, and the queue still contains `2`, so `empty` is false.
 ```
 
 ## Understanding & Intuition

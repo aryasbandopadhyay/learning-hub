@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given `n+1` integers in `[1,n]` with one repeated value, return the duplicate. Do not modify input for the optimal solution.
+Given an array `nums` of length `n + 1` containing integers from `1` to `n`, find the one repeated number. Exactly one distinct value is duplicated, though it may appear more than twice.
+
+**Input**
+- `nums`: a list of `n + 1` integers, each in the range `1..n`.
+
+**Output**
+- The duplicated integer.
+
+## Constraints
+- `1 <= n <= 10^5`
+- `nums.length == n + 1`
+- `1 <= nums[i] <= n`
+- Exactly one distinct number is repeated.
 
 ## Examples
 ```text
 Input: nums = [1,3,4,2,2]
 Output: 2
-Explanation: 2 is repeated.
+Explanation: The value `2` appears twice, while the other values appear once, so the duplicate is `2`.
 ```
 
 ## Understanding & Intuition

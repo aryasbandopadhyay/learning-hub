@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given daily temperatures, return an array where each element is the number of days until a warmer temperature. If no warmer day exists, return `0` for that day. Constraints: `1 <= len(temperatures) <= 10^5`, `30 <= temperatures[i] <= 100`.
+Given daily temperatures, compute for each day how many days must pass until a warmer temperature occurs.
+
+**Input**
+- `temperatures`: a list where `temperatures[i]` is the temperature on day `i`.
+
+**Output**
+- A list `answer` where `answer[i]` is days until a warmer future day, or `0` if none exists. **This judge compares exactly** by day index.
+
+## Constraints
+- `1 <= temperatures.length <= 10^5`
+- `30 <= temperatures[i] <= 100`
 
 ## Examples
 ```text
 Input: temperatures = [73,74,75,71,69,72,76,73]
 Output: [1,1,4,2,1,1,0,0]
-Explanation: Day 2 waits four days until temperature 76.
+Explanation: Day 0 waits one day for `74`, day 2 waits four days for `76`, and days with no warmer future temperature get `0`.
 ```
 
 ## Understanding & Intuition

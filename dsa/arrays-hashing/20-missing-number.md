@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given `n` distinct values from range `[0,n]`, return the one missing value. Constraints: `n <= 10^4`.
+Given an array `nums` containing `n` distinct numbers from the range `0..n`, return the only number in that range that is missing.
+
+**Input**
+- `nums`: a list of distinct integers from `0` through `nums.length`, with one omitted.
+
+**Output**
+- The missing integer.
+
+## Constraints
+- `n == nums.length`
+- `1 <= n <= 10^4`
+- `0 <= nums[i] <= n`
+- All values in `nums` are distinct.
 
 ## Examples
 ```text
 Input: nums = [3,0,1]
 Output: 2
-Explanation: 2 is absent from 0..3.
+Explanation: For `n = 3`, the full range is `0,1,2,3`; the input contains `0,1,3`, so `2` is missing.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Meta, Bloomberg, Microsoft
 
 ## Problem
-Given an integer array `nums` and integer `target`, return the sum of three integers in `nums` closest to `target`. Exactly one solution is assumed for the closest sum. Constraints: `3 <= len(nums) <= 500`.
+Given an integer array `nums` and an integer `target`, choose three distinct elements whose sum is closest to `target`. The test data has exactly one closest sum.
+
+**Input**
+- `nums`: a list of integers.
+- `target`: the target sum.
+
+**Output**
+- The integer sum of the chosen triplet, not the triplet itself.
+
+## Constraints
+- `3 <= nums.length <= 500`
+- `-1000 <= nums[i] <= 1000`
+- `-10^4 <= target <= 10^4`
+- Exactly one triplet sum is closest to `target`.
 
 ## Examples
 ```text
 Input: nums = [-1,2,1,-4], target = 1
 Output: 2
-Explanation: The sum closest to 1 is -1 + 2 + 1 = 2.
+Explanation: The triplet `[-1,2,1]` sums to `2`, which is closer to target `1` than any other triplet sum.
 ```
 
 ## Understanding & Intuition

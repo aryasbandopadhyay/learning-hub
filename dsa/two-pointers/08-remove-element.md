@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Bloomberg, Adobe
 
 ## Problem
-Given an integer array `nums` and integer `val`, remove all occurrences of `val` in-place and return the new length `k`. The first `k` elements should be the remaining values in any order. Constraints: `0 <= len(nums) <= 100`.
+Given an array `nums` and a value `val`, remove all occurrences of `val` in-place.
+
+**Input**
+- `nums`: a list of integers.
+- `val`: the value to remove.
+
+**Output**
+- Return `k`, the count of elements not equal to `val`. The first `k` positions of `nums` must contain kept elements; their order does not matter to the judge.
+
+## Constraints
+- `0 <= nums.length <= 100`
+- `0 <= nums[i] <= 50`
+- `0 <= val <= 100`
 
 ## Examples
 ```text
 Input: nums = [3,2,2,3], val = 3
 Output: 2
-Explanation: The first two elements can be [2,2].
+Explanation: Removing both `3`s leaves the two `2`s, so the new logical length is `2`.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given binary array `nums`, delete exactly one element and return the length of the longest non-empty subarray containing only `1`s after deletion. Constraints: `1 <= len(nums) <= 10^5`, `nums[i]` is `0` or `1`.
+Given a binary array `nums`, delete exactly one element and return the length of the longest remaining non-empty run of `1`s.
+
+**Input**
+- `nums`: a list containing only `0` and `1`.
+
+**Output**
+- The maximum number of consecutive `1`s after deleting exactly one element.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `nums[i]` is `0` or `1`.
 
 ## Examples
 ```text
 Input: nums = [1,1,0,1]
 Output: 3
-Explanation: Delete the zero to join the two runs of ones.
+Explanation: Deleting the single `0` connects the left two `1`s with the right `1`, creating a run of length `3`.
 ```
 
 ## Understanding & Intuition

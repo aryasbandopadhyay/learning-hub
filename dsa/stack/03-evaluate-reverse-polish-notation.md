@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Bloomberg, Google, LinkedIn
 
 ## Problem
-Given tokens representing an arithmetic expression in Reverse Polish Notation, evaluate it. Operators are `+`, `-`, `*`, `/`; division truncates toward zero. Constraints: `1 <= len(tokens) <= 10^4`, tokens form a valid expression, and intermediate results fit in 32-bit integers.
+Given tokens of an arithmetic expression in Reverse Polish Notation, evaluate the expression. Operators appear after their two operands, and integer division truncates toward zero.
+
+**Input**
+- `tokens`: a list of string tokens, each either an integer or one of `+`, `-`, `*`, `/`.
+
+**Output**
+- The integer value of the expression.
+
+## Constraints
+- `1 <= tokens.length <= 10^4`
+- Each number token is an integer in `[-200, 200]`.
+- The expression is valid RPN.
+- Intermediate and final results fit in a 32-bit signed integer.
 
 ## Examples
 ```text
 Input: tokens = ["2","1","+","3","*"]
 Output: 9
-Explanation: ((2 + 1) * 3) = 9.
+Explanation: First compute `2 + 1 = 3`; then multiply by `3`, giving `9`.
 ```
 
 ## Understanding & Intuition

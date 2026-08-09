@@ -5,13 +5,23 @@
 - **Asked at:** Meta, Amazon, Microsoft, Google
 
 ## Problem
-Given a string `s`, return `True` if it is a palindrome after converting uppercase letters to lowercase and removing all non-alphanumeric characters. Constraints: `1 <= len(s) <= 2 * 10^5`.
+Given a string `s`, determine whether it is a palindrome after ignoring all non-alphanumeric characters and treating uppercase and lowercase letters as equal.
+
+**Input**
+- `s`: the string to inspect.
+
+**Output**
+- `True` if the cleaned string reads the same forward and backward; otherwise `False`.
+
+## Constraints
+- `1 <= s.length <= 2 * 10^5`
+- `s` consists of printable ASCII characters.
 
 ## Examples
 ```text
 Input: s = "A man, a plan, a canal: Panama"
 Output: True
-Explanation: After cleaning, "amanaplanacanalpanama" reads the same forward and backward.
+Explanation: After removing punctuation and spaces and lowercasing, the string becomes `amanaplanacanalpanama`, which is the same in both directions.
 ```
 
 ## Understanding & Intuition

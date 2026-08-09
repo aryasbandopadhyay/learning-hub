@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Return the element appearing more than `floor(n/2)` times. A majority element is guaranteed. Constraints: `1 <= n <= 5 * 10^4`.
+Given an integer array `nums`, return the majority element: the value that appears strictly more than `floor(n / 2)` times. The input always contains one.
+
+**Input**
+- `nums`: a non-empty list of integers.
+
+**Output**
+- The integer majority element.
+
+## Constraints
+- `1 <= nums.length <= 5 * 10^4`
+- `-10^9 <= nums[i] <= 10^9`
+- A majority element always exists.
 
 ## Examples
 ```text
 Input: nums = [3,2,3]
 Output: 3
-Explanation: 3 appears more than half the time.
+Explanation: The value `3` appears twice in an array of length `3`, which is more than `floor(3/2) = 1`.
 ```
 
 ## Understanding & Intuition

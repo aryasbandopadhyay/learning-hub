@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a circular array `nums`, return the next greater number for every element, or `-1` if it does not exist. Constraints: `1 <= len(nums) <= 10^4`, `-10^9 <= nums[i] <= 10^9`.
+Given a circular integer array `nums`, find the next greater value for each position. Searching to the right wraps around once; if no greater value exists, use `-1`.
+
+**Input**
+- `nums`: a list of integers treated as circular.
+
+**Output**
+- A list of next greater values aligned with the original indices. **This judge compares exactly** by index.
+
+## Constraints
+- `1 <= nums.length <= 10^4`
+- `-10^9 <= nums[i] <= 10^9`
 
 ## Examples
 ```text
 Input: nums = [1,2,1]
 Output: [2,-1,2]
-Explanation: The last 1 wraps around and finds 2.
+Explanation: For the first `1`, the next greater value is `2`; `2` has none; the last `1` wraps around and finds `2`.
 ```
 
 ## Understanding & Intuition

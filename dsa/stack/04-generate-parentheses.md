@@ -5,13 +5,22 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given `n` pairs of parentheses, generate all combinations of well-formed parentheses. Constraints: `1 <= n <= 8`.
+Given an integer `n`, generate every well-formed parentheses string containing exactly `n` opening and `n` closing parentheses.
+
+**Input**
+- `n`: the number of pairs of parentheses.
+
+**Output**
+- A list of valid strings. **This judge compares exactly**: return strings in the standard backtracking order that tries `(` before `)`, lexicographic with `(` before `)`.
+
+## Constraints
+- `1 <= n <= 8`
 
 ## Examples
 ```text
 Input: n = 3
 Output: ["((()))","(()())","(())()","()(())","()()()"]
-Explanation: These are all valid strings using three opening and three closing parentheses.
+Explanation: For `n = 3`, the five shown strings are the only ways to place three pairs while every prefix has at least as many `(` as `)`.
 ```
 
 ## Understanding & Intuition

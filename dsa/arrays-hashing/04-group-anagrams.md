@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Group strings that are anagrams of one another and return groups in any order. Constraints: up to `10^4` strings and large total length.
+Given a list of strings `strs`, group together strings that are anagrams of one another. Every input string must appear in exactly one group.
+
+**Input**
+- `strs`: a list of lowercase strings.
+
+**Output**
+- A list of anagram groups. **This judge compares exactly**: groups must appear in the order their anagram class is first encountered in `strs`, and strings inside each group must keep original input order.
+
+## Constraints
+- `1 <= strs.length <= 10^4`
+- `0 <= strs[i].length <= 100`
+- `strs[i]` consists of lowercase English letters.
 
 ## Examples
 ```text
 Input: strs = ["eat","tea","tan","ate","nat","bat"]
 Output: [["eat","tea","ate"],["tan","nat"],["bat"]]
-Explanation: Words sharing character counts are grouped.
+Explanation: `eat`, `tea`, and `ate` share letters; `tan` and `nat` share letters; `bat` is alone. Groups keep first-seen input order.
 ```
 
 ## Understanding & Intuition

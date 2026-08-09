@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given strings `s` and `t`, return the minimum window substring of `s` that contains every character of `t` with multiplicity. Return `""` if no such window exists. Constraints: `1 <= len(s), len(t) <= 10^5`; characters are English letters.
+Given strings `s` and `t`, return the shortest substring of `s` that contains every character of `t` with at least the required frequency.
+
+**Input**
+- `s`: the source string.
+- `t`: the multiset of required characters.
+
+**Output**
+- The minimum-length covering substring, or the empty string if none exists. **This judge compares exactly**; when there is a unique minimum, return that exact substring from `s`.
+
+## Constraints
+- `1 <= s.length, t.length <= 10^5`
+- `s` and `t` consist of uppercase and lowercase English letters.
+- The answer is unique in the test data.
 
 ## Examples
 ```text
 Input: s = "ADOBECODEBANC", t = "ABC"
 Output: "BANC"
-Explanation: "BANC" is the shortest substring containing A, B, and C.
+Explanation: `BANC` contains `A`, `B`, and `C`, and every shorter substring fails to contain all three required characters.
 ```
 
 ## Understanding & Intuition

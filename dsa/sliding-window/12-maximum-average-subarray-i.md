@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Microsoft
 
 ## Problem
-Given integer array `nums` and integer `k`, find the maximum average value among all contiguous subarrays of length exactly `k`. Constraints: `1 <= k <= len(nums) <= 10^5`, `-10^4 <= nums[i] <= 10^4`.
+Given an integer array `nums` and an integer `k`, find the maximum average value over all contiguous subarrays of length exactly `k`.
+
+**Input**
+- `nums`: a list of integers.
+- `k`: the fixed subarray length.
+
+**Output**
+- The maximum average as a floating-point number.
+
+## Constraints
+- `1 <= k <= nums.length <= 10^5`
+- `-10^4 <= nums[i] <= 10^4`
 
 ## Examples
 ```text
 Input: nums = [1,12,-5,-6,50,3], k = 4
 Output: 12.75
-Explanation: The subarray [12,-5,-6,50] has sum 51 and average 12.75.
+Explanation: The length-4 subarray `[12,-5,-6,50]` has sum `51`, so its average is `51 / 4 = 12.75`, the maximum.
 ```
 
 ## Understanding & Intuition

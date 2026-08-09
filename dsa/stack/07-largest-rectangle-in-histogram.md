@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an array `heights`, return the area of the largest rectangle in the histogram where each bar has width `1`. Constraints: `1 <= len(heights) <= 10^5`, `0 <= heights[i] <= 10^4`.
+Given bar heights in a histogram where each bar has width `1`, find the area of the largest rectangle that can be formed using contiguous bars.
+
+**Input**
+- `heights`: a list of non-negative bar heights.
+
+**Output**
+- The maximum rectangle area.
+
+## Constraints
+- `1 <= heights.length <= 10^5`
+- `0 <= heights[i] <= 10^4`
 
 ## Examples
 ```text
 Input: heights = [2,1,5,6,2,3]
 Output: 10
-Explanation: Bars of heights 5 and 6 form a width-2 rectangle with area 10.
+Explanation: The largest rectangle uses the bars of heights `5` and `6` with limiting height `5` over width `2`, giving area `10`.
 ```
 
 ## Understanding & Intuition

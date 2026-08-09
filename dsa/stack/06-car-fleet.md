@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Meta, Uber
 
 ## Problem
-Given a `target`, arrays `position` and `speed`, return how many car fleets arrive at the target. A faster car that catches a slower car becomes part of that fleet and cannot pass it. Constraints: `1 <= len(position) <= 10^5`, positions are unique, `0 < position[i] < target`.
+Cars drive toward a target on a one-lane road. A faster car that catches a slower car before the target joins its fleet and then travels at that fleet speed. Count the fleets that arrive.
+
+**Input**
+- `target`: the destination position.
+- `position`: starting positions of the cars.
+- `speed`: speeds corresponding to the same indices as `position`.
+
+**Output**
+- The number of car fleets that arrive at the target.
+
+## Constraints
+- `1 <= target <= 10^6`
+- `1 <= position.length == speed.length <= 10^5`
+- `0 <= position[i] < target`
+- All positions are unique.
+- `1 <= speed[i] <= 10^6`
 
 ## Examples
 ```text
 Input: target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]
 Output: 3
-Explanation: Cars form fleets from positions 10, 8, and the group starting behind position 5.
+Explanation: After ordering cars by position, some cars catch slower cars ahead before the target. The example forms three arrival groups.
 ```
 
 ## Understanding & Intuition

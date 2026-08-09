@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Return an array where each position is the product of all other values. Do not use division for the optimal solution. Constraints: `2 <= n <= 10^5`.
+Given an integer array `nums`, build `answer` where `answer[i]` is the product of every element except `nums[i]`. Do not use division.
+
+**Input**
+- `nums`: a list of integers.
+
+**Output**
+- A list of products in the same index order as `nums`. **This judge compares exactly** by index.
+
+## Constraints
+- `2 <= nums.length <= 10^5`
+- `-30 <= nums[i] <= 30`
+- The product of any prefix or suffix fits in a 32-bit signed integer.
 
 ## Examples
 ```text
 Input: nums = [1,2,3,4]
 Output: [24,12,8,6]
-Explanation: Each result excludes its own value.
+Explanation: For index `0`, multiply `2*3*4 = 24`; for index `1`, multiply `1*3*4 = 12`, and similarly for the other positions.
 ```
 
 ## Understanding & Intuition

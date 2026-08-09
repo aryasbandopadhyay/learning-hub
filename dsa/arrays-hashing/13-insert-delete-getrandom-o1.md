@@ -5,13 +5,28 @@
 - **Asked at:** Amazon, Google, Meta, Uber
 
 ## Problem
-Implement `RandomizedSet` supporting `insert`, `remove`, and `getRandom` in average O(1). Random must be uniform among stored values.
+Design a `RandomizedSet` that stores distinct integers and supports insertion, deletion, and random retrieval in average constant time. `getRandom` must choose uniformly among current values.
+
+**Input**
+- `RandomizedSet()`: initializes an empty set.
+- `insert(val)`: attempts to add `val`.
+- `remove(val)`: attempts to delete `val`.
+- `getRandom()`: returns one currently stored value.
+
+**Output**
+- Return `null` for the constructor, booleans for `insert`/`remove`, and a uniformly random stored value for `getRandom`.
+
+## Constraints
+- `-2^31 <= val <= 2^31 - 1`
+- At most `2 * 10^5` operations are performed.
+- `getRandom` is called only when the set is non-empty.
+- All operations should run in average `O(1)` time.
 
 ## Examples
 ```text
 Input: ["RandomizedSet","insert","remove","insert","getRandom","remove","insert","getRandom"] with [[],[1],[2],[2],[],[1],[2],[]]
 Output: [null,true,false,true,2,true,false,2]
-Explanation: The data structure maintains values with constant-time operations.
+Explanation: The operations add `1`, fail to remove missing `2`, add `2`, then remove `1`. Each random call has only `2` as the allowed current value in this sequence.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Meta, Google, Microsoft, Bloomberg
 
 ## Problem
-Given non-negative integers `height` representing an elevation map, compute how much water can be trapped after raining. Constraints: `1 <= len(height) <= 2 * 10^4`.
+Given bar heights in an elevation map, compute how much rain water is trapped after raining. Each bar has width `1`, and water is limited by taller bars on both sides.
+
+**Input**
+- `height`: a list of non-negative bar heights.
+
+**Output**
+- The total number of water units trapped.
+
+## Constraints
+- `1 <= height.length <= 2 * 10^4`
+- `0 <= height[i] <= 10^5`
 
 ## Examples
 ```text
 Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
 Output: 6
-Explanation: The bars trap 6 total units of water.
+Explanation: Several valleys trap water between taller bars; summing all trapped units across the elevation map gives `6`.
 ```
 
 ## Understanding & Intuition

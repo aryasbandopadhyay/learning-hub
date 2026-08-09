@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Uber
 
 ## Problem
-Given integers `asteroids`, each absolute value is size and sign is direction. Moving right is positive, moving left is negative. Return the state after all collisions; only a positive asteroid followed by a negative asteroid can collide. Constraints: `2 <= len(asteroids) <= 10^4`, `asteroids[i] != 0`.
+Asteroids move along a line. Positive values move right and negative values move left; absolute value is size. When a right-moving asteroid meets a left-moving one, the smaller explodes, and equal sizes both explode.
+
+**Input**
+- `asteroids`: a list of signed asteroid sizes and directions.
+
+**Output**
+- The remaining asteroids in original left-to-right order after all collisions. **This judge compares exactly** to that order.
+
+## Constraints
+- `2 <= asteroids.length <= 10^4`
+- `-1000 <= asteroids[i] <= 1000`
+- `asteroids[i] != 0`
 
 ## Examples
 ```text
 Input: asteroids = [5,10,-5]
 Output: [5,10]
-Explanation: 10 destroys -5; 5 never meets -5.
+Explanation: The `-5` moves left into `10`; since `10` is larger, `-5` explodes and `[5,10]` remain.
 ```
 
 ## Understanding & Intuition

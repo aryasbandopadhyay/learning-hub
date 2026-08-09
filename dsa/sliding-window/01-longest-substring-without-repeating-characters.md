@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a string `s`, return the length of the longest substring without repeating characters. Constraints: `0 <= len(s) <= 5 * 10^4`; `s` may contain letters, digits, symbols, and spaces.
+Given a string `s`, find the length of the longest contiguous substring that contains no repeated characters.
+
+**Input**
+- `s`: the string to inspect.
+
+**Output**
+- The maximum length of a substring with all distinct characters.
+
+## Constraints
+- `0 <= s.length <= 5 * 10^4`
+- `s` consists of English letters, digits, symbols, and spaces.
 
 ## Examples
 ```text
 Input: s = "abcabcbb"
 Output: 3
-Explanation: "abc" is the longest substring without duplicate characters.
+Explanation: The longest substrings without repeats include `abc`; when `a`, `b`, or `c` repeats, the window must move past the earlier copy.
 ```
 
 ## Understanding & Intuition

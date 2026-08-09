@@ -5,13 +5,25 @@
 - **Asked at:** Google, Meta, Amazon, Microsoft
 
 ## Problem
-Design `encode(strs)` and `decode(s)` so a list of arbitrary strings round-trips exactly, including empty strings and delimiter characters.
+Design a codec for a list of strings. `encode(strs)` must convert the whole list into one string, and `decode(s)` must recover the original list exactly, even when strings contain delimiters or digits.
+
+**Input**
+- `strs`: a list of strings passed to `encode`.
+- `s`: an encoded string previously produced by `encode`, passed to `decode`.
+
+**Output**
+- `decode(encode(strs))` must return the original list in the same order with every character unchanged. **This judge compares exactly**.
+
+## Constraints
+- `0 <= strs.length <= 200`
+- `0 <= strs[i].length <= 200`
+- `strs[i]` may contain any valid character.
 
 ## Examples
 ```text
 Input: strs = ["lint","code","love","you"]
 Output: ["lint","code","love","you"]
-Explanation: decode(encode(strs)) returns the original list.
+Explanation: After encoding and decoding, each of the four strings is recovered unchanged and in its original position.
 ```
 
 ## Understanding & Intuition

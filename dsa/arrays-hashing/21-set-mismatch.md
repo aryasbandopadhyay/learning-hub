@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Bloomberg
 
 ## Problem
-Array `nums` should contain 1..n once, but one value is duplicated and one missing. Return `[duplicate, missing]`.
+A set should contain every integer from `1` to `n` exactly once, but one number was duplicated and one number is missing. Given the resulting array, identify both errors.
+
+**Input**
+- `nums`: a list of length `n` containing values from `1` to `n`.
+
+**Output**
+- A two-element list `[duplicate, missing]`. **This judge compares exactly**, so the duplicated value comes first and the missing value second.
+
+## Constraints
+- `2 <= nums.length <= 10^4`
+- `1 <= nums[i] <= nums.length`
+- Exactly one value is duplicated and exactly one value is missing.
 
 ## Examples
 ```text
 Input: nums = [1,2,2,4]
 Output: [2,3]
-Explanation: 2 repeats and 3 is missing.
+Explanation: The value `2` appears twice, and `3` is absent from `{1,2,3,4}`, so return `[2,3]`.
 ```
 
 ## Understanding & Intuition

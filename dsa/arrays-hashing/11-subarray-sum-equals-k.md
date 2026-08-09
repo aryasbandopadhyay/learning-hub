@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Return the number of contiguous subarrays whose sum equals `k`. Values may be negative; `n <= 2 * 10^4`.
+Given an integer array `nums` and an integer `k`, count how many contiguous, non-empty subarrays have sum exactly `k`.
+
+**Input**
+- `nums`: a list of integers.
+- `k`: the target subarray sum.
+
+**Output**
+- The number of contiguous subarrays whose elements sum to `k`.
+
+## Constraints
+- `1 <= nums.length <= 2 * 10^4`
+- `-1000 <= nums[i] <= 1000`
+- `-10^7 <= k <= 10^7`
 
 ## Examples
 ```text
 Input: nums = [1,1,1], k = 2
 Output: 2
-Explanation: Two length-2 subarrays sum to 2.
+Explanation: The subarrays `nums[0..1]` and `nums[1..2]` both sum to `2`, so there are two valid subarrays.
 ```
 
 ## Understanding & Intuition

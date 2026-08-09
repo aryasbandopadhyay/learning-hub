@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Bloomberg, Apple, Microsoft
 
 ## Problem
-Given a 1-indexed non-decreasing integer array `numbers` and an integer `target`, return the indices of two numbers whose sum is `target`. Exactly one solution exists, and the same element cannot be used twice. Constraints: `2 <= len(numbers) <= 3 * 10^4`.
+Given a non-decreasing array `numbers` and a target, find two different entries whose sum is `target`. The input has exactly one solution.
+
+**Input**
+- `numbers`: a 1-indexed, non-decreasing list of integers.
+- `target`: the sum to form.
+
+**Output**
+- A list `[index1, index2]` using **1-based** indices with `index1 < index2`. **This judge compares exactly** to that order.
+
+## Constraints
+- `2 <= numbers.length <= 3 * 10^4`
+- `-1000 <= numbers[i] <= 1000`
+- `numbers` is sorted in non-decreasing order.
+- Exactly one valid pair exists.
 
 ## Examples
 ```text
 Input: numbers = [2,7,11,15], target = 9
 Output: [1,2]
-Explanation: 2 + 7 = 9, so the 1-indexed answer is [1, 2].
+Explanation: `numbers[1] + numbers[2] = 2 + 7 = 9` using 1-based indexing, so return `[1,2]`.
 ```
 
 ## Understanding & Intuition

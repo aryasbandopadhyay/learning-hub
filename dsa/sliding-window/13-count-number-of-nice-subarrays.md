@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Microsoft, Bloomberg
 
 ## Problem
-Given integer array `nums` and integer `k`, return the number of contiguous subarrays containing exactly `k` odd numbers. Constraints: `1 <= len(nums) <= 5 * 10^4`, `1 <= nums[i] <= 10^5`, `1 <= k <= len(nums)`.
+Given an integer array `nums` and an integer `k`, count the contiguous subarrays that contain exactly `k` odd numbers. Such subarrays are called nice subarrays.
+
+**Input**
+- `nums`: a list of integers.
+- `k`: the required number of odd values.
+
+**Output**
+- The number of nice contiguous subarrays.
+
+## Constraints
+- `1 <= nums.length <= 5 * 10^4`
+- `1 <= nums[i] <= 10^5`
+- `1 <= k <= nums.length`
 
 ## Examples
 ```text
 Input: nums = [1,1,2,1,1], k = 3
 Output: 2
-Explanation: The nice subarrays are [1,1,2,1] and [1,2,1,1].
+Explanation: The subarrays `[1,1,2,1]` and `[1,2,1,1]` each contain exactly three odd numbers, so the count is `2`.
 ```
 
 ## Understanding & Intuition

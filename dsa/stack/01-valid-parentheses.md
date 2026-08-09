@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a string `s` containing only `()[]{}`, return `True` if every opening bracket is closed by the same type of bracket and in the correct order. Constraints: `1 <= len(s) <= 10^4`.
+Given a string `s` containing only bracket characters, determine whether it is a valid bracket sequence. Every opening bracket must be closed by the same type in the correct nested order.
+
+**Input**
+- `s`: a string containing only `(`, `)`, `[`, `]`, `{`, and `}`.
+
+**Output**
+- `True` if the sequence is valid; otherwise `False`.
+
+## Constraints
+- `1 <= s.length <= 10^4`
+- `s` contains only bracket characters.
 
 ## Examples
 ```text
 Input: s = "()[]{}"
 Output: True
-Explanation: Each opening bracket is closed in order.
+Explanation: Each opening bracket is immediately closed by the matching type, and no closing bracket appears out of order.
 ```
 
 ## Understanding & Intuition

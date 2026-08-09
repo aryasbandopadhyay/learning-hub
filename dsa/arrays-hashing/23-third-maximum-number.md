@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Bloomberg
 
 ## Problem
-Return the third distinct maximum value in `nums`; if fewer than three distinct values exist, return the maximum.
+Given an integer array `nums`, return the third distinct maximum value. If fewer than three distinct values exist, return the maximum distinct value instead.
+
+**Input**
+- `nums`: a list of integers.
+
+**Output**
+- The third largest distinct integer, or the largest distinct integer when no third distinct value exists.
+
+## Constraints
+- `1 <= nums.length <= 10^4`
+- `-2^31 <= nums[i] <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: nums = [3,2,1]
 Output: 1
-Explanation: The third distinct maximum is 1.
+Explanation: The distinct values are `3`, `2`, and `1`; the third maximum is `1`.
 ```
 
 ## Understanding & Intuition

@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Apple
 
 ## Problem
-Return `True` if any integer appears at least twice in `nums`; otherwise return `False`. Constraints: `1 <= n <= 10^5`.
+Given an integer array `nums`, determine whether any value appears at least twice.
+
+**Input**
+- `nums`: a list of integers.
+
+**Output**
+- `True` if some value occurs two or more times; otherwise `False`.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `-10^9 <= nums[i] <= 10^9`
 
 ## Examples
 ```text
 Input: nums = [1,2,3,1]
 Output: True
-Explanation: 1 appears twice.
+Explanation: The value `1` appears at both the first and last positions, so the array contains a duplicate.
 ```
 
 ## Understanding & Intuition

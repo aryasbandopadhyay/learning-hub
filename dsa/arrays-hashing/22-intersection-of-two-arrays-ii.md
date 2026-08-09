@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Return the intersection of two arrays including multiplicity. Each value appears min(count1, count2) times; order does not matter.
+Given two integer arrays `nums1` and `nums2`, return their multiset intersection. Each value appears in the result as many times as it appears in both arrays, using the smaller frequency.
+
+**Input**
+- `nums1`: the first list of integers.
+- `nums2`: the second list of integers.
+
+**Output**
+- A list containing the common values with multiplicity. **This judge compares exactly**; the reference scans the longer array after counting the shorter one, so return matches in that scan order.
+
+## Constraints
+- `1 <= nums1.length, nums2.length <= 1000`
+- `0 <= nums1[i], nums2[i] <= 1000`
 
 ## Examples
 ```text
 Input: nums1 = [1,2,2,1], nums2 = [2,2]
 Output: [2,2]
-Explanation: 2 occurs twice in both arrays.
+Explanation: The value `2` appears twice in both arrays, so the intersection contains two copies: `[2,2]`.
 ```
 
 ## Understanding & Intuition

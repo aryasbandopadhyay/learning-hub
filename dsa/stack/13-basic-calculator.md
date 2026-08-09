@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a string expression containing non-negative integers, `+`, `-`, parentheses, and spaces, evaluate it. Unary signs may appear before numbers or parentheses. Constraints: `1 <= len(s) <= 3 * 10^5`.
+Evaluate an arithmetic expression containing non-negative integers, `+`, `-`, parentheses, and spaces. Parentheses may be nested and determine grouping.
+
+**Input**
+- `s`: a valid expression string.
+
+**Output**
+- The integer result of evaluating the expression. **This judge compares exactly**.
+
+## Constraints
+- `1 <= s.length <= 3 * 10^5`
+- `s` consists of digits, `+`, `-`, `(`, `)`, and spaces.
+- The expression is valid.
+- All intermediate results fit in a 32-bit signed integer.
 
 ## Examples
 ```text
 Input: s = "(1+(4+5+2)-3)+(6+8)"
 Output: 23
-Explanation: Parenthesized sums evaluate to 12 and 14, then combine to 23.
+Explanation: The inner group `4+5+2` is `11`, so `(1+11-3) + (6+8) = 9 + 14 = 23`.
 ```
 
 ## Understanding & Intuition

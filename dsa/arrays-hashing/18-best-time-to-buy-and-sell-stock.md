@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Choose one buy day and one later sell day to maximize profit. Return 0 if no profit is possible. Constraints: `n <= 10^5`.
+Given daily stock prices, choose one day to buy and a later day to sell to maximize profit. If no profitable transaction exists, return `0`.
+
+**Input**
+- `prices`: a list where `prices[i]` is the stock price on day `i`.
+
+**Output**
+- The maximum profit from one buy followed by one later sell.
+
+## Constraints
+- `1 <= prices.length <= 10^5`
+- `0 <= prices[i] <= 10^4`
 
 ## Examples
 ```text
 Input: prices = [7,1,5,3,6,4]
 Output: 5
-Explanation: Buy at 1 and sell at 6.
+Explanation: Buy at price `1` on day 1 and sell at price `6` on day 4 for profit `5`, which is the maximum possible.
 ```
 
 ## Understanding & Intuition

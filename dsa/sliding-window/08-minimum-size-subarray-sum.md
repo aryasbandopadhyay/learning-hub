@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Microsoft, Google, Facebook
 
 ## Problem
-Given positive integers array `nums` and positive integer `target`, return the minimal length of a contiguous subarray whose sum is at least `target`; return `0` if none exists. Constraints: `1 <= len(nums) <= 10^5`, `1 <= nums[i], target <= 10^9`.
+Given a target sum and an array of positive integers, find the minimum length of a contiguous subarray whose sum is at least `target`.
+
+**Input**
+- `target`: the required minimum sum.
+- `nums`: a list of positive integers.
+
+**Output**
+- The length of the shortest qualifying subarray, or `0` if no such subarray exists.
+
+## Constraints
+- `1 <= target <= 10^9`
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^4`
 
 ## Examples
 ```text
 Input: target = 7, nums = [2,3,1,2,4,3]
 Output: 2
-Explanation: [4,3] is the shortest subarray with sum at least 7.
+Explanation: The subarray `[4,3]` has sum `7` and length `2`; no single element reaches the target.
 ```
 
 ## Understanding & Intuition

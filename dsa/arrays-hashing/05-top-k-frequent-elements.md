@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Return the `k` most frequent elements of `nums` in any order. Constraints: `1 <= k <= unique count`, `n <= 10^5`.
+Given an integer array `nums` and an integer `k`, return the `k` distinct values that appear most often in `nums`. The answer is guaranteed to be unique as a set.
+
+**Input**
+- `nums`: a list of integers.
+- `k`: the number of frequent values to return.
+
+**Output**
+- A list containing the `k` most frequent values. The judge accepts the selected values regardless of order.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `-10^9 <= nums[i] <= 10^9`
+- `1 <= k <=` the number of distinct values in `nums`
 
 ## Examples
 ```text
 Input: nums = [1,1,1,2,2,3], k = 2
 Output: [1,2]
-Explanation: 1 and 2 have the highest frequencies.
+Explanation: `1` appears three times and `2` appears twice, more often than `3`, so the top two values are `1` and `2`.
 ```
 
 ## Understanding & Intuition

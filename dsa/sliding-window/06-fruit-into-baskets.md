@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Apple, Microsoft
 
 ## Problem
-Given an array `fruits` where `fruits[i]` is a tree's fruit type, return the maximum number of fruits you can collect from a contiguous subarray containing at most two distinct types. Constraints: `1 <= len(fruits) <= 10^5`, `0 <= fruits[i] < len(fruits)`.
+Given a row of fruit trees, choose a contiguous segment containing at most two fruit types. You have two baskets, and each basket can hold only one fruit type but any number of that type.
+
+**Input**
+- `fruits`: a list where `fruits[i]` is the fruit type at tree `i`.
+
+**Output**
+- The maximum number of fruits collectable from one contiguous segment with at most two distinct types.
+
+## Constraints
+- `1 <= fruits.length <= 10^5`
+- `0 <= fruits[i] < fruits.length`
 
 ## Examples
 ```text
 Input: fruits = [1,2,1]
 Output: 3
-Explanation: The whole array has only two fruit types.
+Explanation: The entire segment `[1,2,1]` contains only two fruit types, so all `3` fruits can be collected.
 ```
 
 ## Understanding & Intuition

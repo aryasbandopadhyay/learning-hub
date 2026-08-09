@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given integer array `nums` and target, return indices of two different elements whose values sum to target. Exactly one answer exists; `2 <= n <= 10^4`.
+Given an integer array `nums` and an integer `target`, find the two different positions whose values add up to `target`. Exactly one valid pair exists, and the same array element cannot be used twice.
+
+**Input**
+- `nums`: a list of integers.
+- `target`: the integer sum to form.
+
+**Output**
+- A list `[i, j]` containing the **0-based** indices. **This judge compares exactly**, so return the smaller index first and the larger index second.
+
+## Constraints
+- `2 <= nums.length <= 10^4`
+- `-10^9 <= nums[i] <= 10^9`
+- `-10^9 <= target <= 10^9`
+- Exactly one valid answer exists.
 
 ## Examples
 ```text
 Input: nums = [2,7,11,15], target = 9
 Output: [0,1]
-Explanation: 2 + 7 = 9.
+Explanation: `nums[0] + nums[1] = 2 + 7 = 9`, so the required 0-based indices are `[0,1]`.
 ```
 
 ## Understanding & Intuition

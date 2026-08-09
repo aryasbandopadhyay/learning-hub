@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Design `NumArray` so `sumRange(left, right)` returns the inclusive range sum for an immutable array. Many queries may be made.
+Design an immutable array wrapper `NumArray` that can answer range-sum queries. After construction, `sumRange(left, right)` returns the sum of `nums[left]` through `nums[right]`, inclusive.
+
+**Input**
+- `NumArray(nums)`: initializes the object with an integer list `nums`.
+- `sumRange(left, right)`: asks for the inclusive sum between indices `left` and `right`.
+
+**Output**
+- For each `sumRange` call, return the requested integer sum. Constructor calls return `null`. **This judge compares exactly** to the operation output sequence.
+
+## Constraints
+- `1 <= nums.length <= 10^4`
+- `-10^5 <= nums[i] <= 10^5`
+- `0 <= left <= right < nums.length`
+- At most `10^4` calls are made to `sumRange`.
 
 ## Examples
 ```text
 Input: nums = [-2,0,3,-5,2,-1]; sumRange(0,2), sumRange(2,5), sumRange(0,5)
 Output: [1,-1,-3]
-Explanation: Prefix sums answer each query by subtraction.
+Explanation: The sums are `-2+0+3 = 1`, `3+(-5)+2+(-1) = -1`, and the whole array sum is `-3`.
 ```
 
 ## Understanding & Intuition

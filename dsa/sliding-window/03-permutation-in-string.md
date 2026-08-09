@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Microsoft, Google, Meta
 
 ## Problem
-Given strings `s1` and `s2`, return `True` if `s2` contains a substring that is a permutation of `s1`; otherwise return `False`. Constraints: `1 <= len(s1), len(s2) <= 10^4`; strings contain lowercase English letters.
+Given strings `s1` and `s2`, determine whether any substring of `s2` is a permutation of `s1`.
+
+**Input**
+- `s1`: the pattern string.
+- `s2`: the text to search.
+
+**Output**
+- `True` if `s2` contains a contiguous substring with exactly the same character counts as `s1`; otherwise `False`.
+
+## Constraints
+- `1 <= s1.length, s2.length <= 10^4`
+- `s1` and `s2` consist of lowercase English letters.
 
 ## Examples
 ```text
 Input: s1 = "ab", s2 = "eidbaooo"
 Output: True
-Explanation: "ba" is a permutation of "ab".
+Explanation: The substring `ba` in `eidbaooo` has the same letters as `ab`, so a permutation is present.
 ```
 
 ## Understanding & Intuition

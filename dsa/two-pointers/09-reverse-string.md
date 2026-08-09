@@ -5,13 +5,23 @@
 - **Asked at:** Google, Amazon, Microsoft, Apple
 
 ## Problem
-Write a function that reverses a list of characters `s` in-place. Do not allocate another array for the reversal. Constraints: `1 <= len(s) <= 10^5`.
+Given an array of characters `s`, reverse the array in-place.
+
+**Input**
+- `s`: a list of single-character strings.
+
+**Output**
+- Modify `s` so its characters appear in reverse order. **This judge compares exactly** to the final list.
+
+## Constraints
+- `1 <= s.length <= 10^5`
+- Each `s[i]` is a printable ASCII character.
 
 ## Examples
 ```text
 Input: s = ["h","e","l","l","o"]
 Output: ["o","l","l","e","h"]
-Explanation: The input list is modified in-place.
+Explanation: The characters in `hello` are reversed position by position to form `olleh`.
 ```
 
 ## Understanding & Intuition

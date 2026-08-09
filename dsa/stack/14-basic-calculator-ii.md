@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given a string expression containing non-negative integers, `+`, `-`, `*`, `/`, and spaces, evaluate it. Division truncates toward zero. Constraints: `1 <= len(s) <= 3 * 10^5`.
+Evaluate an arithmetic expression containing non-negative integers, `+`, `-`, `*`, `/`, and spaces. Multiplication and division have higher precedence, and integer division truncates toward zero.
+
+**Input**
+- `s`: a valid expression string without parentheses.
+
+**Output**
+- The integer result of evaluating the expression.
+
+## Constraints
+- `1 <= s.length <= 3 * 10^5`
+- `s` consists of digits, `+`, `-`, `*`, `/`, and spaces.
+- The expression is valid.
+- All intermediate results fit in a 32-bit signed integer.
 
 ## Examples
 ```text
 Input: s = "3+2*2"
 Output: 7
-Explanation: Multiplication has higher precedence than addition.
+Explanation: Multiplication is evaluated first: `2 * 2 = 4`, then `3 + 4 = 7`.
 ```
 
 ## Understanding & Intuition

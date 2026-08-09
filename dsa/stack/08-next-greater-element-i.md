@@ -5,13 +5,26 @@
 - **Asked at:** Amazon, Bloomberg, Google, Microsoft
 
 ## Problem
-Given distinct arrays `nums1` and `nums2` where `nums1` is a subset of `nums2`, return the next greater element in `nums2` for each value in `nums1`, or `-1` if none exists. Constraints: `1 <= len(nums1) <= len(nums2) <= 1000`.
+Given arrays `nums1` and `nums2`, where `nums1` is a subset of `nums2`, find the next greater element in `nums2` for each value in `nums1`. It is the first greater value to the right.
+
+**Input**
+- `nums1`: query values.
+- `nums2`: the array containing all query values.
+
+**Output**
+- A list of answers aligned with `nums1`. Use `-1` when there is no greater value to the right. **This judge compares exactly** by `nums1` order.
+
+## Constraints
+- `1 <= nums1.length <= nums2.length <= 1000`
+- `0 <= nums1[i], nums2[i] <= 10^4`
+- All values in each array are unique.
+- Every value in `nums1` appears in `nums2`.
 
 ## Examples
 ```text
 Input: nums1 = [4,1,2], nums2 = [1,3,4,2]
 Output: [-1,3,-1]
-Explanation: 1's next greater value is 3; 4 and 2 have none.
+Explanation: For `4` and `2` there is no greater value to their right in `nums2`; for `1`, the next greater value is `3`.
 ```
 
 ## Understanding & Intuition

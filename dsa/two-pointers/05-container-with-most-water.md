@@ -5,13 +5,23 @@
 - **Asked at:** Meta, Amazon, Google, Microsoft
 
 ## Problem
-Given an integer array `height`, choose two lines that with the x-axis form a container holding the most water. Return the maximum area. Constraints: `2 <= len(height) <= 10^5`.
+Given vertical line heights at consecutive x-positions, choose two lines that with the x-axis form a container holding the most water.
+
+**Input**
+- `height`: a list where `height[i]` is the height of the line at index `i`.
+
+**Output**
+- The maximum possible water area between two chosen lines.
+
+## Constraints
+- `2 <= height.length <= 10^5`
+- `0 <= height[i] <= 10^4`
 
 ## Examples
 ```text
 Input: height = [1,8,6,2,5,4,8,3,7]
 Output: 49
-Explanation: Lines at indices 1 and 8 hold min(8,7) * 7 = 49 water.
+Explanation: Choosing heights `8` at index `1` and `7` at index `8` gives width `7` and limiting height `7`, for area `49`.
 ```
 
 ## Understanding & Intuition

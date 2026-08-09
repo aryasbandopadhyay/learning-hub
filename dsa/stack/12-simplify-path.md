@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an absolute Unix path, return its canonical path. A single dot means current directory, double dot means parent directory, and repeated slashes are treated as one slash. Constraints: `1 <= len(path) <= 3000`.
+Given an absolute Unix-style file path, simplify it to canonical form. `.` means current directory, `..` moves to the parent if possible, and repeated slashes act as one separator.
+
+**Input**
+- `path`: an absolute path string starting with `/`.
+
+**Output**
+- The canonical absolute path. **This judge compares exactly**: start with one `/`, use single separators, have no trailing slash unless root, and contain no `.` or `..` components.
+
+## Constraints
+- `1 <= path.length <= 3000`
+- `path` consists of English letters, digits, `.`, `_`, and `/`.
+- `path` is an absolute Unix path.
 
 ## Examples
 ```text
 Input: path = "/home//foo/"
 Output: "/home/foo"
-Explanation: Repeated slashes collapse and the trailing slash is removed.
+Explanation: The repeated slash between `home` and `foo` collapses to one separator, and the trailing slash is removed.
 ```
 
 ## Understanding & Intuition

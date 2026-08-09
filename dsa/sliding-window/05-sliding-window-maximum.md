@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given an integer array `nums` and window size `k`, return a list of the maximum value in every contiguous window of size `k`. Constraints: `1 <= len(nums) <= 10^5`, `1 <= k <= len(nums)`.
+Given an integer array `nums` and a window size `k`, slide the window from left to right and record the maximum value in each window.
+
+**Input**
+- `nums`: a list of integers.
+- `k`: the fixed window length.
+
+**Output**
+- A list of window maximums in left-to-right window order. **This judge compares exactly** to that order.
+
+## Constraints
+- `1 <= nums.length <= 10^5`
+- `-10^4 <= nums[i] <= 10^4`
+- `1 <= k <= nums.length`
 
 ## Examples
 ```text
 Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
 Output: [3,3,5,5,6,7]
-Explanation: The maximums of each length-3 window are reported from left to right.
+Explanation: The first window `[1,3,-1]` has maximum `3`; moving one step at a time gives maxima `3,3,5,5,6,7`.
 ```
 
 ## Understanding & Intuition

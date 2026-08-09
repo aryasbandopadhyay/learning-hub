@@ -5,13 +5,29 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Design a stack supporting `push`, `pop`, `top`, and `getMin`, where `getMin` returns the minimum element currently in the stack. Constraints: operations are valid, values fit in signed 32-bit integers, and up to `3 * 10^4` calls are made.
+Design a stack that supports normal stack operations plus retrieving the current minimum element in constant time.
+
+**Input**
+- `MinStack()`: initializes an empty stack.
+- `push(val)`: pushes integer `val`.
+- `pop()`: removes the top element.
+- `top()`: returns the top element.
+- `getMin()`: returns the minimum value currently in the stack.
+
+**Output**
+- Constructor, `push`, and `pop` return `null`; `top` returns the current top; `getMin` returns the current minimum. **This judge compares exactly** to the operation output sequence.
+
+## Constraints
+- `-2^31 <= val <= 2^31 - 1`
+- At most `3 * 10^4` operations are performed.
+- `pop`, `top`, and `getMin` are called only when the stack is non-empty.
+- Each operation should run in `O(1)` time.
 
 ## Examples
 ```text
 Input: ["MinStack","push","push","push","getMin","pop","top","getMin"], [[],[-2],[0],[-3],[],[],[],[]]
 Output: [null,null,null,null,-3,null,0,-2]
-Explanation: The minimum updates when -3 is pushed and reverts after it is popped.
+Explanation: After pushing `-2`, `0`, and `-3`, the minimum is `-3`. Popping removes `-3`, so the top is `0` and the minimum returns to `-2`.
 ```
 
 ## Understanding & Intuition

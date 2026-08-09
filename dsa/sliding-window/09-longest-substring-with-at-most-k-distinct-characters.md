@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, LinkedIn
 
 ## Problem
-Given a string `s` and integer `k`, return the length of the longest substring containing at most `k` distinct characters. Constraints: `0 <= len(s) <= 5 * 10^4`, `0 <= k <= 50`.
+Given a string `s` and an integer `k`, find the length of the longest contiguous substring containing at most `k` distinct characters.
+
+**Input**
+- `s`: the string to inspect.
+- `k`: the maximum number of distinct characters allowed.
+
+**Output**
+- The maximum valid substring length.
+
+## Constraints
+- `0 <= s.length <= 5 * 10^4`
+- `0 <= k <= 50`
+- `s` consists of English letters, digits, symbols, and spaces.
 
 ## Examples
 ```text
 Input: s = "eceba", k = 2
 Output: 3
-Explanation: "ece" has at most two distinct characters.
+Explanation: With at most two distinct characters, `ece` is valid with length `3`; any longer substring includes a third distinct character.
 ```
 
 ## Understanding & Intuition

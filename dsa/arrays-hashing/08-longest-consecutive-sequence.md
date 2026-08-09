@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Return the length of the longest run of consecutive integer values in an unsorted array. Optimal solution should be `O(n)`.
+Given an unsorted integer array `nums`, find the length of the longest run of consecutive integer values. The values may appear in any order.
+
+**Input**
+- `nums`: a list of integers.
+
+**Output**
+- The length of the longest consecutive sequence; return `0` for an empty array.
+
+## Constraints
+- `0 <= nums.length <= 10^5`
+- `-10^9 <= nums[i] <= 10^9`
 
 ## Examples
 ```text
 Input: nums = [100,4,200,1,3,2]
 Output: 4
-Explanation: The longest run is 1,2,3,4.
+Explanation: The values `1,2,3,4` form a run of length `4`; `100` and `200` are isolated.
 ```
 
 ## Understanding & Intuition

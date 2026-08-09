@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Bloomberg
 
 ## Problem
-Return whether strings `s` and `t` contain exactly the same characters with the same frequencies. Constraints: lengths up to `5 * 10^4`.
+Given two strings `s` and `t`, decide whether `t` is an anagram of `s`: both strings must contain exactly the same characters with the same frequencies.
+
+**Input**
+- `s`: the first string.
+- `t`: the second string.
+
+**Output**
+- `True` if the strings are anagrams; otherwise `False`.
+
+## Constraints
+- `1 <= s.length, t.length <= 5 * 10^4`
+- `s` and `t` consist of lowercase English letters.
 
 ## Examples
 ```text
 Input: s = "anagram", t = "nagaram"
 Output: True
-Explanation: The same letters appear with the same counts.
+Explanation: Both strings contain `a` three times and `n`, `g`, `r`, and `m` once each, so they are anagrams.
 ```
 
 ## Understanding & Intuition

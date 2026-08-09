@@ -5,13 +5,24 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given `people`, where `people[i]` is a person's weight, and boat weight limit `limit`, return the minimum boats needed. Each boat carries at most two people and total weight cannot exceed `limit`. Constraints: `1 <= len(people) <= 5 * 10^4`.
+Given people weights and a boat weight limit, find the fewest boats needed to carry everyone. Each boat carries at most two people and cannot exceed `limit`.
+
+**Input**
+- `people`: a list of positive integer weights.
+- `limit`: the maximum weight per boat.
+
+**Output**
+- The minimum number of boats required.
+
+## Constraints
+- `1 <= people.length <= 5 * 10^4`
+- `1 <= people[i] <= limit <= 3 * 10^4`
 
 ## Examples
 ```text
 Input: people = [3,2,2,1], limit = 3
 Output: 3
-Explanation: Use boats (1,2), (2), and (3).
+Explanation: One boat can carry `1` and `2`; the remaining `2` and `3` require two more boats, so the minimum total is `3`.
 ```
 
 ## Understanding & Intuition

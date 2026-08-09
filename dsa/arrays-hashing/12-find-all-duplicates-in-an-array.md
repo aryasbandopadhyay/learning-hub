@@ -5,13 +5,25 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Given length `n` array with values in `[1,n]`, where each appears once or twice, return all values appearing twice. Aim for constant extra space excluding output.
+Given an integer array `nums` of length `n`, where every value is in `1..n`, return all values that appear exactly twice. Each value appears once or twice.
+
+**Input**
+- `nums`: a list of integers with values from `1` to `nums.length`.
+
+**Output**
+- A list of duplicated values. **This judge compares exactly**; return duplicates in the order they are discovered while scanning `nums` from left to right.
+
+## Constraints
+- `n == nums.length`
+- `1 <= n <= 10^5`
+- `1 <= nums[i] <= n`
+- Each integer appears once or twice.
 
 ## Examples
 ```text
 Input: nums = [4,3,2,7,8,2,3,1]
 Output: [2,3]
-Explanation: 2 and 3 appear twice.
+Explanation: Scanning left to right, `2` is the first value encountered for a second time and `3` is the next, so the output is `[2,3]`.
 ```
 
 ## Understanding & Intuition

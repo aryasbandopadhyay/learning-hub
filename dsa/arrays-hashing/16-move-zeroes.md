@@ -5,13 +5,23 @@
 - **Asked at:** Amazon, Google, Meta, Microsoft
 
 ## Problem
-Move all zeros to the end of `nums` in-place while preserving the relative order of nonzero values. Constraints: `n <= 10^4`.
+Given an integer array `nums`, move every `0` to the end while preserving the relative order of all non-zero values.
+
+**Input**
+- `nums`: a list of integers.
+
+**Output**
+- Modify `nums` in-place and return the final contents. **This judge compares exactly**: non-zero values remain in original order, followed by all zeros.
+
+## Constraints
+- `1 <= nums.length <= 10^4`
+- `-2^31 <= nums[i] <= 2^31 - 1`
 
 ## Examples
 ```text
 Input: nums = [0,1,0,3,12]
 Output: [1,3,12,0,0]
-Explanation: Nonzero order is preserved.
+Explanation: The non-zero values appear as `1, 3, 12`; the two zeros are then placed at the end.
 ```
 
 ## Understanding & Intuition
